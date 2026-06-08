@@ -59,10 +59,7 @@ const routes = [
 export default defineConfig({
   plugins: [
     react(),
-    sitemap({
-      hostname: "https://sniperindia.com",
-      dynamicRoutes: routes,
-    }),
+   
   ],
 
   resolve: {
