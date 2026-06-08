@@ -13,7 +13,7 @@ const About = React.lazy(() => import("./pages/About"));
 const Blog = React.lazy(() => import("./pages/Blog"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Careers = React.lazy(() => import("./pages/Careers"));
-const BlogA = React.lazy(() => import("./pages/Bloga"));
+const Bloga = React.lazy(() => import("./pages/Bloga"));
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/privacy";
 import TermsAndConditions from "./pages/TermsAndConditions";
@@ -143,7 +143,7 @@ const App = () => (
           <Route path="/industries/Education" element={<Education />} />
 
 
-<Route path="/blog/bloga" element={<BlogA />} />
+<Route path="/blog/bloga" element={<Bloga />} />
 
 
           {/* Catch-all */}
