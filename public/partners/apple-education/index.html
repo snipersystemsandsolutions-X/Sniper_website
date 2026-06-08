@@ -1,0 +1,4199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apple Education Solutions for Schools & Universities | Sniper India</title>
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: light)"
+    />
+    <link rel="apple-touch-icon" href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: light)"
+    />
+    <link rel="apple-touch-icon" href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+    <meta name="description" content="Empower K-12 and higher education with Apple devices like iPad and Mac, Apple School Manager, zero-touch deployment, training, and expert support from Sniper India.">
+<meta name="keywords" content="Apple Education Solutions, Apple for Education India, Apple Education Partner India">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#E31922',
+              'primary-dark': '#B31419'
+            }
+          }
+        }
+      };
+    </script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .cursor-dot,
+      .cursor-ring {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        transform: translate(-20%, -20%);
+        transition: opacity 150ms ease;
+        z-index: 9999;
+      }
+
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 9999px;
+        background: currentColor;
+      }
+
+      .cursor-ring {
+        width: 36px;
+        height: 36px;
+        border-radius: 9999px;
+        border: 2px solid currentColor;
+      }
+
+      .cursor-hidden {
+        opacity: 0;
+      }
+
+      /* Preloader Styles */
+      .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff;
+        /* White background */
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 1s ease;
+        /* Slower fade-out effect */
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        /* Space between the logos */
+      }
+
+      .apple-logo {
+        width: 60px;
+        /* Adjusted size */
+        height: 50px;
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation: pulse 2.5s ease-in-out infinite;
+        /* Increased animation duration */
+      }
+
+      .sniper-logo {
+        width: 150px;
+        /* Set a size for your logo */
+        height: auto;
+        animation: pulse 2.5s ease-in-out infinite;
+        /* Apply the same animation */
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+
+        50% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+
+        100% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-white">
+    <!-- Preloader Start -->
+    <div class="preloader" id="preloader">
+      <div class="logo-container">
+        <!-- Your Logo -->
+        <img src="components/sniper-logo-black.png" alt="Sniper Logo" class="sniper-logo" />
+        <!-- Apple Logo -->
+        <div class="apple-logo"></div>
+      </div>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Custom cursor elements -->
+    <div id="cursor-dot" class="cursor-dot"></div>
+    <div id="cursor-ring" class="cursor-ring"></div>
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+        <style>
+          .header-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          .header-visible {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          .dropdown-shadow {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          }
+          .submenu-shadow {
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+          }
+          .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+          }
+          .mobile-menu.open {
+            max-height: 1000px;
+          }
+          .mobile-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+          }
+          .mobile-submenu.open {
+            max-height: 500px;
+          }
+        </style>
+      </head>
+      <body class="bg-gray-50">
+        <!-- Header -->
+        <header
+          class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white shadow-lg py-4 header-hidden"
+          id="main-header"
+        >
+          <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
+            <!-- Logo Section -->
+            <div class="flex items-center space-x-2 mb-2">
+              <!-- Logo 1 -->
+              <div class="flex items-center space-x-4">
+                <!-- Logo 1 -->
+                <div class="w-25 h-20 flex items-center justify-center">
+                  <img src="components/Sniper_Education.jpg" alt="Logo 1" class="w-106 h-16" />
+                </div>
+
+                <!-- Logo 2 -->
+                <div class="w-22 h-20 flex items-center justify-center">
+                  <img src="components/PEP.svg" alt="Logo 2" class="w-206 h-10" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+              <!-- Home -->
+              <a
+                href="index.html"
+                class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2"
+              >
+                Home
+              </a>
+
+              <!-- Education Levels -->
+              <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+                <button
+                  @click="open = !open"
+                  class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2 flex items-center"
+                >
+                  Education Levels
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="ml-1 transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div
+                  x-show="open"
+                  x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="opacity-0 transform -translate-y-2"
+                  x-transition:enter-end="opacity-100 transform translate-y-0"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="opacity-100 transform translate-y-0"
+                  x-transition:leave-end="opacity-0 transform -translate-y-2"
+                  class="absolute top-full left-0 w-56 bg-white dropdown-shadow rounded-lg py-3 z-50"
+                >
+                  <a
+                    href="k12.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    K-12 Education
+                  </a>
+                  <a
+                    href="higher-education.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Higher Education
+                  </a>
+                </div>
+              </div>
+
+              <!-- Solution Offered -->
+              <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+                <button
+                  @click="open = !open"
+                  class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2 flex items-center"
+                >
+                  Solution Offered
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="ml-1 transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div
+                  x-show="open"
+                  x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="opacity-0 transform -translate-y-2"
+                  x-transition:enter-end="opacity-100 transform translate-y-0"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="opacity-100 transform translate-y-0"
+                  x-transition:leave-end="opacity-0 transform -translate-y-2"
+                  class="absolute top-full left-0 w-72 bg-white dropdown-shadow rounded-lg py-3 z-50"
+                >
+                  <!-- Parents -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      Parents
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="security&privacy.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Security & Privacy
+                      </a>
+                      <a
+                        href="Interactive_learning.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Interactive Learning
+                      </a>
+
+                      <a
+                        href="student-purchase-prog.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Student Purchase Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Educators -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      Educators
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="educators_ATLC.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Teacher Learning Centre
+                      </a>
+                      <a
+                        href="educators_classroom&schoolwork.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Classroom & School Work
+                      </a>
+                      <a
+                        href="educators_research&program.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Research & Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Leaders -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      Leaders
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="APLS.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Professional Learning Specialist(APLS)
+                      </a>
+                      <a
+                        href="ASM.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple School Manager (ASM)
+                      </a>
+                      <a
+                        href="accessibility.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Accessibility
+                      </a>
+                      <a
+                        href="sustainability.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Sustainability
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- IT -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      IT
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="it_zero-touch-delpoy.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Zero Touch Deployment
+                      </a>
+                      <a
+                        href="it_dev-manag.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Device Management
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Digital Transformation -->
+              <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+                <button
+                  @click="open = !open"
+                  class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2 flex items-center"
+                >
+                  Digital Transformation
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="ml-1 transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div
+                  x-show="open"
+                  x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="opacity-0 transform -translate-y-2"
+                  x-transition:enter-end="opacity-100 transform translate-y-0"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="opacity-100 transform translate-y-0"
+                  x-transition:leave-end="opacity-0 transform -translate-y-2"
+                  class="absolute top-full left-0 w-64 bg-white dropdown-shadow rounded-lg py-3 z-50"
+                >
+                  <a
+                    href="Multipurposelabs.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Multipurpose Labs with Mac
+                  </a>
+
+                  <a
+                    href="edu_fusion-combos.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper Fusion Combos
+                  </a>
+                  <a
+                    href="edu_bundle-service.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper's Bundled Services
+                  </a>
+                </div>
+              </div>
+
+              <!-- Training -->
+              <a
+                href="apple-training.html"
+                class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2"
+              >
+                Training
+              </a>
+
+              <!-- Contact Us -->
+              <a
+                href="contact_us.html"
+                class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2"
+              >
+                Contact Us
+              </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="lg:hidden text-gray-800 hover:text-red-600 py-2" id="mobile-menu-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="4" x2="20" y1="12" y2="12" />
+                <line x1="4" x2="20" y1="6" y2="6" />
+                <line x1="4" x2="20" y1="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div class="lg:hidden mobile-menu bg-white border-t border-gray-200" id="mobile-menu">
+            <div class="container mx-auto px-4 py-4">
+              <!-- Home -->
+              <a
+                href="index.html"
+                class="block py-3 px-4 text-gray-800 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-200"
+              >
+                Home
+              </a>
+
+              <!-- Education Levels -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('education-levels')"
+                >
+                  Education Levels
+                  <svg
+                    id="education-levels-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="education-levels" class="mobile-submenu pl-4 mt-2">
+                  <a href="k12.html" class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200">
+                    K-12 Education
+                  </a>
+                  <a
+                    href="higher-education.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Higher Education
+                  </a>
+                </div>
+              </div>
+
+              <!-- Solution Offered -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('solution-offered')"
+                >
+                  Solution Offered
+                  <svg
+                    id="solution-offered-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="solution-offered" class="mobile-submenu pl-4 mt-2">
+                  <!-- Parents -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('parents-submenu')"
+                    >
+                      Parents
+                      <svg
+                        id="parents-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="parents-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="security&privacy.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Security & Privacy
+                      </a>
+                      <a
+                        href="Interactive_learning.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Interactive learning
+                      </a>
+                      <a
+                        href="parental-control.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Parental Control
+                      </a>
+                      <a
+                        href="student-purchase-prog.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Student Purchase Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Educators -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('educators-submenu')"
+                    >
+                      Educators
+                      <svg
+                        id="educators-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="educators-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="educators_ATLC.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Teacher Learning Centre
+                      </a>
+                      <a
+                        href="educators_classroom&schoolwork.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Classroom & School Work
+                      </a>
+                      <a
+                        href="educators_research&program.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Research & Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Leaders -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('leaders-submenu')"
+                    >
+                      Leaders
+                      <svg
+                        id="leaders-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="leaders-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="APLS.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        APLS
+                      </a>
+                      <a
+                        href="ASM.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        ASM
+                      </a>
+                      <a
+                        href="accessibility.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Accessibility
+                      </a>
+                      <a
+                        href="sustainability.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Sustainability
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- IT -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('it-submenu')"
+                    >
+                      IT
+                      <svg
+                        id="it-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="it-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="it_zero-touch-delpoy.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Zero Touch Deployment
+                      </a>
+                      <a
+                        href="it_dev-manag.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Device Management
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Digital Transformation -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('digital-transformation')"
+                >
+                  Digital Transformation
+                  <svg
+                    id="digital-transformation-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="digital-transformation" class="mobile-submenu pl-4 mt-2">
+                  <a href="#" class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200">
+                    Multipurpose Labs with Mac
+                  </a>
+
+                  <a
+                    href="edu_fusion-combos.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper Fusion Combos
+                  </a>
+                  <a
+                    href="edu_bundle-service.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper's Bundled Services
+                  </a>
+                </div>
+              </div>
+
+              <!-- Training -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('training')"
+                >
+                  Training
+                  <svg
+                    id="training-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="training" class="mobile-submenu pl-4 mt-2">
+                  <a
+                    href="apple-training.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Apple Training
+                  </a>
+                  <a
+                    href="apple-training.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Book APL Session
+                  </a>
+                </div>
+              </div>
+
+              <!-- Contact Us -->
+              <a
+                href="contact.html"
+                class="block py-3 px-4 text-gray-800 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-200"
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Content -->
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('main-header');
+            header.classList.remove('header-hidden');
+            header.classList.add('header-visible');
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+              mobileMenu.classList.toggle('open');
+
+              // Change icon based on menu state
+              const icon = mobileMenuButton.querySelector('svg');
+              if (mobileMenu.classList.contains('open')) {
+                // Change to X icon
+                icon.innerHTML = '<path d="M18 6L6 18M6 6l12 12" />';
+              } else {
+                // Change back to hamburger icon
+                icon.innerHTML =
+                  '<line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" />';
+              }
+            });
+
+            // Add scroll effect
+            window.addEventListener('scroll', () => {
+              if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+              } else {
+                header.classList.remove('shadow-lg');
+              }
+            });
+          });
+
+          // Mobile submenu toggle function
+          function toggleSubmenu(id) {
+            const submenu = document.getElementById(id);
+            const arrow = document.getElementById(id + '-arrow');
+
+            submenu.classList.toggle('open');
+
+            if (submenu.classList.contains('open')) {
+              arrow.style.transform = 'rotate(180deg)';
+            } else {
+              arrow.style.transform = 'rotate(0deg)';
+            }
+          }
+        </script>
+      </body>
+    </html>
+
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+
+    <br />
+    <br />
+
+    <!-- Hero Section with Parallax Effect
+    <section class="relative bg-gradient-to-br from-red via-red to-red text-red overflow-hidden min-h-screen">
+
+
+      <div class="parallax-layer layer-4">
+        <div class="carousel-container">
+          <div class="carousel-track">
+            <img
+              src="components/banner1.jpg"
+              alt="Image 1"
+              class="carousel-image"
+              style="width: 450px; height: 400px; margin-top: 100px"
+            />
+
+            <img
+              src="components/ban.jpg"
+              alt="Image 2"
+              class="carousel-image"
+              style="width: 450px; height: 400px; margin-top: 100px"
+            />
+
+            <img src="components/university.avif" alt="Image 3" class="carousel-image" />
+            <img src="components/university.avif" alt="Image 4" class="carousel-image" />
+          </div>
+        </div>
+      </div>
+
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 pt-20 lg:pt-32 z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center -mt-10">
+          <div>
+            <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6">
+              Transformative
+              <span class="bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">Learning</span>
+              Experiences
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+              Empowering educational institutions with innovative Apple solutions that foster creativity, collaboration,
+              and critical thinking for the digital age.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                class="contact-us-btn bg-gradient-to-r from-red-700 to-red-700 hover:from-red-800 hover:to-red-800 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base transition-all duration-200 shadow hover:shadow-red-500/20 flex items-center justify-center gap-2 w-full sm:w-auto"
+                id="contactUsBtn"
+              >
+                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                Contact Us
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="p-4 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto text-center"
+          >
+            <a
+              href="mailto:education@sniperindia.com"
+              class="text-1xl sm:text-2xl md:text-3xl font-bold bg-red-500 bg-clip-text text-transparent break-all"
+            >
+              Education@SniperIndia.com
+            </a>
+            <div class="text-gray-700 text-sm mt-2">Contact Email</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
+        <div class="animate-bounce">
+          <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .parallax-layer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .layer-4 {
+        width: 100%;
+        height: 620px; /* Minimized height */
+      }
+
+      /* Auto-sliding Carousel Styles */
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .carousel-track {
+        display: flex;
+        height: 100%;
+        animation: autoSlide 16s infinite ease-in-out;
+      }
+
+      .carousel-image {
+        min-width: 100%;
+        height: 100%;
+        object-fit: contain; /* Changed to contain for smaller size */
+        object-position: center bottom;
+        max-width: 800px; /* Limit max width */
+        margin: 0 auto;
+      }
+
+      @keyframes autoSlide {
+        0%,
+        45% {
+          transform: translateX(0); /* Slide 1 */
+        }
+        50%,
+        95% {
+          transform: translateX(-100%); /* Slide 2 */
+        }
+        100% {
+          transform: translateX(0); /* Back to Slide 1 */
+        }
+      }
+    </style>-->
+
+    <br />
+    <br />
+    <br />
+    <section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <!-- Add this code INSIDE EACH .min-w-full.content slide <div> -->
+        <!-- For example, add it at the end of Slide 1, just before the closing </div> -->
+        <!-- Add this RIGHT AFTER the closing </section> of your slider -->
+        <section class="bg-white border-t border-gray-100 py-4">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                <a
+                  href="mailto:education@sniperindia.com"
+                  class="text-gray-800 font-medium hover:text-red-600 transition-colors text-lg"
+                >
+                  EDUCATION@SNIPERINDIA.COM
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <!-- Left Content Slider -->
+          <div class="relative">
+            <div class="overflow-hidden">
+              <div class="flex transition-transform duration-500 ease-in-out" id="contentSlider">
+                <!-- Content Slide 1 -->
+                <div class="min-w-full space-y-6 pb-20">
+                  <p class="text-sm font-medium text-gray-600 uppercase tracking-wide">K-12 EDUCATION</p>
+                  <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                    Creative,
+                    <span class="text-red-600">Collaborative,</span>
+                    Inclusive.
+                  </h1>
+                  <p class="text-base sm:text-lg text-gray-600 max-w-xl">
+                    Apple technology transforms
+                    <strong>K-12</strong>
+                    learning, fostering creativity, enhancing collaboration, and building a more inclusive educational
+                    experience for every student.
+                  </p>
+                </div>
+
+                <!-- Content Slide 2 -->
+                <div class="min-w-full space-y-6 pb-20">
+                  <p class="text-sm font-medium text-gray-600 uppercase tracking-wide">HIGHER EDUCATION</p>
+                  <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                    Smarter.
+                    <span class="text-red-600">Connected.</span>
+                    Supported.
+                  </h1>
+                  <p class="text-base sm:text-lg text-gray-600 max-w-xl">
+                    Empower
+                    <strong>higher education</strong>
+                    with intelligent Apple solutions that enable seamless connectivity and comprehensive support for
+                    students, faculty, and institutions.
+                  </p>
+                </div>
+
+                <!-- Content Slide 3 -->
+                <div class="min-w-full space-y-6 pb-20">
+                  <p class="text-sm font-medium text-gray-600 uppercase tracking-wide">AATCE</p>
+                  <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                    Apple Authorized
+                    <span class="text-red-600">Training Center</span>
+                    for Education.
+                  </h1>
+                  <p class="text-base sm:text-lg text-gray-600 max-w-xl">
+                    Elevate your institution’s expertise with official Apple training — ensuring educators are equipped
+                    to integrate technology effectively and inspire future-ready learners.
+                  </p>
+                </div>
+
+                <!-- Content Slide 4 -->
+                <div class="min-w-full space-y-6 pb-20">
+                  <p class="text-sm font-medium text-gray-600 uppercase tracking-wide">APPLE PROFESSIONAL LEARNING</p>
+                  <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                    Lead Your
+                    <span class="text-red-600">Campus</span>
+                    Transformation.
+                  </h1>
+                  <p class="text-base sm:text-lg text-gray-600 max-w-xl">
+                    Empower your leadership team to drive innovation, pedagogy, and technology integration across every
+                    department — with expert coaching, strategic planning, and scalable professional learning.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fixed Slider Controls -->
+            <div class="absolute bottom-0 left-0">
+              <div class="flex items-center gap-4 pt-4">
+                <button
+                  onclick="previousSlide()"
+                  class="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-red-600 hover:text-red-600 transition-colors duration-300 group"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onclick="nextSlide()"
+                  class="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center hover:bg-red-700 transition-colors duration-300 shadow-lg"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <div class="flex gap-2 ml-2">
+                  <span class="w-2 h-2 rounded-full bg-red-600 transition-all duration-300" id="dot-0"></span>
+                  <span class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" id="dot-1"></span>
+                  <span class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" id="dot-2"></span>
+                  <span class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" id="dot-3"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Image Grid Slider -->
+          <div class="relative overflow-hidden">
+            <div class="flex transition-transform duration-500 ease-in-out" id="slider">
+              <!-- Slide 1 -->
+              <div class="min-w-full grid grid-cols-2 gap-4 px-1">
+                <div class="space-y-4">
+                  <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <img
+                      src="https://i.ibb.co/j9THqWgb/1150.jpg"
+                      alt="Student with tablet"
+                      class="w-full h-64 sm:h-80 lg:h-96 object-cover"
+                    />
+                  </div>
+                </div>
+                <div class="space-y-4">
+                  <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <img
+                      src="https://i.ibb.co/ksCtv6rm/1151.jpg"
+                      alt="Students in greenhouse"
+                      class="w-full h-32 sm:h-40 lg:h-44 object-cover"
+                    />
+                  </div>
+                  <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <img
+                      src="https://i.ibb.co/SX8XSjvp/1152.jpg"
+                      alt="Students with laptop"
+                      class="w-full h-28 sm:h-36 lg:h-48 object-cover"
+                    />
+                  </div>
+                </div>
+                <div class="col-span-2">
+                  <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <img
+                      src="https://i.ibb.co/21YH08CF/1153.jpg"
+                      alt="Student with headphones"
+                      class="w-full h-40 sm:h-48 lg:h-56 object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="min-w-full space-y-4 px-1">
+                <!-- Single image at the top with matching height -->
+                <div class="rounded-2xl overflow-hidden shadow-lg">
+                  <img
+                    src="https://i.ibb.co/twdLyLzV/1160.jpg"
+                    alt="Innovation lab, technology integration, modern classroom, and interactive learning"
+                    class="w-full h-[calc(theme(spacing.84)+theme(spacing.4))] sm:h-[calc(theme(spacing.80)+theme(spacing.4))] lg:h-[calc(theme(spacing.96)+theme(spacing.4))] object-cover"
+                  />
+                </div>
+
+                <!-- Two-column layout below -->
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="space-y-4">
+                    <div class="rounded-2xl overflow-hidden shadow-lg">
+                      <img
+                        src="https://i.ibb.co/ymYtm5CP/1161.jpg"
+                        alt="Students in greenhouse"
+                        class="w-full h-32 sm:h-40 lg:h-44 object-cover"
+                      />
+                    </div>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="rounded-2xl overflow-hidden shadow-lg">
+                      <img
+                        src="https://i.ibb.co/xt3yjSKQ/1162.jpg"
+                        alt="Students in greenhouse"
+                        class="w-full h-32 sm:h-40 lg:h-44 object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="min-w-full grid grid-cols-1 gap-4 px-1">
+                <img
+                  src="https://i.ibb.co/qfLms65/aatce.jpg"
+                  alt="Innovation lab, technology integration, modern classroom, and interactive learning"
+                  class="w-90 h-90 object-cover rounded-2xl shadow-lg"
+                />
+                <img
+                  src="https://i.ibb.co/qfLms65/aatce.jpg"
+                  alt="Innovation lab, technology integration, modern classroom, and interactive learning"
+                  class="w-90 h-90 object-cover rounded-2xl shadow-lg"
+                />
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="min-w-full grid grid-cols-2 gap-4 px-1">
+                <div class="space-y-4">
+                  <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <img
+                      src="https://i.ibb.co/Df775Qfs/94bdb906-0c86-483d-a9d9-184a70dd0783-1.jpg"
+                      alt="Future of education"
+                      class="w-full h-64 sm:h-80 lg:h-96 object-cover"
+                    />
+                  </div>
+                </div>
+                <div class="space-y-4">
+                  <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <img
+                      src="https://i.ibb.co/4ZqqV7k4/bdffaf82-2735-48be-8c81-03d47c8c9b5f.jpg"
+                      alt="Smart learning"
+                      class="w-full h-32 sm:h-40 lg:h-44 object-cover"
+                    />
+                  </div>
+                  <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <img
+                      src="https://i.ibb.co/PGxx5Qkv/b43cfc5f-d7b8-49a9-a4ff-9d16c2b715ab.jpg"
+                      alt="Digital transformation"
+                      class="w-full h-28 sm:h-36 lg:h-48 object-cover"
+                    />
+                  </div>
+                </div>
+                <div class="col-span-2">
+                  <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <img
+                      src="https://i.ibb.co/Z6hxKGXs/ce137c18-a287-46fc-9485-071ec1f7c420.jpg"
+                      alt="Educational excellence"
+                      class="w-full h-40 sm:h-48 lg:h-56 object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let currentSlide = 0;
+      const totalSlides = 4;
+
+      function updateSlider() {
+        const slider = document.getElementById('slider');
+        const contentSlider = document.getElementById('contentSlider');
+
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        contentSlider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Update dots
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.getElementById(`dot-${i}`);
+          if (i === currentSlide) {
+            dot.classList.remove('bg-gray-300');
+            dot.classList.add('bg-red-600');
+          } else {
+            dot.classList.remove('bg-red-600');
+            dot.classList.add('bg-gray-300');
+          }
+        }
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlider();
+      }
+
+      function previousSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlider();
+      }
+
+      // Auto-advance slider every 5 seconds
+      setInterval(nextSlide, 10000);
+    </script>
+
+    <section class="education-section">
+      <!-- Background math layer -->
+      <div class="math-layer"></div>
+
+      <div class="container">
+        <div class="header-section">
+          <!-- Premium badge -->
+          <div class="premium-badge">
+            <svg class="badge-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="badge-text">EDUCATION TECHNOLOGY</span>
+          </div>
+
+          <!-- Main heading with subtle gradient -->
+          <h2 class="main-heading">
+            Transform Learning with
+            <span class="gradient-text">Sniper Education</span>
+            & Apple
+          </h2>
+
+          <!-- Elegant minimalist divider -->
+          <div class="divider">
+            <div class="divider-line left"></div>
+            <div class="divider-dot"></div>
+            <div class="divider-line right"></div>
+          </div>
+
+          <!-- Subheading with refined typography -->
+          <p class="subheading">
+            Cutting-edge tools and expert training tailored for educational excellence in precision disciplines
+          </p>
+        </div>
+
+        <div class="cards-container">
+          <!-- Mac in Education Card -->
+          <a href="mac_education.html" class="card-link">
+            <div class="card">
+              <!-- Image covering the entire top section -->
+              <div class="card-image">
+                <img
+                  src="https://i.ibb.co/pj2zxXJy/7-MAD-DEP-L-191214-EDU-K12-Lifestyle-Menlo-Park-WR-w07966.png"
+                  alt="Students using technology in classroom"
+                  class="image"
+                />
+              </div>
+
+              <!-- Content section below the image -->
+              <div class="card-content">
+                <h3 class="card-title">Mac in Education</h3>
+                <p class="card-description">
+                  Transform classrooms with the power of Mac—offering students and teachers advanced tools for
+                  creativity, research, and collaboration that enhance every stage of learning.
+                </p>
+              </div>
+
+              <!-- Learn more button -->
+              <div class="card-button">
+                <span class="button-text">Learn more</span>
+                <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- iPad in Education Card -->
+          <a href="ipad_education.html" class="card-link">
+            <div class="card">
+              <!-- Image covering the entire top section -->
+              <div class="card-image">
+                <img
+                  src="https://i.ibb.co/23hVMqZn/220825-EDU-K12-Library-London-MJ-w004918.png"
+                  alt="Students using technology in classroom"
+                  class="image"
+                />
+              </div>
+
+              <!-- Content section below the image -->
+              <div class="card-content">
+                <h3 class="card-title">iPad in Education</h3>
+                <p class="card-description">
+                  Redefine learning with iPad—bringing interactive lessons, creative apps, and powerful tools that make
+                  education more engaging and accessible for every student.
+                </p>
+              </div>
+
+              <!-- Learn more button -->
+              <div class="card-button">
+                <span class="button-text">Learn more</span>
+                <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      /* Base styles */
+      .education-section {
+        position: relative;
+        background-color: #ffffff;
+        padding: 2rem 0;
+        margin-top: -8rem;
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+      }
+
+      .math-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0.05;
+        background-image: radial-gradient(circle at 10% 20%, rgba(220, 38, 38, 0.3) 0%, transparent 20%),
+          radial-gradient(circle at 90% 60%, rgba(220, 38, 38, 0.3) 0%, transparent 20%);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Header section styles */
+      .header-section {
+        padding: 2rem 0;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .premium-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, #f3f4f6, #e5e7eb);
+        border-radius: 9999px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+
+      .badge-icon {
+        width: 0.75rem;
+        height: 0.75rem;
+        margin-right: 0.5rem;
+        color: #dc2626;
+      }
+
+      .badge-text {
+        font-size: 0.625rem;
+        font-weight: 500;
+        color: #374151;
+      }
+
+      .main-heading {
+        font-size: 1.875rem;
+        font-weight: bold;
+        color: #111827;
+        margin-bottom: 2rem;
+        line-height: 1.2;
+      }
+
+      .gradient-text {
+        background: linear-gradient(to right, #dc2626, #b91c1c);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .divider {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .divider-line {
+        width: 3rem;
+        height: 1px;
+      }
+
+      .divider-line.left {
+        background: linear-gradient(to right, transparent, #d1d5db);
+        margin-right: 0.75rem;
+      }
+
+      .divider-line.right {
+        background: linear-gradient(to left, transparent, #d1d5db);
+        margin-left: 0.75rem;
+      }
+
+      .divider-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: #dc2626;
+      }
+
+      .subheading {
+        font-size: 1.125rem;
+        color: #6b7280;
+        font-weight: 300;
+        max-width: 36rem;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Cards container - FIXED FOR DESKTOP */
+      .cards-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: start;
+        padding: 0 1rem;
+      }
+
+      .card-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        justify-self: center;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 400px;
+        height: 480px;
+        background: white;
+        border-radius: 1.125rem;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card:hover {
+        transform: translateY(-0.5rem);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .card:hover .card-title {
+        color: #dc2626;
+      }
+
+      .card-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .image {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+
+      .card-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 1rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .card-description {
+        color: #4b5563;
+        line-height: 1.6;
+        flex-grow: 1;
+      }
+
+      .card-button {
+        position: absolute;
+        bottom: 1.25rem;
+        right: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #dc2626;
+        border: 2px solid #dc2626;
+        border-radius: 0.75rem;
+        padding: 0.75rem 1.25rem;
+        transition: all 0.3s ease;
+      }
+
+      .card:hover .card-button {
+        background: #ffffff;
+        transform: translateY(-0.25rem);
+      }
+
+      .button-text {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #ffffff;
+        white-space: nowrap;
+        margin-right: 0.5rem;
+      }
+
+      .card:hover .button-text {
+        color: #dc2626;
+      }
+
+      .arrow-icon {
+        width: 1rem;
+        height: 1rem;
+        color: #ffffff;
+      }
+
+      .card:hover .arrow-icon {
+        color: #dc2626;
+      }
+
+      /* Tablet styles */
+      @media (min-width: 768px) {
+        .education-section {
+          padding: 3rem 0;
+        }
+
+        .container {
+          padding: 0 2rem;
+        }
+
+        .header-section {
+          padding: 3rem 0;
+          margin-bottom: 2rem;
+        }
+
+        .main-heading {
+          font-size: 2.25rem;
+        }
+
+        .cards-container {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+          padding: 0;
+        }
+
+        .card {
+          max-width: 100%;
+          height: 500px;
+        }
+
+        .card-image {
+          height: 220px;
+        }
+      }
+
+      /* Desktop styles - FIXED */
+      @media (min-width: 1024px) {
+        .container {
+          max-width: 1200px;
+          padding: 0 2rem;
+        }
+
+        .header-section {
+          max-width: 48rem;
+          margin: 0 auto 3rem;
+        }
+
+        .main-heading {
+          font-size: 2.5rem;
+        }
+
+        .cards-container {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2.5rem;
+          max-width: 900px;
+          margin: 0 auto;
+        }
+
+        .card {
+          height: 520px;
+          max-width: 100%;
+        }
+
+        .card-image {
+          height: 240px;
+        }
+
+        .card-content {
+          padding: 2rem;
+        }
+
+        .card-title {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* Large desktop styles */
+      @media (min-width: 1280px) {
+        .container {
+          max-width: 1280px;
+        }
+
+        .cards-container {
+          max-width: 1000px;
+          gap: 3rem;
+        }
+
+        .card {
+          height: 540px;
+        }
+
+        .card-image {
+          height: 260px;
+        }
+      }
+
+      /* Small mobile adjustments */
+      @media (max-width: 480px) {
+        .education-section {
+          padding: 1.5rem 0;
+        }
+
+        .header-section {
+          padding: 1.5rem 0;
+        }
+
+        .main-heading {
+          font-size: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .subheading {
+          font-size: 1rem;
+          padding: 0 1rem;
+        }
+
+        .card {
+          height: 460px;
+          max-width: 340px;
+        }
+
+        .card-image {
+          height: 180px;
+        }
+
+        .card-content {
+          padding: 1.25rem;
+        }
+      }
+    </style>
+
+    <section class="bg-red-50 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <!-- Background decorative elements -->
+      <div class="absolute inset-0 z-0">
+        <!-- Pencil element -->
+        <div
+          class="absolute top-20 sm:top-32 right-6 sm:right-12 w-12 h-3 sm:w-16 sm:h-4 bg-red-600 opacity-60 transform rotate-45 rounded-full"
+        >
+          <div class="absolute right-0 w-3 h-3 sm:w-4 sm:h-4 bg-red-500 rounded-r-full"></div>
+        </div>
+      </div>
+
+      <!-- Math equations -->
+      <div
+        class="absolute top-24 sm:top-36 right-20 sm:right-32 opacity-20 text-black text-lg sm:text-xl lg:text-2xl font-bold transform rotate-12"
+      >
+        E = mc²
+      </div>
+
+      <div
+        class="absolute top-28 sm:top-40 left-28 sm:right-42 opacity-20 text-black text-lg sm:text-xl lg:text-2xl font-bold transform -rotate-12"
+      >
+        π = 3.14159...
+      </div>
+
+      <!-- Map Pin -->
+      <div class="absolute top-40 sm:top-60 right-6 sm:right-10 opacity-90">
+        <svg width="30" height="35" class="sm:w-40 sm:h-45 text-red-500 pin-shadow animate-pulse-slow">
+          <!-- Main pin body with gradient -->
+          <path
+            d="M20 2C15 2 11 6 11 11C11 19 20 38 20 38C20 38 29 19 29 11C29 6 25 2 20 2Z"
+            fill="url(#pinGradient)"
+          />
+
+          <!-- Pin highlight -->
+          <path
+            d="M15 11C15 14 20 24 20 24C20 24 25 14 25 11C25 8 23 6 20 6C17 6 15 8 15 11Z"
+            fill="white"
+            fill-opacity="0.7"
+          />
+
+          <!-- Outer ring -->
+          <circle cx="20" cy="11" r="8" stroke="currentColor" stroke-width="1" fill="none" />
+
+          <!-- Pin point -->
+          <path d="M20 38C20 38 20 42 16 42C12 42 13 40 13 40" stroke="currentColor" stroke-width="2" fill="none" />
+
+          <!-- Detail lines -->
+          <path d="M20 32L20 36" stroke="currentColor" stroke-width="1.5" />
+          <path d="M16 34L18 36" stroke="currentColor" stroke-width="1.5" />
+          <path d="M24 34L22 36" stroke="currentColor" stroke-width="1.5" />
+
+          <!-- Center dot -->
+          <circle cx="20" cy="11" r="2" fill="currentColor" />
+
+          <!-- Gradient definition -->
+          <defs>
+            <linearGradient id="pinGradient" x1="20" y1="2" x2="20" y2="38" gradientUnits="userSpaceOnUse">
+              <stop stop-color="currentColor" stop-opacity="0.9" />
+              <stop offset="1" stop-color="currentColor" stop-opacity="0.7" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <style>
+        .pin-shadow {
+          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+            opacity: 0.8;
+          }
+
+          50% {
+            transform: scale(1.05);
+            opacity: 1;
+          }
+
+          100% {
+            transform: scale(1);
+            opacity: 0.8;
+          }
+        }
+
+        .animate-pulse-slow {
+          animation: pulse 3s ease-in-out infinite;
+        }
+      </style>
+
+      <!-- Main Content -->
+      <div class="max-w-4xl lg:max-w-7xl mx-auto text-center relative z-10">
+        <!-- Heading -->
+        <h2
+          class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-8 sm:mb-10 lg:mb-12 px-2 sm:px-0 leading-tight"
+        >
+          Apple transforms learning spaces into imaginative playgrounds where students can create, collaborate, and
+          thrive.
+        </h2>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <!-- Card 1 -->
+          <div
+            class="bg-white rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div class="mb-3 sm:mb-4">
+              <svg
+                class="h-10 w-10 sm:h-12 sm:w-12 mx-auto text-red-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                />
+              </svg>
+            </div>
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2 sm:mb-3">Apple Teacher Program</h3>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+              Educators can leverage Apple tools and resources to bring innovation to their daily teaching practices
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="bg-white rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div class="mb-3 sm:mb-4">
+              <svg
+                class="h-10 w-10 sm:h-12 sm:w-12 mx-auto text-red-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2 sm:mb-3">Flexible Learning</h3>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+              Comprehensive materials support students, parents, and teachers in any learning environment
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="bg-white rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div class="mb-3 sm:mb-4">
+              <svg
+                class="h-10 w-10 sm:h-12 sm:w-12 mx-auto text-red-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2 sm:mb-3">Creative Expression</h3>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+              Curriculum guides infuse creativity across subjects using music, visual arts, photography, and film
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        @keyframes float {
+          0% {
+            transform: translateY(0) rotate(0deg);
+          }
+
+          50% {
+            transform: translateY(-10px) rotate(5deg);
+          }
+
+          100% {
+            transform: translateY(0) rotate(0deg);
+          }
+        }
+
+        .animate-float-slow {
+          animation: float 8s ease-in-out infinite;
+        }
+
+        .animate-float-medium {
+          animation: float 6s ease-in-out infinite;
+        }
+      </style>
+
+      <!-- Light Bulb -->
+      <div class="absolute top-8 sm:top-10 bottom-16 sm:bottom-20 right-12 sm:right-20 opacity-60">
+        <svg width="20" height="25" class="sm:w-25 sm:h-30 text-yellow-400 animate-pulse">
+          <path
+            d="M12.5 2c-4.4 0-8 3.6-8 8 0 2.8 1.4 5.2 3.5 6.7v3.8h9v-3.8c2.1-1.5 3.5-3.9 3.5-6.7 0-4.4-3.6-8-8-8zm-2.5 24h5v2h-5v-2z"
+          />
+        </svg>
+      </div>
+
+      <!-- Graduation Cap -->
+      <div class="absolute top-8 sm:top-10 left-8 sm:left-20 opacity-20">
+        <svg width="60" height="60" class="sm:w-85 sm:h-85 text-black-500 rotate-180">
+          <path d="M22.5 5L2 15l20.5 10L43 15L22.5 5zm0 12L8 12l14.5-7L37 12l-14.5 5z" />
+          <path d="M35 17v8c0 3-5.6 5-12.5 5S10 28 10 25v-8l12.5 6L35 17z" />
+        </svg>
+      </div>
+    </section>
+
+    <section>
+      <style>
+        .nexus-container {
+          --nexus-bg: #ffffff;
+          --nexus-text: #a1a1aa;
+          --nexus-card-bg: rgba(255, 255, 255, 0.015);
+          --nexus-card-border: rgba(255, 255, 255, 0.1);
+          --nexus-shadow-1: rgba(0, 0, 0, 0.05);
+          --nexus-shadow-1-y: 3px;
+          --nexus-shadow-1-blur: 6px;
+          --nexus-shadow-2: rgba(0, 0, 0, 0.1);
+          --nexus-shadow-2-y: 8px;
+          --nexus-shadow-2-blur: 15px;
+          --nexus-label: #ffffff;
+          --nexus-icon: #d4d4d8;
+          --nexus-icon-bg: rgba(255, 255, 255, 0.08);
+          --nexus-icon-border: rgba(255, 255, 255, 0.12);
+          --nexus-shine-opacity: 0.1;
+          --nexus-shine-gradient: conic-gradient(
+            from 205deg at 50% 50%,
+            rgba(16, 185, 129, 0) 0deg,
+            #bf2020 25deg,
+            rgba(211, 52, 52, 0.18) 295deg,
+            rgba(16, 185, 129, 0) 360deg
+          );
+          --nexus-line: #000000;
+          --nexus-tile: rgba(16, 185, 129, 0.05);
+          --nexus-hover-border: rgba(255, 255, 255, 0.2);
+          --nexus-hover-shadow-1: rgba(0, 0, 0, 0.04);
+          --nexus-hover-shadow-1-y: 5px;
+          --nexus-hover-shadow-1-blur: 10px;
+          --nexus-hover-shadow-2: rgba(0, 0, 0, 0.3);
+          --nexus-hover-shadow-2-y: 15px;
+          --nexus-hover-shadow-2-blur: 25px;
+          --nexus-hover-icon: #ac2323;
+          --nexus-hover-icon-bg: rgba(199, 44, 44, 0.1);
+          --nexus-hover-icon-border: rgba(211, 52, 52, 0.2);
+          --nexus-blur-opacity: 0.01;
+
+          font-family: 'Inter', Arial, sans-serif;
+          min-height: 40vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: var(--nexus-bg);
+          overflow: hidden;
+          position: relative;
+          margin: 0;
+          padding: 20px;
+          box-sizing: border-box;
+        }
+
+        .nexus-container.quantum-light {
+          --nexus-bg: #fafafa;
+          --nexus-text: #52525b;
+          --nexus-card-bg: transparent;
+          --nexus-card-border: rgba(24, 24, 27, 0.08);
+          --nexus-shadow-1: rgba(24, 24, 27, 0.02);
+          --nexus-shadow-1-y: 3px;
+          --nexus-shadow-1-blur: 6px;
+          --nexus-shadow-2: rgba(24, 24, 27, 0.04);
+          --nexus-shadow-2-y: 2px;
+          --nexus-shadow-2-blur: 7px;
+          --nexus-label: #18181b;
+          --nexus-icon: #18181b;
+          --nexus-icon-bg: rgba(24, 24, 27, 0.04);
+          --nexus-icon-border: rgba(24, 24, 27, 0.1);
+          --nexus-shine-opacity: 0.3;
+          --nexus-shine-gradient: conic-gradient(
+            from 225deg at 50% 50%,
+            rgba(16, 185, 129, 0) 0deg,
+            #b91010 25deg,
+            #edfaf6 285deg,
+            #ffffff 345deg,
+            rgba(16, 185, 129, 0) 360deg
+          );
+          --nexus-line: #e9e9e7;
+          --nexus-tile: rgba(16, 185, 129, 0.08);
+          --nexus-hover-border: rgba(24, 24, 27, 0.15);
+          --nexus-hover-shadow-1: rgba(24, 24, 27, 0.05);
+          --nexus-hover-shadow-1-y: 3px;
+          --nexus-hover-shadow-1-blur: 6px;
+          --nexus-hover-shadow-2: rgba(24, 24, 27, 0.1);
+          --nexus-hover-shadow-2-y: 8px;
+          --nexus-hover-shadow-2-blur: 15px;
+          --nexus-hover-icon: #18181b;
+          --nexus-hover-icon-bg: rgba(24, 24, 27, 0.04);
+          --nexus-hover-icon-border: rgba(24, 24, 27, 0.34);
+          --nexus-blur-opacity: 0.1;
+        }
+
+        .nexus-container.quantum-transition * {
+          transition-duration: 0s !important;
+        }
+
+        .nexus-container::before {
+          content: '';
+          position: absolute;
+          inset: 0 -60% 65% -60%;
+          background-image: radial-gradient(ellipse at top, #ff1515 0%, var(--nexus-bg) 50%);
+          opacity: var(--nexus-blur-opacity);
+        }
+
+        .nexus-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 390px);
+          grid-gap: 32px;
+          position: relative;
+          z-index: 1;
+        }
+
+        .quantum-card {
+          background-color: var(--nexus-bg);
+          box-shadow: 0px var(--nexus-shadow-1-y) var(--nexus-shadow-1-blur) var(--nexus-shadow-1),
+            0px var(--nexus-shadow-2-y) var(--nexus-shadow-2-blur) var(--nexus-shadow-2),
+            0 0 0 1px var(--nexus-card-border);
+          padding: 16px 12px 12px 12px;
+          border-radius: 15px;
+          cursor: pointer;
+          position: relative;
+          transition: box-shadow 0.25s;
+        }
+
+        .quantum-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 15px;
+          background-color: var(--nexus-card-bg);
+        }
+
+        .quantum-card .nexus-symbol {
+          z-index: 2;
+          position: relative;
+          display: table;
+          padding: 8px;
+        }
+
+        .quantum-card .nexus-symbol::after {
+          content: '';
+          position: absolute;
+          inset: 4.5px;
+          border-radius: 50%;
+          background-color: var(--nexus-icon-bg);
+          border: 1px solid var(--nexus-icon-border);
+          backdrop-filter: blur(2px);
+          transition: background-color 0.25s, border-color 0.25s;
+        }
+
+        .quantum-card .nexus-symbol svg {
+          position: relative;
+          z-index: 1;
+          display: block;
+          width: 34px;
+          height: 34px;
+          transform: translateZ(0);
+          color: var(--nexus-icon);
+          transition: color 0.25s;
+        }
+
+        .quantum-card h4 {
+          z-index: 2;
+          position: relative;
+          margin: 12px 12px 12px 12px;
+          font-family: inherit;
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 1; /* keeps lines tight */
+          padding-top: 2px; /* adjust separately */
+          padding-bottom: 6px; /* adjust separately */
+          color: black;
+        }
+
+        .quantum-card p {
+          z-index: 2;
+          position: relative;
+          margin: 0;
+          font-size: 18px;
+          margin: 12px 12px 12px 12px;
+          line-height: 1.7;
+          color: black;
+        }
+
+        .quantum-card .aureola {
+          border-radius: inherit;
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          overflow: hidden;
+          opacity: 0;
+          transition: opacity 0.5s;
+        }
+
+        .quantum-card .aureola::before {
+          content: '';
+          width: 150%;
+          padding-bottom: 150%;
+          border-radius: 50%;
+          position: absolute;
+          left: 50%;
+          bottom: 55%;
+          filter: blur(35px);
+          opacity: var(--nexus-shine-opacity);
+          transform: translateX(-50%);
+          background-image: var(--nexus-shine-gradient);
+        }
+
+        .quantum-card .nexus-matrix {
+          border-radius: inherit;
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          -webkit-mask-image: radial-gradient(circle at 50% 5%, black 0%, black 15%, transparent 30%);
+          mask-image: radial-gradient(circle at 50% 5%, black 0%, black 15%, transparent 30%);
+        }
+
+        .quantum-card .nexus-matrix .nexus-tiles {
+          opacity: 0;
+          transition: opacity 0.25s;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell {
+          position: absolute;
+          background-color: var(--nexus-tile);
+          animation-duration: 8s;
+          animation-iteration-count: infinite;
+          opacity: 0;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-4,
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-6,
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-10 {
+          animation-delay: -2s;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-3,
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-5,
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-8 {
+          animation-delay: -4s;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-2,
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-9 {
+          animation-delay: -6s;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-1 {
+          top: 0;
+          left: 0;
+          height: 1%;
+          width: 22.5%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-2 {
+          top: 0;
+          left: 22.5%;
+          height: 1%;
+          width: 27.5%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-3 {
+          top: 0;
+          left: 50%;
+          height: 1%;
+          width: 27.5%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-4 {
+          top: 0;
+          left: 77.5%;
+          height: 1%;
+          width: 22.5%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-5 {
+          top: 1%;
+          left: 0;
+          height: 2.5%;
+          width: 22.5%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-6 {
+          top: 1%;
+          left: 2.5%;
+          height: 2.5%;
+          width: 2.5%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-7 {
+          top: 10%;
+          left: 50%;
+          height: 2.5%;
+          width: 2.5%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-8 {
+          top: 10%;
+          left: 77.5%;
+          height: 2.5%;
+          width: 2.5%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-9 {
+          top: 3.5%;
+          left: 5%;
+          height: 2.5%;
+          width: 2.5%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-cell.nexus-cell-10 {
+          top: 3.5%;
+          left: 7.5%;
+          height: 2.5%;
+          width: 2.5%;
+        }
+
+        @keyframes nexus-pulse {
+          0%,
+          12.5%,
+          100% {
+            opacity: 1;
+          }
+          25%,
+          82.5% {
+            opacity: 0;
+          }
+        }
+
+        .quantum-card .nexus-matrix .nexus-line {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          transition: opacity 0.35s;
+        }
+
+        .quantum-card .nexus-matrix .nexus-line::before,
+        .quantum-card .nexus-matrix .nexus-line::after {
+          content: '';
+          position: absolute;
+          background-color: var(--nexus-line);
+          transition: transform 0.35s;
+        }
+
+        .quantum-card .nexus-matrix .nexus-line::before {
+          left: 0;
+          right: 0;
+          height: 1px;
+          transform-origin: 0 50%;
+          transform: scaleX(0);
+        }
+
+        .quantum-card .nexus-matrix .nexus-line::after {
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          transform-origin: 50% 0;
+          transform: scaleY(0);
+        }
+
+        .quantum-card .nexus-matrix .nexus-line.nexus-line-1::before {
+          top: 10%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-line.nexus-line-1::after {
+          left: 22.5%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-line.nexus-line-1::before,
+        .quantum-card .nexus-matrix .nexus-line.nexus-line-1::after {
+          transition-delay: 0.3s;
+        }
+
+        .quantum-card .nexus-matrix .nexus-line.nexus-line-2::before {
+          top: 32.5%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-line.nexus-line-2::after {
+          left: 50%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-line.nexus-line-2::before,
+        .quantum-card .nexus-matrix .nexus-line.nexus-line-2::after {
+          transition-delay: 0.15s;
+        }
+
+        .quantum-card .nexus-matrix .nexus-line.nexus-line-3::before {
+          top: 55%;
+        }
+
+        .quantum-card .nexus-matrix .nexus-line.nexus-line-3::after {
+          right: 22.5%;
+        }
+
+        .quantum-card:hover {
+          box-shadow: 0px 3px 6px var(--nexus-hover-shadow-1),
+            0px var(--nexus-hover-shadow-2-y) var(--nexus-hover-shadow-2-blur) var(--nexus-hover-shadow-2),
+            0 0 0 1px var(--nexus-hover-border);
+        }
+
+        .quantum-card:hover .nexus-symbol::after {
+          background-color: var(--nexus-hover-icon-bg);
+          border-color: var(--nexus-hover-icon-border);
+        }
+
+        .quantum-card:hover .nexus-symbol svg {
+          color: var(--nexus-hover-icon);
+        }
+
+        .quantum-card:hover .aureola {
+          opacity: 1;
+          transition-duration: 0.5s;
+          transition-delay: 0s;
+        }
+
+        .quantum-card:hover .nexus-matrix .nexus-tiles {
+          opacity: 1;
+          transition-delay: 0.25s;
+        }
+
+        .quantum-card:hover .nexus-matrix .nexus-cell {
+          animation-name: nexus-pulse;
+        }
+
+        .quantum-card:hover .nexus-matrix .nexus-line {
+          opacity: 1;
+          transition-duration: 0.15s;
+        }
+
+        .quantum-card:hover .nexus-matrix .nexus-line::before {
+          transform: scaleX(1);
+        }
+
+        .quantum-card:hover .nexus-matrix .nexus-line::after {
+          transform: scaleY(1);
+        }
+
+        .quantum-card:hover .nexus-matrix .nexus-line.nexus-line-1::before,
+        .quantum-card:hover .nexus-matrix .nexus-line.nexus-line-1::after {
+          transition-delay: 0s;
+        }
+
+        .quantum-card:hover .nexus-matrix .nexus-line.nexus-line-2::before,
+        .quantum-card:hover .nexus-matrix .nexus-line.nexus-line-2::after {
+          transition-delay: 0.15s;
+        }
+
+        .quantum-card:hover .nexus-matrix .nexus-line.nexus-line-3::before,
+        .quantum-card:hover .nexus-matrix .nexus-line.nexus-line-3::after {
+          transition-delay: 0.3s;
+        }
+
+        .nexus-toggle {
+          cursor: pointer;
+          position: absolute;
+          right: 20px;
+          top: 20px;
+          opacity: 0.3;
+          z-index: 10;
+        }
+
+        .nexus-toggle input {
+          display: none;
+        }
+
+        .nexus-toggle input + div {
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          position: relative;
+          box-shadow: inset 8px -8px 0 0 var(--nexus-text);
+          transform: scale(1) rotate(-2deg);
+          transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
+        }
+
+        .nexus-toggle input + div::before {
+          content: '';
+          width: inherit;
+          height: inherit;
+          border-radius: inherit;
+          position: absolute;
+          left: 0;
+          top: 0;
+          transition: background-color 0.3s ease;
+        }
+
+        .nexus-toggle input + div::after {
+          content: '';
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          margin: -3px 0 0 -3px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          box-shadow: 0 -23px 0 var(--nexus-text), 0 23px 0 var(--nexus-text), 23px 0 0 var(--nexus-text),
+            -23px 0 0 var(--nexus-text), 15px 15px 0 var(--nexus-text), -15px 15px 0 var(--nexus-text),
+            15px -15px 0 var(--nexus-text), -15px -15px 0 var(--nexus-text);
+          transform: scale(0);
+          transition: all 0.3s ease;
+        }
+
+        .nexus-toggle input:checked + div {
+          box-shadow: inset 20px -20px 0 0 var(--nexus-text);
+          transform: scale(0.5) rotate(0deg);
+          transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s;
+        }
+
+        .nexus-toggle input:checked + div::before {
+          background: var(--nexus-text);
+          transition: background-color 0.3s ease 0.1s;
+        }
+
+        .nexus-toggle input:checked + div::after {
+          transform: scale(1);
+          transition: transform 0.5s ease 0.15s;
+        }
+
+        .nexus-social {
+          position: fixed;
+          display: block;
+          right: 12px;
+          bottom: 12px;
+          z-index: 10;
+        }
+
+        .nexus-social svg {
+          width: 32px;
+          height: 32px;
+          fill: #fff;
+        }
+
+        .nexus-container.quantum-light .nexus-social svg {
+          fill: #000;
+        }
+
+        @media (max-width: 600px) {
+          .nexus-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+
+      <div class="max-w-3xl mx-auto px-1 text-center pt-8">
+        <!-- Premium badge -->
+        <div
+          class="inline-flex items-center justify-center px-4 py-2 mb-6 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full border border-gray-200 shadow-sm"
+        >
+          <svg
+            class="w-3 h-3 mr-2 text-red-600"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <span class="text-[10px] font-medium text-gray-700">EDUCATION TECHNOLOGY</span>
+        </div>
+
+        <!-- Main heading with subtle gradient -->
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-10 tracking-tight">
+          Innovate Education
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-700">with Sniper</span>
+          & Apple
+        </h2>
+
+        <!-- Elegant minimalist divider -->
+        <div class="flex justify-center items-center mb-7">
+          <div class="w-12 h-px bg-gradient-to-r from-transparent to-gray-300 mr-3"></div>
+          <div class="w-2 h-2 rounded-full bg-red-500"></div>
+          <div class="w-12 h-px bg-gradient-to-l from-transparent to-gray-300 ml-3"></div>
+        </div>
+
+        <!-- Subheading with refined typography -->
+        <p class="text-lg text-gray-600 font-light max-w-1xl mx-auto leading-relaxed -mt-4">
+          Smart Apple tools and Sniper support built to enrich K-12 learning and strengthen Higher Education.
+        </p>
+      </div>
+      <div class="nexus-container">
+        <div class="nexus-grid">
+          <div class="quantum-card" style="position: relative; overflow: hidden">
+            <span
+              class="nexus-symbol"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto 12px auto;
+                width: 48px;
+                height: 48px;
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+              </svg>
+            </span>
+
+            <h4>K-12 Education</h4>
+
+            <p>
+              Apple technology transforms K-12 learning by making education more creative, collaborative, and inclusive.
+            </p>
+
+            <!-- overlay layers - click disabled -->
+            <div class="aureola" style="pointer-events: none"></div>
+            <div class="nexus-matrix" style="pointer-events: none">
+              <div class="nexus-tiles">
+                <div class="nexus-cell nexus-cell-1"></div>
+                <div class="nexus-cell nexus-cell-2"></div>
+                <div class="nexus-cell nexus-cell-3"></div>
+                <div class="nexus-cell nexus-cell-4"></div>
+                <div class="nexus-cell nexus-cell-5"></div>
+                <div class="nexus-cell nexus-cell-6"></div>
+                <div class="nexus-cell nexus-cell-7"></div>
+                <div class="nexus-cell nexus-cell-8"></div>
+                <div class="nexus-cell nexus-cell-9"></div>
+                <div class="nexus-cell nexus-cell-10"></div>
+              </div>
+              <div class="nexus-line nexus-line-1"></div>
+              <div class="nexus-line nexus-line-2"></div>
+              <div class="nexus-line nexus-line-3"></div>
+            </div>
+
+            <div class="w-full mt-8">
+              <img
+                src="components/EDU-K12Library-London_MJ_w004312.jpg"
+                alt="K-12 Education"
+                class="w-full h-full object-cover rounded-2xl"
+              />
+            </div>
+
+            <!-- clickable area on top of overlays -->
+            <div class="text-right mt-6 mb-4 relative z-10">
+              <a href="k12.html" rel="noopener noreferrer" class="inline-block">
+                <button
+                  class="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white text-sm font-medium rounded-full shadow-sm hover:from-red-700 hover:to-red-800 hover:shadow-lg hover:shadow-red-500/40 transform hover:-translate-y-1 hover:scale-105 hover:brightness-110 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                >
+                  Learn More
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <div class="quantum-card" style="position: relative; overflow: hidden">
+            <span
+              class="nexus-symbol"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto 12px auto;
+                width: 48px;
+                height: 48px;
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4.5 9.5V5.5C4.5 4.94772 4.94772 4.5 5.5 4.5H9.5C10.0523 4.5 10.5 4.94772 10.5 5.5V9.5C10.5 10.0523 10.0523 10.5 9.5 10.5H5.5C4.94772 10.5 4.5 10.0523 4.5 9.5Z"
+                />
+                <path
+                  d="M13.5 18.5V14.5C13.5 13.9477 13.9477 13.5 14.5 13.5H18.5C19.0523 13.5 19.5 13.9477 19.5 14.5V18.5C19.5 19.0523 19.0523 19.5 18.5 19.5H14.5C13.9477 19.5 13.5 19.0523 13.5 18.5Z"
+                />
+                <path d="M4.5 19.5L7.5 13.5L10.5 19.5H4.5Z" />
+                <path
+                  d="M16.5 4.5C18.1569 4.5 19.5 5.84315 19.5 7.5C19.5 9.15685 18.1569 10.5 16.5 10.5C14.8431 10.5 13.5 9.15685 13.5 7.5C13.5 5.84315 14.8431 4.5 16.5 4.5Z"
+                />
+              </svg>
+            </span>
+
+            <h4>Higher Education</h4>
+            <p>Empower higher education with Apple solutions — smarter, connected, and seamlessly supported.</p>
+
+            <div class="aureola" style="pointer-events: none"></div>
+            <div class="nexus-matrix" style="pointer-events: none">
+              <div class="nexus-tiles">
+                <div class="nexus-cell nexus-cell-1"></div>
+                <div class="nexus-cell nexus-cell-2"></div>
+                <div class="nexus-cell nexus-cell-3"></div>
+                <div class="nexus-cell nexus-cell-4"></div>
+                <div class="nexus-cell nexus-cell-5"></div>
+                <div class="nexus-cell nexus-cell-6"></div>
+                <div class="nexus-cell nexus-cell-7"></div>
+                <div class="nexus-cell nexus-cell-8"></div>
+                <div class="nexus-cell nexus-cell-9"></div>
+                <div class="nexus-cell nexus-cell-10"></div>
+              </div>
+              <div class="nexus-line nexus-line-1"></div>
+              <div class="nexus-line nexus-line-2"></div>
+              <div class="nexus-line nexus-line-3"></div>
+            </div>
+
+            <div class="w-full mt-8">
+              <img
+                src="components/5_MAD_DEP_L_191214_EDU-K12Lifestyle-MenloPark_MJ_w01068.jpg"
+                alt="K-12 Education"
+                class="w-full h-full object-cover rounded-2xl"
+              />
+            </div>
+
+            <div class="text-right mt-6 mb-4 relative z-10">
+              <a href="higher-education.html" rel="noopener noreferrer" class="inline-block">
+                <button
+                  class="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white text-sm font-medium rounded-full shadow-sm hover:from-red-700 hover:to-red-800 hover:shadow-lg hover:shadow-red-500/40 transform hover:-translate-y-1 hover:scale-105 hover:brightness-110 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                >
+                  Learn More
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <label class="nexus-toggle">
+          <input type="checkbox" checked />
+          <div></div>
+        </label>
+      </div>
+
+      <script>
+        document.querySelector('.nexus-toggle input').addEventListener('change', () => {
+          const container = document.querySelector('.nexus-container');
+          container.classList.add('quantum-transition');
+          setTimeout(() => {
+            container.classList.toggle('quantum-light');
+            setTimeout(() => container.classList.remove('quantum-transition'), 10);
+          }, 5);
+        });
+      </script>
+    </section>
+
+    <section class="unique-menu-section">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <!-- Premium badge -->
+        <div
+          class="inline-flex items-center justify-center px-4 py-2 mb-6 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full border border-gray-200 shadow-sm"
+        >
+          <svg
+            class="w-3 h-3 mr-2 text-red-600"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <span class="text-[10px] font-medium text-gray-700">APPLE EDUCATION VALUES</span>
+        </div>
+
+        <!-- Main heading with subtle gradient -->
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-5 tracking-tight">
+          Empowering Every Role in Education
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-700">
+            with Sniper & Apple
+          </span>
+        </h2>
+
+        <!-- Elegant minimalist divider -->
+        <div class="flex justify-center items-center mb-7">
+          <div class="w-12 h-px bg-gradient-to-r from-transparent to-gray-300 mr-3"></div>
+          <div class="w-2 h-2 rounded-full bg-red-500"></div>
+          <div class="w-12 h-px bg-gradient-to-l from-transparent to-gray-300 ml-3"></div>
+        </div>
+
+        <!-- Subheading with refined typography -->
+        <p class="text-lg text-gray-600 font-light max-w-1xl mx-auto leading-relaxed -mt-4">
+          Purpose-built tools and support designed for leaders, educators, parents, and IT teams to strengthen teaching
+          and learning.
+        </p>
+      </div>
+
+      <ul class="unique-menu-cards">
+        <li class="unique-menu-card-item">
+          <div class="unique-card">
+            <div class="unique-card-image">
+              <img src="components/image1.jpeg" alt="mixed vegetable salad in a mason jar." />
+            </div>
+            <div class="unique-card-content">
+              <h2 class="unique-card-title">Leaders</h2>
+              <div class="unique-card-text">
+                <p>Leadership kits that connect technology goals with curriculum outcomes.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="unique-menu-card-item">
+          <div class="unique-card">
+            <div class="unique-card-image">
+              <img src="components/image.jpeg" alt="a Reuben sandwich on wax paper." />
+            </div>
+            <div class="unique-card-content">
+              <h2 class="unique-card-title">Educators</h2>
+              <div class="unique-card-text">
+                <p>Training programs and Apple Teacher resources to enhance classroom engagement.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="unique-menu-card-item">
+          <div class="unique-card">
+            <div class="unique-card-image">
+              <img
+                src="components/49be21bf-86c6-4eff-b36a-2a8bb0b531de.jpg"
+                alt="A side view of a plate of figs and berries."
+              />
+            </div>
+            <div class="unique-card-content">
+              <h2 class="unique-card-title">Parents</h2>
+              <div class="unique-card-text">
+                <p>Tools and resources to help parents stay informed and involved in student progress.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="unique-menu-card-item">
+          <div class="unique-card">
+            <div class="unique-card-image">
+              <img
+                src="components/3a3f49c8-a766-4713-8c8f-133a1d015225.jpg"
+                alt="mixed vegetable salad in a mason jar."
+              />
+            </div>
+            <div class="unique-card-content">
+              <h2 class="unique-card-title">It</h2>
+              <div class="unique-card-text">
+                <p>End-to-end MDM setup, Apple School Manager, and ongoing technical support from Sniper education.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <style>
+      .unique-menu-section *,
+      .unique-menu-section *::before,
+      .unique-menu-section *::after {
+        box-sizing: border-box;
+      }
+
+      .unique-menu-section {
+        max-width: 1500px;
+        margin: 0 auto;
+
+        background: #ffffff;
+        padding: 2rem 0;
+      }
+
+      .unique-menu-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .unique-menu-card-item {
+        display: flex;
+        padding: 1rem;
+        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.25));
+      }
+
+      .unique-card {
+        background-color: white;
+        border-radius: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        padding-left: 30px;
+        background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px), #66afe1 0 1.2rem) right bottom / 100% 100%,
+          linear-gradient(red 0 0) 30px 0/2px 100% #fff;
+        background-repeat: no-repeat;
+        line-height: 1.2rem;
+        -webkit-mask: radial-gradient(circle 0.8rem at 2px 50%, #0000 98%, #000) 0 0/100% 2.4rem;
+      }
+
+      .unique-card-image {
+        height: calc(20 * 1rem);
+        padding: 1.2rem 1.2rem 0;
+        position: relative;
+      }
+
+      .unique-card-image::before,
+      .unique-card-image::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        left: 60%;
+        top: 0;
+        height: 45px;
+        background: #e6e6e6b8;
+        transform: rotate(45deg);
+      }
+
+      .unique-card-image::after {
+        transform: rotate(-45deg);
+        top: auto;
+        bottom: -22px;
+        left: 40%;
+      }
+
+      .unique-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .unique-card-content {
+        padding: 1.2rem;
+      }
+
+      .unique-card-title,
+      .unique-card-text p {
+        margin: 1.8rem 0;
+      }
+
+      .unique-card-title {
+        font-size: 1.6em;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .unique-note {
+        color: #c33;
+        font-weight: bold;
+      }
+    </style>
+
+    <section class="py-20 bg-gray-50">
+      <style>
+        .font-serif {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .font-light {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          font-weight: 300;
+        }
+      </style>
+      <div class="container mx-auto px-4 md:px-6">
+        <!-- Section Header -->
+
+        <div class="max-w-3xl mx-auto px-4 text-center">
+          <!-- Premium badge -->
+          <div
+            class="inline-flex items-center justify-center px-4 py-2 mb-6 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full border border-gray-200 shadow-sm"
+          >
+            <svg
+              class="w-3 h-3 mr-2 text-red-600"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-[10px] font-medium text-gray-700">APPLE EDUCATION VALUES</span>
+          </div>
+
+          <!-- Main heading with subtle gradient -->
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-5 tracking-tight">
+            Apple’s Core Values
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-700">in Education</span>
+          </h2>
+
+          <!-- Elegant minimalist divider -->
+          <div class="flex justify-center items-center mb-7">
+            <div class="w-12 h-px bg-gradient-to-r from-transparent to-gray-300 mr-3"></div>
+            <div class="w-2 h-2 rounded-full bg-red-500"></div>
+            <div class="w-12 h-px bg-gradient-to-l from-transparent to-gray-300 ml-3"></div>
+          </div>
+
+          <!-- Subheading with refined typography -->
+          <p class="text-lg text-gray-600 font-light max-w-1xl mx-auto leading-relaxed -mt-4">
+            From accessibility to privacy, Apple empowers learners and educators with tools that inspire creativity,
+            support growth, and ensure a safe learning environment.
+          </p>
+        </div>
+        <br />
+        <br />
+
+        <!-- Benefits Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <!-- Benefit 1 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-lg hover:bg-white"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <!-- Icon with background -->
+            <div class="w-full h-20 flex items-center justify-center" style="background-color: #fef2f2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#E31922"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3a2 2 0 110 4 2 2 0 010-4zm7 6h-4l-.5 2h-5L9 9H5l1 2h3l1.5 8h2L15 11h3l1-2z"
+                />
+              </svg>
+            </div>
+            <!-- Content container -->
+            <div class="p-6 md:p-8 flex flex-col items-center text-center">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800">
+                <span style="color: #e31922">Accessibility</span>
+              </h3>
+              <p class="text-gray-600 leading-relaxed text-sm">
+                Apple’s built-in accessibility features empower everyone to create, connect, and experience technology
+                their way.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-lg hover:bg-white"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            <!-- Icon with background -->
+            <div class="w-full h-20 flex items-center justify-center" style="background-color: #f0f9ff">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#0369A1"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 20v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2m14-10a3 3 0 11-6 0 3 3 0 016 0zm6 10v-2a4 4 0 00-3-3.87m-3-6.13a3 3 0 110-6 3 3 0 010 6z"
+                />
+              </svg>
+            </div>
+            <!-- Content container -->
+            <div class="p-6 md:p-8 flex flex-col items-center text-center">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800">
+                <span style="color: #e31922">Collaboration</span>
+              </h3>
+              <p class="text-gray-600 leading-relaxed text-sm">
+                A culture of teamwork and feedback drives collective innovation, helping students and educators achieve
+                more together.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-lg hover:bg-white"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <!-- Icon with background -->
+            <div class="w-full h-20 flex items-center justify-center" style="background-color: #fefce8">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#CA8A04"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 15a2 2 0 100-4 2 2 0 000 4zm6-6h-1V7a5 5 0 10-10 0v2H6a2 2 0 00-2 2v7a2 2 0 002 2h12a2 2 0 002-2v-7a2 2 0 00-2-2zm-3 0H9V7a3 3 0 016 0v2z"
+                />
+              </svg>
+            </div>
+            <!-- Content container -->
+            <div class="p-6 md:p-8 flex flex-col items-center text-center">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800">
+                <span style="color: #e31922">Privacy</span>
+              </h3>
+              <p class="text-gray-600 leading-relaxed text-sm">
+                Apple ensures student and educator data stay protected with secure tools like School Manager and Managed
+                Apple IDs — keeping information safe and private
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-lg hover:bg-white"
+            data-aos="fade-up"
+            data-aos-delay="250"
+          >
+            <!-- Icon with background -->
+            <div class="w-full h-20 flex items-center justify-center" style="background-color: #ecfdf5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#16A34A"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 2a7 7 0 00-7 7c0 2.21 1.343 4.146 3.285 5.041L9 16h6l.715-1.959A6.987 6.987 0 0019 9a7 7 0 00-7-7zM12 22v-4"
+                />
+              </svg>
+            </div>
+            <!-- Content container -->
+            <div class="p-6 md:p-8 flex flex-col items-center text-center">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800">
+                <span style="color: #e31922">Creativity & Innovation</span>
+              </h3>
+              <p class="text-gray-600 leading-relaxed text-sm">
+                Apple empowers learners to explore ideas, build skills, and create with powerful tools that spark
+                imagination and future-ready thinking.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-8 sm:py-12 lg:py-16">
+      <div class="max-w-4xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 lg:mb-12">
+          Happy Customers
+        </h2>
+
+        <!-- ROW - 1 (LTR) -->
+        <div class="relative overflow-hidden mb-10">
+          <div class="logo-carousel">
+            <div class="logo-track track-left">
+              <!-- Repeat the same 8 logos twice -->
+              <div class="logo-slide"><img src="components/11.webp" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/12.svg.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/13.svg.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/14.svg" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/15.svg.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/17.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/16.svg.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/AA.png" class="logo-img-lg" /></div>
+
+              <!-- Duplicate set -->
+              <div class="logo-slide"><img src="components/11.webp" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/12.svg.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/13.svg.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/14.svg" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/15.svg.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/17.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/16.svg.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/AA.png" class="logo-img-lg" /></div>
+            </div>
+          </div>
+
+          <!-- Left/Right Fades -->
+          <div class="absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div class="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white to-transparent z-10"></div>
+        </div>
+
+        <!-- ROW - 2 (RTL) -->
+        <div class="relative overflow-hidden">
+          <div class="logo-carousel">
+            <div class="logo-track track-right">
+              <!-- Repeat the same 8 logos twice -->
+              <div class="logo-slide"><img src="components/123456789.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/4444.png" class="logo-img" /></div>
+              <div class="logo-slide">
+                <img src="components/Hindustan_Institute_of_Technology.png" class="logo-img" />
+              </div>
+              <div class="logo-slide"><img src="components/logo66.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/iimt.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/iit.svg.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/4444.webp" class="logo-img" /></div>
+              <div class="logo-slide">
+                <img src="components/American-International-School-Chennai-AISC-Logo.png" class="logo-img-lg" />
+              </div>
+
+              <!-- Duplicate set -->
+              <div class="logo-slide"><img src="components/123456789.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/4444.png" class="logo-img" /></div>
+              <div class="logo-slide">
+                <img src="components/Hindustan_Institute_of_Technology.png" class="logo-img" />
+              </div>
+              <div class="logo-slide"><img src="components/logo66.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/iimt.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/iit.svg.png" class="logo-img" /></div>
+              <div class="logo-slide"><img src="components/4444.webp" class="logo-img" /></div>
+              <div class="logo-slide">
+                <img src="components/American-International-School-Chennai-AISC-Logo.png" class="logo-img-lg" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Left/Right Fades -->
+          <div class="absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div class="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white to-transparent z-10"></div>
+        </div>
+      </div>
+
+      <style>
+        .logo-carousel {
+          width: 100%;
+          position: relative;
+        }
+
+        .logo-track {
+          display: flex;
+          flex-wrap: nowrap;
+          gap: 2rem;
+        }
+
+        .logo-slide {
+          flex-shrink: 0;
+          width: 150px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .logo-img {
+          height: 60px;
+          object-fit: contain;
+        }
+
+        .logo-img-lg {
+          height: 90px;
+          object-fit: contain;
+        }
+
+        /* Row 1 Animation → Left to Right */
+        .track-left {
+          animation: scroll-left 35s linear infinite;
+        }
+
+        @keyframes scroll-left {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        /* Row 2 Animation → Right to Left */
+        .track-right {
+          animation: scroll-right 35s linear infinite;
+        }
+
+        @keyframes scroll-right {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        /* Pause on Hover */
+        .logo-carousel:hover .logo-track {
+          animation-play-state: paused;
+        }
+      </style>
+    </section>
+
+    <!-- Professional Learning CTA -->
+    <section class="py-16 md:py-20 lg:py-24 bg-[#E31922] text-white relative overflow-hidden">
+      <!-- Background elements -->
+      <div class="absolute top-0 left-0 w-full h-full bg-pattern opacity-10"></div>
+      <div
+        class="absolute -top-20 md:-top-30 -right-10 md:-right-20 w-40 h-40 md:w-60 md:h-60 bg-white/10 rounded-full"
+      ></div>
+      <div
+        class="absolute -bottom-10 md:-bottom-20 -left-10 md:-left-20 w-32 h-32 md:w-40 md:h-40 bg-white/10 rounded-full"
+      ></div>
+
+      <div class="relative max-w-4xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-3xl lg:max-w-4xl mx-auto">
+          <!-- Heading -->
+          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2">
+            Ready to Transform Your Educational Institution?
+          </h2>
+
+          <!-- Description -->
+
+          <!-- CTA Button -->
+          <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-2 sm:px-0">
+            <a
+              href="contact_us.html"
+              class="bg-white text-gray-600 hover:bg-gray-100 px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 rounded-xl font-semibold text-sm sm:text-base md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-white/20 flex items-center justify-center gap-2 w-full sm:w-auto"
+            >
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                ></path>
+              </svg>
+              Contact Us!
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-900 py-8">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-xl font-bold text-white text-center mb-6">Our Locations</h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <!-- Head Office - Chennai -->
+          <div
+            class="group bg-white rounded-lg p-3 border-l-3 border-red-600 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <div class="flex items-start justify-between">
+              <h3 class="text-xs font-bold text-red-600 mb-1">CHENNAI HQ</h3>
+            </div>
+            <div class="text-xs text-gray-600 leading-tight">
+              <p class="font-semibold text-gray-900 mb-1">Sniper Systems & Solutions</p>
+              <p class="text-gray-500">Moti Towers, 4th Floor, OMR</p>
+              <p class="text-gray-500 text-[11px]">Perungudi, Chennai – 600 096</p>
+            </div>
+          </div>
+
+          <!-- Sales Office - Chennai -->
+          <div
+            class="group bg-white rounded-lg p-3 border-l-3 border-red-600 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <h3 class="text-xs font-bold text-red-600 mb-1">CHENNAI SALES</h3>
+            <div class="text-xs text-gray-600 leading-tight">
+              <p class="font-semibold text-gray-900 mb-1">Sniper Systems & Solutions</p>
+              <p class="text-gray-500">Sri Durga Enclave, 3rd Floor</p>
+              <p class="text-gray-500 text-[11px]">Karapakkam, Chennai – 600097</p>
+            </div>
+          </div>
+
+          <!-- Bangalore -->
+          <div
+            class="group bg-white rounded-lg p-3 border-l-3 border-red-600 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <h3 class="text-xs font-bold text-red-600 mb-1">BANGALORE</h3>
+            <div class="text-xs text-gray-600 leading-tight">
+              <p class="font-semibold text-gray-900 mb-1">Sniper Systems & Solutions</p>
+              <p class="text-gray-500">Sanctuary, 1st-3rd Floor</p>
+              <p class="text-gray-500 text-[11px]">BTM 2nd Stage, Bengaluru – 560068</p>
+            </div>
+          </div>
+
+          <!-- Hyderabad -->
+          <div
+            class="group bg-white rounded-lg p-3 border-l-3 border-red-600 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <h3 class="text-xs font-bold text-red-600 mb-1">HYDERABAD</h3>
+            <div class="text-xs text-gray-600 leading-tight">
+              <p class="font-semibold text-gray-900 mb-1">Sniper Systems & Solutions</p>
+              <p class="text-gray-500">Kub Towers, 4th Floor</p>
+              <p class="text-gray-500 text-[11px]">Gachibowli, Hyderabad – 500032</p>
+            </div>
+          </div>
+
+          <!-- Gurugram -->
+          <div
+            class="group bg-white rounded-lg p-3 border-l-3 border-red-600 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <h3 class="text-xs font-bold text-red-600 mb-1">GURUGRAM</h3>
+            <div class="text-xs text-gray-600 leading-tight">
+              <p class="font-semibold text-gray-900 mb-1">Sniper Systems & Solutions</p>
+              <p class="text-gray-500">Fume Coworking, 2nd Floor</p>
+              <p class="text-gray-500 text-[11px]">Udyog Vihar, Gurugram – 122001</p>
+            </div>
+          </div>
+
+          <!-- Other Cities -->
+          <div
+            class="group bg-gradient-to-br from-red-600 to-red-700 rounded-lg p-3 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <div class="flex items-center mb-2">
+              <svg class="w-4 h-4 text-white/90 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                />
+              </svg>
+              <h3 class="text-xs font-bold text-white">ALSO IN</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-white text-[11px] bg-white/20 px-2 py-1 rounded">Coimbatore</span>
+              <span class="text-white text-[11px] bg-white/20 px-2 py-1 rounded">Kochi</span>
+              <span class="text-white text-[11px] bg-white/20 px-2 py-1 rounded">Vijayawada</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer"></div>
+
+    <!-- Enhanced Scroll To Top Button -->
+    <style>
+      .phoenix-scroll-trigger {
+        position: fixed;
+        bottom: 40px;
+        left: 40px;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0) rotate(-180deg);
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .phoenix-scroll-trigger.nebula-active {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1) rotate(0deg);
+      }
+
+      .aurora-button-wrapper {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        backdrop-filter: blur(10px);
+      }
+
+      .cosmos-progress-ring {
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        width: 70px;
+        height: 70px;
+        transform: rotate(-90deg);
+      }
+
+      .cosmos-progress-circle {
+        fill: none;
+        stroke: url(#stellarGradient);
+        stroke-width: 5;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 0.35s ease;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+        opacity: 0.95;
+      }
+
+      .quantum-button-core {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #e31922 0%, #b01419 100%);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(227, 25, 34, 0.3);
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+
+      .quantum-button-core::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .quantum-button-core:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(227, 25, 34, 0.4);
+      }
+
+      .quantum-button-core:hover::before {
+        opacity: 1;
+      }
+
+      .quantum-button-core:active {
+        transform: translateY(-1px) scale(0.95);
+      }
+
+      .vortex-icon-container {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .vortex-icon-container svg {
+        width: 24px;
+        height: 24px;
+        stroke: white;
+        stroke-width: 2.5;
+        fill: none;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+      }
+
+      .nebula-ripple-effect {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+      }
+
+      .quantum-button-core:active .nebula-ripple-effect {
+        animation: celestialRipple 0.6s ease-out;
+      }
+
+      @keyframes celestialRipple {
+        0% {
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(2.5);
+          opacity: 0;
+        }
+      }
+    </style>
+
+    <div class="phoenix-scroll-trigger" id="scrollTopBtn">
+      <div class="aurora-button-wrapper">
+        <svg class="cosmos-progress-ring">
+          <defs>
+            <linearGradient id="stellarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color: #ff6b72; stop-opacity: 1" />
+              <stop offset="100%" style="stop-color: #ff6b72; stop-opacity: 1" />
+            </linearGradient>
+          </defs>
+          <circle
+            class="cosmos-progress-circle"
+            cx="35"
+            cy="35"
+            r="31"
+            stroke-dasharray="194.8"
+            stroke-dashoffset="194.8"
+          />
+        </svg>
+        <button class="quantum-button-core" aria-label="Scroll to top">
+          <div class="vortex-icon-container">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 15l7-7 7 7" />
+            </svg>
+          </div>
+          <div class="nebula-ripple-effect"></div>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      const progressCircle = document.querySelector('.cosmos-progress-circle');
+      const circumference = 194.8;
+
+      function updateScrollProgress() {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.pageYOffset;
+        const progress = (scrolled / scrollHeight) * circumference;
+
+        progressCircle.style.strokeDashoffset = circumference - progress;
+
+        if (scrolled > 300) {
+          scrollTopBtn.classList.add('nebula-active');
+        } else {
+          scrollTopBtn.classList.remove('nebula-active');
+        }
+      }
+
+      window.addEventListener('scroll', updateScrollProgress);
+
+      scrollTopBtn.querySelector('.quantum-button-core').addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+
+    <script>
+      // Load header and footer
+
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer').innerHTML = data;
+        });
+
+      // Custom cursor script
+      (function () {
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        let x = window.innerWidth / 2,
+          y = window.innerHeight / 2;
+        let rx = x,
+          ry = y;
+        let speed = 0.18;
+
+        const isTouch = matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+        if (isTouch) {
+          dot.classList.add('cursor-hidden');
+          ring.classList.add('cursor-hidden');
+          return;
+        }
+        document.documentElement.style.cursor = 'none';
+
+        const setPos = (el, x, y) => {
+          el.style.left = x + 'px';
+          el.style.top = y + 'px';
+        };
+
+        window.addEventListener('mousemove', e => {
+          x = e.clientX;
+          y = e.clientY;
+          setPos(dot, x, y);
+          dot.style.opacity = 1;
+          ring.style.opacity = 1;
+        });
+
+        function animate() {
+          rx += (x - rx) * speed;
+          ry += (y - ry) * speed;
+          setPos(ring, rx, ry);
+          requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.addEventListener('mousedown', () => {
+          ring.style.transform = 'translate(-20%, -20%) scale(0.8)';
+          ring.style.background = 'currentColor';
+        });
+        window.addEventListener('mouseup', () => {
+          ring.style.transform = 'translate(-20%, -20%) scale(1)';
+          ring.style.background = 'transparent';
+        });
+
+        const interactive = 'a, button, [role="button"], input, textarea, select, .cursor-pointer';
+        function onEnter() {
+          ring.style.transform = 'translate(-50%, -50%) scale(0.4)';
+          ring.style.background = 'currentColor';
+          ring.style.opacity = 0.1;
+        }
+        function onLeave() {
+          ring.style.transform = 'translate(-50%, -50%) scale(0.8)';
+          ring.style.background = 'transparent';
+          ring.style.opacity = 0.1;
+        }
+        function bindHoverEffects() {
+          document.querySelectorAll(interactive).forEach(el => {
+            el.addEventListener('mouseenter', onEnter);
+            el.addEventListener('mouseleave', onLeave);
+          });
+        }
+        const obs = new MutationObserver(bindHoverEffects);
+        obs.observe(document.documentElement, { childList: true, subtree: true });
+        bindHoverEffects();
+
+        window.addEventListener('mouseleave', () => {
+          dot.style.opacity = 0;
+          ring.style.opacity = 0;
+        });
+        window.addEventListener('mouseenter', () => {
+          dot.style.opacity = 1;
+          ring.style.opacity = 1;
+        });
+      })();
+    </script>
+
+    <script>
+      window.addEventListener('load', function () {
+        const preloader = document.getElementById('preloader');
+
+        // Set a minimum time for the preloader to be visible (e.g., 3000ms = 3 seconds)
+        setTimeout(function () {
+          // Start the fade-out effect
+          preloader.style.opacity = '0';
+
+          // Hide the preloader completely after the fade-out transition is finished (1s)
+          setTimeout(function () {
+            preloader.style.display = 'none';
+          }, 1000); // This duration should match the CSS transition time
+        }, 1000); // Increased preloader visibility time
+      });
+    </script>
+
+    <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
+
+    <style>
+      /* Custom animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .modal-overlay {
+        animation: fadeIn 0.3s ease;
+      }
+
+      .modal-container {
+        animation: slideDown 0.4s ease;
+      }
+
+      .success-icon {
+        animation: scaleIn 0.5s ease;
+      }
+    </style>
+
+    <!-- Modal Overlay -->
+    <div class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden modal-overlay" id="modalOverlay">
+      <div class="flex items-center justify-center min-h-screen p-4 sm:p-6">
+        <!-- Modal Container -->
+        <div
+          class="bg-white rounded-xl sm:rounded-2xl max-w-md sm:max-w-lg w-full max-h-[90vh] overflow-y-auto modal-container shadow-2xl"
+        >
+          <!-- Close Button -->
+          <button
+            class="absolute top-3 right-3 sm:top-4 sm:right-4 text-red-500 hover:text-red-700 text-4xl sm:text-5xl transition-colors duration-300 z-10"
+            id="closeBtn"
+          >
+            &times;
+          </button>
+
+          <!-- Contact Form -->
+          <div class="p-6 sm:p-8 md:p-10" id="formContainer">
+            <div class="text-center mb-6 sm:mb-8">
+              <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Get in Touch</h2>
+              <p class="text-sm sm:text-base text-gray-600">Fill out the form below and we'll get back to you soon</p>
+            </div>
+
+            <form id="contactForm" action="https://formspree.io/f/mpwkeqwp" method="POST">
+              <!-- First Name & Last Name Row -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+                <div class="form-group">
+                  <label class="block text-sm font-semibold text-gray-900 mb-2">
+                    First name
+                    <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    required
+                    class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300 bg-gray-50 focus:bg-white"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="block text-sm font-semibold text-gray-900 mb-2">Last name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300 bg-gray-50 focus:bg-white"
+                  />
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-4 sm:mb-6">
+                <label class="block text-sm font-semibold text-gray-900 mb-2">
+                  Institution Email
+                  <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300 bg-gray-50 focus:bg-white"
+                />
+              </div>
+
+              <!-- Phone & Company Row -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+                <div class="form-group">
+                  <label class="block text-sm font-semibold text-gray-900 mb-2">
+                    Phone number
+                    <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300 bg-gray-50 focus:bg-white"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="block text-sm font-semibold text-gray-900 mb-2">
+                    Institution Name
+                    <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    required
+                    class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300 bg-gray-50 focus:bg-white"
+                  />
+                </div>
+              </div>
+
+              <!-- State/Region -->
+              <div class="mb-4 sm:mb-6">
+                <label class="block text-sm font-semibold text-gray-900 mb-2">
+                  State/Region
+                  <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="state"
+                  required
+                  class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300 bg-gray-50 focus:bg-white"
+                />
+              </div>
+
+              <!-- Message -->
+              <div class="mb-6 sm:mb-8">
+                <label class="block text-sm font-semibold text-gray-900 mb-2">
+                  Message
+                  <span class="text-red-500">*</span>
+                </label>
+                <textarea
+                  name="message"
+                  required
+                  rows="4"
+                  class="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300 bg-gray-50 focus:bg-white resize-none"
+                ></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                id="submitBtn"
+                class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-3 sm:py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Success Message -->
+          <div class="hidden p-6 sm:p-8 md:p-10 text-center" id="successMessage">
+            <div
+              class="success-icon w-16 h-16 sm:w-20 sm:h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6"
+            >
+              <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
+            <p class="text-sm sm:text-base text-gray-600">
+              Your message has been sent successfully. We'll get back to you soon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const modalOverlay = document.getElementById('modalOverlay');
+      const closeBtn = document.getElementById('closeBtn');
+      const contactForm = document.getElementById('contactForm');
+      const formContainer = document.getElementById('formContainer');
+      const successMessage = document.getElementById('successMessage');
+      const submitBtn = document.getElementById('submitBtn');
+      const contactUsBtn = document.getElementById('contactUsBtn');
+
+      // Open modal when Contact Us button is clicked
+      if (contactUsBtn) {
+        contactUsBtn.addEventListener('click', () => {
+          modalOverlay.classList.remove('hidden');
+        });
+      }
+
+      // Show modal after 3 seconds (optional)
+      setTimeout(() => {
+        modalOverlay.classList.remove('hidden');
+      }, 3000);
+
+      // Close modal
+      closeBtn.addEventListener('click', () => {
+        modalOverlay.classList.add('hidden');
+      });
+
+      // Close modal when clicking outside
+      modalOverlay.addEventListener('click', e => {
+        if (e.target === modalOverlay) {
+          modalOverlay.classList.add('hidden');
+        }
+      });
+
+      // Handle form submission
+      contactForm.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        const formData = new FormData(contactForm);
+
+        try {
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              Accept: 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            // Show success message
+            formContainer.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+
+            // Reset form
+            contactForm.reset();
+
+            // Close modal after 3 seconds
+            setTimeout(() => {
+              modalOverlay.classList.add('hidden');
+              setTimeout(() => {
+                formContainer.classList.remove('hidden');
+                successMessage.classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+              }, 300);
+            }, 3000);
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (error) {
+          alert('Oops! There was a problem submitting your form. Please try again.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && !modalOverlay.classList.contains('hidden')) {
+          modalOverlay.classList.add('hidden');
+        }
+      });
+    </script>
+
+    <!-- modify this form HTML and place wherever you want your form -->
+  </body>
+</html>

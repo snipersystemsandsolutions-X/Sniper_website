@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sniper — Coming Soon</title>
+    <meta name="description" content="Sniper site is being updated — coming soon. Subscribe for updates." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#E31922',
+              'primary-dark': '#e69395'
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body class="antialiased bg-gradient-to-br from-gray-50 via-white to-gray-100 min-h-screen flex flex-col">
+    <div id="header"></div>
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+        <style>
+          .header-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          .header-visible {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          .dropdown-shadow {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          }
+          .submenu-shadow {
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+          }
+          .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+          }
+          .mobile-menu.open {
+            max-height: 1000px;
+          }
+          .mobile-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+          }
+          .mobile-submenu.open {
+            max-height: 500px;
+          }
+        </style>
+      </head>
+      <body class="bg-gray-50">
+        <!-- Header -->
+        <header
+          class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white shadow-lg py-4 header-hidden"
+          id="main-header"
+        >
+          <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
+            <!-- Logo Section -->
+            <div class="flex items-center space-x-2 mb-2">
+              <!-- Logo 1 -->
+              <div class="flex items-center space-x-4">
+                <!-- Logo 1 -->
+                <div class="w-25 h-20 flex items-center justify-center">
+                  <img src="components/Sniper_Education.jpg" alt="Logo 1" class="w-106 h-16" />
+                </div>
+
+                <!-- Logo 2 -->
+                <div class="w-22 h-20 flex items-center justify-center">
+                  <img src="components/PEP.svg" alt="Logo 2" class="w-206 h-10" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+              <!-- Home -->
+              <a
+                href="index.html"
+                class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2"
+              >
+                Home
+              </a>
+
+              <!-- Education Levels -->
+              <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+                <button
+                  @click="open = !open"
+                  class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2 flex items-center"
+                >
+                  Education Levels
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="ml-1 transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div
+                  x-show="open"
+                  x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="opacity-0 transform -translate-y-2"
+                  x-transition:enter-end="opacity-100 transform translate-y-0"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="opacity-100 transform translate-y-0"
+                  x-transition:leave-end="opacity-0 transform -translate-y-2"
+                  class="absolute top-full left-0 w-56 bg-white dropdown-shadow rounded-lg py-3 z-50"
+                >
+                  <a
+                    href="k12.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    K-12 Education
+                  </a>
+                  <a
+                    href="higher-education.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Higher Education
+                  </a>
+                </div>
+              </div>
+
+              <!-- Solution Offered -->
+              <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+                <button
+                  @click="open = !open"
+                  class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2 flex items-center"
+                >
+                  Solution Offered
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="ml-1 transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div
+                  x-show="open"
+                  x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="opacity-0 transform -translate-y-2"
+                  x-transition:enter-end="opacity-100 transform translate-y-0"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="opacity-100 transform translate-y-0"
+                  x-transition:leave-end="opacity-0 transform -translate-y-2"
+                  class="absolute top-full left-0 w-72 bg-white dropdown-shadow rounded-lg py-3 z-50"
+                >
+                  <!-- Parents -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      Parents
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="security&privacy.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Security & Privacy
+                      </a>
+                      <a
+                        href="Interactive_learning.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Interactive Learning
+                      </a>
+
+                      <a
+                        href="student-purchase-prog.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Student Purchase Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Educators -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      Educators
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="educators_ATLC.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Teacher Learning Centre
+                      </a>
+                      <a
+                        href="educators_classroom&schoolwork.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Classroom & School Work
+                      </a>
+                      <a
+                        href="educators_research&program.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Research & Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Leaders -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      Leaders
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="APLS.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Professional Learning Specialist(APLS)
+                      </a>
+                      <a
+                        href="ASM.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple School Manager (ASM)
+                      </a>
+                      <a
+                        href="accessibility.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Accessibility
+                      </a>
+                      <a
+                        href="sustainability.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Sustainability
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- IT -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      IT
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="it_zero-touch-delpoy.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Zero Touch Deployment
+                      </a>
+                      <a
+                        href="it_dev-manag.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Device Management
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Digital Transformation -->
+              <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+                <button
+                  @click="open = !open"
+                  class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2 flex items-center"
+                >
+                  Digital Transformation
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="ml-1 transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div
+                  x-show="open"
+                  x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="opacity-0 transform -translate-y-2"
+                  x-transition:enter-end="opacity-100 transform translate-y-0"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="opacity-100 transform translate-y-0"
+                  x-transition:leave-end="opacity-0 transform -translate-y-2"
+                  class="absolute top-full left-0 w-64 bg-white dropdown-shadow rounded-lg py-3 z-50"
+                >
+                  <a
+                    href="Multipurposelabs.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Multipurpose Labs with Mac
+                  </a>
+
+                  <a
+                    href="edu_fusion-combos.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper Fusion Combos
+                  </a>
+                  <a
+                    href="edu_bundle-service.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper's Bundled Services
+                  </a>
+                </div>
+              </div>
+
+              <!-- Training -->
+              <a
+                href="apple-training.html"
+                class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2"
+              >
+                Training
+              </a>
+
+              <!-- Contact Us -->
+              <a
+                href="contact_us.html"
+                class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2"
+              >
+                Contact Us
+              </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="lg:hidden text-gray-800 hover:text-red-600 py-2" id="mobile-menu-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="4" x2="20" y1="12" y2="12" />
+                <line x1="4" x2="20" y1="6" y2="6" />
+                <line x1="4" x2="20" y1="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div class="lg:hidden mobile-menu bg-white border-t border-gray-200" id="mobile-menu">
+            <div class="container mx-auto px-4 py-4">
+              <!-- Home -->
+              <a
+                href="index.html"
+                class="block py-3 px-4 text-gray-800 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-200"
+              >
+                Home
+              </a>
+
+              <!-- Education Levels -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('education-levels')"
+                >
+                  Education Levels
+                  <svg
+                    id="education-levels-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="education-levels" class="mobile-submenu pl-4 mt-2">
+                  <a href="k12.html" class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200">
+                    K-12 Education
+                  </a>
+                  <a
+                    href="higher-education.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Higher Education
+                  </a>
+                </div>
+              </div>
+
+              <!-- Solution Offered -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('solution-offered')"
+                >
+                  Solution Offered
+                  <svg
+                    id="solution-offered-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="solution-offered" class="mobile-submenu pl-4 mt-2">
+                  <!-- Parents -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('parents-submenu')"
+                    >
+                      Parents
+                      <svg
+                        id="parents-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="parents-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="security&privacy.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Security & Privacy
+                      </a>
+                      <a
+                        href="Interactive_learning.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Interactive learning
+                      </a>
+                      <a
+                        href="parental-control.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Parental Control
+                      </a>
+                      <a
+                        href="student-purchase-prog.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Student Purchase Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Educators -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('educators-submenu')"
+                    >
+                      Educators
+                      <svg
+                        id="educators-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="educators-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="educators_ATLC.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Teacher Learning Centre
+                      </a>
+                      <a
+                        href="educators_classroom&schoolwork.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Classroom & School Work
+                      </a>
+                      <a
+                        href="educators_research&program.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Research & Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Leaders -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('leaders-submenu')"
+                    >
+                      Leaders
+                      <svg
+                        id="leaders-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="leaders-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="APLS.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        APLS
+                      </a>
+                      <a
+                        href="ASM.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        ASM
+                      </a>
+                      <a
+                        href="accessibility.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Accessibility
+                      </a>
+                      <a
+                        href="sustainability.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Sustainability
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- IT -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('it-submenu')"
+                    >
+                      IT
+                      <svg
+                        id="it-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="it-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="it_zero-touch-delpoy.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Zero Touch Deployment
+                      </a>
+                      <a
+                        href="it_dev-manag.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Device Management
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Digital Transformation -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('digital-transformation')"
+                >
+                  Digital Transformation
+                  <svg
+                    id="digital-transformation-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="digital-transformation" class="mobile-submenu pl-4 mt-2">
+                  <a href="#" class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200">
+                    Multipurpose Labs with Mac
+                  </a>
+
+                  <a
+                    href="edu_fusion-combos.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper Fusion Combos
+                  </a>
+                  <a
+                    href="edu_bundle-service.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper's Bundled Services
+                  </a>
+                </div>
+              </div>
+
+              <!-- Training -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('training')"
+                >
+                  Training
+                  <svg
+                    id="training-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="training" class="mobile-submenu pl-4 mt-2">
+                  <a
+                    href="apple-training.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Apple Training
+                  </a>
+                  <a
+                    href="apple-training.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Book APL Session
+                  </a>
+                </div>
+              </div>
+
+              <!-- Contact Us -->
+              <a
+                href="contact.html"
+                class="block py-3 px-4 text-gray-800 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-200"
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Content -->
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('main-header');
+            header.classList.remove('header-hidden');
+            header.classList.add('header-visible');
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+              mobileMenu.classList.toggle('open');
+
+              // Change icon based on menu state
+              const icon = mobileMenuButton.querySelector('svg');
+              if (mobileMenu.classList.contains('open')) {
+                // Change to X icon
+                icon.innerHTML = '<path d="M18 6L6 18M6 6l12 12" />';
+              } else {
+                // Change back to hamburger icon
+                icon.innerHTML =
+                  '<line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" />';
+              }
+            });
+
+            // Add scroll effect
+            window.addEventListener('scroll', () => {
+              if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+              } else {
+                header.classList.remove('shadow-lg');
+              }
+            });
+          });
+
+          // Mobile submenu toggle function
+          function toggleSubmenu(id) {
+            const submenu = document.getElementById(id);
+            const arrow = document.getElementById(id + '-arrow');
+
+            submenu.classList.toggle('open');
+
+            if (submenu.classList.contains('open')) {
+              arrow.style.transform = 'rotate(180deg)';
+            } else {
+              arrow.style.transform = 'rotate(0deg)';
+            }
+          }
+        </script>
+      </body>
+    </html>
+
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+
+    <br />
+    <br />
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+
+    <br />
+    <br />
+
+    <main class="flex-grow flex items-center justify-center px-6 py-20 pt-56">
+      <div class="max-w-4xl w-full text-center">
+        <div
+          class="mx-auto mb-8 w-32 h-32 rounded-full bg-gradient-to-tr from-primary-dark to-primary-dark flex items-center justify-center shadow-xl"
+        >
+          <img src="components/sniper-logo-black.png" alt="Sniper logo" class="w-20 h-20 object-contain" />
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">We're building something great</h1>
+        <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+          Sniper is getting a fresh look and improved resources for education, institutions, and IT teams. We'll be back
+          soon with updated content, tools, and resources.
+        </p>
+
+        <div class="inline-flex items-center justify-center gap-4 mb-8">
+          <div class="text-center">
+            <div id="countdown" class="text-2xl font-semibold text-gray-900">00d 00h 00m 00s</div>
+            <div class="text-sm text-gray-500">Estimated launch</div>
+          </div>
+        </div>
+
+        <form
+          id="subscribe-form"
+          class="max-w-lg mx-auto flex flex-col sm:flex-row gap-3"
+          onsubmit="event.preventDefault(); subscribe();"
+        >
+          <input
+            id="email"
+            type="email"
+            placeholder="Your email address"
+            required
+            class="flex-1 px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+          <button type="submit" class="bg-primary text-white px-5 py-3 rounded-md font-semibold hover:bg-primary-dark">
+            Notify Me
+          </button>
+        </form>
+
+        <p class="text-xs text-gray-400 mt-4">
+          Or reach us at
+          <a href="mailto:education@sniper.com" class="text-primary underline">education@sniper.com</a>
+        </p>
+      </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script>
+      // Header/footer include (keeps site consistent)
+      fetch('components/header.html')
+        .then(r => r.text())
+        .then(t => (document.getElementById('header').innerHTML = t))
+        .catch(() => {});
+      fetch('components/footer.html')
+        .then(r => r.text())
+        .then(t => (document.getElementById('footer').innerHTML = t))
+        .catch(() => {});
+
+      // Countdown - set a target date (example: 30 days from now)
+      (function () {
+        const target = new Date();
+        target.setDate(target.getDate() + 30);
+        const el = document.getElementById('countdown');
+        function update() {
+          const now = new Date();
+          const diff = Math.max(0, target - now);
+          const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          const m = Math.floor((diff / (1000 * 60)) % 60);
+          const s = Math.floor((diff / 1000) % 60);
+          el.textContent = `${String(d).padStart(2, '0')}d ${String(h).padStart(2, '0')}h ${String(m).padStart(
+            2,
+            '0'
+          )}m ${String(s).padStart(2, '0')}s`;
+        }
+        update();
+        setInterval(update, 1000);
+      })();
+
+      // Simple subscribe placeholder (no backend) — shows a friendly message
+      function subscribe() {
+        const email = document.getElementById('email').value;
+        if (!email) return alert('Please enter email');
+        alert("Thanks! We'll notify " + email + ' when we launch. (This is a demo form.)');
+        document.getElementById('subscribe-form').reset();
+      }
+
+      // Set current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Enhanced Scroll To Top Button -->
+    <style>
+      .phoenix-scroll-trigger {
+        position: fixed;
+        bottom: 40px;
+        left: 40px;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0) rotate(-180deg);
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .phoenix-scroll-trigger.nebula-active {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1) rotate(0deg);
+      }
+
+      .aurora-button-wrapper {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        backdrop-filter: blur(10px);
+      }
+
+      .cosmos-progress-ring {
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        width: 70px;
+        height: 70px;
+        transform: rotate(-90deg);
+      }
+
+      .cosmos-progress-circle {
+        fill: none;
+        stroke: url(#stellarGradient);
+        stroke-width: 5;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 0.35s ease;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+        opacity: 0.95;
+      }
+
+      .quantum-button-core {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #e31922 0%, #b01419 100%);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(227, 25, 34, 0.3);
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+
+      .quantum-button-core::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .quantum-button-core:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(227, 25, 34, 0.4);
+      }
+
+      .quantum-button-core:hover::before {
+        opacity: 1;
+      }
+
+      .quantum-button-core:active {
+        transform: translateY(-1px) scale(0.95);
+      }
+
+      .vortex-icon-container {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .vortex-icon-container svg {
+        width: 24px;
+        height: 24px;
+        stroke: white;
+        stroke-width: 2.5;
+        fill: none;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+      }
+
+      .nebula-ripple-effect {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+      }
+
+      .quantum-button-core:active .nebula-ripple-effect {
+        animation: celestialRipple 0.6s ease-out;
+      }
+
+      @keyframes celestialRipple {
+        0% {
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(2.5);
+          opacity: 0;
+        }
+      }
+    </style>
+
+    <div class="phoenix-scroll-trigger" id="scrollTopBtn">
+      <div class="aurora-button-wrapper">
+        <svg class="cosmos-progress-ring">
+          <defs>
+            <linearGradient id="stellarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color: #ff6b72; stop-opacity: 1" />
+              <stop offset="100%" style="stop-color: #ff6b72; stop-opacity: 1" />
+            </linearGradient>
+          </defs>
+          <circle
+            class="cosmos-progress-circle"
+            cx="35"
+            cy="35"
+            r="31"
+            stroke-dasharray="194.8"
+            stroke-dashoffset="194.8"
+          />
+        </svg>
+        <button class="quantum-button-core" aria-label="Scroll to top">
+          <div class="vortex-icon-container">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 15l7-7 7 7" />
+            </svg>
+          </div>
+          <div class="nebula-ripple-effect"></div>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      const progressCircle = document.querySelector('.cosmos-progress-circle');
+      const circumference = 194.8;
+
+      function updateScrollProgress() {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.pageYOffset;
+        const progress = (scrolled / scrollHeight) * circumference;
+
+        progressCircle.style.strokeDashoffset = circumference - progress;
+
+        if (scrolled > 300) {
+          scrollTopBtn.classList.add('nebula-active');
+        } else {
+          scrollTopBtn.classList.remove('nebula-active');
+        }
+      }
+
+      window.addEventListener('scroll', updateScrollProgress);
+
+      scrollTopBtn.querySelector('.quantum-button-core').addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+
+    <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,3823 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microsoft Solution Partners - Enterprise Excellence</title>
+    <!-- Tailwind CSS CDN -->
+    <link
+      rel="icon"
+      href="favicon.ico"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link
+      rel="icon"
+      href="favicon.ico"
+      media="(prefers-color-scheme: light)"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js CDN -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary-blue": "#0078D4",
+              "secondary-red": "#E31922",
+              "dark-blue": "#005a9f",
+              "light-blue": "#40E0FF",
+              "light-gray": "#F8F9FA",
+              "medium-gray": "#E5E5E5",
+              "dark-gray": "#323130",
+              "text-gray": "#605E5C",
+              "accent-orange": "#FF8C00",
+              "success-green": "#107C10",
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-blue: #0078d4;
+        --secondary-red: #e31922;
+        --dark-blue: #005a9f;
+        --light-blue: #0078d4;
+        --white: #ffffff;
+        --light-gray: #f8f9fa;
+        --medium-gray: #e5e5e5;
+        --dark-gray: #323130;
+        --text-gray: #605e5c;
+        --accent-orange: #ff8c00;
+        --success-green: #107c10;
+      }
+
+      body {
+        font-family:
+          "Segoe UI",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        line-height: 1.6;
+        color: var(--dark-gray);
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Preloader Styles */
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--secondary-red)
+        );
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.5s ease-out;
+      }
+
+      .microsoft-logo-loader {
+        width: 80px;
+        height: 80px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        animation: rotate 2s infinite linear;
+      }
+
+      .microsoft-logo-loader div {
+        background-color: white;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Fade-in Animation */
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease-out,
+          transform 0.6s ease-out;
+      }
+
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-blue);
+        text-decoration: none;
+      }
+
+      .logo-badge {
+        background: var(--secondary-red);
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .nav-link {
+        color: var(--dark-gray);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 0;
+      }
+
+      .nav-link:hover {
+        color: var(--primary-blue);
+      }
+
+      .nav-link.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--secondary-red);
+      }
+
+      .nav-cta {
+        background: var(--primary-blue);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .nav-cta:hover {
+        background: var(--dark-blue);
+        transform: translateY(-2px);
+      }
+
+      /* Hero Section.     */
+      .hero {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #000;
+        padding: 10rem 0;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+
+      /* Background Layer */
+      .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Grid Overlay */
+      .grid-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        opacity: 0.5;
+      }
+
+      /* Gradient Orbs */
+      .gradient-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.15;
+        animation: float 20s ease-in-out infinite;
+      }
+
+      .orb-1 {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, #2196f3 0%, transparent 70%);
+        top: -200px;
+        right: -100px;
+        animation-delay: 0s;
+      }
+
+      .orb-2 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, #2196f3 0%, transparent 70%);
+        bottom: -150px;
+        left: -100px;
+        animation-delay: 5s;
+      }
+
+      /* Floating Shapes */
+      .floating-shape {
+        position: absolute;
+        opacity: 0.08;
+      }
+
+      .shape-1 {
+        width: 200px;
+        height: 200px;
+        border: 2px solid #000;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        top: 10%;
+        left: 10%;
+        animation: morphShape 15s ease-in-out infinite;
+      }
+
+      .shape-2 {
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(0, 0, 0, 0.05) 100%
+        );
+        border-radius: 50%;
+        top: 60%;
+        right: 15%;
+        animation: morphShape 12s ease-in-out infinite reverse;
+      }
+
+      .shape-3 {
+        width: 100px;
+        height: 100px;
+        border: 3px solid rgba(0, 0, 0, 0.1);
+        transform: rotate(45deg);
+        bottom: 20%;
+        left: 20%;
+        animation: rotateShape 20s linear infinite;
+      }
+
+      /* Animations */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        25% {
+          transform: translate(30px, -30px) scale(1.1);
+        }
+        50% {
+          transform: translate(-20px, 20px) scale(0.9);
+        }
+        75% {
+          transform: translate(20px, 30px) scale(1.05);
+        }
+      }
+
+      @keyframes morphShape {
+        0%,
+        100% {
+          border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+          transform: rotate(0deg);
+        }
+        25% {
+          border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+        }
+        50% {
+          border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+          transform: rotate(45deg);
+        }
+        75% {
+          border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+        }
+      }
+
+      @keyframes rotateShape {
+        0% {
+          transform: rotate(45deg);
+        }
+        100% {
+          transform: rotate(405deg);
+        }
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-content {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: #000;
+        color: #fff;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        margin-bottom: 2rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 900;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+      }
+
+      /* Rotating Text Animation */
+      .rotating-text {
+        display: inline-block;
+        position: relative;
+        height: 1.2em;
+        vertical-align: top;
+      }
+
+      .text-item {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        opacity: 0;
+        animation: rotateText 12s infinite;
+      }
+
+      .text-item:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .text-item:nth-child(2) {
+        animation-delay: 3s;
+      }
+
+      .text-item:nth-child(3) {
+        animation-delay: 6s;
+      }
+
+      .text-item:nth-child(4) {
+        animation-delay: 9s;
+      }
+
+      @keyframes rotateText {
+        0% {
+          opacity: 0;
+          transform: translateX(-50%) translateY(-20px);
+        }
+        5% {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+        25% {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+        30% {
+          opacity: 0;
+          transform: translateX(-50%) translateY(20px);
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(-50%) translateY(20px);
+        }
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        color: #666;
+        line-height: 1.6;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 400;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 1rem 2.5rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-primary {
+        background: #000;
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-primary:hover {
+        background: #333;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: #000;
+        border: 2px solid #000;
+      }
+
+      .btn-secondary:hover {
+        background: #000;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 2rem 0;
+        }
+
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 300px;
+          justify-content: center;
+        }
+
+        .orb-1,
+        .orb-2 {
+          width: 300px;
+          height: 300px;
+        }
+
+        .floating-shape {
+          display: none;
+        }
+      }
+
+      /* Trust Indicators */
+      .trust-section {
+        background: white;
+        padding: 3rem 0;
+        border-bottom: 1px solid var(--medium-gray);
+      }
+
+      .trust-content {
+        text-align: center;
+      }
+
+      .trust-title {
+        font-size: 1rem;
+        color: var(--text-gray);
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .trust-logos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .trust-stat {
+        text-align: center;
+      }
+
+      .trust-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-blue);
+        display: block;
+      }
+
+      .trust-label {
+        font-size: 0.9rem;
+        color: var(--text-gray);
+      }
+
+      /* Services Overview */
+      .services {
+        padding: 3rem 0;
+        background: var(--light-gray);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        font-size: 2.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        margin-top: 0rem;
+        color: var(--secondary-red);
+      }
+
+      .section-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-gray);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .service-card {
+        background: white;
+        padding: 0 2.5rem 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(212, 154, 154, 0.08);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--primary-blue)
+        );
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(33, 3, 3, 0.12);
+      }
+
+      .service-image {
+        height: 180px;
+        width: 100%;
+        overflow: hidden;
+        margin: 0 -2.5rem 1.5rem -2.5rem;
+      }
+
+      .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .service-card:hover .service-image img {
+        transform: scale(1.05);
+      }
+
+      .service-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(
+          135deg,
+          var(--medium-gray),
+          var(--medium-gray)
+        );
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: white;
+        margin-bottom: 1.5rem;
+        position: relative;
+        margin-top: -30px;
+        z-index: 2;
+      }
+
+      .service-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--dark-gray);
+      }
+
+      .service-description {
+        color: var(--text-gray);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .service-features {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .service-features li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-gray);
+        font-size: 0.9rem;
+      }
+
+      .service-features li::before {
+        content: "✓";
+        color: var(--success-green);
+        font-weight: bold;
+      }
+
+      /* Solutions Showcase */
+      .solutions {
+        padding: 3rem 0;
+        background: white;
+      }
+
+      .solutions-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .tab-button {
+        background: var(--light-gray);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        color: var(--text-gray);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .tab-button.active {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .solutions-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .solution-info h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--dark-gray);
+      }
+
+      .solution-info p {
+        font-size: 1.1rem;
+        color: var(--text-gray);
+        margin-bottom: 2rem;
+        line-height: 1.7;
+      }
+
+      .solution-benefits {
+        list-style: none;
+        margin-bottom: 2rem;
+      }
+
+      .solution-benefits li {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: var(--light-gray);
+        border-radius: 8px;
+      }
+
+      .benefit-icon {
+        background: var(--primary-blue);
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+      }
+
+      .solution-visual {
+        background: linear-gradient(
+          135deg,
+          var(--light-gray),
+          var(--medium-gray)
+        );
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      /* Partner Tiers */
+      .partner-tiers {
+        padding: 3rem 0;
+        background: var(--light-gray);
+      }
+
+      .tiers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .tier-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tier-card.featured {
+        border: 3px solid var(--secondary-red);
+        transform: scale(1.05);
+      }
+
+      .tier-card.featured::before {
+        content: "MOST POPULAR";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: var(--secondary-red);
+        color: white;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .tier-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dark-gray);
+        margin-bottom: 1rem;
+      }
+
+      .tier-price {
+        font-size: 0.9rem;
+        color: var(--text-gray);
+        margin-bottom: 2rem;
+      }
+
+      .tier-features {
+        list-style: none;
+        margin-bottom: 2rem;
+      }
+
+      .tier-features li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--light-gray);
+        color: var(--text-gray);
+      }
+
+      /* Case Studies */
+      .case-studies {
+        padding: 3rem 0;
+        background: var(--light-gray);
+      }
+
+      .studies-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .study-card {
+        background: var(--light-gray);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .study-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+
+      .study-image {
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--dark-blue)
+        );
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+      }
+
+      .study-content {
+        padding: 2rem;
+      }
+
+      .study-company {
+        font-weight: 700;
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+      }
+
+      .study-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--dark-gray);
+      }
+
+      .study-results {
+        display: flex;
+        gap: 2rem;
+        margin-top: 1rem;
+      }
+
+      .study-metric {
+        text-align: center;
+      }
+
+      .metric-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--secondary-red);
+      }
+
+      .metric-label {
+        font-size: 0.8rem;
+        color: var(--text-gray);
+      }
+
+      /* Resources Section */
+      .resources {
+        padding: 3rem 0;
+        background: white;
+      }
+
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .resource-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      }
+
+      .resource-header {
+        padding: 1.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--light-blue)
+        );
+        color: white;
+      }
+
+      .resource-type {
+        font-size: 0.8rem;
+        opacity: 0.9;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .resource-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .resource-content {
+        padding: 1.5rem;
+      }
+
+      .resource-description {
+        color: var(--text-gray);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .resource-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+        color: var(--text-gray);
+      }
+
+      /* Call to Action */
+      .cta-section {
+        padding: 6rem 0;
+        background: linear-gradient(
+          135deg,
+          var(--dark-blue) 0%,
+          var(--primary-blue) 100%
+        );
+        color: white;
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .cta-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .cta-description {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .cta-form {
+        display: flex;
+  justify-content: center;
+  align-items: center;
+        gap: 1rem;
+        max-width: 500px;
+        margin: 2rem auto 0;
+      }
+
+      .cta-input {
+        flex: 1;
+        padding: 1rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+
+      .cta-button {
+        background: var(--secondary-red);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+  justify-content: center;
+  align-items: center;
+      }
+
+      .cta-button:hover {
+        background: #c41620;
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--dark-gray);
+        color: white;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr repeat(4, 1fr);
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-brand {
+        max-width: 300px;
+      }
+
+      .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--light-blue);
+        margin-bottom: 1rem;
+      }
+
+      .footer-description {
+        color: #ccc;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        background: var(--secondary-red);
+      }
+
+      .footer-section h4 {
+        color: var(--light-blue);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--secondary-red);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #444;
+        padding-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #ccc;
+      }
+
+      /* Animations */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+          transform: translateY(-20px) rotate(2deg);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .hero-title {
+          font-size: 3rem;
+        }
+
+        .solutions-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .footer-content {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .trust-logos {
+          gap: 2rem;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .studies-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .tiers-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .tier-card.featured {
+          transform: none;
+        }
+
+        .cta-form {
+          flex-direction: column;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        .hero {
+          padding: 6rem 0 4rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+
+      .small-logo {
+        height: 50px;
+        /* Adjust height as needed */
+        width: auto;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        /* space between logos */
+      }
+
+      /* Why Sniper Section - Stacked Layout */
+      .why-sniper {
+        padding: 5rem 0;
+        background: var(--light-gray);
+      }
+
+      .center-aligned {
+        text-align: center;
+      }
+
+      .section-badge {
+        display: inline-block;
+        background: var(--primary-blue);
+        color: white;
+        padding: 0.5rem 1.2rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .value-stack {
+        max-width: 1200px;
+        margin: 3rem auto 0;
+      }
+
+      .value-item {
+        display: flex;
+        gap: 2rem;
+        padding: 2rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        align-items: flex-start;
+      }
+
+      .value-item:last-child {
+        border-bottom: none;
+      }
+
+      .value-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-blue);
+        opacity: 0.3;
+        line-height: 1;
+        min-width: 50px;
+      }
+
+      .value-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        color: #1a2b50;
+      }
+
+      .value-content p {
+        color: var(--text-gray);
+        line-height: 1.7;
+      }
+
+      @media (max-width: 768px) {
+        .value-item {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .value-number {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      /* Sales Services Section */
+      .sales-services {
+        padding: 4rem 0;
+        background: white;
+        position: relative;
+      }
+
+      .services-columns {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 0rem;
+      }
+
+      .service-card {
+        flex: 1;
+        background: rgb(246, 245, 245);
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 139, 0.05);
+        max-width: 500px;
+      }
+
+      .service-icon {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .service-icon img {
+        filter: hue-rotate(200deg);
+      }
+
+      .service-content ul {
+        padding-left: 1.2rem;
+      }
+
+      .service-content li {
+        margin-bottom: 0.8rem;
+        color: var(--text-gray);
+        line-height: 1.6;
+      }
+
+      .service-cta {
+        display: block;
+        width: 100%;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 50px;
+        background: var(--primary-blue);
+        color: white;
+        font-weight: 600;
+        margin-top: 2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .service-cta:hover {
+        background: #0056b3;
+        transform: translateY(-2px);
+      }
+
+      /* Vertical Divider */
+      .vertical-divider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .divider-line {
+        flex: 1;
+        width: 2px;
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      .microsoft-logo {
+        padding: 1rem;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Consultation Form */
+      .consultation-form {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .form-container {
+        background: white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+        animation: formFadeIn 0.3s ease;
+      }
+
+      @keyframes formFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-gray);
+      }
+
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 0.8rem;
+        background: var(--primary-blue);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        background: #0056b3;
+      }
+
+      @media (max-width: 768px) {
+        .services-columns {
+          flex-direction: column;
+        }
+
+        .vertical-divider {
+          flex-direction: row;
+          margin: 2rem 0;
+        }
+
+        .divider-line {
+          width: 100%;
+          height: 2px;
+        }
+
+        .microsoft-logo {
+          margin: 0 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="preloader">
+      <div class="microsoft-logo-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- Navigation -->
+
+    <body
+      x-data="{ isMobileMenuOpen: false }"
+      :class="{ 'overflow-hidden': isMobileMenuOpen }"
+    >
+      <!-- This div is the placeholder where the header will be loaded -->
+      <div id="header-placeholder"></div>
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <!-- Hero Section -->
+      <!-- Hero Section -->
+      <section class="hero" id="home">
+        <div class="hero-bg">
+          <div class="grid-overlay"></div>
+          <div class="gradient-orb orb-1"></div>
+          <div class="gradient-orb orb-2"></div>
+          <div class="floating-shape shape-1"></div>
+          <div class="floating-shape shape-2"></div>
+          <div class="floating-shape shape-3"></div>
+        </div>
+
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-badge">
+              Microsoft Solutions Partner Designations
+            </div>
+            <h1 class="hero-title">
+              HIGH-PERFORMANCE INFRASTRUCTURE<br />
+              <span class="rotating-text">
+                <span class="text-item active">FOR INFERENCE</span>
+                <span class="text-item">FOR AI & ML</span>
+                <span class="text-item">FOR CLOUD</span>
+                <span class="text-item">FOR ENTERPRISE</span>
+              </span>
+            </h1>
+            <p class="hero-subtitle">
+              Deploy intensive applications across GPUs, CPUs, and Accelerators
+              in minutes - scale in 50+ locations
+            </p>
+            <div class="hero-buttons">
+              <a href="#contact" class="btn btn-primary">GET STARTED</a>
+              <a href="#solutions" class="btn btn-secondary"
+                >TALK TO AN EXPERT</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HTML Structure -->
+      <section class="trust-section fade-in-section">
+        <div class="container">
+          <div class="trust-content">
+            <h2 class="trust-title">Trusted by Industry Leaders</h2>
+            <div class="trust-logos">
+              <div class="trust-stat">
+                <span class="trust-number">500+</span>
+                <span class="trust-label">Enterprise Clients</span>
+              </div>
+              <div class="trust-stat">
+                <span class="trust-number">98%</span>
+                <span class="trust-label">Client Satisfaction</span>
+              </div>
+              <div class="trust-stat">
+                <span class="trust-number">15+</span>
+                <span class="trust-label">Years Experience</span>
+              </div>
+              <div class="trust-stat">
+                <span class="trust-number">7+</span>
+                <span class="trust-label">Offices in India & Beyond</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CSS Styles -->
+      <style>
+        .trust-section {
+          background: transparent;
+          padding: 4rem 0;
+        }
+
+        .trust-content {
+          background: linear-gradient(135deg, #2d2d2d 0%, #3a3a3a 100%);
+          border-radius: 20px;
+          padding: 3.5rem 3rem;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .trust-content::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #0066ff 0%, #0066ff 100%);
+        }
+
+        .trust-title {
+          font-size: 0.85rem;
+          color: #999;
+          margin-bottom: 3rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          text-align: left;
+          font-weight: 400;
+        }
+
+        .trust-logos {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 3rem;
+        }
+
+        .trust-stat {
+          text-align: center;
+          position: relative;
+          padding: 0 1rem;
+        }
+
+        .trust-stat:not(:last-child)::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 60px;
+          width: 1px;
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        .trust-number {
+          font-size: 3.5rem;
+          font-weight: 700;
+          color: #ffffff;
+          display: block;
+          line-height: 1;
+          margin-bottom: 0.8rem;
+          letter-spacing: -1px;
+        }
+
+        .trust-label {
+          font-size: 0.8rem;
+          color: #999;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-weight: 500;
+          display: block;
+          line-height: 1.4;
+        }
+
+        @media (max-width: 1024px) {
+          .trust-logos {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+          }
+
+          .trust-stat:nth-child(2)::after {
+            display: none;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .trust-logos {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+          }
+
+          .trust-stat::after {
+            display: none !important;
+          }
+
+          .trust-content {
+            padding: 2.5rem 1.5rem;
+          }
+
+          .trust-number {
+            font-size: 2.5rem;
+          }
+        }
+      </style>
+
+      <!-- JavaScript -->
+
+      <!-- Services Section -->
+      <section class="services fade-in-section" id="services">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Comprehensive Microsoft Solutions</h2>
+            <p class="section-subtitle">
+              From cloud migration to digital workplace transformation, we
+              deliver end-to-end solutions that power your business growth.
+            </p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card">
+              <div
+                class="service-image"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <img
+                  src="a.svg"
+                  alt="Dynamics 365 CRM/ERP"
+                  style="
+                    width: 900px;
+                    height: 900px;
+                    object-fit: contain;
+                    margin-left: 80px;
+                  "
+                />
+              </div>
+              <hr
+                style="
+                  border: none;
+                  height: 1px;
+                  background-color: #939393;
+                  margin: 1.5rem 0;
+                  border-radius: 1px;
+                "
+              />
+              <h3 class="service-title">Microsoft 365 Solutions</h3>
+              <p class="service-description">
+                Modern workplace solutions with productivity tools,
+                collaboration platforms, and security features.
+              </p>
+              <ul class="service-features">
+                <li>Teams & SharePoint Implementation</li>
+                <li>Exchange Online Migration</li>
+                <li>Power Platform Development</li>
+                <li>Security & Governance</li>
+              </ul>
+              <a
+                href="M365.html"
+                class="learn-more-btn"
+                style="
+                  display: inline-block;
+                  margin-top: 20px;
+                  padding: 10px 20px;
+                  background-color: #0078d4;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 16px;
+                  text-align: center;
+                  text-decoration: none;
+                "
+              >
+                Learn More
+              </a>
+            </div>
+
+            <div class="service-card">
+              <div
+                class="service-image"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <img
+                  src="Copilot-Logo.png"
+                  alt="Dynamics 365 CRM/ERP"
+                  style="
+                    width: 160px;
+                    height: 160px;
+                    object-fit: contain;
+                    margin-left: 80px;
+                  "
+                />
+              </div>
+
+              <hr
+                style="
+                  border: none;
+                  height: 1px;
+                  background-color: #939393;
+                  margin: 1.5rem 0;
+                  border-radius: 1px;
+                "
+              />
+              <h3 class="service-title">
+                Microsoft 365 Copilot & Copilot Studio
+              </h3>
+              <p class="service-description">
+                AI-powered productivity with Copilot and Copilot Studio, helping
+                teams automate tasks and streamline workflows.
+              </p>
+              <ul class="service-features">
+                <li>AI-powered productivity</li>
+                <li>Custom copilots</li>
+                <li>Process automation</li>
+                <li>Microsoft 365 integration</li>
+              </ul>
+              <a
+                href="Copilot.html"
+                class="learn-more-btn"
+                style="
+                  display: inline-block;
+                  margin-top: 20px;
+                  padding: 10px 20px;
+                  background-color: #0078d4;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 16px;
+                  text-align: center;
+                  text-decoration: none;
+                "
+              >
+                Learn More
+              </a>
+            </div>
+
+            <!-- Azure Cloud Services Card -->
+            <div class="service-card">
+              <div
+                class="service-image"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <img
+                  src="Microsoft_Azure.svg.png"
+                  alt="Dynamics 365 CRM/ERP"
+                  style="
+                    width: 100px;
+                    height: 120px;
+                    object-fit: contain;
+                    margin-left: 80px;
+                  "
+                />
+              </div>
+
+              <hr
+                style="
+                  border: none;
+                  height: 1px;
+                  background-color: #939393;
+                  margin: 1.5rem 0;
+                  border-radius: 1px;
+                "
+              />
+              <h3 class="service-title">Azure Cloud Services</h3>
+              <p class="service-description">
+                Complete cloud transformation with Azure infrastructure,
+                security, and optimization for scalable business growth.
+              </p>
+              <ul class="service-features">
+                <li>Cloud Migration & Architecture</li>
+                <li>DevOps & Automation</li>
+                <li>Security & Compliance</li>
+                <li>Cost Optimization</li>
+              </ul>
+              <a
+                href="Azure.html"
+                class="learn-more-btn"
+                style="
+                  display: inline-block;
+                  margin-top: 20px;
+                  padding: 10px 20px;
+                  background-color: #0078d4;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 16px;
+                  text-align: center;
+                  text-decoration: none;
+                "
+              >
+                Learn More
+              </a>
+            </div>
+
+            <!-- Microsoft 365 Solutions Card -->
+
+            <!-- Dynamics 365 CRM/ERP Card -->
+            <div class="service-card">
+              <div
+                class="service-image"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <img
+                  src="Dynamics-365-Emblem.png"
+                  alt="Dynamics 365 CRM/ERP"
+                  style="
+                    width: 200px;
+                    height: 200px;
+                    object-fit: contain;
+                    margin-left: 80px;
+                  "
+                />
+              </div>
+
+              <hr
+                style="
+                  border: none;
+                  height: 1px;
+                  background-color: #939393;
+                  margin: 1.5rem 0;
+                  border-radius: 1px;
+                "
+              />
+              <h3 class="service-title">Dynamics 365 CRM & ERP</h3>
+              <p class="service-description">
+                Intelligent business applications that connect your teams,
+                processes, and data across your organization.
+              </p>
+              <ul class="service-features">
+                <li>Sales & Marketing Automation</li>
+                <li>Customer Service Solutions</li>
+                <li>Finance & Operations</li>
+                <li>Custom Application Development</li>
+              </ul>
+              <a
+                href="D365.html"
+                class="learn-more-btn"
+                style="
+                  display: inline-block;
+                  margin-top: 20px;
+                  padding: 10px 20px;
+                  background-color: #0078d4;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 16px;
+                  text-align: center;
+                  text-decoration: none;
+                "
+              >
+                Learn More
+              </a>
+            </div>
+
+            <!-- Custom Development Card
+
+
+            <div class="service-card">
+              <div
+                class="service-image"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <img
+                  src="Power_Platform_logo.svg.png"
+                  alt="Dynamics 365 CRM/ERP"
+                  style="
+                    width: 120px;
+                    height: 120px;
+                    object-fit: contain;
+                    margin-left: 80px;
+                  "
+                />
+              </div>
+
+              <hr
+                style="
+                  border: none;
+                  height: 1px;
+                  background-color: #939393;
+                  margin: 1.5rem 0;
+                  border-radius: 1px;
+                "
+              />
+              <h3 class="service-title">Power Platform</h3>
+              <p class="service-description">
+                Tailored low-code solutions to streamline processes, gain
+                insights, and automate workflows.
+              </p>
+              <ul class="service-features">
+                <li>Power Apps solutions</li>
+                <li>Power BI insights</li>
+                <li>Automated workflows</li>
+                <li>Custom connectors</li>
+              </ul>
+              <a
+                href="dummy5.html"
+                class="learn-more-btn"
+                style="
+                  display: inline-block;
+                  margin-top: 20px;
+                  padding: 10px 20px;
+                  background-color: #0078d4;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 16px;
+                  text-align: center;
+                  text-decoration: none;
+                "
+              >
+                Learn More
+              </a>
+            </div>
+
+
+            <div class="service-card">
+              <div
+                class="service-image"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <img
+                  src="security-compliance-and-identity.svg"
+                  alt="Dynamics 365 CRM/ERP"
+                  style="
+                    width: 120px;
+                    height: 120px;
+                    object-fit: contain;
+                    margin-left: 80px;
+                  "
+                />
+              </div>
+
+              <hr
+                style="
+                  border: none;
+                  height: 1px;
+                  background-color: #939393;
+                  margin: 1.5rem 0;
+                  border-radius: 1px;
+                "
+              />
+              <h3 class="service-title">Security & Compliance</h3>
+              <p class="service-description">
+                Comprehensive solutions to protect data, ensure regulatory
+                compliance, and secure your digital environment.
+              </p>
+              <ul class="service-features">
+                <li>Data protection</li>
+                <li>Identity & access management</li>
+                <li>Regulatory compliance</li>
+                <li>Threat detection & response</li>
+              </ul>
+              <a
+                href="https://developer.microsoft.com/en-us/"
+                class="learn-more-btn"
+                style="
+                  display: inline-block;
+                  margin-top: 20px;
+                  padding: 10px 20px;
+                  background-color: #0078d4;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 16px;
+                  text-align: center;
+                  text-decoration: none;
+                "
+              >
+                Learn More
+              </a>
+            </div>
+
+
+            <div class="service-card">
+              <div
+                class="service-image"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <img
+                  src="data-analysis-power-bi.svg"
+                  alt="Dynamics 365 CRM/ERP"
+                  style="
+                    width: 125px;
+                    height: 125px;
+                    object-fit: contain;
+                    margin-left: 80px;
+                  "
+                />
+              </div>
+
+              <hr
+                style="
+                  border: none;
+                  height: 1px;
+                  background-color: #939393;
+                  margin: 1.5rem 0;
+                  border-radius: 1px;
+                "
+              />
+              <h3 class="service-title">Data & Analytics</h3>
+              <p class="service-description">
+                Transform your data into actionable insights with advanced
+                analytics, AI, and machine learning solutions.
+              </p>
+              <ul class="service-features">
+                <li>Business intelligence</li>
+                <li>Data visualization</li>
+                <li>Advanced analytics</li>
+                <li>Data integration</li>
+              </ul>
+              <a
+                href="https://developer.microsoft.com/en-us/"
+                class="learn-more-btn"
+                style="
+                  display: inline-block;
+                  margin-top: 20px;
+                  padding: 10px 20px;
+                  background-color: #0078d4;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 16px;
+                  text-align: center;
+                  text-decoration: none;
+                "
+              >
+                Learn More
+              </a>
+            </div>
+
+
+            <div class="service-card">
+              <div
+                class="service-image"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <img
+                  src="b.svg"
+                  alt="Dynamics 365 CRM/ERP"
+                  style="
+                    width: 130px;
+                    height: 130px;
+                    object-fit: contain;
+                    margin-left: 80px;
+                  "
+                />
+              </div>
+
+              <hr
+                style="
+                  border: none;
+                  height: 1px;
+                  background-color: #939393;
+                  margin: 1.5rem 0;
+                  border-radius: 1px;
+                "
+              />
+              <h3 class="service-title">Hybrid Infrastructure</h3>
+              <p class="service-description">
+                Seamless management of on-premises and cloud environments for
+                flexible, secure IT operations.
+              </p>
+              <ul class="service-features">
+                <li>Windows Server management</li>
+                <li>Virtual Desktop Infrastructure (VDI)</li>
+                <li>VMware solutions</li>
+                <li>Hybrid cloud integration</li>
+              </ul>
+              <a
+                href="dummy8.html"
+                class="learn-more-btn"
+                style="
+                  display: inline-block;
+                  margin-top: 20px;
+                  padding: 10px 20px;
+                  background-color: #0078d4;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 16px;
+                  text-align: center;
+                  text-decoration: none;
+                "
+              >
+                Learn More
+              </a>
+            </div>
+
+
+            -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Solutions Showcase -->
+      <section class="solutions fade-in-section" id="solutions">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Industry-Specific Solutions</h2>
+            <p class="section-subtitle">
+              Tailored Microsoft solutions designed for your industry's unique
+              challenges and opportunities.
+            </p>
+          </div>
+          <div class="solutions-tabs">
+            <button class="tab-button active">Healthcare</button>
+            <button class="tab-button">Financial Services</button>
+            <button class="tab-button">Manufacturing</button>
+            <button class="tab-button">Retail</button>
+            <button class="tab-button">Government</button>
+          </div>
+          <div class="solutions-content">
+            <div class="solution-info">
+              <h3>Healthcare Digital Transformation</h3>
+              <p>
+                Modernize patient care with secure, compliant Microsoft
+                solutions that improve outcomes while reducing costs. Our
+                healthcare-focused implementations ensure HIPAA compliance and
+                seamless integration with existing systems.
+              </p>
+              <ul class="solution-benefits">
+                
+              </ul>
+
+            </div>
+            <div class="solution-visual">
+              <img src="microsoft-healthcare.jpg" alt="Healthcare Icon" />
+              <div
+                style="
+                  position: absolute;
+                  bottom: 0.5rem;
+                  right: 1rem;
+                  font-size: 0.9rem;
+                  color: var(--text-gray);
+                "
+              >
+                Healthcare Digital Transformation Dashboard
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="why-sniper fade-in-section" id="why-sniper">
+        <div class="container">
+          <div class="section-header center-aligned">
+            <h2 class="section-title">
+              Why Organizations Choose Sniper Systems
+            </h2>
+            <p class="section-subtitle">
+              Delivering transformative Microsoft cloud solutions with
+              measurable business impact
+            </p>
+          </div>
+
+          <div class="professional-value-grid">
+            <!-- Value 1 -->
+            <div class="value-card" data-tilt>
+              <div class="card-bg-pattern"></div>
+              <div class="floating-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+              </div>
+              <div class="value-icon">
+                <div class="icon-container">
+                  <div class="icon-orbit"></div>
+                  <div class="icon-pulse"></div>
+                  <svg viewBox="0 0 24 24" width="28" height="28">
+                    <path
+                      fill="currentColor"
+                      d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="card-content">
+                <h3 class="value-title">
+                  <span class="title-gradient">Microsoft Certified</span>
+                  <span class="title-accent">Experts</span>
+                </h3>
+                <div class="value-stats">
+                  <div class="stat-item">
+
+                    <span class="stat-label">Certified Pros</span>
+                  </div>
+                </div>
+                <p class="value-description">
+                  Elite Microsoft Certified Professionals mastering Azure,
+                  Dynamics 365, Microsoft 365, and Power Platform with
+                  cutting-edge expertise.
+                </p>
+              </div>
+              <div class="card-glow"></div>
+            </div>
+
+            <!-- Value 2 -->
+            <div class="value-card" data-tilt>
+              <div class="card-bg-pattern"></div>
+              <div class="floating-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+              </div>
+              <div class="value-icon">
+                <div class="icon-container">
+                  <div class="icon-orbit"></div>
+                  <div class="icon-pulse"></div>
+                  <svg viewBox="0 0 24 24" width="28" height="28">
+                    <path
+                      fill="currentColor"
+                      d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="card-content">
+                <h3 class="value-title">
+                  <span class="title-gradient">Proven Track</span>
+                  <span class="title-accent">Record</span>
+                </h3>
+                <div class="value-stats">
+                  <div class="stat-item">
+
+                    <span class="stat-label">Projects</span>
+                  </div>
+                </div>
+                <p class="value-description">
+                  Successfully delivered Microsoft projects with measurable ROI
+                  across industries, driving digital transformation and
+                  operational excellence.
+                </p>
+              </div>
+              <div class="card-glow"></div>
+            </div>
+
+            <!-- Value 3 -->
+            <div class="value-card" data-tilt>
+              <div class="card-bg-pattern"></div>
+              <div class="floating-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+              </div>
+              <div class="value-icon">
+                <div class="icon-container">
+                  <div class="icon-orbit"></div>
+                  <div class="icon-pulse"></div>
+                  <svg viewBox="0 0 24 24" width="28" height="28">
+                    <path
+                      fill="currentColor"
+                      d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="card-content">
+                <h3 class="value-title">
+                  <span class="title-gradient">Zero Trust</span>
+                  <span class="title-accent">Security</span>
+                </h3>
+                <div class="value-stats">
+                  <div class="stat-item">
+
+                    <span class="stat-label">Uptime</span>
+                  </div>
+                </div>
+                <p class="value-description">
+                  Enterprise-grade Zero Trust Security framework protecting
+                  critical assets against evolving cyber threats with
+                  military-grade encryption.
+                </p>
+              </div>
+              <div class="card-glow"></div>
+            </div>
+
+            <!-- Value 4 -->
+            <div class="value-card" data-tilt>
+              <div class="card-bg-pattern"></div>
+              <div class="floating-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+              </div>
+              <div class="value-icon">
+                <div class="icon-container">
+                  <div class="icon-orbit"></div>
+                  <div class="icon-pulse"></div>
+                  <svg viewBox="0 0 24 24" width="28" height="28">
+                    <path
+                      fill="currentColor"
+                      d="M12,2A3,3 0 0,1 15,5V7H20A2,2 0 0,1 22,9V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V9A2,2 0 0,1 4,7H9V5A3,3 0 0,1 12,2M12,4A1,1 0 0,0 11,5V7H13V5A1,1 0 0,0 12,4Z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="card-content">
+                <h3 class="value-title">
+                  <span class="title-gradient">End-to-End</span>
+                  <span class="title-accent">Solutions</span>
+                </h3>
+                <div class="value-stats">
+                  <div class="stat-item">
+
+                    <span class="stat-label">Coverage</span>
+                  </div>
+                </div>
+                <p class="value-description">
+                  Complete Microsoft stack lifecycle services from strategic
+                  consulting to deployment and support, ensuring seamless
+                  business continuity.
+                </p>
+              </div>
+              <div class="card-glow"></div>
+            </div>
+
+            <!-- Value 5 -->
+            <div class="value-card" data-tilt>
+              <div class="card-bg-pattern"></div>
+              <div class="floating-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+              </div>
+              <div class="value-icon">
+                <div class="icon-container">
+                  <div class="icon-orbit"></div>
+                  <div class="icon-pulse"></div>
+                  <svg viewBox="0 0 24 24" width="28" height="28">
+                    <path
+                      fill="currentColor"
+                      d="M17,7H22V17H17V19A1,1 0 0,0 18,20H20V22H17.5C16.95,22 16,21.55 16,21C16,21.55 15.05,22 14.5,22H12V20H14A1,1 0 0,0 15,19V5A1,1 0 0,0 14,4H12V2H14.5C15.05,2 16,2.45 16,3C16,2.45 16.95,2 17.5,2H20V4H18A1,1 0 0,0 17,5V7M2,7H13V9H4V15H13V17H2V7M20,9H17V15H20V9M8.5,12A1.5,1.5 0 0,0 10,10.5A1.5,1.5 0 0,0 8.5,9A1.5,1.5 0 0,0 7,10.5A1.5,1.5 0 0,0 8.5,12Z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="card-content">
+                <h3 class="value-title">
+                  <span class="title-gradient">AI-Powered</span>
+                  <span class="title-accent">Innovation</span>
+                </h3>
+                <div class="value-stats">
+                  <div class="stat-item">
+
+                    <span class="stat-label">Efficiency</span>
+                  </div>
+                </div>
+                <p class="value-description">
+                  Leveraging AI, machine learning, and predictive analytics with
+                  Microsoft's latest tools to unlock automation and exponential
+                  growth.
+                </p>
+              </div>
+              <div class="card-glow"></div>
+            </div>
+
+            <!-- Value 6 -->
+            <div class="value-card" data-tilt>
+              <div class="card-bg-pattern"></div>
+              <div class="floating-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+              </div>
+              <div class="value-icon">
+                <div class="icon-container">
+                  <div class="icon-orbit"></div>
+                  <div class="icon-pulse"></div>
+                  <svg viewBox="0 0 24 24" width="28" height="28">
+                    <path
+                      fill="currentColor"
+                      d="M16,4C18.11,4 20.11,4.89 21.61,6.39C23.11,7.89 24,9.89 24,12A8,8 0 0,1 16,20H6A6,6 0 0,1 0,14C0,10.69 2.53,8.11 6,8.11V8A8,8 0 0,1 16,4M16,6A6,6 0 0,0 10,12H6A4,4 0 0,0 2,16A4,4 0 0,0 6,20H16A6,6 0 0,0 22,14A6,6 0 0,0 16,6Z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="card-content">
+                <h3 class="value-title">
+                  <span class="title-gradient">Strategic</span>
+                  <span class="title-accent">Partnership</span>
+                </h3>
+                <div class="value-stats">
+                  <div class="stat-item">
+
+                    <span class="stat-label">Support</span>
+                  </div>
+                </div>
+                <p class="value-description">
+                  Dedicated Microsoft specialists working as your extended team,
+                  aligning cutting-edge technology with your visionary business
+                  goals.
+                </p>
+              </div>
+              <div class="card-glow"></div>
+            </div>
+          </div>
+
+          <style>
+            .professional-value-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+              gap: 20px;
+              max-width: 1600px;
+              margin: 0 auto;
+
+              background: rgb(254, 252, 252);
+              min-height: 10vh;
+              position: relative;
+            }
+
+            .professional-value-grid::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: rgba(245, 245, 245, 0.921);
+              pointer-events: none;
+            }
+
+            .value-card {
+              position: relative;
+              background: rgba(255, 255, 255, 0.229);
+              border: 1px solid rgb(123, 123, 123);
+              border-radius: 24px;
+              padding: 0;
+              overflow: hidden;
+              transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+              transform-style: preserve-3d;
+              cursor: pointer;
+            }
+
+            .value-card::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: linear-gradient(
+                135deg,
+                rgba(var(--card-color), 0.1) 0%,
+                transparent 50%,
+                rgba(var(--card-color), 0.05) 100%
+              );
+              opacity: 0;
+              transition: opacity 0.5s ease;
+            }
+
+            .value-card:hover::before {
+              opacity: 1;
+            }
+
+            .value-card:hover {
+              transform: translateY(-12px) rotateX(5deg) rotateY(5deg);
+              border-color: rgba(var(--card-color), 0.4);
+              box-shadow:
+                0 32px 64px -12px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(var(--card-color), 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            .card-bg-pattern {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-image:
+                radial-gradient(
+                  circle at 25% 25%,
+                  rgba(var(--card-color), 0.1) 0%,
+                  transparent 25%
+                ),
+                radial-gradient(
+                  circle at 75% 75%,
+                  rgba(var(--card-color), 0.08) 0%,
+                  transparent 25%
+                );
+              opacity: 0;
+              transition: opacity 0.5s ease;
+            }
+
+            .value-card:hover .card-bg-pattern {
+              opacity: 1;
+            }
+
+            .floating-particles {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              pointer-events: none;
+              overflow: hidden;
+            }
+
+            .particle {
+              position: absolute;
+              width: 3px;
+              height: 3px;
+              background: rgba(var(--card-color), 0.6);
+              border-radius: 50%;
+              animation: float 6s infinite linear;
+            }
+
+            .particle:nth-child(1) {
+              top: 20%;
+              left: 20%;
+              animation-delay: 0s;
+              animation-duration: 8s;
+            }
+
+            .particle:nth-child(2) {
+              top: 60%;
+              left: 80%;
+              animation-delay: 2s;
+              animation-duration: 6s;
+            }
+
+            .particle:nth-child(3) {
+              top: 80%;
+              left: 40%;
+              animation-delay: 4s;
+              animation-duration: 10s;
+            }
+
+            @keyframes float {
+              0%,
+              100% {
+                transform: translateY(0px) translateX(0px) scale(1);
+                opacity: 0;
+              }
+
+              10%,
+              90% {
+                opacity: 1;
+              }
+
+              50% {
+                transform: translateY(-20px) translateX(10px) scale(1.2);
+              }
+            }
+
+            .value-icon {
+              padding: 32px 32px 0;
+              position: relative;
+              z-index: 2;
+            }
+
+            .icon-container {
+              position: relative;
+              width: 80px;
+              height: 80px;
+              margin: 0 auto;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            .icon-orbit {
+              position: absolute;
+              top: -12px;
+              left: -12px;
+              right: -12px;
+              bottom: -12px;
+              border: 2px solid rgba(var(--card-color), 0.3);
+              border-radius: 50%;
+              border-top-color: rgba(var(--card-color), 0.8);
+              animation: rotate 4s linear infinite;
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+
+            .value-card:hover .icon-orbit {
+              opacity: 1;
+            }
+
+            .icon-pulse {
+              position: absolute;
+              top: -8px;
+              left: -8px;
+              right: -8px;
+              bottom: -8px;
+
+              border-radius: 50%;
+              animation: pulse 2s ease-in-out infinite;
+              opacity: 0;
+            }
+
+            .value-card:hover .icon-pulse {
+              opacity: 1;
+            }
+
+            @keyframes rotate {
+              from {
+                transform: rotate(0deg);
+              }
+
+              to {
+                transform: rotate(360deg);
+              }
+            }
+
+            @keyframes pulse {
+              0%,
+              100% {
+                transform: scale(1);
+                opacity: 0.4;
+              }
+
+              50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+              }
+            }
+
+            .icon-container svg {
+              width: 40px;
+              height: 40px;
+              color: rgba(var(--card-color), 1);
+              filter: drop-shadow(0 4px 8px rgba(var(--card-color), 0.3));
+              transition: all 0.3s ease;
+              z-index: 1;
+              position: relative;
+            }
+
+            .value-card:hover .icon-container svg {
+              transform: scale(1.1);
+              filter: drop-shadow(0 8px 16px rgba(var(--card-color), 0.5));
+            }
+
+            .card-content {
+              padding: 24px 32px 32px;
+              position: relative;
+              z-index: 2;
+            }
+
+            .value-title {
+              font-size: 24px;
+              font-weight: 700;
+              margin: 0 0 16px 0;
+              line-height: 1.2;
+              display: flex;
+              flex-direction: column;
+              gap: 4px;
+            }
+
+            .title-gradient {
+              background: linear-gradient(
+                135deg,
+                rgba(var(--card-color), 1) 0%,
+                rgba(var(--card-color), 0.8) 100%
+              );
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+            }
+
+            .title-accent {
+              color: #000000;
+              font-weight: 400;
+              font-size: 20px;
+              opacity: 0.9;
+            }
+
+            .value-stats {
+              margin: 16px 0 20px 0;
+            }
+
+            .stat-item {
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+              padding: 8px 16px;
+              background: rgba(var(--card-color), 0.1);
+              border: 1px solid rgba(var(--card-color), 0.2);
+              border-radius: 20px;
+              backdrop-filter: blur(10px);
+            }
+
+            .stat-number {
+              font-family: "JetBrains Mono", monospace;
+              font-size: 16px;
+              font-weight: 600;
+              color: rgba(var(--card-color), 1);
+              text-shadow: 0 0 10px rgba(var(--card-color), 0.5);
+            }
+
+            .stat-label {
+              font-size: 12px;
+              color: rgb(0, 0, 0);
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+              font-weight: 500;
+            }
+
+            .value-description {
+              font-size: 15px;
+              line-height: 1.6;
+              color: rgb(46, 44, 44);
+              margin: 0;
+              font-weight: 400;
+            }
+
+            .card-glow {
+              position: absolute;
+              top: -50%;
+              left: -50%;
+              right: -50%;
+              bottom: -50%;
+              background: radial-gradient(
+                circle,
+                rgba(var(--card-color), 0.15) 0%,
+                transparent 70%
+              );
+              opacity: 0;
+              transition: opacity 0.5s ease;
+              pointer-events: none;
+              z-index: 0;
+            }
+
+            .value-card:hover .card-glow {
+              opacity: 1;
+            }
+
+            /* Card Colors */
+
+            .value-card:nth-child(1) {
+              --card-color: 0, 120, 212;
+            }
+
+            .value-card:nth-child(2) {
+              --card-color: 0, 120, 212;
+            }
+
+            .value-card:nth-child(3) {
+              --card-color: 0, 120, 212;
+            }
+
+            .value-card:nth-child(4) {
+              --card-color: 0, 120, 212;
+            }
+
+            .value-card:nth-child(5) {
+              --card-color: 0, 120, 212;
+            }
+
+            .value-card:nth-child(6) {
+              --card-color: 0, 120, 212;
+            }
+
+            /* Responsive Design */
+            @media (max-width: 1200px) {
+              .professional-value-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 28px;
+                padding: 60px 20px;
+              }
+            }
+
+            @media (max-width: 768px) {
+              .professional-value-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 40px 16px;
+              }
+
+              .value-card {
+                transform: none !important;
+              }
+
+              .value-card:hover {
+                transform: translateY(-8px) !important;
+              }
+
+              .value-title {
+                font-size: 20px;
+              }
+
+              .title-accent {
+                font-size: 18px;
+              }
+
+              .card-content {
+                padding: 20px 24px 24px;
+              }
+
+              .value-icon {
+                padding: 24px 24px 0;
+              }
+
+              .icon-container {
+                width: 64px;
+                height: 64px;
+              }
+
+              .icon-container svg {
+                width: 32px;
+                height: 32px;
+              }
+            }
+
+            /* 3D Tilt Effect */
+            .value-card[data-tilt] {
+              transform-style: preserve-3d;
+              transition: all 0.3s ease-out;
+            }
+
+            /* Performance Optimizations */
+            .value-card {
+              will-change: transform;
+              contain: layout style paint;
+            }
+
+            .floating-particles {
+              will-change: transform;
+            }
+
+            /* Accessibility */
+            @media (prefers-reduced-motion: reduce) {
+              .value-card,
+              .icon-orbit,
+              .icon-pulse,
+              .particle {
+                animation: none !important;
+                transition: none !important;
+              }
+
+              .value-card:hover {
+                transform: translateY(-4px) !important;
+              }
+            }
+
+            #consultationForm {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0, 0, 0, 0.5);
+              display: none;
+              justify-content: center;
+              align-items: center;
+              z-index: 9999;
+            }
+
+            #consultationForm .form-container {
+              max-height: 90vh;
+              /* Limit height */
+              overflow-y: auto;
+              /* Enable scrolling inside */
+              background: white;
+              padding: 20px;
+              border-radius: 8px;
+            }
+          </style>
+
+          <script>
+            // 3D Tilt Effect
+            document.addEventListener("DOMContentLoaded", function () {
+              const cards = document.querySelectorAll("[data-tilt]");
+              let requestId = null;
+
+              cards.forEach((card) => {
+                let mouseX = 0,
+                  mouseY = 0;
+
+                card.addEventListener("mousemove", (e) => {
+                  const rect = card.getBoundingClientRect();
+                  mouseX = e.clientX - rect.left;
+                  mouseY = e.clientY - rect.top;
+
+                  if (!requestId) {
+                    requestId = requestAnimationFrame(updateTransform);
+                  }
+
+                  function updateTransform() {
+                    const rect = card.getBoundingClientRect();
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const rotateX = (mouseY - centerY) / 10;
+                    const rotateY = (centerX - mouseX) / 10;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px) scale3d(1.02, 1.02, 1.02)`;
+                    requestId = null;
+                  }
+                });
+
+                card.addEventListener("mouseleave", () => {
+                  card.style.transform =
+                    "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)";
+                });
+              });
+            });
+
+            // Particle Animation Enhancement
+            function createExtraParticles() {
+              const cards = document.querySelectorAll(".floating-particles");
+
+              cards.forEach((container) => {
+                if (container.childElementCount < 10) {
+                  // Limit total
+                  for (let i = 0; i < 2; i++) {
+                    const particle = document.createElement("div");
+                    particle.className = "particle";
+                    particle.style.top = Math.random() * 100 + "%";
+                    particle.style.left = Math.random() * 100 + "%";
+                    particle.style.animationDelay = Math.random() * 6 + "s";
+                    particle.style.animationDuration =
+                      Math.random() * 4 + 6 + "s";
+                    container.appendChild(particle);
+                  }
+                }
+              });
+            }
+
+            // Initialize extra particles after DOM load
+            document.addEventListener("DOMContentLoaded", createExtraParticles);
+          </script>
+        </div>
+      </section>
+      <section class="sales-services fade-in-section" id="sales-services">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">End-to-End Microsoft Solutions</h2>
+            <p class="section-subtitle">
+              Our partnership with Microsoft enables us to deliver comprehensive
+              pre and post-sales services for your IT transformation
+            </p>
+          </div>
+
+          <div class="services-columns">
+
+             <div class="vertical-divider">
+              <div class="divider-line"></div>
+              <div class="microsoft-logo">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/732/732221.png"
+                  alt="Microsoft"
+                  width="40"
+                />
+              </div>
+              <div class="divider-line"></div>
+            </div>
+
+
+            <!-- Pre-Sales Column -->
+            <div class="service-card pre-sales">
+              <div style="display: flex; align-items: center; gap: 8px">
+                <div
+                  style="
+                    background-color: #f0f0f0;
+                    padding: 4px;
+                    border-radius: 4px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <img
+                    src="https://i.postimg.cc/05cRSFbJ/sniper-logo-black-4-scaled.png"
+                    alt="Pre-Sales"
+                    width="40"
+                    style="display: block"
+                  />
+                </div>
+              </div>
+
+              <h3
+                style="
+                  text-align: center;
+                  font-family:
+                    &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;
+                  font-weight: 500;
+                  font-size: 1.5rem;
+                  color: var(--primary-blue); /* Microsoft Blue */
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  position: relative;
+                  margin-bottom: 1.5rem;
+                "
+              >
+                Pre-Sales Services
+              </h3>
+
+              <div class="service-content">
+                <ul>
+                  <li>
+                    Understand business needs and assess current IT environment to identify gaps
+                  </li>
+                  <li>
+                    Deploy Microsoft solutions aligned with business and technical requirements
+                  </li>
+                  <li>
+                    Validate solutions through demos and real-world proof of concept testing
+                  </li>
+                  <li>
+                    Recommend optimal licensing with cost, ROI, and TCO analysis
+                  </li>
+                  <li>
+                   Plan migrations with clear strategy, timelines, and risk mitigation
+                  </li>
+ <li>Provide 24/7 support through a dedicated helpdesk for continuous assistance</li>
+
+ <li>
+                   Deliver managed services with proactive monitoring and maintenance
+                  </li>
+
+                </ul>
+              </div>
+             <button class="service-cta"
+        onclick="window.location.href='https://sniperindia.com/contact'">
+  Request Consultation
+</button>
+            </div>
+
+            <!-- Vertical Divider -->
+            <div class="vertical-divider">
+              <div class="divider-line"></div>
+              <div class="microsoft-logo">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/732/732221.png"
+                  alt="Microsoft"
+                  width="40"
+                />
+              </div>
+              <div class="divider-line"></div>
+            </div>
+
+
+
+
+
+          </div>
+        </div>
+
+        <!-- Consultation Form (Hidden by Default) -->
+        <div class="consultation-form" id="consultationForm">
+          <div class="form-container">
+            <button class="close-btn" onclick="closeForm()">×</button>
+            <h3 id="formTitle">Pre-Sales Consultation Request</h3>
+            <form id="salesForm">
+              <div class="form-group">
+                <input type="text" id="name" placeholder="Full Name" required />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Business Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="Phone Number"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="company"
+                  placeholder="Company Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <select id="service" required>
+                  <option value="">Select Service</option>
+                  <option value="azure-consultation">Azure Migration</option>
+                  <option value="m365-setup">Microsoft 365 Deployment</option>
+                  <option value="dynamics-implementation">Dynamics 365</option>
+                  <option value="security-assessment">
+                    Security Assessment
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <textarea
+                  id="message"
+                  placeholder="Brief about your requirements"
+                  rows="4"
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Submit Request</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- Case Studies -->
+      <section class="case-studies fade-in-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Happy Customers</h2>
+            <p class="section-subtitle">
+              Real results from real clients who transformed their business with
+              Microsoft solutions.
+            </p>
+          </div>
+
+
+          <div class="studies-grid">
+
+
+
+
+
+
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- Call to Action -->
+      <section class="cta-section fade-in-section" id="contact">
+        <div class="container">
+          <div class="cta-content">
+            <h2 class="cta-title">Ready to Transform Your Business?</h2>
+            <p class="cta-description">
+              Join thousands of organizations who have accelerated their digital
+              transformation with Microsoft solutions. Get started with a free
+              consultation today.
+            </p>
+            <div class="cta-form">
+
+             <a href="https://sniperindia.com/contact">
+  <button class="cta-button">Get Free Consultation</button>
+</a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer fade-in-section">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-brand">
+              <img
+                src="sniper-logo-neww.png"
+                alt="Sniper Logo"
+                class="footer-sniper-logo"
+                style="width: 150px; height: 70px"
+              />
+              <div class="footer-logo">Microsoft Partners</div>
+              <p class="footer-description">
+                Your trusted Microsoft solutions partner, delivering
+                enterprise-grade cloud services, digital workplace solutions,
+                and business transformation expertise since 2008.
+              </p>
+
+            </div>
+
+            <div class="footer-section">
+              <h4>Solutions</h4>
+              <ul class="footer-links">
+                <li><a href="#">Azure Cloud Services</a></li>
+                <li><a href="#">Microsoft 365</a></li>
+                <li><a href="#">Dynamics 365</a></li>
+                <li><a href="#">Power Platform</a></li>
+                <li><a href="#">Security & Compliance</a></li>
+                <li><a href="#">Data & Analytics</a></li>
+                <li><a href="#">Hybrid Infrastructure</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-section">
+              <h4>Industries</h4>
+              <ul class="footer-links">
+                <li><a href="#">Healthcare</a></li>
+                <li><a href="#">Financial Services</a></li>
+                <li><a href="#">Manufacturing</a></li>
+                <li><a href="#">Retail & Commerce</a></li>
+                <li><a href="#">Government</a></li>
+                <li><a href="#">Education</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-section">
+              <h4>Resources</h4>
+              <ul class="footer-links">
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Case Studies</a></li>
+                <li><a href="#">White Papers</a></li>
+                <li><a href="#">Webinars</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Community Forum</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-section">
+              <h4>Support</h4>
+              <ul class="footer-links">
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Technical Support</a></li>
+                <li><a href="#">Training & Certification</a></li>
+                <li><a href="#">Partner Portal</a></li>
+                <li><a href="#">Service Status</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <div>
+              <p>&copy; Copyright 2026. Sniper Systems & Solutions Pvt Ltd.</p>
+            </div>
+            <div>
+
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <script>
+        // Preloader and Fade-in functionality
+        window.addEventListener("load", function () {
+          const preloader = document.getElementById("preloader");
+          // Increased timeout for a longer preloader display
+          setTimeout(() => {
+            preloader.style.opacity = "0";
+            setTimeout(() => {
+              preloader.style.display = "none";
+            }, 500); // This matches the CSS transition time for a smooth fade-out
+          }, 1000); // Preloader is visible for 2000ms (2 seconds) before fading out
+        });
+
+        const fadeInSections = document.querySelectorAll(".fade-in-section");
+        const sectionObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            rootMargin: "0px 0px -50px 0px",
+          },
+        );
+
+        fadeInSections.forEach((section) => {
+          sectionObserver.observe(section);
+        });
+        // Enhanced Navigation
+        document.addEventListener("DOMContentLoaded", function () {
+          const navbar = document.querySelector(".navbar");
+          const navLinks = document.querySelectorAll(".nav-link");
+
+          // Navbar scroll effect
+          window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+              navbar.style.background = "rgba(255, 255, 255, 0.98)";
+              navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.15)";
+            } else {
+              navbar.style.background = "rgba(255, 255, 255, 0.95)";
+              navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+            }
+          });
+
+          // Active link highlighting
+          const sections = document.querySelectorAll("section[id]");
+          const observerOptions = {
+            threshold: 0.3,
+            rootMargin: "-100px 0px -100px 0px",
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                navLinks.forEach((link) => link.classList.remove("active"));
+                const activeLink = document.querySelector(
+                  `a[href="#${entry.target.id}"]`,
+                );
+                if (activeLink && activeLink.classList.contains("nav-link")) {
+                  activeLink.classList.add("active");
+                }
+              }
+            });
+          }, observerOptions);
+
+          sections.forEach((section) => observer.observe(section));
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+
+        // Solutions tabs functionality
+        const tabButtons = document.querySelectorAll(".tab-button");
+        const solutionInfo = document.querySelector(".solution-info");
+        const solutionVisual = document.querySelector(".solution-visual");
+
+        const solutionsData = {
+          Healthcare: {
+            title: "Healthcare Digital Transformation",
+            description:
+              "Modernize patient care with secure, compliant Microsoft solutions that improve outcomes while reducing costs. Our healthcare-focused implementations ensure HIPAA compliance and seamless integration with existing systems.",
+            benefits: [
+              {
+                icon: "🏥",
+                title: "Electronic Health Records (EHR) Integration",
+                desc: "Seamless integration with major EHR systems using Azure FHIR APIs",
+              },
+              {
+                icon: "🔒",
+                title: "HIPAA-Compliant Cloud Infrastructure",
+                desc: "Secure Azure environments with advanced encryption and access controls",
+              },
+              {
+                icon: "📱",
+                title: "Telehealth Solutions",
+                desc: "Teams-based telemedicine platforms with integrated scheduling",
+              },
+            ],
+            visual: "microsoft-healthcare.jpg",
+          },
+          "Financial Services": {
+            title: "Financial Services Modernization",
+            description:
+              "Transform financial operations with secure, compliant solutions that enhance customer experience while meeting stringent regulatory requirements.",
+            benefits: [
+              {
+                icon: "🏦",
+                title: "Core Banking System Integration",
+                desc: "Seamless API integration with existing banking infrastructure",
+              },
+              {
+                icon: "🔐",
+                title: "Advanced Security & Compliance",
+                desc: "SOX, PCI-DSS compliant environments with multi-factor authentication",
+              },
+              {
+                icon: "📊",
+                title: "Real-time Analytics & Reporting",
+                desc: "Power BI dashboards for risk management and regulatory reporting",
+              },
+            ],
+            visual: "financial service.jpg",
+          },
+          Manufacturing: {
+            title: "Smart Manufacturing Solutions",
+            description:
+              "Optimize production with IoT-enabled manufacturing solutions that provide real-time insights and predictive maintenance capabilities.",
+            benefits: [
+              {
+                icon: "🏭",
+                title: "IoT-Enabled Production Monitoring",
+                desc: "Real-time equipment monitoring with Azure IoT Hub integration",
+              },
+              {
+                icon: "🤖",
+                title: "Predictive Maintenance",
+                desc: "AI-powered maintenance scheduling to reduce downtime",
+              },
+              {
+                icon: "📈",
+                title: "Supply Chain Optimization",
+                desc: "Dynamics 365 Supply Chain Management for end-to-end visibility",
+              },
+            ],
+            visual: "manufacturing.jpg",
+          },
+          Retail: {
+            title: "Retail Digital Commerce",
+            description:
+              "Create unified shopping experiences across all channels with integrated inventory, customer insights, and personalized marketing.",
+            benefits: [
+              {
+                icon: "🛒",
+                title: "Omnichannel Commerce Platform",
+                desc: "Unified online and in-store shopping experiences",
+              },
+              {
+                icon: "🎯",
+                title: "Customer Personalization",
+                desc: "AI-driven product recommendations and targeted marketing",
+              },
+              {
+                icon: "📦",
+                title: "Inventory Management",
+                desc: "Real-time inventory tracking across all channels and locations",
+              },
+            ],
+            visual: "retail.jpg",
+          },
+          Government: {
+            title: "Government Digital Services",
+            description:
+              "Modernize citizen services with secure, accessible solutions that improve efficiency while maintaining the highest security standards.",
+            benefits: [
+              {
+                icon: "🏛️",
+                title: "Citizen Portal Development",
+                desc: "Self-service portals for license renewals, permits, and applications",
+              },
+              {
+                icon: "🔒",
+                title: "FedRAMP Authorized Solutions",
+                desc: "Government-compliant Azure environments with advanced security",
+              },
+              {
+                icon: "📋",
+                title: "Digital Document Management",
+                desc: "SharePoint-based solutions for secure document workflows",
+              },
+            ],
+            visual: "government.avif",
+          },
+        };
+
+        tabButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            tabButtons.forEach((btn) => btn.classList.remove("active"));
+            this.classList.add("active");
+
+            const solution = solutionsData[this.textContent];
+            updateSolutionContent(solution);
+          });
+        });
+
+        function updateSolutionContent(solution) {
+          const benefitsHtml = solution.benefits
+
+            .join("");
+
+          solutionInfo.innerHTML = `
+
+            <p>${solution.description}</p>
+            <ul class="solution-benefits">${benefitsHtml}</ul>
+
+             <h3 style="font-weight:800; margin-top:1.5rem; font-size:1.8rem; color:var(--dark-gray);">
+        ${solution.title}
+    </h3>
+        `;
+
+          solutionVisual.innerHTML = `
+        <img src="${solution.visual}" alt="${solution.title}" style="max-width:100%; border-radius:12px;" />
+        <div style="position: absolute; bottom: 0.5rem; right: 1rem; font-size: 0.9rem; color: var(--text-gray);">${solution.title} Dashboard</div>
+    `;
+        }
+
+        // Form submission
+        document
+          .querySelector(".cta-button")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            const email = document.querySelector(".cta-input").value;
+            if (email) {
+              alert(
+                "Thank you for your interest! We will contact you within 24 hours.",
+              );
+              document.querySelector(".cta-input").value = "";
+            } else {
+              alert("Please enter a valid email address.");
+            }
+          });
+
+        // Card hover effects
+        document
+          .querySelectorAll(".service-card, .study-card, .resource-card")
+          .forEach((card) => {
+            card.addEventListener("mouseenter", function () {
+              this.style.transform = "translateY(-10px)";
+            });
+
+            card.addEventListener("mouseleave", function () {
+              this.style.transform = "translateY(0)";
+            });
+          });
+
+        document.addEventListener("DOMContentLoaded", function () {
+          fetch("header.html")
+            .then((response) => response.text())
+            .then((data) => {
+              document.getElementById("header-placeholder").innerHTML = data;
+            })
+            .catch((error) => {
+              console.error("Error fetching the header:", error);
+              document.getElementById("header-placeholder").innerHTML =
+                '<p style="text-align:center; color:red;">Error: Could not load header.html</p>';
+            });
+        });
+      </script>
+      <!-- Tailwind CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+
+      <!-- Font Awesome -->
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      />
+
+      <button
+        id="scrollToTopBtn"
+        class="fixed hidden bottom-8 right-8 p-4 bg-gradient-to-br from-blue-500 to-blue-900 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none"
+      >
+        <i class="fas fa-arrow-up text-xl"></i>
+      </button>
+
+      <script>
+        // Show/hide button based on scroll position
+        window.onscroll = function () {
+          const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+          if (
+            document.body.scrollTop > 300 ||
+            document.documentElement.scrollTop > 300
+          ) {
+            scrollToTopBtn.classList.remove("hidden");
+          } else {
+            scrollToTopBtn.classList.add("hidden");
+          }
+        };
+
+        // Smooth scroll to top
+        document
+          .getElementById("scrollToTopBtn")
+          .addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+      </script>
+
+      <script>
+        // Animated counters for trust section
+        const trustNumbers = document.querySelectorAll(".trust-number");
+
+        const trustObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (
+                entry.isIntersecting &&
+                !entry.target.classList.contains("animated")
+              ) {
+                entry.target.classList.add("animated");
+                setTimeout(() => {
+                  animateCounter(entry.target);
+                }, 1200);
+              }
+            });
+          },
+          { threshold: 0.5 },
+        );
+
+        trustNumbers.forEach((number) => trustObserver.observe(number));
+
+        function animateCounter(element) {
+          const finalText = element.textContent;
+          const finalNumber = parseInt(finalText.replace(/[^\d]/g, ""));
+          const suffix = finalText.replace(/[\d]/g, "");
+          let current = 0;
+          const increment = Math.ceil(finalNumber / 80);
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= finalNumber) {
+              current = finalNumber;
+              clearInterval(timer);
+            }
+            element.textContent = current + suffix;
+          }, 30);
+        }
+      </script>
+
+      <script>
+        // Form Handling
+        function openForm(formType) {
+          const form = document.getElementById("consultationForm");
+          const formTitle = document.getElementById("formTitle");
+
+          if (formType === "pre-sales") {
+            formTitle.textContent = "Pre-Sales Consultation Request";
+          } else {
+            formTitle.textContent = "Post-Sales Support Request";
+          }
+
+          form.style.display = "flex";
+          // Prevent scrolling
+        }
+
+        function closeForm() {
+          document.getElementById("consultationForm").style.display = "none";
+          document.body.style.overflow = "auto"; // Re-enable scrolling
+        }
+
+        // Form Submission
+        document
+          .getElementById("salesForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Form data collection
+            const formData = {
+              name: document.getElementById("name").value,
+              email: document.getElementById("email").value,
+              phone: document.getElementById("phone").value,
+              company: document.getElementById("company").value,
+              service: document.getElementById("service").value,
+              message: document.getElementById("message").value,
+            };
+
+            // Here you would typically send the data to your server
+            console.log("Form submitted:", formData);
+
+            // Show confirmation and close form
+            alert(
+              "Thank you for your request! Our Microsoft experts will contact you within 24 hours.",
+            );
+            closeForm();
+            this.reset();
+          });
+      </script>
+    </body>
+  </body>
+</html>

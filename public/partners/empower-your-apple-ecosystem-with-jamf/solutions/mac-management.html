@@ -1,0 +1,778 @@
+<!-- //Jamf for Mac -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jamf for Mac - XYZ Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#778EB1',
+              secondary: '#0066CC'
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      .nav-link-active {
+        color: #0066cc !important;
+
+        text-underline-offset: 4px;
+      }
+    </style>
+  </head>
+  <!-- ========== Favicon Icon ========== -->
+  <link
+    rel="shortcut icon"
+    href="https://sniperindia.com/wp-content/uploads/2025/05/sniper-logo-black-4-scaled.png"
+    type="image/x-icon"
+  />
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <style>
+    img:is([sizes='auto' i], [sizes^='auto,' i]) {
+      contain-intrinsic-size: 3000px 1500px;
+    }
+  </style>
+  <link
+    rel="icon"
+    href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+    media="(prefers-color-scheme: dark)"
+  />
+  <link
+    rel="icon"
+    href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+    media="(prefers-color-scheme: light)"
+  />
+  <link rel="apple-touch-icon" href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+  <meta name="msapplication-TileImage" content="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+  <!-- ========== Favicon Icon ========== -->
+
+  <body class="bg-white font-sans text-gray-800">
+    <div class="flex flex-col min-h-screen">
+      <!-- Header -->
+      <!-- Header -->
+      <header class="sticky top-0 z-50 shadow-md bg-white">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+          <!-- Logo Section -->
+          <a href="https://sniperindia.com/" class="flex items-center space-x-3">
+            <img
+              src="https://sniperindia.com/wp-content/uploads/2025/05/sniper-logo-black-4-scaled.png"
+              alt="Sniper Logo"
+              class="h-12 w-auto"
+            />
+
+            <!-- Separator -->
+            <div class="h-10 w-px bg-gray-900"></div>
+
+            <img src="https://i.ibb.co/YT8CZdyk/output-auto.png" alt="Jamf Partner Logo" class="h-8 w-auto mt-3" />
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center space-x-4 text-sm font-medium">
+            <a href="../index.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              HOME
+            </a>
+
+            <!-- Solutions Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center py-2 px-4 text-black hover:text-secondary transition-colors duration-300"
+              >
+                SOLUTIONS
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+
+              <!-- Dropdown -->
+              <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-xl w-60 py-2">
+                <a
+                  href="../solutions/mac-management.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for Mac
+                </a>
+                <a
+                  href="../solutions/mobile-device-management.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for Mobile
+                </a>
+                <a
+                  href="../solutions/k-12-education.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for K-12
+                </a>
+                <a
+                  href="../solutions/small-business.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Small Business
+                </a>
+              </div>
+            </div>
+
+            <a href="../products.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              PRODUCTS
+            </a>
+            <a href="../contact.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              CONTACT US
+            </a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="lg:hidden text-black focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+          <a href="../index.html" class="block py-3 px-6 text-sm text-black hover:bg-gray-100">HOME</a>
+
+          <div class="px-6">
+            <button
+              id="mobile-solutions-button"
+              class="w-full flex justify-between items-center py-3 text-sm text-black hover:bg-gray-100"
+            >
+              SOLUTIONS
+              <svg
+                class="w-4 h-4 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div id="mobile-solutions-dropdown" class="hidden pl-4">
+              <a href="../solutions/mac-management.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Jamf for Mac
+              </a>
+              <a href="../solutions/mobile-device-management.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Jamf for Mobile
+              </a>
+              <a href="../solutions/k-12-education.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Jamf for K-12
+              </a>
+              <a href="../solutions/small-business.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Small Business
+              </a>
+            </div>
+          </div>
+
+          <a href="../products.html" class="block py-3 px-6 text-sm text-black hover:bg-gray-100">PRODUCTS</a>
+
+          <div class="px-6 py-4">
+            <a
+              href="../contact.html"
+              class="block text-center bg-secondary text-white font-bold py-2 rounded-full hover:bg-red-700 transition-colors duration-300"
+            >
+              CONTACT US
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <!-- Main Content -->
+      <main class="flex-grow">
+        <div class="bg-gray-50">
+          <!-- Hero Section -->
+
+          <section class="relative bg-gradient-to-br from-[#1e3a5f] via-[#2d4a6b] to-[#1e3a5f] overflow-hidden">
+            <!-- Decorative Background Elements -->
+            <div class="absolute inset-0">
+              <div
+                class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-[#7da5c4] to-transparent opacity-20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/4"
+              ></div>
+              <div
+                class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#8eb3cc] to-transparent opacity-15 rounded-full blur-3xl transform -translate-x-1/3 translate-y-1/3"
+              ></div>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
+              <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Left Content -->
+                <div class="text-white space-y-8">
+                  <div class="space-y-3">
+                    <p class="text-sm font-semibold tracking-wider uppercase text-[#a4c4d8]">Mac Management</p>
+                    <h1 class="text-5xl lg:text-6xl font-bold leading-tight">
+                      Simplify management.
+                      <br />
+                      Amplify security.
+                    </h1>
+                  </div>
+                </div>
+
+                <!-- Right Card -->
+                <div class="relative">
+                  <div class="relative bg-primary rounded-2xl shadow-2xl overflow-hidden">
+                    <div class="relative p-5 h-68 overflow-hidden">
+                      <img
+                        src="../j.webp"
+                        alt="Mac management dashboard"
+                        class="w-full max-h-40 mx-auto object-contain"
+                      />
+                    </div>
+
+                    <div class="p-6 lg:p-5 space-y-6">
+                      <p class="text-lg font-bold tracking-wider uppercase text-white/80">Mac Management</p>
+
+                      <p class="text-white/90 text-sm lg:text-base leading-relaxed">
+                        Managing a growing fleet of Macs in a modern enterprise demands a platform that understands
+                        Apple — not just supports it. Jamf for Mac, in partnership with Sniper Systems & Solutions,
+                        empowers IT teams with automation, security, and seamless management.
+                      </p>
+
+                      <a
+                        href="../contact.html"
+                        rel="noopener noreferrer"
+                        class="bg-[#2d4a6b] hover:bg-[#1e3a5f] text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-block text-center"
+                      >
+                        Contact Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="container mx-auto px-6 py-16">
+            <section class="bg-white max-w-7xl mx-auto p-10 rounded-xl shadow-lg mb-16">
+              <h2 class="text-3xl font-bold text-primary mb-6">Transform the Way You Manage Macs</h2>
+
+              <p class="font-semibold text-gray-800 mb-4">With Jamf for Mac, Key features:</p>
+
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-secondary mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-700">
+                    <strong class="block text-gray-900 mb-1">Converge management and security:</strong>
+                    Reduce complexity and improve efficiency with easy access to all the tools you need to streamline
+                    device management and security operations into one powerful solution.
+                  </span>
+                </li>
+
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-secondary mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-700">
+                    <strong class="block text-gray-900 mb-1">Zero-touch deployment:</strong>
+                    Allow users to get started immediately after unboxing and without IT intervention through automated
+                    device provisioning.
+                  </span>
+                </li>
+
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-secondary mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-700">
+                    <strong class="block text-gray-900 mb-1">Identity integration:</strong>
+                    Simplify user authentication while enforcing consistent password policies with seamless cloud
+                    identity providers (IdPs) integration.
+                  </span>
+                </li>
+
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-secondary mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-700">
+                    <strong class="block text-gray-900 mb-1">Compliance benchmarks:</strong>
+                    Create customized baselines that ensure devices meet organizational security standards and enforce
+                    compliance with built-in benchmarks.
+                  </span>
+                </li>
+
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-secondary mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-700">
+                    <strong class="block text-gray-900 mb-1">Blueprints and Smart Groups:</strong>
+                    Easily create advanced device configurations and deploy them to managed devices dynamically based on
+                    specific targeting criteria.
+                  </span>
+                </li>
+
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-secondary mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-700">
+                    <strong class="block text-gray-900 mb-1">App management:</strong>
+                    Save IT time by automating patch management for third-party applications with App Installers and
+                    enforcing compliance with the latest OS updates.
+                  </span>
+                </li>
+
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-secondary mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-700">
+                    <strong class="block text-gray-900 mb-1">Never trust, always verify:</strong>
+                    Prevent network threats and mitigate risk by verifying endpoint and credential health before access
+                    to protected business resources are approved.
+                  </span>
+                </li>
+              </ul>
+            </section>
+
+            <!-- Built for Apple Section -->
+            <div class="grid md:grid-cols-2 gap-12 items-start mb-16">
+              <div>
+                <h2 class="text-3xl font-bold text-primary mb-6">Built for Apple. Designed for IT.</h2>
+                <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+                  Jamf for Mac is purpose-built for Apple environments — ensuring deep OS compatibility, zero-touch
+                  deployment, and optimized performance for every user.
+                </p>
+              </div>
+              <div class="bg-primary text-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold mb-6">Key Capabilities:</h3>
+                <ul class="space-y-3">
+                  <li class="flex items-center">
+                    <span class="text-white text-2xl mr-3">
+                      <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+
+                    <span>Unified Device Management</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="text-white text-2xl mr-3">
+                      <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>Patch & App Lifecycle Automation</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="text-white text-2xl mr-3">
+                      <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>Threat Detection and Endpoint Security</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="text-white text-2xl mr-3">
+                      <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>Identity Integration with SSO & MFA</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="text-white text-2xl mr-3">
+                      <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>Real-Time Compliance Monitoring</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Why Partner Section -->
+            <div class="bg-gradient-to-br from-gray-100 to-gray-200 p-10 rounded-xl shadow-lg mb-16">
+              <h2 class="text-3xl font-bold text-primary mb-6">Why Partner with Sniper Systems?</h2>
+              <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+                Sniper Systems & Solutions delivers expertise that bridges Apple technology and enterprise IT
+                infrastructure. From deployment to ongoing support, we help organizations:
+              </p>
+              <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow">
+                  <p class="text-gray-800 font-semibold text-lg">Simplify IT operations.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                  <p class="text-gray-800 font-semibold text-lg">Enhance endpoint protection.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                  <p class="text-gray-800 font-semibold text-lg">Enable seamless user experiences.</p>
+                </div>
+              </div>
+              <p class="text-gray-700 mt-6 text-lg font-medium">
+                Together, Jamf and Sniper Systems redefine how businesses manage and secure their Apple devices — with
+                simplicity, scalability, and speed.
+              </p>
+            </div>
+
+            <!-- Industries Section -->
+            <div class="mb-16">
+              <h2 class="text-3xl font-bold text-primary mb-8 text-center">With Jamf for Mac, Benefits :</h2>
+              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <svg viewBox="0 0 200 120" class="w-full h-32" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="20" width="160" height="80" rx="10" fill="#7c3aed" opacity="0.3" />
+                    <rect x="40" y="40" width="40" height="40" rx="5" fill="#a78bfa" />
+                    <rect x="90" y="40" width="40" height="40" rx="5" fill="#c4b5fd" />
+                    <rect x="140" y="40" width="40" height="40" rx="5" fill="#ddd6fe" />
+                    <path d="M60 50 L90 60" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+                    <path d="M110 60 L140 50" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+                  </svg>
+                  <h3 class="mb-3 text-lg font-bold text-gray-900">Enhanced productivity</h3>
+                  <p class="text-gray-600">
+                    Enable users to be productive from day one with devices configured to their needs.
+                  </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <svg viewBox="0 0 200 120" class="w-full h-32" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="50" r="35" fill="#7c3aed" opacity="0.3" />
+                    <circle cx="100" cy="40" r="15" fill="#a78bfa" />
+                    <path
+                      d="M70 70 Q70 50 100 50 Q130 50 130 70 L130 85 Q130 95 120 95 L80 95 Q70 95 70 85 Z"
+                      fill="#c4b5fd"
+                    />
+                    <rect x="95" y="65" width="10" height="15" rx="2" fill="#ddd6fe" />
+                    <circle cx="100" cy="72" r="3" fill="#7c3aed" />
+                  </svg>
+                  <h3 class="mb-3 text-lg font-bold text-gray-900">Improved security posture</h3>
+                  <p class="text-gray-600">
+                    Maintain compliance and protect against threats with integrated security features.
+                  </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <svg viewBox="0 0 200 120" class="w-full h-32" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M100 20 L130 35 L130 70 Q130 90 100 100 Q70 90 70 70 L70 35 Z"
+                      fill="#7c3aed"
+                      opacity="0.3"
+                    />
+                    <path d="M100 30 L120 40 L120 65 Q120 80 100 88 Q80 80 80 65 L80 40 Z" fill="#a78bfa" />
+                    <circle cx="100" cy="60" r="12" fill="#c4b5fd" />
+                    <path
+                      d="M95 60 L98 63 L105 56"
+                      stroke="#7c3aed"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      fill="none"
+                    />
+                  </svg>
+
+                  <h3 class="mb-3 text-lg font-bold text-gray-900">Reduced IT workload</h3>
+
+                  <p class="text-gray-600">
+                    Automate routine tasks, allowing IT teams to focus on strategic initiatives.
+                  </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <svg viewBox="0 0 200 120" class="w-full h-32" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="60" r="40" fill="#7c3aed" opacity="0.3" />
+                    <circle cx="100" cy="60" r="25" fill="#a78bfa" />
+                    <circle cx="100" cy="60" r="12" fill="#c4b5fd" />
+                    <rect x="95" y="20" width="10" height="15" rx="2" fill="#ddd6fe" />
+                    <rect x="95" y="85" width="10" height="15" rx="2" fill="#ddd6fe" />
+                    <rect x="135" y="55" width="15" height="10" rx="2" fill="#ddd6fe" />
+                    <rect x="50" y="55" width="15" height="10" rx="2" fill="#ddd6fe" />
+                    <rect x="125" y="30" width="12" height="10" rx="2" fill="#ddd6fe" transform="rotate(45 131 35)" />
+                    <rect x="63" y="30" width="12" height="10" rx="2" fill="#ddd6fe" transform="rotate(-45 69 35)" />
+                    <rect x="125" y="80" width="12" height="10" rx="2" fill="#ddd6fe" transform="rotate(-45 131 85)" />
+                    <rect x="63" y="80" width="12" height="10" rx="2" fill="#ddd6fe" transform="rotate(45 69 85)" />
+                  </svg>
+                  <h3 class="mb-3 text-lg font-bold text-gray-900">Scale as you grow</h3>
+                  <p class="text-gray-600">
+                    Scale management and security practices easily as your needs and Mac fleet grows.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Section -->
+          </div>
+        </div>
+      </main>
+
+      <div
+        class="relative overflow-hidden bg-gradient-to-br from-[#1e3a5f] via-[#2d4a6b] to-[#1e3a5f] rounded-10xl p-12 md:p-16 lg:p-20"
+      >
+        <div class="relative z-10 max-w-4xl">
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            Ready to Simplify Apple Management?
+          </h2>
+
+          <div class="mb-10 max-w-2xl">
+            <div class="mb-6">
+              <div class="inline-block border border-sky-300/40 rounded-xl px-6 py-4">
+                <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">
+                  <span class="text-white">Mac</span>
+                  <span class="mx-2 text-sky-300">+</span>
+                  <span class="text-white">Jamf</span>
+                  <span class="mx-2 text-sky-300">=</span>
+                  <span class="text-sky-300">Enterprise Ready</span>
+                </h1>
+              </div>
+            </div>
+
+            <p class="text-lg md:text-xl text-white/90">
+              Experience effortless Jamf for Mac with Jamf — backed by Sniper's expertise.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <!-- Schedule a Consultation (as a link) -->
+            <a
+              href="../contact.html"
+              class="group bg-black hover:bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl"
+            >
+              <span>Schedule a Consultation</span>
+              <div
+                class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </a>
+
+            <!-- Explore Jamf Solutions (keep as button or convert to link) -->
+            <a
+              href="../index.html"
+              class="group bg-black hover:bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl"
+            >
+              <span>Explore Jamf Solutions</span>
+              <div
+                class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll to Top with Scroll Progress -->
+      <div id="scrollTopBtn">
+        <svg width="48" height="48">
+          <circle cx="24" cy="24" r="22" />
+        </svg>
+        <span>↑</span>
+      </div>
+
+      <style>
+        #scrollTopBtn {
+          position: fixed;
+          bottom: 24px;
+          left: 24px;
+          width: 48px;
+          height: 48px;
+          cursor: pointer;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease;
+          z-index: 9999;
+        }
+
+        #scrollTopBtn svg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: rotate(-90deg);
+        }
+
+        #scrollTopBtn circle {
+          fill: none;
+          stroke: #000;
+          stroke-width: 3;
+          stroke-dasharray: 138;
+          stroke-dashoffset: 138;
+          transition: stroke-dashoffset 0.15s linear;
+        }
+
+        #scrollTopBtn span {
+          position: absolute;
+          inset: 3px; /* creates space for ring */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #fff;
+          color: #000;
+          border-radius: 50%;
+          font-size: 18px;
+          font-weight: bold;
+          border: 2px solid #000;
+        }
+
+        #scrollTopBtn.show {
+          opacity: 1;
+          visibility: visible;
+        }
+      </style>
+
+      <script>
+        const btn = document.getElementById('scrollTopBtn');
+        const circle = btn.querySelector('circle');
+        const circumference = 138;
+
+        window.addEventListener('scroll', () => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+          const progress = scrollTop / docHeight;
+          const offset = circumference - progress * circumference;
+
+          circle.style.strokeDashoffset = offset;
+
+          btn.classList.toggle('show', scrollTop > 200);
+        });
+
+        btn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
+
+      <!-- Footer -->
+      <footer class="bg-black text-white">
+        <div class="container mx-auto px-6 py-12">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div class="flex items-center space-x-4">
+                <img
+                  src="../sniper-logo-neww.png"
+                  alt="XYZ Company Logo"
+                  class="w-24 h-24 object-contain rounded-lg p-1"
+                />
+
+                <!-- White divider -->
+                <div class="h-10 w-px bg-white"></div>
+
+                <img
+                  src="../JAMF_BIG.D-1b9ef18d.png"
+                  alt="Second Logo"
+                  class="w-24 h-24 object-contain rounded-lg p-1"
+                />
+              </div>
+
+              <p class="text-gray-300 text-sm mt-2">
+                Your trusted Certified Jamf Partner, delivering expert Apple device management solutions.
+              </p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Quick Links</h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a href="../index.html" class="text-gray-300 hover:text-white hover:underline">Home</a>
+                </li>
+                <li>
+                  <a href="../products.html" class="text-gray-300 hover:text-white hover:underline">Products</a>
+                </li>
+                <li>
+                  <a href="../contact.html" class="text-gray-300 hover:text-white hover:underline">Contact Us</a>
+                </li>
+                <li>
+                  <a
+                    href="https://sniperindia.com/privacy-policy/"
+                    class="text-gray-300 hover:text-white hover:underline"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Solutions</h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a href="mac-management.html" class="text-gray-300 hover:text-white hover:underline">Jamf for Mac</a>
+                </li>
+                <li>
+                  <a href="mobile-device-management.html" class="text-gray-300 hover:text-white hover:underline">
+                    Jamf for Mobile
+                  </a>
+                </li>
+                <li>
+                  <a href="k-12-education.html" class="text-gray-300 hover:text-white hover:underline">Jamf for K-12</a>
+                </li>
+                <li>
+                  <a href="small-business.html" class="text-gray-300 hover:text-white hover:underline">
+                    Small Business
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Contact Us</h4>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li>Locations: Chennai | Bangalore | Hyderabad</li>
+                <li>| Coimbatore | Kochi | Gurugram</li>
+                <li>| Vijayawada</li>
+                <li>Email: enquiry@sniperindia.com</li>
+                <li>Phone: +91 8939301100</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-12 border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+            <p>&copy; 2024 Sniper Systems. All Rights Reserved.</p>
+            <p class="mt-1">
+              Jamf and the Jamf logo are trademarks of Jamf Software, LLC, Certified in the U.S. and other countries.
+              Sniper Systems is a Certified Jamf Partner.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

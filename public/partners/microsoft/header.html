@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Header</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        /* Custom styles for smooth transitions */
+        .dropdown-enter {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .dropdown-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.2s ease-out;
+        }
+
+        .dropdown-leave {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-leave-active {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.2s ease-in;
+        }
+    </style>
+</head>
+
+<body x-data="{ isMobileMenuOpen: false }" class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white shadow-md py-2"
+        id="main-header">
+        <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
+            <!-- Logo Section -->
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <a href="https://sniperindia.com/" class="flex-shrink-0">
+                    <img src="sniper-logo.png" alt="Sniper System Logo" class="h-10 sm:h-12" />
+                </a>
+                <a href="#" class="flex-shrink-0">
+                    <img src="aa.png" alt="Apple Authorized Reseller" class="h-16 sm:h-20" />
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html"
+                    class="text-gray-800 hover:text-red-600 py-2 transition-colors duration-200">Home</a>
+
+                <!-- Products Dropdown -->
+                <div class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" @click.away="open = false"
+                        class="text-gray-800 hover:text-red-600 py-2 flex items-center transition-colors duration-200">
+                        Products
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="ml-1 transition-transform duration-300" :class="{'rotate-180': open}">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div x-show="open" x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        class="absolute top-full left-0 w-64 bg-white shadow-lg rounded-md py-2 z-50 border">
+
+                        <!-- iPhone Section -->
+                        <div class="px-4 py-2">
+                            <h3 class="text-sm font-semibold text-gray-900 mb-2">Products</h3>
+                            <a href="M365.html"
+                                class="block px-2 py-1 text-sm text-gray-600 hover:text-red-600 hover:bg-gray-50 rounded">iPhone
+                                Microsoft 365 Solutions</a>
+                            <a href="Copilot.html"
+                                class="block px-2 py-1 text-sm text-gray-600 hover:text-red-600 hover:bg-gray-50 rounded">iPhone
+                               Microsoft 365 Copilot & Copilot Studio</a>
+                            <a href="Azure.html"
+                                class="block px-2 py-1 text-sm text-gray-600 hover:text-red-600 hover:bg-gray-50 rounded">iPhone
+                                Azure Cloud Services</a>
+                                 <a href="D365.html"
+                                class="block px-2 py-1 text-sm text-gray-600 hover:text-red-600 hover:bg-gray-50 rounded">iPhone
+                              Dynamics 365 CRM & ERP</a>
+                        </div>
+
+                        <hr class="my-2">
+
+
+                    </div>
+                </div>
+
+                <!-- Services Dropdown -->
+
+
+
+                <a href="https://sniperindia.com/contact/"
+                    class="text-gray-800 hover:text-red-600 transition-colors duration-200">Contact Us</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button @click="isMobileMenuOpen = !isMobileMenuOpen"
+                class="md:hidden text-gray-800 hover:text-red-600 p-2 transition-colors duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    x-show="!isMobileMenuOpen">
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    x-show="isMobileMenuOpen" style="display: none;">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div x-show="isMobileMenuOpen" class="md:hidden fixed inset-0 z-50" style="display: none;">
+            <!-- Overlay -->
+            <div @click="isMobileMenuOpen = false" x-show="isMobileMenuOpen"
+                x-transition:enter="transition-opacity ease-linear duration-300" x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100" x-transition:leave="transition-opacity ease-linear duration-300"
+                x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                class="fixed inset-0 bg-black bg-opacity-50">
+            </div>
+
+            <!-- Menu Content -->
+            <div x-show="isMobileMenuOpen" x-transition:enter="transition ease-in-out duration-300 transform"
+                x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition ease-in-out duration-300 transform"
+                x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
+                class="relative w-4/5 max-w-sm h-full bg-white shadow-xl overflow-y-auto">
+
+                <!-- Mobile Menu Header -->
+                <div class="flex justify-between items-center p-6 border-b">
+                    <span class="text-xl font-bold text-gray-900">Menu</span>
+                    <button @click="isMobileMenuOpen = false" class="p-2 text-gray-600 hover:text-red-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Navigation -->
+                <nav class="p-6">
+                    <div class="space-y-4">
+                        <a href="index.html"
+                            class="block text-gray-800 hover:text-red-600 py-2 text-lg transition-colors duration-200">Home</a>
+
+                        <!-- Products Accordion -->
+                        <div x-data="{ open: false }" class="border-b pb-4">
+                            <button @click="open = !open"
+                                class="w-full flex justify-between items-center text-gray-800 hover:text-red-600 py-2 text-lg transition-colors duration-200">
+                                <span>Products</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300"
+                                    :class="{'rotate-180': open}">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div x-show="open" x-transition class="mt-2 space-y-2">
+                                <!-- iPhone Accordion -->
+                                <div x-data="{ subOpen: false }" class="pl-4">
+                                    <button @click="subOpen = !subOpen"
+                                        class="w-full flex justify-between items-center text-gray-700 hover:text-red-600 py-1 transition-colors duration-200">
+                                        <span>iPhone</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="transition-transform duration-300" :class="{'rotate-180': subOpen}">
+                                            <path d="m6 9 6 6 6-6" />
+                                        </svg>
+                                    </button>
+                                    <div x-show="subOpen" x-transition class="pl-4 space-y-1 mt-1">
+                                        <a href="iPhone-16-Pro/index.html"
+                                            class="block text-sm text-gray-600 hover:text-red-600 py-1 transition-colors duration-200">iPhone
+                                            16 Pro</a>
+                                        <a href="iPhone-16/index.html"
+                                            class="block text-sm text-gray-600 hover:text-red-600 py-1 transition-colors duration-200">iPhone
+                                            16</a>
+                                        <a href="#"
+                                            class="block text-sm text-gray-600 hover:text-red-600 py-1 transition-colors duration-200">iPhone
+                                            15</a>
+                                    </div>
+                                </div>
+
+                                <!-- Other Products -->
+                                <div class="pl-4 space-y-1">
+                                    <a href="#"
+                                        class="block text-gray-600 hover:text-red-600 py-1 transition-colors duration-200">iPad</a>
+                                    <a href="#"
+                                        class="block text-gray-600 hover:text-red-600 py-1 transition-colors duration-200">MacBook</a>
+                                    <a href="#"
+                                        class="block text-gray-600 hover:text-red-600 py-1 transition-colors duration-200">Accessories</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Services Accordion -->
+                        <div x-data="{ open: false }" class="border-b pb-4">
+                            <button @click="open = !open"
+                                class="w-full flex justify-between items-center text-gray-800 hover:text-red-600 py-2 text-lg transition-colors duration-200">
+                                <span>Services</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300"
+                                    :class="{'rotate-180': open}">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div x-show="open" x-transition class="pl-4 space-y-2 mt-2">
+                                <a href="deployment-page.html"
+                                    class="block text-gray-600 hover:text-red-600 py-1 transition-colors duration-200">Deployment
+                                    Services</a>
+                                <a href="#"
+                                    class="block text-gray-600 hover:text-red-600 py-1 transition-colors duration-200">Technical
+                                    Support</a>
+                                <a href="#"
+                                    class="block text-gray-600 hover:text-red-600 py-1 transition-colors duration-200">Consultation</a>
+                                <a href="#"
+                                    class="block text-gray-600 hover:text-red-600 py-1 transition-colors duration-200">Maintenance</a>
+                            </div>
+                        </div>
+
+                        <a href="apple-smartEPP.html"
+                            class="block text-gray-800 hover:text-red-600 py-2 text-lg transition-colors duration-200">Smart
+                            EPP</a>
+                        <a href="https://sniperindia.com/contact/"
+                            class="block text-gray-800 hover:text-red-600 py-2 text-lg transition-colors duration-200">Contact
+                            Us</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+
+</body>
+
+</html>

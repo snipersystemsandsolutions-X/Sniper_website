@@ -1,0 +1,2114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sniper Systems & Solutions Pvt Ltd – Autodesk Solutions</title>
+
+    <!-- ========== Favicon Icon ========== -->
+    <link
+      rel="shortcut icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/05/sniper-logo-black-4-scaled.png"
+      type="image/x-icon"
+    />
+
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+    />
+    <meta
+      name="msapplication-TileImage"
+      content="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: {
+                900: "#0a0f1a",
+                800: "#111827",
+                700: "#1a2332",
+                600: "#243044",
+              },
+              accent: {
+                cyan: "#00d4ff",
+                teal: "#14b8a6",
+                gold: "#f59e0b",
+              },
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+              body: ["Plus Jakarta Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --bg: #0a0f1a;
+        --fg: #f8fafc;
+        --muted: #94a3b8;
+        --accent: #00d4ff;
+        --accent-gold: #f59e0b;
+        --card: #111827;
+        --border: #1e293b;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        overflow-x: hidden;
+      }
+
+      .font-display {
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      /* Hero Background */
+      .hero-bg {
+        background: linear-gradient(
+          135deg,
+          #0a0f1a 0%,
+          #0f172a 50%,
+          #1e3a5f 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            ellipse 80% 50% at 20% 40%,
+            rgba(0, 212, 255, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse 60% 40% at 80% 60%,
+            rgba(245, 158, 11, 0.06) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+
+      /* Grid Pattern */
+      .grid-pattern {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.065) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.065) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+
+      /* Glow Effects */
+      .glow-cyan {
+        box-shadow: 0 0 40px rgba(0, 212, 255, 0.2);
+      }
+
+      .glow-gold {
+        box-shadow: 0 0 40px rgba(245, 158, 11, 0.2);
+      }
+
+      /* Card Styles */
+      .feature-card {
+        background: linear-gradient(
+          145deg,
+          rgba(17, 24, 39, 0.9) 0%,
+          rgba(26, 35, 50, 0.8) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(0, 212, 255, 0.3);
+        box-shadow:
+          0 25px 50px rgba(0, 0, 0, 0.4),
+          0 0 30px rgba(0, 212, 255, 0.1);
+      }
+
+      /* Badge Styles */
+      .badge-card {
+        background: linear-gradient(
+          145deg,
+          rgba(17, 24, 39, 0.9) 0%,
+          rgba(17, 24, 39, 0.9) 100%
+        );
+        border: 1px solid rgba(0, 212, 255, 0.3);
+      }
+
+      /* Button Styles */
+      .btn-primary {
+        background: linear-gradient(135deg, #00d4ff 0%, #0891b2 100%);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 2px solid rgba(0, 212, 255, 0.5);
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(0, 212, 255, 0.1);
+        border-color: #00d4ff;
+        transform: translateY(-2px);
+      }
+
+      /* Product Tags */
+      .product-tag {
+        background: rgba(0, 212, 255, 0.08);
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .product-tag:hover {
+        background: rgba(0, 212, 255, 0.15);
+        border-color: rgba(0, 212, 255, 0.4);
+        transform: scale(1.05);
+      }
+
+      /* Service Card */
+      .service-card {
+        background: rgba(17, 24, 39, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover {
+        background: rgba(26, 35, 50, 0.8);
+        border-color: rgba(0, 212, 255, 0.2);
+      }
+
+      /* Reveal Animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+      .reveal-delay-5 {
+        transition-delay: 0.5s;
+      }
+      .reveal-delay-6 {
+        transition-delay: 0.6s;
+      }
+
+      /* Floating Animation */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .float-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      /* Pulse Animation */
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+
+      .pulse-glow {
+        animation: pulse-glow 4s ease-in-out infinite;
+      }
+
+      /* Reduced Motion */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent);
+      }
+
+      /* Industry Section Alternating */
+      .industry-section:nth-child(even) {
+        background: rgba(17, 24, 39, 0.3);
+      }
+
+      .industry-section:nth-child(odd) {
+        background: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-navy-900/80 backdrop-blur-xl border-b border-white/5"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 md:h-20">
+           <div class="flex items-center gap-3">
+            <img
+              src="sniper-logo-neww.png"
+              alt="Logo 1"
+              class="h-10 w-auto"
+            />
+
+            <!-- Separator -->
+            <div class="h-8 w-px bg-gray-500"></div>
+
+            <img src="autodesk-logo-white-removebg-preview.png" alt="Logo 2" class="h-8 w-auto" />
+          </div>
+
+          <div class="hidden md:flex items-center gap-8">
+            <a
+              href="#about"
+              class="text-sm text-slate-300 hover:text-accent-cyan transition-colors"
+              >About</a
+            >
+            <a
+              href="#solutions"
+              class="text-sm text-slate-300 hover:text-accent-cyan transition-colors"
+              >Solutions</a
+            >
+            <a
+              href="#services"
+              class="text-sm text-slate-300 hover:text-accent-cyan transition-colors"
+              >Services</a
+            >
+          <a
+              href="https://sniperindia.com/contact/"
+              class="text-sm text-slate-300 hover:text-accent-cyan transition-colors"
+              >Contact</a
+            >
+          </div>
+
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden p-2 text-slate-300 hover:text-white"
+            aria-label="Toggle menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-navy-800/95 backdrop-blur-xl border-t border-white/5"
+      >
+        <div class="px-4 py-4 space-y-3">
+          <a
+            href="#about"
+            class="block py-2 text-slate-300 hover:text-accent-cyan"
+            >About</a
+          >
+          <a
+            href="#solutions"
+            class="block py-2 text-slate-300 hover:text-accent-cyan"
+            >Solutions</a
+          >
+          <a
+            href="#services"
+            class="block py-2 text-slate-300 hover:text-accent-cyan"
+            >Services</a
+          >
+
+
+<a
+            href="https://sniperindia.com/contact/"
+            class="block py-2 text-slate-300 hover:text-accent-cyan"
+            >Contact Us</a
+          >
+
+
+
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg grid-pattern min-h-screen flex items-center -mt-24">
+
+
+
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+    <!-- LEFT CONTENT -->
+    <div class="max-w-4xl">
+
+      <div
+        class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-gold/10 border border-accent-gold/30 mb-8"
+      >
+        <span class="text-sm font-medium text-accent-gold">
+          Certified Autodesk Gold Partner
+        </span>
+      </div>
+
+      <h1
+        class="reveal reveal-delay-1 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+      >
+        <span class="text-white">Innovative</span>
+        <span
+          class="bg-gradient-to-r from-accent-cyan to-accent-cyan bg-clip-text text-transparent"
+        >
+          Autodesk Solutions
+        </span>
+        <span class="text-white">
+          for Architects, Engineers, and Designers
+        </span>
+      </h1>
+
+      <p
+        class="reveal reveal-delay-2 text-lg md:text-xl text-slate-300 mb-4 font-medium"
+      >
+        More Than Software – Expertise with Sniper, Your Certified Autodesk Gold Partner
+      </p>
+
+      <p
+        class="reveal reveal-delay-3 text-base md:text-lg text-slate-400 max-w-3xl mb-10"
+      >
+        Sniper Systems & Solutions Pvt Ltd is a certified Autodesk Authorized Reseller
+        in India, delivering advanced design, engineering, and 3D modeling solutions
+        that transform workflows across industries.
+      </p>
+
+      <div
+        class="reveal reveal-delay-4 flex flex-col sm:flex-row items-start gap-4"
+      >
+        <a
+          href="#solutions"
+          class="btn-primary px-8 py-4 rounded-xl font-semibold text-navy-900 w-full sm:w-auto"
+        >
+          Explore Autodesk Solutions
+        </a>
+        <a
+          href="#contact"
+          class="btn-secondary px-8 py-4 rounded-xl font-semibold text-accent-cyan w-full sm:w-auto"
+        >
+          Contact Our Experts
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+
+<div class="reveal reveal-delay-2 relative">
+  <div
+    class="aspect-[16/10] rounded-2xl border border-white/5 overflow-hidden"
+  >
+    <img
+      src="alias-key-features-thumb-1920x1044-v2.jpg"
+      alt="Autodesk Solutions"
+      class="w-full h-full object-cover scale-110"
+    />
+  </div>
+</div>
+
+
+
+
+  </div>
+
+</div>
+
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+  <div
+    class="reveal reveal-delay-5 grid grid-cols-3 gap-8 text-center bg-navy-900/60 backdrop-blur-md px-8 py-6 rounded-2xl border border-white/10"
+  >
+
+    <div class="flex flex-col items-center">
+      <div class="font-display text-3xl md:text-4xl font-bold text-accent-cyn mb-1">
+        15+
+      </div>
+      <div class="text-sm text-slate-400">Years Experience</div>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <div class="font-display text-3xl md:text-4xl font-bold text-accent-cyn mb-1">
+        500+
+      </div>
+      <div class="text-sm text-slate-400">Clients Served</div>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <div class="font-display text-3xl md:text-4xl font-bold text-accent-cyn mb-1">
+        Gold
+      </div>
+      <div class="text-sm text-slate-400">Partner Status</div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+    </section>
+
+    <!-- About Section -->
+    <section
+      id="about"
+      class="py-20 md:py-28 bg-navy-900 relative overflow-hidden"
+    >
+      <div
+        class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent-cyan/5 to-transparent pointer-events-none"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div>
+            <span
+              class="reveal text-sm font-semibold text-accent-cyan uppercase tracking-wider"
+              >About Us</span
+            >
+            <h2
+              class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6"
+            >
+              Overview
+            </h2>
+
+            <div
+              class="reveal reveal-delay-2 space-y-5 text-slate-300 leading-relaxed"
+            >
+              <p>
+                Sniper Systems & Solutions Pvt Ltd comes with a world of
+                experience and industrial acumen in providing Cloud Services and
+                IT Infrastructure focusing on Media & Entertainment, AEC, IT,
+                ITES, Manufacturing, Industrial Design and Education.
+              </p>
+              <p>
+                We work closely with customers to establish complete IT
+                solutions from bare-bone infrastructure to fully integrated
+                digital ecosystems. Our proficient sales and technical team
+                critically analyzes and positions personalized solutions that
+                are straightforward to configure and effortless to maintain.
+              </p>
+            </div>
+
+
+          </div>
+
+         <div class="reveal reveal-delay-2 relative">
+  <div
+    class="aspect-square rounded-2xl border border-white/5 overflow-hidden relative"
+  >
+    <img
+      src="6311.jpg"
+      alt="Visual representation"
+      class="w-full h-full object-cover"
+    />
+  </div>
+</div>
+
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Sniper -->
+    <section class="py-20 md:py-28 bg-navy-800/50 relative">
+      <div class="absolute inset-0 grid-pattern opacity-50"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+
+
+
+          <span
+              class="reveal text-sm font-semibold text-accent-cyan uppercase tracking-wider"
+             >Why Choose Us</span
+            >
+
+
+          <h2
+            class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4"
+          >
+            What Makes Sniper Your Trusted Autodesk Partner?
+          </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <!-- Card 1 -->
+          <div class="reveal feature-card rounded-2xl p-6 lg:p-8">
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-cyan/20 to-accent-cyan/5 flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-accent-cyan"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold mb-3">
+              Genuine Software as an Authorized Reseller
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Access authentic Autodesk software with complete licensing
+              compliance and official support channels.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="reveal reveal-delay-1 feature-card rounded-2xl p-6 lg:p-8"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-cyan/20 to-accent-cyan/5 flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-accent-cyan"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold mb-3">
+              Expert Consultation & Industry Knowledge
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Leverage our deep industry expertise to choose the right solutions
+              for your specific workflow requirements.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="reveal reveal-delay-2 feature-card rounded-2xl p-6 lg:p-8"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-cyan/20 to-accent-cyan/5 flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-accent-cyan"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold mb-3">
+              Hassle-Free Implementation
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Seamless deployment and integration with your existing systems,
+              minimizing downtime and disruption.
+            </p>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="reveal reveal-delay-3 feature-card rounded-2xl p-6 lg:p-8"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-cyan/20 to-accent-cyan/5 flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-accent-cyan"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold mb-3">
+              Training & Dedicated Support
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Comprehensive training programs and ongoing technical support to
+              maximize your software investment.
+            </p>
+          </div>
+
+          <!-- Card 5 -->
+          <div
+            class="reveal reveal-delay-4 feature-card rounded-2xl p-6 lg:p-8"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-cyan/20 to-accent-cyan/5 flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-accent-cyan"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold mb-3">
+              Flexible Licensing Models
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Choose from subscription, perpetual, or enterprise licensing
+              options tailored to your budget and needs.
+            </p>
+          </div>
+
+          <!-- Card 6 -->
+          <div
+            class="reveal reveal-delay-5 feature-card rounded-2xl p-6 lg:p-8"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-cyan/20 to-accent-cyan/5 flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-accent-cyan"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold mb-3">
+              Industry-Specific Tailored Solutions
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Customized software configurations designed for AEC,
+              manufacturing, media, and education sectors.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Autodesk Affiliations -->
+    <section class="py-20 md:py-28 bg-navy-900 relative overflow-hidden">
+
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+
+
+           <span
+              class="reveal text-sm font-semibold text-accent-cyan uppercase tracking-wider"
+           >Credentials</span
+            >
+
+
+          <h2
+            class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4"
+          >
+            Our Autodesk Affiliations
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+          <!-- Gold Tier -->
+          <div class="reveal badge-card rounded-2xl p-8 text-center">
+<div
+  class="w-40 h-40 mx-auto rounded-full bg-white border-2 border-slate-200 flex items-center justify-center mb-6 shadow-md overflow-hidden"
+>
+  <img
+    src="Gold.svg"
+    alt="Icon"
+    class="w-28 h-28 object-contain"
+  />
+</div>
+
+
+            <h3 class="font-display text-2xl font-bold text-accent-cyan mb-4">
+              Gold Tier
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Gold tier Solution Providers meet advanced standards for
+              specializations, sales, and technical expertise.
+            </p>
+          </div>
+
+          <!-- Government Expertise -->
+          <div
+            class="reveal reveal-delay-1 badge-card rounded-2xl p-8 text-center"
+          >
+            <div
+  class="w-40 h-40 mx-auto rounded-full bg-white border-2 border-slate-200 flex items-center justify-center mb-6 shadow-md overflow-hidden"
+>
+  <img
+    src="Solution Provider-Government Expertise (1).svg"
+    alt="Icon"
+    class="w-28 h-28 object-contain"
+  />
+</div>
+            <h3 class="font-display text-2xl font-bold text-accent-cyan mb-4">
+              Government Expertise
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Certified staff with proven government project success and
+              compliance expertise.
+            </p>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Autodesk Affiliations -->
+    <section class="py-20 md:py-28 bg-navy-900 relative overflow-hidden">
+
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+
+
+
+             <span
+              class="reveal text-sm font-semibold text-accent-cyan uppercase tracking-wider"
+          >Specializations</span
+            >
+
+
+          <h2
+            class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4"
+          >
+            Professional Domain Excellence
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+          <!-- Gold Tier -->
+          <div class="reveal badge-card rounded-2xl p-8 text-center">
+           <div
+  class="w-40 h-40 mx-auto rounded-full bg-white border-2 border-slate-100 flex items-center justify-center mb-6 shadow-md overflow-hidden"
+>
+  <img
+    src="Building Architecture-Specialized.svg"
+    alt="Icon"
+    class="w-28 h-28 object-contain"
+  />
+</div>
+            <h3 class="font-display text-2xl font-bold text-accent-cyan mb-4">
+              Building Architecture
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Certified experts delivering optimized building design through enhanced collaboration, efficient data handover, reduced design cycles, and increased project capacity.
+            </p>
+          </div>
+
+          <!-- Government Expertise -->
+          <div
+            class="reveal reveal-delay-1 badge-card rounded-2xl p-8 text-center"
+          >
+          <div
+  class="w-40 h-40 mx-auto rounded-full bg-white border-2 border-slate-200 flex items-center justify-center mb-6 shadow-md overflow-hidden"
+>
+  <img
+    src="Design Manufacturing Cloud-Specialized.svg"
+    alt="Icon"
+    class="w-28 h-28 object-contain"
+  />
+</div>
+            <h3 class="font-display text-2xl font-bold text-accent-cyan mb-4">
+              Design & Manufacturing Cloud
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+             Specialists enabling advanced design, machining, and additive manufacturing using cloud-based CAD/CAM/CAE to reduce material waste, cost, and production time.
+            </p>
+          </div>
+
+          <!-- Specializations -->
+          <div
+            class="reveal reveal-delay-2 badge-card rounded-2xl p-8 text-center"
+          >
+           <div
+  class="w-40 h-40 mx-auto rounded-full bg-white border-2 border-slate-200 flex items-center justify-center mb-6 shadow-md overflow-hidden"
+>
+  <img
+    src="Product Design Manufacturing-Specialized.svg"
+    alt="Icon"
+    class="w-28 h-28 object-contain"
+  />
+</div>
+            <h3 class="font-display text-2xl font-bold text-accent-cyan mb-4">
+              Product Design & Manufacturing
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Proven capability in simulation-driven design, stress analysis, and FEA to improve product performance, efficiency, and innovation outcomes.
+            </p>
+          </div>
+
+
+
+           <!-- Specializations -->
+          <div
+            class="reveal reveal-delay-2 badge-card rounded-2xl p-8 text-center"
+          >
+           <div
+  class="w-40 h-40 mx-auto rounded-full bg-white border-2 border-slate-200 flex items-center justify-center mb-6 shadow-md overflow-hidden"
+>
+  <img
+    src="Media Entertainment Industry-Specialized.svg"
+    alt="Icon"
+    class="w-28 h-28 object-contain"
+  />
+</div>
+            <h3 class="font-display text-2xl font-bold text-accent-cyan mb-4">
+             Media & Entertainment Industry
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Experienced professionals delivering high-quality 3D modeling, animation, visual effects, and rendering using Autodesk solutions.
+            </p>
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- Specialized Industry Focus -->
+    <section class="py-20 md:py-28 bg-navy-800/30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <span
+            class="reveal text-sm font-semibold text-accent-cyan uppercase tracking-wider"
+            >Industries</span
+          >
+          <h2
+            class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4"
+          >
+            Specialized Industry Focus
+          </h2>
+        </div>
+
+        <!-- AEC -->
+        <div
+          class="reveal industry-section rounded-2xl p-8 lg:p-12 mb-6 border border-white/5"
+        >
+          <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-cyan/10 border border-accent-cyan/20 mb-4"
+              >
+                <svg
+                  class="w-4 h-4 text-accent-cyan"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  />
+                </svg>
+                <span class="text-xs font-medium text-accent-cyan">AEC</span>
+              </div>
+              <h3 class="font-display text-2xl lg:text-3xl font-bold mb-4">
+                Architecture, Engineering & Construction
+              </h3>
+              <p class="text-slate-400 leading-relaxed mb-4">
+                Building Architecture specialization with focus on
+                collaboration, data handover, and reduced design time.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-400">
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-accent-teal flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  BIM Collaboration Workflows
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-accent-teal flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Seamless Data Handover
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-accent-teal flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Accelerated Design Cycles
+                </li>
+              </ul>
+            </div>
+
+
+           <div
+  class="relative h-64 lg:h-80 rounded-xl bg-gradient-to-br from-navy-700/50 to-navy-800/50 border border-white/5 flex items-center justify-center overflow-hidden"
+>
+  <img
+    src="architecture-engineering-construction-mobile-banner-560x315-pc.avif"
+    alt="Description"
+    class="w-full h-full object-cover"
+  />
+</div>
+
+
+
+          </div>
+        </div>
+
+        <!-- Manufacturing -->
+        <div
+          class="reveal reveal-delay-1 industry-section rounded-2xl p-8 lg:p-12 mb-6 border border-white/5"
+        >
+          <div class="grid lg:grid-cols-2 gap-8 items-center">
+
+            <div
+  class="order-2 lg:order-1 relative h-64 lg:h-80 rounded-xl overflow-hidden border border-white/5"
+>
+  <!-- Image -->
+  <img
+    src="cad-for-pd-ebook-thumbnail-1172x660.avif"
+    alt="Section image"
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+
+
+
+</div>
+
+
+            <div class="order-1 lg:order-2">
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-gold/10 border border-accent-gold/20 mb-4"
+              >
+                <svg
+                  class="w-4 h-4 text-accent-gold"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                  />
+                </svg>
+
+                 <span class="text-xs font-medium text-accent-cyan">Manufacturing</span>
+              </div>
+              <h3 class="font-display text-2xl lg:text-3xl font-bold mb-4">
+                Product Design & Manufacturing
+              </h3>
+              <p class="text-slate-400 leading-relaxed mb-4">
+                Design & Manufacturing Cloud with Fusion 360 optimization,
+                additive manufacturing, and cost reduction strategies.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-400">
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-accent-gold flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Fusion 360 Integration
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-accent-gold flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Additive Manufacturing Ready
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-accent-gold flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Cost Optimization
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Media & Entertainment -->
+        <div
+          class="reveal reveal-delay-2 industry-section rounded-2xl p-8 lg:p-12 mb-6 border border-white/5"
+        >
+          <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 mb-4"
+              >
+                <svg
+                  class="w-4 h-4 text-rose-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                </svg>
+
+                 <span class="text-xs font-medium text-accent-cyan">M&E</span>
+              </div>
+              <h3 class="font-display text-2xl lg:text-3xl font-bold mb-4">
+                Media & Entertainment
+              </h3>
+              <p class="text-slate-400 leading-relaxed mb-4">
+                Comprehensive 3D modeling, animation, VFX, and rendering
+                solutions for creative professionals.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-400">
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-rose-400 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Advanced 3D Animation
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-rose-400 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  VFX Production Pipeline
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-rose-400 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  High-Performance Rendering
+                </li>
+              </ul>
+            </div>
+                      <div
+  class="relative h-64 lg:h-80 rounded-xl bg-gradient-to-br from-navy-700/50 to-navy-800/50 border border-white/5 flex items-center justify-center overflow-hidden"
+>
+  <img
+    src="media-entertainment-la28-mobile-banner-560x316.avif"
+    alt="Description"
+    class="w-full h-full object-cover"
+  />
+</div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div
+          class="reveal reveal-delay-3 industry-section rounded-2xl p-8 lg:p-12 border border-white/5"
+        >
+          <div class="grid lg:grid-cols-2 gap-8 items-center">
+                       <div
+  class="relative h-64 lg:h-80 rounded-xl bg-gradient-to-br from-navy-700/50 to-navy-800/50 border border-white/5 flex items-center justify-center overflow-hidden"
+>
+  <img
+    src="training-center-thumbs-788x444.webp"
+    alt="Description"
+    class="w-full h-full object-cover"
+  />
+</div>
+            <div class="order-1 lg:order-2">
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-teal/10 border border-accent-teal/20 mb-4"
+              >
+                <svg
+                  class="w-4 h-4 text-accent-teal"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 14l9-5-9-5-9 5 9 5z"
+                  />
+                </svg>
+
+                <span class="text-xs font-medium text-accent-cyan" >Education</span>
+              </div>
+              <h3 class="font-display text-2xl lg:text-3xl font-bold mb-4">
+                Education & Industrial Training
+              </h3>
+              <p class="text-slate-400 leading-relaxed mb-4">
+                Comprehensive upskilling programs and institutional licensing
+                for academic excellence.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-400">
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-accent-teal flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Institutional Licensing
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-accent-teal flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Professional Upskilling
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-accent-teal flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Certification Programs
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Autodesk Solutions Portfolio -->
+    <section id="solutions" class="py-20 md:py-28 bg-navy-900 relative">
+      <div class="absolute inset-0 grid-pattern opacity-30"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+
+           <span
+            class="reveal text-sm font-semibold text-accent-cyan uppercase tracking-wider"
+              >Portfolio</span
+          >
+          <h2
+            class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4"
+          >
+            Autodesk Solutions Portfolio
+          </h2>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- AEC Solutions -->
+          <div class="reveal feature-card rounded-2xl p-6 lg:p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-10 h-10 rounded-lg bg-accent-cyan/20 flex items-center justify-center"
+              >
+                <svg
+                  class="w-5 h-5 text-accent-cyan"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-display text-xl font-bold">AEC Solutions</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >AutoCAD</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >BIM 360</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >BIM Collaborate</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >Dynamo Studio</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >Navisworks</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >Revit</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >ReCap Pro</span
+              >
+            </div>
+          </div>
+
+          <!-- Product Design & Manufacturing -->
+          <div
+            class="reveal reveal-delay-1 feature-card rounded-2xl p-6 lg:p-8"
+          >
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-10 h-10 rounded-lg bg-accent-cyan/20 flex items-center justify-center"
+              >
+                <svg
+                  class="w-5 h-5 text-accent-cyan"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-display text-xl font-bold">
+                Product Design & Manufacturing
+              </h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >AutoCAD</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >Fusion 360</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >Inventor</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >Vault</span
+              >
+            </div>
+          </div>
+
+          <!-- Media & Entertainment -->
+          <div
+            class="reveal reveal-delay-2 feature-card rounded-2xl p-6 lg:p-8"
+          >
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-10 h-10 rounded-lg bg-accent-cyan/20 flex items-center justify-center"
+              >
+                <svg
+                  class="w-5 h-5 text-accent-cyan"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-display text-xl font-bold">
+                Media & Entertainment
+              </h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >3ds Max</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >Maya</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >Arnold</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >Flame</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >Mudbox</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >MotionBuilder</span
+              >
+              <span
+                class="product-tag px-3 py-1.5 rounded-lg text-sm text-slate-300"
+                >Vault</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 md:py-28 bg-navy-800/50 relative">
+      <div class="absolute inset-0 grid-pattern opacity-30"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+
+
+           <span
+            class="reveal text-sm font-semibold text-accent-cyan uppercase tracking-wider"
+               >Services</span
+          >
+
+          <h2
+            class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4"
+          >
+            Comprehensive Autodesk Services
+          </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- BIM -->
+          <div class="reveal service-card rounded-2xl p-6">
+            <div
+              class="w-12 h-12 rounded-xl bg-accent-cyan/20 flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-accent-cyan"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-semibold mb-4">BIM</h3>
+            <ul class="space-y-2 text-sm text-slate-400">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                BIM/CAD Standards
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Collaboration & Data Management
+              </li>
+            </ul>
+          </div>
+
+          <!-- Consulting -->
+          <div class="reveal reveal-delay-1 service-card rounded-2xl p-6">
+            <div
+              class="w-12 h-12 rounded-xl bg-accent-cyan/20 flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-accent-cyan"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-semibold mb-4">
+              Consulting & Professional Services
+            </h3>
+            <ul class="space-y-2 text-sm text-slate-400">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Needs Assessment
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Strategy & Planning
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Implementation
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Workflow Optimization
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Process Automation
+              </li>
+            </ul>
+          </div>
+
+          <!-- Design & Drafting -->
+          <div class="reveal reveal-delay-2 service-card rounded-2xl p-6">
+            <div
+              class="w-12 h-12 rounded-xl bg-accent-cyan/20 flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-accent-cyan"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-semibold mb-4">
+              Design & Drafting
+            </h3>
+            <ul class="space-y-2 text-sm text-slate-400">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                3D Modeling
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Concept Development
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Prototyping
+              </li>
+            </ul>
+          </div>
+
+          <!-- Software Management -->
+          <div class="reveal reveal-delay-3 service-card rounded-2xl p-6">
+            <div
+              class="w-12 h-12 rounded-xl bg-accent-cyan/20 flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-accent-cyan"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-semibold mb-4">
+              Software Management
+            </h3>
+            <ul class="space-y-2 text-sm text-slate-400">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Installation
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Integration
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Maintenance
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Upgrades
+              </li>
+            </ul>
+          </div>
+
+          <!-- Visualization -->
+          <div
+            class="reveal reveal-delay-4 service-card rounded-2xl p-6 sm:col-span-2 lg:col-span-1"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-accent-cyan/20 flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-accent-cyan"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-semibold mb-4">
+              Visualization
+            </h3>
+            <ul class="space-y-2 text-sm text-slate-400">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                Rendering
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                AR (Augmented Reality)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                VR (Virtual Reality)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section
+      id="contact"
+      class="py-20 md:py-28 bg-navy-900 relative overflow-hidden"
+    >
+
+
+      <div
+        class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center"
+      >
+        <h2
+          class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
+        >
+          Ready to Transform Your Autodesk Experience?
+        </h2>
+        <p
+          class="reveal reveal-delay-1 text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto"
+        >
+          Partner with Sniper Systems & Solutions Pvt Ltd to unlock innovation,
+          efficiency, and measurable success.
+        </p>
+        <a
+          href="https://sniperindia.com/contact/"
+          class="reveal reveal-delay-2 btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-xl font-semibold text-navy-900 text-lg"
+        >
+          <span>Contact Us Today</span>
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 border-t border-white/5 pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          <!-- Company Info -->
+          <div class="lg:col-span-2">
+            <div class="flex items-center gap-3">
+            <img
+              src="sniper-logo-neww.png"
+              alt="Logo 1"
+              class="h-10 w-auto"
+            />
+
+            <!-- Separator -->
+            <div class="h-8 w-px bg-gray-500"></div>
+
+            <img src="autodesk-logo-white-removebg-preview.png" alt="Logo 2" class="h-8 w-auto" />
+          </div>
+          <br>
+
+            <p class="text-slate-400 text-sm leading-relaxed max-w-md mb-6">
+              Sniper Systems & Solutions Pvt Ltd is a certified Autodesk
+              Authorized Reseller and Gold Partner in India, delivering advanced
+              design, engineering, and 3D modeling solutions.
+            </p>
+            <div class="flex items-center gap-3">
+              <span
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent-gold/10 border border-accent-gold/20 text-xs text-accent-gold"
+              >
+
+                Autodesk Gold Partner
+              </span>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-display font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-3 text-sm text-slate-400">
+              <li>
+                <a
+                  href="#about"
+                  class="hover:text-accent-cyan transition-colors"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#solutions"
+                  class="hover:text-accent-cyan transition-colors"
+                  >Solutions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="hover:text-accent-cyan transition-colors"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://sniperindia.com/contact/"
+                  class="hover:text-accent-cyan transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h4 class="font-display font-semibold mb-4">Contact</h4>
+            <ul class="space-y-3 text-sm text-slate-400">
+              <li class="flex items-start gap-2">
+                <svg
+                  class="w-4 h-4 text-accent-cyan mt-0.5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <span
+                  >Chennai | Bangalore | Hyderabad | Coimbatore | Kochi |
+                  Gurugram | Vijayawada</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <svg
+                  class="w-4 h-4 text-accent-cyan mt-0.5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                <span>enquiry@sniperindia.com</span>
+              </li>
+
+              <li class="flex items-start gap-2">
+  <svg
+    class="w-4 h-4 text-accent-cyan mt-0.5 flex-shrink-0"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-2.2 1.1a11.04 11.04 0 005.52 5.52l1.1-2.2a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"
+    />
+  </svg>
+  <span>+91 8939301100</span>
+</li>
+
+
+
+            </ul>
+
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div
+          class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <p class="text-sm text-slate-500">
+            &copy; 2026 Sniper Systems & Solutions Pvt Ltd. All rights reserved.
+          </p>
+          <div class="flex items-center gap-6 text-sm text-slate-500">
+            <a href="#" class="hover:text-slate-300 transition-colors"
+              >Privacy Policy</a
+            >
+            <a href="#" class="hover:text-slate-300 transition-colors"
+              >Terms of Service</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize variables first
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      let menuOpen = false;
+
+      // Mobile Menu Toggle
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener("click", function () {
+          menuOpen = !menuOpen;
+          if (menuOpen) {
+            mobileMenu.classList.remove("hidden");
+          } else {
+            mobileMenu.classList.add("hidden");
+          }
+        });
+      }
+
+      // Close mobile menu when clicking links
+      const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll("a") : [];
+      mobileLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+          menuOpen = false;
+          mobileMenu.classList.add("hidden");
+        });
+      });
+
+      // Scroll Reveal Animation
+      function initScrollReveal() {
+        const revealElements = document.querySelectorAll(".reveal");
+
+        if (!revealElements.length) return;
+
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        }, observerOptions);
+
+        revealElements.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      // Smooth scroll for anchor links
+      function initSmoothScroll() {
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+        anchorLinks.forEach(function (link) {
+          link.addEventListener("click", function (e) {
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              e.preventDefault();
+              const headerOffset = 80;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition =
+                elementPosition + window.pageYOffset - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      }
+
+      // Navbar background on scroll
+      function initNavbarScroll() {
+        const navbar = document.querySelector("nav");
+        if (!navbar) return;
+
+        function updateNavbar() {
+          if (window.scrollY > 50) {
+            navbar.style.backgroundColor = "rgba(10, 15, 26, 0.95)";
+          } else {
+            navbar.style.backgroundColor = "rgba(10, 15, 26, 0.8)";
+          }
+        }
+
+        window.addEventListener("scroll", updateNavbar);
+        updateNavbar();
+      }
+
+      // Product tag hover effect
+      function initProductTags() {
+        const productTags = document.querySelectorAll(".product-tag");
+
+        productTags.forEach(function (tag) {
+          tag.addEventListener("mouseenter", function () {
+            this.style.transform = "scale(1.05)";
+          });
+
+          tag.addEventListener("mouseleave", function () {
+            this.style.transform = "scale(1)";
+          });
+        });
+      }
+
+      // Initialize all functions when DOM is ready
+      document.addEventListener("DOMContentLoaded", function () {
+        initScrollReveal();
+        initSmoothScroll();
+        initNavbarScroll();
+        initProductTags();
+      });
+
+      // Handle reduced motion preference
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const allAnimated = document.querySelectorAll(
+          ".reveal, .float-animation, .pulse-glow",
+        );
+        allAnimated.forEach(function (el) {
+          el.style.animation = "none";
+          el.style.transition = "none";
+          el.classList.add("active");
+        });
+      }
+    </script>
+  </body>
+</html>

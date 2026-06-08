@@ -1,0 +1,964 @@
+<!-- //Jamf for K-12  .html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jamf for K-12 | Simplify Apple Device Management for Schools | Sniper Systems</title>
+    <meta
+      name="description"
+      content="Enable better learning experiences with Jamf for K-12 — the complete Apple management and security solution. Deploy, secure, and engage students with Sniper Systems & Solutions."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#778EB1',
+              secondary: '#0066CC'
+            }
+          }
+        }
+      };
+    </script>
+    <!-- ========== Favicon Icon ========== -->
+    <link
+      rel="shortcut icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/05/sniper-logo-black-4-scaled.png"
+      type="image/x-icon"
+    />
+
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <style>
+      img:is([sizes='auto' i], [sizes^='auto,' i]) {
+        contain-intrinsic-size: 3000px 1500px;
+      }
+    </style>
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: light)"
+    />
+    <link rel="apple-touch-icon" href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+    <meta name="msapplication-TileImage" content="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+    <!-- ========== Favicon Icon ========== -->
+    <style>
+      .nav-link-active {
+        color: #0066cc !important;
+
+        text-underline-offset: 4px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-white font-sans text-gray-800">
+    <div class="flex flex-col min-h-screen">
+      <!-- Header -->
+
+      <!-- Header -->
+      <header class="sticky top-0 z-50 shadow-md bg-white">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+          <!-- Logo Section -->
+          <a href="https://sniperindia.com/" class="flex items-center space-x-3">
+            <img
+              src="https://sniperindia.com/wp-content/uploads/2025/05/sniper-logo-black-4-scaled.png"
+              alt="Sniper Logo"
+              class="h-12 w-auto"
+            />
+
+            <!-- Separator -->
+            <div class="h-10 w-px bg-gray-900"></div>
+
+            <img src="https://i.ibb.co/YT8CZdyk/output-auto.png" alt="Jamf Partner Logo" class="h-8 w-auto mt-3" />
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center space-x-4 text-sm font-medium">
+            <a href="../index.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              HOME
+            </a>
+
+            <!-- Solutions Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center py-2 px-4 text-black hover:text-secondary transition-colors duration-300"
+              >
+                SOLUTIONS
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+
+              <!-- Dropdown -->
+              <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-xl w-60 py-2">
+                <a
+                  href="../solutions/mac-management.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for Mac
+                </a>
+                <a
+                  href="../solutions/mobile-device-management.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for Mobile
+                </a>
+                <a
+                  href="../solutions/k-12-education.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for K-12
+                </a>
+                <a
+                  href="../solutions/small-business.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Small Business
+                </a>
+              </div>
+            </div>
+
+            <a href="../products.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              PRODUCTS
+            </a>
+            <a href="../contact.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              CONTACT US
+            </a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="lg:hidden text-black focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+          <a href="../index.html" class="block py-3 px-6 text-sm text-black hover:bg-gray-100">HOME</a>
+
+          <div class="px-6">
+            <button
+              id="mobile-solutions-button"
+              class="w-full flex justify-between items-center py-3 text-sm text-black hover:bg-gray-100"
+            >
+              SOLUTIONS
+              <svg
+                class="w-4 h-4 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div id="mobile-solutions-dropdown" class="hidden pl-4">
+              <a href="../solutions/mac-management.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Jamf for Mac
+              </a>
+              <a href="../solutions/mobile-device-management.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Jamf for Mobile
+              </a>
+              <a href="../solutions/k-12-education.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Jamf for K-12
+              </a>
+              <a href="../solutions/small-business.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Small Business
+              </a>
+            </div>
+          </div>
+
+          <a href="../products.html" class="block py-3 px-6 text-sm text-black hover:bg-gray-100">PRODUCTS</a>
+
+          <div class="px-6 py-4">
+            <a
+              href="../contact.html"
+              class="block text-center bg-secondary text-white font-bold py-2 rounded-full hover:bg-red-700 transition-colors duration-300"
+            >
+              CONTACT US
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-grow">
+        <div class="bg-gray-50">
+          <!-- Hero Section -->
+
+          <section class="relative bg-gradient-to-br from-[#1e3a5f] via-[#2d4a6b] to-[#1e3a5f] overflow-hidden">
+            <!-- Decorative Background Elements -->
+            <div class="absolute inset-0">
+              <div
+                class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-[#7da5c4] to-transparent opacity-20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/4"
+              ></div>
+              <div
+                class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#8eb3cc] to-transparent opacity-15 rounded-full blur-3xl transform -translate-x-1/3 translate-y-1/3"
+              ></div>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
+              <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Left Content -->
+                <div class="text-white space-y-8">
+                  <div class="space-y-3">
+                    <p class="text-sm font-semibold tracking-wider uppercase text-[#a4c4d8]">Jamf for K-12</p>
+                    <h1 class="text-5xl lg:text-6xl font-bold leading-tight">Empower learning. Safely.</h1>
+                  </div>
+                </div>
+
+                <!-- Right Card -->
+                <div class="relative">
+                  <div class="relative bg-primary rounded-2xl shadow-2xl overflow-hidden">
+                    <div class="relative p-5 h-68 overflow-hidden">
+                      <img
+                        src="../j2.webp"
+                        alt="Mobile management dashboard"
+                        class="w-full max-h-60 mx-auto object-contain"
+                      />
+                    </div>
+
+                    <div class="p-6 lg:p-10 space-y-6">
+                      <p class="text-lg font-bold tracking-wider uppercase text-white/80">Jamf for K-12</p>
+
+                      <p class="text-white/90 text-sm lg:text-base leading-relaxed">
+                        Jamf for K–12 helps schools manage and secure Apple devices at scale while supporting classroom
+                        learning, promoting student equity and driving IT efficiency. Built for education, Jamf
+                        simplifies deployment, boosts teacher confidence and enhances the learning experience for every
+                        student.
+                      </p>
+
+                      <a href="../contact.html">
+                        <button
+                          class="bg-[#2d4a6b] hover:bg-[#1e3a5f] text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                        >
+                          Contact Us
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="container mx-auto px-6 py-16">
+            <!-- Everything Schools Need Section -->
+            <div class="bg-white p-10 rounded-xl shadow-lg mb-16">
+              <h2 class="text-3xl font-bold text-primary mb-8 text-center">
+                Everything Schools Need — Simple, Secure, and Scalable
+              </h2>
+
+              <div class="space-y-8">
+                <!-- 1. Simplified Device Deployment -->
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border-l-4 border-primary">
+                  <div class="flex items-start mb-4">
+                    <span class="text-4xl mr-4"></span>
+                    <h3 class="text-2xl font-bold text-primary">Simplified Device Deployment</h3>
+                  </div>
+                  <ul class="space-y-3 ml-16">
+                    <li class="flex items-start">
+                      <svg
+                        class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-gray-700">
+                        Automate setup with Apple School Manager and zero-touch enrollment.
+                      </span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg
+                        class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-gray-700">
+                        Configure, assign, and secure devices instantly — across grades, campuses, or districts.
+                      </span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg
+                        class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-gray-700">
+                        Save IT time with pre-configured apps, Wi-Fi, and security settings.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- 2. Empower Teachers -->
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border-l-4 border-primary">
+                  <div class="flex items-start mb-4">
+                    <span class="text-4xl mr-4"></span>
+                    <h3 class="text-2xl font-bold text-primary">Empower Teachers in the Classroom</h3>
+                  </div>
+                  <ul class="space-y-3 ml-16">
+                    <li class="flex items-start">
+                      <svg
+                        class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-gray-700">Give teachers control with Jamf's classroom tools.</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg
+                        class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-gray-700">
+                        Restrict distractions (apps, camera, web) and keep lessons focused.
+                      </span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg
+                        class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-gray-700">
+                        Instantly guide, lock, or share lessons through Apple Classroom integration.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- 3. Protect Students -->
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border-l-4 border-primary">
+                  <div class="flex items-start mb-4">
+                    <span class="text-4xl mr-4"></span>
+                    <h3 class="text-2xl font-bold text-primary">Protect Students and Data</h3>
+                  </div>
+                  <ul class="space-y-3 ml-16">
+                    <li class="flex items-start">
+                      <svg
+                        class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-gray-700">
+                        Jamf Protect continuously defends against malware and unsafe websites.
+                      </span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg
+                        class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-gray-700">Web filtering & compliance policies safeguard students online.</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg
+                        class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-gray-700">
+                        Maintain visibility across every iPad and Mac with real-time reporting.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- 4. Unified Dashboard -->
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border-l-4 border-primary">
+                  <div class="flex items-start mb-4">
+                    <span class="text-4xl mr-4"></span>
+                    <h3 class="text-2xl font-bold text-primary">Unified Dashboard for IT</h3>
+                  </div>
+                  <p class="text-gray-700 ml-16">
+                    Manage all devices, users, and permissions from one console. Get compliance alerts, automate patch
+                    updates, and generate security reports effortlessly.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Support for Every Learning Environment -->
+            <div class="bg-gradient-to-br from-primary to-blue-900 text-white p-10 rounded-xl shadow-2xl mb-16">
+              <h2 class="text-3xl font-bold mb-6">Support for Every Learning Environment</h2>
+              <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg">
+                  <h3 class="text-xl font-bold mb-3">Zero-touch deployment:</h3>
+                  <p class="text-gray-100">
+                    Automate device provisioning and configuration with minimal IT involvement.
+                  </p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg">
+                  <h3 class="text-xl font-bold mb-3">Blueprints:</h3>
+                  <p class="text-gray-100">Tailor device setups with role-based settings, apps and restrictions.</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg">
+                  <h3 class="text-xl font-bold mb-3">App Installers:</h3>
+                  <p class="text-gray-100">
+                    Deploy and maintain third-party apps across all student and staff devices.
+                  </p>
+                </div>
+
+                <!-- New Content Cards -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg">
+                  <h3 class="text-xl font-bold mb-3">Return to Service</h3>
+                  <p class="text-gray-100">Reset devices between users quickly, securely and easily.</p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg">
+                  <h3 class="text-xl font-bold mb-3">OS and App Management</h3>
+                  <p class="text-gray-100">Keep devices current with same-day support and streamlined updates.</p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg">
+                  <h3 class="text-xl font-bold mb-3">Classroom Tools</h3>
+                  <p class="text-gray-100">
+                    Enable engagement with Jamf Teacher, Jamf Student, Jamf Parent and Jamf Educator.
+                  </p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg">
+                  <h3 class="text-xl font-bold mb-3">Secure Internet Access</h3>
+                  <p class="text-gray-100">
+                    Use Jamf Safe Internet to block harmful content and phishing threats in real time.
+                  </p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg">
+                  <h3 class="text-xl font-bold mb-3">Threat Prevention</h3>
+                  <p class="text-gray-100">Protect devices, data and users with real-time threat defense.</p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg">
+                  <h3 class="text-xl font-bold mb-3">Identity-Based Access</h3>
+                  <p class="text-gray-100">Simplify secure sign-on with Jamf Connect and cloud identity integration.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-gray-100 to-gray-200 p-10 rounded-xl shadow-lg mb-16">
+              <h2 class="text-3xl font-bold text-primary mb-6">Classroom Tools :</h2>
+              <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+                As a Jamf Education Partner, Sniper Systems & Solutions provides expertise that bridges Jamf classroom
+                management tools and school IT infrastructure. From deployment to ongoing support, we help educators and
+                students.
+              </p>
+              <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow mb-4">
+                  <p class="text-gray-800 font-semibold text-lg">Jamf Teacher:</p>
+                  <p class="text-gray-700 text-base mt-2">
+                    Plan lessons, manage apps, and collaborate with students efficiently using Jamf Teacher.
+                  </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow mb-4">
+                  <p class="text-gray-800 font-semibold text-lg">Jamf Student:</p>
+                  <p class="text-gray-700 text-base mt-2">
+                    Access apps, communicate with teachers, and participate in class activities.
+                  </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow mb-4">
+                  <p class="text-gray-800 font-semibold text-lg">Jamf Parent:</p>
+                  <p class="text-gray-700 text-base mt-2">
+                    Monitor and restrict app and website access and receive safety alerts at home.
+                  </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow mb-4">
+                  <p class="text-gray-800 font-semibold text-lg">Jamf Educator:</p>
+                  <p class="text-gray-700 text-base mt-2">
+                    Learn how to use Jamf Teacher and enhance educational technology skills.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Security Section -->
+            <div class="bg-gradient-to-br from-primary to-blue-900 text-white p-10 rounded-xl shadow-2xl mb-16">
+              <h3 class="text-2xl font-semibold mb-4">Benefits:</h3>
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-white mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <div class="p-6 rounded-2xl shadow mb-2">
+                    <span class="text-white">
+                      <strong class="block text-white mb-1">Support student equity:</strong>
+                      Deliver personalized learning experiences with shared device workflows.
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-white mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <div class="p-6 rounded-lg shadow mb-2">
+                    <span class="text-white">
+                      <strong class="block text-white mb-1">Boost classroom confidence:</strong>
+                      Equip teachers with tools to manage and guide digital learning.
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-white mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <div class="p-6 rounded-lg shadow mb-2">
+                    <span class="text-white">
+                      <strong class="block text-white mb-1">Enhance security and privacy:</strong>
+                      Protect student privacy and devices without sacrificing usability.
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-white mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <div class="p-6 rounded-lg shadow mb-2">
+                    <span class="text-white">
+                      <strong class="block text-white mb-1">Simplify IT operations:</strong>
+                      Manage device lifecycles, reduce downtime, and respond to classroom needs quickly.
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-white mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <div class="p-6 rounded-lg shadow mb-2">
+                    <span class="text-white">
+                      <strong class="block text-white mb-1">Drive better outcomes:</strong>
+                      Maximize ROI and empower educators to focus on teaching.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Integrations Section -->
+            <div class="bg-gray-100 p-10 rounded-xl shadow-lg mb-16">
+              <h2 class="text-3xl font-bold text-primary mb-8 text-center">Jamf for K-12 Key Integrations</h2>
+              <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+                  <span class="block mb-2 flex justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4 text-[#2d4a6b]"
+                      viewBox="0 0 10 10"
+                      fill="currentColor"
+                    >
+                      <rect x="2" y="2" width="6" height="6" transform="rotate(45 5 5)" />
+                    </svg>
+                  </span>
+
+                  <p class="text-sm font-semibold text-gray-700">Apple School Manager</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+                  <span class="block mb-2 flex justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4 text-[#2d4a6b]"
+                      viewBox="0 0 10 10"
+                      fill="currentColor"
+                    >
+                      <rect x="2" y="2" width="6" height="6" transform="rotate(45 5 5)" />
+                    </svg>
+                  </span>
+
+                  <p class="text-sm font-semibold text-gray-700">Google Workspace for Education</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+                  <span class="block mb-2 flex justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4 text-[#2d4a6b]"
+                      viewBox="0 0 10 10"
+                      fill="currentColor"
+                    >
+                      <rect x="2" y="2" width="6" height="6" transform="rotate(45 5 5)" />
+                    </svg>
+                  </span>
+
+                  <p class="text-sm font-semibold text-gray-700">Microsoft Entra ID</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+                  <span class="block mb-2 flex justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4 text-[#2d4a6b]"
+                      viewBox="0 0 10 10"
+                      fill="currentColor"
+                    >
+                      <rect x="2" y="2" width="6" height="6" transform="rotate(45 5 5)" />
+                    </svg>
+                  </span>
+
+                  <p class="text-sm font-semibold text-gray-700">Okta / IBM Security Verify</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+                  <span class="block mb-2 flex justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4 text-[#2d4a6b]"
+                      viewBox="0 0 10 10"
+                      fill="currentColor"
+                    >
+                      <rect x="2" y="2" width="6" height="6" transform="rotate(45 5 5)" />
+                    </svg>
+                  </span>
+
+                  <p class="text-sm font-semibold text-gray-700">PingFederate</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+                  <span class="block mb-2 flex justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4 text-[#2d4a6b]"
+                      viewBox="0 0 10 10"
+                      fill="currentColor"
+                    >
+                      <rect x="2" y="2" width="6" height="6" transform="rotate(45 5 5)" />
+                    </svg>
+                  </span>
+
+                  <p class="text-sm font-semibold text-gray-700">OneLogin</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Why Partner Section -->
+            <div class="bg-white p-10 rounded-xl shadow-lg mb-16">
+              <h2 class="text-3xl font-bold text-primary mb-6">Why Partner with Sniper Systems & Solutions</h2>
+              <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+                Sniper Systems & Solutions provides end-to-end support — from deployment to long-term management. We
+                work closely with schools, universities, and educational institutions to:
+              </p>
+              <div class="grid md:grid-cols-3 gap-6 mb-6">
+                <div class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-secondary mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700">Design customized Jamf for K-12 implementations.</span>
+                </div>
+                <div class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-secondary mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700">Ensure data security and student privacy.</span>
+                </div>
+                <div class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-secondary mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700">Deliver ongoing training and local support.</span>
+                </div>
+              </div>
+              <div class="bg-gradient-to-r from-primary to-primary text-white p-6 rounded-lg text-center">
+                <p class="text-lg font-semibold">
+                  With 15+ years of Apple expertise, we help education institutions embrace digital learning safely and
+                  effectively.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <div
+        class="relative overflow-hidden bg-gradient-to-br from-[#1e3a5f] via-[#2d4a6b] to-[#1e3a5f] rounded-10xl p-12 md:p-16 lg:p-20"
+      >
+        <!-- Decorative circles -->
+
+        <div class="relative z-10 max-w-4xl">
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">The Future of Learning Starts Here</h2>
+
+          <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl">
+            With Jamf for K-12 and Sniper Systems & Solutions, schools can focus on what truly matters — teaching,
+            learning, and inspiring the next generation.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <!-- Schedule a Consultation (as a link) -->
+            <a
+              href="../contact.html"
+              class="group bg-black hover:bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl"
+            >
+              <span>Schedule a Consultation</span>
+              <div
+                class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </a>
+
+            <!-- Explore Jamf Solutions (keep as button or convert to link) -->
+            <a
+              href="../index.html"
+              class="group bg-black hover:bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl"
+            >
+              <span>Explore Jamf Solutions</span>
+              <div
+                class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+      <script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
+
+      <!-- Scroll to Top with Scroll Progress -->
+      <div id="scrollTopBtn">
+        <svg width="48" height="48">
+          <circle cx="24" cy="24" r="22" />
+        </svg>
+        <span>↑</span>
+      </div>
+
+      <style>
+        #scrollTopBtn {
+          position: fixed;
+          bottom: 24px;
+          left: 24px;
+          width: 48px;
+          height: 48px;
+          cursor: pointer;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease;
+          z-index: 9999;
+        }
+
+        #scrollTopBtn svg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: rotate(-90deg);
+        }
+
+        #scrollTopBtn circle {
+          fill: none;
+          stroke: #000;
+          stroke-width: 3;
+          stroke-dasharray: 138;
+          stroke-dashoffset: 138;
+          transition: stroke-dashoffset 0.15s linear;
+        }
+
+        #scrollTopBtn span {
+          position: absolute;
+          inset: 3px; /* creates space for ring */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #fff;
+          color: #000;
+          border-radius: 50%;
+          font-size: 18px;
+          font-weight: bold;
+          border: 2px solid #000;
+        }
+
+        #scrollTopBtn.show {
+          opacity: 1;
+          visibility: visible;
+        }
+      </style>
+
+      <script>
+        const btn = document.getElementById('scrollTopBtn');
+        const circle = btn.querySelector('circle');
+        const circumference = 138;
+
+        window.addEventListener('scroll', () => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+          const progress = scrollTop / docHeight;
+          const offset = circumference - progress * circumference;
+
+          circle.style.strokeDashoffset = offset;
+
+          btn.classList.toggle('show', scrollTop > 200);
+        });
+
+        btn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
+
+      <!-- Footer -->
+      <footer class="bg-black text-white">
+        <div class="container mx-auto px-6 py-12">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div class="flex items-center space-x-2">
+                <img
+                  src="../sniper-logo-neww.png"
+                  alt="XYZ Company Logo"
+                  class="w-24 h-24 object-contain rounded-lg p-1"
+                />
+                <div class="h-10 w-px bg-white"></div>
+                <img
+                  src="../JAMF_BIG.D-1b9ef18d.png"
+                  alt="Second Logo"
+                  class="w-24 h-24 object-contain rounded-lg p-1"
+                />
+              </div>
+
+              <p class="text-gray-300 text-sm mt-2">
+                Your trusted Certified Jamf Partner, delivering expert Apple device management solutions.
+              </p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Quick Links</h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a href="../index.html" class="text-gray-300 hover:text-white hover:underline">Home</a>
+                </li>
+                <li>
+                  <a href="../products.html" class="text-gray-300 hover:text-white hover:underline">Products</a>
+                </li>
+                <li>
+                  <a href="../contact.html" class="text-gray-300 hover:text-white hover:underline">Contact Us</a>
+                </li>
+                <li>
+                  <a
+                    href="https://sniperindia.com/privacy-policy/"
+                    class="text-gray-300 hover:text-white hover:underline"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Solutions</h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a href="mac-management.html" class="text-gray-300 hover:text-white hover:underline">Jamf for Mac</a>
+                </li>
+                <li>
+                  <a href="mobile-device-management.html" class="text-gray-300 hover:text-white hover:underline">
+                    Jamf for Mobile
+                  </a>
+                </li>
+                <li>
+                  <a href="k-12-education.html" class="text-gray-300 hover:text-white hover:underline">Jamf for K-12</a>
+                </li>
+                <li>
+                  <a href="small-business.html" class="text-gray-300 hover:text-white hover:underline">
+                    Small Business
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Contact Us</h4>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li>Locations: Chennai | Bangalore | Hyderabad</li>
+                <li>| Coimbatore | Kochi | Gurugram</li>
+                <li>| Vijayawada</li>
+                <li>Email: enquiry@sniperindia.com</li>
+                <li>Phone: +91 8939301100</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-12 border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+            <p>&copy; 2024 Sniper Systems. All Rights Reserved.</p>
+            <p class="mt-1">
+              Jamf and the Jamf logo are trademarks of Jamf Software, LLC, Certified in the U.S. and other countries.
+              Sniper Systems is a Certified Jamf Partner.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
