@@ -13,7 +13,7 @@ const About = React.lazy(() => import("./pages/About"));
 const Blog = React.lazy(() => import("./pages/Blog"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Careers = React.lazy(() => import("./pages/Careers"));
-const BlogA = React.lazy(() => import("./pages/Bloga"));
+const BlogA = React.lazy(() => import("./pages/BlogA"));
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/privacy";
 import TermsAndConditions from "./pages/TermsAndConditions";
