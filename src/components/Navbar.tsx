@@ -465,7 +465,40 @@ export const Navbar = () => {
 
   const allSolutionItems = solutionGroups.flatMap(g => g.items);
   const allIndustryItems = industryGroups.flatMap(g => g.items);
-  const allPartnerItems = partnerGroups.flatMap(g => g.items.map(name => ({ name, href: `/partners/${name.toLowerCase().replace(/\s+/g, "-")}` })));
+
+  
+// const allPartnerItems = partnerGroups.flatMap(g => g.items.map(name => ({ name, href: `/partners/${name.toLowerCase().replace(/\s+/g, "-")}` })));
+
+// With this (using actual absolute URLs):
+const allPartnerItems = partnerGroups.flatMap(g => g.items.map(name => {
+  // Map partner names to actual URLs
+  const partnerUrls = {
+    "Apple": "https://sniperindia.com/partners/apple",
+    "Dell": "https://sniperindia.com/partners/dell",
+    "HP": "https://sniperindia.com/partners/hp",
+    "Lenovo": "https://sniperindia.com/partners/lenovo",
+    "Asus": "https://sniperindia.com/partners/asus",
+    "Acer": "https://sniperindia.com/partners/acer",
+    "Samsung": "https://sniperindia.com/partners/samsung",
+    "Microsoft": "https://sniperindia.com/partners/microsoft",
+    "Adobe": "https://sniperindia.com/partners/adobe",
+    "Autodesk": "https://sniperindia.com/partners/autodesk",
+    "AWS": "https://sniperindia.com/partners/aws",
+    "Azure": "https://sniperindia.com/partners/azure",
+    "Unity": "https://sniperindia.com/partners/unity",
+    "Unreal Engine": "https://sniperindia.com/partners/unreal-engine",
+    "Cisco": "https://sniperindia.com/partners/cisco",
+    "Yubico": "https://sniperindia.com/partners/yubico",
+    "JAMF": "https://sniperindia.com/partners/jamf",
+    "Logitech": "https://sniperindia.com/partners/logitech",
+    "Nvidia": "https://sniperindia.com/partners/nvidia"
+  };
+  return {
+    name,
+    href: partnerUrls[name] || `https://sniperindia.com/partners/${name.toLowerCase().replace(/\s+/g, "-")}`
+  };
+}));
+
 
   return (
     <>
