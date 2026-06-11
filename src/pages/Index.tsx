@@ -483,7 +483,8 @@ const Index = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const blogPosts = [
-    { id: 1, title: "A Smarter Way to Document Work", excerpt: "How Adobe Acrobat, Adobe Express, and AI Assistant are transforming business documentation", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80", date: "May 04, 2026", readTime: "8 min read", category: "Adobe Acrobat" },
+    { id: "blogb", title: "Lenovo AI Powers a World Gone Football™", excerpt: "How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history", image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1600&q=80", date: "June 11, 2026", readTime: "10 min read", category: "Lenovo AI" },
+    { id: "bloga", title: "A Smarter Way to Document Work", excerpt: "How Adobe Acrobat, Adobe Express, and AI Assistant are transforming business documentation", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80", date: "May 04, 2026", readTime: "8 min read", category: "Adobe Acrobat" },
     { id: 2, title: "Maximizing ROI with Managed IT Services", excerpt: "How businesses are reducing costs and improving efficiency by partnering with managed service providers for comprehensive IT support and strategic consulting.", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80", date: "November 20, 2025", readTime: "6 min read", category: "Managed Services" },
     { id: 3, title: "Mobile Device Management Best Practices", excerpt: "Essential strategies for implementing effective MDM solutions that balance security, user experience, and organizational control across diverse device ecosystems.", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600&q=80", date: "November 15, 2025", readTime: "7 min read", category: "Device Management" },
     { id: 4, title: "Cybersecurity in the Age of Remote Work", excerpt: "Addressing the evolving security challenges of distributed workforces and implementing robust protection strategies for remote and hybrid work environments.", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80", date: "November 10, 2025", readTime: "9 min read", category: "Security" },
@@ -494,7 +495,9 @@ const Index = () => {
   ];
 
   const featuredPost = blogPosts[0];
-  const regularPosts = blogPosts.slice(1);
+  const postA = blogPosts.find(p => p.id === "bloga") || blogPosts[1];
+  const postB = blogPosts.find(p => p.id === "blogb") || blogPosts[0];
+  const regularPosts = blogPosts.slice(2);
 
   const heroRef       = useRef(null);
   const featuredRef   = useRef(null);
@@ -610,10 +613,10 @@ const Index = () => {
               animate={featuredInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             >
-              <ParallaxImage src={featuredPost.image} alt={featuredPost.title} className="w-full h-full" />
+              <ParallaxImage src={postA.image} alt={postA.title} className="w-full h-full" />
               <div ref={badgeRef} className="absolute top-6 left-6 z-10 opacity-0">
                 <div className="bg-black bg-opacity-70 text-white px-4 py-2 rounded-full backdrop-blur-sm">
-                  <span className="text-xs font-medium uppercase tracking-wider">{featuredPost.category}</span>
+                  <span className="text-xs font-medium uppercase tracking-wider">{postA.category}</span>
                 </div>
               </div>
             </motion.div>
@@ -625,11 +628,11 @@ const Index = () => {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             >
               <div className="flex items-center gap-6 text-sm text-gray-600">
-                <div className="flex items-center gap-2"><Calendar className="w-4 h-4" /><span>{featuredPost.date}</span></div>
-                <div className="flex items-center gap-2"><Clock className="w-4 h-4" /><span>{featuredPost.readTime}</span></div>
+                <div className="flex items-center gap-2"><Calendar className="w-4 h-4" /><span>{postA.date}</span></div>
+                <div className="flex items-center gap-2"><Clock className="w-4 h-4" /><span>{postA.readTime}</span></div>
               </div>
-              <h3 className="text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight">{featuredPost.title}</h3>
-              <p className="text-lg text-gray-800 leading-relaxed">{featuredPost.excerpt}</p>
+              <h3 className="text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight">{postA.title}</h3>
+              <p className="text-lg text-gray-800 leading-relaxed">{postA.excerpt}</p>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="inline-block">
                 <a href={`/blog/bloga`} className="inline-flex items-center px-8 py-3 border-2 border-gray-900 rounded-full text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-colors duration-300">
                   Read article
@@ -639,6 +642,60 @@ const Index = () => {
           </div>
         </div>
       </section>
+{/* ==================== FEATURED POST 02 ==================== */}
+
+       <section className="bg-white py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12" ref={featuredRef}>
+            <motion.h2
+              className="text-6xl md:text-7xl font-semibold text-gray-900 mb-6 leading-tight"
+              initial={{ opacity: 0, y: 50 }}
+              animate={featuredInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Featured article
+            </motion.h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start pb-20 border-b border-gray-300">
+
+            <motion.div
+              className="relative rounded-2xl overflow-hidden h-96"
+              initial={{ opacity: 0, x: -40 }}
+              animate={featuredInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            >
+              <ParallaxImage src={postB.image} alt={postB.title} className="w-full h-full" />
+              <div ref={badgeRef} className="absolute top-6 left-6 z-10 opacity-0">
+                <div className="bg-black bg-opacity-70 text-white px-4 py-2 rounded-full backdrop-blur-sm">
+                  <span className="text-xs font-medium uppercase tracking-wider">{postB.category}</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: 40 }}
+              animate={featuredInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            >
+              <div className="flex items-center gap-6 text-sm text-gray-600">
+                <div className="flex items-center gap-2"><Calendar className="w-4 h-4" /><span>{postB.date}</span></div>
+                <div className="flex items-center gap-2"><Clock className="w-4 h-4" /><span>{postB.readTime}</span></div>
+              </div>
+              <h3 className="text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight">{postB.title}</h3>
+              <p className="text-lg text-gray-800 leading-relaxed">{postB.excerpt}</p>
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="inline-block">
+                <a href={`/blog/blogb`} className="inline-flex items-center px-8 py-3 border-2 border-gray-900 rounded-full text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-colors duration-300">
+                  Read article
+                </a>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+
 
       {/* ✦ GSAP Marquee — between featured and latest */}
       <MarqueeTicker items={marqueeBottomItems} speed={30} />

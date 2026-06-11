@@ -14,6 +14,7 @@ const Blog = React.lazy(() => import("./pages/Blog"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Careers = React.lazy(() => import("./pages/Careers"));
 const BlogA = React.lazy(() => import("./pages/BlogA"));
+const BlogB = React.lazy(() => import("./pages/BlogB"));
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/privacy";
 import TermsAndConditions from "./pages/TermsAndConditions";
@@ -144,7 +145,7 @@ const App = () => (
 
 
 <Route path="/blog/bloga" element={<BlogA />} />
-
+<Route path="/blog/blogb" element={<BlogB />} />
 
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
