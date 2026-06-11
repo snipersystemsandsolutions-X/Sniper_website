@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Analytics } from "@vercel/analytics/next"
 import {
   ArrowRight,
   BookOpen,
