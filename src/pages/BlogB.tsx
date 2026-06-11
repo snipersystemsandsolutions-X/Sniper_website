@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Analytics } from "@vercel/analytics/next"
+import { Helmet } from "react-helmet-async";
 import {
   ArrowRight,
   BookOpen,
@@ -263,15 +264,17 @@ const RelatedCard = ({
 );
 
 // ========================================================
-// ✦ TABLE OF CONTENTS ITEM (dark panel)
+// ✦ TABLE OF CONTENTS ITEM (dark panel with smooth-scroll ID targets)
 // ========================================================
 const TocItem = ({
   index,
   title,
+  id,
   inView,
 }: {
   index: number;
   title: string;
+  id: string;
   inView: boolean;
 }) => {
   const lineRef = useRef<HTMLDivElement>(null);
@@ -296,14 +299,25 @@ const TocItem = ({
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.5, ease, delay: 0.2 + index * 0.08 }}
     >
-      <div className="flex items-start gap-4">
+      <a
+        href={`#${id}`}
+        onClick={(e) => {
+          e.preventDefault();
+          const target = document.getElementById(id);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            window.history.pushState(null, "", `#${id}`);
+          }
+        }}
+        className="group flex items-start gap-4 cursor-pointer"
+      >
         <span className="text-gray-500 text-xs font-mono mt-1 flex-shrink-0">
           0{index + 1}
         </span>
-        <span className="text-white text-sm sm:text-base font-medium leading-relaxed">
+        <span className="text-white text-sm sm:text-base font-medium leading-relaxed group-hover:text-blue-400 transition-colors">
           {title}
         </span>
-      </div>
+      </a>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-700 overflow-hidden">
         <div
           ref={lineRef}
@@ -471,15 +485,15 @@ const BlogB = () => {
 
   // Data
   const tocItems = [
-    "Why Lenovo and FIFA Are the Perfect Partnership",
-    "Football AI Pro — Intelligence for Every Team",
-    "Hybrid AI Infrastructure Powering the Tournament",
-    "Digital Workplace Solutions & Always-On Operations",
-    "Motorola, Special Edition Devices & FIFAe Esports",
-    "Key Business Benefits of the Partnership",
-    "Who Gains Most from Lenovo's FIFA Technology",
-    "The Future of Sports Technology",
-    "The Partnership That Changed Football Tech",
+    { title: "Why Lenovo and FIFA Are the Perfect Partnership", id: "why-lenovo-fifa-perfect-match" },
+    { title: "Football AI Pro — Intelligence for Every Team", id: "football-ai-pro" },
+    { title: "VAR & Referee View body cameras", id: "broadcast-var" },
+    { title: "Hybrid AI Infrastructure Powering the Tournament", id: "hybrid-ai-infrastructure" },
+    { title: "Digital Workplace Solutions & Always-On Operations", id: "digital-workplace-solutions" },
+    { title: "Motorola, Special Edition Devices & FIFAe Esports", id: "motorola-special-editions" },
+    { title: "Key Business Benefits of the Partnership", id: "key-business-benefits" },
+    { title: "Who Gains Most from Lenovo's FIFA Technology", id: "who-gains-most" },
+    { title: "The Future of Sports Technology", id: "future-sports-tech" },
   ];
 
   const benefits = [
@@ -602,6 +616,114 @@ const BlogB = () => {
 
   return (
     <Layout>
+      <Helmet>
+        {/* BASIC SEO */}
+        <title>Lenovo AI Powers a World Gone Football™ | Sniper Systems</title>
+        <meta
+          name="description"
+          content="Explore how Lenovo's full-stack AI, Football AI Pro, and hybrid AI infrastructure are driving the most advanced FIFA World Cup 2026™ in history."
+        />
+        <meta
+          name="keywords"
+          content="Lenovo FIFA partnership, FIFA World Cup 2026 technology, Football AI Pro, Official Technology Partner FIFA, Lenovo AI solutions, Hybrid AI infrastructure, Referee View body camera, Motorola FIFA smartphone, Smarter AI for All"
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://sniperindia.com/blog/blogb" />
+
+        {/* GEO TAGS */}
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
+        <meta name="geo.position" content="13.0827;80.2707" />
+        <meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Lenovo AI Powers a World Gone Football™ | Sniper Systems" />
+        <meta
+          property="og:description"
+          content="Explore how Lenovo's full-stack AI, Football AI Pro, and hybrid AI infrastructure are driving the most advanced FIFA World Cup 2026™ in history."
+        />
+        <meta property="og:image" content="https://i.postimg.cc/cH9k1cMp/1729031977049.jpg" />
+        <meta property="og:url" content="https://sniperindia.com/blog/blogb" />
+        <meta property="article:published_time" content="2026-06-11T12:00:00+05:30" />
+        <meta property="article:modified_time" content="2026-06-11T12:00:00+05:30" />
+        <meta property="article:section" content="Technology" />
+        <meta property="article:tag" content="Lenovo AI, FIFA World Cup 2026, Hybrid Infrastructure, Football AI Pro, Motorola" />
+
+        {/* TWITTER SEO */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Lenovo AI Powers a World Gone Football™ | Sniper Systems" />
+        <meta
+          name="twitter:description"
+          content="Explore how Lenovo's full-stack AI, Football AI Pro, and hybrid AI infrastructure are driving the most advanced FIFA World Cup 2026™ in history."
+        />
+        <meta name="twitter:image" content="https://i.postimg.cc/cH9k1cMp/1729031977049.jpg" />
+
+        {/* SCHEMA MARKUP (JSON-LD) */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Lenovo AI Powers a World Gone Football™",
+            "alternativeHeadline": "How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history",
+            "image": "https://i.postimg.cc/cH9k1cMp/1729031977049.jpg",
+            "genre": "Technology",
+            "keywords": "Lenovo FIFA partnership, Football AI Pro, Lenovo AI, FIFA World Cup 2026",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Sniper Systems",
+              "url": "https://sniperindia.com",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+              }
+            },
+            "url": "https://sniperindia.com/blog/blogb",
+            "datePublished": "2026-06-11T12:00:00+05:30",
+            "dateCreated": "2026-06-11T12:00:00+05:30",
+            "dateModified": "2026-06-11T12:00:00+05:30",
+            "description": "How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history. Built end-to-end by Lenovo.",
+            "articleBody": "When billions of fans tune in to FIFA World Cup 2026™, they'll be watching more than football. Behind every match, broadcast, and stadium operation runs a digital infrastructure unlike anything the tournament has seen — built end-to-end by Lenovo, the Official Technology Partner of FIFA World Cup 2026™.",
+            "author": {
+              "@type": "Organization",
+              "name": "Sniper Systems",
+              "url": "https://sniperindia.com"
+            }
+          }
+          `}
+        </script>
+
+        {/* BREADCRUMB SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://sniperindia.com/blog/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Lenovo AI Powers a World Gone Football",
+                "item": "https://sniperindia.com/blog/blogb"
+              }
+            ]
+          }
+          `}
+        </script>
+      </Helmet>
       {showWhiteScreen && (
         <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />
       )}
@@ -709,7 +831,7 @@ const BlogB = () => {
           </div>
           <div className="space-y-5">
             {tocItems.map((item, i) => (
-              <TocItem key={i} index={i} title={item} inView={tocInView} />
+              <TocItem key={i} index={i} title={item.title} id={item.id} inView={tocInView} />
             ))}
           </div>
         </div>
@@ -721,7 +843,7 @@ const BlogB = () => {
 
           <div className="mb-10 sm:mb-16">
             <FadeUp>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+              <h2 id="why-lenovo-fifa-perfect-match" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
                 Why Lenovo & FIFA<br />Are the Perfect Match
               </h2>
             </FadeUp>
@@ -776,7 +898,7 @@ const BlogB = () => {
             {/* AI Assistant */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
               <FadeUp>
-                <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+                <h3 id="football-ai-pro" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
                   SECTION TWO<br />AI ASSISTANT
                 </h3>
               </FadeUp>
@@ -810,7 +932,7 @@ const BlogB = () => {
             {/* Broadcast & VAR */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
               <FadeUp>
-                <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+                <h3 id="broadcast-var" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
                   SECTION THREE<br />BROADCAST &amp; VAR
                 </h3>
               </FadeUp>
@@ -861,7 +983,7 @@ const BlogB = () => {
           {/* Infrastructure */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
             <FadeUp>
-              <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+              <h3 id="hybrid-ai-infrastructure" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
                 SECTION THREE (CONTINUED)<br />INFRASTRUCTURE
               </h3>
             </FadeUp>
@@ -884,7 +1006,7 @@ const BlogB = () => {
           {/* Workplace & Operations */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
             <FadeUp>
-              <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+              <h3 id="digital-workplace-solutions" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
                 SECTION FOUR<br />OPERATIONS &amp; WORKPLACE
               </h3>
             </FadeUp>
@@ -897,7 +1019,7 @@ const BlogB = () => {
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
                 At Club World Cup 2025™, Lenovo deployed provisioning services, custom software through its Solutions &amp;
                 Services Group, Lenovo Tab K11 tablets, and Motorola mobile devices — with ServiceNow integration for seamless
-                operations management. The same model scales to World Cup 2026. In football, there are no timeouts. Lenovo's
+                operations management. The same model scales to World Cup 26. In football, there are no timeouts. Lenovo's
                 infrastructure doesn't take them either.
               </p>
             </FadeUp>
@@ -906,7 +1028,7 @@ const BlogB = () => {
           {/* Devices & Gaming */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
             <FadeUp>
-              <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+              <h3 id="motorola-special-editions" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
                 SECTION FIVE<br />DEVICES &amp; GAMING
               </h3>
             </FadeUp>
@@ -934,7 +1056,7 @@ const BlogB = () => {
         <div className="max-w-6xl mx-auto">
           <div className="mb-10 sm:mb-16">
             <FadeUp>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+              <h2 id="key-business-benefits" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
                 Key Business<br />Benefits
               </h2>
             </FadeUp>
@@ -981,7 +1103,7 @@ const BlogB = () => {
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-8 sm:mb-12">
             <FadeUp>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-white">
+              <h2 id="who-gains-most" className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-white">
                 Who Gains Most from<br />Lenovo's FIFA Technology
               </h2>
             </FadeUp>
@@ -1029,7 +1151,7 @@ const BlogB = () => {
         <div className="max-w-6xl mx-auto">
           <div className="mb-10 sm:mb-16">
             <FadeUp>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+              <h2 id="future-sports-tech" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
                 The Future of<br />Sports Technology
               </h2>
             </FadeUp>
