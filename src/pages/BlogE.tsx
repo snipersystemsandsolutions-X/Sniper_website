@@ -2,20 +2,19 @@ import { Layout } from "@/components/Layout";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  ArrowRight,
-  BookOpen,
-  Calendar,
-  Clock,
-  Tag,
-  User,
-  CheckCircle2,
-  Briefcase,
-  Megaphone,
-  Scale,
-  Users,
-  BarChart2,
+    BookOpen,
+    Building2,
+    Calendar,
+    CheckCircle2,
+    Clock,
+    Database,
+    Globe,
+    Settings,
+    User,
+    Users,
+    Zap
 } from "lucide-react";
-import { AnimatePresence, motion, useInView } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -199,7 +198,9 @@ const AnimatedCounter = ({
         });
       },
     });
-    return () => st.kill();
+    return () => {
+      st.kill();
+    };
   }, [numericValue]);
 
   return (
@@ -313,7 +314,7 @@ const TocItem = ({
 };
 
 // ========================================================
-// ✦ BENEFIT CARD (Adobe section)
+// ✦ BENEFIT CARD
 // ========================================================
 const BenefitCard = ({
   icon: Icon,
@@ -345,39 +346,39 @@ const BenefitCard = ({
 );
 
 // ========================================================
-// ✦ TEAM USE CASE ROW
+// ✦ USE CASE ROW
 // ========================================================
-const TeamRow = ({
+const UseCaseRow = ({
   icon: Icon,
-  team,
+  title,
   items,
   index,
   inView,
 }: {
   icon: React.ElementType;
-  team: string;
+  title: string;
   items: string[];
   index: number;
   inView: boolean;
 }) => (
   <motion.div
-    className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-4 sm:gap-8 py-6 sm:py-8 border-b border-gray-200 last:border-b-0 items-start"
+    className="grid grid-cols-1 sm:grid-cols-[240px_1fr] gap-4 sm:gap-8 py-6 sm:py-8 border-b border-gray-700 last:border-b-0 items-start"
     initial={{ opacity: 0, x: -24 }}
     animate={inView ? { opacity: 1, x: 0 } : {}}
     transition={{ duration: 0.55, ease, delay: 0.1 + index * 0.07 }}
   >
     <div className="flex items-center gap-3">
-      <div className="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
-        <Icon className="w-4 h-4 text-gray-700" />
+      <div className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+        <Icon className="w-4 h-4 text-gray-300" />
       </div>
-      <span className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
-        {team}
+      <span className="text-sm font-semibold text-gray-200 uppercase tracking-wider">
+        {title}
       </span>
     </div>
     <ul className="space-y-1.5">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-2.5 text-sm sm:text-base text-gray-700">
-          <CheckCircle2 className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+        <li key={i} className="flex items-start gap-2.5 text-sm sm:text-base text-gray-400">
+          <CheckCircle2 className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
           {item}
         </li>
       ))}
@@ -386,9 +387,9 @@ const TeamRow = ({
 );
 
 // ========================================================
-// MAIN BLOG-A PAGE
+// MAIN BLOG-E PAGE
 // ========================================================
-const BlogA = () => {
+const BlogE = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showWhiteScreen, setShowWhiteScreen] = useState(true);
 
@@ -425,7 +426,9 @@ const BlogA = () => {
         delay: 1.2,
       }
     );
-    return () => tween.kill();
+    return () => {
+      tween.kill();
+    };
   }, []);
 
   // Hero image scale-on-scroll
@@ -454,173 +457,118 @@ const BlogA = () => {
     };
   }, []);
 
-  // GSAP CTA word stagger
-  const ctaHeadingRef = useRef<HTMLHeadingElement>(null);
-  const ctaRef = useRef(null);
-  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
-  useEffect(() => {
-    if (!ctaInView) return;
-    const el = ctaHeadingRef.current;
-    if (!el) return;
-    const words = el.querySelectorAll(".cta-word");
-    gsap.fromTo(
-      words,
-      { yPercent: 100, opacity: 0 },
-      {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.06,
-        delay: 0.2,
-      }
-    );
-  }, [ctaInView]);
-
-  // Related posts grid stagger
-  const relatedGridRef = useRef<HTMLDivElement>(null);
-  const relatedRef = useRef(null);
-  const relatedInView = useInView(relatedRef, { once: true, margin: "-60px" });
-  const relatedTriggered = useRef(false);
-  useEffect(() => {
-    if (!relatedInView || relatedTriggered.current) return;
-    relatedTriggered.current = true;
-    const cards = relatedGridRef.current?.querySelectorAll(".related-card");
-    if (!cards) return;
-    gsap.fromTo(
-      cards,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.7, ease: "power2.out", stagger: 0.12 }
-    );
-  }, [relatedInView]);
-
   // Section inView refs
   const heroRef = useRef(null);
   const tocRef = useRef(null);
   const statsRef = useRef(null);
   const benefitsRef = useRef(null);
-  const teamsRef = useRef(null);
+  const useCasesRef = useRef(null);
 
   const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
   const tocInView = useInView(tocRef, { once: true, margin: "-60px" });
   const statsInView = useInView(statsRef, { once: true, margin: "-60px" });
   const benefitsInView = useInView(benefitsRef, { once: true, margin: "-60px" });
-  const teamsInView = useInView(teamsRef, { once: true, margin: "-60px" });
+  const useCasesInView = useInView(useCasesRef, { once: true, margin: "-60px" });
 
   // Data
   const tocItems = [
-    "Why Businesses Are Moving Toward Automated Workflows",
-    "Intelligent Document Understanding with AI Assistant",
-    "Centralized Management & Seamless Collaboration",
-    "Smart Content Creation with Adobe Express",
-    "Enterprise-Grade Security & Compliance",
-    "Key Business Benefits & ROI",
-    "Where Businesses See the Most Impact",
-    "The Future of Business Documentation",
+    "Understanding BIM as the Foundation",
+    "What Is a Digital Twin and How Is It Different?",
+    "Improved Project Coordination and Accuracy",
+    "Smarter Asset and Facility Management",
+    "Enhanced Collaboration Through Cloud-Based BIM",
+    "Data-Driven Decision Making Across the Asset Lifecycle",
+    "Challenges in Adopting BIM and Digital Twins",
+    "The Role of the Autodesk Ecosystem",
   ];
 
   const benefits = [
     {
       icon: CheckCircle2,
-      title: "Improved Productivity",
+      title: "Improved Coordination",
       description:
-        "Teams spend less time searching for information and more time executing decisions that drive business forward.",
+        "BIM ensures all stakeholders work from a coordinated model, reducing miscommunication and design conflicts.",
+    },
+    {
+      icon: Settings,
+      title: "Smarter Asset Management",
+      description:
+        "Digital Twins enable owners to visualize building systems, monitor performance, and plan maintenance effectively.",
     },
     {
       icon: Users,
       title: "Enhanced Collaboration",
       description:
-        "Real-time updates and shared access improve cross-functional teamwork, eliminating email chains and version confusion.",
+        "Cloud-enabled BIM platforms allow distributed teams to collaborate in real time without disconnected files.",
     },
     {
-      icon: BarChart2,
-      title: "Higher ROI",
+      icon: Database,
+      title: "Data-Driven Decisions",
       description:
-        "Efficiency gains from automated workflows translate directly into measurable business impact and cost savings.",
-    },
-    {
-      icon: CheckCircle2,
-      title: "Consistent Output Quality",
-      description:
-        "Standardized tools ensure uniformity across all documents, proposals, and communications — at every level of the organization.",
+        "Consolidated data from BIM and facility systems enables stakeholders to analyze performance trends and simulate outcomes.",
     },
   ];
 
-  const teams = [
+  const useCases = [
     {
-      icon: Briefcase,
-      team: "Sales Teams",
-      items: ["Create proposals faster with AI-assisted templates", "Access key contract insights instantly"],
+      icon: Building2,
+      title: "Smart Building Operations",
+      items: ["Monitor HVAC, lighting, and occupancy", "Faster issue resolution and user comfort"],
     },
     {
-      icon: Megaphone,
-      team: "Marketing Teams",
-      items: ["Design campaign materials using Adobe Express", "Maintain consistent brand identity at scale"],
+      icon: Settings,
+      title: "Predictive Maintenance",
+      items: ["Identify potential equipment failures early", "Reduce unplanned downtime and costs"],
     },
     {
-      icon: Scale,
-      team: "Legal Teams",
-      items: ["Review and compare contracts efficiently", "Reduce manual workload with intelligent summaries"],
+      icon: Globe,
+      title: "Infrastructure Performance",
+      items: ["Track structural health and usage patterns", "Environmental impact monitoring for campuses"],
     },
     {
-      icon: Users,
-      team: "HR Teams",
-      items: ["Manage policies and training documentation", "Streamline internal communication workflows"],
-    },
-    {
-      icon: BarChart2,
-      team: "Finance Teams",
-      items: ["Generate reports quickly with structured templates", "Analyze business data effectively in context"],
+      icon: Zap,
+      title: "Data-Driven Sustainability",
+      items: ["Measurable insights into carbon footprint", "Energy efficiency and resource optimization"],
     },
   ];
 
   const relatedPosts = [
     {
-      title: "ROG Series Deep Dive: Gaming Hardware for Professionals",
-      category: "Hardware",
-      image:
-        "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=800&q=80",
-      readTime: "6 min read",
+      title: "How Businesses Are Using Interactive 3D Experiences",
+      category: "Interactive 3D",
+      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
+      readTime: "12 min read",
     },
     {
-      title: "How to Choose the Right Business Laptop in 2025",
-      category: "Guide",
-      image:
-        "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&q=80",
+      title: "The Future of Business Transformation with Cloud",
+      category: "Cloud Solutions",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+      readTime: "15 min read",
+    },
+    {
+      title: "A Smarter Way to Document Work",
+      category: "Adobe Acrobat",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
       readTime: "8 min read",
-    },
-    {
-      title: "Creative Professionals and the Tools They Actually Use",
-      category: "Creator",
-      image:
-        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
-      readTime: "5 min read",
     },
   ];
 
   const marqueeItems1 = [
     "Sniper Systems Blog",
-    "Adobe Acrobat",
-    "Document Workflows",
-    "AI Assistant",
-    "Adobe Express",
-    "Business Solutions",
+    "BIM Technology",
+    "Digital Twins",
+    "Autodesk Tandem",
+    "AEC Solutions",
+    "Smart Construction",
   ];
   const marqueeItems2 = [
-    "AI-Powered Documents",
-    "PDF Management",
-    "Collaboration Tools",
-    "Enterprise Security",
-    "Adobe Express",
-    "Smart Workflows",
     "Digital Transformation",
-  ];
-  const marqueeItems3 = [
-    "Stay Informed",
-    "Technology Insights",
-    "Sniper Systems",
-    "Future-Ready IT",
-    "Read More",
+    "Asset Management",
+    "Facility Operations",
+    "Real-time Monitoring",
+    "Cloud Collaboration",
+    "Predictive Maintenance",
+    "Lifecycle Intelligence",
   ];
 
   return (
@@ -639,24 +587,24 @@ const BlogA = () => {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, ease, delay: 0.9 }}
             >
-              <MetaPill icon={Tag} label="Productivity" />
-              <MetaPill icon={Calendar} label="May 04, 2026" />
-              <MetaPill icon={Clock} label="8 min read" />
+              <MetaPill icon={Building2} label="AEC & BIM" />
+              <MetaPill icon={Calendar} label="June 16, 2026" />
+              <MetaPill icon={Clock} label="14 min read" />
               <MetaPill icon={User} label="Sniper Systems" />
             </motion.div>
 
             <h1
               ref={heroHeadingRef}
               className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight"
-              aria-label="A Smarter Way for Businesses to Document Work with Adobe Acrobat Studio"
+              aria-label="How BIM and Digital Twins Are Redefining Project Delivery and Asset Management in AEC"
             >
-              {["A", "Smarter", "Way", "to", "Document", "Work"].map((word, i) => (
+              {["How", "BIM", "and", "Digital", "Twins", "Redefine", "AEC"].map((word, i) => (
                 <span
                   key={i}
                   className="hero-word inline-block opacity-0 mr-[0.22em] last:mr-0"
                 >
                   {word}
-                  {word === "to" && <br className="hidden sm:block" />}
+                  {word === "Digital" && <br className="hidden sm:block" />}
                 </span>
               ))}
             </h1>
@@ -667,7 +615,7 @@ const BlogA = () => {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, ease, delay: 1.55 }}
             >
-              How Adobe Acrobat, Adobe Express, and AI Assistant are transforming business documentation
+              Transforming AEC project delivery, collaboration, and asset lifecycle management using Autodesk solutions.
             </motion.p>
 
             <motion.p
@@ -676,11 +624,7 @@ const BlogA = () => {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, ease, delay: 1.7 }}
             >
-              In today's fast-paced business environment, documents are at the heart of every
-              operation — contracts, reports, proposals, and internal communications. Yet
-              managing them efficiently remains one of the most overlooked challenges in
-              modern organizations. Manual document processes create time-consuming reviews,
-              delayed decisions, and inefficient collaboration that costs teams hours every week.
+              The Architecture, Engineering, and Construction (AEC) industry is evolving rapidly as digital technologies reshape how projects are designed, built, and managed. Among the most impactful advancements are Building Information Modeling (BIM) and Digital Twin technology. While BIM provides the coordinated foundation, Digital Twins extend this capability into the operational lifecycle.
             </motion.p>
           </div>
 
@@ -701,15 +645,15 @@ const BlogA = () => {
               }}
             >
               <ParallaxImage
-                src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=1600&q=80"
-                alt="Adobe Acrobat Business Documentation"
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80"
+                alt="BIM and Digital Twin Technology in AEC"
                 className="w-full h-full"
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 z-10">
                   <div className="bg-black/50 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm">
                     <span className="text-[10px] sm:text-sm font-medium uppercase tracking-widest">
-                      ADOBE ACROBAT STUDIO
+                      DIGITAL TWIN & BIM ECOSYSTEM
                     </span>
                   </div>
                 </div>
@@ -740,14 +684,13 @@ const BlogA = () => {
         </div>
       </FadeUp>
 
-      {/* ── Article Body: The Problem ──────────────────────────────────── */}
+      {/* ── Article Body: BIM Foundation ──────────────────────────────────── */}
       <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-
           <div className="mb-10 sm:mb-16">
             <FadeUp>
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                The Document<br />Management Problem
+                BIM as the Foundation of<br />Digital Transformation
               </h2>
             </FadeUp>
             <div className="w-full h-px bg-gray-300" />
@@ -756,23 +699,60 @@ const BlogA = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-16">
             <FadeUp>
               <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                SECTION ONE<br />WHY IT MATTERS
+                SECTION ONE<br />THE DIGITAL BACKBONE
               </h3>
             </FadeUp>
             <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                Organizations today are actively seeking ways to reduce manual effort, improve
-                productivity, and accelerate access to information. Traditional document handling
-                slows operations and creates bottlenecks that cascade across teams — a contract
-                delayed in review can stall a sale; a report trapped in email threads means
-                decisions get made without the full picture.
+                Building Information Modeling (BIM) is more than a 3D modeling process. It is a structured approach to managing information across the entire lifecycle of a building or infrastructure project. BIM enables project teams to create coordinated models, detect clashes early, and maintain a single source of truth for project data.
               </p>
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                Modern, AI-powered workflows change this entirely. Teams can now process
-                information instantly, collaborate in real time, and act with the confidence
-                that comes from having the right tools. Adobe Acrobat, Adobe Express, and
-                the AI Assistant capability sit at the center of this shift.
+                By centralizing design data, BIM establishes the digital backbone required for advanced solutions such as Digital Twins. It allows for better collaboration across disciplines — architectural, structural, and MEP — ensuring that everyone is working from the same information.
               </p>
+            </FadeUp>
+          </div>
+
+          {/* BIM vs Digital Twin Table Section */}
+          <div className="mb-10 sm:mb-16">
+            <FadeUp>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                BIM vs. Digital Twin:<br />Key Differences
+              </h2>
+            </FadeUp>
+            <div className="w-full h-px bg-gray-300 mb-8 sm:mb-12" />
+
+            <FadeUp className="overflow-x-auto">
+              <table className="w-full text-left border-collapse min-w-[600px]">
+                <thead>
+                  <tr className="border-b-2 border-gray-900">
+                    <th className="py-4 px-6 text-lg font-bold text-gray-900">Feature</th>
+                    <th className="py-4 px-6 text-lg font-bold text-gray-900">BIM</th>
+                    <th className="py-4 px-6 text-lg font-bold text-gray-900">Digital Twin</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr>
+                    <td className="py-4 px-6 font-semibold text-gray-900">Focus</td>
+                    <td className="py-4 px-6 text-gray-700">Design & construction focused</td>
+                    <td className="py-4 px-6 text-gray-700">Full lifecycle focused</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-semibold text-gray-900">Nature</td>
+                    <td className="py-4 px-6 text-gray-700">Static model</td>
+                    <td className="py-4 px-6 text-gray-700">Dynamic, data-driven model</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-semibold text-gray-900">Primary Users</td>
+                    <td className="py-4 px-6 text-gray-700">Project teams & contractors</td>
+                    <td className="py-4 px-6 text-gray-700">Owners & facility managers</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-semibold text-gray-900">Longevity</td>
+                    <td className="py-4 px-6 text-gray-700">Limited post-handover use</td>
+                    <td className="py-4 px-6 text-gray-700">Continuous performance insights</td>
+                  </tr>
+                </tbody>
+              </table>
             </FadeUp>
           </div>
 
@@ -780,67 +760,52 @@ const BlogA = () => {
           <FadeUp delay={0.1} className="mb-10 sm:mb-16">
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-48 sm:h-[360px] md:h-[480px]">
               <ParallaxImage
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80"
-                alt="Modern document workflows"
+                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80"
+                alt="Digital Twin Data Visualization"
                 className="w-full h-full"
               />
             </div>
           </FadeUp>
 
-          {/* Section 2 — How Adobe Powers Workflows */}
+          {/* Section 2 — Business Value */}
           <div className="mb-10 sm:mb-16">
             <div className="mb-10 sm:mb-16">
               <FadeUp>
                 <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                  How Adobe Powers<br />Modern Workflows
+                  Delivering Real<br />Business Value
                 </h2>
               </FadeUp>
               <div className="w-full h-px bg-gray-300" />
             </div>
 
-            {/* AI Assistant */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
               <FadeUp>
                 <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                  SECTION TWO<br />AI ASSISTANT
+                  SECTION TWO<br />COORDINATION & ASSETS
                 </h3>
               </FadeUp>
               <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
                 <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  Adobe Acrobat's AI Assistant helps users quickly summarize, extract insights,
-                  and understand lengthy documents — eliminating the need to read every page
-                  manually. Whether it's a 200-page contract or a dense financial report, the
-                  AI surfaces what matters most in seconds.
+                  BIM ensures that all stakeholders work from a coordinated model, reducing miscommunication and design conflicts. When extended into a Digital Twin, this data remains accessible during operations, ensuring continuity from design to delivery. This leads to fewer errors during construction, faster approvals, and better handover documentation.
                 </p>
                 <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  Centralized document management lets teams handle PDFs and multiple file
-                  formats in one secure platform, ensuring better organization and easy access
-                  across the organization. Combined with real-time sharing, commenting, and
-                  reviewing features, this reduces dependency on email chains and dramatically
-                  improves team coordination.
+                  For owners and operators, Digital Twins enable visualization of building systems, monitoring of performance, and more effective maintenance planning. This capability is especially valuable for large facilities and infrastructure projects where asset performance directly impacts business outcomes.
                 </p>
               </FadeUp>
             </div>
 
-            {/* Adobe Express */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
               <FadeUp>
                 <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                  SECTION THREE<br />ADOBE EXPRESS
+                  SECTION THREE<br />COLLABORATION & DATA
                 </h3>
               </FadeUp>
               <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
                 <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  Adobe Express empowers teams to create visually compelling reports, proposals,
-                  and marketing assets quickly — ensuring professional and consistent output
-                  without requiring design expertise. Templates, brand kits, and smart
-                  suggestions mean anyone on the team can produce polished collateral.
+                  Cloud-enabled BIM platforms allow distributed teams to collaborate in real time. Architects, engineers, contractors, and owners can access up-to-date models without relying on disconnected files. This shift from reactive management to proactive planning is a key driver behind Digital Twin adoption.
                 </p>
                 <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  Underpinning all of this is enterprise-grade security: secure access,
-                  document tracking, and compliance controls keep sensitive business data
-                  protected at all times — meeting the requirements of legal, finance,
-                  and HR teams alike.
+                  Digital Twins consolidate data from BIM models, facility systems, and operational inputs into a single environment. This enables stakeholders to analyze performance trends and simulate outcomes before implementing changes, supporting sustainability goals and compliance requirements.
                 </p>
               </FadeUp>
             </div>
@@ -855,12 +820,12 @@ const BlogA = () => {
         <div className="max-w-4xl mx-auto text-center">
           <FadeUp>
             <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 sm:mb-10">
-              "Efficient document management is no longer optional — it's a critical driver of business success."
+              "BIM laid the groundwork for digital construction, but Digital Twins are unlocking its full potential."
             </p>
           </FadeUp>
           <FadeUp delay={0.15}>
             <p className="text-gray-400 text-sm sm:text-base uppercase tracking-widest font-medium">
-              Sniper Systems &amp; Solutions, Adobe Acrobat Studio Report
+              Sniper Systems &amp; Solutions, AEC Technology Insights
             </p>
           </FadeUp>
         </div>
@@ -891,9 +856,9 @@ const BlogA = () => {
           <div ref={statsRef}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 text-center">
               {[
-                { number: "40", suffix: "%", label: "Average reduction in document processing time" },
-                { number: "3",  suffix: "×", label: "Faster contract review with AI summarization" },
-                { number: "60", suffix: "%", label: "Less time spent searching for documents" },
+                { number: "25", suffix: "%", label: "Reduction in rework through early clash detection" },
+                { number: "30", suffix: "%", label: "Improved operational efficiency in facilities" },
+                { number: "15", suffix: "%", label: "Energy savings through real-time monitoring" },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -913,61 +878,31 @@ const BlogA = () => {
         </div>
       </section>
 
-      {/* ── Team Use Cases ───────────────────────────────────────────────── */}
+      {/* ── Use Case Grid ───────────────────────────────────────────────── */}
       <FadeUp className="bg-black text-white py-16 sm:py-20 px-4 sm:px-6 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-8 sm:mb-12">
             <FadeUp>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-white">
-                Where Businesses See<br />the Most Impact
+                Where AEC Organizations<br />See the Most Impact
               </h2>
             </FadeUp>
           </div>
-          <div ref={teamsRef}>
-            {teams.map((t, i) => (
-              <div
-                key={i}
-                className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-4 sm:gap-8 py-6 sm:py-8 border-b border-gray-700 last:border-b-0 items-start"
-              >
-                <motion.div
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={teamsInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, ease, delay: 0.1 + i * 0.07 }}
-                >
-                  <div className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
-                    <t.icon className="w-4 h-4 text-gray-300" />
-                  </div>
-                  <span className="text-sm font-semibold text-gray-200 uppercase tracking-wider">
-                    {t.team}
-                  </span>
-                </motion.div>
-                <motion.ul
-                  className="space-y-2"
-                  initial={{ opacity: 0 }}
-                  animate={teamsInView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.5, ease, delay: 0.2 + i * 0.07 }}
-                >
-                  {t.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-2.5 text-sm sm:text-base text-gray-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-500 mt-2 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </motion.ul>
-              </div>
+          <div ref={useCasesRef}>
+            {useCases.map((u, i) => (
+              <UseCaseRow key={i} {...u} index={i} inView={useCasesInView} />
             ))}
           </div>
         </div>
       </FadeUp>
 
-      {/* ── Future of Documentation ──────────────────────────────────────── */}
+      {/* ── Challenges & Future ──────────────────────────────────────────── */}
       <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-10 sm:mb-16">
             <FadeUp>
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                The Future of<br />Business Documentation
+                The Future of<br />Smart Infrastructure
               </h2>
             </FadeUp>
             <div className="w-full h-px bg-gray-300" />
@@ -976,120 +911,39 @@ const BlogA = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-14 sm:mb-20">
             <FadeUp>
               <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                SECTION FINAL<br />WHAT'S NEXT
+                SECTION FINAL<br />ADOPTION & GROWTH
               </h3>
             </FadeUp>
             <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                Organizations are rapidly moving toward AI-driven document intelligence,
-                integrated workflow platforms, and collaborative digital ecosystems. The
-                businesses that invest in these capabilities today will have a structural
-                advantage over those that delay — not just in speed, but in the quality
-                of decisions they're able to make.
+                Despite the benefits, organizations often face challenges such as lack of standardized data structures and fragmented workflows. Overcoming these requires the right mix of technology, training, and implementation expertise. Partnering with an Autodesk authorized solution provider helps align BIM and Digital Twin strategies with industry best practices.
               </p>
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                The ultimate goal is to reduce operational friction and enhance overall
-                performance. With Adobe Acrobat, Adobe Express, and AI Assistant,
-                organizations can simplify complex workflows, boost team productivity,
-                accelerate decision-making, and maintain secure, organized documentation
-                — all from a single, trusted platform.
+                Autodesk offers an integrated ecosystem of tools — Revit, BIM Collaborate, Construction Cloud, and Tandem — that support consistent data flow from design through operations. As the industry moves toward connected, data-driven workflows, adopting these solutions becomes a critical success factor for future-ready infrastructure.
               </p>
             </FadeUp>
           </div>
 
-          {/* Final image */}
-          <FadeUp delay={0.1}>
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-48 sm:h-[360px] md:h-[480px]">
-              <ParallaxImage
-                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1600&q=80"
-                alt="Future of business documentation"
-                className="w-full h-full"
-              />
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      <MarqueeTicker items={marqueeItems3} />
-
-      {/* ── Related Posts ────────────────────────────────────────────────── */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto" ref={relatedRef}>
-          <FadeUp className="mb-10 sm:mb-16">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 leading-tight">
-              Continue<br />Reading
-            </h2>
-          </FadeUp>
-
-          <div
-            ref={relatedGridRef}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-8"
-          >
-            {relatedPosts.map((post, index) => (
-              <div key={index} className="related-card opacity-0">
-                <RelatedCard post={post} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ──────────────────────────────────────────────────────────── */}
-      <FadeUp className="bg-black text-white py-16 sm:py-20 px-4 sm:px-6 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12 overflow-hidden">
-        <div ref={ctaRef} className="max-w-4xl mx-auto text-center">
-          <div className="mb-8 sm:mb-12 overflow-hidden">
-            <h2
-              ref={ctaHeadingRef}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold mb-4 sm:mb-6 leading-tight"
-              aria-label="Ready to simplify your document workflows?"
-            >
-              {["Ready", "to", "simplify", "your", "docs?"].map((word, i) => (
-                <span
-                  key={i}
-                  className="cta-word inline-block opacity-0 mr-[0.22em] last:mr-0"
-                >
-                  {word}
-                  {word === "simplify" && <br className="hidden sm:block" />}
-                </span>
+          {/* Final Related Posts Section */}
+          <div className="mb-10 sm:mb-16">
+            <FadeUp>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-8 sm:mb-12">
+                Related Insights
+              </h2>
+            </FadeUp>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              {relatedPosts.map((post, i) => (
+                <RelatedCard key={i} post={post} />
               ))}
-            </h2>
+            </div>
           </div>
-          <FadeUp delay={0.3}>
-            <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto mb-8 sm:mb-12 leading-relaxed">
-              Talk to our team about the right Adobe solution for your business, budget, and goals.
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.45}>
-            <a
-              href="https://sniperindia.com/contact"
-              className="inline-flex items-center px-8 sm:px-12 py-3 sm:py-4 border-2 border-white rounded-full text-white font-medium text-base sm:text-lg hover:bg-white hover:text-black transition-colors duration-300"
-            >
-              GET IN TOUCH
-            </a>
-          </FadeUp>
         </div>
-      </FadeUp>
+      </section>
 
-      {/* ── Scroll to Top ─────────────────────────────────────────────────── */}
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
-            aria-label="Scroll to top"
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.6 }}
-            transition={{ type: "spring", stiffness: 300, damping: 22 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 -rotate-90" />
-          </motion.button>
-        )}
-      </AnimatePresence>
+      {/* ── Footer Marquee ──────────────────────────────────────────────── */}
+      <MarqueeTicker items={marqueeItems1} />
     </Layout>
   );
 };
 
-export default BlogA;
+export default BlogE;

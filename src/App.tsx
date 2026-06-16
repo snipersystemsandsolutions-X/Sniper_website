@@ -1,11 +1,13 @@
-import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import React, { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import React, { Suspense } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import Privacy from "./pages/privacy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 // Pages
 const Index = React.lazy(() => import("./pages/Index"));
 
@@ -16,45 +18,45 @@ const Contact = React.lazy(() => import("./pages/Contact"));
 const Careers = React.lazy(() => import("./pages/Careers"));
 const BlogA = React.lazy(() => import("./pages/BlogA"));
 const BlogB = React.lazy(() => import("./pages/BlogB"));
-import NotFound from "./pages/NotFound";
-import Privacy from "./pages/privacy";
-import TermsAndConditions from "./pages/TermsAndConditions";
+const BlogC = React.lazy(() => import("./pages/BlogC"));
+const BlogD = React.lazy(() => import("./pages/BlogD"));
+const BlogE = React.lazy(() => import("./pages/BlogE"));
 
 // Solutions
-import Solutions from "./pages/solutions/Solutions";
-import CloudSolutions from "./pages/solutions/CloudSolutions";
 import AVSolutions from "./pages/solutions/AVSolutions";
+import CloudSolutions from "./pages/solutions/CloudSolutions";
 import DeviceDeploymentMDM from "./pages/solutions/DeviceDeploymentMDM";
-import ITAssetDisposal from "./pages/solutions/ITAssetDisposal";
 import HRSolutions from "./pages/solutions/HRSolutions";
+import ITAssetDisposal from "./pages/solutions/ITAssetDisposal";
 import ITConsulting from "./pages/solutions/ITConsulting";
-import ManagedITServices from "./pages/solutions/ManagedITServices";
-import PaymentServices from "./pages/solutions/PaymentServices";
 import ITInfrastructure from "./pages/solutions/ITInfrastructure";
+import ManagedITServices from "./pages/solutions/ManagedITServices";
 import NetworkingSolutions from "./pages/solutions/NetworkingSolutions";
+import PaymentServices from "./pages/solutions/PaymentServices";
+import Solutions from "./pages/solutions/Solutions";
 
 
 // Partners
-import Partners from "./pages/partners/Partners";
-import Apple from "./pages/partners/Apple";
-import Nvidia from "./pages/partners/Nvidia";
-import Microsoft from "./pages/partners/Microsoft";
-import Lenovo from "./pages/partners/Lenovo";
-import Autodesk from "./pages/partners/Autodesk";
-import Adobe from "./pages/partners/Adobe";
-import Samsung from "./pages/partners/Samsung";
-import HP from "./pages/partners/HP";
-import Unity from "./pages/partners/Unity";
-import JAMF from "./pages/partners/JAMF";
-import UnrealEngine from "./pages/partners/UnrealEngine";
-import Logitech from "./pages/partners/Logitech";
-import Cisco from "./pages/partners/Cisco";
-import Asus from "./pages/partners/Asus";
-import Yubico from "./pages/partners/Yubico";
-import Dell from "./pages/partners/Dell";
 import Acer from "./pages/partners/Acer";
+import Adobe from "./pages/partners/Adobe";
+import Apple from "./pages/partners/Apple";
+import Asus from "./pages/partners/Asus";
+import Autodesk from "./pages/partners/Autodesk";
 import AWS from "./pages/partners/AWS";
 import Azure from "./pages/partners/Azure";
+import Cisco from "./pages/partners/Cisco";
+import Dell from "./pages/partners/Dell";
+import HP from "./pages/partners/HP";
+import JAMF from "./pages/partners/JAMF";
+import Lenovo from "./pages/partners/Lenovo";
+import Logitech from "./pages/partners/Logitech";
+import Microsoft from "./pages/partners/Microsoft";
+import Nvidia from "./pages/partners/Nvidia";
+import Partners from "./pages/partners/Partners";
+import Samsung from "./pages/partners/Samsung";
+import Unity from "./pages/partners/Unity";
+import UnrealEngine from "./pages/partners/UnrealEngine";
+import Yubico from "./pages/partners/Yubico";
 
 
 //  <Route path="/about" element={<About />} />
@@ -62,15 +64,15 @@ import Azure from "./pages/partners/Azure";
 
 
 // Industries
-import Industries from "./pages/industries/Industries";
 import AEC from "./pages/industries/AEC";
-import MediaEntertainment from "./pages/industries/MediaEntertainment";
 import ARVRMRXR from "./pages/industries/ARVRMRXR";
-import Government from "./pages/industries/Government";
-import ITITESInfra from "./pages/industries/ITITESInfra";
-import HealthcarePharma from "./pages/industries/HealthcarePharma";
-import ManufacturingAutomotive from "./pages/industries/ManufacturingAutomotive";
 import Education from "./pages/industries/Education";
+import Government from "./pages/industries/Government";
+import HealthcarePharma from "./pages/industries/HealthcarePharma";
+import Industries from "./pages/industries/Industries";
+import ITITESInfra from "./pages/industries/ITITESInfra";
+import ManufacturingAutomotive from "./pages/industries/ManufacturingAutomotive";
+import MediaEntertainment from "./pages/industries/MediaEntertainment";
 
 const queryClient = new QueryClient();
 
@@ -148,6 +150,9 @@ const App = () => (
 
 <Route path="/blog/bloga" element={<BlogA />} />
 <Route path="/blog/blogb" element={<BlogB />} />
+<Route path="/blog/interactive-3d-business-unity-studio" element={<BlogC />} />
+<Route path="/blog/blogd" element={<BlogD />} />
+<Route path="/blog/bim-digital-twins-aec-redefined" element={<BlogE />} />
 
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />

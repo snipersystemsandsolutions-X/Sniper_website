@@ -1,11 +1,11 @@
 import { Layout } from "@/components/Layout";
 import LottieAnimation from "@/components/ServicesAnimation";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
-import { useEffect, useRef, useState, useCallback } from "react";
-import { Link } from "react-router-dom";
-import { motion, useInView, AnimatePresence } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { AnimatePresence, motion, useInView } from "motion/react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 import React from "react";
@@ -159,7 +159,9 @@ const MarqueeTicker = ({ items, speed = 26 }: { items: string[]; speed?: number 
     if (!track) return;
     const totalWidth = track.scrollWidth / 2;
     const tween = gsap.to(track, { x: `-${totalWidth}px`, duration: speed, ease: "none", repeat: -1 });
-    return () => tween.kill();
+    return () => {
+      tween.kill();
+    };
   }, [speed]);
   const doubled = [...items, ...items];
   return (
@@ -483,8 +485,11 @@ const Index = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const blogPosts = [
-    { id: "blogb", title: "Lenovo AI Powers a World Gone Football™", excerpt: "How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history", image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1600&q=80", date: "June 11, 2026", readTime: "10 min read", category: "Lenovo AI" },
-    { id: "bloga", title: "A Smarter Way to Document Work", excerpt: "How Adobe Acrobat, Adobe Express, and AI Assistant are transforming business documentation", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80", date: "May 04, 2026", readTime: "8 min read", category: "Adobe Acrobat" },
+    { id: "bim-digital-twins-aec-redefined", title: "How BIM and Digital Twins Are Redefining Project Delivery and Asset Management in AEC", excerpt: "Discover how BIM and Digital Twin technologies are transforming AEC project delivery, collaboration, and asset lifecycle management using Autodesk solutions.", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80", date: "June 16, 2026", readTime: "14 min read", category: "AEC & BIM" },
+    { id: "blogd", title: "The Future of Business Transformation: How Cloud Solutions Are Empowering Indian Enterprises", excerpt: "The rise of digital transformation across industries has made cloud solutions one of the most critical enablers of modern business", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80", date: "June 16, 2026", readTime: "15 min read", category: "Cloud Solutions" },
+    { id: "interactive-3d-business-unity-studio", title: "How Businesses Are Using Interactive 3D Experiences to Improve Sales, Training & Operations with Unity Studio", excerpt: "Interactive 3D for Business – A Smarter Way to Engage Customers and Streamline Operations", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80", date: "June 16, 2026", readTime: "12 min read", category: "Interactive 3D" },
+    { id: "blogb", title: "Lenovo AI Powers a World Gone Football™", excerpt: "How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history", image: "https://i.postimg.cc/c4XZj4V4/131659201.jpg", date: "June 11, 2026", readTime: "10 min read", category: "Lenovo AI" },
+    { id: "bloga", title: "A Smarter Way to Document Work", excerpt: "How Adobe Acrobat, Adobe Express, and AI Assistant are transforming business documentation", image: "https://i.postimg.cc/PrX7vbNy/adobe-acrobat-logo-on-background-(1).jpg", date: "May 04, 2026", readTime: "8 min read", category: "Adobe Acrobat" },
     { id: 2, title: "Maximizing ROI with Managed IT Services", excerpt: "How businesses are reducing costs and improving efficiency by partnering with managed service providers for comprehensive IT support and strategic consulting.", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80", date: "November 20, 2025", readTime: "6 min read", category: "Managed Services" },
     { id: 3, title: "Mobile Device Management Best Practices", excerpt: "Essential strategies for implementing effective MDM solutions that balance security, user experience, and organizational control across diverse device ecosystems.", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600&q=80", date: "November 15, 2025", readTime: "7 min read", category: "Device Management" },
     { id: 4, title: "Cybersecurity in the Age of Remote Work", excerpt: "Addressing the evolving security challenges of distributed workforces and implementing robust protection strategies for remote and hybrid work environments.", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80", date: "November 10, 2025", readTime: "9 min read", category: "Security" },
@@ -495,9 +500,12 @@ const Index = () => {
   ];
 
   const featuredPost = blogPosts[0];
-  const postA = blogPosts.find(p => p.id === "bloga") || blogPosts[1];
-  const postB = blogPosts.find(p => p.id === "blogb") || blogPosts[0];
-  const regularPosts = blogPosts.slice(2);
+  const postA = blogPosts.find(p => p.id === "bloga") || blogPosts[4];
+  const postB = blogPosts.find(p => p.id === "blogb") || blogPosts[3];
+  const postC = blogPosts.find(p => p.id === "interactive-3d-business-unity-studio") || blogPosts[2];
+  const postD = blogPosts.find(p => p.id === "blogd") || blogPosts[1];
+  const postE = blogPosts.find(p => p.id === "bim-digital-twins-aec-redefined") || blogPosts[0];
+  const regularPosts = blogPosts.slice(5);
 
   const heroRef       = useRef(null);
   const featuredRef   = useRef(null);
@@ -591,7 +599,7 @@ const Index = () => {
       {/* ✦ GSAP Marquee — after hero */}
       <MarqueeTicker items={marqueeTopItems} speed={24} />
 
-      {/* ==================== FEATURED POST ==================== */}
+      {/* ==================== FEATURED POSTS ==================== */}
       <section className="bg-white py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12" ref={featuredRef}>
@@ -601,101 +609,48 @@ const Index = () => {
               animate={featuredInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             >
-              Featured article
+              Featured articles
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start pb-20 border-b border-gray-300">
-
-            <motion.div
-              className="relative rounded-2xl overflow-hidden h-96"
-              initial={{ opacity: 0, x: -40 }}
-              animate={featuredInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            >
-              <ParallaxImage src={postA.image} alt={postA.title} className="w-full h-full" />
-              <div ref={badgeRef} className="absolute top-6 left-6 z-10 opacity-0">
-                <div className="bg-black bg-opacity-70 text-white px-4 py-2 rounded-full backdrop-blur-sm">
-                  <span className="text-xs font-medium uppercase tracking-wider">{postA.category}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-20 border-b border-gray-300">
+            {[postE,postD, postC, postB, postA].map((post, index) => (
+              <motion.div
+                key={post.id}
+                className="flex flex-col"
+                initial={{ opacity: 0, y: 40 }}
+                animate={featuredInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 + index * 0.1 }}
+              >
+                <div className="relative rounded-2xl overflow-hidden h-64 mb-6">
+                  <ParallaxImage src={post.image} alt={post.title} className="w-full h-full" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <div className="bg-black bg-opacity-70 text-white px-3 py-1.5 rounded-full backdrop-blur-sm">
+                      <span className="text-xs font-medium uppercase tracking-wider">{post.category}</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
 
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, x: 40 }}
-              animate={featuredInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            >
-              <div className="flex items-center gap-6 text-sm text-gray-600">
-                <div className="flex items-center gap-2"><Calendar className="w-4 h-4" /><span>{postA.date}</span></div>
-                <div className="flex items-center gap-2"><Clock className="w-4 h-4" /><span>{postA.readTime}</span></div>
-              </div>
-              <h3 className="text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight">{postA.title}</h3>
-              <p className="text-lg text-gray-800 leading-relaxed">{postA.excerpt}</p>
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="inline-block">
-                <a href={`/blog/bloga`} className="inline-flex items-center px-8 py-3 border-2 border-gray-900 rounded-full text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-colors duration-300">
-                  Read article
-                </a>
+                <div className="space-y-4 flex-1 flex flex-col">
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <div className="flex items-center gap-2"><Calendar className="w-4 h-4" /><span>{post.date}</span></div>
+                    <div className="flex items-center gap-2"><Clock className="w-4 h-4" /><span>{post.readTime}</span></div>
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-semibold text-gray-900 leading-tight">{post.title}</h3>
+                  <p className="text-base text-gray-800 leading-relaxed line-clamp-2">{post.excerpt}</p>
+                  <div className="mt-auto pt-4">
+                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="inline-block">
+                      <a href={`/blog/${post.id}`} className="inline-flex items-center px-6 py-2.5 border-2 border-gray-900 rounded-full text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-colors duration-300">
+                        Read article
+                      </a>
+                    </motion.div>
+                  </div>
+                </div>
               </motion.div>
-            </motion.div>
+            ))}
           </div>
         </div>
       </section>
-{/* ==================== FEATURED POST 02 ==================== */}
-
-       <section className="bg-white py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12" ref={featuredRef}>
-            <motion.h2
-              className="text-6xl md:text-7xl font-semibold text-gray-900 mb-6 leading-tight"
-              initial={{ opacity: 0, y: 50 }}
-              animate={featuredInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            >
-              Featured article
-            </motion.h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start pb-20 border-b border-gray-300">
-
-            <motion.div
-              className="relative rounded-2xl overflow-hidden h-96"
-              initial={{ opacity: 0, x: -40 }}
-              animate={featuredInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            >
-              <ParallaxImage src={postB.image} alt={postB.title} className="w-full h-full" />
-              <div ref={badgeRef} className="absolute top-6 left-6 z-10 opacity-0">
-                <div className="bg-black bg-opacity-70 text-white px-4 py-2 rounded-full backdrop-blur-sm">
-                  <span className="text-xs font-medium uppercase tracking-wider">{postB.category}</span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, x: 40 }}
-              animate={featuredInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            >
-              <div className="flex items-center gap-6 text-sm text-gray-600">
-                <div className="flex items-center gap-2"><Calendar className="w-4 h-4" /><span>{postB.date}</span></div>
-                <div className="flex items-center gap-2"><Clock className="w-4 h-4" /><span>{postB.readTime}</span></div>
-              </div>
-              <h3 className="text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight">{postB.title}</h3>
-              <p className="text-lg text-gray-800 leading-relaxed">{postB.excerpt}</p>
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="inline-block">
-                <a href={`/blog/blogb`} className="inline-flex items-center px-8 py-3 border-2 border-gray-900 rounded-full text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-colors duration-300">
-                  Read article
-                </a>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-
 
       {/* ✦ GSAP Marquee — between featured and latest */}
       <MarqueeTicker items={marqueeBottomItems} speed={30} />

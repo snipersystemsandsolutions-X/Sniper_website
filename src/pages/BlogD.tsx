@@ -1,8 +1,6 @@
 import { Layout } from "@/components/Layout";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Analytics } from "@vercel/analytics/next"
-import { Helmet } from "react-helmet-async";
 import {
   ArrowRight,
   BookOpen,
@@ -16,8 +14,11 @@ import {
   Scale,
   Users,
   BarChart2,
-  Cpu,
-  Tv,
+  Cloud,
+  Shield,
+  Zap,
+  Globe,
+  Lock,
 } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
@@ -264,17 +265,15 @@ const RelatedCard = ({
 );
 
 // ========================================================
-// ✦ TABLE OF CONTENTS ITEM (dark panel with smooth-scroll ID targets)
+// ✦ TABLE OF CONTENTS ITEM (dark panel)
 // ========================================================
 const TocItem = ({
   index,
   title,
-  id,
   inView,
 }: {
   index: number;
   title: string;
-  id: string;
   inView: boolean;
 }) => {
   const lineRef = useRef<HTMLDivElement>(null);
@@ -299,25 +298,14 @@ const TocItem = ({
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.5, ease, delay: 0.2 + index * 0.08 }}
     >
-      <a
-        href={`#${id}`}
-        onClick={(e) => {
-          e.preventDefault();
-          const target = document.getElementById(id);
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-            window.history.pushState(null, "", `#${id}`);
-          }
-        }}
-        className="group flex items-start gap-4 cursor-pointer"
-      >
+      <div className="flex items-start gap-4">
         <span className="text-gray-500 text-xs font-mono mt-1 flex-shrink-0">
           0{index + 1}
         </span>
-        <span className="text-white text-sm sm:text-base font-medium leading-relaxed group-hover:text-blue-400 transition-colors">
+        <span className="text-white text-sm sm:text-base font-medium leading-relaxed">
           {title}
         </span>
-      </a>
+      </div>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-700 overflow-hidden">
         <div
           ref={lineRef}
@@ -330,7 +318,7 @@ const TocItem = ({
 };
 
 // ========================================================
-// ✦ BENEFIT CARD (Lenovo section)
+// ✦ BENEFIT CARD (Cloud section)
 // ========================================================
 const BenefitCard = ({
   icon: Icon,
@@ -362,9 +350,43 @@ const BenefitCard = ({
 );
 
 // ========================================================
-// MAIN BLOG-B PAGE (Lenovo AI)
+// ✦ CLOUD MODEL ROW
 // ========================================================
-const BlogB = () => {
+const CloudModelRow = ({
+  icon: Icon,
+  model,
+  description,
+  index,
+  inView,
+}: {
+  icon: React.ElementType;
+  model: string;
+  description: string;
+  index: number;
+  inView: boolean;
+}) => (
+  <motion.div
+    className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-4 sm:gap-8 py-6 sm:py-8 border-b border-gray-200 last:border-b-0 items-start"
+    initial={{ opacity: 0, x: -24 }}
+    animate={inView ? { opacity: 1, x: 0 } : {}}
+    transition={{ duration: 0.55, ease, delay: 0.1 + index * 0.07 }}
+  >
+    <div className="flex items-center gap-3">
+      <div className="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+        <Icon className="w-4 h-4 text-gray-700" />
+      </div>
+      <span className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
+        {model}
+      </span>
+    </div>
+    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">{description}</p>
+  </motion.div>
+);
+
+// ========================================================
+// MAIN BLOG-D PAGE
+// ========================================================
+const BlogD = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showWhiteScreen, setShowWhiteScreen] = useState(true);
 
@@ -475,98 +497,127 @@ const BlogB = () => {
   const tocRef = useRef(null);
   const statsRef = useRef(null);
   const benefitsRef = useRef(null);
-  const teamsRef = useRef(null);
+  const modelsRef = useRef(null);
+  const trendsRef = useRef(null);
 
   const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
   const tocInView = useInView(tocRef, { once: true, margin: "-60px" });
   const statsInView = useInView(statsRef, { once: true, margin: "-60px" });
   const benefitsInView = useInView(benefitsRef, { once: true, margin: "-60px" });
-  const teamsInView = useInView(teamsRef, { once: true, margin: "-60px" });
+  const modelsInView = useInView(modelsRef, { once: true, margin: "-60px" });
+  const trendsInView = useInView(trendsRef, { once: true, margin: "-60px" });
 
   // Data
   const tocItems = [
-    { title: "Why Lenovo and FIFA Are the Perfect Partnership", id: "why-lenovo-fifa-perfect-match" },
-    { title: "Football AI Pro — Intelligence for Every Team", id: "football-ai-pro" },
-    { title: "VAR & Referee View body cameras", id: "broadcast-var" },
-    { title: "Hybrid AI Infrastructure Powering the Tournament", id: "hybrid-ai-infrastructure" },
-    { title: "Digital Workplace Solutions & Always-On Operations", id: "digital-workplace-solutions" },
-    { title: "Motorola, Special Edition Devices & FIFAe Esports", id: "motorola-special-editions" },
-    { title: "Key Business Benefits of the Partnership", id: "key-business-benefits" },
-    { title: "Who Gains Most from Lenovo's FIFA Technology", id: "who-gains-most" },
-    { title: "The Future of Sports Technology", id: "future-sports-tech" },
+    "What Are Cloud Solutions?",
+    "Why Businesses Are Moving to the Cloud",
+    "Scalability and Flexibility",
+    "Cost Optimization",
+    "Enhanced Security",
+    "Improved Collaboration",
+    "Business Continuity and Disaster Recovery",
+    "Types of Cloud Models",
+    "Cloud Security and Compliance",
+    "Cloud Adoption Trends in India",
+    "The Role of IT Infrastructure Solution Providers",
+    "How Cloud Technology Supports Digital Transformation",
+    "The Future of Cloud in 2025 and Beyond",
   ];
 
   const benefits = [
     {
-      icon: Cpu,
-      title: "Real-Time Intelligence",
+      icon: Zap,
+      title: "Scalability and Flexibility",
       description:
-        "Teams and operations staff act on live data — no delays, no guesswork, no missed decisions during the world's biggest sporting event.",
+        "Cloud infrastructure lets organizations scale resources up or down instantly based on workload demands, ensuring efficient use of resources.",
+    },
+    {
+      icon: Scale,
+      title: "Cost Optimization",
+      description:
+        "Shift from capital expenditure (CapEx) to operational expenditure (OpEx). Businesses pay only for what they use, eliminating large upfront hardware investments.",
+    },
+    {
+      icon: Shield,
+      title: "Enhanced Security",
+      description:
+        "Leading cloud service providers employ multiple layers of security, including encryption, identity management, and access control with compliance to international standards.",
     },
     {
       icon: Users,
-      title: "Equal Access for All 48 Teams",
+      title: "Improved Collaboration",
       description:
-        "Football AI Pro ensures every participating nation benefits from the same AI-driven analytics, levelling the playing field at the highest level.",
+        "With tools like Microsoft 365, Google Workspace, and Adobe Creative Cloud, teams can collaborate in real time, regardless of location.",
     },
     {
-      icon: BarChart2,
-      title: "Scalable Infrastructure",
+      icon: Globe,
+      title: "Business Continuity",
       description:
-        "From 7,500 deployed assets at Club World Cup to a full-tournament backbone for World Cup 2026 — Lenovo's platform scales without friction.",
-    },
-    {
-      icon: Tv,
-      title: "Immersive Fan Experience",
-      description:
-        "Referee View body cams, IPTV delivery, and special edition devices bring 6 billion fans closer to the action than ever before.",
+        "Cloud-based backup and disaster recovery solutions help businesses maintain data availability during unexpected disruptions, ensuring minimal downtime.",
     },
   ];
 
-  const teams = [
+  const cloudModels = [
     {
-      icon: User,
-      team: "Coaches & Analysts",
-      items: [
-        "Query Football AI Pro for real-time player and match insights",
-        "Access tactical breakdowns and opposition intelligence instantly",
-      ],
+      icon: Cloud,
+      model: "Public Cloud",
+      description: "Hosted by third-party providers like AWS or Azure, ideal for scalability and cost efficiency.",
     },
     {
-      icon: Briefcase,
-      team: "Tournament Organizers",
-      items: [
-        "Manage logistics across 16 stadiums and 3 countries with always-on systems",
-        "Deploy and provision thousands of devices in weeks, not months",
-      ],
+      icon: Lock,
+      model: "Private Cloud",
+      description: "Dedicated infrastructure for organizations with strict security or regulatory needs.",
     },
     {
-      icon: Megaphone,
-      team: "Broadcasters",
-      items: [
-        "Distribute HD/4K feeds across satellite, cable, and IPTV with near-zero latency",
-        "Leverage Referee View body camera footage for richer storytelling",
-      ],
+      icon: Globe,
+      model: "Hybrid Cloud",
+      description: "A combination of both, providing flexibility, control, and optimized workloads.",
     },
     {
-      icon: Users,
-      team: "Fans Worldwide",
-      items: [
-        "Watch through Motorola's AI-powered FIFA special edition devices",
-        "Experience immersive in-stadium and at-home digital fan journeys",
-      ],
+      icon: Cloud,
+      model: "Multi-Cloud",
+      description: "Involves using multiple cloud providers to balance performance, cost, and redundancy.",
+    },
+  ];
+
+  const trends = [
+    {
+      icon: Cloud,
+      trend: "Hybrid Cloud Growth",
+      description: "Businesses are combining private and public clouds for maximum flexibility and security.",
     },
     {
-      icon: BarChart2,
-      team: "Enterprise Leaders",
-      items: [
-        "See Lenovo's Hybrid AI infrastructure proven under maximum real-world load",
-        "Apply the same full-stack AI platform to mission-critical business operations",
-      ],
+      icon: Zap,
+      trend: "AI and Cloud Integration",
+      description: "Platforms such as Microsoft Copilot and Azure OpenAI Services are revolutionizing automation and data analytics.",
+    },
+    {
+      icon: Globe,
+      trend: "Edge Computing",
+      description: "Processing data closer to the source improves speed and reliability for IoT and real-time applications.",
+    },
+    {
+      icon: Scale,
+      trend: "Sustainable Cloud",
+      description: "Enterprises are choosing green data centers and energy-efficient cloud environments to meet sustainability goals.",
     },
   ];
 
   const relatedPosts = [
+    {
+      title: "How Businesses Are Using Interactive 3D Experiences",
+      category: "Interactive 3D",
+      image:
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
+      readTime: "12 min read",
+    },
+    {
+      title: "Lenovo AI Powers a World Gone Football™",
+      category: "Lenovo AI",
+      image:
+        "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&q=80",
+      readTime: "10 min read",
+    },
     {
       title: "A Smarter Way to Document Work",
       category: "Adobe Acrobat",
@@ -574,156 +625,38 @@ const BlogB = () => {
         "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
       readTime: "8 min read",
     },
-    {
-      title: "Maximizing ROI with Managed IT Services",
-      category: "Managed Services",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      readTime: "6 min read",
-    },
-    {
-      title: "Mobile Device Management Best Practices",
-      category: "Device Management",
-      image:
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
-      readTime: "7 min read",
-    },
   ];
 
   const marqueeItems1 = [
-    "Lenovo AI Solutions",
-    "FIFA World Cup 2026",
-    "Football AI Pro",
-    "Hybrid AI Infrastructure",
-    "Smarter AI for All",
-    "Official Technology Partner",
+    "Sniper Systems Blog",
+    "Cloud Solutions",
+    "Cloud Computing",
+    "IT Infrastructure",
+    "Digital Transformation",
+    "Microsoft Azure",
+    "AWS",
+    "Google Cloud",
   ];
   const marqueeItems2 = [
-    "Real-Time Analytics",
-    "Referee View Body Cams",
-    "Motorola Razr FIFA Edition",
-    "Lenovo Legion Gaming",
-    "Always-On Operations",
-    "Digital Workplace Solutions",
+    "Cloud Migration",
+    "Cloud Security",
+    "Hybrid Cloud",
+    "Cloud Service Providers",
+    "Business Continuity",
+    "Disaster Recovery",
+    "IT Solutions",
+    "Enterprise Cloud",
   ];
   const marqueeItems3 = [
-    "Future of Sports Tech",
-    "Lenovo Hybrid Cloud",
+    "Stay Informed",
+    "Technology Insights",
     "Sniper Systems",
-    "Next-Gen Infrastructure",
+    "Future-Ready IT",
     "Read More",
   ];
 
   return (
     <Layout>
-      <Helmet>
-        {/* BASIC SEO */}
-        <title>Lenovo AI Powers a World Gone Football™ | Sniper Systems</title>
-        <meta
-          name="description"
-          content="Explore how Lenovo's full-stack AI, Football AI Pro, and hybrid AI infrastructure are driving the most advanced FIFA World Cup 2026™ in history."
-        />
-        <meta
-          name="keywords"
-          content="Lenovo FIFA partnership, FIFA World Cup 2026 technology, Football AI Pro, Official Technology Partner FIFA, Lenovo AI solutions, Hybrid AI infrastructure, Referee View body camera, Motorola FIFA smartphone, Smarter AI for All"
-        />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://sniperindia.com/blog/blogb" />
-
-        {/* GEO TAGS */}
-        <meta name="geo.region" content="IN-TN" />
-        <meta name="geo.placename" content="Chennai" />
-        <meta name="geo.position" content="13.0827;80.2707" />
-        <meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="Lenovo AI Powers a World Gone Football™ | Sniper Systems" />
-        <meta
-          property="og:description"
-          content="Explore how Lenovo's full-stack AI, Football AI Pro, and hybrid AI infrastructure are driving the most advanced FIFA World Cup 2026™ in history."
-        />
-        <meta property="og:image" content="https://i.postimg.cc/cH9k1cMp/1729031977049.jpg" />
-        <meta property="og:url" content="https://sniperindia.com/blog/blogb" />
-        <meta property="article:published_time" content="2026-06-11T12:00:00+05:30" />
-        <meta property="article:modified_time" content="2026-06-11T12:00:00+05:30" />
-        <meta property="article:section" content="Technology" />
-        <meta property="article:tag" content="Lenovo AI, FIFA World Cup 2026, Hybrid Infrastructure, Football AI Pro, Motorola" />
-
-        {/* TWITTER SEO */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Lenovo AI Powers a World Gone Football™ | Sniper Systems" />
-        <meta
-          name="twitter:description"
-          content="Explore how Lenovo's full-stack AI, Football AI Pro, and hybrid AI infrastructure are driving the most advanced FIFA World Cup 2026™ in history."
-        />
-        <meta name="twitter:image" content="https://i.postimg.cc/cH9k1cMp/1729031977049.jpg" />
-
-        {/* SCHEMA MARKUP (JSON-LD) */}
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Lenovo AI Powers a World Gone Football™",
-            "alternativeHeadline": "How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history",
-            "image": "https://i.postimg.cc/cH9k1cMp/1729031977049.jpg",
-            "genre": "Technology",
-            "keywords": "Lenovo FIFA partnership, Football AI Pro, Lenovo AI, FIFA World Cup 2026",
-            "publisher": {
-              "@type": "Organization",
-              "name": "Sniper Systems",
-              "url": "https://sniperindia.com",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-              }
-            },
-            "url": "https://sniperindia.com/blog/blogb",
-            "datePublished": "2026-06-11T12:00:00+05:30",
-            "dateCreated": "2026-06-11T12:00:00+05:30",
-            "dateModified": "2026-06-11T12:00:00+05:30",
-            "description": "How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history. Built end-to-end by Lenovo.",
-            "articleBody": "When billions of fans tune in to FIFA World Cup 2026™, they'll be watching more than football. Behind every match, broadcast, and stadium operation runs a digital infrastructure unlike anything the tournament has seen — built end-to-end by Lenovo, the Official Technology Partner of FIFA World Cup 2026™.",
-            "author": {
-              "@type": "Organization",
-              "name": "Sniper Systems",
-              "url": "https://sniperindia.com"
-            }
-          }
-          `}
-        </script>
-
-        {/* BREADCRUMB SCHEMA */}
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://sniperindia.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Blog",
-                "item": "https://sniperindia.com/blog/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Lenovo AI Powers a World Gone Football",
-                "item": "https://sniperindia.com/blog/blogb"
-              }
-            ]
-          }
-          `}
-        </script>
-      </Helmet>
       {showWhiteScreen && (
         <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />
       )}
@@ -738,24 +671,24 @@ const BlogB = () => {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, ease, delay: 0.9 }}
             >
-              <MetaPill icon={Tag} label="Lenovo AI" />
-              <MetaPill icon={Calendar} label="June 11, 2026" />
-              <MetaPill icon={Clock} label="10 min read" />
+              <MetaPill icon={Tag} label="Cloud Solutions" />
+              <MetaPill icon={Calendar} label="June 16, 2026" />
+              <MetaPill icon={Clock} label="15 min read" />
               <MetaPill icon={User} label="Sniper Systems" />
             </motion.div>
 
             <h1
               ref={heroHeadingRef}
               className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight"
-              aria-label="Lenovo AI Powers a World Gone Football"
+              aria-label="The Future of Business Transformation: How Cloud Solutions Are Empowering Indian Enterprises"
             >
-              {["Lenovo", "AI", "Powers", "a", "World", "Gone", "Football"].map((word, i) => (
+              {["The", "Future", "of", "Cloud", "Transformation"].map((word, i) => (
                 <span
                   key={i}
                   className="hero-word inline-block opacity-0 mr-[0.22em] last:mr-0"
                 >
                   {word}
-                  {word === "a" && <br className="hidden sm:block" />}
+                  {word === "of" && <br className="hidden sm:block" />}
                 </span>
               ))}
             </h1>
@@ -766,7 +699,7 @@ const BlogB = () => {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, ease, delay: 1.55 }}
             >
-              How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history
+              How Cloud Solutions Are Empowering Indian Enterprises
             </motion.p>
 
             <motion.p
@@ -775,9 +708,7 @@ const BlogB = () => {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, ease, delay: 1.7 }}
             >
-              When billions of fans tune in to FIFA World Cup 2026™, they'll be watching more than football.
-              Behind every match, broadcast, and stadium operation runs a digital infrastructure unlike anything the
-              tournament has seen — built end-to-end by Lenovo, the Official Technology Partner of FIFA World Cup 2026™.
+              The rise of digital transformation across industries has made cloud solutions one of the most critical enablers of modern business. Whether it's improving scalability, cutting operational costs, or strengthening cybersecurity, cloud computing is redefining how organizations manage IT infrastructure.
             </motion.p>
           </div>
 
@@ -798,15 +729,15 @@ const BlogB = () => {
               }}
             >
               <ParallaxImage
-                src="https://i.postimg.cc/cH9k1cMp/1729031977049.jpg"
-                alt="Lenovo FIFA World Cup AI technology"
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80"
+                alt="Cloud Solutions for Business"
                 className="w-full h-full"
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 z-10">
                   <div className="bg-black/50 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm">
                     <span className="text-[10px] sm:text-sm font-medium uppercase tracking-widest">
-                      LENOVO FIFA PARTNERSHIP
+                      CLOUD SOLUTIONS
                     </span>
                   </div>
                 </div>
@@ -831,20 +762,20 @@ const BlogB = () => {
           </div>
           <div className="space-y-5">
             {tocItems.map((item, i) => (
-              <TocItem key={i} index={i} title={item.title} id={item.id} inView={tocInView} />
+              <TocItem key={i} index={i} title={item} inView={tocInView} />
             ))}
           </div>
         </div>
       </FadeUp>
 
-      {/* ── Article Body: The Partnership ────────────────────────────────── */}
+      {/* ── Article Body: What Are Cloud Solutions ─────────────────────── */}
       <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
 
           <div className="mb-10 sm:mb-16">
             <FadeUp>
-              <h2 id="why-lenovo-fifa-perfect-match" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                Why Lenovo & FIFA<br />Are the Perfect Match
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                What Are<br />Cloud Solutions?
               </h2>
             </FadeUp>
             <div className="w-full h-px bg-gray-300" />
@@ -853,22 +784,15 @@ const BlogB = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-16">
             <FadeUp>
               <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                SECTION ONE<br />WHY IT MATTERS
+                SECTION ONE<br />THE BASICS
               </h3>
             </FadeUp>
             <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                The Lenovo–FIFA relationship did not begin on paper — it was tested under live tournament pressure at
-                the FIFA Club World Cup 2025™, where Lenovo and Motorola served as Official Technology Partners,
-                deploying over 7,500 assets across 63 matches. With 2.7 billion fans watching and 32 of the world's
-                top clubs competing, Lenovo proved it could deliver at scale.
+                Cloud solutions refer to delivering computing resources — such as storage, databases, applications, and networking — over the internet rather than through on-premise systems. This approach enables organizations to access and manage data from anywhere, anytime, using scalable and secure cloud platforms.
               </p>
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                That performance unlocked a far larger mandate. Lenovo was named Official Global Technology Partner
-                for FIFA World Cup 2026™ — a 48-team, 104-match event spanning Canada, Mexico, and the United States
-                — as well as the FIFA Women's World Cup 2027™ in Brazil. For the first time in the tournament's history,
-                a single tech partner is responsible for the full stack: infrastructure, devices, AI analytics, broadcast
-                operations, and fan experience.
+                Some of the most widely used platforms include Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform (GCP), each offering a range of services designed to meet diverse business needs.
               </p>
             </FadeUp>
           </div>
@@ -877,74 +801,31 @@ const BlogB = () => {
           <FadeUp delay={0.1} className="mb-10 sm:mb-16">
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-48 sm:h-[360px] md:h-[480px]">
               <ParallaxImage
-                src="https://i.postimg.cc/5tNNZxPY/images.jpg"
-                alt="High-tech infrastructure for sports analytics"
+                src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1600&q=80"
+                alt="Cloud computing infrastructure"
                 className="w-full h-full"
               />
             </div>
           </FadeUp>
 
-          {/* Section 2 — AI Assistant & VAR */}
+          {/* Section 2 — Why Businesses Are Moving to the Cloud */}
           <div className="mb-10 sm:mb-16">
             <div className="mb-10 sm:mb-16">
               <FadeUp>
                 <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                  Football AI Pro &amp;<br />Next-Gen Broadcasts
+                  Why Businesses Are<br />Moving to the Cloud
                 </h2>
               </FadeUp>
               <div className="w-full h-px bg-gray-300" />
             </div>
 
-            {/* AI Assistant */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
-              <FadeUp>
-                <h3 id="football-ai-pro" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                  SECTION TWO<br />AI ASSISTANT
-                </h3>
-              </FadeUp>
-              <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
-                <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  Announced at <a
-                    href="https://sniperindia.com/partners/lenovo-authorized-platinum-partner-reseller/index.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      fontWeight: 'bold',
-                      color: '#0000EE',
-                      textDecoration: 'underline',
-                    }}
-                  >
-                    Lenovo Tech World 2026
-                  </a> — held at the Sphere in Las Vegas — Football AI Pro is a
-                  generative AI knowledge assistant designed specifically for football. All 48 participating teams
-                  receive access to it. Coaches and analysts can query it in natural language for player performance
-                  data, tactical breakdowns, injury risk indicators, and historical match context in real time.
-                </p>
-                <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  The same philosophy behind Lenovo's Smarter AI for All approach drives Football AI Pro: advanced AI
-                  should not be reserved for well-resourced teams alone. A first-time qualifier gets the same analytical
-                  depth as a perennial contender. This is perhaps the most democratising technology deployment in the
-                  tournament's history.
-                </p>
-              </FadeUp>
-            </div>
-
-            {/* Broadcast & VAR */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-              <FadeUp>
-                <h3 id="broadcast-var" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                  SECTION THREE<br />BROADCAST &amp; VAR
-                </h3>
-              </FadeUp>
-              <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
-                <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  Beyond the dugout, Lenovo is providing resilient infrastructure for FIFA's VAR Technology Provider Hawk-Eye
-                  Innovations across all 16 stadiums. Following the successful trial at Club World Cup 2025™, referee body
-                  cameras — now enhanced with AI under the name Referee View — will give the anticipated global audience
-                  of 6+ billion fans access to the on-field point of view in real time, adding a layer of transparency
-                  and immersion that was impossible before.
-                </p>
-              </FadeUp>
+            <div
+              ref={benefitsRef}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 mb-16 sm:mb-20"
+            >
+              {benefits.map((b, i) => (
+                <BenefitCard key={i} {...b} index={i} inView={benefitsInView} />
+              ))}
             </div>
           </div>
         </div>
@@ -957,128 +838,136 @@ const BlogB = () => {
         <div className="max-w-4xl mx-auto text-center">
           <FadeUp>
             <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 sm:mb-10">
-              "Having an Official Technology Partner in Lenovo meant that we could mobilise quickly. Their event-proven delivery model gave us the flexibility to scale up operations in weeks, not months."
+              "Cloud computing is no longer optional — it's essential for organizations looking to thrive in a connected world."
             </p>
           </FadeUp>
           <FadeUp delay={0.15}>
             <p className="text-gray-400 text-sm sm:text-base uppercase tracking-widest font-medium">
-              — Jose Ignacio Fresco, FIFA Director of Technology
+              Sniper Systems &amp; Solutions, Cloud Solutions Report
             </p>
           </FadeUp>
         </div>
       </FadeUp>
 
-      {/* ── Infrastructure, Workplace, Devices ────────────────────────────── */}
+      {/* ── Types of Cloud Models ─────────────────────────────────────────── */}
       <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-10 sm:mb-16">
             <FadeUp>
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                Behind the Scenes:<br />Infrastructure &amp; Devices
+                Types of<br />Cloud Models
               </h2>
             </FadeUp>
             <div className="w-full h-px bg-gray-300" />
           </div>
 
-          {/* Infrastructure */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
-            <FadeUp>
-              <h3 id="hybrid-ai-infrastructure" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                SECTION THREE (CONTINUED)<br />INFRASTRUCTURE
-              </h3>
-            </FadeUp>
-            <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                At the International Broadcast Center in Dallas, Texas, Lenovo servers are processing and distributing
-                video feeds simultaneously across satellite, cable, and IP channels globally. The platform enables near
-                real-time IPTV delivery with ultra-low latency — meaning a goal scored in Los Angeles reaches screens
-                in Chennai within moments.
-              </p>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                This is Lenovo's Hybrid AI Advantage in practice: AI-optimised data centres, edge computing, storage
-                systems, and workstations working as a single, unified platform. For enterprise decision-makers
-                watching this unfold, it is a live proof of concept — the same infrastructure that keeps a World Cup
-                broadcast live can power mission-critical operations in finance, healthcare, or logistics.
-              </p>
-            </FadeUp>
+          <div ref={modelsRef}>
+            {cloudModels.map((model, i) => (
+              <CloudModelRow key={i} {...model} index={i} inView={modelsInView} />
+            ))}
           </div>
-
-          {/* Workplace & Operations */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
-            <FadeUp>
-              <h3 id="digital-workplace-solutions" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                SECTION FOUR<br />OPERATIONS &amp; WORKPLACE
-              </h3>
-            </FadeUp>
-            <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                Running a 104-match tournament across three countries means thousands of staff, officials, broadcasters,
-                and volunteers need to stay connected simultaneously. Lenovo's Digital Workplace Solutions provide the speed,
-                resilience, and adaptability to pull off the world's most watched event with zero tolerance for downtime.
-              </p>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                At Club World Cup 2025™, Lenovo deployed provisioning services, custom software through its Solutions &amp;
-                Services Group, Lenovo Tab K11 tablets, and Motorola mobile devices — with ServiceNow integration for seamless
-                operations management. The same model scales to World Cup 26. In football, there are no timeouts. Lenovo's
-                infrastructure doesn't take them either.
-              </p>
-            </FadeUp>
-          </div>
-
-          {/* Devices & Gaming */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-            <FadeUp>
-              <h3 id="motorola-special-editions" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                SECTION FIVE<br />DEVICES &amp; GAMING
-              </h3>
-            </FadeUp>
-            <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                Lenovo's subsidiary Motorola is the Official Smartphone Partner of FIFA World Cup 26™. AI-powered razr and
-                edge devices are designed for fans in stadiums, at home, and on the move — with a special FIFA World Cup 26
-                Edition Motorola razr joining a lineup of limited-edition devices including the ThinkPad X1 Carbon,
-                ThinkPad X9-14, Yoga Slim 7i Aura Edition, Idea Tab, and Lenovo Legion Pro 7i.
-              </p>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                Football's digital frontier extends to esports. Lenovo Legion is the official gaming PC partner of FIFAe
-                Finals 2025™ — the world's premier football esports competition — bringing high-performance hardware to
-                players competing at the intersection of sport and technology. It is a signal that Lenovo's commitment
-                covers the entire football ecosystem, not just the 90 minutes on the pitch.
-              </p>
-            </FadeUp>
-          </div>
-
         </div>
       </section>
 
-      {/* ── Key Benefits Grid ────────────────────────────────────────────── */}
+      {/* ── Cloud Security and Compliance ─────────────────────────────────── */}
       <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-10 sm:mb-16">
             <FadeUp>
-              <h2 id="key-business-benefits" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                Key Business<br />Benefits
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                Cloud Security<br />and Compliance
               </h2>
             </FadeUp>
             <div className="w-full h-px bg-gray-300" />
           </div>
 
-          <div
-            ref={benefitsRef}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 mb-16 sm:mb-20"
-          >
-            {benefits.map((b, i) => (
-              <BenefitCard key={i} {...b} index={i} inView={benefitsInView} />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-14 sm:mb-20">
+            <FadeUp>
+              <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+                SECURITY FRAMEWORK<br />PROTECTION
+              </h3>
+            </FadeUp>
+            <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
+              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
+                Security remains a top priority in the cloud journey. Modern cloud service providers integrate AI-driven threat detection, end-to-end encryption, and compliance monitoring tools to safeguard enterprise data.
+              </p>
+              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
+                Identity and access management (IAM), multi-factor authentication (MFA), and zero-trust architecture are also key frameworks ensuring only authorized users can access sensitive data. For organizations in sectors like banking, healthcare, and government, adhering to compliance standards such as HIPAA, GDPR, and ISO is crucial — and cloud platforms provide built-in mechanisms to meet these regulatory requirements.
+              </p>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Cloud Adoption Trends in India ─────────────────────────────────── */}
+      <FadeUp className="bg-black text-white py-16 sm:py-20 px-4 sm:px-6 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center gap-3 mb-8 sm:mb-12">
+            <FadeUp>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-white">
+                Cloud Adoption<br />Trends in India
+              </h2>
+            </FadeUp>
+          </div>
+          <div ref={trendsRef}>
+            {trends.map((trend, i) => (
+              <motion.div
+                key={i}
+                className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-4 sm:gap-8 py-6 sm:py-8 border-b border-gray-700 last:border-b-0 items-start"
+                initial={{ opacity: 0, x: -24 }}
+                animate={trendsInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.55, ease, delay: 0.1 + i * 0.07 }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+                    <trend.icon className="w-4 h-4 text-gray-300" />
+                  </div>
+                  <span className="text-sm font-semibold text-gray-200 uppercase tracking-wider">
+                    {trend.trend}
+                  </span>
+                </div>
+                <p className="text-sm sm:text-base text-gray-400 leading-relaxed">{trend.description}</p>
+              </motion.div>
             ))}
+          </div>
+        </div>
+      </FadeUp>
+
+      {/* ── The Role of IT Infrastructure Solution Providers ─────────────── */}
+      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-10 sm:mb-16">
+            <FadeUp>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                The Role of IT Infrastructure<br />Solution Providers
+              </h2>
+            </FadeUp>
+            <div className="w-full h-px bg-gray-300" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-14 sm:mb-20">
+            <FadeUp>
+              <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+                PARTNERSHIP<br />EXPERTISE
+              </h3>
+            </FadeUp>
+            <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
+              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
+                For many organizations, managing cloud environments requires specialized expertise. This is where an IT infrastructure solution provider plays a vital role — helping design, deploy, and manage scalable cloud strategies that align with business objectives.
+              </p>
+              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
+                These providers often collaborate with Microsoft Gold Partners in India, AWS Partners, or Google Cloud experts to deliver tailored cloud implementations. They ensure optimized migration, security integration, and cost efficiency while maintaining uptime and performance.
+              </p>
+            </FadeUp>
           </div>
 
           {/* Stats */}
           <div ref={statsRef}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 text-center">
               {[
-                { number: "6", suffix: "Billion ", label: "Fans" },
-                { number: "48", suffix: "", label: "Teams" },
-                { number: "1", suffix: "", label: "Official Technology Partner." },
+                { number: "30", suffix: "%", label: "Average cost reduction with cloud migration" },
+                { number: "50", suffix: "%", label: "Faster time-to-market for new applications" },
+                { number: "99.9", suffix: "%", label: "Uptime guaranteed by leading cloud providers" },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -1098,61 +987,54 @@ const BlogB = () => {
         </div>
       </section>
 
-      {/* ── Team Use Cases ───────────────────────────────────────────────── */}
-      <FadeUp className="bg-black text-white py-16 sm:py-20 px-4 sm:px-6 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-3 mb-8 sm:mb-12">
-            <FadeUp>
-              <h2 id="who-gains-most" className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-white">
-                Who Gains Most from<br />Lenovo's FIFA Technology
-              </h2>
-            </FadeUp>
-          </div>
-          <div ref={teamsRef}>
-            {teams.map((t, i) => (
-              <div
-                key={i}
-                className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-4 sm:gap-8 py-6 sm:py-8 border-b border-gray-700 last:border-b-0 items-start"
-              >
-                <motion.div
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={teamsInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, ease, delay: 0.1 + i * 0.07 }}
-                >
-                  <div className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
-                    <t.icon className="w-4 h-4 text-gray-300" />
-                  </div>
-                  <span className="text-sm font-semibold text-gray-200 uppercase tracking-wider">
-                    {t.team}
-                  </span>
-                </motion.div>
-                <motion.ul
-                  className="space-y-2"
-                  initial={{ opacity: 0 }}
-                  animate={teamsInView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.5, ease, delay: 0.2 + i * 0.07 }}
-                >
-                  {t.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-2.5 text-sm sm:text-base text-gray-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-500 mt-2 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </motion.ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </FadeUp>
-
-      {/* ── Future of Documentation ──────────────────────────────────────── */}
+      {/* ── How Cloud Technology Supports Digital Transformation ─────────── */}
       <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-10 sm:mb-16">
             <FadeUp>
-              <h2 id="future-sports-tech" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                The Future of<br />Sports Technology
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                How Cloud Technology<br />Supports Digital Transformation
+              </h2>
+            </FadeUp>
+            <div className="w-full h-px bg-gray-300" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-14 sm:mb-20">
+            <FadeUp>
+              <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+                STRATEGIC MOVE<br />DATA-DRIVEN FUTURE
+              </h3>
+            </FadeUp>
+            <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
+              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
+                Cloud adoption is not just an IT upgrade — it's a strategic move toward a smarter, data-driven future. By combining AI, machine learning, and data analytics, organizations can turn massive data sets into actionable insights.
+              </p>
+              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
+                Some major benefits include enhanced decision-making through real-time analytics, automation of repetitive IT tasks, support for remote and hybrid work models, and integration of emerging technologies like IoT and blockchain. Cloud solutions empower organizations to adapt quickly to market changes, scale globally, and innovate faster.
+              </p>
+            </FadeUp>
+          </div>
+
+          {/* Mid-article image */}
+          <FadeUp delay={0.1}>
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-48 sm:h-[360px] md:h-[480px]">
+              <ParallaxImage
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80"
+                alt="Digital transformation with cloud"
+                className="w-full h-full"
+              />
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ── The Future of Cloud in 2025 and Beyond ─────────────────────────── */}
+      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-10 sm:mb-16">
+            <FadeUp>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                The Future of Cloud<br />in 2025 and Beyond
               </h2>
             </FadeUp>
             <div className="w-full h-px bg-gray-300" />
@@ -1166,21 +1048,10 @@ const BlogB = () => {
             </FadeUp>
             <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                The Lenovo–FIFA partnership is the most ambitious deployment of AI-driven sports technology in history.
-                No test environment simulates six billion concurrent touchpoints, 104 live productions, and logistics
-                spanning three continents. FIFA World Cup 2026™ is that test — and Lenovo is running it live, in real time,
-                for the whole world to see.
+                As businesses embrace Industry 4.0, the role of the cloud will continue to evolve. Expect to see greater integration between AI-driven cloud platforms and enterprise applications, the rise of sovereign clouds for data localization, smarter low-latency edge computing systems, and continued focus on sustainability and green cloud practices.
               </p>
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                For business leaders, the signal is clear. The same predictive planning, AI-optimised data centres,
-                and full-stack hybrid AI infrastructure Lenovo has deployed for FIFA can be configured for your organisation's
-                most demanding workloads. The pitch is proof of what's possible — and the same capabilities are available
-                through Lenovo's Smarter AI for All solutions today.
-              </p>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed font-semibold text-gray-950">
-                Whether you're a fan counting down to kick-off, a CIO evaluating AI infrastructure, or an operations
-                leader looking to eliminate downtime — this partnership is worth watching closely. The beautiful game just
-                got a beautiful digital backbone.
+                Cloud computing is no longer optional — it's essential for organizations looking to thrive in a connected world. The future belongs to businesses that leverage cloud technology to drive innovation, efficiency, and competitive advantage.
               </p>
             </FadeUp>
           </div>
@@ -1189,8 +1060,8 @@ const BlogB = () => {
           <FadeUp delay={0.1}>
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-48 sm:h-[360px] md:h-[480px]">
               <ParallaxImage
-                src="https://i.postimg.cc/YCFS1nv3/FIFA-Lasso-16x9.jpg"
-                alt="Lenovo Sports Technology Football pitch"
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80"
+                alt="Future of cloud computing"
                 className="w-full h-full"
               />
             </div>
@@ -1229,22 +1100,22 @@ const BlogB = () => {
             <h2
               ref={ctaHeadingRef}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold mb-4 sm:mb-6 leading-tight"
-              aria-label="Ready to bring Lenovo AI to your business?"
+              aria-label="Ready to transform your business with cloud solutions?"
             >
-              {["Ready", "to", "bring", "Lenovo", "AI", "to", "your", "business?"].map((word, i) => (
+              {["Ready", "to", "transform", "your", "cloud?"].map((word, i) => (
                 <span
                   key={i}
                   className="cta-word inline-block opacity-0 mr-[0.22em] last:mr-0"
                 >
                   {word}
-                  {word === "bring" && <br className="hidden sm:block" />}
+                  {word === "transform" && <br className="hidden sm:block" />}
                 </span>
               ))}
             </h2>
           </div>
           <FadeUp delay={0.3}>
             <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto mb-8 sm:mb-12 leading-relaxed">
-              Talk to our team about the right AI infrastructure solution for your operations, scale, and goals.
+              Talk to our team about the right cloud solution for your business, budget, and goals.
             </p>
           </FadeUp>
           <FadeUp delay={0.45}>
@@ -1280,4 +1151,4 @@ const BlogB = () => {
   );
 };
 
-export default BlogB;
+export default BlogD;

@@ -1,8 +1,6 @@
 import { Layout } from "@/components/Layout";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Analytics } from "@vercel/analytics/next"
-import { Helmet } from "react-helmet-async";
 import {
   ArrowRight,
   BookOpen,
@@ -16,8 +14,9 @@ import {
   Scale,
   Users,
   BarChart2,
-  Cpu,
-  Tv,
+  Factory,
+  Building2,
+  GraduationCap,
 } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
@@ -264,17 +263,15 @@ const RelatedCard = ({
 );
 
 // ========================================================
-// ✦ TABLE OF CONTENTS ITEM (dark panel with smooth-scroll ID targets)
+// ✦ TABLE OF CONTENTS ITEM (dark panel)
 // ========================================================
 const TocItem = ({
   index,
   title,
-  id,
   inView,
 }: {
   index: number;
   title: string;
-  id: string;
   inView: boolean;
 }) => {
   const lineRef = useRef<HTMLDivElement>(null);
@@ -299,25 +296,14 @@ const TocItem = ({
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.5, ease, delay: 0.2 + index * 0.08 }}
     >
-      <a
-        href={`#${id}`}
-        onClick={(e) => {
-          e.preventDefault();
-          const target = document.getElementById(id);
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-            window.history.pushState(null, "", `#${id}`);
-          }
-        }}
-        className="group flex items-start gap-4 cursor-pointer"
-      >
+      <div className="flex items-start gap-4">
         <span className="text-gray-500 text-xs font-mono mt-1 flex-shrink-0">
           0{index + 1}
         </span>
-        <span className="text-white text-sm sm:text-base font-medium leading-relaxed group-hover:text-blue-400 transition-colors">
+        <span className="text-white text-sm sm:text-base font-medium leading-relaxed">
           {title}
         </span>
-      </a>
+      </div>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-700 overflow-hidden">
         <div
           ref={lineRef}
@@ -330,7 +316,7 @@ const TocItem = ({
 };
 
 // ========================================================
-// ✦ BENEFIT CARD (Lenovo section)
+// ✦ BENEFIT CARD (Unity Studio section)
 // ========================================================
 const BenefitCard = ({
   icon: Icon,
@@ -362,9 +348,43 @@ const BenefitCard = ({
 );
 
 // ========================================================
-// MAIN BLOG-B PAGE (Lenovo AI)
+// ✦ INDUSTRY USE CASE ROW
 // ========================================================
-const BlogB = () => {
+const IndustryRow = ({
+  icon: Icon,
+  industry,
+  useCase,
+  index,
+  inView,
+}: {
+  icon: React.ElementType;
+  industry: string;
+  useCase: string;
+  index: number;
+  inView: boolean;
+}) => (
+  <motion.div
+    className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-4 sm:gap-8 py-6 sm:py-8 border-b border-gray-200 last:border-b-0 items-start"
+    initial={{ opacity: 0, x: -24 }}
+    animate={inView ? { opacity: 1, x: 0 } : {}}
+    transition={{ duration: 0.55, ease, delay: 0.1 + index * 0.07 }}
+  >
+    <div className="flex items-center gap-3">
+      <div className="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+        <Icon className="w-4 h-4 text-gray-900" />
+      </div>
+      <span className="text-sm font-semibold text-gray-100 uppercase tracking-wider">
+        {industry}
+      </span>
+    </div>
+    <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{useCase}</p>
+  </motion.div>
+);
+
+// ========================================================
+// MAIN BLOG-C PAGE
+// ========================================================
+const BlogC = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showWhiteScreen, setShowWhiteScreen] = useState(true);
 
@@ -475,98 +495,101 @@ const BlogB = () => {
   const tocRef = useRef(null);
   const statsRef = useRef(null);
   const benefitsRef = useRef(null);
-  const teamsRef = useRef(null);
+  const industriesRef = useRef(null);
 
   const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
   const tocInView = useInView(tocRef, { once: true, margin: "-60px" });
   const statsInView = useInView(statsRef, { once: true, margin: "-60px" });
   const benefitsInView = useInView(benefitsRef, { once: true, margin: "-60px" });
-  const teamsInView = useInView(teamsRef, { once: true, margin: "-60px" });
+  const industriesInView = useInView(industriesRef, { once: true, margin: "-60px" });
 
   // Data
   const tocItems = [
-    { title: "Why Lenovo and FIFA Are the Perfect Partnership", id: "why-lenovo-fifa-perfect-match" },
-    { title: "Football AI Pro — Intelligence for Every Team", id: "football-ai-pro" },
-    { title: "VAR & Referee View body cameras", id: "broadcast-var" },
-    { title: "Hybrid AI Infrastructure Powering the Tournament", id: "hybrid-ai-infrastructure" },
-    { title: "Digital Workplace Solutions & Always-On Operations", id: "digital-workplace-solutions" },
-    { title: "Motorola, Special Edition Devices & FIFAe Esports", id: "motorola-special-editions" },
-    { title: "Key Business Benefits of the Partnership", id: "key-business-benefits" },
-    { title: "Who Gains Most from Lenovo's FIFA Technology", id: "who-gains-most" },
-    { title: "The Future of Sports Technology", id: "future-sports-tech" },
+    "Why Interactive 3D Is Becoming a Business Priority",
+    "How Businesses Are Using Unity Studio",
+    "Manufacturing & Industrial Operations",
+    "Product Demonstrations & Sales Enablement",
+    "Employee Training & Simulation",
+    "Architecture, Engineering & Construction",
+    "Why Browser-Based 3D Platforms Matter",
+    "Business Benefits of Interactive 3D Workflows",
+    "Industries Seeing the Highest Adoption",
   ];
 
   const benefits = [
     {
-      icon: Cpu,
-      title: "Real-Time Intelligence",
+      icon: BarChart2,
+      title: "Faster Decision-Making",
       description:
-        "Teams and operations staff act on live data — no delays, no guesswork, no missed decisions during the world's biggest sporting event.",
+        "Interactive visualization simplifies complex information, helping teams make quicker decisions.",
     },
     {
       icon: Users,
-      title: "Equal Access for All 48 Teams",
+      title: "Better Customer Engagement",
       description:
-        "Football AI Pro ensures every participating nation benefits from the same AI-driven analytics, levelling the playing field at the highest level.",
+        "Customers interact with products and environments in real time instead of viewing static presentations.",
     },
     {
-      icon: BarChart2,
-      title: "Scalable Infrastructure",
+      icon: Factory,
+      title: "Improved Operational Efficiency",
       description:
-        "From 7,500 deployed assets at Club World Cup to a full-tournament backbone for World Cup 2026 — Lenovo's platform scales without friction.",
+        "Simulation-based workflows reduce errors, delays, and rework in operational processes.",
     },
     {
-      icon: Tv,
-      title: "Immersive Fan Experience",
+      icon: Scale,
+      title: "Reduced Training Costs",
       description:
-        "Referee View body cams, IPTV delivery, and special edition devices bring 6 billion fans closer to the action than ever before.",
-    },
-  ];
-
-  const teams = [
-    {
-      icon: User,
-      team: "Coaches & Analysts",
-      items: [
-        "Query Football AI Pro for real-time player and match insights",
-        "Access tactical breakdowns and opposition intelligence instantly",
-      ],
-    },
-    {
-      icon: Briefcase,
-      team: "Tournament Organizers",
-      items: [
-        "Manage logistics across 16 stadiums and 3 countries with always-on systems",
-        "Deploy and provision thousands of devices in weeks, not months",
-      ],
+        "Virtual training environments minimize the need for physical resources and repeated sessions.",
     },
     {
       icon: Megaphone,
-      team: "Broadcasters",
-      items: [
-        "Distribute HD/4K feeds across satellite, cable, and IPTV with near-zero latency",
-        "Leverage Referee View body camera footage for richer storytelling",
-      ],
+      title: "Scalable Collaboration",
+      description:
+        "Teams across multiple locations can collaborate on projects more efficiently.",
+    },
+  ];
+
+  const industries = [
+    {
+      icon: Factory,
+      industry: "Manufacturing",
+      useCase: "Equipment simulation & digital twins",
     },
     {
-      icon: Users,
-      team: "Fans Worldwide",
-      items: [
-        "Watch through Motorola's AI-powered FIFA special edition devices",
-        "Experience immersive in-stadium and at-home digital fan journeys",
-      ],
+      icon: Briefcase,
+      industry: "Automotive",
+      useCase: "Product visualization & training",
     },
     {
-      icon: BarChart2,
-      team: "Enterprise Leaders",
-      items: [
-        "See Lenovo's Hybrid AI infrastructure proven under maximum real-world load",
-        "Apply the same full-stack AI platform to mission-critical business operations",
-      ],
+      icon: Building2,
+      industry: "Retail",
+      useCase: "Interactive product configurators",
+    },
+    {
+      icon: GraduationCap,
+      industry: "Healthcare",
+      useCase: "Virtual training environments",
+    },
+    {
+      icon: Building2,
+      industry: "Architecture",
+      useCase: "Real-time walkthroughs",
+    },
+    {
+      icon: Megaphone,
+      industry: "Enterprise Sales",
+      useCase: "Immersive product demos",
     },
   ];
 
   const relatedPosts = [
+    {
+      title: "Lenovo AI Powers a World Gone Football™",
+      category: "Lenovo AI",
+      image:
+        "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&q=80",
+      readTime: "10 min read",
+    },
     {
       title: "A Smarter Way to Document Work",
       category: "Adobe Acrobat",
@@ -581,149 +604,35 @@ const BlogB = () => {
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
       readTime: "6 min read",
     },
-    {
-      title: "Mobile Device Management Best Practices",
-      category: "Device Management",
-      image:
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
-      readTime: "7 min read",
-    },
   ];
 
   const marqueeItems1 = [
-    "Lenovo AI Solutions",
-    "FIFA World Cup 2026",
-    "Football AI Pro",
-    "Hybrid AI Infrastructure",
-    "Smarter AI for All",
-    "Official Technology Partner",
+    "Sniper Systems Blog",
+    "Unity Studio",
+    "Interactive 3D",
+    "Business Solutions",
+    "Digital Transformation",
+    "Real-time Visualization",
   ];
   const marqueeItems2 = [
-    "Real-Time Analytics",
-    "Referee View Body Cams",
-    "Motorola Razr FIFA Edition",
-    "Lenovo Legion Gaming",
-    "Always-On Operations",
-    "Digital Workplace Solutions",
+    "3D Experiences",
+    "Sales Enablement",
+    "Training Solutions",
+    "Operational Efficiency",
+    "Unity Studio",
+    "Browser-Based 3D",
+    "Business Innovation",
   ];
   const marqueeItems3 = [
-    "Future of Sports Tech",
-    "Lenovo Hybrid Cloud",
+    "Stay Informed",
+    "Technology Insights",
     "Sniper Systems",
-    "Next-Gen Infrastructure",
+    "Future-Ready IT",
     "Read More",
   ];
 
   return (
     <Layout>
-      <Helmet>
-        {/* BASIC SEO */}
-        <title>Lenovo AI Powers a World Gone Football™ | Sniper Systems</title>
-        <meta
-          name="description"
-          content="Explore how Lenovo's full-stack AI, Football AI Pro, and hybrid AI infrastructure are driving the most advanced FIFA World Cup 2026™ in history."
-        />
-        <meta
-          name="keywords"
-          content="Lenovo FIFA partnership, FIFA World Cup 2026 technology, Football AI Pro, Official Technology Partner FIFA, Lenovo AI solutions, Hybrid AI infrastructure, Referee View body camera, Motorola FIFA smartphone, Smarter AI for All"
-        />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://sniperindia.com/blog/blogb" />
-
-        {/* GEO TAGS */}
-        <meta name="geo.region" content="IN-TN" />
-        <meta name="geo.placename" content="Chennai" />
-        <meta name="geo.position" content="13.0827;80.2707" />
-        <meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="Lenovo AI Powers a World Gone Football™ | Sniper Systems" />
-        <meta
-          property="og:description"
-          content="Explore how Lenovo's full-stack AI, Football AI Pro, and hybrid AI infrastructure are driving the most advanced FIFA World Cup 2026™ in history."
-        />
-        <meta property="og:image" content="https://i.postimg.cc/cH9k1cMp/1729031977049.jpg" />
-        <meta property="og:url" content="https://sniperindia.com/blog/blogb" />
-        <meta property="article:published_time" content="2026-06-11T12:00:00+05:30" />
-        <meta property="article:modified_time" content="2026-06-11T12:00:00+05:30" />
-        <meta property="article:section" content="Technology" />
-        <meta property="article:tag" content="Lenovo AI, FIFA World Cup 2026, Hybrid Infrastructure, Football AI Pro, Motorola" />
-
-        {/* TWITTER SEO */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Lenovo AI Powers a World Gone Football™ | Sniper Systems" />
-        <meta
-          name="twitter:description"
-          content="Explore how Lenovo's full-stack AI, Football AI Pro, and hybrid AI infrastructure are driving the most advanced FIFA World Cup 2026™ in history."
-        />
-        <meta name="twitter:image" content="https://i.postimg.cc/cH9k1cMp/1729031977049.jpg" />
-
-        {/* SCHEMA MARKUP (JSON-LD) */}
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Lenovo AI Powers a World Gone Football™",
-            "alternativeHeadline": "How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history",
-            "image": "https://i.postimg.cc/cH9k1cMp/1729031977049.jpg",
-            "genre": "Technology",
-            "keywords": "Lenovo FIFA partnership, Football AI Pro, Lenovo AI, FIFA World Cup 2026",
-            "publisher": {
-              "@type": "Organization",
-              "name": "Sniper Systems",
-              "url": "https://sniperindia.com",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-              }
-            },
-            "url": "https://sniperindia.com/blog/blogb",
-            "datePublished": "2026-06-11T12:00:00+05:30",
-            "dateCreated": "2026-06-11T12:00:00+05:30",
-            "dateModified": "2026-06-11T12:00:00+05:30",
-            "description": "How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history. Built end-to-end by Lenovo.",
-            "articleBody": "When billions of fans tune in to FIFA World Cup 2026™, they'll be watching more than football. Behind every match, broadcast, and stadium operation runs a digital infrastructure unlike anything the tournament has seen — built end-to-end by Lenovo, the Official Technology Partner of FIFA World Cup 2026™.",
-            "author": {
-              "@type": "Organization",
-              "name": "Sniper Systems",
-              "url": "https://sniperindia.com"
-            }
-          }
-          `}
-        </script>
-
-        {/* BREADCRUMB SCHEMA */}
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://sniperindia.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Blog",
-                "item": "https://sniperindia.com/blog/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Lenovo AI Powers a World Gone Football",
-                "item": "https://sniperindia.com/blog/blogb"
-              }
-            ]
-          }
-          `}
-        </script>
-      </Helmet>
       {showWhiteScreen && (
         <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />
       )}
@@ -738,24 +647,24 @@ const BlogB = () => {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, ease, delay: 0.9 }}
             >
-              <MetaPill icon={Tag} label="Lenovo AI" />
-              <MetaPill icon={Calendar} label="June 11, 2026" />
-              <MetaPill icon={Clock} label="10 min read" />
+              <MetaPill icon={Tag} label="Interactive 3D" />
+              <MetaPill icon={Calendar} label="June 16, 2026" />
+              <MetaPill icon={Clock} label="12 min read" />
               <MetaPill icon={User} label="Sniper Systems" />
             </motion.div>
 
             <h1
               ref={heroHeadingRef}
               className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight"
-              aria-label="Lenovo AI Powers a World Gone Football"
+              aria-label="How Businesses Are Using Interactive 3D Experiences to Improve Sales, Training & Operations with Unity Studio"
             >
-              {["Lenovo", "AI", "Powers", "a", "World", "Gone", "Football"].map((word, i) => (
+              {["Interactive", "3D", "for", "Business"].map((word, i) => (
                 <span
                   key={i}
                   className="hero-word inline-block opacity-0 mr-[0.22em] last:mr-0"
                 >
                   {word}
-                  {word === "a" && <br className="hidden sm:block" />}
+                  {word === "for" && <br className="hidden sm:block" />}
                 </span>
               ))}
             </h1>
@@ -766,7 +675,7 @@ const BlogB = () => {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, ease, delay: 1.55 }}
             >
-              How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history
+              A Smarter Way to Engage Customers and Streamline Operations
             </motion.p>
 
             <motion.p
@@ -775,9 +684,7 @@ const BlogB = () => {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, ease, delay: 1.7 }}
             >
-              When billions of fans tune in to FIFA World Cup 2026™, they'll be watching more than football.
-              Behind every match, broadcast, and stadium operation runs a digital infrastructure unlike anything the
-              tournament has seen — built end-to-end by Lenovo, the Official Technology Partner of FIFA World Cup 2026™.
+              For many organizations, product presentations, training sessions, and operational workflows still rely on static PDFs, slides, videos, or complex demonstrations. These traditional methods often fail to capture customer attention, simplify complex products, deliver immersive training experiences, and speed up business decisions.
             </motion.p>
           </div>
 
@@ -798,15 +705,15 @@ const BlogB = () => {
               }}
             >
               <ParallaxImage
-                src="https://i.postimg.cc/cH9k1cMp/1729031977049.jpg"
-                alt="Lenovo FIFA World Cup AI technology"
+                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80"
+                alt="Interactive 3D Business Experiences"
                 className="w-full h-full"
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 z-10">
                   <div className="bg-black/50 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm">
                     <span className="text-[10px] sm:text-sm font-medium uppercase tracking-widest">
-                      LENOVO FIFA PARTNERSHIP
+                      UNITY STUDIO
                     </span>
                   </div>
                 </div>
@@ -831,20 +738,20 @@ const BlogB = () => {
           </div>
           <div className="space-y-5">
             {tocItems.map((item, i) => (
-              <TocItem key={i} index={i} title={item.title} id={item.id} inView={tocInView} />
+              <TocItem key={i} index={i} title={item} inView={tocInView} />
             ))}
           </div>
         </div>
       </FadeUp>
 
-      {/* ── Article Body: The Partnership ────────────────────────────────── */}
+      {/* ── Article Body: The Problem ──────────────────────────────────── */}
       <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
 
           <div className="mb-10 sm:mb-16">
             <FadeUp>
-              <h2 id="why-lenovo-fifa-perfect-match" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                Why Lenovo & FIFA<br />Are the Perfect Match
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                Why Interactive 3D<br />Is Becoming a Business Priority
               </h2>
             </FadeUp>
             <div className="w-full h-px bg-gray-300" />
@@ -853,22 +760,15 @@ const BlogB = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-16">
             <FadeUp>
               <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                SECTION ONE<br />WHY IT MATTERS
+                SECTION ONE<br />THE SHIFT
               </h3>
             </FadeUp>
             <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                The Lenovo–FIFA relationship did not begin on paper — it was tested under live tournament pressure at
-                the FIFA Club World Cup 2025™, where Lenovo and Motorola served as Official Technology Partners,
-                deploying over 7,500 assets across 63 matches. With 2.7 billion fans watching and 32 of the world's
-                top clubs competing, Lenovo proved it could deliver at scale.
+                Organizations across industries are under pressure to improve customer engagement, reduce operational delays, accelerate training processes, and simplify product visualization. Interactive 3D environments help businesses achieve this by transforming static information into real-time experiences.
               </p>
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                That performance unlocked a far larger mandate. Lenovo was named Official Global Technology Partner
-                for FIFA World Cup 2026™ — a 48-team, 104-match event spanning Canada, Mexico, and the United States
-                — as well as the FIFA Women's World Cup 2027™ in Brazil. For the first time in the tournament's history,
-                a single tech partner is responsible for the full stack: infrastructure, devices, AI analytics, broadcast
-                operations, and fan experience.
+                Instead of explaining products or processes through documents, companies can now showcase products interactively, simulate real-world environments, train employees virtually, and visualize operations in real time. This is where Unity Studio is helping enterprises modernize how they communicate, train, and operate.
               </p>
             </FadeUp>
           </div>
@@ -877,72 +777,76 @@ const BlogB = () => {
           <FadeUp delay={0.1} className="mb-10 sm:mb-16">
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-48 sm:h-[360px] md:h-[480px]">
               <ParallaxImage
-                src="https://i.postimg.cc/5tNNZxPY/images.jpg"
-                alt="High-tech infrastructure for sports analytics"
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&q=80"
+                alt="Interactive 3D visualization"
                 className="w-full h-full"
               />
             </div>
           </FadeUp>
 
-          {/* Section 2 — AI Assistant & VAR */}
+          {/* Section 2 — How Businesses Are Using Unity Studio */}
           <div className="mb-10 sm:mb-16">
             <div className="mb-10 sm:mb-16">
               <FadeUp>
                 <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                  Football AI Pro &amp;<br />Next-Gen Broadcasts
+                  How Businesses Are<br />Using Unity Studio
                 </h2>
               </FadeUp>
               <div className="w-full h-px bg-gray-300" />
             </div>
 
-            {/* AI Assistant */}
+            {/* Manufacturing */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
               <FadeUp>
-                <h3 id="football-ai-pro" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                  SECTION TWO<br />AI ASSISTANT
+                <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+                  SECTION TWO<br />MANUFACTURING & INDUSTRIAL
                 </h3>
               </FadeUp>
               <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
                 <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  Announced at <a
-                    href="https://sniperindia.com/partners/lenovo-authorized-platinum-partner-reseller/index.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      fontWeight: 'bold',
-                      color: '#0000EE',
-                      textDecoration: 'underline',
-                    }}
-                  >
-                    Lenovo Tech World 2026
-                  </a> — held at the Sphere in Las Vegas — Football AI Pro is a
-                  generative AI knowledge assistant designed specifically for football. All 48 participating teams
-                  receive access to it. Coaches and analysts can query it in natural language for player performance
-                  data, tactical breakdowns, injury risk indicators, and historical match context in real time.
-                </p>
-                <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  The same philosophy behind Lenovo's Smarter AI for All approach drives Football AI Pro: advanced AI
-                  should not be reserved for well-resourced teams alone. A first-time qualifier gets the same analytical
-                  depth as a perennial contender. This is perhaps the most democratising technology deployment in the
-                  tournament's history.
+                  Manufacturers are using interactive 3D environments to visualize factory layouts, simulate equipment operations, and create digital twins of physical systems. This improves operational planning, maintenance workflows, and team collaboration. Businesses gain better visibility into operations before implementation.
                 </p>
               </FadeUp>
             </div>
 
-            {/* Broadcast & VAR */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
+            {/* Product Demonstrations */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
               <FadeUp>
-                <h3 id="broadcast-var" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                  SECTION THREE<br />BROADCAST &amp; VAR
+                <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+                  SECTION THREE<br />PRODUCT DEMONSTRATIONS
                 </h3>
               </FadeUp>
               <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
                 <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  Beyond the dugout, Lenovo is providing resilient infrastructure for FIFA's VAR Technology Provider Hawk-Eye
-                  Innovations across all 16 stadiums. Following the successful trial at Club World Cup 2025™, referee body
-                  cameras — now enhanced with AI under the name Referee View — will give the anticipated global audience
-                  of 6+ billion fans access to the on-field point of view in real time, adding a layer of transparency
-                  and immersion that was impossible before.
+                  Traditional product demos often limit customer understanding. With Unity Studio, businesses can create interactive product walkthroughs, real-time product configurators, and immersive customer presentations. This helps sales teams communicate product value more effectively and improve customer engagement.
+                </p>
+              </FadeUp>
+            </div>
+
+            {/* Employee Training */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
+              <FadeUp>
+                <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+                  SECTION FOUR<br />EMPLOYEE TRAINING
+                </h3>
+              </FadeUp>
+              <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
+                <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
+                  Training teams through manuals or videos can be time-consuming and inconsistent. Interactive simulations enable organizations to train employees in virtual environments, reduce onboarding time, and improve knowledge retention. Industries such as manufacturing, healthcare, and automotive are increasingly adopting simulation-based training to improve workforce readiness.
+                </p>
+              </FadeUp>
+            </div>
+
+            {/* AEC */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
+              <FadeUp>
+                <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
+                  SECTION FIVE<br />ARCHITECTURE, ENGINEERING & CONSTRUCTION
+                </h3>
+              </FadeUp>
+              <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
+                <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
+                  Businesses in AEC sectors are using real-time visualization for virtual walkthroughs, design collaboration, and project presentations. This helps stakeholders understand projects more clearly before construction begins, reducing costly revisions and improving project outcomes.
                 </p>
               </FadeUp>
             </div>
@@ -957,107 +861,24 @@ const BlogB = () => {
         <div className="max-w-4xl mx-auto text-center">
           <FadeUp>
             <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 sm:mb-10">
-              "Having an Official Technology Partner in Lenovo meant that we could mobilise quickly. Their event-proven delivery model gave us the flexibility to scale up operations in weeks, not months."
+              "Interactive 3D is no longer limited to gaming or entertainment—it is becoming a core business tool for improving productivity, engagement, and operational visibility."
             </p>
           </FadeUp>
           <FadeUp delay={0.15}>
             <p className="text-gray-400 text-sm sm:text-base uppercase tracking-widest font-medium">
-              — Jose Ignacio Fresco, FIFA Director of Technology
+              Sniper Systems &amp; Solutions, Unity Studio Report
             </p>
           </FadeUp>
         </div>
       </FadeUp>
-
-      {/* ── Infrastructure, Workplace, Devices ────────────────────────────── */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-10 sm:mb-16">
-            <FadeUp>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                Behind the Scenes:<br />Infrastructure &amp; Devices
-              </h2>
-            </FadeUp>
-            <div className="w-full h-px bg-gray-300" />
-          </div>
-
-          {/* Infrastructure */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
-            <FadeUp>
-              <h3 id="hybrid-ai-infrastructure" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                SECTION THREE (CONTINUED)<br />INFRASTRUCTURE
-              </h3>
-            </FadeUp>
-            <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                At the International Broadcast Center in Dallas, Texas, Lenovo servers are processing and distributing
-                video feeds simultaneously across satellite, cable, and IP channels globally. The platform enables near
-                real-time IPTV delivery with ultra-low latency — meaning a goal scored in Los Angeles reaches screens
-                in Chennai within moments.
-              </p>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                This is Lenovo's Hybrid AI Advantage in practice: AI-optimised data centres, edge computing, storage
-                systems, and workstations working as a single, unified platform. For enterprise decision-makers
-                watching this unfold, it is a live proof of concept — the same infrastructure that keeps a World Cup
-                broadcast live can power mission-critical operations in finance, healthcare, or logistics.
-              </p>
-            </FadeUp>
-          </div>
-
-          {/* Workplace & Operations */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-10 sm:mb-14">
-            <FadeUp>
-              <h3 id="digital-workplace-solutions" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                SECTION FOUR<br />OPERATIONS &amp; WORKPLACE
-              </h3>
-            </FadeUp>
-            <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                Running a 104-match tournament across three countries means thousands of staff, officials, broadcasters,
-                and volunteers need to stay connected simultaneously. Lenovo's Digital Workplace Solutions provide the speed,
-                resilience, and adaptability to pull off the world's most watched event with zero tolerance for downtime.
-              </p>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                At Club World Cup 2025™, Lenovo deployed provisioning services, custom software through its Solutions &amp;
-                Services Group, Lenovo Tab K11 tablets, and Motorola mobile devices — with ServiceNow integration for seamless
-                operations management. The same model scales to World Cup 26. In football, there are no timeouts. Lenovo's
-                infrastructure doesn't take them either.
-              </p>
-            </FadeUp>
-          </div>
-
-          {/* Devices & Gaming */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-            <FadeUp>
-              <h3 id="motorola-special-editions" className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                SECTION FIVE<br />DEVICES &amp; GAMING
-              </h3>
-            </FadeUp>
-            <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                Lenovo's subsidiary Motorola is the Official Smartphone Partner of FIFA World Cup 26™. AI-powered razr and
-                edge devices are designed for fans in stadiums, at home, and on the move — with a special FIFA World Cup 26
-                Edition Motorola razr joining a lineup of limited-edition devices including the ThinkPad X1 Carbon,
-                ThinkPad X9-14, Yoga Slim 7i Aura Edition, Idea Tab, and Lenovo Legion Pro 7i.
-              </p>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                Football's digital frontier extends to esports. Lenovo Legion is the official gaming PC partner of FIFAe
-                Finals 2025™ — the world's premier football esports competition — bringing high-performance hardware to
-                players competing at the intersection of sport and technology. It is a signal that Lenovo's commitment
-                covers the entire football ecosystem, not just the 90 minutes on the pitch.
-              </p>
-            </FadeUp>
-          </div>
-
-        </div>
-      </section>
 
       {/* ── Key Benefits Grid ────────────────────────────────────────────── */}
       <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-10 sm:mb-16">
             <FadeUp>
-              <h2 id="key-business-benefits" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                Key Business<br />Benefits
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                Business Benefits<br />of Interactive 3D
               </h2>
             </FadeUp>
             <div className="w-full h-px bg-gray-300" />
@@ -1076,9 +897,9 @@ const BlogB = () => {
           <div ref={statsRef}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 text-center">
               {[
-                { number: "6", suffix: "Billion ", label: "Fans" },
-                { number: "48", suffix: "", label: "Teams" },
-                { number: "1", suffix: "", label: "Official Technology Partner." },
+                { number: "50", suffix: "%", label: "Faster decision-making with 3D visualization" },
+                { number: "40", suffix: "%", label: "Reduction in training time" },
+                { number: "60", suffix: "%", label: "Improvement in customer engagement" },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -1098,61 +919,31 @@ const BlogB = () => {
         </div>
       </section>
 
-      {/* ── Team Use Cases ───────────────────────────────────────────────── */}
+      {/* ── Industry Use Cases ───────────────────────────────────────────────── */}
       <FadeUp className="bg-black text-white py-16 sm:py-20 px-4 sm:px-6 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-8 sm:mb-12">
             <FadeUp>
-              <h2 id="who-gains-most" className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-white">
-                Who Gains Most from<br />Lenovo's FIFA Technology
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-white">
+                Industries Seeing<br />the Highest Adoption
               </h2>
             </FadeUp>
           </div>
-          <div ref={teamsRef}>
-            {teams.map((t, i) => (
-              <div
-                key={i}
-                className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-4 sm:gap-8 py-6 sm:py-8 border-b border-gray-700 last:border-b-0 items-start"
-              >
-                <motion.div
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={teamsInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, ease, delay: 0.1 + i * 0.07 }}
-                >
-                  <div className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
-                    <t.icon className="w-4 h-4 text-gray-300" />
-                  </div>
-                  <span className="text-sm font-semibold text-gray-200 uppercase tracking-wider">
-                    {t.team}
-                  </span>
-                </motion.div>
-                <motion.ul
-                  className="space-y-2"
-                  initial={{ opacity: 0 }}
-                  animate={teamsInView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.5, ease, delay: 0.2 + i * 0.07 }}
-                >
-                  {t.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-2.5 text-sm sm:text-base text-gray-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-500 mt-2 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </motion.ul>
-              </div>
+          <div ref={industriesRef}>
+            {industries.map((industry, i) => (
+              <IndustryRow key={i} {...industry} index={i} inView={industriesInView} />
             ))}
           </div>
         </div>
       </FadeUp>
 
-      {/* ── Future of Documentation ──────────────────────────────────────── */}
+      {/* ── Why This Matters in 2026 ──────────────────────────────────────── */}
       <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-10 sm:mb-16">
             <FadeUp>
-              <h2 id="future-sports-tech" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                The Future of<br />Sports Technology
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                Why This Matters<br />in 2026
               </h2>
             </FadeUp>
             <div className="w-full h-px bg-gray-300" />
@@ -1161,26 +952,15 @@ const BlogB = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-14 sm:mb-20">
             <FadeUp>
               <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider leading-relaxed">
-                SECTION FINAL<br />WHAT'S NEXT
+                SECTION FINAL<br />THE FUTURE
               </h3>
             </FadeUp>
             <FadeUp delay={0.1} className="space-y-4 sm:space-y-6">
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                The Lenovo–FIFA partnership is the most ambitious deployment of AI-driven sports technology in history.
-                No test environment simulates six billion concurrent touchpoints, 104 live productions, and logistics
-                spanning three continents. FIFA World Cup 2026™ is that test — and Lenovo is running it live, in real time,
-                for the whole world to see.
+                Businesses are rapidly investing in digital transformation, real-time visualization, immersive customer experiences, and operational simulations. Interactive 3D is no longer limited to gaming or entertainment—it is becoming a core business tool for improving productivity, engagement, and operational visibility.
               </p>
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                For business leaders, the signal is clear. The same predictive planning, AI-optimised data centres,
-                and full-stack hybrid AI infrastructure Lenovo has deployed for FIFA can be configured for your organisation's
-                most demanding workloads. The pitch is proof of what's possible — and the same capabilities are available
-                through Lenovo's Smarter AI for All solutions today.
-              </p>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed font-semibold text-gray-950">
-                Whether you're a fan counting down to kick-off, a CIO evaluating AI infrastructure, or an operations
-                leader looking to eliminate downtime — this partnership is worth watching closely. The beautiful game just
-                got a beautiful digital backbone.
+                Organizations adopting these technologies early are gaining a competitive advantage in customer experience and workflow efficiency. With platforms like Unity Studio, enterprises can build scalable and immersive experiences that support modern business transformation.
               </p>
             </FadeUp>
           </div>
@@ -1189,8 +969,8 @@ const BlogB = () => {
           <FadeUp delay={0.1}>
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-48 sm:h-[360px] md:h-[480px]">
               <ParallaxImage
-                src="https://i.postimg.cc/YCFS1nv3/FIFA-Lasso-16x9.jpg"
-                alt="Lenovo Sports Technology Football pitch"
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80"
+                alt="Future of interactive 3D in business"
                 className="w-full h-full"
               />
             </div>
@@ -1229,22 +1009,22 @@ const BlogB = () => {
             <h2
               ref={ctaHeadingRef}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold mb-4 sm:mb-6 leading-tight"
-              aria-label="Ready to bring Lenovo AI to your business?"
+              aria-label="Ready to transform your business with interactive 3D?"
             >
-              {["Ready", "to", "bring", "Lenovo", "AI", "to", "your", "business?"].map((word, i) => (
+              {["Ready", "to", "transform", "your", "business?"].map((word, i) => (
                 <span
                   key={i}
                   className="cta-word inline-block opacity-0 mr-[0.22em] last:mr-0"
                 >
                   {word}
-                  {word === "bring" && <br className="hidden sm:block" />}
+                  {word === "transform" && <br className="hidden sm:block" />}
                 </span>
               ))}
             </h2>
           </div>
           <FadeUp delay={0.3}>
             <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto mb-8 sm:mb-12 leading-relaxed">
-              Talk to our team about the right AI infrastructure solution for your operations, scale, and goals.
+              Talk to our team about the right Unity Studio solution for your business, budget, and goals.
             </p>
           </FadeUp>
           <FadeUp delay={0.45}>
@@ -1280,4 +1060,4 @@ const BlogB = () => {
   );
 };
 
-export default BlogB;
+export default BlogC;
