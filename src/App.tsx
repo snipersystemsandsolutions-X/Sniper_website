@@ -21,6 +21,7 @@ const BlogB = React.lazy(() => import("./pages/BlogB"));
 const BlogC = React.lazy(() => import("./pages/BlogC"));
 const BlogD = React.lazy(() => import("./pages/BlogD"));
 const BlogE = React.lazy(() => import("./pages/BlogE"));
+const BlogF = React.lazy(() => import("./pages/BlogF"));
 
 // Solutions
 import AVSolutions from "./pages/solutions/AVSolutions";
@@ -153,6 +154,7 @@ const App = () => (
 <Route path="/blog/interactive-3d-business-unity-studio" element={<BlogC />} />
 <Route path="/blog/blogd" element={<BlogD />} />
 <Route path="/blog/bim-digital-twins-aec-redefined" element={<BlogE />} />
+<Route path="/blog/microsoft-threat-protection-strengthening-enterprise-security" element={<BlogF />} />
 
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />

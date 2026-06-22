@@ -33,7 +33,7 @@ import { Helmet } from "react-helmet-async";
 
         <link
           rel="canonical"
-          href="https://sniperindia.com/blog/"
+          href="https://blog.sniperindia.com/"
         />
 
         {/* GEO TAGS */}
@@ -64,7 +64,7 @@ import { Helmet } from "react-helmet-async";
 
         <meta
           property="og:url"
-          content="https://sniperindia.com/blog/"
+          content="https://blog.sniperindia.com/"
         />
 
         {/* TWITTER SEO */}
@@ -485,6 +485,7 @@ const Index = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const blogPosts = [
+    { id: "microsoft-threat-protection-strengthening-enterprise-security", title: "Microsoft Threat Protection: Strengthening Enterprise Security Against Modern Cyber Threats", excerpt: "How Microsoft Threat Protection brings identity, endpoint, email, cloud, and data signals together for faster detection and response.", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80", date: "June 22, 2026", readTime: "9 min read", category: "Cybersecurity" },
     { id: "bim-digital-twins-aec-redefined", title: "How BIM and Digital Twins Are Redefining Project Delivery and Asset Management in AEC", excerpt: "Discover how BIM and Digital Twin technologies are transforming AEC project delivery, collaboration, and asset lifecycle management using Autodesk solutions.", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80", date: "June 16, 2026", readTime: "14 min read", category: "AEC & BIM" },
     { id: "blogd", title: "The Future of Business Transformation: How Cloud Solutions Are Empowering Indian Enterprises", excerpt: "The rise of digital transformation across industries has made cloud solutions one of the most critical enablers of modern business", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80", date: "June 16, 2026", readTime: "15 min read", category: "Cloud Solutions" },
     { id: "interactive-3d-business-unity-studio", title: "How Businesses Are Using Interactive 3D Experiences to Improve Sales, Training & Operations with Unity Studio", excerpt: "Interactive 3D for Business – A Smarter Way to Engage Customers and Streamline Operations", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80", date: "June 16, 2026", readTime: "12 min read", category: "Interactive 3D" },
@@ -500,11 +501,12 @@ const Index = () => {
   ];
 
   const featuredPost = blogPosts[0];
-  const postA = blogPosts.find(p => p.id === "bloga") || blogPosts[4];
-  const postB = blogPosts.find(p => p.id === "blogb") || blogPosts[3];
-  const postC = blogPosts.find(p => p.id === "interactive-3d-business-unity-studio") || blogPosts[2];
-  const postD = blogPosts.find(p => p.id === "blogd") || blogPosts[1];
-  const postE = blogPosts.find(p => p.id === "bim-digital-twins-aec-redefined") || blogPosts[0];
+  const postF = blogPosts.find(p => p.id === "microsoft-threat-protection-strengthening-enterprise-security") || blogPosts[0];
+  const postA = blogPosts.find(p => p.id === "bloga") || blogPosts[5];
+  const postB = blogPosts.find(p => p.id === "blogb") || blogPosts[4];
+  const postC = blogPosts.find(p => p.id === "interactive-3d-business-unity-studio") || blogPosts[3];
+  const postD = blogPosts.find(p => p.id === "blogd") || blogPosts[2];
+  const postE = blogPosts.find(p => p.id === "bim-digital-twins-aec-redefined") || blogPosts[1];
   const regularPosts = blogPosts.slice(5);
 
   const heroRef       = useRef(null);
@@ -614,7 +616,7 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-20 border-b border-gray-300">
-            {[postE,postD, postC, postB, postA].map((post, index) => (
+            {[postF, postE, postD, postC, postB].map((post, index) => (
               <motion.div
                 key={post.id}
                 className="flex flex-col"

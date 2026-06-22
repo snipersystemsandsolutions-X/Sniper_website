@@ -1,11 +1,11 @@
 import { Layout } from "@/components/Layout";
 import LottieAnimation from "@/components/ServicesAnimation";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
-import { useEffect, useRef, useState, useCallback } from "react";
-import { Link } from "react-router-dom";
-import { motion, useInView, AnimatePresence } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { AnimatePresence, motion, useInView } from "motion/react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 import React from "react";
@@ -483,6 +483,7 @@ const Blog = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const blogPosts = [
+    { id: "microsoft-threat-protection-strengthening-enterprise-security", title: "Microsoft Threat Protection: Strengthening Enterprise Security Against Modern Cyber Threats", excerpt: "How Microsoft Threat Protection brings identity, endpoint, email, cloud, and data signals together for faster detection and response.", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80", date: "June 22, 2026", readTime: "9 min read", category: "Cybersecurity" },
     { id: "blogb", title: "Lenovo AI Powers a World Gone Football™", excerpt: "How Lenovo's full-stack AI technology is driving the most advanced FIFA World Cup™ in history", image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1600&q=80", date: "June 11, 2026", readTime: "10 min read", category: "Lenovo AI" },
     { id: "bloga", title: "A Smarter Way to Document Work", excerpt: "How Adobe Acrobat, Adobe Express, and AI Assistant are transforming business documentation", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80", date: "May 04, 2026", readTime: "8 min read", category: "Adobe Acrobat" },
     { id: 2, title: "Maximizing ROI with Managed IT Services", excerpt: "How businesses are reducing costs and improving efficiency by partnering with managed service providers for comprehensive IT support and strategic consulting.", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80", date: "November 20, 2025", readTime: "6 min read", category: "Managed Services" },
