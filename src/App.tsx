@@ -27,6 +27,7 @@ const BlogF = React.lazy(() => import("./pages/BlogF"));
 import AVSolutions from "./pages/solutions/AVSolutions";
 import CloudSolutions from "./pages/solutions/CloudSolutions";
 import DeviceDeploymentMDM from "./pages/solutions/DeviceDeploymentMDM";
+import GiftingSolution from "./pages/solutions/GiftingSolution";
 import HRSolutions from "./pages/solutions/HRSolutions";
 import ITAssetDisposal from "./pages/solutions/ITAssetDisposal";
 import ITConsulting from "./pages/solutions/ITConsulting";
@@ -105,7 +106,7 @@ const App = () => (
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/solutions/av-solutions" element={<AVSolutions />} />
           <Route path="/solutions/device-deployment-mdm" element={<DeviceDeploymentMDM />} />
-
+          <Route path="/solutions/gifting-solution" element={<GiftingSolution />} />
           <Route path="/solutions/it-asset-disposal" element={<ITAssetDisposal />} />
           <Route path="/solutions/hr-solutions" element={<HRSolutions />} />
           <Route path="/solutions/it-consulting" element={<ITConsulting />} />
