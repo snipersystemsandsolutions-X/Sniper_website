@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -593,6 +594,101 @@ const BlogG = () => {
 
   return (
     <Layout>
+      <Helmet>
+        {/* BASIC SEO */}
+        <title>How Enterprises Are Using Azure OpenAI to Drive Productivity and Innovation in 2026 | Sniper Systems</title>
+        <meta
+          name="description"
+          content="Explore how leading enterprises are shifting from basic chatbots to autonomous agentic AI and robust governance on Azure OpenAI in 2026."
+        />
+        <meta
+          name="keywords"
+          content="Azure OpenAI enterprise 2026, agentic AI governance, Azure AI Foundry, Microsoft Entra Agent ID, multi-model cloud strategy, Sniper Systems"
+        />
+        <meta name="robots" content="index, follow" />
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/blog/how-enterprises-are-using-azure-openai-to-drive-productivity-and-innovation-in-2026"
+        />
+
+        {/* GEO TAGS */}
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
+        <meta name="geo.position" content="13.0827;80.2707" />
+        <meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="How Enterprises Are Using Azure OpenAI to Drive Productivity and Innovation in 2026" />
+        <meta property="og:description" content="Discover how leading enterprises are shifting from basic chatbots to autonomous agentic AI and robust governance on Azure OpenAI in 2026." />
+        <meta property="og:image" content="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1600&q=80" />
+        <meta property="og:url" content="https://sniperindia.com/blog/how-enterprises-are-using-azure-openai-to-drive-productivity-and-innovation-in-2026" />
+
+        {/* TWITTER SEO */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="How Enterprises Are Using Azure OpenAI to Drive Productivity and Innovation in 2026" />
+        <meta name="twitter:description" content="Discover how leading enterprises are shifting from basic chatbots to autonomous agentic AI and robust governance on Azure OpenAI in 2026." />
+        <meta name="twitter:image" content="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1600&q=80" />
+
+        {/* ARTICLE SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "How Enterprises Are Using Azure OpenAI to Drive Productivity and Innovation in 2026",
+            "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1600&q=80",
+            "datePublished": "2026-06-25T11:00:00+05:30",
+            "dateModified": "2026-06-25T11:00:00+05:30",
+            "author": {
+              "@type": "Organization",
+              "name": "Sniper Systems",
+              "url": "https://sniperindia.com"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Sniper Systems",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+              }
+            },
+            "description": "Discover how leading enterprises are shifting from basic chatbots to autonomous agentic AI and robust governance on Azure OpenAI in 2026."
+          }
+          `}
+        </script>
+
+        {/* BREADCRUMB SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://sniperindia.com/blog/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "How Enterprises Are Using Azure OpenAI to Drive Productivity and Innovation in 2026",
+                "item": "https://sniperindia.com/blog/how-enterprises-are-using-azure-openai-to-drive-productivity-and-innovation-in-2026"
+              }
+            ]
+          }
+          `}
+        </script>
+      </Helmet>
+
       {showWhiteScreen && (
         <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />
       )}
