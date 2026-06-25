@@ -73,7 +73,7 @@ const FadeUp = ({
 };
 
 // ========================================================
-// ✦ MARQUEE TICKER
+// ✦ MARQUEE TICKER (Scroll-Linked via GSAP)
 // ========================================================
 const MarqueeTicker = ({
   items,
@@ -82,17 +82,44 @@ const MarqueeTicker = ({
   items: string[];
   reverse?: boolean;
 }) => {
-  const doubled = [...items, ...items];
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const track = trackRef.current;
+    if (!container || !track) return;
+
+    const tween = gsap.fromTo(
+      track,
+      { xPercent: reverse ? -25 : 0 },
+      {
+        xPercent: reverse ? 0 : -25,
+        ease: "none",
+        scrollTrigger: {
+          trigger: container,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.8,
+        },
+      }
+    );
+
+    return () => {
+      tween.scrollTrigger?.kill();
+      tween.kill();
+    };
+  }, [reverse]);
+
+  const multiplied = [...items, ...items, ...items, ...items];
+
   return (
-    <div className="overflow-hidden bg-gray-950 py-3 sm:py-4 border-y border-gray-800">
+    <div ref={containerRef} className="overflow-hidden bg-gray-950 py-3 sm:py-4 border-y border-gray-800">
       <div
-        className="flex gap-8 sm:gap-10 whitespace-nowrap"
-        style={{
-          animation: `marquee${reverse ? "Rev" : ""} 28s linear infinite`,
-          willChange: "transform",
-        }}
+        ref={trackRef}
+        className="flex gap-8 sm:gap-10 whitespace-nowrap will-change-transform"
       >
-        {doubled.map((text, i) => (
+        {multiplied.map((text, i) => (
           <span
             key={i}
             className="flex items-center gap-8 sm:gap-10 text-[10px] sm:text-[11px] font-semibold tracking-[0.22em] uppercase text-gray-500"
@@ -102,10 +129,6 @@ const MarqueeTicker = ({
           </span>
         ))}
       </div>
-      <style>{`
-        @keyframes marquee    { from { transform: translateX(0) } to { transform: translateX(-50%) } }
-        @keyframes marqueeRev { from { transform: translateX(-50%) } to { transform: translateX(0) } }
-      `}</style>
     </div>
   );
 };
