@@ -88,7 +88,7 @@ export const Footer = () => {
               Stay connected<br />to the future of<br />Enterprise IT
             </h2>
             <a
-              href="/contact"
+              href="https://www.sniperindia.com/contact"
               className="inline-flex items-center gap-2 text-lg border-b-2 border-stone-900 pb-1 hover:border-stone-600 transition-colors"
             >
               Get in Touch <span>→</span>

@@ -470,32 +470,33 @@ export const Navbar = () => {
 // const allPartnerItems = partnerGroups.flatMap(g => g.items.map(name => ({ name, href: `/partners/${name.toLowerCase().replace(/\s+/g, "-")}` })));
 
 // With this (using actual absolute URLs):
+// ─── Partner URLs ──────────────────────────────────────────────────────────────
 const allPartnerItems = partnerGroups.flatMap(g => g.items.map(name => {
   // Map partner names to actual URLs
   const partnerUrls = {
-    "Apple": "https://sniperindia.com/partners/apple",
-    "Dell": "https://sniperindia.com/partners/dell",
-    "HP": "https://sniperindia.com/partners/hp",
-    "Lenovo": "https://sniperindia.com/partners/lenovo",
-    "Asus": "https://sniperindia.com/partners/asus",
-    "Acer": "https://sniperindia.com/partners/acer",
-    "Samsung": "https://sniperindia.com/partners/samsung",
-    "Microsoft": "https://sniperindia.com/partners/microsoft",
-    "Adobe": "https://sniperindia.com/partners/adobe",
-    "Autodesk": "https://sniperindia.com/partners/autodesk",
-    "AWS": "https://sniperindia.com/partners/aws",
-    "Azure": "https://sniperindia.com/partners/azure",
-    "Unity": "https://sniperindia.com/partners/unity",
-    "Unreal Engine": "https://sniperindia.com/partners/unreal-engine",
-    "Cisco": "https://sniperindia.com/partners/cisco",
-    "Yubico": "https://sniperindia.com/partners/yubico",
-    "JAMF": "https://sniperindia.com/partners/jamf",
-    "Logitech": "https://sniperindia.com/partners/logitech",
-    "Nvidia": "https://sniperindia.com/partners/nvidia"
+    "Apple": "https://www.sniperindia.com/partners/apple",
+    "Dell": "https://www.sniperindia.com/partners/dell",
+    "HP": "https://www.sniperindia.com/partners/hp",
+    "Lenovo": "https://www.sniperindia.com/partners/lenovo",
+    "Asus": "https://www.sniperindia.com/partners/asus",
+    "Acer": "https://www.sniperindia.com/partners/acer",
+    "Samsung": "https://www.sniperindia.com/partners/samsung",
+    "Microsoft": "https://www.sniperindia.com/partners/microsoft",
+    "Adobe": "https://www.sniperindia.com/partners/adobe",
+    "Autodesk": "https://www.sniperindia.com/partners/autodesk",
+    "AWS": "https://www.sniperindia.com/partners/aws",
+    "Azure": "https://www.sniperindia.com/partners/azure",
+    "Unity": "https://www.sniperindia.com/partners/unity",
+    "Unreal Engine": "https://www.sniperindia.com/partners/unreal-engine",
+    "Cisco": "https://www.sniperindia.com/partners/cisco",
+    "Yubico": "https://www.sniperindia.com/partners/yubico",
+    "JAMF": "https://www.sniperindia.com/partners/jamf",
+    "Logitech": "https://www.sniperindia.com/partners/logitech",
+    "Nvidia": "https://www.sniperindia.com/partners/nvidia"
   };
   return {
     name,
-    href: partnerUrls[name] || `https://sniperindia.com/partners/${name.toLowerCase().replace(/\s+/g, "-")}`
+    href: partnerUrls[name] || `https://www.sniperindia.com/partners/${name.toLowerCase().replace(/\s+/g, "-")}`
   };
 }));
 
@@ -624,7 +625,7 @@ const allPartnerItems = partnerGroups.flatMap(g => g.items.map(name => {
                     <CategoryLabel>{group.label}</CategoryLabel>
                     <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
                       {group.items.map((name) => {
-                        const href = `/partners/${name.toLowerCase().replace(/\s+/g, "-")}`;
+                       const href = `https://www.sniperindia.com/partners/${name.toLowerCase().replace(/\s+/g, "-")}`;
                         return (
                           <PartnerChip key={name} name={name} href={href} onClick={close} />
                         );
@@ -642,7 +643,7 @@ const allPartnerItems = partnerGroups.flatMap(g => g.items.map(name => {
               <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "12px", color: "#6b7280" }}>
                 Explore all {partnerGroups.flatMap(g => g.items).length} technology partnerships
               </span>
-              <a href="/partners" onClick={close} style={{
+              <a href="https://www.sniperindia.com/partners" onClick={close} style={{
                 fontFamily: "'DM Sans', sans-serif", fontSize: "12px", fontWeight: 600,
                 color: "#d1d5db", marginLeft: "4px", textDecoration: "none", borderBottom: "1px solid #4b5563",
               }}>
