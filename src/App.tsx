@@ -25,6 +25,7 @@ const BlogF = React.lazy(() => import("./pages/BlogF"));
 const BlogG = React.lazy(() => import("./pages/BlogG"));
 const BlogH = React.lazy(() => import("./pages/BlogH"));
 const BlogI = React.lazy(() => import("./pages/BlogI"));
+const BlogJ = React.lazy(() => import("./pages/BlogJ"));
 
 // Solutions
 import AVSolutions from "./pages/solutions/AVSolutions";
@@ -162,6 +163,7 @@ const App = () => (
 <Route path="/blog/how-enterprises-are-using-azure-openai-to-drive-productivity-and-innovation-in-2026" element={<BlogG />} />
 <Route path="/blog/why-businesses-are-choosing-dell-dual-monitor-setups-for-higher-productivity" element={<BlogH />} />
 <Route path="/blog/how-real-time-3d-and-xr-are-transforming-automotive-product-development" element={<BlogI />} />
+<Route path="/blog/how-microsoft-intune-is-helping-enterprises-secure-hybrid-work-and-simplify-endpoint-management" element={<BlogJ />} />
 
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
