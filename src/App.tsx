@@ -13,7 +13,6 @@ const About = React.lazy(() => import("./pages/About"));
 const Blog = React.lazy(() => import("./pages/Blog"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Careers = React.lazy(() => import("./pages/Careers"));
-const BlogA = React.lazy(() => import("./pages/Bloga"));
 
 
 import NotFound from "./pages/NotFound";
@@ -79,80 +78,80 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-       <BrowserRouter>
-  <Suspense>
-    <Routes>
-          <Route path="/" element={<Index />} />
+      <BrowserRouter>
+        <Suspense>
+          <Routes>
+            <Route path="/" element={<Index />} />
 
-          {/* Main route */}
-          <Route path="/about" element={<About />} />
+            {/* Main route */}
+            <Route path="/about" element={<About />} />
 
-          {/* Redirect old URL */}
-          <Route path="/about-us" element={<Navigate to="/about" replace />} />
-
-
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/privacy" element={<Privacy/>}/>
-          <Route path="/terms" element={<TermsAndConditions/>}/>
-
-          {/* Solutions Routes */}
-          <Route path="/solutions" element={<Solutions />} />
-          <Route path="/solutions/av-solutions" element={<AVSolutions />} />
-          <Route path="/solutions/device-deployment-mdm" element={<DeviceDeploymentMDM />} />
-
-          <Route path="/solutions/it-asset-disposal" element={<ITAssetDisposal />} />
-          <Route path="/solutions/hr-solutions" element={<HRSolutions />} />
-          <Route path="/solutions/it-consulting" element={<ITConsulting />} />
-          <Route path="/solutions/managed-it-services" element={<ManagedITServices />} />
-          <Route path="/solutions/payment-services" element={<PaymentServices />} />
-          <Route path="/solutions/it-infrastructure" element={<ITInfrastructure />} />
-          <Route path="/solutions/networking-solutions" element={<NetworkingSolutions />} />
-          <Route path="/solutions/clould-solutions" element={<CloudSolutions />} />
-
-          {/* Partners Routes */}
-          <Route path="/partners" element={<Partners />} />
-          <Route path="/partners/apple/" element={<Apple />} />
-          <Route path="/partners/nvidia" element={<Nvidia />} />
-          <Route path="/partners/microsoft" element={<Microsoft />} />
-          <Route path="/partners/lenovo" element={<Lenovo />} />
-          <Route path="/partners/autodesk" element={<Autodesk />} />
-          <Route path="/partners/adobe" element={<Adobe />} />
-          <Route path="/partners/samsung" element={<Samsung />} />
-          <Route path="/partners/hp" element={<HP />} />
-          <Route path="/partners/unity" element={<Unity />} />
-          <Route path="/partners/jamf" element={<JAMF />} />
-          <Route path="/partners/unreal-engine" element={<UnrealEngine />} />
-          <Route path="/partners/logitech" element={<Logitech />} />
-          <Route path="/partners/cisco" element={<Cisco />} />
-          <Route path="/partners/asus" element={<Asus />} />
-          <Route path="/partners/yubico" element={<Yubico />} />
-          <Route path="/partners/dell" element={<Dell />} />
-          <Route path="/partners/acer" element={<Acer />} />
-          <Route path="/partners/aws" element={<AWS />} />
-          <Route path="/partners/azure" element={<Azure />} />
-
-          {/* Industries Routes */}
-          <Route path="/industries" element={<Industries />} />
-          <Route path="/industries/aec" element={<AEC />} />
-          <Route path="/industries/media-and-entertainment" element={<MediaEntertainment />} />
-          <Route path="/industries/ar-vr-mr-xr" element={<ARVRMRXR />} />
-          <Route path="/industries/government" element={<Government />} />
-          <Route path="/industries/it-ites-infra" element={<ITITESInfra />} />
-          <Route path="/industries/healthcare-pharma" element={<HealthcarePharma />} />
-          <Route path="/industries/manufacturing-automotive" element={<ManufacturingAutomotive />} />
-          <Route path="/industries/Education" element={<Education />} />
+            {/* Redirect old URL */}
+            <Route path="/about-us" element={<Navigate to="/about" replace />} />
 
 
-<Route path="/blog/bloga" element={<BlogA />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
+
+            {/* Solutions Routes */}
+            <Route path="/solutions" element={<Solutions />} />
+            <Route path="/solutions/av-solutions" element={<AVSolutions />} />
+            <Route path="/solutions/device-deployment-mdm" element={<DeviceDeploymentMDM />} />
+
+            <Route path="/solutions/it-asset-disposal" element={<ITAssetDisposal />} />
+            <Route path="/solutions/hr-solutions" element={<HRSolutions />} />
+            <Route path="/solutions/it-consulting" element={<ITConsulting />} />
+            <Route path="/solutions/managed-it-services" element={<ManagedITServices />} />
+            <Route path="/solutions/payment-services" element={<PaymentServices />} />
+            <Route path="/solutions/it-infrastructure" element={<ITInfrastructure />} />
+            <Route path="/solutions/networking-solutions" element={<NetworkingSolutions />} />
+            <Route path="/solutions/clould-solutions" element={<CloudSolutions />} />
+
+            {/* Partners Routes */}
+            <Route path="/partners" element={<Partners />} />
+            <Route path="/partners/apple/" element={<Apple />} />
+            <Route path="/partners/nvidia" element={<Nvidia />} />
+            <Route path="/partners/microsoft" element={<Microsoft />} />
+            <Route path="/partners/lenovo" element={<Lenovo />} />
+            <Route path="/partners/autodesk" element={<Autodesk />} />
+            <Route path="/partners/adobe" element={<Adobe />} />
+            <Route path="/partners/samsung" element={<Samsung />} />
+            <Route path="/partners/hp" element={<HP />} />
+            <Route path="/partners/unity" element={<Unity />} />
+            <Route path="/partners/jamf" element={<JAMF />} />
+            <Route path="/partners/unreal-engine" element={<UnrealEngine />} />
+            <Route path="/partners/logitech" element={<Logitech />} />
+            <Route path="/partners/cisco" element={<Cisco />} />
+            <Route path="/partners/asus" element={<Asus />} />
+            <Route path="/partners/yubico" element={<Yubico />} />
+            <Route path="/partners/dell" element={<Dell />} />
+            <Route path="/partners/acer" element={<Acer />} />
+            <Route path="/partners/aws" element={<AWS />} />
+            <Route path="/partners/azure" element={<Azure />} />
+
+            {/* Industries Routes */}
+            <Route path="/industries" element={<Industries />} />
+            <Route path="/industries/aec" element={<AEC />} />
+            <Route path="/industries/media-and-entertainment" element={<MediaEntertainment />} />
+            <Route path="/industries/ar-vr-mr-xr" element={<ARVRMRXR />} />
+            <Route path="/industries/government" element={<Government />} />
+            <Route path="/industries/it-ites-infra" element={<ITITESInfra />} />
+            <Route path="/industries/healthcare-pharma" element={<HealthcarePharma />} />
+            <Route path="/industries/manufacturing-automotive" element={<ManufacturingAutomotive />} />
+            <Route path="/industries/Education" element={<Education />} />
 
 
-          {/* Catch-all */}
-          <Route path="*" element={<NotFound />} />
-            </Routes>
-  </Suspense>
-</BrowserRouter>
+
+
+
+            {/* Catch-all */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
