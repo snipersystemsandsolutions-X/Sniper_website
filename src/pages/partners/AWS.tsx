@@ -3,10 +3,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowRight, Cloud, Database, Globe, Lock,
-   Settings, ShieldCheck, Users, Zap,
+  Settings, ShieldCheck, Users, Zap,
 } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -115,6 +116,17 @@ const ParallaxImage = ({
 // ========================================================
 const BenefitsList = ({ benefits, inView }: { benefits: any[]; inView: boolean }) => {
   const linesRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+  const script = document.createElement("script");
+  script.src = "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+  script.async = true;
+  document.body.appendChild(script);
+  return () => { document.body.removeChild(script); };
+}, []);
+
+
+
   useEffect(() => {
     if (!inView) return;
     linesRef.current.forEach((line, i) => {
@@ -313,6 +325,20 @@ const AWS = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>AWS Partner | Cloud Solutions | Sniper Systems</title>
+        <meta name="description" content="Sniper Systems is an AWS partner delivering enterprise cloud infrastructure, managed services, and AWS cloud solutions for businesses across India." />
+        <meta name="keywords" content="AWS partner, AWS cloud solutions, AWS infrastructure, cloud migration services, AWS managed services" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://sniperindia.com/partners/aws/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="AWS Partner Solutions | Sniper Systems" />
+        <meta property="og:description" content="Enterprise AWS cloud infrastructure, migration, and managed services from certified AWS partner Sniper Systems." />
+        <meta property="og:url" content="https://sniperindia.com/partners/aws/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AWS Partner | Sniper Systems" />
+        <meta name="twitter:description" content="AWS cloud solutions and services from Sniper Systems." />
+      </Helmet>
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
@@ -549,7 +575,7 @@ const AWS = () => {
         {showScrollTop && (
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}

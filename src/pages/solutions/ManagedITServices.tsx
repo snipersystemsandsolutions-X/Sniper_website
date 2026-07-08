@@ -1,4 +1,6 @@
 import { Layout } from "@/components/Layout";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowRight,
   CheckCircle,
@@ -9,10 +11,191 @@ import {
   Shield,
   Users,
 } from "lucide-react";
+import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "motion/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import React from "react";
+
+
+
+
+      <>
+
+        {/* BASIC SEO */}
+
+        <title>Best Managed IT Services in India | 24/7 IT Support | Sniper Systems</title>
+
+        <meta
+          name="description"
+          content="Looking for managed IT services in India? Sniper Systems offers proactive IT support, cloud management, cybersecurity, and infrastructure monitoring to keep your business running smoothly."
+        />
+
+        <meta
+          name="keywords"
+          content="managed IT services Chennai, IT support services India, IT managed services provider, IT outsourcing company Chennai, 24/7 IT support services"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/solutions/managed-it-services"
+        />
+
+        {/* GEO TAGS */}
+
+        <meta name="geo.region" content="IN-TN" />
+<meta name="geo.placename" content="Chennai" />
+<meta name="geo.position" content="13.0827;80.2707" />
+<meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+
+        <meta property="og:type" content="website" />
+
+        <meta
+          property="og:title"
+          content="Managed IT Services & Support | Sniper Systems"
+        />
+
+        <meta
+          property="og:description"
+          content="End-to-end IT management including infrastructure, cloud, cybersecurity, and helpdesk support for enterprises."
+        />
+
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/solutions/managed-it-services"
+        />
+
+        {/* TWITTER SEO */}
+
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta
+          name="twitter:title"
+          content="Managed IT Services in Chennai | Sniper Systems"
+        />
+
+        <meta
+          name="twitter:description"
+          content="Proactive IT support, cloud management, and cybersecurity services to ensure business continuity and performance."
+        />
+
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+</script>
+
+        {/* SERVICE SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Managed IT Services",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "End-to-end IT management including infrastructure monitoring, cybersecurity, cloud services, and helpdesk support."
+          }
+          `}
+</script>
+
+        {/* FAQ SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What are managed IT services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Managed IT services involve outsourcing IT operations such as monitoring, maintenance, security, and support to improve efficiency and reduce downtime."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why do businesses need managed IT services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Managed IT services help businesses reduce IT costs, improve security, ensure uptime, and focus on core operations without worrying about technology management."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Sniper Systems provide 24/7 IT support?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Sniper Systems provides proactive monitoring, helpdesk support, and continuous IT management to ensure business continuity."
+                }
+              }
+            ]
+          }
+          `}
+</script>
+
+        {/* BREADCRUMB SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://sniperindia.com/solutions/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Managed IT Services",
+                "item": "https://sniperindia.com/solutions/managed-it-services"
+              }
+            ]
+          }
+          `}
+</script>
+
+      </>
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -592,6 +775,189 @@ const ManagedITServices = () => {
 
   return (
     <Layout>
+
+
+      <>
+
+        {/* BASIC SEO */}
+
+        <title>Best Managed IT Services in India | 24/7 IT Support | Sniper Systems</title>
+
+        <meta
+          name="description"
+          content="Looking for managed IT services in India? Sniper Systems offers proactive IT support, cloud management, cybersecurity, and infrastructure monitoring to keep your business running smoothly."
+        />
+
+        <meta
+          name="keywords"
+          content="managed IT services Chennai, IT support services India, IT managed services provider, IT outsourcing company Chennai, 24/7 IT support services"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/solutions/managed-it-services"
+        />
+
+        {/* GEO TAGS */}
+
+        <meta name="geo.region" content="IN-TN" />
+<meta name="geo.placename" content="Chennai" />
+<meta name="geo.position" content="13.0827;80.2707" />
+<meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+
+        <meta property="og:type" content="website" />
+
+        <meta
+          property="og:title"
+          content="Managed IT Services & Support | Sniper Systems"
+        />
+
+        <meta
+          property="og:description"
+          content="End-to-end IT management including infrastructure, cloud, cybersecurity, and helpdesk support for enterprises."
+        />
+
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/solutions/managed-it-services"
+        />
+
+        {/* TWITTER SEO */}
+
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta
+          name="twitter:title"
+          content="Managed IT Services in Chennai | Sniper Systems"
+        />
+
+        <meta
+          name="twitter:description"
+          content="Proactive IT support, cloud management, and cybersecurity services to ensure business continuity and performance."
+        />
+
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+</script>
+
+        {/* SERVICE SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Managed IT Services",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "End-to-end IT management including infrastructure monitoring, cybersecurity, cloud services, and helpdesk support."
+          }
+          `}
+</script>
+
+        {/* FAQ SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What are managed IT services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Managed IT services involve outsourcing IT operations such as monitoring, maintenance, security, and support to improve efficiency and reduce downtime."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why do businesses need managed IT services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Managed IT services help businesses reduce IT costs, improve security, ensure uptime, and focus on core operations without worrying about technology management."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Sniper Systems provide 24/7 IT support?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Sniper Systems provides proactive monitoring, helpdesk support, and continuous IT management to ensure business continuity."
+                }
+              }
+            ]
+          }
+          `}
+</script>
+
+        {/* BREADCRUMB SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://sniperindia.com/solutions/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Managed IT Services",
+                "item": "https://sniperindia.com/solutions/managed-it-services"
+              }
+            ]
+          }
+          `}
+</script>
+
+      </>
+
+
+
+
       {showWhiteScreen && (
         <WhiteScreenTransition onComplete={handleWhiteScreenComplete} />
       )}
@@ -863,7 +1229,7 @@ const ManagedITServices = () => {
         {showScrollTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 w-12 h-12 md:w-14 md:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 md:bottom-8 md:right-8 w-12 h-12 md:w-14 md:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

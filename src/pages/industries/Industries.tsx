@@ -1,9 +1,10 @@
 import { Layout } from "@/components/Layout";
-import { ArrowRight, Building2, Film, Glasses, Landmark, Monitor, Heart, Car, GraduationCap, LayoutGrid } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight, Building2, Car, Film, Glasses, GraduationCap, Heart, Landmark, Monitor } from "lucide-react";
+import { AnimatePresence, motion, useInView } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -449,6 +450,43 @@ const Industries = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Industries We Serve | IT Solutions by Industry | Sniper Systems</title>
+        <meta name="description" content="Sniper Systems provides specialized IT infrastructure, managed services, and cloud solutions for multiple industries including AEC, Government, Healthcare, Manufacturing, Media, and more." />
+        <meta name="keywords" content="IT solutions by industry, AEC IT solutions, government IT services, healthcare IT infrastructure, manufacturing IT solutions, media IT services" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://sniperindia.com/industries/" />
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
+        <meta name="geo.position" content="13.0827;80.2707" />
+        <meta name="ICBM" content="13.0827, 80.2707" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Industries We Serve | Sniper Systems IT Solutions" />
+        <meta property="og:description" content="Explore industry-specific IT solutions from Sniper Systems for AEC, Government, Healthcare, Manufacturing, Media & Entertainment, and more." />
+        <meta property="og:image" content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg" />
+        <meta property="og:url" content="https://sniperindia.com/industries/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Industries We Serve | Sniper Systems" />
+        <meta name="twitter:description" content="Specialized IT infrastructure, managed services, and cloud solutions for multiple industries." />
+        <meta name="twitter:image" content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg" />
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Chennai",
+              "addressRegion": "Tamil Nadu",
+              "addressCountry": "India"
+            },
+            "areaServed": ["AEC", "Government", "Healthcare", "Manufacturing", "Media & Entertainment", "IT/ITES", "Retail", "Education"]
+          }
+          `}
+        </script>
+      </Helmet>
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       {/* ── Hero ── */}
@@ -514,7 +552,7 @@ const Industries = () => {
                 transition={{ duration: 0.7, ease, delay: 1.2 }}
               >
                 <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5">
-                  <LayoutGrid className="w-4 h-4 text-white" />
+
                   <span className="text-white text-xs font-bold tracking-[0.15em] uppercase">Industry</span>
                 </div>
               </motion.div>
@@ -619,7 +657,7 @@ const Industries = () => {
               whileHover={{ scale: 1.02 }}
             >
               <ParallaxImage
-                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80"
+                src="https://i.postimg.cc/SNscK4VY/37220.jpg"
                 alt="Cross-industry expertise"
                 className="w-full h-full rounded-2xl sm:rounded-3xl"
               />
@@ -663,7 +701,7 @@ const Industries = () => {
                   "Compliance-ready for regulated industries",
                   "Sector-specific SLAs and support models",
                   "Certified specialists per vertical",
-                  "Proven across 1900+ enterprise deployments",
+                  "Trusted by enterprises worldwide",
                 ].map((item, i) => (
                   <motion.div key={i}
                     className="flex items-center gap-3 text-gray-700 text-sm sm:text-base"
@@ -689,7 +727,7 @@ const Industries = () => {
         {showScrollTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

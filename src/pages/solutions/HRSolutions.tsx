@@ -1,7 +1,192 @@
 import { Layout } from "@/components/Layout";
 import { ArrowRight, Briefcase, Clock, Shield, Target, TrendingUp, Users } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
+import React from "react";
+
+import { Helmet } from "react-helmet-async";
+
+
+
+      <>
+
+        {/* BASIC SEO */}
+
+        <title>HR Solutions in India | HR Management & Workforce Solutions | Sniper Systems</title>
+
+        <meta
+          name="description"
+          content="Sniper Systems delivers advanced HR solutions in India including workforce management, HR automation, employee lifecycle management, and digital HR transformation for modern businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="HR solutions India, HR management solutions, workforce management India, HR automation services, employee lifecycle management"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/solutions/hr-solutions"
+        />
+
+        {/* GEO TAGS */}
+
+        <meta name="geo.region" content="IN-TN" />
+<meta name="geo.placename" content="Chennai" />
+<meta name="geo.position" content="13.0827;80.2707" />
+<meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+
+        <meta property="og:type" content="website" />
+
+        <meta
+          property="og:title"
+          content="HR Solutions & Workforce Management | Sniper Systems India"
+        />
+
+        <meta
+          property="og:description"
+          content="Streamline HR operations with digital HR solutions, automation, and workforce management systems."
+        />
+
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/solutions/hr-solutions"
+        />
+
+        {/* TWITTER SEO */}
+
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta
+          name="twitter:title"
+          content="HR Solutions in India | Sniper Systems"
+        />
+
+        <meta
+          name="twitter:description"
+          content="Transform HR operations with scalable HR management and workforce solutions."
+        />
+
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+</script>
+
+        {/* SERVICE SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "HR Solutions",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "HR solutions including workforce management, HR automation, and employee lifecycle management for enterprises in India."
+          }
+          `}
+</script>
+
+        {/* FAQ SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What are HR solutions for businesses?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "HR solutions include tools and services that help manage employee data, payroll, recruitment, performance, and workforce operations efficiently."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do HR solutions improve business efficiency?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "HR solutions automate repetitive tasks, improve employee engagement, and provide insights for better workforce management."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Sniper Systems provide HR automation solutions?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Sniper Systems offers HR automation and digital HR transformation solutions tailored for enterprise business needs."
+                }
+              }
+            ]
+          }
+          `}
+</script>
+
+        {/* BREADCRUMB SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://sniperindia.com/solutions/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "HR Solutions",
+                "item": "https://sniperindia.com/solutions/hr-solutions"
+              }
+            ]
+          }
+          `}
+</script>
+
+      </>
+
+
 
 const HRSolutions = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -67,6 +252,187 @@ const HRSolutions = () => {
 
   return (
     <Layout>
+
+           <>
+
+        {/* BASIC SEO */}
+
+        <title>HR Solutions in India | HR Management & Workforce Solutions | Sniper Systems</title>
+
+        <meta
+          name="description"
+          content="Sniper Systems delivers advanced HR solutions in India including workforce management, HR automation, employee lifecycle management, and digital HR transformation for modern businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="HR solutions India, HR management solutions, workforce management India, HR automation services, employee lifecycle management"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/solutions/hr-solutions"
+        />
+
+        {/* GEO TAGS */}
+
+        <meta name="geo.region" content="IN-TN" />
+<meta name="geo.placename" content="Chennai" />
+<meta name="geo.position" content="13.0827;80.2707" />
+<meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+
+        <meta property="og:type" content="website" />
+
+        <meta
+          property="og:title"
+          content="HR Solutions & Workforce Management | Sniper Systems India"
+        />
+
+        <meta
+          property="og:description"
+          content="Streamline HR operations with digital HR solutions, automation, and workforce management systems."
+        />
+
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/solutions/hr-solutions"
+        />
+
+        {/* TWITTER SEO */}
+
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta
+          name="twitter:title"
+          content="HR Solutions in India | Sniper Systems"
+        />
+
+        <meta
+          name="twitter:description"
+          content="Transform HR operations with scalable HR management and workforce solutions."
+        />
+
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+</script>
+
+        {/* SERVICE SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "HR Solutions",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "HR solutions including workforce management, HR automation, and employee lifecycle management for enterprises in India."
+          }
+          `}
+</script>
+
+        {/* FAQ SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What are HR solutions for businesses?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "HR solutions include tools and services that help manage employee data, payroll, recruitment, performance, and workforce operations efficiently."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do HR solutions improve business efficiency?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "HR solutions automate repetitive tasks, improve employee engagement, and provide insights for better workforce management."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Sniper Systems provide HR automation solutions?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Sniper Systems offers HR automation and digital HR transformation solutions tailored for enterprise business needs."
+                }
+              }
+            ]
+          }
+          `}
+</script>
+
+        {/* BREADCRUMB SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://sniperindia.com/solutions/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "HR Solutions",
+                "item": "https://sniperindia.com/solutions/hr-solutions"
+              }
+            ]
+          }
+          `}
+</script>
+
+      </>
+
+
+
       {/* ==================== HERO ==================== */}
       <section className="relative bg-white pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-white opacity-60" />
@@ -269,7 +635,7 @@ const HRSolutions = () => {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 w-11 h-11 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+          className="fixed bottom-5 right-5 sm:bottom-8 sm:left-8 w-11 h-11 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
           aria-label="Scroll to top"
         >
           <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 -rotate-90" />

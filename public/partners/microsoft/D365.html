@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamics 365 CRM/ERP Solutions - Microsoft Solution Partners</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="icon" href="favicon.ico"
+        media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="favicon.ico"
+        media="(prefers-color-scheme: light)" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0078D4',
+                        'secondary-red': '#E31922',
+                        'dark-blue': '#005a9f',
+                        'light-blue': '#40E0FF',
+                        'light-gray': '#F8F9FA',
+                        'medium-gray': '#E5E5E5',
+                        'dark-gray': '#323130',
+                        'text-gray': '#605E5C',
+                        'accent-orange': '#FF8C00',
+                        'success-green': '#107C10',
+                        'dynamics-purple': '#6B46C1',
+                        'dynamics-pink': '#EC4899',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0078D4;
+            --secondary-red: #E31922;
+            --dark-blue: #005a9f;
+            --light-blue: #40E0FF;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --medium-gray: #E5E5E5;
+            --dark-gray: #323130;
+            --text-gray: #605E5C;
+            --accent-orange: #FF8C00;
+            --success-green: #107C10;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+
+
+        /* Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .solutions-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .trust-logos {
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .studies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tiers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tier-card.featured {
+                transform: none;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-dark-gray">
+
+    <body x-data="{ isMobileMenuOpen: false }" :class="{ 'overflow-hidden': isMobileMenuOpen }">
+
+        <!-- This div is the placeholder where the header will be loaded -->
+        <div id="header-placeholder"></div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <!-- Hero Section -->
+        <section
+            class="relative bg-gradient-to-br from-dynamics-purple via-primary-blue to-dynamics-pink text-white py-32 sm:py-20 overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center opacity-10"
+                style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop')">
+            </div>
+            <div class="absolute top-20 right-20 w-72 h-72 bg-light-blue/10 rounded-full blur-3xl animate-pulse-slow">
+            </div>
+            <div
+                class="absolute bottom-20 left-20 w-96 h-96 bg-dynamics-pink/10 rounded-full blur-3xl animate-pulse-slow">
+            </div>
+            <div class="container mx-auto px-4 lg:px-8 relative z-10">
+                <div class="max-w-5xl mx-auto text-center">
+                    <span
+                        class="inline-block bg-white/10 backdrop-blur-sm text-white text-sm font-semibold px-6 py-3 rounded-full mb-8 border border-white/20">
+                        <i class="fab fa-microsoft mr-2"></i>Microsoft Gold Partner
+                    </span>
+                    <h1
+                        class="text-4xl md:text-6xl font-bold tracking-tight mb-8 bg-gradient-to-r from-white to-light-blue bg-clip-text text-transparent">
+                        Empower Your Business with Dynamics 365 Excellence
+                    </h1>
+                    <p class="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-12">
+                        Transform your business operations with Microsoft Dynamics 365 CRM and ERP solutions. From
+                        customer
+                        engagement to financial management, streamline every aspect of your organization with
+                        intelligent
+                        business applications.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+                        <a href="#contact"
+                            class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-dynamics-pink rounded-lg shadow-lg hover:bg-pink-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dynamics-pink transition-all transform hover:-translate-y-1 hover:shadow-xl">
+                            <span>Start Your Digital Journey</span>
+                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#services"
+                            class="inline-flex items-center text-lg font-semibold text-white hover:text-light-blue transition-colors group">
+                            <span>Explore Our Solutions</span>
+                            <i class="fas fa-chevron-down ml-2 group-hover:translate-y-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-light-blue mb-2">300+</div>
+                            <div class="text-white/80">Successful Implementations</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-light-blue mb-2">98%</div>
+                            <div class="text-white/80">Client Satisfaction</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-light-blue mb-2">24/7</div>
+                            <div class="text-white/80">Premium Support</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-light-blue mb-2">15+</div>
+                            <div class="text-white/80">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Services Section -->
+        <section id="services" class="py-24 bg-light-gray">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-20">
+                    <span class="text-primary-blue font-semibold text-lg">COMPREHENSIVE SERVICES</span>
+                    <h2 class="mt-4 text-3xl md:text-4xl font-bold text-dark-gray">Complete Dynamics 365 Services</h2>
+                    <p class="mt-6 text-xl text-text-gray max-w-3xl mx-auto">End-to-end Microsoft Dynamics 365 services
+                        to
+                        transform your business processes, enhance customer relationships, and drive operational
+                        excellence
+                        across your organization.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Dynamics 365 Sales -->
+                    <div
+                        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-10 flex flex-col transform hover:-translate-y-2">
+                        <div class="flex-shrink-0 mb-6">
+                            <div
+                                class="w-14 h-14 bg-dynamics-pink/10 rounded-2xl flex items-center justify-center group-hover:bg-dynamics-pink group-hover:text-white transition-all duration-300">
+                                <i class="fas fa-chart-line text-3xl text-dynamics-pink group-hover:text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-dark-gray mb-4">Dynamics 365 Sales</h3>
+                            <p class="text-text-gray mb-6 leading-relaxed">Accelerate sales performance with intelligent
+                                CRM
+                                that provides comprehensive customer insights, automates processes, and drives revenue
+                                growth.</p>
+                            <ul class="space-y-3 text-text-gray mb-8">
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Lead
+                                        and opportunity management with AI-driven insights</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Sales
+                                        pipeline visualization and forecasting</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Quote
+                                        and order management integration</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Mobile
+                                        sales app configuration and deployment</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>LinkedIn
+                                        Sales Navigator integration</span></li>
+                            </ul>
+                            <div
+                                class="flex items-center text-primary-blue font-semibold group-hover:text-dark-blue transition-colors">
+                                <span>Learn More</span>
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamics 365 Customer Service -->
+                    <div
+                        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-10 flex flex-col transform hover:-translate-y-2">
+                        <div class="flex-shrink-0 mb-6">
+                            <div
+                                class="w-14 h-14 bg-primary-blue/10 rounded-2xl flex items-center justify-center group-hover:bg-primary-blue group-hover:text-white transition-all duration-300">
+                                <i class="fas fa-headset text-3xl text-primary-blue group-hover:text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-dark-gray mb-4">Dynamics 365 Customer Service</h3>
+                            <p class="text-text-gray mb-6 leading-relaxed">Deliver exceptional customer experiences with
+                                comprehensive service management, omnichannel support, and AI-powered insights.</p>
+                            <ul class="space-y-3 text-text-gray mb-8">
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Case
+                                        management and automated routing</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Knowledge
+                                        base and self-service portal setup</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Omnichannel
+                                        customer engagement (chat, email, phone)</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>SLA
+                                        management and performance tracking</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Field
+                                        service scheduling and resource optimization</span></li>
+                            </ul>
+                            <div
+                                class="flex items-center text-primary-blue font-semibold group-hover:text-dark-blue transition-colors">
+                                <span>Learn More</span>
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamics 365 Finance & Operations -->
+                    <div
+                        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-10 flex flex-col transform hover:-translate-y-2">
+                        <div class="flex-shrink-0 mb-6">
+                            <div
+                                class="w-14 h-14 bg-success-green/10 rounded-2xl flex items-center justify-center group-hover:bg-success-green group-hover:text-white transition-all duration-300">
+                                <i class="fas fa-calculator text-3xl text-success-green group-hover:text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-dark-gray mb-4">Dynamics 365 Finance & Operations</h3>
+                            <p class="text-text-gray mb-6 leading-relaxed">Comprehensive ERP solution for financial
+                                management, supply chain optimization, and operational excellence with real-time
+                                insights.
+                            </p>
+                            <ul class="space-y-3 text-text-gray mb-8">
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Financial
+                                        reporting and budgeting with Power BI integration</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Supply
+                                        chain management and inventory optimization</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Manufacturing
+                                        execution and production planning</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Accounts
+                                        payable/receivable automation</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Multi-company
+                                        and multi-currency support</span></li>
+                            </ul>
+                            <div
+                                class="flex items-center text-primary-blue font-semibold group-hover:text-dark-blue transition-colors">
+                                <span>Learn More</span>
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamics 365 Business Central -->
+                    <div
+                        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-10 flex flex-col transform hover:-translate-y-2">
+                        <div class="flex-shrink-0 mb-6">
+                            <div
+                                class="w-14 h-14 bg-accent-orange/10 rounded-2xl flex items-center justify-center group-hover:bg-accent-orange group-hover:text-white transition-all duration-300">
+                                <i class="fas fa-building text-3xl text-accent-orange group-hover:text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-dark-gray mb-4">Dynamics 365 Business Central</h3>
+                            <p class="text-text-gray mb-6 leading-relaxed">All-in-one business management solution for
+                                growing companies, integrating financials, sales, service, and operations in one
+                                platform.
+                            </p>
+                            <ul class="space-y-3 text-text-gray mb-8">
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Complete
+                                        ERP implementation for SMB organizations</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Project
+                                        management and resource planning</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Warehouse
+                                        management and inventory control</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>E-commerce
+                                        integration and online sales</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Power
+                                        Platform integration and custom apps</span></li>
+                            </ul>
+                            <div
+                                class="flex items-center text-primary-blue font-semibold group-hover:text-dark-blue transition-colors">
+                                <span>Learn More</span>
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Power Platform Integration -->
+                    <div
+                        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-10 flex flex-col transform hover:-translate-y-2">
+                        <div class="flex-shrink-0 mb-6">
+                            <div
+                                class="w-14 h-14 bg-dynamics-purple/10 rounded-2xl flex items-center justify-center group-hover:bg-dynamics-purple group-hover:text-white transition-all duration-300">
+                                <i class="fas fa-bolt text-3xl text-dynamics-purple group-hover:text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-dark-gray mb-4">Power Platform Integration</h3>
+                            <p class="text-text-gray mb-6 leading-relaxed">Extend Dynamics 365 capabilities with Power
+                                Platform tools for custom applications, automation, and advanced analytics.</p>
+                            <ul class="space-y-3 text-text-gray mb-8">
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Power
+                                        Apps custom application development</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Power
+                                        Automate workflow and process automation</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Power
+                                        BI dashboards and advanced analytics</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Power
+                                        Virtual Agents chatbot implementation</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>AI
+                                        Builder integration for intelligent automation</span></li>
+                            </ul>
+                            <div
+                                class="flex items-center text-primary-blue font-semibold group-hover:text-dark-blue transition-colors">
+                                <span>Learn More</span>
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Implementation & Support -->
+                    <div
+                        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-10 flex flex-col transform hover:-translate-y-2">
+                        <div class="flex-shrink-0 mb-6">
+                            <div
+                                class="w-14 h-14 bg-secondary-red/10 rounded-2xl flex items-center justify-center group-hover:bg-secondary-red group-hover:text-white transition-all duration-300">
+                                <i class="fas fa-cogs text-3xl text-secondary-red group-hover:text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-dark-gray mb-4">Implementation & Support</h3>
+                            <p class="text-text-gray mb-6 leading-relaxed">Comprehensive implementation services and
+                                ongoing
+                                support to ensure successful deployment and maximum ROI from your Dynamics 365
+                                investment.
+                            </p>
+                            <ul class="space-y-3 text-text-gray mb-8">
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Business
+                                        analysis and requirements gathering</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>System
+                                        configuration and customization</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>Data
+                                        migration and system integration</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>User
+                                        training and change management</span></li>
+                                <li class="flex items-start"><i
+                                        class="fas fa-check-circle text-success-green mt-1 mr-3 flex-shrink-0"></i><span>24/7
+                                        post-implementation support and maintenance</span></li>
+                            </ul>
+                            <div
+                                class="flex items-center text-primary-blue font-semibold group-hover:text-dark-blue transition-colors">
+                                <span>Learn More</span>
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamics Solutions Section -->
+        <section id="solutions" class="py-24 bg-white">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-20">
+                    <span class="text-primary-blue font-semibold text-lg">DYNAMICS 365 SOLUTIONS</span>
+                    <h2 class="mt-4 text-3xl md:text-4xl font-bold text-dark-gray">Industry-Specific Business Solutions
+                    </h2>
+                    <p class="mt-6 text-xl text-text-gray max-w-3xl mx-auto">Tailored Dynamics 365 solutions designed to
+                        meet the unique challenges and requirements of your industry with proven best practices.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                    <div>
+                        <div class="bg-gradient-to-br from-dynamics-purple to-primary-blue p-8 rounded-2xl text-white">
+                            <i class="fas fa-retail text-4xl mb-6"></i>
+                            <h3 class="text-2xl font-bold mb-4">Retail & E-commerce Solutions</h3>
+                            <p class="text-white/90 mb-6">Unified commerce platform connecting online and offline
+                                experiences with inventory management, customer insights, and omnichannel sales.</p>
+                            <ul class="space-y-2 text-white/90">
+                                <li class="flex items-center"><i class="fas fa-check mr-2"></i>Point of Sale (POS)
+                                    system
+                                    integration</li>
+                                <li class="flex items-center"><i class="fas fa-check mr-2"></i>Inventory and supply
+                                    chain
+                                    optimization</li>
+                                <li class="flex items-center"><i class="fas fa-check mr-2"></i>Customer loyalty and
+                                    personalization</li>
+                                <li class="flex items-center"><i class="fas fa-check mr-2"></i>Multi-channel order
+                                    management</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop"
+                            alt="Retail Solutions" class="rounded-2xl shadow-2xl">
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                    <div class="order-2 lg:order-1">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop"
+                            alt="Manufacturing Solutions" class="rounded-2xl shadow-2xl">
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <div class="bg-gradient-to-br from-accent-orange to-secondary-red p-8 rounded-2xl text-white">
+                            <i class="fas fa-industry text-4xl mb-6"></i>
+                            <h3 class="text-2xl font-bold mb-4">Manufacturing & Distribution</h3>
+                            <p class="text-white/90 mb-6">Complete manufacturing solution with production planning,
+                                quality
+                                management, and supply chain visibility for operational excellence.</p>
+                            <ul class="space-y-2 text-white/90">
+                                <li class="flex items-center"><i class="fas fa-check mr-2"></i>Production planning and
+                                    scheduling</li>
+                                <li class="flex items-center"><i class="fas fa-check mr-2"></i>Quality management and
+                                    compliance</li>
+                                <li class="flex items-center"><i class="fas fa-check mr-2"></i>Asset management and
+                                    maintenance</li>
+                                <li class="flex items-center"><i class="fas fa-check mr-2"></i>Real-time production
+                                    monitoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us / Features Section -->
+        <section id="why-us" class="py-24 bg-light-gray">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                            alt="Dynamics 365 Solutions" class="rounded-2xl shadow-2xl">
+                        <div
+                            class="absolute -bottom-8 -right-8 bg-dynamics-purple p-8 rounded-2xl text-white max-w-sm shadow-2xl hidden lg:block">
+                            <i class="fas fa-quote-left text-3xl text-light-blue mb-4"></i>
+                            <p class="text-sm leading-relaxed">Transforming businesses with intelligent applications
+                                that
+                                adapt and scale with your growth.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-primary-blue font-semibold text-lg">THE DYNAMICS ADVANTAGE</span>
+                        <h2 class="mt-4 text-3xl md:text-4xl font-bold text-dark-gray">Your Trusted Dynamics 365 Partner
+                        </h2>
+                        <p class="mt-6 text-xl text-text-gray leading-relaxed">We don't just implement software; we
+                            transform your business processes. Our comprehensive approach combines industry expertise
+                            with
+                            technical excellence to deliver solutions that drive measurable business outcomes and
+                            sustainable
+                            growth.</p>
+                        <div class="mt-12 space-y-8">
+                            <div class="flex">
+                                <div
+                                    class="flex-shrink-0 h-16 w-16 rounded-2xl bg-gradient-to-br from-success-green to-primary-blue flex items-center justify-center">
+                                    <i class="fas fa-users-cog text-2xl text-white"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-xl font-bold text-dark-gray">Industry Expertise & Best Practices
+                                    </h4>
+                                    <p class="mt-2 text-text-gray leading-relaxed">Our certified consultants bring deep
+                                        industry knowledge and proven methodologies to ensure your Dynamics 365
+                                        implementation
+                                        aligns with business objectives and industry standards.</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div
+                                    class="flex-shrink-0 h-16 w-16 rounded-2xl bg-gradient-to-br from-dynamics-pink to-secondary-red flex items-center justify-center">
+                                    <i class="fas fa-rocket text-2xl text-white"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-xl font-bold text-dark-gray">Rapid Implementation & ROI</h4>
+                                    <p class="mt-2 text-text-gray leading-relaxed">Accelerated deployment methodologies
+                                        and
+                                        pre-configured solutions ensure faster time-to-value while minimizing business
+                                        disruption and maximizing return on investment.</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div
+                                    class="flex-shrink-0 h-16 w-16 rounded-2xl bg-gradient-to-br from-dynamics-purple to-light-blue flex items-center justify-center">
+                                    <i class="fas fa-headset text-2xl text-white"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-xl font-bold text-dark-gray">Comprehensive Support Ecosystem</h4>
+                                    <p class="mt-2 text-text-gray leading-relaxed">From initial planning through ongoing
+                                        optimization, our support team provides continuous guidance, training, and
+                                        technical
+                                        assistance to ensure long-term success.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-12">
+                            <a href="#contact"
+                                class="inline-flex items-center px-8 py-4 bg-primary-blue text-white font-semibold rounded-lg hover:bg-dark-blue transition-colors group">
+                                <span>Start Your Transformation</span>
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Studies Section -->
+
+
+
+
+
+
+        <!-- Footer -->
+        <div id="footer-placeholder"></div>
+
+        <script>
+            // Load footer.html into the placeholder
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        </script>
+
+        <script>
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all service cards and content sections
+            document.querySelectorAll('.group').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+        </script>
+        <!-- Scroll to Top Button -->
+        <button id="scrollToTopBtn"
+            class="fixed hidden bottom-8 right-8 p-4 bg-gradient-to-br from-primary-blue to-dark-blue text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </button>
+
+        <!-- JavaScript -->
+        <script>
+            // Show/hide button based on scroll position
+            window.onscroll = function () {
+                const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    scrollToTopBtn.classList.remove('hidden');
+                } else {
+                    scrollToTopBtn.classList.add('hidden');
+                }
+            };
+
+            // Smooth scroll to top
+            document.getElementById('scrollToTopBtn').addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            document.querySelectorAll('.group').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+            document.addEventListener("DOMContentLoaded", function () {
+                fetch('header.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('header-placeholder').innerHTML = data;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching the header:', error);
+                        document.getElementById('header-placeholder').innerHTML = '<p style="text-align:center; color:red;">Error: Could not load header.html</p>';
+                    });
+            });
+        </script>
+    </body>
+
+</html>

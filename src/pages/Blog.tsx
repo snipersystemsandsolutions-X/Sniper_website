@@ -7,6 +7,140 @@ import { motion, useInView, AnimatePresence } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+
+import React from "react";
+import { Helmet } from "react-helmet-async";
+
+
+
+      <>
+
+        {/* BASIC SEO */}
+
+        <title>IT Blogs & Insights | Sniper Systems | Technology & IT Solutions</title>
+
+        <meta
+          name="description"
+          content="Explore Sniper Systems blog for the latest insights on IT infrastructure, managed services, cloud solutions, cybersecurity, and enterprise technology trends."
+        />
+
+        <meta
+          name="keywords"
+          content="IT blog India, managed IT services blog, cloud computing articles, cybersecurity insights, enterprise IT solutions blog"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <link
+          rel="canonical"
+          href="https://blog.sniperindia.com/"
+        />
+
+        {/* GEO TAGS */}
+
+        <meta name="geo.region" content="IN-TN" />
+<meta name="geo.placename" content="Chennai" />
+<meta name="geo.position" content="13.0827;80.2707" />
+<meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+
+        <meta property="og:type" content="website" />
+
+        <meta
+          property="og:title"
+          content="IT Blogs & Insights | Sniper Systems"
+        />
+
+        <meta
+          property="og:description"
+          content="Stay updated with the latest IT trends, cloud solutions, cybersecurity insights, and enterprise technology blogs."
+        />
+
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/blog/"
+        />
+
+        {/* TWITTER SEO */}
+
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta
+          name="twitter:title"
+          content="IT Blogs & Insights | Sniper Systems"
+        />
+
+        <meta
+          name="twitter:description"
+          content="Read expert blogs on IT infrastructure, managed services, cloud computing, and enterprise solutions."
+        />
+
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+</script>
+
+        {/* BLOG PAGE SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "Sniper Systems Blog",
+            "url": "https://sniperindia.com/blog/",
+            "description": "Insights and articles on IT infrastructure, cloud solutions, cybersecurity, and enterprise IT services."
+          }
+          `}
+</script>
+
+        {/* BREADCRUMB SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://sniperindia.com/blog/"
+              }
+            ]
+          }
+          `}
+</script>
+
+      </>
+
 gsap.registerPlugin(ScrollTrigger);
 
 // -------------------- Easing presets --------------------
@@ -349,7 +483,7 @@ const Blog = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const blogPosts = [
-    { id: 1, title: "The Future of Enterprise IT Infrastructure in 2025", excerpt: "Exploring emerging trends in cloud computing, edge computing, and hybrid infrastructure solutions that are reshaping how enterprises manage their IT operations.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80", date: "November 25, 2025", readTime: "8 min read", category: "IT Infrastructure" },
+    { id: 1, title: "A Smarter Way to Document Work", excerpt: "How Adobe Acrobat, Adobe Express, and AI Assistant are transforming business documentation", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80", date: "May 04, 2026", readTime: "8 min read", category: "Adobe Acrobat" },
     { id: 2, title: "Maximizing ROI with Managed IT Services", excerpt: "How businesses are reducing costs and improving efficiency by partnering with managed service providers for comprehensive IT support and strategic consulting.", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80", date: "November 20, 2025", readTime: "6 min read", category: "Managed Services" },
     { id: 3, title: "Mobile Device Management Best Practices", excerpt: "Essential strategies for implementing effective MDM solutions that balance security, user experience, and organizational control across diverse device ecosystems.", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600&q=80", date: "November 15, 2025", readTime: "7 min read", category: "Device Management" },
     { id: 4, title: "Cybersecurity in the Age of Remote Work", excerpt: "Addressing the evolving security challenges of distributed workforces and implementing robust protection strategies for remote and hybrid work environments.", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80", date: "November 10, 2025", readTime: "9 min read", category: "Security" },
@@ -497,7 +631,7 @@ const Blog = () => {
               <h3 className="text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight">{featuredPost.title}</h3>
               <p className="text-lg text-gray-800 leading-relaxed">{featuredPost.excerpt}</p>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="inline-block">
-                <a href={`/blog/${featuredPost.id}`} className="inline-flex items-center px-8 py-3 border-2 border-gray-900 rounded-full text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-colors duration-300">
+                <a href={`/blog/bloga`} className="inline-flex items-center px-8 py-3 border-2 border-gray-900 rounded-full text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-colors duration-300">
                   Read article
                 </a>
               </motion.div>

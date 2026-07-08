@@ -17,8 +17,13 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 gsap.registerPlugin(ScrollTrigger);
+
+
+
+
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -91,6 +96,24 @@ const MarqueeTicker = () => {
 const ParallaxImage = ({ src, alt, className }: { src: string; alt: string; className?: string }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
+
+
+     // Jotform Chatbot
+  useEffect(() => {
+    const script = document.createElement("script");
+
+    script.src =
+      "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -441,6 +464,145 @@ const Solutions = () => {
 
   return (
     <Layout>
+
+
+       <>
+
+        {/* BASIC SEO */}
+
+        <title>IT Solutions for Businesses | Enterprise & Digital Solutions | Sniper Systems</title>
+
+        <meta
+          name="description"
+          content="Discover enterprise IT solutions by Sniper Systems including IT infrastructure, managed services, cloud solutions, cybersecurity, and digital transformation services for businesses in India."
+        />
+
+        <meta
+          name="keywords"
+          content="enterprise IT solutions India, business IT solutions, IT infrastructure solutions Chennai, digital transformation services India, managed IT services provider"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/solutions/"
+        />
+
+        {/* GEO TAGS */}
+
+        <meta name="geo.region" content="IN-TN" />
+<meta name="geo.placename" content="Chennai" />
+<meta name="geo.position" content="13.0827;80.2707" />
+<meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+
+        <meta property="og:type" content="website" />
+
+        <meta
+          property="og:title"
+          content="Enterprise IT Solutions | Sniper Systems"
+        />
+
+        <meta
+          property="og:description"
+          content="Comprehensive IT solutions including infrastructure, cloud, cybersecurity, and managed services for modern enterprises."
+        />
+
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/solutions/"
+        />
+
+        {/* TWITTER SEO */}
+
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta
+          name="twitter:title"
+          content="Business IT Solutions | Sniper Systems"
+        />
+
+        <meta
+          name="twitter:description"
+          content="Explore scalable enterprise IT solutions including infrastructure, cloud computing, and cybersecurity services."
+        />
+
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+</script>
+
+        {/* SERVICE SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Enterprise IT Solutions",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "Enterprise IT infrastructure, cloud solutions, cybersecurity, and managed IT services for businesses."
+          }
+          `}
+</script>
+
+        {/* BREADCRUMB SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://sniperindia.com/solutions/"
+              }
+            ]
+          }
+          `}
+</script>
+
+      </>
+
+
+
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       {/* ── Hero ── */}
@@ -513,7 +675,7 @@ const Solutions = () => {
               >
                 <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5">
                   <LayoutGrid className="w-4 h-4 text-white" />
-                  <span className="text-white text-xs font-bold tracking-[0.15em] uppercase">10 Solution Areas</span>
+                  <span className="text-white text-xs font-bold tracking-[0.15em] uppercase"> Solution Areas</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -675,7 +837,7 @@ const Solutions = () => {
               whileHover={{ scale: 1.02 }}
             >
               <ParallaxImage
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80"
+                src="https://i.postimg.cc/Vkdhs6gh/glow.jpg"
                 alt="Unified IT Team"
                 className="w-full h-full rounded-2xl sm:rounded-3xl"
               />
@@ -693,7 +855,7 @@ const Solutions = () => {
         {showScrollTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

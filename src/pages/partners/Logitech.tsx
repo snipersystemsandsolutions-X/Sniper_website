@@ -4,6 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Building2, GraduationCap, Headphones, Heart, Palette, Video } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -266,7 +268,165 @@ const Logitech = () => {
 
   return (
     <Layout>
+      <>
+        {/* BASIC SEO */}
+        <title>Logitech Partner in India | Video Conferencing & Collaboration Solutions | Sniper Systems</title>
+        <meta
+          name="description"
+          content="Sniper Systems delivers Logitech video conferencing, collaboration, hybrid workplace, meeting room, and enterprise peripheral solutions in India for modern businesses and smart workspaces."
+        />
+        <meta
+          name="keywords"
+          content="Logitech partner India, Logitech video conferencing India, Logitech meeting room solutions, hybrid workplace solutions India, conference room AV solutions, Logitech collaboration devices"
+        />
+        <meta name="robots" content="index, follow" />
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/partners/logitech"
+        />
+
+        {/* GEO TAGS */}
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
+        <meta name="geo.position" content="13.0827;80.2707" />
+        <meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Logitech Video Conferencing & Collaboration Solutions | Sniper Systems India"
+        />
+        <meta
+          property="og:description"
+          content="Enterprise Logitech solutions for video conferencing, hybrid workspaces, collaboration, meeting rooms, and smart office communication."
+        />
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/partners/logitech"
+        />
+
+        {/* TWITTER SEO */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Logitech Partner in India | Sniper Systems"
+        />
+        <meta
+          name="twitter:description"
+          content="Advanced Logitech collaboration and video conferencing solutions for modern enterprises and hybrid workplaces."
+        />
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+        </script>
+
+        {/* SERVICE SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Logitech Collaboration & Video Conferencing Solutions",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "Logitech business solutions including video conferencing, hybrid workplace technology, meeting room AV, collaboration devices, and enterprise peripherals."
+          }
+          `}
+        </script>
+
+        {/* FAQ SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What Logitech business solutions does Sniper Systems provide?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sniper Systems provides Logitech video conferencing systems, collaboration devices, hybrid workplace solutions, meeting room technology, and enterprise peripherals."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why are Logitech collaboration solutions important for businesses?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Logitech collaboration solutions help businesses improve hybrid work communication, video conferencing quality, productivity, and meeting room experiences."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Sniper Systems provide Logitech meeting room deployment?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Sniper Systems provides consultation, deployment, setup, and enterprise support for Logitech meeting room and collaboration solutions."
+                }
+              }
+            ]
+          }
+          `}
+        </script>
+
+        {/* BREADCRUMB SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Partners",
+                "item": "https://sniperindia.com/partners/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Logitech",
+                "item": "https://sniperindia.com/partners/logitech"
+              }
+            ]
+          }
+          `}
+        </script>
+      </>
+
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
+
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative bg-white pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
@@ -459,7 +619,7 @@ const Logitech = () => {
         {showScrollTop && (
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}

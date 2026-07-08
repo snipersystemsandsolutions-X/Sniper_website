@@ -1,0 +1,2581 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sniper Systems - Certified Jamf Partner</title>
+
+    <!-- ========== Favicon Icon ========== -->
+    <link
+      rel="shortcut icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/05/sniper-logo-black-4-scaled.png"
+      type="image/x-icon"
+    />
+
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <style>
+      img:is([sizes='auto' i], [sizes^='auto,' i]) {
+        contain-intrinsic-size: 3000px 1500px;
+      }
+    </style>
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: light)"
+    />
+    <link rel="apple-touch-icon" href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+    <meta name="msapplication-TileImage" content="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+    <!-- ========== Favicon Icon ========== -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#778EB1',
+              secondary: '#0066CC'
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      .nav-link-active {
+        color: #0066cc !important;
+
+        text-underline-offset: 4px;
+      }
+    </style>
+
+    <style>
+      :root {
+        --primary-light: #9caec9;
+        --primary: #778eb1;
+        --primary-dark: #5a6f8c;
+      }
+
+      .nav-link-active {
+        color: #000000;
+      }
+
+      /* Preloader Styles */
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition:
+          opacity 0.5s ease-out,
+          visibility 0.5s ease-out;
+      }
+
+      #preloader.fade-out {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .preloader-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .preloader-logos {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .preloader-logo {
+        height: 40px;
+        width: auto;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease forwards;
+      }
+      .preloader-logoo {
+        height: 120px;
+        width: auto;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease forwards;
+      }
+      .preloader-logo:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+
+      .preloader-text {
+        font-size: 0.8rem;
+        color: #000000;
+        font-weight: 500;
+        opacity: 0;
+        animation: fadeIn 0.8s ease 0.6s forwards;
+        transform: translateY(-26px); /* moves text 6px up */
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .preloader-logos {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .preloader-logo {
+          height: 60px;
+        }
+
+        .preloader-text {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white font-sans text-gray-800">
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="preloader-content">
+        <div class="preloader-logos flex items-center gap-6">
+          <img
+            src="https://sniperindia.com/wp-content/uploads/2025/05/sniper-logo-black-4-scaled.png"
+            alt="Sniper Logo"
+            class="preloader-logo"
+          />
+
+          <!-- Black divider -->
+          <div class="h-10 w-px bg-black"></div>
+
+          <img src="blob.png" alt="Jamf Partner Logo" class="preloader-logoo" />
+        </div>
+
+        <div class="preloader-text">Managed Excellence....</div>
+      </div>
+    </div>
+
+    <div class="flex flex-col min-h-screen">
+      <!-- Header -->
+
+      <header class="sticky top-0 left-0 right-0 z-[9998] shadow-md bg-white">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+          <!-- Logo Section -->
+          <a href="https://sniperindia.com/" class="flex items-center space-x-3">
+            <img
+              src="https://sniperindia.com/wp-content/uploads/2025/05/sniper-logo-black-4-scaled.png"
+              alt="Sniper Logo"
+              class="h-12 w-auto"
+            />
+
+            <!-- Separator -->
+            <div class="h-10 w-px bg-gray-900"></div>
+
+            <img src="https://i.ibb.co/YT8CZdyk/output-auto.png" alt="Jamf Partner Logo" class="h-8 w-auto mt-3" />
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center space-x-4 text-sm font-medium">
+            <a href="index.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              HOME
+            </a>
+
+            <!-- Solutions Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center py-2 px-4 text-black hover:text-secondary transition-colors duration-300"
+              >
+                SOLUTIONS
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+
+              <!-- Dropdown -->
+              <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-xl w-60 py-2">
+                <a
+                  href="solutions/mac-management.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for Mac
+                </a>
+                <a
+                  href="solutions/mobile-device-management.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for Mobile
+                </a>
+                <a
+                  href="solutions/k-12-education.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for K-12
+                </a>
+                <a
+                  href="solutions/small-business.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Small Business
+                </a>
+              </div>
+            </div>
+
+            <a href="products.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              PRODUCTS
+            </a>
+            <a href="contact.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              CONTACT US
+            </a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="lg:hidden text-black focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+          <a href="index.html" class="block py-3 px-6 text-sm text-black hover:bg-gray-100">HOME</a>
+
+          <div class="px-6">
+            <button
+              id="mobile-solutions-button"
+              class="w-full flex justify-between items-center py-3 text-sm text-black hover:bg-gray-100"
+            >
+              SOLUTIONS
+              <svg
+                class="w-4 h-4 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div id="mobile-solutions-dropdown" class="hidden pl-4">
+              <a href="solutions/mac-management.html" class="block py-2 px-2 text-sm hover:bg-gray-100">Jamf for Mac</a>
+              <a href="solutions/mobile-device-management.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Jamf for Mobile
+              </a>
+              <a href="solutions/k-12-education.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Jamf for K-12
+              </a>
+              <a href="solutions/small-business.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Small Business
+              </a>
+            </div>
+          </div>
+
+          <a href="products.html" class="block py-3 px-6 text-sm text-black hover:bg-gray-100">PRODUCTS</a>
+
+          <div class="px-6 py-4">
+            <a
+              href="contact.html"
+              class="block text-center bg-secondary text-white font-bold py-2 rounded-full hover:bg-red-700 transition-colors duration-300"
+            >
+              CONTACT US
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-grow">
+        <!-- Hero Section -->
+
+        <section class="bg-white py-20 md:py-32 relative overflow-hidden">
+          <!-- Custom Cursor -->
+          <div id="custom-cursor" class="custom-cursor"></div>
+
+          <div class="container mx-auto relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-56 max-w-7xl mx-auto relative">
+              <!-- Left Content -->
+              <div class="relative md:w-1/2">
+                <!-- Background highlight -->
+                <div
+                  class="absolute -top-10 left-40 w-96 h-80 transform -rotate-12 -z-10 rounded-3xl"
+                  style="background: #056ae6"
+                ></div>
+
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-8">
+                  <span id="floating-text-1" class="text-gray-900 floating-text">Manage and secure</span>
+                  <br />
+                  <span id="floating-text-2" class="text-gray-900 floating-text">Apple with Jamf.</span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mb-8">
+                  As a Certified Jamf Partner,
+                  <span class="font-semibold text-gray-800">Sniper Systems</span>
+                  provides a complete solution for device management, user identity and security.
+                </p>
+
+                <a
+                  href="contact.html"
+                  id="consultation-btn"
+                  class="inline-block bg-[#778EB1] text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-colors duration-300 text-lg shadow-lg"
+                >
+                  Start Trial
+                </a>
+              </div>
+
+              <!-- Right Content -->
+              <div class="relative md:w-1/2 flex justify-center md:justify-end">
+                <!-- Main Image -->
+                <img
+                  src="a.png"
+                  alt="Apple ecosystem management"
+                  class="shadow-2xl w-[790px] h-auto object-cover -mt-16 rounded-3xl"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Lottie Script -->
+          <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js" type="module"></script>
+
+          <!-- Custom CSS for floating animation and custom cursor -->
+          <style>
+            .floating-text {
+              display: inline-block;
+              transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+              will-change: transform;
+            }
+
+            /* Custom cursor styles - hidden by default */
+            .custom-cursor {
+              position: fixed;
+              width: 24px;
+              height: 24px;
+              background-color: rgba(0, 0, 0, 0.7);
+              border-radius: 50%;
+              pointer-events: none;
+              z-index: 9999;
+              opacity: 0;
+              transition:
+                opacity 0.3s ease,
+                transform 0.2s ease;
+              mix-blend-mode: difference;
+            }
+
+            .custom-cursor.active {
+              opacity: 1;
+            }
+
+            .custom-cursor.hover {
+              transform: scale(1.5);
+              background-color: rgba(255, 255, 255, 0.9);
+            }
+
+            /* Hide default cursor only when custom cursor is active over button */
+            #consultation-btn.custom-cursor-active {
+              cursor: none;
+            }
+          </style>
+
+          <!-- JavaScript for subtle scroll-based wave animation and custom cursor -->
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const text1 = document.getElementById('floating-text-1');
+              const text2 = document.getElementById('floating-text-2');
+              const section = document.querySelector('section');
+              const consultationBtn = document.getElementById('consultation-btn');
+              const customCursor = document.getElementById('custom-cursor');
+
+              let animationId;
+              let cursorX = 0;
+              let cursorY = 0;
+              let isOverButton = false;
+
+              // Custom cursor functionality - ONLY for consultation button
+              function initCustomCursor() {
+                // Update cursor position only when over button
+                consultationBtn.addEventListener('mousemove', e => {
+                  if (isOverButton) {
+                    cursorX = e.clientX;
+                    cursorY = e.clientY;
+                    customCursor.style.left = cursorX - 12 + 'px';
+                    customCursor.style.top = cursorY - 12 + 'px';
+                  }
+                });
+
+                // Show custom cursor when mouse enters button
+                consultationBtn.addEventListener('mouseenter', e => {
+                  isOverButton = true;
+                  customCursor.style.left = e.clientX - 12 + 'px';
+                  customCursor.style.top = e.clientY - 12 + 'px';
+                  customCursor.classList.add('active');
+                  consultationBtn.classList.add('custom-cursor-active');
+                });
+
+                // Hide custom cursor when mouse leaves button
+                consultationBtn.addEventListener('mouseleave', () => {
+                  isOverButton = false;
+                  customCursor.classList.remove('active', 'hover');
+                  consultationBtn.classList.remove('custom-cursor-active');
+                });
+
+                // Add hover effect for consultation button
+                consultationBtn.addEventListener('mouseenter', () => {
+                  customCursor.classList.add('hover');
+                });
+
+                consultationBtn.addEventListener('mouseleave', () => {
+                  customCursor.classList.remove('hover');
+                });
+              }
+
+              // Initialize custom cursor
+              initCustomCursor();
+
+              function updateTextPosition() {
+                const scrollY = window.scrollY;
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const viewportHeight = window.innerHeight;
+
+                // Calculate scroll progress through section (0 to 1)
+                const scrollProgress = Math.max(
+                  0,
+                  Math.min(1, (scrollY - sectionTop + viewportHeight * 0.3) / (sectionHeight * 0.7))
+                );
+
+                // SUBTLE wave effects - small values for refined movement
+                const verticalIntensity = 22;
+                const horizontalIntensity = 18;
+                const rotationIntensity = 3.5;
+
+                // Create gentle wave patterns
+                const wave1Y = Math.sin(scrollProgress * Math.PI * 3) * verticalIntensity;
+                const wave2Y = Math.cos(scrollProgress * Math.PI * 2.5) * verticalIntensity;
+
+                const wave1X = Math.sin(scrollProgress * Math.PI * 2) * horizontalIntensity;
+                const wave2X = Math.cos(scrollProgress * Math.PI * 1.8) * horizontalIntensity;
+
+                const rotate1 = Math.sin(scrollProgress * Math.PI * 2.5) * rotationIntensity;
+                const rotate2 = Math.cos(scrollProgress * Math.PI * 2.2) * rotationIntensity;
+
+                // Apply subtle transforms
+                text1.style.transform = `translate(${wave1X}px, ${wave1Y}px) rotate(${rotate1}deg)`;
+                text2.style.transform = `translate(${wave2X}px, ${wave2Y}px) rotate(${rotate2}deg)`;
+
+                animationId = requestAnimationFrame(updateTextPosition);
+              }
+
+              // Start animation when section is in view
+              function checkSectionInView() {
+                const rect = section.getBoundingClientRect();
+                const isInView = rect.top <= window.innerHeight * 0.9 && rect.bottom >= window.innerHeight * 0.1;
+
+                if (isInView && !animationId) {
+                  animationId = requestAnimationFrame(updateTextPosition);
+                } else if (!isInView && animationId) {
+                  cancelAnimationFrame(animationId);
+                  animationId = null;
+
+                  // Reset positions when out of view
+                  text1.style.transform = 'translate(0px, 0px) rotate(0deg)';
+                  text2.style.transform = 'translate(0px, 0px) rotate(0deg)';
+                }
+              }
+
+              // Throttled scroll handler
+              let scrollTimeout;
+              function handleScroll() {
+                if (!scrollTimeout) {
+                  scrollTimeout = setTimeout(() => {
+                    checkSectionInView();
+                    scrollTimeout = null;
+                  }, 50);
+                }
+              }
+
+              window.addEventListener('scroll', handleScroll);
+              checkSectionInView(); // Initial check
+            });
+          </script>
+        </section>
+
+        <section class="relative py-16 px-4 overflow-hidden rounded-tr-[22rem] rounded-bl-[22rem] bg-gray-100">
+          <!-- Section content here -->
+
+          <!-- Animated Gradient Background -->
+          <div class="absolute inset-0 bg-[#0066CC]"></div>
+
+          <!-- Floating Orbs -->
+
+          <!-- Grid Pattern Overlay -->
+          <div
+            class="absolute inset-0 opacity-[0.02]"
+            style="
+              background-image:
+                linear-gradient(#000 10px, transparent 1px), linear-gradient(90deg, #000 5px, transparent 1px);
+              background-size: 30px 30px;
+            "
+          ></div>
+
+          <!-- Content Container -->
+          <div class="max-w-6xl mx-auto relative z-10">
+            <!-- Heading -->
+            <h1
+              class="text-3xl md:text-4xl font-bold text-center text-white mb-8 relative"
+              style="
+                font-family:
+                  'Montserrat',
+                  'Inter',
+                  'SF Pro Display',
+                  -apple-system,
+                  BlinkMacSystemFont,
+                  sans-serif;
+              "
+            >
+              <span class="relative inline-block">Jamf made effortless — by Sniper Systems.</span>
+            </h1>
+
+            <!-- Description -->
+            <p
+              class="text-center text-white text-lg leading-relaxed max-w-5xl mx-auto mb-12 backdrop-blur-sm"
+              style="
+                font-family:
+                  'Inter',
+                  'SF Pro Text',
+                  -apple-system,
+                  BlinkMacSystemFont,
+                  'Segoe UI',
+                  Roboto,
+                  sans-serif;
+              "
+            >
+              Optimize deployment, strengthen security, and scale your Apple ecosystem with confidence. Our end-to-end
+              Jamf solutions streamline device onboarding, enforce compliance, and empower your IT teams to focus on
+              strategic initiatives — ensuring your organization operates efficiently, securely, and at peak
+              performance.
+            </p>
+
+            <!-- Video Container with Enhanced Styling -->
+            <div class="max-w-4xl mx-auto relative">
+              <!-- Glow Effect Behind Video -->
+
+              <!-- Video Wrapper -->
+              <div
+                class="relative rounded-2xl overflow-hidden shadow-2xl bg-black border border-gray-100/50"
+                style="padding-bottom: 56.25%"
+              >
+                <video class="absolute top-0 left-0 w-full h-full" controls poster="blob.png">
+                  <source src="video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+          <!-- Bottom Decorative Wave -->
+        </section>
+
+        <div class="relative font-inter antialiased">
+          <main class="relative flex flex-col justify-center bg-[#778EB1] overflow-hidden">
+            <div class="w-full max-w-5xl mx-auto px-4 md:px-6 py-24">
+              <!-- Card slider  -->
+              <section class="px-12">
+                <div class="mb-12">
+                  <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                    <span class="text-[#0066cc]">Jamf</span>
+                    is the gold standard for managing and securing Apple
+                  </h2>
+                </div>
+
+                <div class="max-w-3xl mx-auto relative">
+                  <input id="article-01" type="radio" name="slider" class="sr-only peer/01" checked />
+                  <input id="article-02" type="radio" name="slider" class="sr-only peer/02" />
+                  <input id="article-03" type="radio" name="slider" class="sr-only peer/03" />
+                  <input id="article-04" type="radio" name="slider" class="sr-only peer/04" />
+                  <input id="article-05" type="radio" name="slider" class="sr-only peer/05" />
+
+                  <div
+                    class="absolute inset-0 scale-[67.5%] z-20 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] peer-focus-visible/01:[&_article]:ring peer-focus-visible/01:[&_article]:ring-indigo-300 peer-checked/01:relative peer-checked/01:z-50 peer-checked/01:translate-x-0 peer-checked/01:scale-100 peer-checked/01:[&>label]:pointer-events-none peer-checked/02:-translate-x-20 peer-checked/02:scale-[83.75%] peer-checked/02:z-40 peer-checked/03:-translate-x-40 peer-checked/03:z-30 peer-checked/04:-translate-x-40 peer-checked/04:opacity-0 peer-checked/05:-translate-x-40"
+                  >
+                    <label class="absolute inset-0" for="article-01">
+                      <span class="sr-only">Focus on the big picture</span>
+                    </label>
+                    <article class="bg-white p-6 rounded-lg shadow-2xl">
+                      <header class="mb-2">
+                        <svg
+                          class="inline-flex rounded-full shadow mb-3"
+                          width="54"
+                          height="54"
+                          viewBox="0 0 44 44"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width="44" height="44" rx="22" fill="#0066cc" />
+                          <path
+                            d="M22 12C16.477 12 12 16.477 12 22C12 27.523 16.477 32 22 32C27.523 32 32 27.523 32 22C32 16.477 27.523 12 22 12ZM22 30C17.589 30 14 26.411 14 22C14 17.589 17.589 14 22 14C26.411 14 30 17.589 30 22C30 26.411 26.411 30 22 30Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M22 16C18.686 16 16 18.686 16 22C16 25.314 18.686 28 22 28C25.314 28 28 25.314 28 22C28 18.686 25.314 16 22 16ZM22 26C19.791 26 18 24.209 18 22C18 19.791 19.791 18 22 18C24.209 18 26 19.791 26 22C26 24.209 24.209 26 22 26Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M22 20C20.895 20 20 20.895 20 22C20 23.105 20.895 24 22 24C23.105 24 24 23.105 24 22C24 20.895 23.105 20 22 20Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <h1 class="text-2xl font-bold text-slate-900">Scalable Apple Management</h1>
+                      </header>
+                      <div class="text-lg leading-relaxed text-slate-500 space-y-4 mb-2">
+                        <p>
+                          We execute flawlessly, ensuring every device is configured to your exact specifications from
+                          day one. Our meticulous approach guarantees a smooth, disruption-free integration into your
+                          existing IT landscape, maximizing user adoption and productivity from the start.
+                        </p>
+                      </div>
+                      <footer class="text-right">
+                        <a class="text-sm font-medium text-indigo-500">--></a>
+                      </footer>
+                    </article>
+                  </div>
+
+                  <div
+                    class="absolute inset-0 scale-[67.5%] z-20 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] peer-focus-visible/02:[&_article]:ring peer-focus-visible/02:[&_article]:ring-indigo-300 peer-checked/01:translate-x-20 peer-checked/01:scale-[83.75%] peer-checked/01:z-40 peer-checked/02:relative peer-checked/02:z-50 peer-checked/02:translate-x-0 peer-checked/02:scale-100 peer-checked/02:[&>label]:pointer-events-none peer-checked/03:-translate-x-20 peer-checked/03:scale-[83.75%] peer-checked/03:z-40 peer-checked/04:-translate-x-40 peer-checked/04:z-30 peer-checked/05:-translate-x-40 peer-checked/05:opacity-0"
+                  >
+                    <label class="absolute inset-0" for="article-02">
+                      <span class="sr-only">Focus on the big picture</span>
+                    </label>
+                    <article class="bg-white p-6 rounded-lg shadow-2xl">
+                      <header class="mb-2">
+                        <svg
+                          class="inline-flex rounded-full shadow mb-3"
+                          width="54"
+                          height="54"
+                          viewBox="0 0 44 44"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width="44" height="44" rx="22" fill="#0066cc" />
+                          <path
+                            d="M22 12C16.477 12 12 16.477 12 22C12 27.523 16.477 32 22 32C27.523 32 32 27.523 32 22C32 16.477 27.523 12 22 12ZM22 30C17.589 30 14 26.411 14 22C14 17.589 17.589 14 22 14C26.411 14 30 17.589 30 22C30 26.411 26.411 30 22 30Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M22 16C18.686 16 16 18.686 16 22C16 25.314 18.686 28 22 28C25.314 28 28 25.314 28 22C28 18.686 25.314 16 22 16ZM22 26C19.791 26 18 24.209 18 22C18 19.791 19.791 18 22 18C24.209 18 26 19.791 26 22C26 24.209 24.209 26 22 26Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M22 20C20.895 20 20 20.895 20 22C20 23.105 20.895 24 22 24C23.105 24 24 23.105 24 22C24 20.895 23.105 20 22 20Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <h1 class="text-2xl font-bold text-slate-900">Complete Visibility, Control & Security</h1>
+                      </header>
+                      <div class="text-lg leading-relaxed text-slate-500 space-y-4 mb-2">
+                        <p>
+                          Go beyond basic compliance. We build a hardened security posture for your Apple fleet,
+                          leveraging Jamf advanced threat protection and our own continuous monitoring to identify and
+                          neutralize vulnerabilities before they become breaches.
+                        </p>
+                      </div>
+                      <footer class="text-right">
+                        <a class="text-sm font-medium text-indigo-500">--></a>
+                      </footer>
+                    </article>
+                  </div>
+
+                  <div
+                    class="absolute inset-0 scale-[67.5%] z-20 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] peer-focus-visible/03:[&_article]:ring peer-focus-visible/03:[&_article]:ring-indigo-300 peer-checked/01:translate-x-40 peer-checked/01:z-30 peer-checked/02:translate-x-20 peer-checked/02:scale-[83.75%] peer-checked/02:z-40 peer-checked/03:relative peer-checked/03:z-50 peer-checked/03:translate-x-0 peer-checked/03:scale-100 peer-checked/03:[&>label]:pointer-events-none peer-checked/04:-translate-x-20 peer-checked/04:scale-[83.75%] peer-checked/04:z-40 peer-checked/05:-translate-x-40 peer-checked/05:z-30"
+                  >
+                    <label class="absolute inset-0" for="article-03">
+                      <span class="sr-only">Focus on the big picture</span>
+                    </label>
+                    <article class="bg-white p-6 rounded-lg shadow-2xl">
+                      <header class="mb-2">
+                        <svg
+                          class="inline-flex rounded-full shadow mb-3"
+                          width="54"
+                          height="54"
+                          viewBox="0 0 44 44"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width="44" height="44" rx="22" fill="#0066cc" />
+                          <path
+                            d="M22 12C16.477 12 12 16.477 12 22C12 27.523 16.477 32 22 32C27.523 32 32 27.523 32 22C32 16.477 27.523 12 22 12ZM22 30C17.589 30 14 26.411 14 22C14 17.589 17.589 14 22 14C26.411 14 30 17.589 30 22C30 26.411 26.411 30 22 30Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M22 16C18.686 16 16 18.686 16 22C16 25.314 18.686 28 22 28C25.314 28 28 25.314 28 22C28 18.686 25.314 16 22 16ZM22 26C19.791 26 18 24.209 18 22C18 19.791 19.791 18 22 18C24.209 18 26 19.791 26 22C26 24.209 24.209 26 22 26Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M22 20C20.895 20 20 20.895 20 22C20 23.105 20.895 24 22 24C23.105 24 24 23.105 24 22C24 20.895 23.105 20 22 20Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <h1 class="text-2xl font-bold text-slate-900">Productivity Without Compromise</h1>
+                      </header>
+                      <div class="text-lg leading-relaxed text-slate-500 space-y-4 mb-2">
+                        <p>
+                          Our team consists of certified Jamf experts who have solved the most complex challenges in the
+                          field. This isnt just theoretical knowledge; its practical, battle-tested expertise applied
+                          directly to your environment to ensure peak performance and stability.
+                        </p>
+                      </div>
+                      <footer class="text-right">
+                        <a class="text-sm font-medium text-indigo-500">--></a>
+                      </footer>
+                    </article>
+                  </div>
+
+                  <div
+                    class="absolute inset-0 scale-[67.5%] z-20 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] peer-focus-visible/04:[&_article]:ring peer-focus-visible/04:[&_article]:ring-indigo-300 peer-checked/01:translate-x-40 peer-checked/01:opacity-0 peer-checked/02:translate-x-40 peer-checked/02:z-30 peer-checked/03:translate-x-20 peer-checked/03:scale-[83.75%] peer-checked/03:z-40 peer-checked/04:relative peer-checked/04:z-50 peer-checked/04:translate-x-0 peer-checked/04:scale-100 peer-checked/04:[&>label]:pointer-events-none peer-checked/05:-translate-x-20 peer-checked/05:scale-[83.75%] peer-checked/05:z-40"
+                  >
+                    <label class="absolute inset-0" for="article-04">
+                      <span class="sr-only">Focus on the big picture</span>
+                    </label>
+                    <article class="bg-white p-6 rounded-lg shadow-2xl">
+                      <header class="mb-2">
+                        <svg
+                          class="inline-flex rounded-full shadow mb-3"
+                          width="54"
+                          height="54"
+                          viewBox="0 0 44 44"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width="44" height="44" rx="22" fill="#0066cc" />
+                          <path
+                            d="M22 12C16.477 12 12 16.477 12 22C12 27.523 16.477 32 22 32C27.523 32 32 27.523 32 22C32 16.477 27.523 12 22 12ZM22 30C17.589 30 14 26.411 14 22C14 17.589 17.589 14 22 14C26.411 14 30 17.589 30 22C30 26.411 26.411 30 22 30Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M22 16C18.686 16 16 18.686 16 22C16 25.314 18.686 28 22 28C25.314 28 28 25.314 28 22C28 18.686 25.314 16 22 16ZM22 26C19.791 26 18 24.209 18 22C18 19.791 19.791 18 22 18C24.209 18 26 19.791 26 22C26 24.209 24.209 26 22 26Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M22 20C20.895 20 20 20.895 20 22C20 23.105 20.895 24 22 24C23.105 24 24 23.105 24 22C24 20.895 23.105 20 22 20Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <h1 class="text-2xl font-bold text-slate-900">Secure, Seamless Apple Experience</h1>
+                      </header>
+                      <div class="text-lg leading-relaxed text-slate-500 space-y-4 mb-2">
+                        <p>
+                          We design your Jamf implementation with your future in mind. Whether youre scaling from
+                          hundreds to thousands of devices or expanding into new markets, we build a flexible, robust
+                          foundation that grows seamlessly with your ambitions.
+                        </p>
+                      </div>
+                      <footer class="text-right">
+                        <a class="text-sm font-medium text-indigo-500">--></a>
+                      </footer>
+                    </article>
+                  </div>
+
+                  <div
+                    class="absolute inset-0 scale-[67.5%] z-20 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] peer-focus-visible/05:[&_article]:ring peer-focus-visible/05:[&_article]:ring-indigo-300 peer-checked/01:translate-x-40 peer-checked/02:translate-x-40 peer-checked/02:opacity-0 peer-checked/03:translate-x-40 peer-checked/03:z-30 peer-checked/04:translate-x-20 peer-checked/04:scale-[83.75%] peer-checked/04:z-40 peer-checked/05:relative peer-checked/05:z-50 peer-checked/05:translate-x-0 peer-checked/05:scale-100 peer-checked/05:[&>label]:pointer-events-none"
+                  >
+                    <label class="absolute inset-0" for="article-05">
+                      <span class="sr-only">Focus on the big picture</span>
+                    </label>
+                    <article class="bg-white p-6 rounded-lg shadow-2xl">
+                      <header class="mb-2">
+                        <svg
+                          class="inline-flex rounded-full shadow mb-3"
+                          width="54"
+                          height="54"
+                          viewBox="0 0 44 44"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width="44" height="44" rx="22" fill="#0066cc" />
+                          <path
+                            d="M22 12C16.477 12 12 16.477 12 22C12 27.523 16.477 32 22 32C27.523 32 32 27.523 32 22C32 16.477 27.523 12 22 12ZM22 30C17.589 30 14 26.411 14 22C14 17.589 17.589 14 22 14C26.411 14 30 17.589 30 22C30 26.411 26.411 30 22 30Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M22 16C18.686 16 16 18.686 16 22C16 25.314 18.686 28 22 28C25.314 28 28 25.314 28 22C28 18.686 25.314 16 22 16ZM22 26C19.791 26 18 24.209 18 22C18 19.791 19.791 18 22 18C24.209 18 26 19.791 26 22C26 24.209 24.209 26 22 26Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M22 20C20.895 20 20 20.895 20 22C20 23.105 20.895 24 22 24C23.105 24 24 23.105 24 22C24 20.895 23.105 20 22 20Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <h1 class="text-2xl font-bold text-slate-900">Purpose-Built for Apple Ecosystems</h1>
+                      </header>
+                      <div class="text-lg leading-relaxed text-slate-500 space-y-4 mb-2">
+                        <p>
+                          Our relationship doesnt end at go-live. We become an extension of your team, providing
+                          strategic guidance, dedicated post-sales support, and proactive insights to ensure your Apple
+                          ecosystem continues to evolve and deliver maximum value.
+                        </p>
+                      </div>
+                      <footer class="text-right">
+                        <a class="text-sm font-medium text-indigo-500">--></a>
+                      </footer>
+                    </article>
+                  </div>
+                </div>
+              </section>
+              <!-- End: Card slider  -->
+            </div>
+          </main>
+        </div>
+        <!--
+        <section class="bg-[#778EB1]">
+          <div class="flex">
+
+            <div class="w-full md:w-[60rem] bg-gray-300 text-black p-10">
+              <div class="mb-12">
+                <h2 class="text-3xl font-bold justify-start text-black">
+                  Jamf is the gold standard for managing and securing Apple :
+                  <br />
+                </h2>
+              </div>
+
+              <nav class="space-y-2">
+                <button
+                  onclick="showContent('Enterprise', this)"
+                  class="category-btn active w-full text-left px-4 py-3 rounded transition-colors bg-white font-medium border-l-4 text-black hover:bg-primary hover:text-white font-size:50px text-xl font-semibold"
+                >
+                  1. Scalable Apple Management
+                </button>
+
+                <button
+                  onclick="showContent('Finance', this)"
+                  class="category-btn w-full text-left px-4 py-3 rounded transition-colors text-black hover:bg-primary hover:text-white font-size:50px text-xl font-semibold"
+                >
+                  2. Complete Visibility, Control & Security
+                </button>
+
+                <button
+                  onclick="showContent('Government', this)"
+                  class="category-btn w-full text-left px-4 py-3 rounded transition-colors text-black hover:bg-primary hover:text-white font-size:50px text-xl font-semibold"
+                >
+                  3. Productivity Without Compromise
+                </button>
+
+                <button
+                  onclick="showContent('Retail', this)"
+                  class="category-btn w-full text-left px-4 py-3 rounded transition-colors text-black hover:bg-primary hover:text-white font-size:50px text-xl font-semibold"
+                >
+                  4. Secure, Seamless Apple Experience
+                </button>
+
+                <button
+                  onclick="showContent('SmallBusiness', this)"
+                  class="category-btn w-full text-left px-4 py-3 rounded transition-colors text-black hover:bg-primary hover:text-white font-size:50px text-xl font-semibold"
+                >
+                  5. Purpose-Built for Apple Ecosystems
+                </button>
+              </nav>
+            </div>
+
+
+            <div class="flex-1 p-12">
+              <div id="content-area">
+
+              </div>
+            </div>
+          </div>
+
+          <script>
+            const contentData = {
+              Enterprise: [
+                {
+                  date: 'Sep 30, 2025',
+                  tag: 'Security',
+                  title: 'Scalable Apple Management',
+                  readTime:
+                    'We execute flawlessly, ensuring every device is configured to your exact specifications from day one. Our meticulous approach guarantees a smooth, disruption-free integration into your existing IT landscape, maximizing user adoption and productivity from the start.',
+                  image: '01.png'
+                }
+              ],
+              Finance: [
+                {
+                  date: 'Oct 15, 2025',
+                  tag: 'Security',
+                  title: 'Complete Visibility, Control & Security',
+                  readTime:
+                    'Go beyond basic compliance. We build a hardened security posture for your Apple fleet, leveraging Jamf advanced threat protection and our own continuous monitoring to identify and neutralize vulnerabilities before they become breaches.',
+                  image: 'b.jpg'
+                }
+              ],
+              Government: [
+                {
+                  date: 'Oct 10, 2025',
+                  tag: 'Security',
+                  title: 'Productivity Without Compromise',
+                  readTime:
+                    'Our team consists of certified Jamf experts who have solved the most complex challenges in the field. This isnt just theoretical knowledge; its practical, battle-tested expertise applied directly to your environment to ensure peak performance and stability.',
+                  image: 'b.jpg'
+                }
+              ],
+              Retail: [
+                {
+                  date: 'Sep 25, 2025',
+                  tag: 'Security',
+                  title: 'Secure, Seamless Apple Experience',
+                  readTime:
+                    'We design your Jamf implementation with your future in mind. Whether youre scaling from hundreds to thousands of devices or expanding into new markets, we build a flexible, robust foundation that grows seamlessly with your ambitions.',
+                  image: 'b.jpg'
+                }
+              ],
+              SmallBusiness: [
+                {
+                  date: 'Sep 30, 2025',
+                  tag: 'Security',
+                  title: 'Purpose-Built for Apple Ecosystems',
+                  readTime:
+                    'Our relationship doesnt end at go-live. We become an extension of your team, providing strategic guidance, dedicated post-sales support, and proactive insights to ensure your Apple ecosystem continues to evolve and deliver maximum value.',
+                  image: 'b.jpg'
+                }
+              ]
+            };
+
+            function showContent(category, button = null) {
+              // Update active button
+              const buttons = document.querySelectorAll('.category-btn');
+              buttons.forEach(btn => {
+                btn.classList.remove('active', 'bg-white', 'text-gray-900', 'font-medium');
+                btn.classList.add('text-white', 'hover:bg-gray-800');
+              });
+
+              if (button) {
+                button.classList.add('active', 'bg-white', 'text-gray-900', 'font-medium');
+                button.classList.remove('text-white', 'hover:bg-gray-400');
+              }
+
+              // Generate content cards
+              const contentArea = document.getElementById('content-area');
+              const items = contentData[category];
+
+              let html = '<div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">';
+              items.forEach(item => {
+                html += `
+    <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+
+
+
+
+      <div class="p-6">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 leading-tight">
+          ${item.title}
+        </h3>
+
+        <div class="flex items-center text-lg text-gray-600">
+          <span>${item.readTime}</span>
+        </div>
+
+        <p class="mt-4 text-sm text-gray-500">→</p>
+      </div>
+    </div>
+  `;
+              });
+
+              html += '</div>';
+              contentArea.innerHTML = html;
+            }
+
+            // ✅ Load Enterprise by default on page load
+            document.addEventListener('DOMContentLoaded', () => {
+              const defaultBtn = document.querySelector('.category-btn.active');
+              showContent('Enterprise', defaultBtn);
+            });
+          </script>
+        </section>
+ -->
+        <style>
+          .bullet-icon {
+            width: 0.5rem;
+            height: 0.5rem;
+            margin-top: 0.45rem; /* aligns perfectly with first line */
+            flex-shrink: 0;
+            fill: #778eb1;
+          }
+        </style>
+
+        <!-- ====== Services Section Start -->
+        <section class="overflow-hidden bg-white pb-12 pt-20 lg:pb-[90px] lg:pt-[120px] dark:bg-dark">
+          <div class="container mx-auto">
+            <div class="-mx-4 flex flex-wrap items-center justify-between">
+              <div class="w-full px-4 lg:w-6/12">
+                <div class="-mx-3 flex items-center sm:-mx-4">
+                  <div class="w-full px-3 sm:px-4 xl:w-1/2">
+                    <div class="py-3 sm:py-4">
+                      <img src="    why-apple-device-mgmt-blueprints_copy.webp" alt="" class="w-full rounded-2xl" />
+                    </div>
+                    <div class="py-3 sm:py-4">
+                      <img src="jamf-pro-screenshot_@2x.webp" alt="" class="w-full rounded-2xl" />
+                    </div>
+                  </div>
+                  <div class="w-full px-3 sm:px-4 xl:w-1/2">
+                    <div class="relative z-10 my-4">
+                      <img src="jamf-now-retail-2x.webp" alt="" class="w-full rounded-2xl" />
+                      <span class="absolute -bottom-7 -right-7 z-[-1]">
+                        <svg
+                          width="134"
+                          height="106"
+                          viewBox="0 0 134 106"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            cx="1.66667"
+                            cy="104"
+                            r="1.66667"
+                            transform="rotate(-90 1.66667 104)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="16.3333"
+                            cy="104"
+                            r="1.66667"
+                            transform="rotate(-90 16.3333 104)"
+                            fill="#3056D3"
+                          />
+                          <circle cx="31" cy="104" r="1.66667" transform="rotate(-90 31 104)" fill="#3056D3" />
+                          <circle
+                            cx="45.6667"
+                            cy="104"
+                            r="1.66667"
+                            transform="rotate(-90 45.6667 104)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="60.3334"
+                            cy="104"
+                            r="1.66667"
+                            transform="rotate(-90 60.3334 104)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="88.6667"
+                            cy="104"
+                            r="1.66667"
+                            transform="rotate(-90 88.6667 104)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="117.667"
+                            cy="104"
+                            r="1.66667"
+                            transform="rotate(-90 117.667 104)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="74.6667"
+                            cy="104"
+                            r="1.66667"
+                            transform="rotate(-90 74.6667 104)"
+                            fill="#3056D3"
+                          />
+                          <circle cx="103" cy="104" r="1.66667" transform="rotate(-90 103 104)" fill="#3056D3" />
+                          <circle cx="132" cy="104" r="1.66667" transform="rotate(-90 132 104)" fill="#3056D3" />
+                          <circle
+                            cx="1.66667"
+                            cy="89.3333"
+                            r="1.66667"
+                            transform="rotate(-90 1.66667 89.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="16.3333"
+                            cy="89.3333"
+                            r="1.66667"
+                            transform="rotate(-90 16.3333 89.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle cx="31" cy="89.3333" r="1.66667" transform="rotate(-90 31 89.3333)" fill="#3056D3" />
+                          <circle
+                            cx="45.6667"
+                            cy="89.3333"
+                            r="1.66667"
+                            transform="rotate(-90 45.6667 89.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="60.3333"
+                            cy="89.3338"
+                            r="1.66667"
+                            transform="rotate(-90 60.3333 89.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="88.6667"
+                            cy="89.3338"
+                            r="1.66667"
+                            transform="rotate(-90 88.6667 89.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="117.667"
+                            cy="89.3338"
+                            r="1.66667"
+                            transform="rotate(-90 117.667 89.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="74.6667"
+                            cy="89.3338"
+                            r="1.66667"
+                            transform="rotate(-90 74.6667 89.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="103"
+                            cy="89.3338"
+                            r="1.66667"
+                            transform="rotate(-90 103 89.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="132"
+                            cy="89.3338"
+                            r="1.66667"
+                            transform="rotate(-90 132 89.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="1.66667"
+                            cy="74.6673"
+                            r="1.66667"
+                            transform="rotate(-90 1.66667 74.6673)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="1.66667"
+                            cy="31.0003"
+                            r="1.66667"
+                            transform="rotate(-90 1.66667 31.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="16.3333"
+                            cy="74.6668"
+                            r="1.66667"
+                            transform="rotate(-90 16.3333 74.6668)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="16.3333"
+                            cy="31.0003"
+                            r="1.66667"
+                            transform="rotate(-90 16.3333 31.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle cx="31" cy="74.6668" r="1.66667" transform="rotate(-90 31 74.6668)" fill="#3056D3" />
+                          <circle cx="31" cy="31.0003" r="1.66667" transform="rotate(-90 31 31.0003)" fill="#3056D3" />
+                          <circle
+                            cx="45.6667"
+                            cy="74.6668"
+                            r="1.66667"
+                            transform="rotate(-90 45.6667 74.6668)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="45.6667"
+                            cy="31.0003"
+                            r="1.66667"
+                            transform="rotate(-90 45.6667 31.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="60.3333"
+                            cy="74.6668"
+                            r="1.66667"
+                            transform="rotate(-90 60.3333 74.6668)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="60.3333"
+                            cy="30.9998"
+                            r="1.66667"
+                            transform="rotate(-90 60.3333 30.9998)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="88.6667"
+                            cy="74.6668"
+                            r="1.66667"
+                            transform="rotate(-90 88.6667 74.6668)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="88.6667"
+                            cy="30.9998"
+                            r="1.66667"
+                            transform="rotate(-90 88.6667 30.9998)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="117.667"
+                            cy="74.6668"
+                            r="1.66667"
+                            transform="rotate(-90 117.667 74.6668)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="117.667"
+                            cy="30.9998"
+                            r="1.66667"
+                            transform="rotate(-90 117.667 30.9998)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="74.6667"
+                            cy="74.6668"
+                            r="1.66667"
+                            transform="rotate(-90 74.6667 74.6668)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="74.6667"
+                            cy="30.9998"
+                            r="1.66667"
+                            transform="rotate(-90 74.6667 30.9998)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="103"
+                            cy="74.6668"
+                            r="1.66667"
+                            transform="rotate(-90 103 74.6668)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="103"
+                            cy="30.9998"
+                            r="1.66667"
+                            transform="rotate(-90 103 30.9998)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="132"
+                            cy="74.6668"
+                            r="1.66667"
+                            transform="rotate(-90 132 74.6668)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="132"
+                            cy="30.9998"
+                            r="1.66667"
+                            transform="rotate(-90 132 30.9998)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="1.66667"
+                            cy="60.0003"
+                            r="1.66667"
+                            transform="rotate(-90 1.66667 60.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="1.66667"
+                            cy="16.3333"
+                            r="1.66667"
+                            transform="rotate(-90 1.66667 16.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="16.3333"
+                            cy="60.0003"
+                            r="1.66667"
+                            transform="rotate(-90 16.3333 60.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="16.3333"
+                            cy="16.3333"
+                            r="1.66667"
+                            transform="rotate(-90 16.3333 16.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle cx="31" cy="60.0003" r="1.66667" transform="rotate(-90 31 60.0003)" fill="#3056D3" />
+                          <circle cx="31" cy="16.3333" r="1.66667" transform="rotate(-90 31 16.3333)" fill="#3056D3" />
+                          <circle
+                            cx="45.6667"
+                            cy="60.0003"
+                            r="1.66667"
+                            transform="rotate(-90 45.6667 60.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="45.6667"
+                            cy="16.3333"
+                            r="1.66667"
+                            transform="rotate(-90 45.6667 16.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="60.3333"
+                            cy="60.0003"
+                            r="1.66667"
+                            transform="rotate(-90 60.3333 60.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="60.3333"
+                            cy="16.3333"
+                            r="1.66667"
+                            transform="rotate(-90 60.3333 16.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="88.6667"
+                            cy="60.0003"
+                            r="1.66667"
+                            transform="rotate(-90 88.6667 60.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="88.6667"
+                            cy="16.3333"
+                            r="1.66667"
+                            transform="rotate(-90 88.6667 16.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="117.667"
+                            cy="60.0003"
+                            r="1.66667"
+                            transform="rotate(-90 117.667 60.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="117.667"
+                            cy="16.3333"
+                            r="1.66667"
+                            transform="rotate(-90 117.667 16.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="74.6667"
+                            cy="60.0003"
+                            r="1.66667"
+                            transform="rotate(-90 74.6667 60.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="74.6667"
+                            cy="16.3333"
+                            r="1.66667"
+                            transform="rotate(-90 74.6667 16.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="103"
+                            cy="60.0003"
+                            r="1.66667"
+                            transform="rotate(-90 103 60.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="103"
+                            cy="16.3333"
+                            r="1.66667"
+                            transform="rotate(-90 103 16.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="132"
+                            cy="60.0003"
+                            r="1.66667"
+                            transform="rotate(-90 132 60.0003)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="132"
+                            cy="16.3333"
+                            r="1.66667"
+                            transform="rotate(-90 132 16.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="1.66667"
+                            cy="45.3333"
+                            r="1.66667"
+                            transform="rotate(-90 1.66667 45.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="1.66667"
+                            cy="1.66683"
+                            r="1.66667"
+                            transform="rotate(-90 1.66667 1.66683)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="16.3333"
+                            cy="45.3333"
+                            r="1.66667"
+                            transform="rotate(-90 16.3333 45.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="16.3333"
+                            cy="1.66683"
+                            r="1.66667"
+                            transform="rotate(-90 16.3333 1.66683)"
+                            fill="#3056D3"
+                          />
+                          <circle cx="31" cy="45.3333" r="1.66667" transform="rotate(-90 31 45.3333)" fill="#3056D3" />
+                          <circle cx="31" cy="1.66683" r="1.66667" transform="rotate(-90 31 1.66683)" fill="#3056D3" />
+                          <circle
+                            cx="45.6667"
+                            cy="45.3333"
+                            r="1.66667"
+                            transform="rotate(-90 45.6667 45.3333)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="45.6667"
+                            cy="1.66683"
+                            r="1.66667"
+                            transform="rotate(-90 45.6667 1.66683)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="60.3333"
+                            cy="45.3338"
+                            r="1.66667"
+                            transform="rotate(-90 60.3333 45.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="60.3333"
+                            cy="1.66683"
+                            r="1.66667"
+                            transform="rotate(-90 60.3333 1.66683)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="88.6667"
+                            cy="45.3338"
+                            r="1.66667"
+                            transform="rotate(-90 88.6667 45.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="88.6667"
+                            cy="1.66683"
+                            r="1.66667"
+                            transform="rotate(-90 88.6667 1.66683)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="117.667"
+                            cy="45.3338"
+                            r="1.66667"
+                            transform="rotate(-90 117.667 45.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="117.667"
+                            cy="1.66683"
+                            r="1.66667"
+                            transform="rotate(-90 117.667 1.66683)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="74.6667"
+                            cy="45.3338"
+                            r="1.66667"
+                            transform="rotate(-90 74.6667 45.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="74.6667"
+                            cy="1.66683"
+                            r="1.66667"
+                            transform="rotate(-90 74.6667 1.66683)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="103"
+                            cy="45.3338"
+                            r="1.66667"
+                            transform="rotate(-90 103 45.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="103"
+                            cy="1.66683"
+                            r="1.66667"
+                            transform="rotate(-90 103 1.66683)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="132"
+                            cy="45.3338"
+                            r="1.66667"
+                            transform="rotate(-90 132 45.3338)"
+                            fill="#3056D3"
+                          />
+                          <circle
+                            cx="132"
+                            cy="1.66683"
+                            r="1.66667"
+                            transform="rotate(-90 132 1.66683)"
+                            fill="#3056D3"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full px-4 lg:w-1/2 xl:w-5/12">
+                <div class="mt-10 lg:mt-0">
+                  <h2 class="mb-5 text-3xl font-bold text-dark sm:text-[40px]/[48px] dark:text-white">
+                    <span class="text-[#0066cc]">Make IT easy</span>
+                    while unlocking user potential
+                  </h2>
+
+                  <ul class="space-y-3 text-base text-body-color dark:text-dark-6">
+                    <li class="flex items-start gap-2">
+                      <svg class="bullet-icon" viewBox="0 0 8 8" aria-hidden="true">
+                        <circle cx="4" cy="4" r="4" />
+                      </svg>
+                      <span>Same-day support for every macOS, iOS, iPadOS, watchOS, visionOS and tvOS release</span>
+                    </li>
+
+                    <li class="flex items-start gap-2">
+                      <svg class="bullet-icon" viewBox="0 0 8 8" aria-hidden="true">
+                        <circle cx="4" cy="4" r="4" />
+                      </svg>
+                      <span>Industry-specific apps and workflows to meet your exact needs</span>
+                    </li>
+
+                    <li class="flex items-start gap-2">
+                      <svg class="bullet-icon" viewBox="0 0 8 8" aria-hidden="true">
+                        <circle cx="4" cy="4" r="4" />
+                      </svg>
+                      <span>Free virtual training catalog containing hundreds of training modules</span>
+                    </li>
+
+                    <li class="flex items-start gap-2">
+                      <svg class="bullet-icon" viewBox="0 0 8 8" aria-hidden="true">
+                        <circle cx="4" cy="4" r="4" />
+                      </svg>
+                      <span>Hundreds of free and robust integrations with tech solutions and platforms</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="bullet-icon" viewBox="0 0 8 8" aria-hidden="true">
+                        <circle cx="4" cy="4" r="4" />
+                      </svg>
+                      <span>Support company-owned and employee choice programs across your infrastructure</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="bullet-icon" viewBox="0 0 8 8" aria-hidden="true">
+                        <circle cx="4" cy="4" r="4" />
+                      </svg>
+                      <span>
+                        Maximize ROI by reducing costs for ongoing device management and improving user experience
+                      </span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="bullet-icon" viewBox="0 0 8 8" aria-hidden="true">
+                        <circle cx="4" cy="4" r="4" />
+                      </svg>
+                      <span>
+                        Shrink TCO by minimizing time spent on helpdesk tickets mitigating risk to data, devices and
+                        users
+                      </span>
+                    </li>
+                  </ul>
+                  <p class="mb-8 text-lg font-medium leading-relaxed text-gray-800 dark:text-gray-200 pt-5">
+                    Jamf was the first to deliver an Apple-first mobile device management solution—built to scale from
+                    startup to enterprise, classroom to boardroom.
+                  </p>
+
+                  <a
+                    href="contact.html"
+                    class="inline-flex items-center justify-center rounded-md border border-transparent bg-[#0066cc] px-7 py-3 text-center text-base font-medium text-white hover:bg-primary/90"
+                  >
+                    Talk to a Jamf expert
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- ====== Services Section End -->
+
+        <!-- Featured Solutions -->
+
+        <section class="profile-section">
+          <style>
+            * {
+              box-sizing: border-box;
+              padding: 0;
+              margin: 0;
+            }
+
+            :root {
+              --purple: hsla(0, 100%, 24%, 0.333);
+              --pink: hsl(0, 100%, 50%);
+              --light-bg: #778eb1;
+              --light-gray-bg: hsl(0, 0%, 94%);
+              --white: hsl(0, 0%, 100%);
+              --dark: hsl(0, 0%, 7%);
+              --text-gray: hsl(0, 0%, 30%);
+            }
+
+            .profile-section {
+              background: var(--light-bg);
+              padding: 24px;
+              font-family: 'Space Grotesk', sans-serif;
+            }
+
+            .profile-section h3 {
+              font-size: 1.5em;
+              font-weight: 700;
+            }
+
+            .profile-section p {
+              font-size: 1em;
+              line-height: 1.7;
+              font-weight: 300;
+              color: var(--text-gray);
+            }
+
+            .profile-section .description {
+              white-space: wrap;
+            }
+
+            .profile-section a {
+              text-decoration: none;
+              color: inherit;
+            }
+
+            .wrap {
+              display: flex;
+              justify-content: space-between;
+              align-items: stretch;
+              width: 100%;
+              gap: 24px;
+              flex-wrap: wrap;
+            }
+
+            .box {
+              display: flex;
+              flex-direction: column;
+              flex-basis: 10%;
+              position: relative;
+              padding: 34px;
+              background: #fff;
+            }
+
+            .box-top {
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              gap: 12px;
+              margin-bottom: 36px;
+            }
+
+            .box-image {
+              width: 150px;
+              height: 100px;
+              object-fit: contain;
+              display: block;
+              margin-left: 100px; /* adjust value as needed */
+            }
+
+            .title-flex {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+
+            .box-title {
+              padding-left: 1px;
+              color: #0066cc;
+            }
+
+            .user-follow-info {
+              color: hsl(0, 0%, 60%);
+            }
+
+            .button {
+              display: block;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-top: auto;
+              padding: 16px;
+              color: #000;
+              background: transparent;
+              box-shadow: 0px 0px 0px 1px black inset;
+              transition: background 0.4s ease;
+            }
+
+            .button:hover {
+              background: #778eb1;
+            }
+
+            /* RESPONSIVE */
+            @media (min-width: 320px) {
+              .title-flex {
+                flex-direction: column;
+                align-items: flex-start;
+              }
+              .user-follow-info {
+                margin-top: 6px;
+              }
+            }
+
+            @media (min-width: 460px) {
+              .title-flex {
+                flex-direction: row;
+                justify-content: space-between;
+              }
+            }
+
+            @media (min-width: 640px) {
+              .box {
+                flex-basis: calc(50% - 12px);
+              }
+              .title-flex {
+                flex-direction: column;
+                align-items: flex-start;
+              }
+            }
+
+            @media (min-width: 840px) {
+              .title-flex {
+                flex-direction: row;
+              }
+            }
+
+            @media (min-width: 1024px) {
+              .box {
+                flex-basis: calc(33.3% - 16px);
+              }
+              .title-flex {
+                flex-direction: column;
+              }
+            }
+
+            @media (min-width: 1100px) {
+              .box {
+                flex-basis: calc(25% - 18px);
+              }
+              .profile-heading {
+                font-size: 2.2rem;
+                font-weight: 700;
+                text-align: center;
+                margin-bottom: 34px;
+                color: white;
+              }
+
+              .profile-section h3 {
+                font-size: 1.5em;
+                font-weight: 700;
+              }
+
+              .profile-section p {
+                font-size: 1em;
+                line-height: 1.7;
+                font-weight: 300;
+                color: var(--text-gray);
+              }
+            }
+          </style>
+          <h2 class="profile-heading">Jamf Solutions — Together with Jamf, Delivering Apple Excellence</h2>
+          <div class="wrap">
+            <div class="box">
+              <div class="box-top">
+                <img class="box-image" src="aa.webp" alt="" />
+                <div class="title-flex">
+                  <h3 class="box-title">Jamf for Mac</h3>
+                  <p class="user-follow-info">Simplify Jamf for Mac. Strengthen Security. Empower Productivity.</p>
+                </div>
+                <p class="description">
+                  Jamf for Mac offers a comprehensive solution for Mac device management and security in enterprise
+                  environments. Designed specifically for Apple, it ensuresseamless integration, robust Mac security and
+                  an enhanced user experience.
+                </p>
+              </div>
+              <a href="solutions/mac-management.html" class="button">Learn more</a>
+            </div>
+
+            <div class="box">
+              <div class="box-top">
+                <img class="box-image" src="bb.webp" alt="" />
+                <div class="title-flex">
+                  <h3 class="box-title">Jamf for Mobile</h3>
+                  <p class="user-follow-info">Secure. Manage. Protect Every Mobile Device..</p>
+                </div>
+                <p class="description">
+                  Jamf for Mobile delivers robust mobile security to manage and protect iPhone, iPad, Apple Vision Pro,
+                  Apple Watch and Apple TV devices. It enables organizations to support mobile-first strategies while
+                  maintaining security and user productivity.
+                </p>
+              </div>
+              <a href="solutions/mobile-device-management.html" class="button">Learn more</a>
+            </div>
+
+            <div class="box">
+              <div class="box-top">
+                <img class="box-image" src="cc.webp" alt="" />
+                <div class="title-flex">
+                  <h3 class="box-title">Jamf for K-12</h3>
+                  <p class="user-follow-info">Safe, Managed, and Engaging Learning for Every Student.</p>
+                </div>
+                <p class="description">
+                  Jamf for K–12 enables schools to secure, manage, and personalize iPads and Mac devices—creating a
+                  focused, safe, and interactive learning environment for students and teachers.
+                </p>
+              </div>
+              <a href="solutions/k-12-education.html" class="button">Learn more</a>
+            </div>
+
+            <div class="box">
+              <div class="box-top">
+                <img class="box-image" src="dd.webp" alt="" />
+                <div class="title-flex">
+                  <h3 class="box-title">Jamf for Small Business</h3>
+                  <p class="user-follow-info">Easy Device Management for Growing Businesses.</p>
+                </div>
+                <p class="description">
+                  Jamf for K–12 helps schools manage and secure Apple devices at scale while supporting classroom
+                  learning, promoting student equity and driving IT efficiency. Built for education, Jamf simplifies
+                  deployment, boosts teacher confidence and enhances the learning experience for every student.
+                </p>
+              </div>
+              <a href="solutions/small-business.html" class="button">Learn more</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- CAROUSEL SECTION - START -->
+
+        <style>
+          @font-face {
+            font-family: 'Aeonik Pro Regular';
+            src: url('https://db.onlinewebfonts.com/t/12ff62164c9778917bddb93c6379cf47.eot');
+            src:
+              url('https://db.onlinewebfonts.com/t/12ff62164c9778917bddb93c6379cf47.eot?#iefix')
+                format('embedded-opentype'),
+              url('https://db.onlinewebfonts.com/t/12ff62164c9778917bddb93c6379cf47.woff2') format('woff2'),
+              url('https://db.onlinewebfonts.com/t/12ff62164c9778917bddb93c6379cf47.woff') format('woff'),
+              url('https://db.onlinewebfonts.com/t/12ff62164c9778917bddb93c6379cf47.ttf') format('truetype'),
+              url('https://db.onlinewebfonts.com/t/12ff62164c9778917bddb93c6379cf47.svg#Aeonik Pro Regular')
+                format('svg');
+          }
+
+          .cards-section {
+            padding: 0 1rem;
+            display: grid;
+            place-items: center;
+
+            background: linear-gradient(135deg, #6d28d9 0%, #4f46e5 50%, #3b82f6 100%);
+
+            min-height: 60vh;
+            overflow-x: hidden;
+            padding: 1rem 0;
+          }
+
+          .cards-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8rem;
+            justify-content: center;
+            align-items: center;
+          }
+
+          @media (max-width: 1024px) {
+            .cards-container {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+
+          @media (max-width: 640px) {
+            .cards-container {
+              grid-template-columns: 1fr;
+            }
+          }
+
+          .card {
+            position: relative;
+            background: radial-gradient(circle at 50% 0%, #3a3a3a 0%, #1a1a1a 64%);
+            box-shadow:
+              inset 0 1.01rem 0.2rem -1rem #fff0,
+              inset 0 -1.01rem 0.2rem -1rem #0000,
+              0 -1.02rem 0.2rem -1rem #fff0,
+              0 1rem 0.2rem -1rem #0000,
+              0 0 0 1px #fff3,
+              0 4px 4px 0 #0004,
+              0 0 0 1px #333;
+            width: 100%;
+            height: 24rem;
+            border-radius: 1.8rem;
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            transition:
+              all 0.4s ease-in-out,
+              translate 0.4s ease-out;
+            margin: 0 auto;
+          }
+          .card::before {
+            content: '';
+            display: block;
+            --offset: 1rem;
+            width: calc(100% + 2 * var(--offset));
+            height: calc(100% + 2 * var(--offset));
+            position: absolute;
+            left: calc(-1 * var(--offset));
+            right: calc(-1 * var(--offset));
+            top: calc(-1 * var(--offset));
+            bottom: calc(-1 * var(--offset));
+            margin: auto;
+            box-shadow: inset 0 0 0px 0.06rem #fff2;
+            border-radius: 2.6rem;
+            --ax: 4rem;
+            clip-path: polygon(
+              var(--ax) 0,
+              0 0,
+              0 var(--ax),
+              var(--ax) var(--ax),
+              var(--ax) calc(100% - var(--ax)),
+              0 calc(100% - var(--ax)),
+              0 100%,
+              var(--ax) 100%,
+              var(--ax) calc(100% - var(--ax)),
+              calc(100% - var(--ax)) calc(100% - var(--ax)),
+              calc(100% - var(--ax)) 100%,
+              100% 100%,
+              100% calc(100% - var(--ax)),
+              calc(100% - var(--ax)) calc(100% - var(--ax)),
+              calc(100% - var(--ax)) var(--ax),
+              100% var(--ax),
+              100% 0,
+              calc(100% - var(--ax)) 0,
+              calc(100% - var(--ax)) var(--ax),
+              var(--ax) var(--ax)
+            );
+            transition: all 0.4s ease-in-out;
+          }
+          .card:hover {
+            translate: 0 -0.2rem;
+          }
+          .card:hover::before {
+            --offset: 0.5rem;
+            --ax: 8rem;
+            border-radius: 2.2rem;
+            box-shadow: inset 0 0 0 0.08rem #fff1;
+          }
+          .card .light-layer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            transform-style: preserve-3d;
+            perspective: 400px;
+          }
+          .card .light-layer .slit {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 64%;
+            height: 1.2rem;
+            transform: rotateX(-76deg);
+            background: #121212;
+            box-shadow: 0 0 4px 0 #fff0;
+            transition: all 0.4s ease-in-out;
+          }
+          .card .light-layer .lumen {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            perspective: 400px;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+          }
+          .card .light-layer .lumen .min {
+            width: 70%;
+            height: 3rem;
+            background: linear-gradient(#fff0, #fffa);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 2.5rem;
+            margin: auto;
+            transform: rotateX(-42deg);
+            opacity: 0.4;
+          }
+          .card .light-layer .lumen .mid {
+            width: 74%;
+            height: 13rem;
+            background: linear-gradient(#fff0, #fffa);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 10em;
+            margin: auto;
+            transform: rotateX(-42deg);
+            filter: blur(1rem);
+            opacity: 0.8;
+            border-radius: 100% 100% 0 0;
+          }
+          .card .light-layer .lumen .hi {
+            width: 50%;
+            height: 13rem;
+            background: linear-gradient(#fff0, #fffa);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 12em;
+            margin: auto;
+            transform: rotateX(22deg);
+            filter: blur(1rem);
+            opacity: 0.6;
+            border-radius: 100% 100% 0 0;
+          }
+          .card .light-layer .darken {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            perspective: 400px;
+            transition: opacity 0.4s ease-in-out;
+            opacity: 0.5;
+          }
+          .card .light-layer .darken > * {
+            transition: opacity 0.4s ease-in-out;
+          }
+          .card .light-layer .darken .sl {
+            width: 64%;
+            height: 10rem;
+            background: linear-gradient(#000, #0000);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 9.6em;
+            bottom: 0;
+            margin: auto;
+            filter: blur(0.2rem);
+            opacity: 0.1;
+            border-radius: 0 0 100% 100%;
+            transform: rotateX(-22deg);
+          }
+          .card .light-layer .darken .ll {
+            width: 62%;
+            height: 10rem;
+            background: linear-gradient(#000a, #0000);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 11em;
+            bottom: 0;
+            margin: auto;
+            filter: blur(0.8rem);
+            opacity: 0.4;
+            border-radius: 0 0 100% 100%;
+            transform: rotateX(22deg);
+          }
+          .card .light-layer .darken .slt {
+            width: 0.5rem;
+            height: 4rem;
+            background: linear-gradient(#0005, #0000);
+            position: absolute;
+            left: 0;
+            right: 11.5rem;
+            top: 3.9em;
+            bottom: 0;
+            margin: auto;
+            opacity: 0.6;
+            border-radius: 0 0 100% 100%;
+            transform: skewY(42deg);
+          }
+          .card .light-layer .darken .srt {
+            width: 0.5rem;
+            height: 4rem;
+            background: linear-gradient(#0005, #0000);
+            position: absolute;
+            right: 0;
+            left: 11.5rem;
+            top: 3.9em;
+            bottom: 0;
+            margin: auto;
+            opacity: 0.6;
+            border-radius: 0 0 100% 100%;
+            transform: skewY(-42deg);
+          }
+          .card .content {
+            position: relative;
+            z-index: 2;
+          }
+          .card .content .icon {
+            position: absolute;
+            top: -10rem;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: fit-content;
+            filter: drop-shadow(0 -1.2rem 1px transparent);
+            transition: filter 0.4s ease-in-out;
+          }
+          .card .content .bottom {
+            position: relative;
+          }
+          .card .content .bottom h4 {
+            margin: 0;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: #ccc;
+          }
+          .card .content .bottom p {
+            margin: 0;
+            padding-bottom: 0.6rem;
+            color: #fff4;
+            font-size: 0.6rem;
+            font-weight: 100;
+            border-bottom: 1px solid #fff1;
+            max-width: 64%;
+          }
+          .card .content .bottom .toggle {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: 2rem;
+            width: 4.8rem;
+            border-radius: 0.6rem;
+            background: #000;
+            box-shadow:
+              inset 0 -8px 8px 0.3rem #0004,
+              inset 0 0 1px 0.3rem #ddd,
+              inset 0 -2px 1px 0.3rem #fff,
+              inset 0 1px 2px 0.3rem #0006,
+              inset 0 0 1px 0.8rem #aaa;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+          }
+          .card .content .bottom .toggle::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 3.4rem;
+            height: 0.68rem;
+            border-radius: 0.2rem;
+            background: #000;
+            transition: all 0.4s ease-in-out;
+          }
+          .card .content .bottom .toggle .handle {
+            position: absolute;
+            top: 0;
+            bottom: 0.04rem;
+            margin: auto;
+            left: 0.68rem;
+            width: 40%;
+            height: 30%;
+            background: #ff0000;
+            border-radius: 0.2rem;
+            box-shadow:
+              inset 0 1px 4px 0 #fff,
+              inset 0 -1px 1px 0 #000a,
+              0 0 1px 1px #0003,
+              1px 3px 6px 1px #000a;
+            transition: all 0.4s ease-in-out;
+          }
+          .card .content .bottom .toggle.active .handle {
+            transform: translateX(1.58rem);
+          }
+          .card .content .bottom .toggle span {
+            pointer-events: none;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: calc(100% + 0.4rem);
+            font-size: 0.6rem;
+            font-weight: 100;
+            color: #555;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+          }
+          .card .content .bottom .toggle:hover span {
+            opacity: 1;
+          }
+          .card .content .bottom .toggle:not(.active):hover .handle {
+            transform: translateX(0.2rem);
+          }
+          .card:has(.toggle.active) {
+            box-shadow:
+              inset 0 1.01rem 0.1rem -1rem #fffa,
+              inset 0 -4rem 3rem -3rem #000a,
+              0 -1.02rem 0.2rem -1rem #fffa,
+              0 1rem 0.2rem -1rem #000,
+              0 0 0 1px #fff2,
+              0 4px 4px 0 #0004,
+              0 0 0 1px #333;
+          }
+          .card:has(.toggle.active) .slit {
+            background: #fff;
+            box-shadow: 0 0 4px 0 #fff;
+          }
+          .card:has(.toggle.active) .lumen {
+            opacity: 0.5;
+          }
+          .card:has(.toggle.active) .darken {
+            opacity: 0.8;
+          }
+          .card:has(.toggle.active) .darken .sl {
+            opacity: 0.2;
+          }
+          .card:has(.toggle.active) .darken .ll {
+            opacity: 1;
+          }
+          .card:has(.toggle.active) .darken .slt {
+            opacity: 1;
+          }
+          .card:has(.toggle.active) .darken .srt {
+            opacity: 1;
+          }
+          .card:has(.toggle.active) .content .icon {
+            filter: drop-shadow(0 -1.2rem 2px #0003) brightness(1.64);
+          }
+          .card:has(.toggle.active) .content .toggle::before {
+            background: #fffc;
+            box-shadow: 0 0 0.3rem 0.2rem #fff7;
+          }
+          .card:has(.toggle.active) .content .handle {
+            box-shadow:
+              inset 0 1px 12px 0 #fff,
+              inset 0 -1px 1px 0 #fffa,
+              0 0 2px 1px #4443,
+              1px 3px 6px 1px #0004;
+          }
+
+          .section-title {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            letter-spacing: 0.1rem;
+          }
+          .bottom p {
+            max-width: 100%;
+          }
+        </style>
+
+        <!-- Testimonials -->
+      </main>
+
+      <div class="relative overflow-hidden bg-[#0066cc] rounded-10xl p-12 md:p-16 lg:p-20">
+        <div class="relative z-10 max-w-4xl">
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Let's Get In Touch.</h2>
+
+          <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl">
+            Your Apple devices deserve enterprise-grade management. As a Certified Jamf Partner, we're here to help you
+            succeed.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <!-- Schedule a Consultation (as a link) -->
+            <a
+              href="contact.html"
+              class="group bg-black hover:bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl"
+            >
+              <span>Schedule a Consultation</span>
+              <div
+                class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </a>
+
+            <!-- Explore Jamf Solutions (keep as button or convert to link) -->
+            <a
+              href="products.html"
+              class="group bg-black hover:bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl"
+            >
+              <span>Explore Jamf Products</span>
+              <div
+                class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+      <script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
+
+      <!-- Footer -->
+      <footer class="bg-black text-white">
+        <div class="container mx-auto px-6 py-12">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div class="flex items-center space-x-2">
+                <img
+                  src="sniper-logo-neww.png"
+                  alt="XYZ Company Logo"
+                  class="w-24 h-24 object-contain rounded-lg p-1"
+                />
+                <div class="h-10 w-px bg-white"></div>
+                <img src="JAMF_BIG.D-1b9ef18d.png" alt="Second Logo" class="w-24 h-24 object-contain rounded-lg p-1" />
+              </div>
+
+              <p class="text-gray-300 text-sm mt-2">
+                Your trusted Certified Jamf Partner, delivering expert Apple device management solutions.
+              </p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Quick Links</h4>
+              <ul class="space-y-2 text-sm">
+                <li><a href="index.html" class="text-gray-300 hover:text-white hover:underline">Home</a></li>
+                <li><a href="products.html" class="text-gray-300 hover:text-white hover:underline">Products</a></li>
+                <li>
+                  <a href="contact.html" class="text-gray-300 hover:text-white hover:underline">Contact Us</a>
+                </li>
+                <li>
+                  <a
+                    href="https://sniperindia.com/privacy-policy/"
+                    class="text-gray-300 hover:text-white hover:underline"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Solutions</h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a href="solutions/mac-management.html" class="text-gray-300 hover:text-white hover:underline">
+                    Jamf for Mac
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="solutions/mobile-device-management.html"
+                    class="text-gray-300 hover:text-white hover:underline"
+                  >
+                    Jamf for Mobile
+                  </a>
+                </li>
+                <li>
+                  <a href="solutions/k-12-education.html" class="text-gray-300 hover:text-white hover:underline">
+                    Jamf for K-12
+                  </a>
+                </li>
+                <li>
+                  <a href="solutions/small-business.html" class="text-gray-300 hover:text-white hover:underline">
+                    Small Business
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Contact Us</h4>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <nav aria-label="Our locations" class="mt-1 md:mt-0 flex items-center gap-3">
+                  <ul class="flex flex-wrap items-center gap-2 text-sm text-white">
+                    <!-- Heading inside the list -->
+                    <li class="font-medium">Locations:</li>
+
+                    <!-- City list -->
+                    <li class="tracking-wider">Chennai</li>
+                    <li aria-hidden="true">|</li>
+                    <li class="tracking-wider">Bangalore</li>
+                    <li aria-hidden="true">|</li>
+                    <li class="tracking-wider">Hyderabad</li>
+                    <li aria-hidden="true">|</li>
+                    <li class="tracking-wider">Coimbatore</li>
+                    <li aria-hidden="true">|</li>
+                    <li class="tracking-wider">Kochi</li>
+                    <li aria-hidden="true">|</li>
+                    <li class="tracking-wider">Gurugram</li>
+                    <li aria-hidden="true">|</li>
+                    <li class="tracking-wider">Vijayawada</li>
+                  </ul>
+                </nav>
+
+                <li>
+                  Email:
+                  <a href="mailto:Enquiry@sniperindia.com" class="text-gray-300 hover:text-white transition-colors">
+                    Enquiry@sniperindia.com
+                  </a>
+                </li>
+                <li>
+                  Phone:
+                  <a href="tel:+918939301100" class="text-gray-300 hover:text-white transition-colors">
+                    +91 8939301100
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-12 border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+            <p>&copy; 2024 Sniper Systems. All Rights Reserved.</p>
+            <p class="mt-1">
+              Jamf and the Jamf logo are trademarks of Jamf Software, LLC, Certified in the U.S. and other countries.
+              Sniper Systems is a Certified Jamf Partner.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/main.js"></script>
+
+    <!-- Scroll to Top with Scroll Progress -->
+    <div id="scrollTopBtn">
+      <svg width="48" height="48">
+        <circle cx="24" cy="24" r="22" />
+      </svg>
+      <span>↑</span>
+    </div>
+
+    <style>
+      #scrollTopBtn {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+        z-index: 9999;
+      }
+
+      #scrollTopBtn svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotate(-90deg);
+      }
+
+      #scrollTopBtn circle {
+        fill: none;
+        stroke: #000;
+        stroke-width: 3;
+        stroke-dasharray: 138;
+        stroke-dashoffset: 138;
+        transition: stroke-dashoffset 0.15s linear;
+      }
+
+      #scrollTopBtn span {
+        position: absolute;
+        inset: 3px; /* creates space for ring */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        color: #000;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: bold;
+        border: 2px solid #000;
+      }
+
+      #scrollTopBtn.show {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+
+    <script>
+      const btn = document.getElementById('scrollTopBtn');
+      const circle = btn.querySelector('circle');
+      const circumference = 138;
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+        const progress = scrollTop / docHeight;
+        const offset = circumference - progress * circumference;
+
+        circle.style.strokeDashoffset = offset;
+
+        btn.classList.toggle('show', scrollTop > 200);
+      });
+
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+
+    <!-- Preloader Script -->
+    <script>
+      // Wait for the window to fully load
+      window.addEventListener('load', function () {
+        // Get the preloader element
+        const preloader = document.getElementById('preloader');
+
+        // Add a small delay to ensure the animation is visible
+        setTimeout(function () {
+          // Add the fade-out class to trigger the fade-out animation
+          preloader.classList.add('fade-out');
+
+          // Remove the preloader from the DOM after the animation completes
+          setTimeout(function () {
+            preloader.style.display = 'none';
+          }, 500); // Match this with the CSS transition duration
+        }, 1500); // Adjust this value to control how long the preloader is visible
+      });
+    </script>
+  </body>
+</html>

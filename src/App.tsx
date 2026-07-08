@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import React, { Suspense } from "react";
 // Pages
 const Index = React.lazy(() => import("./pages/Index"));
@@ -11,6 +12,10 @@ const Index = React.lazy(() => import("./pages/Index"));
 const About = React.lazy(() => import("./pages/About"));
 const Blog = React.lazy(() => import("./pages/Blog"));
 const Contact = React.lazy(() => import("./pages/Contact"));
+const Careers = React.lazy(() => import("./pages/Careers"));
+const BlogA = React.lazy(() => import("./pages/Bloga"));
+
+
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/privacy";
 import TermsAndConditions from "./pages/TermsAndConditions";
@@ -51,6 +56,11 @@ import Acer from "./pages/partners/Acer";
 import AWS from "./pages/partners/AWS";
 import Azure from "./pages/partners/Azure";
 
+
+//  <Route path="/about" element={<About />} />
+
+
+
 // Industries
 import Industries from "./pages/industries/Industries";
 import AEC from "./pages/industries/AEC";
@@ -70,12 +80,20 @@ const App = () => (
       <Toaster />
       <Sonner />
        <BrowserRouter>
-  <Suspense >
+  <Suspense>
     <Routes>
           <Route path="/" element={<Index />} />
+
+          {/* Main route */}
           <Route path="/about" element={<About />} />
+
+          {/* Redirect old URL */}
+          <Route path="/about-us" element={<Navigate to="/about" replace />} />
+
+
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="/privacy" element={<Privacy/>}/>
           <Route path="/terms" element={<TermsAndConditions/>}/>
 
@@ -95,7 +113,7 @@ const App = () => (
 
           {/* Partners Routes */}
           <Route path="/partners" element={<Partners />} />
-          <Route path="/partners/apple/index.html" element={<Apple />} />
+          <Route path="/partners/apple/" element={<Apple />} />
           <Route path="/partners/nvidia" element={<Nvidia />} />
           <Route path="/partners/microsoft" element={<Microsoft />} />
           <Route path="/partners/lenovo" element={<Lenovo />} />
@@ -125,6 +143,10 @@ const App = () => (
           <Route path="/industries/healthcare-pharma" element={<HealthcarePharma />} />
           <Route path="/industries/manufacturing-automotive" element={<ManufacturingAutomotive />} />
           <Route path="/industries/Education" element={<Education />} />
+
+
+<Route path="/blog/bloga" element={<BlogA />} />
+
 
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />

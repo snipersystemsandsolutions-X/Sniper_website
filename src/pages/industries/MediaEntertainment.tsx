@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Film, Palette, Users, Zap } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -700,6 +701,20 @@ const MediaEntertainment = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Media & Entertainment IT Solutions | Creative Tech | Sniper Systems</title>
+        <meta name="description" content="High-performance IT infrastructure for media and entertainment organizations. Video production, content management, streaming solutions, and creative collaboration tools." />
+        <meta name="keywords" content="media IT solutions, entertainment technology, video production IT, streaming infrastructure, content management systems" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://sniperindia.com/industries/media-entertainment/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Media & Entertainment IT Solutions | Sniper Systems" />
+        <meta property="og:description" content="Advanced IT infrastructure for media, entertainment, and creative organizations with high-performance streaming and production capabilities." />
+        <meta property="og:url" content="https://sniperindia.com/industries/media-entertainment/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Media & Entertainment IT | Sniper Systems" />
+        <meta name="twitter:description" content="IT solutions for media production, streaming, and entertainment organizations." />
+      </Helmet>
       {showWhiteScreen && (
         <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />
       )}
@@ -1084,7 +1099,7 @@ const MediaEntertainment = () => {
         {showScrollTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg active:scale-90"
+            className="fixed bottom-5 right-5 sm:bottom-6 sm:left-6 lg:bottom-8 lg:right-8 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg active:scale-90"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

@@ -2,11 +2,13 @@ import { Layout } from "@/components/Layout";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-    ArrowRight, Cloud, Database, Globe, Lock,
-    Settings, ShieldCheck, Users, Zap,
+  ArrowRight, Cloud, Database, Globe, Lock,
+  Settings, ShieldCheck, Users, Zap,
 } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -191,6 +193,17 @@ const Azure = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showWhiteScreen, setShowWhiteScreen] = useState(true);
 
+
+
+useEffect(() => {
+  const script = document.createElement("script");
+  script.src = "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+  script.async = true;
+  document.body.appendChild(script);
+  return () => { document.body.removeChild(script); };
+}, []);
+
+
   // Throttled scroll listener
   useEffect(() => {
     let ticking = false;
@@ -312,7 +325,165 @@ const Azure = () => {
 
   return (
     <Layout>
+      <>
+        {/* BASIC SEO */}
+        <title>Microsoft Azure Partner in India | Azure Cloud Solutions | Sniper Systems</title>
+        <meta
+          name="description"
+          content="Sniper Systems delivers Microsoft Azure cloud solutions in India including cloud migration, infrastructure management, backup, security, disaster recovery, and managed Azure services for enterprises."
+        />
+        <meta
+          name="keywords"
+          content="Azure partner India, Microsoft Azure solutions India, Azure cloud migration, Azure managed services India, Microsoft cloud solutions, Azure consulting partner"
+        />
+        <meta name="robots" content="index, follow" />
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/partners/azure"
+        />
+
+        {/* GEO TAGS */}
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
+        <meta name="geo.position" content="13.0827;80.2707" />
+        <meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Microsoft Azure Cloud Solutions & Migration | Sniper Systems India"
+        />
+        <meta
+          property="og:description"
+          content="Enterprise Microsoft Azure solutions including migration, cloud infrastructure, backup, disaster recovery, and managed cloud services."
+        />
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/partners/azure"
+        />
+
+        {/* TWITTER SEO */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Microsoft Azure Partner in India | Sniper Systems"
+        />
+        <meta
+          name="twitter:description"
+          content="Scalable Microsoft Azure cloud infrastructure and managed services for modern enterprises."
+        />
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+        </script>
+
+        {/* SERVICE SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Microsoft Azure Cloud Solutions",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "Microsoft Azure cloud solutions including migration, cloud infrastructure, backup, disaster recovery, managed services, and cloud security."
+          }
+          `}
+        </script>
+
+        {/* FAQ SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What Azure services does Sniper Systems provide?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sniper Systems provides Azure cloud migration, infrastructure deployment, managed services, cloud security, backup, disaster recovery, and consulting solutions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why should businesses migrate to Microsoft Azure?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Microsoft Azure helps businesses improve scalability, security, business continuity, and operational efficiency while enabling hybrid cloud infrastructure."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Sniper Systems provide Azure managed services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Sniper Systems provides end-to-end Azure managed services including monitoring, optimization, backup, and enterprise cloud support."
+                }
+              }
+            ]
+          }
+          `}
+        </script>
+
+        {/* BREADCRUMB SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Partners",
+                "item": "https://sniperindia.com/partners/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Azure",
+                "item": "https://sniperindia.com/partners/azure"
+              }
+            ]
+          }
+          `}
+        </script>
+      </>
+
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
+
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative bg-white pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
@@ -546,7 +717,7 @@ const Azure = () => {
         {showScrollTop && (
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}

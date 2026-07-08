@@ -1,10 +1,192 @@
 import { Layout } from "@/components/Layout";
-import { ArrowRight, CheckCircle, Cloud, LineChart, Shield, Target, Users } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { motion, useInView, AnimatePresence } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight, Cloud, LineChart, Shield, Target, Users, Search, Compass, RefreshCw, Activity } from "lucide-react";
+import { AnimatePresence, motion, useInView } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+
+import React from "react";
+import { Helmet } from "react-helmet-async";
+
+
+
+<>
+
+  {/* BASIC SEO */}
+
+  <title>IT Consulting Services in India | Strategic IT Advisory | Sniper Systems</title>
+
+  <meta
+    name="description"
+    content="Sniper Systems delivers expert IT consulting services in India, including IT strategy, infrastructure modernization, cloud consulting, and cybersecurity advisory to drive business growth."
+  />
+
+  <meta
+    name="keywords"
+    content="IT consulting services Chennai, IT advisory services India, IT strategy consulting, cloud consulting services, IT consulting company Chennai"
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <link
+    rel="canonical"
+    href="https://sniperindia.com/solutions/it-consulting"
+  />
+
+  {/* GEO TAGS */}
+
+  <meta name="geo.region" content="IN-TN" />
+  <meta name="geo.placename" content="Chennai" />
+  <meta name="geo.position" content="13.0827;80.2707" />
+  <meta name="ICBM" content="13.0827, 80.2707" />
+
+  {/* OPEN GRAPH */}
+
+  <meta property="og:type" content="website" />
+
+  <meta
+    property="og:title"
+    content="IT Consulting & Advisory Services | Sniper Systems"
+  />
+
+  <meta
+    property="og:description"
+    content="Strategic IT consulting services including IT roadmap planning, cloud transformation, and cybersecurity advisory."
+  />
+
+  <meta
+    property="og:image"
+    content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+  />
+
+  <meta
+    property="og:url"
+    content="https://sniperindia.com/solutions/it-consulting"
+  />
+
+  {/* TWITTER SEO */}
+
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta
+    name="twitter:title"
+    content="IT Consulting Services in Chennai | Sniper Systems"
+  />
+
+  <meta
+    name="twitter:description"
+    content="Expert IT consulting services to align your technology strategy with business goals."
+  />
+
+  <meta
+    name="twitter:image"
+    content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+  />
+
+  {/* ORGANIZATION SCHEMA */}
+
+  <script type="application/ld+json">
+    {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+  </script>
+
+  {/* SERVICE SCHEMA */}
+
+  <script type="application/ld+json">
+    {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "IT Consulting Services",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "IT consulting services including IT strategy, cloud consulting, infrastructure modernization, and cybersecurity advisory."
+          }
+          `}
+  </script>
+
+  {/* FAQ SCHEMA */}
+
+  <script type="application/ld+json">
+    {`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What are IT consulting services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "IT consulting services help businesses align technology strategies with their goals through expert guidance, planning, and implementation support."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does a business need IT consulting?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "IT consulting helps businesses optimize technology investments, improve efficiency, enhance security, and accelerate digital transformation."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Sniper Systems provide cloud and cybersecurity consulting?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Sniper Systems offers cloud consulting, infrastructure modernization, and cybersecurity advisory services tailored to business needs."
+                }
+              }
+            ]
+          }
+          `}
+  </script>
+
+  {/* BREADCRUMB SCHEMA */}
+
+  <script type="application/ld+json">
+    {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://sniperindia.com/solutions/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "IT Consulting",
+                "item": "https://sniperindia.com/solutions/it-consulting"
+              }
+            ]
+          }
+          `}
+  </script>
+
+</>
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,6 +249,17 @@ const ParallaxImage = ({
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
+
+
+  useEffect(() => {
+  const script = document.createElement("script");
+  script.src = "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+  script.async = true;
+  document.body.appendChild(script);
+  return () => { document.body.removeChild(script); };
+}, []);
+
+
   useEffect(() => {
     const wrap = wrapRef.current;
     const img = imgRef.current;
@@ -219,10 +412,21 @@ const WhiteScreenTransition = ({ onComplete }: { onComplete: () => void }) => {
   return <div ref={ref} className="fixed inset-0 bg-white z-[9999] will-change-transform" />;
 };
 
+// ---- Service Images ----
+const serviceImages: string[] = [
+  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80", // IT Assessment & Audits
+  "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80", // IT Strategy & Roadmapping
+  "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80", // Infrastructure Modernization
+  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80", // Cloud & Virtualization Consulting
+  "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80", // Cybersecurity & Compliance
+  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80", // CIO Advisory Services
+];
+
 // ---- Service Card with GSAP line-draw divider ----
 const ServiceCard = ({ service, index }: { service: any; index: number }) => {
   const ref = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const ease = [0.16, 1, 0.3, 1];
 
@@ -233,7 +437,21 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
       { scaleX: 0, transformOrigin: "left center" },
       { scaleX: 1, duration: 1, ease: "power3.out", delay: 0.1 + (index % 2) * 0.1 }
     );
-  }, [inView]);
+  }, [inView, index]);
+
+  useEffect(() => {
+    const card = ref.current;
+    const img = imgRef.current;
+    if (!card || !img || "ontouchstart" in window) return;
+    const onEnter = () => gsap.to(img, { scale: 1.07, duration: 0.6, ease: "power2.out" });
+    const onLeave = () => gsap.to(img, { scale: 1.0, duration: 0.6, ease: "power2.out" });
+    card.addEventListener("mouseenter", onEnter);
+    card.addEventListener("mouseleave", onLeave);
+    return () => {
+      card.removeEventListener("mouseenter", onEnter);
+      card.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
 
   return (
     <motion.div
@@ -243,6 +461,16 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.75, ease, delay: (index % 2) * 0.1 }}
     >
+      {/* Service image */}
+      <div className="overflow-hidden rounded-xl sm:rounded-2xl h-48 sm:h-56 w-full mb-3 sm:mb-4">
+        <img
+          ref={imgRef}
+          src={serviceImages[index]}
+          alt={service.title}
+          className="w-full h-full object-cover will-change-transform"
+        />
+      </div>
+
       <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider">
         {service.title}
       </h3>
@@ -269,6 +497,87 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
         />
       </div>
     </motion.div>
+  );
+};
+
+// ---- Consulting Process / Timeline Diagram ----
+const ConsultingProcessDiagram = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  const steps = [
+
+
+
+
+  ];
+
+  return (
+    <div ref={containerRef} className="py-12 sm:py-16 overflow-hidden">
+      {/* Desktop View: Horizontal Timeline */}
+      <div className="hidden lg:block relative max-w-5xl mx-auto px-4">
+        {/* Connection line in background */}
+        <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 -translate-y-12 z-0" />
+
+        {/* Animated progressive line */}
+
+
+
+      </div>
+
+      {/* Mobile/Tablet View: Vertical Timeline */}
+      <div className="lg:hidden relative pl-8 sm:pl-10 max-w-md mx-auto">
+        {/* Background Vertical Line */}
+        <div className="absolute top-4 bottom-4 left-4 sm:left-5 w-0.5 bg-gray-200 z-0" />
+
+        {/* Animated progressive line */}
+        <motion.div
+          className="absolute top-4 bottom-4 left-4 sm:left-5 w-0.5 bg-gradient-to-b from-blue-500 via-purple-600 to-red-500 z-0 origin-top"
+          initial={{ scaleY: 0 }}
+          animate={inView ? { scaleY: 1 } : {}}
+          transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
+        />
+
+        <div className="space-y-10">
+          {steps.map((step, idx) => {
+            const Icon = step.icon;
+            return (
+              <motion.div
+                key={idx}
+                className="relative flex items-start gap-4 sm:gap-6 group"
+                initial={{ opacity: 0, x: -30 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: idx * 0.15 }}
+              >
+                {/* Visual Icon Node on Timeline */}
+                <div className="absolute -left-[28px] sm:-left-[37px] mt-1 flex items-center justify-center">
+                  <div className={`absolute -inset-1 bg-gradient-to-r ${step.color} rounded-full blur opacity-0 group-hover:opacity-40 transition duration-500`} />
+                  <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center text-gray-900 transition duration-300 shadow-sm overflow-hidden">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                    <Icon className="relative z-10 w-3.5 h-3.5 sm:w-5 sm:h-5 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                </div>
+
+                {/* Content Card */}
+                <div className="flex-1 bg-gray-50 border border-gray-100 hover:border-gray-300 rounded-xl p-5 transition-all duration-300 shadow-sm">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-base sm:text-lg font-semibold text-gray-900">
+                      {step.title}
+                    </h4>
+                    <span className={`text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full text-white bg-gradient-to-r ${step.color}`}>
+                      Phase {step.phase}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -355,18 +664,18 @@ const ITConsulting = () => {
 
   // Section refs
   const heroRef = useRef(null);
-  const svcRef  = useRef(null);
-  const whyRef  = useRef(null);
+  const svcRef = useRef(null);
+  const whyRef = useRef(null);
   const featRef = useRef(null);
   const procRef = useRef(null);
-  const ctaRef  = useRef(null);
+  const ctaRef = useRef(null);
 
   const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
-  const svcInView  = useInView(svcRef,  { once: true, margin: "-60px" });
-  const whyInView  = useInView(whyRef,  { once: true, margin: "-60px" });
+  const svcInView = useInView(svcRef, { once: true, margin: "-60px" });
+  const whyInView = useInView(whyRef, { once: true, margin: "-60px" });
   const featInView = useInView(featRef, { once: true, margin: "-60px" });
   const procInView = useInView(procRef, { once: true, margin: "-60px" });
-  const ctaInView  = useInView(ctaRef,  { once: true, margin: "-100px" });
+  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
 
   const ease = [0.16, 1, 0.3, 1];
 
@@ -412,12 +721,193 @@ const ITConsulting = () => {
     );
   }, [procInView]);
 
-  const marqueeItems  = ["IT Consulting", "IT Assessment & Audits", "IT Strategy", "Infrastructure Modernization", "Cloud Consulting", "CIO Advisory"];
+  const marqueeItems = ["IT Consulting", "IT Assessment & Audits", "IT Strategy", "Infrastructure Modernization", "Cloud Consulting", "CIO Advisory"];
   const marqueeItems2 = ["Business-First Approach", "Certified Consultants", "15+ Years Experience", "Scalable Solutions", "Brand-Agnostic", "Digital Transformation"];
   const marqueeItems3 = ["Transform Your IT", "Strategy Meets Execution", "Smarter Businesses", "Sniper Systems", "Unstoppable Growth"];
 
   return (
     <Layout>
+
+
+        <>
+
+        {/* BASIC SEO */}
+
+        <title>IT Consulting Services in India | Strategic IT Advisory | Sniper Systems</title>
+
+        <meta
+          name="description"
+          content="Sniper Systems delivers expert IT consulting services in India, including IT strategy, infrastructure modernization, cloud consulting, and cybersecurity advisory to drive business growth."
+        />
+
+        <meta
+          name="keywords"
+          content="IT consulting services Chennai, IT advisory services India, IT strategy consulting, cloud consulting services, IT consulting company Chennai"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/solutions/it-consulting"
+        />
+
+        {/* GEO TAGS */}
+
+        <meta name="geo.region" content="IN-TN" />
+<meta name="geo.placename" content="Chennai" />
+<meta name="geo.position" content="13.0827;80.2707" />
+<meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+
+        <meta property="og:type" content="website" />
+
+        <meta
+          property="og:title"
+          content="IT Consulting & Advisory Services | Sniper Systems"
+        />
+
+        <meta
+          property="og:description"
+          content="Strategic IT consulting services including IT roadmap planning, cloud transformation, and cybersecurity advisory."
+        />
+
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/solutions/it-consulting"
+        />
+
+        {/* TWITTER SEO */}
+
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta
+          name="twitter:title"
+          content="IT Consulting Services in Chennai | Sniper Systems"
+        />
+
+        <meta
+          name="twitter:description"
+          content="Expert IT consulting services to align your technology strategy with business goals."
+        />
+
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+</script>
+
+        {/* SERVICE SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "IT Consulting Services",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "IT consulting services including IT strategy, cloud consulting, infrastructure modernization, and cybersecurity advisory."
+          }
+          `}
+</script>
+
+        {/* FAQ SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What are IT consulting services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "IT consulting services help businesses align technology strategies with their goals through expert guidance, planning, and implementation support."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does a business need IT consulting?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "IT consulting helps businesses optimize technology investments, improve efficiency, enhance security, and accelerate digital transformation."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Sniper Systems provide cloud and cybersecurity consulting?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Sniper Systems offers cloud consulting, infrastructure modernization, and cybersecurity advisory services tailored to business needs."
+                }
+              }
+            ]
+          }
+          `}
+</script>
+
+        {/* BREADCRUMB SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://sniperindia.com/solutions/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "IT Consulting",
+                "item": "https://sniperindia.com/solutions/it-consulting"
+              }
+            ]
+          }
+          `}
+</script>
+
+      </>
+
+
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       {/* ==================== HERO ==================== */}
@@ -602,6 +1092,9 @@ const ITConsulting = () => {
             </motion.div>
           </div>
 
+          {/* Methodology Visual Diagram */}
+          <ConsultingProcessDiagram />
+
           {/* Stats — centered on mobile, right-aligned on lg */}
           <div className="flex justify-center lg:justify-end">
             <div
@@ -611,7 +1104,7 @@ const ITConsulting = () => {
               {[
                 { value: "500+", label: "Consulting Projects" },
                 { value: "200+", label: "Enterprise Clients" },
-                { value: "15+",  label: "Years of Expertise" },
+                { value: "15+", label: "Years of Expertise" },
               ].map((stat, index) => (
                 <div key={index} className="proc-item opacity-0 text-center">
                   <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gray-900 mb-1 sm:mb-2 font-semibold">
@@ -674,7 +1167,7 @@ const ITConsulting = () => {
         {showScrollTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 w-11 h-11 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-5 right-5 sm:bottom-8 sm:left-8 w-11 h-11 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

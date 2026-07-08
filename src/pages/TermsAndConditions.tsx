@@ -2,21 +2,20 @@ import { Layout } from "@/components/Layout";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-    AlertTriangle,
-    ArrowRight,
-    BookOpen,
-    FileText,
-    Globe,
-    Link2,
-    Mail,
-    MessageSquare,
-    RefreshCw,
-    Scale,
-    Shield
+  AlertTriangle,
+  ArrowRight,
+  BookOpen,
+  FileText,
+  Globe,
+  Link2,
+  Mail,
+  MessageSquare,
+  RefreshCw,
+  Scale,
+  Shield
 } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -389,6 +388,8 @@ const PrinciplesSection = () => {
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const linesRef = useRef<(HTMLDivElement | null)[]>([]);
 
+  
+
   useEffect(() => {
     if (!inView) return;
     linesRef.current.forEach((line, i) => {
@@ -527,7 +528,7 @@ const Terms = () => {
 
 
   const marqueeItems = [
-    "Terms & Conditions", "Legal Agreement", "Intellectual Property", "Governing Law", "Sniper Systems", "Chennai India", "User Policy",
+    "Terms & Conditions", "Legal Agreement", "Intellectual Property",  "Sniper Systems", "Chennai India", "User Policy",
   ];
 
   const navSections = [
@@ -540,7 +541,7 @@ const Terms = () => {
     { id: "section-6",     label: "User Submissions" },
     { id: "section-7",     label: "Privacy" },
     { id: "section-8",     label: "Modifications" },
-    { id: "section-9",     label: "Governing Law" },
+
     { id: "section-10",    label: "Contact Us" },
   ];
 
@@ -851,7 +852,7 @@ const Terms = () => {
                 <SectionDivider inView={s8InView} delay={0.3} />
               </div>
 
-              {/* Section 9 */}
+              {/* Section 9
               <div id="section-9" ref={s9Ref}>
                 <TermsSection icon={Scale} number="09" title="Governing Law and Jurisdiction" trigger={s9InView} index={9}>
                   <p>
@@ -871,7 +872,7 @@ const Terms = () => {
                   </p>
                 </TermsSection>
                 <SectionDivider inView={s9InView} delay={0.3} />
-              </div>
+              </div>*/}
 
               {/* Section 10 */}
               <div id="section-10" ref={s10Ref}>
@@ -920,7 +921,7 @@ const Terms = () => {
       </section>
 
       {/* Marquee bottom */}
-      <MarqueeTicker items={["Legal Agreement", "Governing Law", "Chennai India", "Intellectual Property", "Sniper Systems", "User Policy", "Liability"]} />
+      <MarqueeTicker items={["Legal Agreement",  "Chennai India", "Intellectual Property", "Sniper Systems", "User Policy", "Liability"]} />
 
       {/* ── Key Principles (black section) ── */}
       <PrinciplesSection />
@@ -933,7 +934,7 @@ const Terms = () => {
         {showScrollTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

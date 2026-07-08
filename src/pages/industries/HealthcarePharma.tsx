@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Cloud, Database, Heart, Shield } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -351,6 +352,20 @@ const HealthcarePharma = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Healthcare IT Solutions | Medical Pharma | Sniper Systems</title>
+        <meta name="description" content="Secure, HIPAA-compliant IT infrastructure for healthcare and pharmaceutical organizations. Telemedicine, EHR systems, and patient data security solutions." />
+        <meta name="keywords" content="healthcare IT solutions, medical IT infrastructure, HIPAA compliance, pharmaceutical IT services, telemedicine IT" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://sniperindia.com/industries/healthcare-pharma/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Healthcare & Pharma IT Solutions | Sniper Systems" />
+        <meta property="og:description" content="Advanced IT infrastructure for healthcare and pharmaceutical organizations ensuring security and compliance." />
+        <meta property="og:url" content="https://sniperindia.com/industries/healthcare-pharma/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Healthcare IT Solutions | Sniper Systems" />
+        <meta name="twitter:description" content="HIPAA-compliant IT infrastructure for healthcare organizations." />
+      </Helmet>
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       {/* ── Hero ── */}
@@ -626,7 +641,7 @@ const HealthcarePharma = () => {
       <AnimatePresence>
         {showScrollTop && (
           <motion.button onClick={scrollToTop}
-            className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg active:scale-90"
+            className="fixed bottom-5 right-5 sm:bottom-6 sm:left-6 lg:bottom-8 lg:right-8 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg active:scale-90"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.6, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 22 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}

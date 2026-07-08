@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - XYZ Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#778EB1',
+              secondary: '#0066CC'
+            }
+          }
+        }
+      };
+    </script>
+    <!-- ========== Favicon Icon ========== -->
+    <link
+      rel="shortcut icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/05/sniper-logo-black-4-scaled.png"
+      type="image/x-icon"
+    />
+
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <style>
+      img:is([sizes='auto' i], [sizes^='auto,' i]) {
+        contain-intrinsic-size: 3000px 1500px;
+      }
+    </style>
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: light)"
+    />
+    <link rel="apple-touch-icon" href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+    <meta name="msapplication-TileImage" content="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+    <!-- ========== Favicon Icon ========== -->
+    <style>
+      .nav-link-active {
+        color: #0066cc !important;
+
+        text-underline-offset: 4px;
+      }
+    </style>
+  </head>
+  <body class="bg-white font-sans text-gray-800">
+    <div class="flex flex-col min-h-screen">
+      <!-- Header -->
+      <header class="sticky top-0 z-50 shadow-md bg-white">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+          <!-- Logo Section -->
+          <a href="https://sniperindia.com/" class="flex items-center space-x-3">
+            <img
+              src="https://sniperindia.com/wp-content/uploads/2025/05/sniper-logo-black-4-scaled.png"
+              alt="Sniper Logo"
+              class="h-12 w-auto"
+            />
+            <!-- Separator -->
+            <div class="h-10 w-px bg-gray-900"></div>
+
+            <img src="https://i.ibb.co/YT8CZdyk/output-auto.png" alt="Jamf Partner Logo" class="h-8 w-auto mt-3" />
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center space-x-4 text-sm font-medium">
+            <a href="index.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              HOME
+            </a>
+
+            <!-- Solutions Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center py-2 px-4 text-black hover:text-secondary transition-colors duration-300"
+              >
+                SOLUTIONS
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+
+              <!-- Dropdown -->
+              <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-xl w-60 py-2">
+                <a
+                  href="solutions/mac-management.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for Mac
+                </a>
+                <a
+                  href="solutions/mobile-device-management.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for Mobile
+                </a>
+                <a
+                  href="solutions/k-12-education.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Jamf for K-12
+                </a>
+                <a
+                  href="solutions/small-business.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-secondary"
+                >
+                  Small Business
+                </a>
+              </div>
+            </div>
+
+            <a href="products.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              PRODUCTS
+            </a>
+            <a href="contact.html" class="py-2 px-4 text-black hover:text-secondary transition-colors duration-300">
+              CONTACT US
+            </a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="lg:hidden text-black focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+          <a href="index.html" class="block py-3 px-6 text-sm text-black hover:bg-gray-100">HOME</a>
+
+          <div class="px-6">
+            <button
+              id="mobile-solutions-button"
+              class="w-full flex justify-between items-center py-3 text-sm text-black hover:bg-gray-100"
+            >
+              SOLUTIONS
+              <svg
+                class="w-4 h-4 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div id="mobile-solutions-dropdown" class="hidden pl-4">
+              <a href="solutions/mac-management.html" class="block py-2 px-2 text-sm hover:bg-gray-100">Jamf for Mac</a>
+              <a href="solutions/mobile-device-management.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Jamf for Mobile
+              </a>
+              <a href="solutions/k-12-education.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Jamf for K-12
+              </a>
+              <a href="solutions/small-business.html" class="block py-2 px-2 text-sm hover:bg-gray-100">
+                Small Business
+              </a>
+            </div>
+          </div>
+
+          <a href="products.html" class="block py-3 px-6 text-sm text-black hover:bg-gray-100">PRODUCTS</a>
+
+          <div class="px-6 py-4">
+            <a
+              href="contact.html"
+              class="block text-center bg-secondary text-white font-bold py-2 rounded-full hover:bg-red-700 transition-colors duration-300"
+            >
+              CONTACT US
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-grow">
+        <section class="bg-primary text-white py-16">
+          <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl font-bold">The Jamf Product Portfolio</h1>
+            <p class="text-lg text-gray-200 mt-2">Solutions to connect, manage, and protect all your Apple devices.</p>
+          </div>
+        </section>
+
+        <section class="py-16 bg-gray-50">
+          <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div
+                class="bg-white border-2 border-primary rounded-lg shadow-lg p-6 flex flex-col hover:-translate-y-2 transition-transform duration-300"
+              >
+                <h2 class="text-2xl font-bold text-primary mb-3">Jamf for Mac</h2>
+                <p class="text-gray-600 flex-grow">
+                  Managing a growing fleet of Macs in a modern enterprise demands a platform that understands Apple —
+                  not just supports it. Jamf for Mac, in partnership with Sniper Systems & Solutions, empowers IT teams
+                  with automation, security, and seamless management.
+                </p>
+                <div class="mt-6">
+                  <a href="contact.html" class="font-semibold text-secondary hover:underline">
+                    Inquire About Jamf for Mac &rarr;
+                  </a>
+                </div>
+              </div>
+              <div
+                class="bg-white border-2 border-primary rounded-lg shadow-lg p-6 flex flex-col hover:-translate-y-2 transition-transform duration-300"
+              >
+                <h2 class="text-2xl font-bold text-primary mb-3">Jamf for Mobile</h2>
+                <p class="text-gray-600 flex-grow">
+                  Mobility drives modern business, empowering productivity and collaboration across teams. As mobile
+                  usage grows, managing security, compliance, and device configurations becomes critical.
+                </p>
+                <div class="mt-6">
+                  <a href="contact.html" class="font-semibold text-secondary hover:underline">
+                    Inquire About Jamf for Mobile &rarr;
+                  </a>
+                </div>
+              </div>
+              <div
+                class="bg-white border-2 border-primary rounded-lg shadow-lg p-6 flex flex-col hover:-translate-y-2 transition-transform duration-300"
+              >
+                <h2 class="text-2xl font-bold text-primary mb-3">Jamf for K12</h2>
+                <p class="text-gray-600 flex-grow">
+                  Education thrives when technology empowers, not distracts. Jamf for K-12 , delivered by Sniper Systems
+                  & Solutions , helps schools simplify Apple device management while ensuring safety, productivity, and
+                  creativity in every classroom.
+                </p>
+                <div class="mt-6">
+                  <a href="contact.html" class="font-semibold text-secondary hover:underline">
+                    Inquire About Jamf for K12 &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="relative overflow-hidden bg-[#778EB1] rounded-10xl p-12 md:p-16 lg:p-20">
+          <!-- Decorative circles -->
+          <div
+            class="absolute top-0 right-10 w-96 h-96 bg-[#778EB1] rounded-full opacity-50 blur-3xl translate-x-1/3 -translate-y-1/3"
+          ></div>
+          <div
+            class="absolute top-0 right-20 w-80 h-80 bg-[#778EB1] rounded-full opacity-60 blur-2xl translate-x-1/2 -translate-y-1/4"
+          ></div>
+          <div
+            class="absolute top-0 right-40 w-64 h-64 bg-[#778EB1] rounded-full opacity-70 blur-xl translate-x-2/3 -translate-y-1/6"
+          ></div>
+
+          <div class="relative z-10 max-w-4xl">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Not Sure Which Product is Right for You?
+            </h2>
+
+            <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl">
+              The Apple ecosystem is powerful, and choosing the right management and security tools is crucial. Our team
+              of Jamf experts is here to guide you. We'll assess your needs and recommend the perfect combination of
+              Jamf products to help you succeed.
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+              <!-- Schedule a Consultation (as a link) -->
+              <a
+                href="contact.html"
+                class="group bg-black hover:bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl"
+              >
+                <span>Schedule a Consultation</span>
+                <div
+                  class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+
+              <!-- Explore Jamf Solutions (keep as button or convert to link) -->
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+      <script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
+
+      <!-- Scroll to Top with Scroll Progress -->
+      <div id="scrollTopBtn">
+        <svg width="48" height="48">
+          <circle cx="24" cy="24" r="22" />
+        </svg>
+        <span>↑</span>
+      </div>
+
+      <style>
+        #scrollTopBtn {
+          position: fixed;
+          bottom: 24px;
+          left: 24px;
+          width: 48px;
+          height: 48px;
+          cursor: pointer;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease;
+          z-index: 9999;
+        }
+
+        #scrollTopBtn svg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: rotate(-90deg);
+        }
+
+        #scrollTopBtn circle {
+          fill: none;
+          stroke: #000;
+          stroke-width: 3;
+          stroke-dasharray: 138;
+          stroke-dashoffset: 138;
+          transition: stroke-dashoffset 0.15s linear;
+        }
+
+        #scrollTopBtn span {
+          position: absolute;
+          inset: 3px; /* creates space for ring */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #fff;
+          color: #000;
+          border-radius: 50%;
+          font-size: 18px;
+          font-weight: bold;
+          border: 2px solid #000;
+        }
+
+        #scrollTopBtn.show {
+          opacity: 1;
+          visibility: visible;
+        }
+      </style>
+
+      <script>
+        const btn = document.getElementById('scrollTopBtn');
+        const circle = btn.querySelector('circle');
+        const circumference = 138;
+
+        window.addEventListener('scroll', () => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+          const progress = scrollTop / docHeight;
+          const offset = circumference - progress * circumference;
+
+          circle.style.strokeDashoffset = offset;
+
+          btn.classList.toggle('show', scrollTop > 200);
+        });
+
+        btn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
+
+      <!-- Footer -->
+      <footer class="bg-black text-white">
+        <div class="container mx-auto px-6 py-12">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div class="flex items-center space-x-2">
+                <img
+                  src="sniper-logo-neww.png"
+                  alt="XYZ Company Logo"
+                  class="w-24 h-24 object-contain rounded-lg p-1"
+                />
+                <div class="h-10 w-px bg-white"></div>
+                <img src="JAMF_BIG.D-1b9ef18d.png" alt="Second Logo" class="w-24 h-24 object-contain rounded-lg p-1" />
+              </div>
+
+              <p class="text-gray-300 text-sm mt-2">
+                Your trusted Certified Jamf Partner, delivering expert Apple device management solutions.
+              </p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Quick Links</h4>
+              <ul class="space-y-2 text-sm">
+                <li><a href="index.html" class="text-gray-300 hover:text-white hover:underline">Home</a></li>
+                <li><a href="products.html" class="text-gray-300 hover:text-white hover:underline">Products</a></li>
+                <li>
+                  <a href="contact.html" class="text-gray-300 hover:text-white hover:underline">Contact Us</a>
+                </li>
+                <li>
+                  <a
+                    href="https://sniperindia.com/privacy-policy/"
+                    class="text-gray-300 hover:text-white hover:underline"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Solutions</h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a href="solutions/mac-management.html" class="text-gray-300 hover:text-white hover:underline">
+                    Jamf for Mac
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="solutions/mobile-device-management.html"
+                    class="text-gray-300 hover:text-white hover:underline"
+                  >
+                    Jamf for Mobile
+                  </a>
+                </li>
+                <li>
+                  <a href="solutions/k-12-education.html" class="text-gray-300 hover:text-white hover:underline">
+                    Jamf for K-12
+                  </a>
+                </li>
+                <li>
+                  <a href="solutions/small-business.html" class="text-gray-300 hover:text-white hover:underline">
+                    Small Business
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Contact Us</h4>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li>Locations: Chennai | Bangalore | Hyderabad</li>
+                <li>| Coimbatore | Kochi | Gurugram</li>
+                <li>| Vijayawada</li>
+                <li>Email: enquiry@sniperindia.com</li>
+                <li>Phone: +91 8939301100</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-12 border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+            <p>&copy; 2024 Sniper Systems. All Rights Reserved.</p>
+            <p class="mt-1">
+              Jamf and the Jamf logo are trademarks of Jamf Software, LLC, Certified in the U.S. and other countries.
+              Sniper Systems is a Certified Jamf Partner.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

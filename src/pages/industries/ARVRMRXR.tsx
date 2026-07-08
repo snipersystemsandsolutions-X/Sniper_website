@@ -1,9 +1,10 @@
 import { Layout } from "@/components/Layout";
-import { ArrowRight, Globe, Layers, Lightbulb, Zap } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight, Globe, Layers, Lightbulb, Zap } from "lucide-react";
+import { AnimatePresence, motion, useInView } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -390,6 +391,20 @@ const ARVRMRXR = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>AR VR MR XR Solutions | Extended Reality IT | Sniper Systems</title>
+        <meta name="description" content="Extended reality (AR, VR, MR) IT infrastructure and immersive technology solutions. 3D visualization, virtual collaboration, and augmented reality enterprise applications." />
+        <meta name="keywords" content="AR VR solutions, extended reality IT, virtual collaboration, metaverse enterprise, immersive technology infrastructure" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://sniperindia.com/industries/ar-vr-mr-xr/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="AR/VR/MR/XR Solutions | Extended Reality | Sniper Systems" />
+        <meta property="og:description" content="Advanced IT infrastructure for immersive technologies including AR, VR, MR, and XR applications for enterprise." />
+        <meta property="og:url" content="https://sniperindia.com/industries/ar-vr-mr-xr/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AR/VR/XR IT Solutions | Sniper Systems" />
+        <meta name="twitter:description" content="Extended reality infrastructure for immersive enterprise applications." />
+      </Helmet>
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       {/* ── Hero ── */}
@@ -680,7 +695,7 @@ const ARVRMRXR = () => {
       <AnimatePresence>
         {showScrollTop && (
           <motion.button onClick={scrollToTop}
-            className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg active:scale-90"
+            className="fixed bottom-5 right-5 sm:bottom-6 sm:left-6 lg:bottom-8 lg:right-8 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg active:scale-90"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.6, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 22 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}

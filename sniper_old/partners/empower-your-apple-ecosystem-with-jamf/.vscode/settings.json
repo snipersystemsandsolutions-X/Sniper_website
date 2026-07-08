@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.printWidth": 120, // Don't break lines too early
+  "prettier.singleQuote": true, // Use single quotes where possible
+  "prettier.trailingComma": "none", // No trailing commas
+  "prettier.arrowParens": "avoid", // (x) => x becomes x => x
+  "prettier.htmlWhitespaceSensitivity": "ignore", // Keep HTML/Tailwind classes in one line
+  "prettier.endOfLine": "lf" // Consistent line endings
+}

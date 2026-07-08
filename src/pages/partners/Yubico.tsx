@@ -4,6 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Building2, CheckCircle2, Cloud, Heart, Landmark, Lock, Shield, Smartphone, Users, Zap } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -340,6 +342,16 @@ const Yubico = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showWhiteScreen, setShowWhiteScreen] = useState(true);
 
+
+  useEffect(() => {
+  const script = document.createElement("script");
+  script.src = "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+  script.async = true;
+  document.body.appendChild(script);
+  return () => { document.body.removeChild(script); };
+}, []);
+
+
   // Throttled scroll listener
   useEffect(() => {
     let ticking = false;
@@ -513,7 +525,165 @@ const solutions = [
 
   return (
     <Layout>
+      <>
+        {/* BASIC SEO */}
+        <title>Yubico Partner in India | YubiKey MFA & Passwordless Security Solutions | Sniper Systems</title>
+        <meta
+          name="description"
+          content="Sniper Systems delivers Yubico YubiKey security solutions in India including MFA, passwordless authentication, phishing-resistant login, Zero Trust security, and enterprise identity protection."
+        />
+        <meta
+          name="keywords"
+          content="Yubico partner India, YubiKey India, MFA solutions India, passwordless authentication India, YubiKey reseller India, Zero Trust security solutions"
+        />
+        <meta name="robots" content="index, follow" />
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/partners/yubico"
+        />
+
+        {/* GEO TAGS */}
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
+        <meta name="geo.position" content="13.0827;80.2707" />
+        <meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="YubiKey MFA & Passwordless Security Solutions | Sniper Systems India"
+        />
+        <meta
+          property="og:description"
+          content="Enterprise Yubico solutions for MFA, passwordless authentication, Zero Trust security, and phishing-resistant identity protection."
+        />
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/partners/yubico"
+        />
+
+        {/* TWITTER SEO */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Yubico Partner in India | Sniper Systems"
+        />
+        <meta
+          name="twitter:description"
+          content="Advanced YubiKey security solutions for MFA, Zero Trust, and enterprise identity protection."
+        />
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+        </script>
+
+        {/* SERVICE SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "YubiKey Security & MFA Solutions",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "YubiKey authentication solutions including MFA, passwordless authentication, phishing-resistant login, Zero Trust security, and enterprise identity protection."
+          }
+          `}
+        </script>
+
+        {/* FAQ SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is YubiKey authentication?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "YubiKey is a hardware-based authentication device that provides secure multi-factor authentication and passwordless login for enterprise security."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why should businesses use YubiKey solutions?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "YubiKey solutions help organizations prevent phishing attacks, strengthen identity security, and support Zero Trust authentication frameworks."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Sniper Systems provide enterprise YubiKey deployment?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Sniper Systems provides consultation, deployment, integration, and enterprise support for Yubico authentication solutions."
+                }
+              }
+            ]
+          }
+          `}
+        </script>
+
+        {/* BREADCRUMB SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Partners",
+                "item": "https://sniperindia.com/partners/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Yubico",
+                "item": "https://sniperindia.com/partners/yubico"
+              }
+            ]
+          }
+          `}
+        </script>
+      </>
+
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
+
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative bg-white pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
@@ -775,7 +945,7 @@ Capabilities
         {showScrollTop && (
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}

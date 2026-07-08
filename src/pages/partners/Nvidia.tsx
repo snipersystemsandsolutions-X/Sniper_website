@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Brain, CheckCircle, Globe, Layers, Star } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -352,6 +353,18 @@ const Nvidia = () => {
   // GSAP stats stagger
   const statsGridRef   = useRef<HTMLDivElement>(null);
   const statsTriggered = useRef(false);
+
+
+  useEffect(() => {
+  const script = document.createElement("script");
+  script.src = "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+  script.async = true;
+  document.body.appendChild(script);
+  return () => { document.body.removeChild(script); };
+}, []);
+
+
+
   useEffect(() => {
     if (!statsInView || statsTriggered.current) return;
     statsTriggered.current = true;
@@ -437,6 +450,163 @@ const Nvidia = () => {
 
   return (
     <Layout>
+      <>
+        {/* BASIC SEO */}
+        <title>NVIDIA Partner in India | AI, GPU & Generative AI Solutions | Sniper Systems</title>
+        <meta
+          name="description"
+          content="Sniper Systems is an NVIDIA Preferred Partner in India delivering AI, Generative AI, GPU computing, deep learning, visualization, HPC, data center, and enterprise NVIDIA solutions."
+        />
+        <meta
+          name="keywords"
+          content="NVIDIA partner India, NVIDIA AI solutions India, Generative AI solutions, NVIDIA GPU solutions India, NVIDIA data center solutions, NVIDIA AI infrastructure, deep learning solutions India"
+        />
+        <meta name="robots" content="index, follow" />
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/partners/nvidia"
+        />
+
+        {/* GEO TAGS */}
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
+        <meta name="geo.position" content="13.0827;80.2707" />
+        <meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="NVIDIA AI, GPU & Generative AI Solutions | Sniper Systems India"
+        />
+        <meta
+          property="og:description"
+          content="Enterprise NVIDIA solutions including AI infrastructure, GPU computing, deep learning, visualization, data center, and Generative AI platforms."
+        />
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/partners/nvidia"
+        />
+
+        {/* TWITTER SEO */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="NVIDIA Partner in India | Sniper Systems"
+        />
+        <meta
+          name="twitter:description"
+          content="Advanced NVIDIA AI, GPU, Generative AI, and enterprise computing solutions for modern businesses."
+        />
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+        </script>
+
+        {/* SERVICE SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "NVIDIA AI & GPU Solutions",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "Enterprise NVIDIA solutions including AI infrastructure, Generative AI, GPU computing, deep learning, data center solutions, HPC, visualization, and AI platforms."
+          }
+          `}
+        </script>
+
+        {/* FAQ SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What NVIDIA solutions does Sniper Systems provide?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sniper Systems provides NVIDIA AI infrastructure, GPU computing, Generative AI, deep learning, visualization, HPC, data center, and enterprise AI solutions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why are NVIDIA GPUs important for AI workloads?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "NVIDIA GPUs accelerate AI training, machine learning, deep learning, rendering, simulation, and enterprise computing workloads with high-performance processing."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Sniper Systems provide NVIDIA AI infrastructure deployment?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Sniper Systems provides consultation, deployment, optimization, and enterprise support for NVIDIA AI and GPU infrastructure solutions."
+                }
+              }
+            ]
+          }
+          `}
+        </script>
+
+        {/* BREADCRUMB SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Partners",
+                "item": "https://sniperindia.com/partners/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "NVIDIA",
+                "item": "https://sniperindia.com/partners/nvidia"
+              }
+            ]
+          }
+          `}
+        </script>
+      </>
+
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
@@ -679,7 +849,7 @@ const Nvidia = () => {
         {showScrollTop && (
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}

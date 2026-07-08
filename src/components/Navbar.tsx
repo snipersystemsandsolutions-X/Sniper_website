@@ -525,7 +525,7 @@ export const Navbar = () => {
               <DropdownTrigger label="Solutions" isOpen={openDropdown === "solutions"} onToggle={() => toggle("solutions")} />
               <DropdownTrigger label="Partners" isOpen={openDropdown === "partners"} onToggle={() => toggle("partners")} />
               <DropdownTrigger label="Industries" isOpen={openDropdown === "industries"} onToggle={() => toggle("industries")} />
-              <NavLink href="/blog" onClick={close}>Blog</NavLink>
+              <NavLink href="https://blog.sniperindia.com/" onClick={close}>Blog</NavLink>
               <NavLink href="/contact" onClick={close}>Contact Us</NavLink>
             </div>
 

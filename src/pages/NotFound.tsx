@@ -1,10 +1,21 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ArrowRight, Home, Search, Wifi } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const NotFound = () => {
   const location = useLocation();
   const [mounted, setMounted] = useState(false);
+
+
+  useEffect(() => {
+  const script = document.createElement("script");
+  script.src = "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+  script.async = true;
+  document.body.appendChild(script);
+  return () => { document.body.removeChild(script); };
+}, []);
+
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
@@ -20,6 +31,24 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen bg-white font-sans overflow-x-hidden">
+
+      <Helmet>
+        <title>Page Not Found | Sniper Systems</title>
+        <meta name="description" content="The page you're looking for doesn't exist. Return to Sniper Systems homepage or contact us for assistance with IT solutions and services." />
+        <meta name="robots" content="noindex, follow" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Page Not Found | Sniper Systems" />
+        <meta property="og:description" content="The page you requested could not be found. Explore our IT solutions and services or get in touch with our team." />
+        <meta property="og:url" content="https://sniperindia.com/404/" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Page Not Found | Sniper Systems" />
+        <meta name="twitter:description" content="The page you're looking for doesn't exist. Return to Sniper Systems homepage for IT solutions." />
+      </Helmet>
+
+
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
+
 
       {/* ── Hero 404 Section ──────────────────────────────────────────────── */}
       <section className="relative bg-white pt-20 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden">

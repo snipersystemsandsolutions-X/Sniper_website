@@ -1,9 +1,9 @@
 import { Layout } from "@/components/Layout";
-import { ArrowRight, Cloud, Shield, TrendingUp, Zap } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight, Cloud, Shield, TrendingUp, Zap } from "lucide-react";
+import { AnimatePresence, motion, useInView } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -609,6 +609,147 @@ const ITITESInfra = () => {
         <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />
       )}
 
+         <>
+
+        {/* BASIC SEO */}
+
+        <title>IT Infrastructure Solutions in Chennai | Enterprise IT Services | Sniper Systems</title>
+
+        <meta
+          name="description"
+          content="Sniper Systems provides enterprise IT infrastructure solutions in Chennai including networking, data center solutions, cloud integration, and secure IT environments for businesses across India."
+        />
+
+        <meta
+          name="keywords"
+          content="IT infrastructure solutions Chennai, enterprise IT infrastructure India, network infrastructure services, data center solutions India, IT infrastructure company Chennai"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/solutions/it-infrastructure"
+        />
+
+        {/* GEO TAGS */}
+
+        <meta name="geo.region" content="IN-TN" />
+<meta name="geo.placename" content="Chennai" />
+<meta name="geo.position" content="13.0827;80.2707" />
+<meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+
+        <meta property="og:type" content="website" />
+
+        <meta
+          property="og:title"
+          content="IT Infrastructure Solutions | Sniper Systems"
+        />
+
+        <meta
+          property="og:description"
+          content="Build secure, scalable, and high-performance IT infrastructure with Sniper Systems enterprise solutions."
+        />
+
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/solutions/it-infrastructure"
+        />
+
+        {/* TWITTER SEO */}
+
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta
+          name="twitter:title"
+          content="Enterprise IT Infrastructure Services | Sniper Systems"
+        />
+
+        <meta
+          name="twitter:description"
+          content="Transform your business with secure IT infrastructure, networking, and cloud-ready enterprise solutions."
+        />
+
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+</script>
+
+        {/* SERVICE SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "IT Infrastructure Solutions",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "Enterprise IT infrastructure solutions including networking, cloud integration, and secure IT environments."
+          }
+          `}
+</script>
+
+        {/* BREADCRUMB SCHEMA */}
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://sniperindia.com/solutions/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "IT Infrastructure",
+                "item": "https://sniperindia.com/solutions/it-infrastructure"
+              }
+            ]
+          }
+          `}
+</script>
+
+      </>
+
       {/* ==================== HERO ==================== */}
       <section className="relative bg-white pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-white opacity-60" />
@@ -886,7 +1027,7 @@ const ITITESInfra = () => {
         {showScrollTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-6 sm:bottom-8 right-4 sm:right-8 w-11 sm:w-14 h-11 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 sm:bottom-8 right-4 sm:left-8 w-11 sm:w-14 h-11 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

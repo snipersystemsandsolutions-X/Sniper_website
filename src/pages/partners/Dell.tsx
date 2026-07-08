@@ -4,6 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, CheckCircle, Database, Shield, Zap } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -364,6 +366,17 @@ const Dell = () => {
   // GSAP industries grid stagger
   const indGridRef   = useRef<HTMLDivElement>(null);
   const indTriggered = useRef(false);
+
+
+  useEffect(() => {
+  const script = document.createElement("script");
+  script.src = "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+  script.async = true;
+  document.body.appendChild(script);
+  return () => { document.body.removeChild(script); };
+}, []);
+
+
   useEffect(() => {
     if (!indInView || indTriggered.current) return;
     indTriggered.current = true;
@@ -413,7 +426,165 @@ const Dell = () => {
 
   return (
     <Layout>
+      <>
+        {/* BASIC SEO */}
+        <title>Dell Authorized Partner in India | Dell Business Solutions | Sniper Systems</title>
+        <meta
+          name="description"
+          content="Sniper Systems is a Dell authorized partner in India delivering enterprise laptops, servers, storage, and IT infrastructure solutions with expert consultation, deployment, and support."
+        />
+        <meta
+          name="keywords"
+          content="Dell partner India, Dell authorized reseller India, Dell business solutions, Dell servers India, Dell laptops enterprise, Dell IT infrastructure solutions"
+        />
+        <meta name="robots" content="index, follow" />
+        <link
+          rel="canonical"
+          href="https://sniperindia.com/partners/dell"
+        />
+
+        {/* GEO TAGS */}
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
+        <meta name="geo.position" content="13.0827;80.2707" />
+        <meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* OPEN GRAPH */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Dell Business Solutions & Enterprise IT | Sniper Systems India"
+        />
+        <meta
+          property="og:description"
+          content="Enterprise Dell solutions including laptops, servers, storage, and infrastructure designed for scalable business growth."
+        />
+        <meta
+          property="og:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://sniperindia.com/partners/dell"
+        />
+
+        {/* TWITTER SEO */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Dell Authorized Partner in India | Sniper Systems"
+        />
+        <meta
+          name="twitter:description"
+          content="Scalable Dell enterprise solutions for modern businesses across India."
+        />
+        <meta
+          name="twitter:image"
+          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
+        />
+
+        {/* ORGANIZATION SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+          }
+          `}
+        </script>
+
+        {/* SERVICE SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Dell Business Solutions",
+            "provider": {
+              "@type": "Organization",
+              "name": "Sniper Systems"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "description": "Dell enterprise solutions including laptops, servers, storage, cloud, and IT infrastructure services for businesses in India."
+          }
+          `}
+        </script>
+
+        {/* FAQ SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does a Dell authorized partner provide?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A Dell authorized partner provides genuine Dell products, consultation, deployment, and ongoing support for enterprise IT solutions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What Dell solutions are available for businesses?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Dell offers laptops, desktops, servers, storage, networking, and cloud solutions designed for business scalability and performance."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why choose Sniper Systems for Dell solutions?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sniper Systems provides expert consultation, seamless implementation, and dedicated support to help businesses maximize the value of Dell technologies."
+                }
+              }
+            ]
+          }
+          `}
+        </script>
+
+        {/* BREADCRUMB SCHEMA */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Partners",
+                "item": "https://sniperindia.com/partners/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Dell",
+                "item": "https://sniperindia.com/partners/dell"
+              }
+            ]
+          }
+          `}
+        </script>
+      </>
+
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
+
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative bg-white pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
@@ -606,7 +777,7 @@ const Dell = () => {
         {showScrollTop && (
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}

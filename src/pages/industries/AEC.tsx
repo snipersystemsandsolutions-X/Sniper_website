@@ -5,6 +5,7 @@ import { ArrowRight, Box, Cloud, Layers, Zap } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -844,6 +845,20 @@ const AEC = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>AEC IT Solutions | Architecture Engineering Construction | Sniper Systems</title>
+        <meta name="description" content="Specialized IT infrastructure and managed services for AEC (Architecture, Engineering, Construction) industry. BIM, project management, collaboration tools by Sniper Systems." />
+        <meta name="keywords" content="AEC IT solutions, architecture IT infrastructure, construction technology, BIM solutions, engineering IT services" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://sniperindia.com/industries/aec/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="AEC IT Solutions | Sniper Systems" />
+        <meta property="og:description" content="Advanced IT infrastructure for Architecture, Engineering, and Construction businesses. Specialized in BIM, collaboration, and project management solutions." />
+        <meta property="og:url" content="https://sniperindia.com/industries/aec/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AEC IT Solutions | Sniper Systems" />
+        <meta name="twitter:description" content="IT infrastructure solutions tailored for AEC industry professionals." />
+      </Helmet>
       {showWhiteScreen && (
         <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />
       )}
@@ -1130,7 +1145,7 @@ const AEC = () => {
         {showScrollTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg active:scale-90"
+            className="fixed bottom-5 right-5 sm:bottom-6 sm:left-6 lg:bottom-8 lg:right-8 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg active:scale-90"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

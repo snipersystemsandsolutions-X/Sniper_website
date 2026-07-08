@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <!-- https://sniperindia.com/education/apple-education/Multipurposelabs.html -->
+<title>Apple Education Multipurpose Labs Solutions | Sniper India</title>
+<meta name="description" content="Create future-ready multipurpose labs with Apple devices, collaborative learning tools, and flexible classroom technology supported by Sniper India’s education specialists.">
+<meta name="keywords" content="Apple education labs, multipurpose learning labs, iPad learning labs, Mac labs, educational technology solutions, collaborative education tools">
+
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: light)"
+    />
+    <link rel="apple-touch-icon" href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#E31922',
+              'primary-dark': '#B31419'
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <br />
+
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+        <style>
+          .header-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          .header-visible {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          .dropdown-shadow {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          }
+          .submenu-shadow {
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+          }
+          .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+          }
+          .mobile-menu.open {
+            max-height: 1000px;
+          }
+          .mobile-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+          }
+          .mobile-submenu.open {
+            max-height: 500px;
+          }
+        </style>
+      </head>
+      <body class="bg-gray-50">
+        <!-- Header -->
+        <header
+          class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white shadow-lg py-4 header-hidden"
+          id="main-header"
+        >
+          <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
+            <!-- Logo Section -->
+            <div class="flex items-center space-x-2 mb-2">
+              <!-- Logo 1 -->
+              <div class="flex items-center space-x-4">
+                <!-- Logo 1 -->
+                <div class="w-25 h-20 flex items-center justify-center">
+                  <img src="components/Sniper_Education.jpg" alt="Logo 1" class="w-106 h-16" />
+                </div>
+
+                <!-- Logo 2 -->
+                <div class="w-22 h-20 flex items-center justify-center">
+                  <img src="components/PEP.svg" alt="Logo 2" class="w-206 h-10" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+              <!-- Home -->
+              <a
+                href="index.html"
+                class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2"
+              >
+                Home
+              </a>
+
+              <!-- Education Levels -->
+              <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+                <button
+                  @click="open = !open"
+                  class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2 flex items-center"
+                >
+                  Education Levels
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="ml-1 transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div
+                  x-show="open"
+                  x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="opacity-0 transform -translate-y-2"
+                  x-transition:enter-end="opacity-100 transform translate-y-0"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="opacity-100 transform translate-y-0"
+                  x-transition:leave-end="opacity-0 transform -translate-y-2"
+                  class="absolute top-full left-0 w-56 bg-white dropdown-shadow rounded-lg py-3 z-50"
+                >
+                  <a
+                    href="k12.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    K-12 Education
+                  </a>
+                  <a
+                    href="higher-education.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Higher Education
+                  </a>
+                </div>
+              </div>
+
+              <!-- Solution Offered -->
+              <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+                <button
+                  @click="open = !open"
+                  class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2 flex items-center"
+                >
+                  Solution Offered
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="ml-1 transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div
+                  x-show="open"
+                  x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="opacity-0 transform -translate-y-2"
+                  x-transition:enter-end="opacity-100 transform translate-y-0"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="opacity-100 transform translate-y-0"
+                  x-transition:leave-end="opacity-0 transform -translate-y-2"
+                  class="absolute top-full left-0 w-72 bg-white dropdown-shadow rounded-lg py-3 z-50"
+                >
+                  <!-- Parents -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      Parents
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="security&privacy.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Security & Privacy
+                      </a>
+                      <a
+                        href="Interactive_learning.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Interactive Learning
+                      </a>
+
+                      <a
+                        href="student-purchase-prog.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Student Purchase Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Educators -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      Educators
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="educators_ATLC.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Teacher Learning Centre
+                      </a>
+                      <a
+                        href="educators_classroom&schoolwork.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Classroom & School Work
+                      </a>
+                      <a
+                        href="educators_research&program.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Research & Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Leaders -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      Leaders
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="APLS.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Professional Learning Specialist(APLS)
+                      </a>
+                      <a
+                        href="ASM.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple School Manager (ASM)
+                      </a>
+                      <a
+                        href="accessibility.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Accessibility
+                      </a>
+                      <a
+                        href="sustainability.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Sustainability
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- IT -->
+                  <div class="relative sub-group" x-data="{ subOpen: false }" @click.away="subOpen = false">
+                    <a
+                      href="#"
+                      @click.prevent="subOpen = !subOpen"
+                      class="flex justify-between items-center px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                    >
+                      IT
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 transition-transform duration-300"
+                        :class="subOpen ? 'rotate-90' : ''"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </a>
+                    <div
+                      x-show="subOpen"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-x-2"
+                      x-transition:enter-end="opacity-100 transform translate-x-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-x-0"
+                      x-transition:leave-end="opacity-0 transform -translate-x-2"
+                      class="absolute left-full top-0 w-64 bg-white submenu-shadow rounded-lg py-3 ml-1"
+                    >
+                      <a
+                        href="it_zero-touch-delpoy.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Zero Touch Deployment
+                      </a>
+                      <a
+                        href="it_dev-manag.html"
+                        class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Device Management
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Digital Transformation -->
+              <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+                <button
+                  @click="open = !open"
+                  class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2 flex items-center"
+                >
+                  Digital Transformation
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="ml-1 transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div
+                  x-show="open"
+                  x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="opacity-0 transform -translate-y-2"
+                  x-transition:enter-end="opacity-100 transform translate-y-0"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="opacity-100 transform translate-y-0"
+                  x-transition:leave-end="opacity-0 transform -translate-y-2"
+                  class="absolute top-full left-0 w-64 bg-white dropdown-shadow rounded-lg py-3 z-50"
+                >
+                  <a
+                    href="Multipurposelabs.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Multipurpose Labs with Mac
+                  </a>
+
+                  <a
+                    href="edu_fusion-combos.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper Fusion Combos
+                  </a>
+                  <a
+                    href="edu_bundle-service.html"
+                    class="block px-5 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper's Bundled Services
+                  </a>
+                </div>
+              </div>
+
+              <!-- Training -->
+              <a
+                href="apple-training.html"
+                class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2"
+              >
+                Training
+              </a>
+
+              <!-- Contact Us -->
+              <a
+                href="contact_us.html"
+                class="text-gray-800 hover:text-red-600 font-medium transition-colors duration-300 py-2"
+              >
+                Contact Us
+              </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="lg:hidden text-gray-800 hover:text-red-600 py-2" id="mobile-menu-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="4" x2="20" y1="12" y2="12" />
+                <line x1="4" x2="20" y1="6" y2="6" />
+                <line x1="4" x2="20" y1="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div class="lg:hidden mobile-menu bg-white border-t border-gray-200" id="mobile-menu">
+            <div class="container mx-auto px-4 py-4">
+              <!-- Home -->
+              <a
+                href="index.html"
+                class="block py-3 px-4 text-gray-800 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-200"
+              >
+                Home
+              </a>
+
+              <!-- Education Levels -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('education-levels')"
+                >
+                  Education Levels
+                  <svg
+                    id="education-levels-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="education-levels" class="mobile-submenu pl-4 mt-2">
+                  <a href="k12.html" class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200">
+                    K-12 Education
+                  </a>
+                  <a
+                    href="higher-education.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Higher Education
+                  </a>
+                </div>
+              </div>
+
+              <!-- Solution Offered -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('solution-offered')"
+                >
+                  Solution Offered
+                  <svg
+                    id="solution-offered-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="solution-offered" class="mobile-submenu pl-4 mt-2">
+                  <!-- Parents -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('parents-submenu')"
+                    >
+                      Parents
+                      <svg
+                        id="parents-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="parents-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="security&privacy.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Security & Privacy
+                      </a>
+                      <a
+                        href="Interactive_learning.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Interactive learning
+                      </a>
+                      <a
+                        href="parental-control.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Parental Control
+                      </a>
+                      <a
+                        href="student-purchase-prog.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Student Purchase Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Educators -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('educators-submenu')"
+                    >
+                      Educators
+                      <svg
+                        id="educators-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="educators-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="educators_ATLC.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Teacher Learning Centre
+                      </a>
+                      <a
+                        href="educators_classroom&schoolwork.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Apple Classroom & School Work
+                      </a>
+                      <a
+                        href="educators_research&program.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Research & Program
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Leaders -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('leaders-submenu')"
+                    >
+                      Leaders
+                      <svg
+                        id="leaders-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="leaders-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="APLS.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        APLS
+                      </a>
+                      <a
+                        href="ASM.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        ASM
+                      </a>
+                      <a
+                        href="accessibility.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Accessibility
+                      </a>
+                      <a
+                        href="sustainability.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Sustainability
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- IT -->
+                  <div class="py-2">
+                    <button
+                      class="flex justify-between items-center w-full text-left text-gray-600 hover:text-red-600"
+                      onclick="toggleSubmenu('it-submenu')"
+                    >
+                      IT
+                      <svg
+                        id="it-submenu-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transform transition-transform duration-300"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    <div id="it-submenu" class="mobile-submenu pl-4">
+                      <a
+                        href="it_zero-touch-delpoy.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Zero Touch Deployment
+                      </a>
+                      <a
+                        href="it_dev-manag.html"
+                        class="block py-2 text-gray-500 hover:text-red-600 transition-colors duration-200"
+                      >
+                        Device Management
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Digital Transformation -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('digital-transformation')"
+                >
+                  Digital Transformation
+                  <svg
+                    id="digital-transformation-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="digital-transformation" class="mobile-submenu pl-4 mt-2">
+                  <a href="#" class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200">
+                    Multipurpose Labs with Mac
+                  </a>
+
+                  <a
+                    href="edu_fusion-combos.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper Fusion Combos
+                  </a>
+                  <a
+                    href="edu_bundle-service.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Sniper's Bundled Services
+                  </a>
+                </div>
+              </div>
+
+              <!-- Training -->
+              <div class="py-3 px-4">
+                <button
+                  class="flex justify-between items-center w-full text-left text-gray-800 hover:text-red-600 font-medium"
+                  onclick="toggleSubmenu('training')"
+                >
+                  Training
+                  <svg
+                    id="training-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-transform duration-300"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="training" class="mobile-submenu pl-4 mt-2">
+                  <a
+                    href="apple-training.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Apple Training
+                  </a>
+                  <a
+                    href="apple-training.html"
+                    class="block py-2 text-gray-600 hover:text-red-600 transition-colors duration-200"
+                  >
+                    Book APL Session
+                  </a>
+                </div>
+              </div>
+
+              <!-- Contact Us -->
+              <a
+                href="contact.html"
+                class="block py-3 px-4 text-gray-800 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-200"
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Content -->
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('main-header');
+            header.classList.remove('header-hidden');
+            header.classList.add('header-visible');
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+              mobileMenu.classList.toggle('open');
+
+              // Change icon based on menu state
+              const icon = mobileMenuButton.querySelector('svg');
+              if (mobileMenu.classList.contains('open')) {
+                // Change to X icon
+                icon.innerHTML = '<path d="M18 6L6 18M6 6l12 12" />';
+              } else {
+                // Change back to hamburger icon
+                icon.innerHTML =
+                  '<line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" />';
+              }
+            });
+
+            // Add scroll effect
+            window.addEventListener('scroll', () => {
+              if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+              } else {
+                header.classList.remove('shadow-lg');
+              }
+            });
+          });
+
+          // Mobile submenu toggle function
+          function toggleSubmenu(id) {
+            const submenu = document.getElementById(id);
+            const arrow = document.getElementById(id + '-arrow');
+
+            submenu.classList.toggle('open');
+
+            if (submenu.classList.contains('open')) {
+              arrow.style.transform = 'rotate(180deg)';
+            } else {
+              arrow.style.transform = 'rotate(0deg)';
+            }
+          }
+        </script>
+      </body>
+    </html>
+
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+    <!-- Include Header -->
+
+    <!-- Hero -->
+    <section class="overflow-hidden bg-gray-200 mt-24">
+      <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div class="flex flex-col items-center justify-between xl:flex-row">
+          <!-- Left -->
+          <div class="w-full max-w-xl mb-12 xl:pr-16 xl:mb-0 xl:w-7/12">
+            <h1 class="max-w-3xl mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Multipurpose Innovation Lab Powered by Mac & AATCE
+              <br class="hidden md:block" />
+              <span class="text-primary">Transform Learning. Empower Innovation. Build Future-Ready Talent.</span>
+            </h1>
+            <p class="max-w-xl text-base text-gray-700 md:text-lg">
+              The Multipurpose Innovation Lab is a next-generation learning space for universities and colleges that
+              integrates industry-grade tools, skill-based learning, and global Apple certifications. Powered by Mac and
+              aligned with the Apple Authorised Training Centre for Education (AATCE) framework, the lab brings
+              creativity, technology, and career-oriented learning under one ecosystem.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 mt-8">
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center bg-primary text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:bg-primary-dark"
+              >
+                Talk to an Expert
+              </a>
+            </div>
+          </div>
+          <!-- Right image -->
+          <div class="w-full max-w-xl xl:px-8 xl:w-5/12">
+            <div class="relative">
+              <svg
+                viewBox="0 0 52 24"
+                fill="currentColor"
+                class="absolute top-0 right-0 z-0 hidden w-32 -mt-8 -mr-10 text-primary lg:w-32 lg:-mr-8 sm:block"
+              >
+                <defs>
+                  <pattern id="pattern" x="0" y="0" width=".135" height=".30">
+                    <circle cx="1" cy="1" r=".7"></circle>
+                  </pattern>
+                </defs>
+                <rect fill="url(#pattern)" width="52" height="24"></rect>
+              </svg>
+              <img
+                src="components/aatce.jpg"
+                alt="Innovation Lab"
+                class="relative z-10 rounded-2xl shadow-2xl w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Lab -->
+
+    <section class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative">
+          <!-- Decorative elements -->
+          <div class="absolute -top-4 -left-4 w-8 h-8 bg-red-100 rounded-full opacity-50"></div>
+          <div class="absolute -bottom-4 -right-4 w-12 h-12 bg-blue-50 rounded-full opacity-30"></div>
+
+          <!-- Content container -->
+          <div
+            class="relative bg-gradient-to-r from-red-50 to-white rounded-2xl p-8 md:p-10 shadow-sm border border-gray-100"
+          >
+            <!-- Title with accent -->
+            <div class="mb-8">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-2 h-5 bg-red-500 rounded-full"></div>
+                <h2 class="text-3xl font-bold text-gray-900">Why a Multipurpose Innovation Lab?</h2>
+              </div>
+            </div>
+
+            <!-- Original paragraph content -->
+            <div class="text-gray-700 text-lg leading-relaxed space-y-4">
+              <p>
+                Modern industries demand graduates who can think creatively, design intelligently, and innovate rapidly.
+                With Mac at the center of the lab, institutions can support a wide array of disciplines — from
+                engineering to design, media, and research — using world-class software and Apple's professional
+                learning programs. This lab becomes a single hub for learning, creation, collaboration, and
+                certification.
+              </p>
+            </div>
+
+            <!-- Simple divider -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Capabilities -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Key Capabilities of the Lab</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Performance with Mac -->
+          <div
+            class="bg-white rounded-2xl p-7 shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300"
+          >
+            <h3 class="text-xl font-semibold mb-3">Industry-Leading Performance with Mac</h3>
+            <p class="text-gray-700 mb-4">
+              Mac provides unmatched power, reliability, and security for higher education workflows. Students can run:
+            </p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+              <li>Autodesk Fusion 360</li>
+              <li>Adobe Creative Cloud (Photoshop, Illustrator, Premiere Pro, XD)</li>
+              <li>MATLAB & Simulink</li>
+              <li>Xcode for App Development</li>
+              <li>Final Cut Pro & Logic Pro</li>
+              <li>Blender, Unity, Unreal Engine</li>
+              <li>Python, R, and developer tools</li>
+            </ul>
+            <p class="text-gray-600 mt-3">
+              Supports engineering, design, architecture, media studies, computer science, and management.
+            </p>
+          </div>
+
+          <!-- AATCE -->
+          <div
+            class="bg-white rounded-2xl p-7 shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300"
+          >
+            <h3 class="text-xl font-semibold mb-3">Apple Authorised Training Centre for Education (AATCE)</h3>
+            <p class="text-gray-700 mb-4">
+              Enable official Apple curriculum and certification to make students globally competitive.
+            </p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+              <li>App Development with Swift</li>
+              <li>Final Cut Pro</li>
+              <li>Logic Pro</li>
+              <li>Apple Teacher & Education Resources</li>
+              <li>On-campus Apple certification exams</li>
+              <li>Faculty enablement and professional development</li>
+              <li>Curriculum integration for credit-based and skill-based programs</li>
+              <li>Recognised branding as an AATCE</li>
+            </ul>
+          </div>
+
+          <!-- Multipurpose Setup -->
+          <div
+            class="bg-white rounded-2xl p-7 shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300"
+          >
+            <h3 class="text-xl font-semibold mb-3">A Truly Multipurpose Lab Setup</h3>
+            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+              <li>Innovation & Design Thinking workshops</li>
+              <li>Prototyping with Fusion 360, Blender, 3D tools</li>
+              <li>Content creation: photo, video, audio</li>
+              <li>App Development and Coding programs</li>
+              <li>AI/ML, Data Analytics & Research workflows</li>
+              <li>Entrepreneurship & startup incubation</li>
+              <li>Interdisciplinary student projects</li>
+              <li>Hub for competitions, hackathons, capstone projects</li>
+            </ul>
+          </div>
+
+          <!-- Mac-Based Benefits -->
+          <div
+            class="bg-white rounded-2xl p-7 shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300"
+          >
+            <h3 class="text-xl font-semibold mb-3">Why Mac-Based Labs Stand Out</h3>
+            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+              <li>Unified hardware + software ecosystem</li>
+              <li>Longer lifecycle and higher reliability</li>
+              <li>Seamless collaboration via AirPlay, iCloud & Classroom</li>
+              <li>Enterprise-grade security</li>
+              <li>Lower total cost of ownership</li>
+              <li>Preferred by industries in design, media, engineering, app dev</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who Benefits -->
+    <section class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Who Benefits?</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-semibold mb-2">Engineering Departments</h3>
+            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+              <li>Mechanical, Civil, Electrical, ECE, Mechatronics</li>
+              <li>CAD, simulation, prototyping</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-semibold mb-2">CSE, IT, AI/ML</h3>
+            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+              <li>App development, data science, dev tools</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-semibold mb-2">Biotechnology & Medical Engineering</h3>
+            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+              <li>Research apps, imaging tools</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-semibold mb-2">Design & Architecture</h3>
+            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+              <li>UI/UX design</li>
+              <li>Rendering, animation, modelling</li>
+              <li>Video editing, storytelling</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-semibold mb-2">Media, Journalism & Communication</h3>
+            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+              <li>Film production, editing, audio creation</li>
+              <li>AR/VR storytelling</li>
+              <li>Digital content creation</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-semibold mb-2">Management & Entrepreneurship</h3>
+            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+              <li>Business case development</li>
+              <li>Product design</li>
+              <li>Pitch decks & innovation labs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Proposition -->
+
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Title section -->
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Value Proposition for Institutions</h2>
+        </div>
+
+        <!-- Content box -->
+        <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 relative overflow-hidden">
+          <!-- Decorative elements -->
+          <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full -translate-y-8 translate-x-8"></div>
+          <div class="absolute bottom-0 left-0 w-16 h-16 bg-gray-50 rounded-full translate-y-8 -translate-x-8"></div>
+
+          <div class="relative z-10">
+            <!-- Checkmark list -->
+            <ul class="space-y-5">
+              <li class="flex items-start gap-4 p-1 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-red-100 text-blue-600 rounded-full flex items-center justify-center text-sm mt-0.5"
+                >
+                  ✓
+                </span>
+                <span class="text-gray-800 text-lg">Build a future-ready campus</span>
+              </li>
+              <li class="flex items-start gap-4 p-1 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-red-100 text-blue-600 rounded-full flex items-center justify-center text-sm mt-0.5"
+                >
+                  ✓
+                </span>
+                <span class="text-gray-800 text-lg">Attract top-tier students and faculty</span>
+              </li>
+              <li class="flex items-start gap-4 p-1 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-red-100 text-blue-600 rounded-full flex items-center justify-center text-sm mt-0.5"
+                >
+                  ✓
+                </span>
+                <span class="text-gray-800 text-lg">Enable industry-aligned skill development</span>
+              </li>
+              <li class="flex items-start gap-4 p-1 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-red-100 text-blue-600 rounded-full flex items-center justify-center text-sm mt-0.5"
+                >
+                  ✓
+                </span>
+                <span class="text-gray-800 text-lg">Improve placement outcomes with global certifications</span>
+              </li>
+              <li class="flex items-start gap-4 p-1 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-red-100 text-blue-600 rounded-full flex items-center justify-center text-sm mt-0.5"
+                >
+                  ✓
+                </span>
+                <span class="text-gray-800 text-lg">
+                  Support NEP 2020 goals: skill-based, interdisciplinary learning
+                </span>
+              </li>
+              <li class="flex items-start gap-4 p-1 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-red-100 text-blue-600 rounded-full flex items-center justify-center text-sm mt-0.5"
+                >
+                  ✓
+                </span>
+                <span class="text-gray-800 text-lg">Position your institution as innovation-driven</span>
+              </li>
+            </ul>
+
+            <!-- Bottom accent -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 md:py-20 lg:py-24 bg-[#E31922] text-white relative overflow-hidden">
+      <!-- Background elements -->
+      <div class="absolute top-0 left-0 w-full h-full bg-pattern opacity-10"></div>
+      <div
+        class="absolute -top-20 md:-top-30 -right-10 md:-right-20 w-40 h-40 md:w-60 md:h-60 bg-white/10 rounded-full"
+      ></div>
+      <div
+        class="absolute -bottom-10 md:-bottom-20 -left-10 md:-left-20 w-32 h-32 md:w-40 md:h-40 bg-white/10 rounded-full"
+      ></div>
+
+      <div class="relative max-w-4xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-3xl lg:max-w-4xl mx-auto">
+          <!-- Heading -->
+          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2">
+            Ready to Transform Your Educational Institution?
+          </h2>
+
+          <!-- Description -->
+
+          <!-- CTA Button -->
+          <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-2 sm:px-0">
+            <a
+              href="contact_us.html"
+              class="bg-white text-gray-600 hover:bg-gray-100 px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 rounded-xl font-semibold text-sm sm:text-base md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-white/20 flex items-center justify-center gap-2 w-full sm:w-auto"
+            >
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                ></path>
+              </svg>
+              Contact Us!
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-900 py-8">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-xl font-bold text-white text-center mb-6">Our Locations</h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <!-- Head Office - Chennai -->
+          <div
+            class="group bg-white rounded-lg p-3 border-l-3 border-red-600 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <div class="flex items-start justify-between">
+              <h3 class="text-xs font-bold text-red-600 mb-1">CHENNAI HQ</h3>
+            </div>
+            <div class="text-xs text-gray-600 leading-tight">
+              <p class="font-semibold text-gray-900 mb-1">Sniper Systems & Solutions</p>
+              <p class="text-gray-500">Moti Towers, 4th Floor, OMR</p>
+              <p class="text-gray-500 text-[11px]">Perungudi, Chennai – 600 096</p>
+            </div>
+          </div>
+
+          <!-- Sales Office - Chennai -->
+          <div
+            class="group bg-white rounded-lg p-3 border-l-3 border-red-600 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <h3 class="text-xs font-bold text-red-600 mb-1">CHENNAI SALES</h3>
+            <div class="text-xs text-gray-600 leading-tight">
+              <p class="font-semibold text-gray-900 mb-1">Sniper Systems & Solutions</p>
+              <p class="text-gray-500">Sri Durga Enclave, 3rd Floor</p>
+              <p class="text-gray-500 text-[11px]">Karapakkam, Chennai – 600097</p>
+            </div>
+          </div>
+
+          <!-- Bangalore -->
+          <div
+            class="group bg-white rounded-lg p-3 border-l-3 border-red-600 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <h3 class="text-xs font-bold text-red-600 mb-1">BANGALORE</h3>
+            <div class="text-xs text-gray-600 leading-tight">
+              <p class="font-semibold text-gray-900 mb-1">Sniper Systems & Solutions</p>
+              <p class="text-gray-500">Sanctuary, 1st-3rd Floor</p>
+              <p class="text-gray-500 text-[11px]">BTM 2nd Stage, Bengaluru – 560068</p>
+            </div>
+          </div>
+
+          <!-- Hyderabad -->
+          <div
+            class="group bg-white rounded-lg p-3 border-l-3 border-red-600 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <h3 class="text-xs font-bold text-red-600 mb-1">HYDERABAD</h3>
+            <div class="text-xs text-gray-600 leading-tight">
+              <p class="font-semibold text-gray-900 mb-1">Sniper Systems & Solutions</p>
+              <p class="text-gray-500">Kub Towers, 4th Floor</p>
+              <p class="text-gray-500 text-[11px]">Gachibowli, Hyderabad – 500032</p>
+            </div>
+          </div>
+
+          <!-- Gurugram -->
+          <div
+            class="group bg-white rounded-lg p-3 border-l-3 border-red-600 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <h3 class="text-xs font-bold text-red-600 mb-1">GURUGRAM</h3>
+            <div class="text-xs text-gray-600 leading-tight">
+              <p class="font-semibold text-gray-900 mb-1">Sniper Systems & Solutions</p>
+              <p class="text-gray-500">Fume Coworking, 2nd Floor</p>
+              <p class="text-gray-500 text-[11px]">Udyog Vihar, Gurugram – 122001</p>
+            </div>
+          </div>
+
+          <!-- Other Cities -->
+          <div
+            class="group bg-gradient-to-br from-red-600 to-red-700 rounded-lg p-3 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
+          >
+            <div class="flex items-center mb-2">
+              <svg class="w-4 h-4 text-white/90 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                />
+              </svg>
+              <h3 class="text-xs font-bold text-white">ALSO IN</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-white text-[11px] bg-white/20 px-2 py-1 rounded">Coimbatore</span>
+              <span class="text-white text-[11px] bg-white/20 px-2 py-1 rounded">Kochi</span>
+              <span class="text-white text-[11px] bg-white/20 px-2 py-1 rounded">Vijayawada</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script>
+      fetch('components/header.html')
+        .then(response => response.text())
+        .then(data => {
+          const header = document.getElementById('header');
+          header.innerHTML = data;
+        });
+
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer').innerHTML = data;
+        });
+    </script>
+
+    <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
+  </body>
+</html>

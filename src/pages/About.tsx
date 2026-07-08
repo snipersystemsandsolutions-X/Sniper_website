@@ -1,13 +1,12 @@
-import { Layout } from "@/components/Layout";
 import Lottie from "@/components/CustomerService";
+import { Layout } from "@/components/Layout";
+import Lottiee from "@/components/people";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, CheckCircle, Shield, Users } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
-import { useEffect, useRef, useState } from "react";
-import Lottiee from "@/components/people";
-import React from "react";
-import { Helmet } from "react-helmet-async";
+import React, { useEffect, useRef, useState } from "react";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -132,6 +131,63 @@ const ParallaxImage = ({ src, alt, className }: { src: string; alt: string; clas
         className="w-full h-full object-cover scale-110"
         style={{ willChange: "transform" }}
       />
+    </div>
+  );
+};
+
+// ========================================================
+// ✦ GSAP: Sticky Hero Stage (anime.js-style scroll-driven object)
+// ========================================================
+const HeroStage = () => {
+  const wrapRef = useRef<HTMLDivElement>(null);   // tall scroll-distance container
+  const stageRef = useRef<HTMLDivElement>(null);  // sticky stage
+  const imgWrapRef = useRef<HTMLDivElement>(null); // animated object
+
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const imgWrap = imgWrapRef.current;
+    if (!wrap || !imgWrap) return;
+
+    const tween = gsap.fromTo(
+      imgWrap,
+      { scale: 0.78, borderRadius: "3rem", yPercent: 6 },
+      {
+        scale: 1,
+        borderRadius: "1.25rem",
+        yPercent: -6,
+        ease: "none",
+        scrollTrigger: {
+          trigger: wrap,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+      }
+    );
+    return () => { tween.scrollTrigger?.kill(); tween.kill(); };
+  }, []);
+
+  return (
+    // Tall wrapper creates the scroll "runway" — controls how long the object stays pinned/animating
+   <div ref={wrapRef} className="relative h-[120vh] sm:h-[130vh]">
+      {/* Sticky stage — keeps the object visually centered/anchored on screen */}
+      <div
+        ref={stageRef}
+        className="sticky top-1 flex items-center justify-center px-2 sm:px-2"
+      >
+        <div
+          ref={imgWrapRef}
+          className="relative w-full max-w-6xl bg-gradient-to-br from-gray-100 to-gray-200 shadow-2xl overflow-hidden h-60 sm:h-96 md:h-[500px] lg:h-[600px]"
+          style={{ willChange: "transform, border-radius", transformOrigin: "center center" }}
+        >
+          <ParallaxImage
+            src="https://i.postimg.cc/Pq2w9g4x/About-Us-Page.webp"
+            alt="Team Collaboration"
+            className="w-full h-full"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+        </div>
+      </div>
     </div>
   );
 };
@@ -421,26 +477,38 @@ const WhyChooseUsSection = () => {
       description: "Innovative technology and streamlined processes that improve efficiency across your entire business.",
     },
     {
-      img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80",
+      img: "https://i.postimg.cc/h4s7N1N7/cybersecurity-professional-work.jpg",
       title: "Robust Cybersecurity",
       description: "Enterprise-grade protection that shields your data, infrastructure, and people from evolving threats.",
     },
     {
-      img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+      img: "https://i.postimg.cc/260svtXD/concept.jpg",
       title: "Cloud-First Architecture",
       description: "Scalable, resilient cloud environments tailored to your workloads for speed and cost efficiency.",
     },
     {
-      img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+      img: "https://i.postimg.cc/YCs6ZzGz/diverse-business-experts-sharing-ideas-corporate-growth-planning.jpg",
       title: "Expert Engineering Team",
       description: "A world-class team of engineers with deep domain expertise ready to tackle your toughest challenges.",
     },
-    {
-      img: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
-      title: "Proactive Monitoring",
-      description: "Continuous surveillance of your systems so issues are detected and resolved before they impact you.",
-    },
+
   ];
+
+
+     // Jotform Chatbot
+  useEffect(() => {
+    const script = document.createElement("script");
+
+    script.src =
+      "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -588,6 +656,9 @@ const About = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Voiceflow chatbot integration
+
+
   // GSAP hero word stagger
   const gsapHeroRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
@@ -603,22 +674,7 @@ const About = () => {
   }, []);
 
   // Hero image scale-on-scroll
-  const heroImgWrapRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = heroImgWrapRef.current;
-    if (!el) return;
-    const tween = gsap.fromTo(
-      el,
-      { scale: 0.82, borderRadius: "2.5rem" },
-      {
-        scale: 1,
-        borderRadius: "1.5rem",
-        ease: "none",
-        scrollTrigger: { trigger: el, start: "top 95%", end: "top 10%", scrub: 1.4 },
-      }
-    );
-    return () => { tween.scrollTrigger?.kill(); tween.kill(); };
-  }, []);
+
 
   const faqs = [
     {
@@ -636,7 +692,7 @@ const About = () => {
   ];
 
   const stats = [
-    { icon: Users,       number: "1900", suffix: "+", label: "Happy Customers" },
+    { icon: Users,       number: "1800", suffix: "+", label: "Happy Customers" },
     { icon: CheckCircle, number: "100",  suffix: "%", label: "Client Satisfaction" },
     { icon: Shield,      number: null,   label: "World Class", staticText: "World Class" },
   ];
@@ -650,7 +706,7 @@ const About = () => {
 
   return (
     <Layout>
-      <Helmet>
+      <>
         <title>About Sniper Systems | IT Solutions & Managed Services Company in India</title>
         <meta name="description" content="Learn about Sniper Systems, a leading IT solutions provider in India offering IT infrastructure, managed services, cloud solutions, and enterprise technology services for businesses." />
         <meta name="keywords" content="about sniper systems, IT company in India, IT solutions provider Chennai, managed IT services company India" />
@@ -672,49 +728,49 @@ const About = () => {
         <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"Organization","name":"Sniper Systems","url":"https://sniperindia.com","logo":"https://sniperindia.com/wp-content/uploads/2023/09/logo.png","description":"Sniper Systems is a leading IT solutions provider delivering enterprise IT infrastructure, managed services, and cloud solutions across India.","sameAs":["https://www.linkedin.com/company/sniper-systems"]}`}</script>
         <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"LocalBusiness","name":"Sniper Systems","image":"https://sniperindia.com/wp-content/uploads/2023/09/logo.png","url":"https://sniperindia.com","telephone":"+91-44-00000000","address":{"@type":"PostalAddress","addressLocality":"Chennai","addressRegion":"Tamil Nadu","addressCountry":"India"},"geo":{"@type":"GeoCoordinates","latitude":13.0827,"longitude":80.2707}}`}</script>
         <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"AboutPage","name":"About Sniper Systems","url":"https://sniperindia.com/about-us/","description":"Learn more about Sniper Systems, an IT solutions provider offering enterprise technology services across India."}`}</script>
-      </Helmet>
+
+
+
+
+
+
+
+
+
+      </>
 
       {showWhiteScreen && (
         <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />
       )}
 
       {/* ── Hero ── */}
-      <section className="relative bg-white pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16">
-            <h1
-              ref={gsapHeroRef}
-              className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight"
-            >
-              {["Creating", "a", "better", "IT", "solutions"].map((word, i) => (
-                <span key={i} className="gsap-word inline-block opacity-0 mr-[0.2em] sm:mr-[0.25em] last:mr-0">
-                  {word}
-                  {word === "better" ? <br /> : null}
-                </span>
-              ))}
-            </h1>
-            <FadeUp delay={1.9}>
-              <p className="text-base sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-2 sm:px-0 mb-10">
-                Let us handle your IT, so you can focus on what matters. Our expertise will manage your
-                technology needs efficiently and securely.
-              </p>
-            </FadeUp>
-          </div>
+      {/* ── Hero ── */}
+<section className="relative bg-white pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
+  <div className="relative z-10 max-w-7xl mx-auto">
+   <div className="text-center mb-2 sm:mb-4">
+      <h1
+        ref={gsapHeroRef}
+        className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight"
+      >
+        {["Creating", "a", "better", "IT", "solutions"].map((word, i) => (
+          <span key={i} className="gsap-word inline-block opacity-0 mr-[0.2em] sm:mr-[0.25em] last:mr-0">
+            {word}
+            {word === "better" ? <br /> : null}
+          </span>
+        ))}
+      </h1>
+      <FadeUp delay={1.9}>
+        <p className="text-base sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-2 sm:px-0 mb-10">
+          Let us handle your IT, so you can focus on what matters. Our expertise will manage your
+          technology needs efficiently and securely.
+        </p>
+      </FadeUp>
+    </div>
+  </div>
+</section>
 
-          <div className="max-w-6xl mx-auto pt-8 sm:pt-12">
-            <FadeUp delay={0.25}>
-              <div
-                ref={heroImgWrapRef}
-                className="relative bg-gradient-to-br from-gray-100 to-gray-200 shadow-2xl overflow-hidden h-60 sm:h-96 md:h-[500px] lg:h-[600px]"
-                style={{ borderRadius: "2.5rem", willChange: "transform, border-radius", transformOrigin: "center center" }}
-              >
-                <ParallaxImage src="https://i.postimg.cc/Pq2w9g4x/About-Us-Page.webp" alt="Team Collaboration" className="w-full h-full" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-              </div>
-            </FadeUp>
-          </div>
-        </div>
-      </section>
+{/* ── Sticky scroll-driven hero stage ── */}
+<HeroStage />
 
       <MarqueeTicker />
 
@@ -793,7 +849,7 @@ const About = () => {
           <div className="mb-10 sm:mb-16">
             <FadeUp>
               <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                Trusted by 1900+<br />Happy Customers
+                Trusted by 1800+<br />Happy Customers
               </h2>
             </FadeUp>
             <div className="w-full h-px bg-gray-300" />
@@ -838,7 +894,7 @@ const About = () => {
         </div>
       </FadeUp>
 
-      {/* ── Featured Image ── */}
+      {/* ── Featured Image ──
       <section className="relative bg-white py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <FadeUp>
@@ -857,6 +913,7 @@ const About = () => {
           </FadeUp>
         </div>
       </section>
+      */}
 
       {/* ── CTA ── */}
       <CTASection />
@@ -866,7 +923,7 @@ const About = () => {
         {showScrollTop && (
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}

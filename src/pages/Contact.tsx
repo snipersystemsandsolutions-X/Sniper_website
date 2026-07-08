@@ -4,8 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
-import { useCallback, useEffect, useRef, useState } from "react";
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 
@@ -207,6 +206,23 @@ const LocationCard = ({ loc, index, locInView }: { loc: any; index: number; locI
   const imgRef = useRef<HTMLImageElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
 
+
+     // Jotform Chatbot
+  useEffect(() => {
+    const script = document.createElement("script");
+
+    script.src =
+      "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  
   useEffect(() => {
     const img = imgRef.current;
     const wrap = wrapRef.current;
@@ -533,6 +549,7 @@ const FORMSUBMIT_EMAIL = "snipersystemsandsolutions@gmail.com";
 const Contact = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showWhiteScreen, setShowWhiteScreen] = useState(true);
+  const [viewMode, setViewMode] = useState<"visual" | "addresses">("visual");
 
   const [toastVisible, setToastVisible]   = useState(false);
   const [toastMounted, setToastMounted]   = useState(false);
@@ -612,7 +629,7 @@ const Contact = () => {
   const ease = [0.16, 1, 0.3, 1] as const;
 
   const contactInfo = [
-    { icon: MapPin, label: "OUR OFFICE",    content: "Chennai | Bangalore | Hyderabad | Coimbatore | Kochi | Gurugram | Vijayawada" },
+    { icon: MapPin, label: "OUR OFFICES",    content: "Chennai (HQ) | Bangalore | Hyderabad | Gurugram | Coimbatore | Kochi | Vijayawada" },
     { icon: Phone,  label: "PHONE",         content: "+91 8939301100" },
     { icon: Mail,   label: "EMAIL",         content: "enquiry@sniperindia.com" },
     { icon: Clock,  label: "WORKING HOURS", content: "Mon - Fri: 9:30 AM - 6:30 PM" },
@@ -623,7 +640,7 @@ const Contact = () => {
     { city: "Bangalore",  state: "Karnataka",      tag: "Regional Office", img: "https://i.postimg.cc/T1rQ8gxv/bangalore.jpg" },
     { city: "Hyderabad",  state: "Telangana",      tag: "Regional Office", img: "https://images.unsplash.com/photo-1588416936097-41850ab3d86d?w=800&q=80" },
     { city: "Gurugram",   state: "Haryana",        tag: "Regional Office", img: "https://i.postimg.cc/3xy4d7yw/1.webp" },
-    { city: "Coimbatore", state: "Tamil Nadu",     tag: "Branch Office",   img: "https://i.postimg.cc/d3mRNFRh/Coimbatore-cover.jpg" },
+    { city: "Coimbatore", state: "Tamil Nadu",     tag: "Branch Office",   img: "https://i.postimg.cc/3JQfdnWz/Ev-Dufkz-VEAA5W1W.jpg" },
     { city: "Kochi",      state: "Kerala",         tag: "Branch Office",   img: "https://i.postimg.cc/bvsTyKPH/kochi.jpg" },
     { city: "Vijayawada", state: "Andhra Pradesh", tag: "Branch Office",   img: "https://i.postimg.cc/ZKwpWVwh/Prakasham-Barriage-Vijayawada.jpg" },
   ];
@@ -782,6 +799,12 @@ const Contact = () => {
           `}
 </script>
 
+
+
+
+
+
+
         {/* CONTACT PAGE SCHEMA */}
 
         <script type="application/ld+json">
@@ -794,6 +817,10 @@ const Contact = () => {
             "description": "Contact Sniper Systems for IT solutions, managed services, and enterprise technology support."
           }
           `}
+
+
+
+
 </script>
 
       </Helmet>
@@ -894,10 +921,11 @@ const Contact = () => {
                     placeholder="your.email@company.com"
                   />
                   <AnimatedInput
-                    label="Phone"
+                    label="Phone *"
                     id="phone"
                     type="tel"
                     value={formData.phone}
+                    required
                     onChange={e => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+91 1234 567 890"
                   />
@@ -984,7 +1012,7 @@ const Contact = () => {
       {/* ✦ GSAP Marquee */}
       <MarqueeTicker items={["Chennai", "Bangalore", "Hyderabad", "Coimbatore", "Kochi", "Gurugram", "Vijayawada", "Pan India"]} />
 
-      {/* ==================== LOCATIONS ==================== */}
+      {/* ==================== UNIFIED LOCATIONS SECTION ==================== */}
       <section className="relative bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.h2
@@ -994,28 +1022,200 @@ const Contact = () => {
             animate={locInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, ease }}
           >
-            Visit our<br />locations
+            Our<br />Locations
           </motion.h2>
 
-          {/* Responsive grid:
-              - Mobile (< sm): 2 cols, first card spans full width
-              - sm–md: 2 cols
-              - lg+: 4 cols
-          */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-            {locations.map((loc, i) => (
-              <LocationCard key={loc.city} loc={loc} index={i} locInView={locInView} />
-            ))}
-          </div>
-
-          <motion.p
-            className="mt-6 sm:mt-8 text-xs sm:text-sm text-gray-400 text-center"
-            initial={{ opacity: 0 }}
-            animate={locInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, ease, delay: 0.6 }}
+          {/* Toggle Tabs */}
+          <motion.div
+            className="flex gap-4 mb-8 sm:mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={locInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease, delay: 0.1 }}
           >
-            Sniper Systems and Solutions Pvt. Ltd. — Serving clients across India
-          </motion.p>
+            <button
+              onClick={() => setViewMode("visual")}
+              className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 ${
+                viewMode === "visual"
+                  ? "bg-gray-900 text-white"
+                  : "border-2 border-gray-300 text-gray-900 hover:border-gray-900"
+              }`}
+            >
+              View Locations
+            </button>
+            <button
+              onClick={() => setViewMode("addresses")}
+              className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 ${
+                viewMode === "addresses"
+                  ? "bg-gray-900 text-white"
+                  : "border-2 border-gray-300 text-gray-900 hover:border-gray-900"
+              }`}
+            >
+              Office Addresses
+            </button>
+          </motion.div>
+
+          {/* Location Cards View */}
+          <AnimatePresence mode="wait">
+            {viewMode === "visual" && (
+              <motion.div
+                key="locations-view"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease }}
+                className="space-y-6"
+              >
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+                  {locations.map((loc, i) => (
+                    <LocationCard key={loc.city} loc={loc} index={i} locInView={locInView} />
+                  ))}
+                </div>
+
+                <motion.p
+                  className="mt-6 sm:mt-8 text-xs sm:text-sm text-gray-400 text-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, ease, delay: 0.2 }}
+                >
+                  Sniper Systems and Solutions Pvt. Ltd. — Serving clients across India
+                </motion.p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Office Addresses View */}
+          <AnimatePresence mode="wait">
+            {viewMode === "addresses" && (
+              <motion.div
+                key="addresses-view"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease }}
+                className="space-y-6"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+                  {/* CHENNAI */}
+                  <motion.div
+                    className="rounded-2xl p-6 sm:p-8 border-2 border-gray-200 hover:border-gray-900 transition-colors duration-300"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease, delay: 0.1 }}
+                  >
+                    <div className="flex items-start gap-4 mb-5 sm:mb-6">
+                      <div className="flex-shrink-0">
+                        <MapPin className="w-6 h-6 sm:w-7 sm:h-7 text-gray-900" />
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900">Chennai</h3>
+                    </div>
+                    <div className="space-y-4 ml-10">
+                      <div>
+                        <p className="text-xs sm:text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">Headquarters</p>
+                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                          3rd Floor, Sri Durga Enclave - Phase II,<br />
+                          Plot no: 22 & 23, 2nd River View, Residency, Colony,<br />
+                          Karapakkam, Chennai, Tamil Nadu 600097
+                        </p>
+                      </div>
+                      <div className="pt-3 border-t border-gray-200">
+                        <p className="text-xs sm:text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">Branch Office</p>
+                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                          4th Floor, Moti Towers,<br />
+                          No.131/2A, Rajiv Gandhi Salai,<br />
+                          opp. Apollo Hospital, Perungudi,<br />
+                          Chennai, Tamil Nadu 600096
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* HYDERABAD */}
+                  <motion.div
+                    className="rounded-2xl p-6 sm:p-8 border-2 border-gray-200 hover:border-gray-900 transition-colors duration-300"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease, delay: 0.15 }}
+                  >
+                    <div className="flex items-start gap-4 mb-5 sm:mb-6">
+                      <div className="flex-shrink-0">
+                        <MapPin className="w-6 h-6 sm:w-7 sm:h-7 text-gray-900" />
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900">Hyderabad</h3>
+                    </div>
+                    <div className="space-y-4 ml-10">
+                      <div>
+                        <p className="text-xs sm:text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">Regional Office</p>
+                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                          401-B, Plot No. 81, Kub Towers,<br />
+                          Telecom Nagar Extension, Gachibowli,<br />
+                          Hyderabad, Telangana 500032
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* BANGALORE */}
+                  <motion.div
+                    className="rounded-2xl p-6 sm:p-8 border-2 border-gray-200 hover:border-gray-900 transition-colors duration-300"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease, delay: 0.2 }}
+                  >
+                    <div className="flex items-start gap-4 mb-5 sm:mb-6">
+                      <div className="flex-shrink-0">
+                        <MapPin className="w-6 h-6 sm:w-7 sm:h-7 text-gray-900" />
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900">Bangalore</h3>
+                    </div>
+                    <div className="space-y-4 ml-10">
+                      <div>
+                        <p className="text-xs sm:text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">Regional Office</p>
+                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                          Sanctuary, 1st to 3rd Floor,<br />
+                          Site No. 102, 36th Main, BTM 2nd Stage,<br />
+                          Bengaluru, Karnataka 560068
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* GURUGRAM */}
+                  <motion.div
+                    className="rounded-2xl p-6 sm:p-8 border-2 border-gray-200 hover:border-gray-900 transition-colors duration-300"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease, delay: 0.25 }}
+                  >
+                    <div className="flex items-start gap-4 mb-5 sm:mb-6">
+                      <div className="flex-shrink-0">
+                        <MapPin className="w-6 h-6 sm:w-7 sm:h-7 text-gray-900" />
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900">Gurugram</h3>
+                    </div>
+                    <div className="space-y-4 ml-10">
+                      <div>
+                        <p className="text-xs sm:text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">Regional Office</p>
+                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                          Fume Coworking, 2nd Floor,<br />
+                          Plot- 76-D, Phase IV, Udyog Vihar,<br />
+                          Sector 18, Gurugram, Haryana 122001
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                <motion.p
+                  className="mt-10 sm:mt-14 text-center text-sm sm:text-base text-gray-600 leading-relaxed"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, ease, delay: 0.3 }}
+                >
+                  We also have branch offices in Coimbatore, Kochi, and Vijayawada. Contact us for more information about visiting any of our locations.
+                </motion.p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
@@ -1027,7 +1227,7 @@ const Contact = () => {
         {showScrollTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-6 sm:bottom-8 right-4 sm:right-8 w-11 sm:w-14 h-11 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-colors duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 sm:bottom-8 left-4 sm:left-8 w-11 sm:w-14 h-11 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-colors duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.5, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
