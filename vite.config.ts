@@ -3,7 +3,7 @@ import path from "path";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 import viteCompression from "vite-plugin-compression";
-import sitemap from "vite-plugin-sitemap";
+
 
 const routes = [
   "/",
@@ -61,10 +61,6 @@ const routes = [
 export default defineConfig({
   plugins: [
     react(),
-    sitemap({
-      hostname: "https://www.sniperindia.com",
-      generateRobotsTxt: true,
-    }),
   ],
 
   resolve: {
