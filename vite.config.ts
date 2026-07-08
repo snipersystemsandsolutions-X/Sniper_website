@@ -62,14 +62,8 @@ export default defineConfig({
   plugins: [
     react(),
     sitemap({
-      hostname: "https://sniperindia.com",
-      dynamicRoutes: routes,
-    }),
-    viteCompression(),
-    visualizer({
-      open: true,
-      gzipSize: true,
-      brotliSize: true,
+      hostname: "https://www.sniperindia.com",
+      generateRobotsTxt: true,
     }),
   ],
 
