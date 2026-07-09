@@ -9,6 +9,7 @@ import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import Lottie from "@/components/boyworking";
 import Lottiee from "@/components/morphing";
 import { StarfieldBackground } from "@/components/StarfieldBackground";
+import Strands from './Strands';
 
 
 import imgSrc from "@/assets/sniper-logo-black.png";
@@ -31,7 +32,7 @@ const SniperScopeCursor = () => {
 
 
 
-   // Jotform Chatbot
+  // Jotform Chatbot
   useEffect(() => {
     const script = document.createElement("script");
 
@@ -538,11 +539,11 @@ const BannerSliderSection = () => {
       link: "partners/apple/index.html"
     },
     {
-  title: "APPLE PREMIUM EDUCATION PARTNER",
-  description: "Apple devices like MacBook, iPad, and iMac designed for classrooms, labs, and smarter campus learning.",
-  image: "https://i.postimg.cc/0NQnVgDJ/hero-nw00556jozu6-large-2x.jpg", // (replace if you have better asset)
-  link: "partners/apple-education/index.html"
-},
+      title: "APPLE PREMIUM EDUCATION PARTNER",
+      description: "Apple devices like MacBook, iPad, and iMac designed for classrooms, labs, and smarter campus learning.",
+      image: "https://i.postimg.cc/0NQnVgDJ/hero-nw00556jozu6-large-2x.jpg", // (replace if you have better asset)
+      link: "partners/apple-education/index.html"
+    },
     {
       title: "SCALABLE CLOUD INNOVATION",
       description: "Secure cloud infrastructure, smooth migration, and optimized management for modern digital enterprises.",
@@ -627,38 +628,38 @@ const BannerSliderSection = () => {
 // NEW TOP HERO SECTION
 // ========================================================
 const logoCompanies = [
-  { name: "Apple",       logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",                                                    w: 108, h: 38 },
-  { name: "Lenovo",      logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Lenovo_%282015%29.svg",                                                   w: 98, h: 38 },
-  { name: "Microsoft",   logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg",                                           w: 108, h: 28 },
-  { name: "NVIDIA",      logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg",                                                         w: 108, h: 28 },
-  { name: "Autodesk",    logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/Autodesk_Logo_2021.svg",                                                  w: 108, h: 48 },
-  { name: "Unreal",      logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Unreal_Engine_Logo_%28new_typeface%29.svg",                               w: 118, h: 58 },
-  { name: "Cisco",       logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg",                                                w: 108, h: 38 },
-  { name: "Unity",       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/1280px-Unity_Technologies_logo.svg.png", w: 108, h: 38 },
-  { name: "Adobe",       logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Adobe_Corporate_wordmark.svg",                                            w: 108, h: 28 },
-  { name: "Dell",        logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg",                                                      w: 108, h: 58 },
-  { name: "HP",          logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg",                                                        w: 108, h: 58 },
-  { name: "AWS",         logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",                                            w: 108, h: 48 },
-  { name: "Samsung",     logo: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Samsung_Black_icon.svg",                                                  w: 108, h: 28 },
-  { name: "Acer",        logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/Acer_2011.svg",                                                           w: 108, h: 28 },
-  { name: "Asus",        logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg",                                                           w: 108, h: 25 },
-  { name: "Google",      logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",                                                    w: 108, h: 38 },
-  { name: "Supermicro",  logo: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Super_Micro_Computer_Logo.svg",                                           w: 108, h: 40 },
-  { name: "Yubico",      logo: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Yubico_logo.svg",                                                         w: 108, h: 25 },
-  { name: "Poly",        logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Poly_Inc._Logo.svg",                                                      w: 108, h: 38 },
-  { name: "Epos",        logo: "https://upload.wikimedia.org/wikipedia/en/5/58/Epos-logo.png",                                                                w: 108, h: 28 },
-  { name: "Eizo",        logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/EIZO_Logo.svg",                                                           w: 100, h: 68 },
-  { name: "View Sonic",  logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/ViewSonic_logo.svg",                                                      w: 108, h: 28 },
-  { name: "Belkin",      logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/Belkin_logo_2024.svg",                                                    w: 108, h: 28 },
-  { name: "Honey well",  logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Honeywell_logo.svg",                                                      w: 108, h: 28 },
-  { name: "Logitech",    logo: "https://upload.wikimedia.org/wikipedia/commons/1/17/Logitech_logo.svg",                                                       w: 108, h: 28 },
-  { name: "Jabra",       logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Jabra_Logo.png",                                                          w: 108, h: 28 },
-  { name: "Benq",        logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/BenQ_wordmark.svg",                                                       w: 95, h: 28 },
-  { name: "SketchUp",    logo: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Brand_Wordmark_for_SketchUp.png",                                         w: 108, h: 28 },
-  { name: "Sap",         logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg",                                                       w: 108, h: 28 },
-  { name: "LG",          logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/LG_logo_%282014%29.svg",                                                  w: 108, h: 28 },
-  { name: "Keyshot",     logo: "https://www.freelogovectors.net/wp-content/uploads/2018/11/keyshot-logo.png",                                                 w: 108, h: 28 },
-  { name: "Jumpcloud",   logo: "https://upload.wikimedia.org/wikipedia/en/4/47/JumpCloud_Logo.svg",                                                           w: 108, h: 38 },
+  { name: "Apple", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg", w: 108, h: 38 },
+  { name: "Lenovo", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Lenovo_%282015%29.svg", w: 98, h: 38 },
+  { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", w: 108, h: 28 },
+  { name: "NVIDIA", logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg", w: 108, h: 28 },
+  { name: "Autodesk", logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/Autodesk_Logo_2021.svg", w: 108, h: 48 },
+  { name: "Unreal", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Unreal_Engine_Logo_%28new_typeface%29.svg", w: 118, h: 58 },
+  { name: "Cisco", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg", w: 108, h: 38 },
+  { name: "Unity", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/1280px-Unity_Technologies_logo.svg.png", w: 108, h: 38 },
+  { name: "Adobe", logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Adobe_Corporate_wordmark.svg", w: 108, h: 28 },
+  { name: "Dell", logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg", w: 108, h: 58 },
+  { name: "HP", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg", w: 108, h: 58 },
+  { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", w: 108, h: 48 },
+  { name: "Samsung", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Samsung_Black_icon.svg", w: 108, h: 28 },
+  { name: "Acer", logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/Acer_2011.svg", w: 108, h: 28 },
+  { name: "Asus", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg", w: 108, h: 25 },
+  { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", w: 108, h: 38 },
+  { name: "Supermicro", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Super_Micro_Computer_Logo.svg", w: 108, h: 40 },
+  { name: "Yubico", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Yubico_logo.svg", w: 108, h: 25 },
+  { name: "Poly", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Poly_Inc._Logo.svg", w: 108, h: 38 },
+  { name: "Epos", logo: "https://upload.wikimedia.org/wikipedia/en/5/58/Epos-logo.png", w: 108, h: 28 },
+  { name: "Eizo", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/EIZO_Logo.svg", w: 100, h: 68 },
+  { name: "View Sonic", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/ViewSonic_logo.svg", w: 108, h: 28 },
+  { name: "Belkin", logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/Belkin_logo_2024.svg", w: 108, h: 28 },
+  { name: "Honey well", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Honeywell_logo.svg", w: 108, h: 28 },
+  { name: "Logitech", logo: "https://upload.wikimedia.org/wikipedia/commons/1/17/Logitech_logo.svg", w: 108, h: 28 },
+  { name: "Jabra", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Jabra_Logo.png", w: 108, h: 28 },
+  { name: "Benq", logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/BenQ_wordmark.svg", w: 95, h: 28 },
+  { name: "SketchUp", logo: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Brand_Wordmark_for_SketchUp.png", w: 108, h: 28 },
+  { name: "Sap", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg", w: 108, h: 28 },
+  { name: "LG", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/LG_logo_%282014%29.svg", w: 108, h: 28 },
+  { name: "Keyshot", logo: "https://www.freelogovectors.net/wp-content/uploads/2018/11/keyshot-logo.png", w: 108, h: 28 },
+  { name: "Jumpcloud", logo: "https://upload.wikimedia.org/wikipedia/en/4/47/JumpCloud_Logo.svg", w: 108, h: 38 },
 ];
 
 const NewTopHeroSection = () => {
@@ -1023,12 +1024,12 @@ const ClientTypesSection = ({ clientTypes }: { clientTypes: any[] }) => {
           {clientTypes.map((client, index) => (
             <motion.div key={index} className="bg-white rounded-xl overflow-hidden" initial={{ opacity: 0, y: 50 }} animate={rightInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}>
               <img
-  src={client.image}
-  alt={client.title}
-  draggable="false"
-  onDragStart={(e) => e.preventDefault()}
-  className="w-full h-64 object-cover select-none pointer-events-none"
-/>
+                src={client.image}
+                alt={client.title}
+                draggable="false"
+                onDragStart={(e) => e.preventDefault()}
+                className="w-full h-64 object-cover select-none pointer-events-none"
+              />
               <div className="h-16 flex items-center justify-center p-4">
                 <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">{client.title}</h3>
               </div>
@@ -1109,14 +1110,14 @@ const SolutionCard = ({ solution, index }: { solution: any; index: number }) => 
     <motion.div ref={ref} className="grid grid-cols-1 gap-4 sm:gap-6 items-start pb-8 sm:pb-10 md:pb-12 border-b border-gray-300" initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: (index % 3) * 0.08 }}>
       <motion.div className="w-full overflow-hidden rounded-2xl border border-gray-200" whileHover={{ scale: 1.02 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}>
         <motion.img
-  src={solution.img}
-  alt={solution.title}
-  draggable="false"
-  onDragStart={(e) => e.preventDefault()}
-  className="w-full h-44 sm:h-48 object-cover select-none"
-  whileHover={{ scale: 1.06 }}
-  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-/>
+          src={solution.img}
+          alt={solution.title}
+          draggable="false"
+          onDragStart={(e) => e.preventDefault()}
+          className="w-full h-44 sm:h-48 object-cover select-none"
+          whileHover={{ scale: 1.06 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        />
       </motion.div>
       <h3 className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider">{solution.title}</h3>
       <p className="text-base sm:text-lg text-gray-800 leading-relaxed">{solution.description}</p>
@@ -1161,12 +1162,12 @@ const Index = () => {
   const solutions = [
     { title: "AV Solutions", description: "Providing innovative audio-visual solutions tailored for business environments.", img: "https://i.postimg.cc/JhBh5MNr/AV-soln.jpg", link: "/solutions/av-solutions" },
     { title: "Cloud Solutions", description: "Delivering scalable and secure cloud services to enhance performance, flexibility, and business growth.", img: "https://i.postimg.cc/DZT7Qsfd/cloud.jpg", link: "/solutions/clould-solutions" },
-        { title: "IT Asset Disposal Plans", description: "Ensuring secure and environmentally responsible disposal of IT assets.", img: "https://i.postimg.cc/yNqKB9RB/it-asset-disposal.jpg", link: "/solutions/it-asset-disposal" },
+    { title: "IT Asset Disposal Plans", description: "Ensuring secure and environmentally responsible disposal of IT assets.", img: "https://i.postimg.cc/yNqKB9RB/it-asset-disposal.jpg", link: "/solutions/it-asset-disposal" },
     { title: "IT Infrastructure Solutions", description: "Designing and implementing robust IT infrastructure to support business operations.", img: "https://i.postimg.cc/tJsvYv02/IT-infra.jpg", link: "/solutions/it-infrastructure" },
 
     { title: "IT Consulting Services", description: "Providing expert advice to align IT strategies with business objectives.", img: "https://i.postimg.cc/nrw8WQxw/it-consulting-services.webp", link: "/solutions/it-consulting" },
     { title: "Managed IT Services", description: "Offering reliable comprehensive IT support and management services.", img: "https://i.postimg.cc/ZqPGSQZq/Managed-it-serv-ice.jpg", link: "/solutions/managed-it-services" },
-      { title: "Networking Solutions", description: "Providing networking solutions to ensure seamless connectivity and communication.", img: "https://i.postimg.cc/hjjp5ZtY/network.jpg", link: "/solutions/networking-solutions" },
+    { title: "Networking Solutions", description: "Providing networking solutions to ensure seamless connectivity and communication.", img: "https://i.postimg.cc/hjjp5ZtY/network.jpg", link: "/solutions/networking-solutions" },
     { title: "Device Deployment & MDM", description: "Managing the deployment of devices and implementing Mobile Device Management strategies.", img: "https://i.postimg.cc/L6X2VmSL/mdm.webp", link: "/solutions/device-deployment-mdm" },
 
     { title: "HR Solutions", description: "Expert HR Management Solutions to Recruit Smarter, Hire Better, and Grow Faster.", img: "https://i.postimg.cc/rs9rSzpt/payment.webp", link: "/solutions/hr-solutions" },
@@ -1175,11 +1176,11 @@ const Index = () => {
   ];
 
   const benefits = [
-    { icon: Clock,       label: "EXPERIENCE YOU CAN TRUST",   description: "With 15+ years of experience, our IT solutions are seamless, reliable, and tailored for businesses across any location or time zone." },
-    { icon: Shield,      label: "READY FOR ANY CHALLENGE",     description: "\"Impossible\" isn't in our vocabulary. We deliver solutions exactly as designed—no shortcuts, no compromises, just results." },
-    { icon: CheckCircle, label: "SOLUTIONS BUILT FOR YOU",     description: "Every business is unique. Our IT strategies, managed services, and technology integrations are customized to fit your exact needs." },
-    { icon: Lightbulb,   label: "PARTNERSHIPS THAT MATTER",    description: "As authorized resellers of Apple, Autodesk, Adobe, Unity, and more, we combine global technology with local expertise for maximum impact." },
-    { icon: Zap,         label: "RELIABLE SUPPORT, ALWAYS",    description: "Monitoring and support ensure your operations run smoothly, securely, and without interruption." },
+    { icon: Clock, label: "EXPERIENCE YOU CAN TRUST", description: "With 15+ years of experience, our IT solutions are seamless, reliable, and tailored for businesses across any location or time zone." },
+    { icon: Shield, label: "READY FOR ANY CHALLENGE", description: "\"Impossible\" isn't in our vocabulary. We deliver solutions exactly as designed—no shortcuts, no compromises, just results." },
+    { icon: CheckCircle, label: "SOLUTIONS BUILT FOR YOU", description: "Every business is unique. Our IT strategies, managed services, and technology integrations are customized to fit your exact needs." },
+    { icon: Lightbulb, label: "PARTNERSHIPS THAT MATTER", description: "As authorized resellers of Apple, Autodesk, Adobe, Unity, and more, we combine global technology with local expertise for maximum impact." },
+    { icon: Zap, label: "RELIABLE SUPPORT, ALWAYS", description: "Monitoring and support ensure your operations run smoothly, securely, and without interruption." },
   ];
 
   const clientTypes = [
@@ -1218,8 +1219,8 @@ const Index = () => {
     { name: "Technicolor", logo: "https://upload.wikimedia.org/wikipedia/en/e/ec/Technicolor_Group.svg", maxWidth: "100px", maxHeight: "28px" },
     { name: "NDTV", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c5/NDTV_logo.svg", maxWidth: "80px", maxHeight: "28px" },
 
-    { name: "Grow", logo:"https://i.postimg.cc/rpF0wXSw/groww-logo.webp" , maxWidth: "90px", maxHeight: "38px" },
-    { name: "amagi", logo:"https://i.postimg.cc/RhQ4tqmB/amagi-logo.webp" , maxWidth: "90px", maxHeight: "38px" },
+    { name: "Grow", logo: "https://i.postimg.cc/rpF0wXSw/groww-logo.webp", maxWidth: "90px", maxHeight: "38px" },
+    { name: "amagi", logo: "https://i.postimg.cc/RhQ4tqmB/amagi-logo.webp", maxWidth: "90px", maxHeight: "38px" },
 
     { name: "Disney+", logo: "https://upload.wikimedia.org/wikipedia/commons/6/64/Disney%2B_2024.svg", maxWidth: "95px", maxHeight: "38px" },
     { name: "SBI", logo: "https://upload.wikimedia.org/wikipedia/commons/3/33/State_Bank_of_India.svg", maxWidth: "65px", maxHeight: "60px" },
@@ -1228,7 +1229,7 @@ const Index = () => {
     { name: "Asianet", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Asianet_2023_logo.png", maxWidth: "90px", maxHeight: "42px" },
     { name: "ChuChu TV", logo: "https://upload.wikimedia.org/wikipedia/en/d/d8/ChuChu_TV-logo.JPG", maxWidth: "70px", maxHeight: "45px" },
 
-        { name: "Chargebee", logo:"https://i.postimg.cc/rsg7c4cz/6ec7fd89-42a8-4a53-a0d4-252515d5a1c2.png" , maxWidth: "140px", maxHeight: "78px" },
+    { name: "Chargebee", logo: "https://i.postimg.cc/rsg7c4cz/6ec7fd89-42a8-4a53-a0d4-252515d5a1c2.png", maxWidth: "140px", maxHeight: "78px" },
 
 
     { name: "Bluestone", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Bluestone_Group_logo_mid_resolution.jpg", maxWidth: "120px", maxHeight: "56px" },
@@ -1238,33 +1239,33 @@ const Index = () => {
     { name: "Embassy Group", logo: "https://upload.wikimedia.org/wikipedia/en/9/9e/Embassy_Group.svg", maxWidth: "100px", maxHeight: "38px" },
     { name: "Swiggy", logo: "https://upload.wikimedia.org/wikipedia/en/d/d4/Swiggy_Logo.svg", maxWidth: "100px", maxHeight: "38px" },
 
- { name: "postman", logo:"https://upload.wikimedia.org/wikipedia/commons/c/c2/Postman_%28software%29.png" , maxWidth: "90px", maxHeight: "38px" },
-{ name: "Cognizant", logo:"https://upload.wikimedia.org/wikipedia/commons/4/43/Cognizant_logo_2022.svg" , maxWidth: "90px", maxHeight: "38px" },
-{ name: "amazon", logo:"https://upload.wikimedia.org/wikipedia/commons/0/06/Amazon_2024.svg", maxWidth: "90px", maxHeight: "38px" },
-{ name: "wipro", logo:"https://upload.wikimedia.org/wikipedia/commons/8/89/Wipro_new_logo.svg" , maxWidth: "90px", maxHeight: "38px" },
-{ name: "Walmart", logo:"https://upload.wikimedia.org/wikipedia/commons/5/5b/Walmart_logo_%282025%29.svg" , maxWidth: "90px", maxHeight: "38px" },
+    { name: "postman", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Postman_%28software%29.png", maxWidth: "90px", maxHeight: "38px" },
+    { name: "Cognizant", logo: "https://upload.wikimedia.org/wikipedia/commons/4/43/Cognizant_logo_2022.svg", maxWidth: "90px", maxHeight: "38px" },
+    { name: "amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/0/06/Amazon_2024.svg", maxWidth: "90px", maxHeight: "38px" },
+    { name: "wipro", logo: "https://upload.wikimedia.org/wikipedia/commons/8/89/Wipro_new_logo.svg", maxWidth: "90px", maxHeight: "38px" },
+    { name: "Walmart", logo: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Walmart_logo_%282025%29.svg", maxWidth: "90px", maxHeight: "38px" },
 
-{ name: "Capgemini", logo:"https://upload.wikimedia.org/wikipedia/en/7/7c/Capgemini_New_logo.svg" , maxWidth: "90px", maxHeight: "38px" },
+    { name: "Capgemini", logo: "https://upload.wikimedia.org/wikipedia/en/7/7c/Capgemini_New_logo.svg", maxWidth: "90px", maxHeight: "38px" },
 
-{ name: "Sharechat", logo:"https://upload.wikimedia.org/wikipedia/en/8/88/Sharechat_Logo_with_Wordmark.svg" , maxWidth: "90px", maxHeight: "38px" },
+    { name: "Sharechat", logo: "https://upload.wikimedia.org/wikipedia/en/8/88/Sharechat_Logo_with_Wordmark.svg", maxWidth: "90px", maxHeight: "38px" },
 
-{ name: "Zerodha", logo:"https://upload.wikimedia.org/wikipedia/commons/9/9d/Zerodha_logo.svg" , maxWidth: "90px", maxHeight: "38px" },
+    { name: "Zerodha", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Zerodha_logo.svg", maxWidth: "90px", maxHeight: "38px" },
   ];
 
-  const heroRef     = useRef(null);
-  const aboutRef    = useRef(null);
-  const solRef      = useRef(null);
-  const benRef      = useRef(null);
-  const featRef     = useRef(null);
-  const statsRef    = useRef(null);
+  const heroRef = useRef(null);
+  const aboutRef = useRef(null);
+  const solRef = useRef(null);
+  const benRef = useRef(null);
+  const featRef = useRef(null);
+  const statsRef = useRef(null);
   const partnersRef = useRef(null);
 
-  const heroInView     = useInView(heroRef,     { once: true, margin: "-60px" });
-  const aboutInView    = useInView(aboutRef,    { once: true, margin: "-60px" });
-  const solInView      = useInView(solRef,      { once: true, margin: "-60px" });
-  const benInView      = useInView(benRef,      { once: true, margin: "-60px" });
-  const featInView     = useInView(featRef,     { once: true, margin: "-60px" });
-  const statsInView    = useInView(statsRef,    { once: true, margin: "-60px" });
+  const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
+  const aboutInView = useInView(aboutRef, { once: true, margin: "-60px" });
+  const solInView = useInView(solRef, { once: true, margin: "-60px" });
+  const benInView = useInView(benRef, { once: true, margin: "-60px" });
+  const featInView = useInView(featRef, { once: true, margin: "-60px" });
+  const statsInView = useInView(statsRef, { once: true, margin: "-60px" });
   const partnersInView = useInView(partnersRef, { once: true, margin: "-60px" });
 
   const marqueeItems = ["IT Infrastructure", "Cloud Services", "Device Deployment", "Cybersecurity", "Quick Support", "IT Consulting", "Managed Services", "AV Solutions"];
@@ -1300,11 +1301,11 @@ const Index = () => {
 
 
 
-{/* BOTPRESS BOTPRESS BOTPRESS BOTPRESS BOTPRESS*/}
+        {/* BOTPRESS BOTPRESS BOTPRESS BOTPRESS BOTPRESS*/}
 
 
-    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
+        <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+        <script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
 
 
 
@@ -1316,7 +1317,7 @@ const Index = () => {
       </>
 
       {/* ── SNIPER SCOPE CURSOR — rendered at top level, hidden inside CTA ── */}
-      <SniperScopeCursor />
+
 
       {!preloaderDone && <Preloader onComplete={() => setPreloaderDone(true)} />}
 
@@ -1325,90 +1326,117 @@ const Index = () => {
       ============================================================ */}
       <section ref={heroRef} style={{ position: 'relative', width: '100%', minHeight: '90vh', overflow: 'hidden', background: '#0a0a0a', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
 
-  {/* Grid background */}
-  <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
+        {/* Grid background */}
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
 
-  {/* Radial glow */}
-  <div style={{ position: 'absolute', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none' }} />
+        {/* Radial glow */}
+        <div style={{ position: 'absolute', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none' }} />
 
-  {/* Scroll indicator */}
-  <div style={{ position: 'absolute', bottom: '32px', left: '36px', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-    <div style={{ width: '1px', height: '52px', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.5))' }} />
-    <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', fontFamily: 'monospace', writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>SCROLL</span>
-  </div>
+        {/* Strands Background */}
+        <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', filter: 'blur(90px)', transform: 'scale(1.15)' }}>
+          <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+            <Strands
+              colors={["#F97316", "#7C3AED", "#06B6D4"]}
+              count={3}
+              speed={0.5}
+              amplitude={1}
+              waviness={1}
+              thickness={0.7}
+              glow={2.6}
+              taper={3}
+              spread={1}
+              intensity={0.6}
+              saturation={2}
+              opacity={1}
+              scale={2.2}
+              glass={false}
+              refraction={1}
+              dispersion={1}
+              glassSize={1}
+              hueShift={0}
+            />
+          </div>
+        </div>
 
-  {/* Center content */}
-  <div style={{ position: 'relative', zIndex: 10, maxWidth: '680px', width: '100%', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', padding: '0 24px' }}>
+
+        {/* Scroll indicator */}
+        <div style={{ position: 'absolute', bottom: '32px', left: '36px', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <div style={{ width: '1px', height: '52px', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.5))' }} />
+          <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', fontFamily: 'monospace', writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>SCROLL</span>
+        </div>
+
+        {/* Center content */}
+        <div style={{ position: 'relative', zIndex: 10, maxWidth: '680px', width: '100%', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', padding: '0 24px' }}>
 
 
 
 
-    {/* Heading */}
-    <h1
-      ref={gsapHeroHeadingRef}
-      aria-label="Empowering Enterprises with Cutting-Edge IT Solutions"
-      style={{ margin: 0, fontSize: 'clamp(2.4rem, 5vw, 4rem)', fontWeight: 600, lineHeight: 1.08, color: '#ffffff', letterSpacing: '-0.025em', overflow: 'hidden' }}
-    >
-      {[
-        { word: "Empowering",   br: false },
-        { word: "Enterprises",  br: true  },
-        { word: "with",         br: false },
-        { word: "Cutting-Edge", br: false },
-        { word: "IT",           br: false },
-        { word: "Solutions",    br: false },
-      ].map(({ word, br }, i) => (
-        <span key={i}>
-          <span className="hero-word" style={{ display: 'inline-block', opacity: 0, fontWeight: 600, color: i >= 2 ? 'rgba(255,255,255,0.4)' : '#ffffff', marginRight: '0.22em' }}>
-            {word}
-          </span>
-          {br && <br />}
-        </span>
-      ))}
-    </h1>
+          {/* Heading */}
+          <h1
+            ref={gsapHeroHeadingRef}
+            aria-label="Empowering Enterprises with Cutting-Edge IT Solutions"
+            style={{ margin: 0, fontSize: 'clamp(4.4rem, 5vw, 4rem)', fontWeight: 600, lineHeight: 1.08, color: '#ffffff', letterSpacing: '-0.025em', overflow: 'hidden' }}
+          >
+            {[
+              { word: "Empowering", br: false },
+              { word: "Enterprises", br: true },
+              { word: "with", br: false },
+              { word: "Cutting-Edge", br: false },
+              { word: "IT", br: false },
+              { word: "Solutions", br: false },
+            ].map(({ word, br }, i) => (
+              <span key={i}>
+                <span className="hero-word" style={{ display: 'inline-block', opacity: 0, fontWeight: 600, color: i >= 2 ? 'rgba(255,255,255,0.4)' : '#ffffff', marginRight: '0.22em' }}>
+                  {word}
+                </span>
+                {br && <br />}
+              </span>
+            ))}
+          </h1>
 
-    {/* Divider */}
-    <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent)' }} />
+          {/* Divider */}
+          <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent)' }} />
 
-    {/* Subtitle */}
-    <motion.p initial={{ opacity: 0, y: 14 }} animate={heroInView && preloaderDone ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.0 }}
-      style={{ margin: 0, fontSize: '15px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: '520px' }}>
-      At <strong style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 600 }}>Sniper Systems and Solutions Pvt Ltd</strong>, we specialize in delivering comprehensive IT solutions — from advanced infrastructure management to strategic consulting.
-    </motion.p>
+          {/* Subtitle */}
+          <motion.p initial={{ opacity: 0, y: 14 }} animate={heroInView && preloaderDone ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.0 }}
+            style={{ margin: 0, fontSize: '15px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: '520px' }}>
+            At <strong style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 600 }}>Sniper Systems and Solutions Pvt Ltd</strong>, we specialize in delivering comprehensive IT solutions — from advanced infrastructure management to strategic consulting.
+          </motion.p>
 
-    {/* Buttons */}
-    <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView && preloaderDone ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.1 }}
-      style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-      <a href="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '11px 26px', background: '#ffffff', color: '#000000', borderRadius: '999px', fontSize: '12px', fontWeight: 700, letterSpacing: '0.04em', textDecoration: 'none', border: '2px solid transparent' }}
-        onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = 'transparent'; el.style.color = '#fff'; el.style.borderColor = 'rgba(255,255,255,0.55)'; }}
-        onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = '#fff'; el.style.color = '#000'; el.style.borderColor = 'transparent'; }}>
-        What we do <ArrowRight style={{ width: '13px', height: '13px' }} />
-      </a>
-    {/*  <a href="" style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', textDecoration: 'none', fontFamily: 'monospace' }}
+          {/* Buttons */}
+          <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView && preloaderDone ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.1 }}
+            style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <a href="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '11px 26px', background: '#ffffff', color: '#000000', borderRadius: '999px', fontSize: '12px', fontWeight: 700, letterSpacing: '0.04em', textDecoration: 'none', border: '2px solid transparent' }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = 'transparent'; el.style.color = '#fff'; el.style.borderColor = 'rgba(255,255,255,0.55)'; }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = '#fff'; el.style.color = '#000'; el.style.borderColor = 'transparent'; }}>
+              What we do <ArrowRight style={{ width: '13px', height: '13px' }} />
+            </a>
+            {/*  <a href="" style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', textDecoration: 'none', fontFamily: 'monospace' }}
         onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.8)')}
         onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.35)')}>
         →
       </a>*/}
-    </motion.div>
+          </motion.div>
 
-    {/* Stats */}
-    <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView && preloaderDone ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.2 }}
-      style={{ display: 'flex', alignItems: 'center', gap: '32px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.07)', width: '100%', justifyContent: 'center' }}>
-      {[['15+', 'Years'], ['1800+', 'Clients'], ['99%', 'Uptime']].map(([val, lbl], i, arr) => (
-        <Fragment key={lbl}>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '20px', fontWeight: 600, color: '#fff', lineHeight: 1 }}>{val}</div>
-            <div style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginTop: '4px' }}>{lbl}</div>
-          </div>
-          {i < arr.length - 1 && <div style={{ width: '1px', height: '36px', background: 'rgba(255,255,255,0.08)' }} />}
-        </Fragment>
-      ))}
-    </motion.div>
-  </div>
+          {/* Stats */}
+          <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView && preloaderDone ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.2 }}
+            style={{ display: 'flex', alignItems: 'center', gap: '32px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.07)', width: '100%', justifyContent: 'center' }}>
+            {[['15+', 'Years'], ['1800+', 'Clients'], ['99%', 'Uptime']].map(([val, lbl], i, arr) => (
+              <Fragment key={lbl}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '20px', fontWeight: 600, color: '#fff', lineHeight: 1 }}>{val}</div>
+                  <div style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginTop: '4px' }}>{lbl}</div>
+                </div>
+                {i < arr.length - 1 && <div style={{ width: '1px', height: '36px', background: 'rgba(255,255,255,0.08)' }} />}
+              </Fragment>
+            ))}
+          </motion.div>
+        </div>
 
-  <style>{`
+        <style>{`
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
   `}</style>
-</section>
+      </section>
 
       {/* 2. BANNER SLIDER */}
       <BannerSliderSection />

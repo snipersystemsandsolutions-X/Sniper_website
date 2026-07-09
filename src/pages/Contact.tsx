@@ -207,7 +207,7 @@ const LocationCard = ({ loc, index, locInView }: { loc: any; index: number; locI
   const wrapRef = useRef<HTMLDivElement>(null);
 
 
-     // Jotform Chatbot
+  // Jotform Chatbot
   useEffect(() => {
     const script = document.createElement("script");
 
@@ -222,7 +222,7 @@ const LocationCard = ({ loc, index, locInView }: { loc: any; index: number; locI
     };
   }, []);
 
-  
+
   useEffect(() => {
     const img = imgRef.current;
     const wrap = wrapRef.current;
@@ -544,17 +544,17 @@ const CTASection = () => {
 // CONTACT PAGE
 // ========================================================
 
-const FORMSUBMIT_EMAIL = "snipersystemsandsolutions@gmail.com";
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "ab9fd6a8-a8de-4f28-ba11-f6d95387e932";
 
 const Contact = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showWhiteScreen, setShowWhiteScreen] = useState(true);
   const [viewMode, setViewMode] = useState<"visual" | "addresses">("visual");
 
-  const [toastVisible, setToastVisible]   = useState(false);
-  const [toastMounted, setToastMounted]   = useState(false);
-  const [toastMessage, setToastMessage]   = useState("");
-  const [toastIsError, setToastIsError]   = useState(false);
+  const [toastVisible, setToastVisible] = useState(false);
+  const [toastMounted, setToastMounted] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastIsError, setToastIsError] = useState(false);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -590,30 +590,30 @@ const Contact = () => {
 
     try {
       const payload = {
-        name:        formData.name,
-        email:       formData.email,
-        phone:       formData.phone        || "—",
-        company:     formData.company,
-        website_url: formData.websiteUrl   || "—",
+        access_key: WEB3FORMS_ACCESS_KEY,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || "—",
+        company: formData.company,
+        website_url: formData.websiteUrl || "—",
         state_region: formData.stateRegion,
-        message:     formData.message,
-        _subject:    `New Contact Enquiry from ${formData.name} — ${formData.company}`,
-        _captcha:    "false",
-        _template:   "table",
+        message: formData.message,
+        subject: `New Contact Enquiry from ${formData.name} — ${formData.company}`,
+        from_name: formData.name,
       };
 
-      const response = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_EMAIL}`, {
-        method:  "POST",
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept":        "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify(payload),
       });
 
       const data = await response.json();
 
-      if (data.success === "true" || data.success === true) {
+      if (data.success) {
         showToast("MESSAGE SENT — WE'LL BE IN TOUCH SOON");
         setFormData({ name: "", email: "", phone: "", company: "", websiteUrl: "", stateRegion: "", message: "" });
       } else {
@@ -629,31 +629,31 @@ const Contact = () => {
   const ease = [0.16, 1, 0.3, 1] as const;
 
   const contactInfo = [
-    { icon: MapPin, label: "OUR OFFICES",    content: "Chennai (HQ) | Bangalore | Hyderabad | Gurugram | Coimbatore | Kochi | Vijayawada" },
-    { icon: Phone,  label: "PHONE",         content: "+91 8939301100" },
-    { icon: Mail,   label: "EMAIL",         content: "enquiry@sniperindia.com" },
-    { icon: Clock,  label: "WORKING HOURS", content: "Mon - Fri: 9:30 AM - 6:30 PM" },
+    { icon: MapPin, label: "OUR OFFICES", content: "Chennai (HQ) | Bangalore | Hyderabad | Gurugram | Coimbatore | Kochi | Vijayawada" },
+    { icon: Phone, label: "PHONE", content: "+91 8939301100" },
+    { icon: Mail, label: "EMAIL", content: "enquiry@sniperindia.com" },
+    { icon: Clock, label: "WORKING HOURS", content: "Mon - Fri: 9:30 AM - 6:30 PM" },
   ];
 
   const locations = [
-    { city: "Chennai",    state: "Tamil Nadu",     tag: "Headquarters",    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Chennai_-_bird%27s-eye_view.jpg/1920px-Chennai_-_bird%27s-eye_view.jpg" },
-    { city: "Bangalore",  state: "Karnataka",      tag: "Regional Office", img: "https://i.postimg.cc/T1rQ8gxv/bangalore.jpg" },
-    { city: "Hyderabad",  state: "Telangana",      tag: "Regional Office", img: "https://images.unsplash.com/photo-1588416936097-41850ab3d86d?w=800&q=80" },
-    { city: "Gurugram",   state: "Haryana",        tag: "Regional Office", img: "https://i.postimg.cc/3xy4d7yw/1.webp" },
-    { city: "Coimbatore", state: "Tamil Nadu",     tag: "Branch Office",   img: "https://i.postimg.cc/3JQfdnWz/Ev-Dufkz-VEAA5W1W.jpg" },
-    { city: "Kochi",      state: "Kerala",         tag: "Branch Office",   img: "https://i.postimg.cc/bvsTyKPH/kochi.jpg" },
-    { city: "Vijayawada", state: "Andhra Pradesh", tag: "Branch Office",   img: "https://i.postimg.cc/ZKwpWVwh/Prakasham-Barriage-Vijayawada.jpg" },
+    { city: "Chennai", state: "Tamil Nadu", tag: "Headquarters", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Chennai_-_bird%27s-eye_view.jpg/1920px-Chennai_-_bird%27s-eye_view.jpg" },
+    { city: "Bangalore", state: "Karnataka", tag: "Regional Office", img: "https://i.postimg.cc/T1rQ8gxv/bangalore.jpg" },
+    { city: "Hyderabad", state: "Telangana", tag: "Regional Office", img: "https://images.unsplash.com/photo-1588416936097-41850ab3d86d?w=800&q=80" },
+    { city: "Gurugram", state: "Haryana", tag: "Regional Office", img: "https://i.postimg.cc/3xy4d7yw/1.webp" },
+    { city: "Coimbatore", state: "Tamil Nadu", tag: "Branch Office", img: "https://i.postimg.cc/3JQfdnWz/Ev-Dufkz-VEAA5W1W.jpg" },
+    { city: "Kochi", state: "Kerala", tag: "Branch Office", img: "https://i.postimg.cc/bvsTyKPH/kochi.jpg" },
+    { city: "Vijayawada", state: "Andhra Pradesh", tag: "Branch Office", img: "https://i.postimg.cc/ZKwpWVwh/Prakasham-Barriage-Vijayawada.jpg" },
   ];
 
-  const heroRef  = useRef(null);
-  const formRef  = useRef(null);
-  const infoRef  = useRef(null);
-  const locRef   = useRef(null);
+  const heroRef = useRef(null);
+  const formRef = useRef(null);
+  const infoRef = useRef(null);
+  const locRef = useRef(null);
 
   const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
   const formInView = useInView(formRef, { once: true, margin: "-60px" });
   const infoInView = useInView(infoRef, { once: true, margin: "-60px" });
-  const locInView  = useInView(locRef,  { once: true, margin: "-60px" });
+  const locInView = useInView(locRef, { once: true, margin: "-60px" });
 
   // ✦ GSAP: Hero heading character stagger
   const heroHeadingRef = useRef<HTMLHeadingElement>(null);
@@ -670,11 +670,11 @@ const Contact = () => {
   const marqueeItems = ["Get In Touch", "Contact Us", "Chennai HQ", "IT Solutions", "Quick Support", "Enterprise Ready", "Sniper Systems"];
 
   const indianStates = [
-    "Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat",
-    "Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh",
-    "Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab",
-    "Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh",
-    "Uttarakhand","West Bengal","Delhi","Jammu & Kashmir","Ladakh","Puducherry",
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat",
+    "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh",
+    "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab",
+    "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh",
+    "Uttarakhand", "West Bengal", "Delhi", "Jammu & Kashmir", "Ladakh", "Puducherry",
   ];
 
   return (
@@ -706,9 +706,9 @@ const Contact = () => {
         {/* GEO TAGS */}
 
         <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
+        <meta name="geo.placename" content="Chennai" />
+        <meta name="geo.position" content="13.0827;80.2707" />
+        <meta name="ICBM" content="13.0827, 80.2707" />
 
         {/* OPEN GRAPH */}
 
@@ -768,7 +768,7 @@ const Contact = () => {
             ]
           }
           `}
-</script>
+        </script>
 
         {/* LOCAL BUSINESS SCHEMA */}
 
@@ -797,7 +797,7 @@ const Contact = () => {
             "openingHours": "Mo-Fr 09:00-18:00"
           }
           `}
-</script>
+        </script>
 
 
 
@@ -821,7 +821,7 @@ const Contact = () => {
 
 
 
-</script>
+        </script>
 
       </Helmet>
 
@@ -1034,21 +1034,19 @@ const Contact = () => {
           >
             <button
               onClick={() => setViewMode("visual")}
-              className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 ${
-                viewMode === "visual"
-                  ? "bg-gray-900 text-white"
-                  : "border-2 border-gray-300 text-gray-900 hover:border-gray-900"
-              }`}
+              className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 ${viewMode === "visual"
+                ? "bg-gray-900 text-white"
+                : "border-2 border-gray-300 text-gray-900 hover:border-gray-900"
+                }`}
             >
               View Locations
             </button>
             <button
               onClick={() => setViewMode("addresses")}
-              className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 ${
-                viewMode === "addresses"
-                  ? "bg-gray-900 text-white"
-                  : "border-2 border-gray-300 text-gray-900 hover:border-gray-900"
-              }`}
+              className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 ${viewMode === "addresses"
+                ? "bg-gray-900 text-white"
+                : "border-2 border-gray-300 text-gray-900 hover:border-gray-900"
+                }`}
             >
               Office Addresses
             </button>
