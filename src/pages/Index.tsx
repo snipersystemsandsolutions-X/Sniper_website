@@ -368,6 +368,7 @@ const Index = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const blogPosts = [
+    { id: "how-real-time-3d-and-xr-are-transforming-automotive-product-development-unity", title: "How Real-Time 3D and XR Are Transforming Automotive Product Development", excerpt: "Discover how Real-Time 3D, Extended Reality (XR), and digital twins are helping automotive manufacturers accelerate product development, improve collaboration, and reduce engineering costs.", image: "https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=1600&q=80", date: "July 15, 2026", readTime: "10 min read", category: "Automotive XR" },
     { id: "how-microsoft-intune-is-helping-enterprises-secure-hybrid-work-and-simplify-endpoint-management", title: "How Microsoft Intune Is Helping Enterprises Secure Hybrid Work and Simplify Endpoint Management", excerpt: "Discover how Microsoft Intune enables enterprises to secure hybrid work, simplify endpoint management, and support Zero Trust across all devices.", image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1600&q=80", date: "July 2, 2026", readTime: "9 min read", category: "Endpoint Security" },
     { id: "how-real-time-3d-and-xr-are-transforming-automotive-product-development", title: "How Real-Time 3D and XR Are Transforming Automotive Product Development", excerpt: "Discover how Real-Time 3D, Extended Reality (XR), and digital twins are helping automotive manufacturers accelerate product development, improve collaboration, and reduce engineering costs.", image: "https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=1600&q=80", date: "July 2, 2026", readTime: "10 min read", category: "Automotive XR" },
     { id: "how-enterprises-are-using-azure-openai-to-drive-productivity-and-innovation-in-2026", title: "How Enterprises Are Using Azure OpenAI to Drive Productivity and Innovation in 2026", excerpt: "Discover how leading enterprises are shifting from basic chatbots to autonomous agentic AI and robust governance on Azure OpenAI in 2026.", image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1600&q=80", date: "June 25, 2026", readTime: "11 min read", category: "Cloud AI" },
@@ -388,17 +389,18 @@ const Index = () => {
   ];
 
   const featuredPost = blogPosts[0];
-  const postJ = blogPosts.find(p => p.id === "how-microsoft-intune-is-helping-enterprises-secure-hybrid-work-and-simplify-endpoint-management") || blogPosts[0];
-  const postI = blogPosts.find(p => p.id === "how-real-time-3d-and-xr-are-transforming-automotive-product-development") || blogPosts[1];
-  const postG = blogPosts.find(p => p.id === "how-enterprises-are-using-azure-openai-to-drive-productivity-and-innovation-in-2026") || blogPosts[2];
-  const postH = blogPosts.find(p => p.id === "why-businesses-are-choosing-dell-dual-monitor-setups-for-higher-productivity") || blogPosts[4];
-  const postF = blogPosts.find(p => p.id === "microsoft-threat-protection-strengthening-enterprise-security") || blogPosts[3];
-  const postA = blogPosts.find(p => p.id === "bloga") || blogPosts[9];
-  const postB = blogPosts.find(p => p.id === "blogb") || blogPosts[8];
-  const postC = blogPosts.find(p => p.id === "interactive-3d-business-unity-studio") || blogPosts[7];
-  const postD = blogPosts.find(p => p.id === "blogd") || blogPosts[6];
-  const postE = blogPosts.find(p => p.id === "bim-digital-twins-aec-redefined") || blogPosts[5];
-  const regularPosts = blogPosts.slice(9);
+  const postK = blogPosts[0];
+  const postJ = blogPosts.find(p => p.id === "how-microsoft-intune-is-helping-enterprises-secure-hybrid-work-and-simplify-endpoint-management") || blogPosts[1];
+  const postI = blogPosts.find(p => p.id === "how-real-time-3d-and-xr-are-transforming-automotive-product-development") || blogPosts[2];
+  const postG = blogPosts.find(p => p.id === "how-enterprises-are-using-azure-openai-to-drive-productivity-and-innovation-in-2026") || blogPosts[3];
+  const postH = blogPosts.find(p => p.id === "why-businesses-are-choosing-dell-dual-monitor-setups-for-higher-productivity") || blogPosts[5];
+  const postF = blogPosts.find(p => p.id === "microsoft-threat-protection-strengthening-enterprise-security") || blogPosts[4];
+  const postA = blogPosts.find(p => p.id === "bloga") || blogPosts[10];
+  const postB = blogPosts.find(p => p.id === "blogb") || blogPosts[9];
+  const postC = blogPosts.find(p => p.id === "interactive-3d-business-unity-studio") || blogPosts[8];
+  const postD = blogPosts.find(p => p.id === "blogd") || blogPosts[7];
+  const postE = blogPosts.find(p => p.id === "bim-digital-twins-aec-redefined") || blogPosts[6];
+  const regularPosts = blogPosts.slice(10);
 
   const heroRef       = useRef(null);
   const featuredRef   = useRef(null);
@@ -507,7 +509,7 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-20 border-b border-gray-300">
-            {[postJ, postI, postG, postH, postF, postE, postD, postC, postB].map((post, index) => (
+            {[postK, postJ, postI, postG, postH, postF, postE, postD, postC, postB].map((post, index) => (
               <motion.div
                 key={post.id}
                 className="flex flex-col"
