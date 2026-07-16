@@ -1,6 +1,20 @@
 import { Link } from "react-router-dom";
 import imgSrcc from "@/assets/sniper-logo-black.png";
-import imgSrccc from "@/assets/aaaa87d7-c10a-420c-99fb-d72436796abd.png";
+import footermap from "@/assets/footermap.png";
+import {
+  FiMail,
+  FiPhone,
+} from "react-icons/fi";
+
+import {
+  FaLinkedinIn,
+  FaFacebookF,
+  FaInstagram,
+  FaYoutube,
+} from "react-icons/fa";
+
+import { FaXTwitter } from "react-icons/fa6";
+
 const quickLinks = [
   { name: "Home", href: "/" },
   { name: "Blog", href: "https://blog.sniperindia.com/" },
@@ -83,7 +97,7 @@ const legalLinks = [
 
 // Small badge used for "New" / "We're Hiring" style tags
 const Badge = ({ children }) => (
-  <span className="ml-2 inline-flex items-center rounded-full bg-red-500 px-2 py-0.5 text-[10px] font-medium leading-none text-white">
+  <span className="ml-2 inline-flex items-center rounded-full bg-red-500 px-2.5 py-1 text-[10px] font-regular leading-none tracking-wide text-white">
     {children}
   </span>
 );
@@ -91,13 +105,17 @@ const Badge = ({ children }) => (
 // Reusable footer link column
 const LinkColumn = ({ title, links }) => (
   <div>
-    <h3 className="text-lg font-normal mb-6 text-stone-900">{title}</h3>
-    <ul className="space-y-3">
+    <h3 className="text-base font-medium mb-5 text-stone-900">{title}</h3>
+    <ul className="space-y-3.5">
       {links.map((link) => (
         <li key={link.href}>
           <a
             href={link.href}
-            className="inline-flex items-center text-base text-stone-700 hover:text-stone-900 transition-colors"
+            className={`inline-flex items-center text-sm transition-colors ${
+              link.active
+                ? "text-red-500 hover:text-red-600"
+                : "text-stone-600 hover:text-red-600"
+            }`}
           >
             {link.name}
             {link.badge && <Badge>{link.badge}</Badge>}
@@ -113,7 +131,7 @@ const LinkColumn = ({ title, links }) => (
 const LocationsMap = () => (
   <svg
     viewBox="0 0 400 90"
-    className="hidden lg:block h-16 w-auto text-stone-400"
+    className="hidden lg:block h-16 w-auto text-stone-300"
     fill="none"
     aria-hidden="true"
   >
@@ -129,7 +147,7 @@ const LocationsMap = () => (
             cy={row * 8 + 4}
             r="1.4"
             fill="currentColor"
-            opacity="0.35"
+            opacity="0.45"
           />
         );
       })
@@ -142,53 +160,185 @@ const LocationsMap = () => (
   </svg>
 );
 
+// Floating scroll-to-top button
+const ScrollToTop = () => (
+  <button
+    type="button"
+    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    aria-label="Scroll to top"
+    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-stone-300 bg-white text-stone-700 shadow-sm hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-colors"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-4 w-4"
+    >
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+);
+
 export const Footer = () => {
   return (
-    <footer className="bg-stone-200 text-stone-800">
-      <div className="container mx-auto px-8 lg:px-16 py-20">
+    <footer className="bg-stone-50 text-stone-800 rounded-t-[32px] border-t border-stone-200 shadow-[0_-12px_30px_-12px_rgba(0,0,0,0.12)]">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-8 md:px-10 lg:px-14 xl:px-16 2xl:px-20 py-14 lg:py-16">
         {/* Top Section — CTA + 5 link columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 lg:gap-10 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[380px_repeat(4,1fr)] gap-y-12 gap-x-8 xl:gap-x-10 2xl:gap-x-12 mb-14">
           {/* CTA */}
-          <div className="lg:col-span-1">
-            <h2 className="text-3xl lg:text-4xl font-light leading-tight mb-6 text-stone-900">
-              Stay connected
-              <br />
-              to the future of
-              <br />
-              Enterprise IT
+          <div className="max-w-[360px]">
+            <h2 className="text-[26px] md:text-[28px] lg:text-[30px] font-semibold leading-[1.2] tracking-tighter mb-4 text-stone-900 whitespace-nowrap">
+              Stay Connected to
+              <br/>
+              the future of Enterprise IT
             </h2>
-            <p className="text-stone-600 mb-6 max-w-xs">
+            <p className="text-sm leading-6 tracking-tight text-stone-500 mb-6 max-w-xs">
               Crafted with creativity &amp; passion, let&rsquo;s stay connected and reach out
               each other
             </p>
             <a
               href="/contact"
-              className="inline-flex items-center gap-3 rounded-full bg-stone-900 text-stone-50 pl-5 pr-2 py-2 hover:bg-stone-700 transition-colors"
-            >
-              Get in Touch
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-stone-50 text-stone-900">
-                →
-              </span>
-            </a>
+  className="group relative inline-flex items-center gap-3 rounded-full bg-stone-900 text-stone-50 pl-2 pr-5 py-2 overflow-hidden hover:bg-red-600 transition-colors duration-300 hover:animate-btn-bounce"
+>
+  {/* 1. Arrow circle */}
+  {/* Arrow circle — horizontal slide, left to right */}
+<span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-stone-50 text-stone-900 overflow-hidden">
+  <svg
+    className="absolute h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-6"
+    viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+  >
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+  <svg
+    className="absolute h-4 w-4 -translate-x-6 transition-transform duration-300 ease-out group-hover:translate-x-0"
+    viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+  >
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+</span>
 
-            <div className="mt-10 space-y-2">
-              <p className="text-lg text-stone-600">Contact Us</p>
-              <p className="text-lg">
-                <a
-                  href="tel:+918939301100"
-                  className="text-stone-700 hover:text-stone-900 transition-colors"
-                >
-                  +91 8939301100
-                </a>
-                {" | "}
-                <a
-                  href="mailto:enquiry@sniperindia.com"
-                  className="text-stone-700 hover:text-stone-900 transition-colors"
-                >
-                  Enquiry@sniperindia.com
-                </a>
-              </p>
-            </div>
+  {/* 2. Text swap — THIS is the part you were asking about */}
+  <span className="relative h-5 overflow-hidden">
+    <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
+      Get in Touch
+    </span>
+    <span className="absolute left-0 top-0 block translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+      Get in Touch
+    </span>
+  </span>
+</a>
+
+            {/* Contact Section */}
+<div className="mt-14">
+  <h3 className="text-lg font-medium text-stone-900 mb-6">
+    Contact Us
+  </h3>
+
+  <div className="space-y-5">
+
+    {/* Email */}
+    <a
+      href="mailto:Enquiry@sniperindia.com"
+      className="group flex items-center gap-4"
+    >
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-stone-200 transition-colors group-hover:bg-red-500">
+        <FiMail className="text-lg text-stone-700 transition-colors group-hover:text-white" />
+      </div>
+
+      <div>
+        <p className="text-sm text-stone-500">Email</p>
+
+        <p className="text-[15px] text-stone-800 underline underline-offset-4 group-hover:text-red-600 transition-colors">
+          Enquiry@sniperindia.com
+        </p>
+      </div>
+    </a>
+
+    {/* Phone */}
+    <a
+      href="tel:+918939301100"
+      className="group flex items-center gap-4"
+    >
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-stone-200 transition-colors group-hover:bg-red-500">
+        <FiPhone className="text-lg text-stone-700 transition-colors group-hover:text-white" />
+      </div>
+
+      <div>
+        <p className="text-sm text-stone-500">Phone</p>
+
+        <p className="text-[15px] text-stone-800 group-hover:text-red-600 transition-colors">
+          +91 89393 01100
+        </p>
+      </div>
+    </a>
+
+  </div>
+
+  {/* Follow Us */}
+  <div className="mt-10">
+    <h3 className="text-lg font-medium text-stone-900 mb-5">
+      Follow us on
+    </h3>
+
+    <div className="flex items-center gap-3">
+
+      {/* LinkedIn */}
+      <a
+        href="https://www.linkedin.com/company/sniper-systems-solutions-pvt-ltd"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex h-11 w-11 items-center justify-center rounded-full bg-stone-200 transition-all duration-300 hover:-translate-y-1 hover:bg-[#0077B5]"
+      >
+        <FaLinkedinIn className="text-lg text-stone-600 group-hover:text-white" />
+      </a>
+
+      {/* Facebook */}
+      <a
+        href="https://www.facebook.com/snipersystemsandsolution/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex h-11 w-11 items-center justify-center rounded-full bg-stone-200 transition-all duration-300 hover:-translate-y-1 hover:bg-[#1877F2]"
+      >
+        <FaFacebookF className="text-lg text-stone-600 group-hover:text-white" />
+      </a>
+
+      {/* Instagram */}
+      <a
+        href="https://www.instagram.com/sniperindia/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex h-11 w-11 items-center justify-center rounded-full bg-stone-200 transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF]"
+      >
+        <FaInstagram className="text-lg text-stone-600 group-hover:text-white" />
+      </a>
+
+      {/* Twitter / X */}
+      <a
+        href="https://x.com/_sniperindia"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex h-11 w-11 items-center justify-center rounded-full bg-stone-200 transition-all duration-300 hover:-translate-y-1 hover:bg-black"
+      >
+        <FaXTwitter className="text-lg text-stone-600 group-hover:text-white" />
+      </a>
+
+      {/* YouTube */}
+      <a
+        href="https://www.youtube.com/@Snipersystemsandsolutions"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex h-11 w-11 items-center justify-center rounded-full bg-stone-200 transition-all duration-300 hover:-translate-y-1 hover:bg-[#FF0000]"
+      >
+        <FaYoutube className="text-lg text-stone-600 group-hover:text-white" />
+      </a>
+
+    </div>
+  </div>
+</div>
           </div>
 
           <LinkColumn title="Quick Links" links={quickLinks} />
@@ -197,90 +347,385 @@ export const Footer = () => {
           <LinkColumn title="Industries" links={industriesLinks} />
 
           {/* Social — plain list, external links */}
-          <div>
-            <h3 className="text-lg font-normal mb-6 text-stone-900">Social</h3>
-            <ul className="space-y-3">
-              {socialLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-base text-stone-700 hover:text-stone-900 transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          
+        </div>
+
+        {/* Locations bar + scroll-to-top */}
+        
+    {/* ===========================================
+      OUR PRESENCE
+=========================================== */}
+
+<div className="relative mt-12 mb-14">
+{/* Desktop  */}
+  <div className="relative overflow-hidden rounded-[30px] border border-stone-200 bg-white px-8 py-8 shadow-sm md:block hidden">
+
+    {/* Background World Map */}
+    <div
+      className="
+        absolute
+        inset-y-0
+        right-0
+        w-[55%]
+        pointer-events-none
+        select-none
+      "
+      style={{
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 15%, rgba(0,0,0,.55) 35%, black 70%)",
+        maskImage:
+          "linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 15%, rgba(0,0,0,.55) 35%, black 70%)",
+      }}
+    >
+      <img
+        src={footermap}
+        alt="Global Presence"
+        className="
+          h-full
+          w-full
+          object-cover
+          opacity-20
+          grayscale
+        "
+      />
+    </div>
+
+    {/* Content */}
+
+    <div className="relative z-20 flex items-center justify-between">
+
+      {/* Left */}
+
+      <div className="relative z-20 w-full">
+
+        {/* Logo */}
+
+        <img
+          src={imgSrcc}
+          alt="Sniper Logo"
+          className="h-14 w-auto object-contain"
+        />
+
+        {/* Heading */}
+
+        <div className="mt-5 flex items-start gap-4">
+
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-stone-100">
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5 text-red-500"
+            >
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+
           </div>
 
+          <div>
+
+            <h3 className="text-lg font-semibold text-stone-900">
+              Our Presence
+            </h3>
+
+            <p className="mt-1 text-sm text-stone-500">
+              Serving businesses across India
+            </p>
+
+          </div>
 
         </div>
 
-        {/* Locations bar */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 rounded-2xl border border-stone-400/70 px-6 py-6 mb-16">
-  <div className="flex items-start lg:items-center gap-3 flex-wrap">
-    <span className="flex h-12 w-12 items-center justify-center rounded-full border border-red-500 text-stone-700 shrink-0">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="h-4 w-4"
-  >
-    <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" />
-    <circle cx="12" cy="10" r="3" />
-  </svg>
-</span>
-    <span className="font-normal text-stone-900 shrink-0">
-      Locations
-    </span>
-    <span className="text-stone-700">
-      {locations.join(" | ")}
-    </span>
+        {/* Locations */}
+
+        <div className="mt-7 flex flex-wrap gap-3">
+
+          {locations.map((city) => (
+
+            <button
+              key={city}
+              className="
+                rounded-full
+                border
+                border-stone-300
+                bg-white
+                px-4
+                py-1.5
+                text-xs
+                font-medium
+                text-stone-700
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-red-500
+                hover:bg-red-500
+                hover:text-white
+                hover:shadow-md
+              "
+            >
+              {city}
+            </button>
+
+          ))}
+
+        </div>
+
+      </div>
+
+      {/* Scroll */}
+
+      <button
+        onClick={() =>
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          })
+        }
+        className="
+          group
+          hidden
+          lg:flex
+          h-12
+          w-12
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-stone-300
+          bg-white/90
+          backdrop-blur-md
+          transition-all
+          duration-300
+          hover:-translate-y-1
+          hover:bg-red-500
+          hover:border-red-500
+          hover:shadow-lg
+        "
+      >
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="
+            h-5
+            w-5
+            text-stone-700
+            transition-all
+            duration-300
+            group-hover:text-white
+            group-hover:-translate-y-1
+          "
+        >
+          <path d="m18 15-6-6-6 6" />
+        </svg>
+
+      </button>
+
+    </div>
+
+  </div>
+  {/* ===========================
+        Mobile Presence Card
+=========================== */}
+
+<div className="md:hidden mt-10 mb-12">
+
+  <div className="relative overflow-hidden rounded-[28px] border border-stone-200 bg-white px-5 py-6 shadow-sm">
+
+    {/* Decorative Map */}
+    <img
+      src={footermap}
+      alt=""
+      className="
+        absolute
+        right-0
+        top-0
+        h-full
+        w-[65%]
+        object-cover
+        opacity-[0.05]
+        grayscale
+        pointer-events-none
+        select-none
+      "
+      style={{
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 25%, black 100%)",
+        maskImage:
+          "linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 25%, black 100%)",
+      }}
+    />
+
+    <div className="relative z-10">
+
+      {/* Logo */}
+
+      <img
+        src={imgSrcc}
+        alt="Sniper"
+        className="h-11 w-auto mx-auto"
+      />
+
+      <div className="mx-auto mt-4 h-[3px] w-10 rounded-full bg-red-500" />
+
+      {/* Heading */}
+
+      <div className="mt-6 flex items-center gap-3">
+
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-stone-100">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-5 w-5 text-red-500"
+          >
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+
+        </div>
+
+        <div>
+
+          <h3 className="text-lg font-semibold text-stone-900">
+            Our Presence
+          </h3>
+
+          <p className="text-sm text-stone-500">
+            Serving businesses across India
+          </p>
+
+        </div>
+
+      </div>
+
+      {/* Divider */}
+
+      <div className="mt-5 h-px bg-stone-200" />
+
+      {/* Locations */}
+
+      <div className="mt-5 flex flex-wrap gap-2">
+
+        {locations.map((city) => (
+
+          <span
+            key={city}
+            className="
+              rounded-full
+              border
+              border-stone-300
+              bg-white
+              px-3
+              py-1.5
+              text-xs
+              font-medium
+              text-stone-700
+            "
+          >
+            {city}
+          </span>
+
+        ))}
+
+      </div>
+
+      {/* Scroll */}
+
+      <div className="mt-8 flex justify-center">
+
+        <button
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })
+          }
+          className="
+            group
+            flex
+            h-11
+            w-11
+            items-center
+            justify-center
+            rounded-full
+            border
+            border-stone-300
+            bg-white
+            shadow-sm
+            transition-all
+            duration-300
+            hover:bg-red-500
+            hover:border-red-500
+          "
+        >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="
+              h-5
+              w-5
+              text-stone-700
+              group-hover:text-white
+            "
+          >
+            <path d="m18 15-6-6-6 6"/>
+          </svg>
+
+        </button>
+
+      </div>
+
+    </div>
+
   </div>
 
- <img
-  src={imgSrccc}
-  alt="Global Locations"
-  className="hidden lg:block w-[150px] h-30 "
-/>
+</div>
+
 </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-stone-400 pt-8">
+        <div className="border-t border-stone-200 pt-6">
+  <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+    <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-stone-500">
+      {legalLinks.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          className="hover:text-stone-900 transition-colors"
+        >
+          {link.name}
+        </a>
+      ))}
+    </div>
 
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
-
-
-            {/* Text-based brand mark — replaces the raster logo image */}
-            <div className="flex items-center">
-  <img
-     src={imgSrcc}
-    alt="Sniper Logo"
-    className="h-16 w-auto object-contain"
-  />
+    <p className="text-sm text-stone-500 whitespace-nowrap">
+      © {new Date().getFullYear()} Sniper Systems &amp; Solutions
+    </p>
+  </div>
 </div>
-
-            <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-stone-700">
-              {legalLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="hover:text-stone-900 transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
-
-            <p className="text-sm text-stone-700 whitespace-nowrap">
-              © Sniper Systems &amp; Solutions {new Date().getFullYear()}
-            </p>
-          </div>
-        </div>
       </div>
     </footer>
   );
