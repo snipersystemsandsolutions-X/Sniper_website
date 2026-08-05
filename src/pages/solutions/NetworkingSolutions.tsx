@@ -5,187 +5,9 @@ import { Activity, ArrowRight, CheckCircle, Shield, Zap } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import React from "react";
+import PageSEO from "@/components/PageSEO";
 
 
-
-
-      <>
-
-        {/* BASIC SEO */}
-
-        <title>Best Networking Solutions in Chennai | Secure Network Infrastructure | Sniper Systems</title>
-
-        <meta
-          name="description"
-          content="Looking for reliable networking solutions in Chennai? Sniper Systems offers secure and scalable network infrastructure, enterprise networking, and network security solutions for businesses across India."
-        />
-
-        <meta
-          name="keywords"
-          content="networking solutions Chennai, enterprise networking solutions India, network infrastructure services, network security solutions Chennai, IT networking company"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://sniperindia.com/solutions/networking-solutions"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="Networking Solutions | Sniper Systems"
-        />
-
-        <meta
-          property="og:description"
-          content="Secure and scalable networking solutions including enterprise networking, infrastructure, and network security services."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/solutions/networking-solutions"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="Enterprise Networking Solutions | Sniper Systems"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Enhance your business with secure, scalable, and high-performance networking solutions."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-</script>
-
-        {/* SERVICE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "Networking Solutions",
-            "provider": {
-              "@type": "Organization",
-              "name": "Sniper Systems"
-            },
-            "areaServed": {
-              "@type": "Country",
-              "name": "India"
-            },
-            "description": "Enterprise networking solutions including network infrastructure, security, and performance optimization."
-          }
-          `}
-</script>
-
-        {/* FAQ SCHEMA (VERY POWERFUL FOR SEO) */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What are networking solutions for businesses?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Networking solutions include designing, implementing, and managing network infrastructure to ensure secure and efficient communication within an organization."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Why are enterprise networking solutions important?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Enterprise networking solutions ensure high performance, security, scalability, and seamless connectivity across business operations."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Does Sniper Systems provide network security?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Sniper Systems offers advanced network security solutions to protect business data and infrastructure from cyber threats."
-                }
-              }
-            ]
-          }
-          `}
-</script>
-
-        {/* BREADCRUMB SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://sniperindia.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Solutions",
-                "item": "https://sniperindia.com/solutions/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Networking Solutions",
-                "item": "https://sniperindia.com/solutions/networking-solutions"
-              }
-            ]
-          }
-          `}
-</script>
-
-      </>
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -680,97 +502,11 @@ const NetworkingSolutions = () => {
 
 
 
-      <>
-
-        {/* BASIC SEO */}
-
-        <title>Best Networking Solutions in Chennai | Secure Network Infrastructure | Sniper Systems</title>
-
-        <meta
-          name="description"
-          content="Looking for reliable networking solutions in Chennai? Sniper Systems offers secure and scalable network infrastructure, enterprise networking, and network security solutions for businesses across India."
-        />
-
-        <meta
-          name="keywords"
-          content="networking solutions Chennai, enterprise networking solutions India, network infrastructure services, network security solutions Chennai, IT networking company"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://sniperindia.com/solutions/networking-solutions"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="Networking Solutions | Sniper Systems"
-        />
-
-        <meta
-          property="og:description"
-          content="Secure and scalable networking solutions including enterprise networking, infrastructure, and network security services."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/solutions/networking-solutions"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="Enterprise Networking Solutions | Sniper Systems"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Enhance your business with secure, scalable, and high-performance networking solutions."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-</script>
-
-        {/* SERVICE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+      <PageSEO
+        title="Best Networking Solutions in Chennai | Secure Network Infrastructure"
+        description="Looking for reliable networking solutions in Chennai? Sniper Systems offers secure and scalable network infrastructure, enterprise networking, and network security solutions for businesses across India."
+        canonical="/solutions/networking-solutions"
+        structuredData={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
@@ -784,14 +520,7 @@ const NetworkingSolutions = () => {
               "name": "India"
             },
             "description": "Enterprise networking solutions including network infrastructure, security, and performance optimization."
-          }
-          `}
-</script>
-
-        {/* FAQ SCHEMA (VERY POWERFUL FOR SEO) */}
-
-        <script type="application/ld+json">
-          {`
+          },
           {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -821,14 +550,7 @@ const NetworkingSolutions = () => {
                 }
               }
             ]
-          }
-          `}
-</script>
-
-        {/* BREADCRUMB SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+          },
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -843,7 +565,7 @@ const NetworkingSolutions = () => {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Solutions",
-                "item": "https://sniperindia.com/solutions/"
+                "item": "https://sniperindia.com/solutions"
               },
               {
                 "@type": "ListItem",
@@ -853,10 +575,8 @@ const NetworkingSolutions = () => {
               }
             ]
           }
-          `}
-</script>
-
-      </>
+        ]}
+      />
 
 
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}

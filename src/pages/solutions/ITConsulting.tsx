@@ -6,187 +6,8 @@ import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import PageSEO from "@/components/PageSEO";
 
-
-
-<>
-
-  {/* BASIC SEO */}
-
-  <title>IT Consulting Services in India | Strategic IT Advisory | Sniper Systems</title>
-
-  <meta
-    name="description"
-    content="Sniper Systems delivers expert IT consulting services in India, including IT strategy, infrastructure modernization, cloud consulting, and cybersecurity advisory to drive business growth."
-  />
-
-  <meta
-    name="keywords"
-    content="IT consulting services Chennai, IT advisory services India, IT strategy consulting, cloud consulting services, IT consulting company Chennai"
-  />
-
-  <meta name="robots" content="index, follow" />
-
-  <link
-    rel="canonical"
-    href="https://sniperindia.com/solutions/it-consulting"
-  />
-
-  {/* GEO TAGS */}
-
-  <meta name="geo.region" content="IN-TN" />
-  <meta name="geo.placename" content="Chennai" />
-  <meta name="geo.position" content="13.0827;80.2707" />
-  <meta name="ICBM" content="13.0827, 80.2707" />
-
-  {/* OPEN GRAPH */}
-
-  <meta property="og:type" content="website" />
-
-  <meta
-    property="og:title"
-    content="IT Consulting & Advisory Services | Sniper Systems"
-  />
-
-  <meta
-    property="og:description"
-    content="Strategic IT consulting services including IT roadmap planning, cloud transformation, and cybersecurity advisory."
-  />
-
-  <meta
-    property="og:image"
-    content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-  />
-
-  <meta
-    property="og:url"
-    content="https://sniperindia.com/solutions/it-consulting"
-  />
-
-  {/* TWITTER SEO */}
-
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <meta
-    name="twitter:title"
-    content="IT Consulting Services in Chennai | Sniper Systems"
-  />
-
-  <meta
-    name="twitter:description"
-    content="Expert IT consulting services to align your technology strategy with business goals."
-  />
-
-  <meta
-    name="twitter:image"
-    content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-  />
-
-  {/* ORGANIZATION SCHEMA */}
-
-  <script type="application/ld+json">
-    {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-  </script>
-
-  {/* SERVICE SCHEMA */}
-
-  <script type="application/ld+json">
-    {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "IT Consulting Services",
-            "provider": {
-              "@type": "Organization",
-              "name": "Sniper Systems"
-            },
-            "areaServed": {
-              "@type": "Country",
-              "name": "India"
-            },
-            "description": "IT consulting services including IT strategy, cloud consulting, infrastructure modernization, and cybersecurity advisory."
-          }
-          `}
-  </script>
-
-  {/* FAQ SCHEMA */}
-
-  <script type="application/ld+json">
-    {`
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What are IT consulting services?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "IT consulting services help businesses align technology strategies with their goals through expert guidance, planning, and implementation support."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Why does a business need IT consulting?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "IT consulting helps businesses optimize technology investments, improve efficiency, enhance security, and accelerate digital transformation."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Does Sniper Systems provide cloud and cybersecurity consulting?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Sniper Systems offers cloud consulting, infrastructure modernization, and cybersecurity advisory services tailored to business needs."
-                }
-              }
-            ]
-          }
-          `}
-  </script>
-
-  {/* BREADCRUMB SCHEMA */}
-
-  <script type="application/ld+json">
-    {`
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://sniperindia.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Solutions",
-                "item": "https://sniperindia.com/solutions/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "IT Consulting",
-                "item": "https://sniperindia.com/solutions/it-consulting"
-              }
-            ]
-          }
-          `}
-  </script>
-
-</>
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -729,97 +550,11 @@ const ITConsulting = () => {
     <Layout>
 
 
-        <>
-
-        {/* BASIC SEO */}
-
-        <title>IT Consulting Services in India | Strategic IT Advisory | Sniper Systems</title>
-
-        <meta
-          name="description"
-          content="Sniper Systems delivers expert IT consulting services in India, including IT strategy, infrastructure modernization, cloud consulting, and cybersecurity advisory to drive business growth."
-        />
-
-        <meta
-          name="keywords"
-          content="IT consulting services Chennai, IT advisory services India, IT strategy consulting, cloud consulting services, IT consulting company Chennai"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://sniperindia.com/solutions/it-consulting"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="IT Consulting & Advisory Services | Sniper Systems"
-        />
-
-        <meta
-          property="og:description"
-          content="Strategic IT consulting services including IT roadmap planning, cloud transformation, and cybersecurity advisory."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/solutions/it-consulting"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="IT Consulting Services in Chennai | Sniper Systems"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Expert IT consulting services to align your technology strategy with business goals."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-</script>
-
-        {/* SERVICE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+      <PageSEO
+        title="IT Consulting Services in India | Strategic IT Advisory"
+        description="Sniper Systems delivers expert IT consulting services in India, including IT strategy, infrastructure modernization, cloud consulting, and cybersecurity advisory to drive business growth."
+        canonical="/solutions/it-consulting"
+        structuredData={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
@@ -833,14 +568,7 @@ const ITConsulting = () => {
               "name": "India"
             },
             "description": "IT consulting services including IT strategy, cloud consulting, infrastructure modernization, and cybersecurity advisory."
-          }
-          `}
-</script>
-
-        {/* FAQ SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+          },
           {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -870,14 +598,7 @@ const ITConsulting = () => {
                 }
               }
             ]
-          }
-          `}
-</script>
-
-        {/* BREADCRUMB SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+          },
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -892,7 +613,7 @@ const ITConsulting = () => {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Solutions",
-                "item": "https://sniperindia.com/solutions/"
+                "item": "https://sniperindia.com/solutions"
               },
               {
                 "@type": "ListItem",
@@ -902,10 +623,8 @@ const ITConsulting = () => {
               }
             ]
           }
-          `}
-</script>
-
-      </>
+        ]}
+      />
 
 
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}

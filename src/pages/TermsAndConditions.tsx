@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import PageSEO from "@/components/PageSEO";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -547,6 +548,11 @@ const Terms = () => {
 
   return (
     <Layout>
+      <PageSEO
+        title="Terms and Conditions"
+        description="Read the Terms and Conditions of Sniper Systems and Solutions governing the use of our website, services, and solutions."
+        canonical="/terms"
+      />
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       {/* ── Hero Section ── */}

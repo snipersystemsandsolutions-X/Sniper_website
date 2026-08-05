@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
-import imgSrcc from "@/assets/sniper-logo-black.png";
 import imgSrccc from "@/assets/aaaa87d7-c10a-420c-99fb-d72436796abd.png";
+import imgSrcc from "@/assets/sniper-logo-black.png";
+import { memo, useEffect, useRef, useState } from 'react';
+import { Link } from "react-router-dom";
 const quickLinks = [
   { name: "Home", href: "/" },
   { name: "Blog", href: "https://blog.sniperindia.com/" },
@@ -142,12 +143,268 @@ const LocationsMap = () => (
   </svg>
 );
 
-export const Footer = () => {
+
+const TileSection = memo(
+  ({
+    sectionIndex,
+    verticalAlign,
+    tileSize,
+    animationDuration,
+    tilesPerSection,
+    isInView,
+  }: {
+    sectionIndex: number;
+    verticalAlign: 'start' | 'center' | 'end';
+    tileSize: number;
+    animationDuration: number;
+    tilesPerSection: number;
+    isInView: boolean;
+  }) => {
+    const sectionStyle: React.CSSProperties = {
+      top: verticalAlign === 'start' ? '8px' : verticalAlign === 'center' ? '50%' : undefined,
+      bottom: verticalAlign === 'end' ? '8px' : undefined,
+      transform: verticalAlign === 'center' ? 'translateY(-50%) translateZ(0)' : 'translateZ(0)',
+      display: 'grid',
+      gridAutoFlow: 'dense',
+      gridTemplateColumns: `repeat(auto-fill, ${tileSize}px)`,
+      gridTemplateRows: `repeat(auto-fill, ${tileSize}px)`,
+      alignContent: verticalAlign,
+      justifyContent: 'start',
+      gap: 0,
+      height: '33.333%',
+      contain: 'layout style paint',
+      willChange: 'contents',
+    };
+
+    return (
+      <div className="footer-tile-section absolute inset-x-2" style={sectionStyle}>
+        {Array.from({ length: tilesPerSection }).map((_, i) => {
+          const delay = (((i + sectionIndex * 100) * 45) % 100) / 100 * animationDuration;
+          return (
+            <div
+              key={`${sectionIndex}-${i}`}
+              className="footer-tile-wrap relative"
+              style={{
+                width: tileSize,
+                height: tileSize,
+                contain: 'layout style paint',
+              }}
+            >
+              <div
+                className={`footer-tile absolute inset-[3px] rounded-md ${isInView ? 'running' : 'paused'}`}
+                style={{
+                  background: 'rgba(248, 138, 138, 0.13)',
+                  opacity: 0,
+                  animationDelay: `${delay}s`,
+                  animationDuration: `${animationDuration}s`,
+                  willChange: 'opacity',
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden',
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+);
+
+TileSection.displayName = 'TileSection';
+
+const DecorativeTilesBackground = memo(() => {
+  const tileSize = 28;
+  const animationDuration = 8;
+  const cornerGap = '34px';
+  const tilesPerSection = 140;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          setIsInView(entry.isIntersecting);
+        }
+      },
+      {
+        rootMargin: '200px',
+        threshold: 0,
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer className="bg-stone-200 text-stone-800">
-      <div className="container mx-auto px-8 lg:px-16 py-20">
+    <>
+      <style>{`
+        @keyframes footer-tiles {
+          0%, 40%, 80% { opacity: 0; }
+          20%, 60% { opacity: 1; }
+        }
+        .footer-tile {
+          animation-name: footer-tiles;
+          animation-iteration-count: infinite;
+          animation-timing-function: ease;
+        }
+        .footer-tile.running {
+          animation-play-state: running;
+        }
+        .footer-tile.paused {
+          animation-play-state: paused;
+        }
+        .footer-tile-section {
+          content-visibility: auto;
+        }
+      `}</style>
+      <div
+        ref={containerRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 select-none"
+        style={{
+          padding: cornerGap,
+          contain: 'layout style paint',
+        }}
+      >
+        <div
+          className="w-full h-full rounded-3xl overflow-hidden border border-stone-400/30 relative"
+          style={{
+            backgroundImage: `
+              repeating-linear-gradient(to right, rgba(168,162,158,0.22) 0, rgba(168,162,158,0.22) 1px, transparent 1px, transparent ${tileSize}px),
+              repeating-linear-gradient(to bottom, rgba(168,162,158,0.22) 0, rgba(168,162,158,0.22) 1px, transparent 1px, transparent ${tileSize}px)
+            `,
+            backgroundSize: `${tileSize}px ${tileSize}px`,
+            backgroundColor: 'rgba(255,255,255,0.03)',
+            contain: 'layout style paint',
+            willChange: 'contents',
+            transform: 'translateZ(0)',
+          }}
+        >
+          <TileSection
+            sectionIndex={0}
+            verticalAlign="start"
+            tileSize={tileSize}
+            animationDuration={animationDuration}
+            tilesPerSection={tilesPerSection}
+            isInView={isInView}
+          />
+          <TileSection
+            sectionIndex={1}
+            verticalAlign="center"
+            tileSize={tileSize}
+            animationDuration={animationDuration}
+            tilesPerSection={tilesPerSection}
+            isInView={isInView}
+          />
+          <TileSection
+            sectionIndex={2}
+            verticalAlign="end"
+            tileSize={tileSize}
+            animationDuration={animationDuration}
+            tilesPerSection={tilesPerSection}
+            isInView={isInView}
+          />
+        </div>
+      </div>
+    </>
+  );
+});
+
+DecorativeTilesBackground.displayName = 'DecorativeTilesBackground';
+
+export const Footer = memo(() => {
+  const footerRef = useRef<HTMLElement>(null);
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    const el = footerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setRevealed(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setRevealed(true);
+            observer.disconnect();
+          }
+        }
+      },
+      {
+        rootMargin: '100px',
+        threshold: 0,
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <footer
+      ref={footerRef}
+      className={`relative bg-stone-200 text-stone-800 overflow-hidden footer-optimized ${revealed ? 'footer-revealed' : 'footer-hidden'}`}
+      style={{
+        contain: 'layout style paint',
+        transform: 'translateZ(0)',
+        backfaceVisibility: 'hidden',
+      }}
+    >
+      <style>{`
+        .footer-optimized {
+          content-visibility: auto;
+          contain-intrinsic-size: 1000px;
+        }
+        .footer-hidden .footer-content {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        .footer-revealed .footer-content {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .footer-hidden .locations-bar {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        .footer-revealed .locations-bar {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 0.7s ease-out 0.15s, transform 0.7s ease-out 0.15s;
+        }
+        .footer-hidden .footer-bottom {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        .footer-revealed .footer-bottom {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 0.7s ease-out 0.3s, transform 0.7s ease-out 0.3s;
+        }
+      `}</style>
+      <DecorativeTilesBackground />
+      <div className="relative z-10 container mx-auto px-8 lg:px-16 py-20 footer-content gpu">
         {/* Top Section — CTA + 5 link columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 lg:gap-10 mb-20">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-6 gap-12 lg:gap-10 mb-20"
+          style={{
+            contentVisibility: 'auto',
+            containIntrinsicSize: '600px',
+          }}
+        >
           {/* CTA */}
           <div className="lg:col-span-1">
             <h2 className="text-3xl lg:text-4xl font-light leading-tight mb-6 text-stone-900">
@@ -217,7 +474,13 @@ export const Footer = () => {
         </div>
 
         {/* Locations bar */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 rounded-2xl border border-stone-400/70 px-6 py-6 mb-16">
+        <div
+          className="locations-bar flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 rounded-2xl border border-stone-400/70 px-6 py-6 mb-16 gpu"
+          style={{
+            contentVisibility: 'auto',
+            containIntrinsicSize: '150px',
+          }}
+        >
   <div className="flex items-start lg:items-center gap-3 flex-wrap">
     <span className="flex h-12 w-12 items-center justify-center rounded-full border border-red-500 text-stone-700 shrink-0">
   <svg
@@ -246,11 +509,19 @@ export const Footer = () => {
   src={imgSrccc}
   alt="Global Locations"
   className="hidden lg:block w-[150px] h-30 "
+  loading="lazy"
+  decoding="async"
 />
 </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-stone-400 pt-8">
+        <div
+          className="footer-bottom border-t border-stone-400 pt-8 gpu"
+          style={{
+            contentVisibility: 'auto',
+            containIntrinsicSize: '150px',
+          }}
+        >
 
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
 
@@ -261,6 +532,8 @@ export const Footer = () => {
      src={imgSrcc}
     alt="Sniper Logo"
     className="h-16 w-auto object-contain"
+    loading="lazy"
+    decoding="async"
   />
 </div>
 
@@ -284,4 +557,6 @@ export const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';

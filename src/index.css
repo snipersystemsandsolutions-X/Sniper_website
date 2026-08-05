@@ -72,6 +72,58 @@
   }
 }
 
+/* ── Global smooth scroll + rendering optimisations ────────────────────── */
+html {
+  /* Native smooth scroll for anchor links & programmatic scrollTo */
+  scroll-behavior: smooth;
+  /* Prevent layout shift from scrollbar appearing/disappearing */
+  scrollbar-gutter: stable;
+  /* Sharper text on all surfaces */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Prevent overscroll glow / rubber-band on scroll containers */
+  overscroll-behavior-y: none;
+  /* Ensure scroll chaining works predictably */
+  overscroll-behavior-inline: contain;
+}
+
+/* Ensure smooth scrolling on mobile webkit browsers */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text rendering degradation during scroll on webkit */
+.scrolling-active {
+  text-rendering: optimizeSpeed;
+}
+
+/* Optimise fixed and sticky elements for compositor-only updates */
+header,
+nav,
+footer,
+[style*="position: fixed"],
+[style*="position: sticky"],
+[class*="sticky"],
+[class*="fixed"] {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Respect user's reduced-motion preference — disable all animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -80,10 +132,28 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Prevent horizontal overflow causing layout shift */
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight;
+  }
+
+  /* Smooth focus transitions for keyboard navigation */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    transition: outline-offset 0.1s ease;
+  }
+
+  /* Images and media: prevent layout shift */
+  img,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
   }
 }
 
@@ -117,15 +187,34 @@
   .text-gradient {
     @apply bg-gradient-to-r from-primary to-[hsl(357,82%,35%)] bg-clip-text text-transparent;
   }
+
+  /* Page-level transition wrapper — used by AnimatePresence in App.tsx */
+  .page-transition {
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    /* Force GPU layer for smoother transitions */
+    transform: translateZ(0);
+  }
 }
 
 @layer utilities {
+  /* GPU-accelerated utility — apply to any element that animates heavily */
+  .gpu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
   .animate-fade-in {
     animation: fadeIn 0.5s ease-out forwards;
   }
 
   .animate-slide-down {
     animation: slideDown 0.3s ease-out forwards;
+  }
+
+  .animate-slideDown {
+    animation: slideDown 0.5s ease-in-out forwards;
   }
 
   @keyframes fadeIn {
@@ -149,18 +238,4 @@
       transform: translateY(0);
     }
   }
-
-  @keyframes slideDown {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.animate-slideDown {
-  animation: slideDown 0.5s ease-in-out forwards;
-}
-
 }

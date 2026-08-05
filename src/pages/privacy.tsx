@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import PageSEO from "@/components/PageSEO";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -640,6 +641,11 @@ const TermsAndPrivacy = () => {
 
   return (
     <Layout>
+      <PageSEO
+        title="Privacy Policy"
+        description="Read the Privacy Policy of Sniper Systems and Solutions to understand how we collect, use, and protect your personal information."
+        canonical="/privacy"
+      />
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       {/* ── Hero Section ── */}

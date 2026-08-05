@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Award, LayoutGrid, Handshake } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { Helmet } from "react-helmet-async";
+import PageSEO from "@/components/PageSEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,12 +44,12 @@ const MarqueeTicker = () => {
 
 
   useEffect(() => {
-  const script = document.createElement("script");
-  script.src = "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
-  script.async = true;
-  document.body.appendChild(script);
-  return () => { document.body.removeChild(script); };
-}, []);
+    const script = document.createElement("script");
+    script.src = "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => { document.body.removeChild(script); };
+  }, []);
 
 
 
@@ -301,38 +301,38 @@ const CTASection = () => {
 // PARTNER DATA
 // ========================================================
 const allPartners = [
-  { name: "Apple",       logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",                                                    w: 108, h: 38 },
-  { name: "Lenovo",      logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Lenovo_%282015%29.svg",                                                   w: 98,  h: 38 },
-  { name: "Microsoft",   logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg",                                           w: 108, h: 28 },
-  { name: "NVIDIA",      logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg",                                                         w: 108, h: 28 },
-  { name: "Autodesk",    logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/Autodesk_Logo_2021.svg",                                                  w: 108, h: 48 },
-  { name: "Unreal",      logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Unreal_Engine_Logo_%28new_typeface%29.svg",                               w: 118, h: 58 },
-  { name: "Cisco",       logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg",                                                w: 108, h: 38 },
-  { name: "Unity",       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/1280px-Unity_Technologies_logo.svg.png", w: 108, h: 38 },
-  { name: "Adobe",       logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Adobe_Corporate_wordmark.svg",                                            w: 108, h: 28 },
-  { name: "Dell",        logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg",                                                      w: 108, h: 58 },
-  { name: "HP",          logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg",                                                        w: 108, h: 58 },
-  { name: "AWS",         logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",                                            w: 108, h: 48 },
-  { name: "Samsung",     logo: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Samsung_Black_icon.svg",                                                  w: 108, h: 28 },
-  { name: "Acer",        logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/Acer_2011.svg",                                                           w: 108, h: 28 },
-  { name: "Asus",        logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg",                                                           w: 108, h: 25 },
-  { name: "Google",      logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",                                                    w: 108, h: 38 },
-  { name: "Supermicro",  logo: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Super_Micro_Computer_Logo.svg",                                           w: 108, h: 40 },
-  { name: "Yubico",      logo: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Yubico_logo.svg",                                                         w: 108, h: 25 },
-  { name: "Poly",        logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Poly_Inc._Logo.svg",                                                      w: 108, h: 38 },
-  { name: "Epos",        logo: "https://upload.wikimedia.org/wikipedia/en/5/58/Epos-logo.png",                                                                w: 108, h: 28 },
-  { name: "Eizo",        logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/EIZO_Logo.svg",                                                           w: 100, h: 68 },
-  { name: "ViewSonic",   logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/ViewSonic_logo.svg",                                                      w: 108, h: 28 },
-  { name: "Belkin",      logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/Belkin_logo_2024.svg",                                                    w: 108, h: 28 },
-  { name: "Honeywell",   logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Honeywell_logo.svg",                                                      w: 108, h: 28 },
-  { name: "Logitech",    logo: "https://upload.wikimedia.org/wikipedia/commons/1/17/Logitech_logo.svg",                                                       w: 108, h: 28 },
-  { name: "Jabra",       logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Jabra_Logo.png",                                                          w: 108, h: 28 },
-  { name: "BenQ",        logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/BenQ_wordmark.svg",                                                       w: 95,  h: 28 },
-  { name: "SketchUp",    logo: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Brand_Wordmark_for_SketchUp.png",                                         w: 108, h: 28 },
-  { name: "SAP",         logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg",                                                       w: 108, h: 28 },
-  { name: "LG",          logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/LG_logo_%282014%29.svg",                                                  w: 108, h: 28 },
-  { name: "Keyshot",     logo: "https://www.freelogovectors.net/wp-content/uploads/2018/11/keyshot-logo.png",                                                 w: 108, h: 28 },
-  { name: "JumpCloud",   logo: "https://upload.wikimedia.org/wikipedia/en/4/47/JumpCloud_Logo.svg",                                                           w: 108, h: 38 },
+  { name: "Apple", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg", w: 108, h: 38 },
+  { name: "Lenovo", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Lenovo_%282015%29.svg", w: 98, h: 38 },
+  { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", w: 108, h: 28 },
+  { name: "NVIDIA", logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg", w: 108, h: 28 },
+  { name: "Autodesk", logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/Autodesk_Logo_2021.svg", w: 108, h: 48 },
+  { name: "Unreal", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Unreal_Engine_Logo_%28new_typeface%29.svg", w: 118, h: 58 },
+  { name: "Cisco", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg", w: 108, h: 38 },
+  { name: "Unity", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/1280px-Unity_Technologies_logo.svg.png", w: 108, h: 38 },
+  { name: "Adobe", logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Adobe_Corporate_wordmark.svg", w: 108, h: 28 },
+  { name: "Dell", logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg", w: 108, h: 58 },
+  { name: "HP", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg", w: 108, h: 58 },
+  { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", w: 108, h: 48 },
+  { name: "Samsung", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Samsung_Black_icon.svg", w: 108, h: 28 },
+  { name: "Acer", logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/Acer_2011.svg", w: 108, h: 28 },
+  { name: "Asus", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg", w: 108, h: 25 },
+  { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", w: 108, h: 38 },
+  { name: "Supermicro", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Super_Micro_Computer_Logo.svg", w: 108, h: 40 },
+  { name: "Yubico", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Yubico_logo.svg", w: 108, h: 25 },
+  { name: "Poly", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Poly_Inc._Logo.svg", w: 108, h: 38 },
+  { name: "Epos", logo: "https://upload.wikimedia.org/wikipedia/en/5/58/Epos-logo.png", w: 108, h: 28 },
+  { name: "Eizo", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/EIZO_Logo.svg", w: 100, h: 68 },
+  { name: "ViewSonic", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/ViewSonic_logo.svg", w: 108, h: 28 },
+  { name: "Belkin", logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/Belkin_logo_2024.svg", w: 108, h: 28 },
+  { name: "Honeywell", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Honeywell_logo.svg", w: 108, h: 28 },
+  { name: "Logitech", logo: "https://upload.wikimedia.org/wikipedia/commons/1/17/Logitech_logo.svg", w: 108, h: 28 },
+  { name: "Jabra", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Jabra_Logo.png", w: 108, h: 28 },
+  { name: "BenQ", logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/BenQ_wordmark.svg", w: 95, h: 28 },
+  { name: "SketchUp", logo: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Brand_Wordmark_for_SketchUp.png", w: 108, h: 28 },
+  { name: "SAP", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg", w: 108, h: 28 },
+  { name: "LG", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/LG_logo_%282014%29.svg", w: 108, h: 28 },
+  { name: "Keyshot", logo: "https://www.freelogovectors.net/wp-content/uploads/2018/11/keyshot-logo.png", w: 108, h: 28 },
+  { name: "JumpCloud", logo: "https://upload.wikimedia.org/wikipedia/en/4/47/JumpCloud_Logo.svg", w: 108, h: 38 },
 ];
 
 // Group into categories
@@ -399,37 +399,34 @@ const Partners = () => {
   const stats = [
     { number: "32+", label: "Technology Partners" },
     { number: "20+", label: "Years of Alliances" },
-    { number: "5",   label: "Solution Categories" },
+    { number: "5", label: "Solution Categories" },
     { number: "100%", label: "Certified Reseller" },
   ];
 
   const badgeLabels = ["Hardware", "Software", "Cloud", "Networking", "AV", "Security", "Creative", "Display"];
 
-  const heroRef  = useRef(null);
+  const heroRef = useRef(null);
   const statsRef = useRef(null);
-  const featRef  = useRef(null);
+  const featRef = useRef(null);
 
-  const heroInView  = useInView(heroRef,  { once: true, margin: "-60px" });
+  const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
   const statsInView = useInView(statsRef, { once: true, margin: "-80px" });
-  const featInView  = useInView(featRef,  { once: true, margin: "-60px" });
+  const featInView = useInView(featRef, { once: true, margin: "-60px" });
 
   return (
     <Layout>
-      <>
-        <title>Our Technology Partners | Sniper Systems</title>
-        <meta
-          name="description"
-          content="Sniper Systems partners with industry-leading technology brands including Apple, Microsoft, Cisco, Dell, HP, NVIDIA, AWS and more to deliver best-in-class IT solutions across India."
-        />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://sniperindia.com/partners/" />
-        <meta name="geo.region" content="IN-TN" />
-        <meta name="geo.placename" content="Chennai" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Technology Partners | Sniper Systems" />
-        <meta property="og:description" content="We partner with 32+ leading technology brands to bring world-class IT solutions to enterprises across India." />
-        <meta property="og:url" content="https://sniperindia.com/partners/" />
-      </>
+      <PageSEO
+        title="Technology Partners"
+        description="Sniper Systems partners with 32+ industry-leading technology brands including Apple, Microsoft, Cisco, Dell, HP, NVIDIA, and AWS to deliver best-in-class IT solutions across India."
+        canonical="/partners"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Sniper Systems Technology Partners",
+          "url": "https://sniperindia.com/partners",
+          "description": "Explore Sniper Systems' network of 32+ certified technology partners across hardware, software, cloud, and security.",
+        }}
+      />
 
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 

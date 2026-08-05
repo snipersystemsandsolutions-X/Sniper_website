@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import PageSEO from "@/components/PageSEO";
 import LottieAnimation from "@/components/ServicesAnimation";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { useEffect, useRef, useState, useCallback } from "react";
@@ -6,140 +7,7 @@ import { Link } from "react-router-dom";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-
 import React from "react";
-import { Helmet } from "react-helmet-async";
-
-
-
-      <>
-
-        {/* BASIC SEO */}
-
-        <title>IT Blogs & Insights | Sniper Systems | Technology & IT Solutions</title>
-
-        <meta
-          name="description"
-          content="Explore Sniper Systems blog for the latest insights on IT infrastructure, managed services, cloud solutions, cybersecurity, and enterprise technology trends."
-        />
-
-        <meta
-          name="keywords"
-          content="IT blog India, managed IT services blog, cloud computing articles, cybersecurity insights, enterprise IT solutions blog"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://blog.sniperindia.com/"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="IT Blogs & Insights | Sniper Systems"
-        />
-
-        <meta
-          property="og:description"
-          content="Stay updated with the latest IT trends, cloud solutions, cybersecurity insights, and enterprise technology blogs."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/blog/"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="IT Blogs & Insights | Sniper Systems"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Read expert blogs on IT infrastructure, managed services, cloud computing, and enterprise solutions."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-</script>
-
-        {/* BLOG PAGE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            "name": "Sniper Systems Blog",
-            "url": "https://sniperindia.com/blog/",
-            "description": "Insights and articles on IT infrastructure, cloud solutions, cybersecurity, and enterprise IT services."
-          }
-          `}
-</script>
-
-        {/* BREADCRUMB SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://sniperindia.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Blog",
-                "item": "https://sniperindia.com/blog/"
-              }
-            ]
-          }
-          `}
-</script>
-
-      </>
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -533,6 +401,38 @@ const Blog = () => {
 
   return (
     <Layout>
+      <PageSEO
+        title="IT Blogs & Insights"
+        description="Explore Sniper Systems blog for the latest insights on IT infrastructure, managed services, cloud solutions, cybersecurity, and enterprise technology trends."
+        canonical="/blog"
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "Sniper Systems Blog",
+            "url": "https://sniperindia.com/blog",
+            "description": "Insights and articles on IT infrastructure, cloud solutions, cybersecurity, and enterprise IT services."
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sniperindia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://sniperindia.com/blog"
+              }
+            ]
+          }
+        ]}
+      />
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       {/* ==================== HERO ==================== */}

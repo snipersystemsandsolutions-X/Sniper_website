@@ -11,187 +11,9 @@ import { useEffect, useRef, useState } from "react";
 
 
 import React from "react";
+import PageSEO from "@/components/PageSEO";
 
 
-
-
-      <>
-
-        {/* BASIC SEO */}
-
-        <title>Payment Solutions in India | Secure Digital Payment Services | Sniper Systems</title>
-
-        <meta
-          name="description"
-          content="Sniper Systems delivers secure payment solutions in India including digital payment systems, POS solutions, payment integration, and enterprise payment infrastructure for seamless transactions."
-        />
-
-        <meta
-          name="keywords"
-          content="payment solutions India, digital payment services India, POS solutions India, payment gateway integration, enterprise payment systems"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://sniperindia.com/solutions/payment-services"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="Digital Payment Solutions & Services | Sniper Systems India"
-        />
-
-        <meta
-          property="og:description"
-          content="Enable secure and seamless transactions with advanced digital payment and POS solutions."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/solutions/payment-services"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="Payment Solutions in India | Sniper Systems"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Secure digital payment infrastructure and POS solutions for modern businesses."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-</script>
-
-        {/* SERVICE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "Payment Solutions",
-            "provider": {
-              "@type": "Organization",
-              "name": "Sniper Systems"
-            },
-            "areaServed": {
-              "@type": "Country",
-              "name": "India"
-            },
-            "description": "Digital payment solutions including POS systems, payment gateway integration, and enterprise payment infrastructure in India."
-          }
-          `}
-</script>
-
-        {/* FAQ SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What are payment solutions for businesses?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Payment solutions enable businesses to accept, process, and manage digital transactions securely through POS systems, payment gateways, and online platforms."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Why are digital payment services important in India?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Digital payment services in India help businesses improve transaction speed, enhance customer experience, and ensure secure and seamless payments."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Does Sniper Systems provide POS and payment integration?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Sniper Systems offers POS solutions and payment integration services to support seamless and secure business transactions."
-                }
-              }
-            ]
-          }
-          `}
-</script>
-
-        {/* BREADCRUMB SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://sniperindia.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Solutions",
-                "item": "https://sniperindia.com/solutions/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Payment Services",
-                "item": "https://sniperindia.com/solutions/payment-services"
-              }
-            ]
-          }
-          `}
-</script>
-
-      </>
 
 
 
@@ -751,97 +573,11 @@ const PaymentServices = () => {
 
 
 
-      <>
-
-        {/* BASIC SEO */}
-
-        <title>Payment Solutions in India | Secure Digital Payment Services | Sniper Systems</title>
-
-        <meta
-          name="description"
-          content="Sniper Systems delivers secure payment solutions in India including digital payment systems, POS solutions, payment integration, and enterprise payment infrastructure for seamless transactions."
-        />
-
-        <meta
-          name="keywords"
-          content="payment solutions India, digital payment services India, POS solutions India, payment gateway integration, enterprise payment systems"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://sniperindia.com/solutions/payment-services"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="Digital Payment Solutions & Services | Sniper Systems India"
-        />
-
-        <meta
-          property="og:description"
-          content="Enable secure and seamless transactions with advanced digital payment and POS solutions."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/solutions/payment-services"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="Payment Solutions in India | Sniper Systems"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Secure digital payment infrastructure and POS solutions for modern businesses."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-</script>
-
-        {/* SERVICE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+      <PageSEO
+        title="Payment Solutions in India | Secure Digital Payment Services"
+        description="Sniper Systems delivers secure payment solutions in India including digital payment systems, POS solutions, payment integration, and enterprise payment infrastructure for seamless transactions."
+        canonical="/solutions/payment-services"
+        structuredData={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
@@ -855,14 +591,7 @@ const PaymentServices = () => {
               "name": "India"
             },
             "description": "Digital payment solutions including POS systems, payment gateway integration, and enterprise payment infrastructure in India."
-          }
-          `}
-</script>
-
-        {/* FAQ SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+          },
           {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -892,14 +621,7 @@ const PaymentServices = () => {
                 }
               }
             ]
-          }
-          `}
-</script>
-
-        {/* BREADCRUMB SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+          },
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -914,7 +636,7 @@ const PaymentServices = () => {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Solutions",
-                "item": "https://sniperindia.com/solutions/"
+                "item": "https://sniperindia.com/solutions"
               },
               {
                 "@type": "ListItem",
@@ -924,10 +646,8 @@ const PaymentServices = () => {
               }
             ]
           }
-          `}
-</script>
-
-      </>
+        ]}
+      />
 
 
 
