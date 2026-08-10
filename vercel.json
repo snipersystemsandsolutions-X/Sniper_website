@@ -3,6 +3,11 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "framework": "vite",
+
+  "env": {
+    "NODE_OPTIONS": "--max-old-space-size=6144"
+  },
+  
   "routes": [
     {
       "src": "/partners/(.*)",
