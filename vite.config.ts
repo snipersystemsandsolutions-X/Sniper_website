@@ -74,11 +74,18 @@ export default defineConfig({
     // Auto-generates /sitemap.xml with per-route priorities on every build
     sitemap({
       hostname: SITE_URL,
-      dynamicRoutes: routesWithPriority.map(r => r.url),
+      dynamicRoutes: routesWithPriority.map((r) => r.url),
       exclude: ["/about-us"],
       changefreq: "weekly",
       priority: 0.8,
       lastmod: new Date(),
+      robots: [
+        {
+          userAgent: "*",
+          allow: "/",
+          disallow: ["/404.html", "/__vite_ping"],
+        },
+      ],
     }),
 
     // Brotli compression (.br) — served by most CDNs / nginx automatically.
