@@ -1,0 +1,17 @@
+{
+  "name": "Sniper Systems — IT Solutions Provider",
+  "short_name": "Sniper Systems",
+  "description": "Enterprise IT infrastructure, managed IT services, cloud solutions, and digital workplace services across India.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

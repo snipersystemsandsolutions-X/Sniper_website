@@ -1,286 +1,27 @@
 import { Layout } from "@/components/Layout";
+import SEO from "@/components/SEO";
+import OrbitingCirclesGlobe from "@/components/ui/orbiting-circles-02";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, CheckCircle, ChevronDown, ChevronLeft, ChevronRight, Clock, Lightbulb, Shield, Zap } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 
 import Lottie from "@/components/boyworking";
 import Lottiee from "@/components/morphing";
 import { StarfieldBackground } from "@/components/StarfieldBackground";
-import Strands from './Strands';
 
-
-import imgSrc from "@/assets/sniper-logo-black.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 
 
+
 const ease = [0.16, 1, 0.3, 1];
 
-// ========================================================
-// SNIPER SCOPE CURSOR
-// ========================================================
-const SniperScopeCursor = () => {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const posRef = useRef({ x: -200, y: -200 });
-  const rafRef = useRef<number | null>(null);
-  const [visible, setVisible] = useState(false);
-  const [isInsideCTA, setIsInsideCTA] = useState(false);
 
-
-
-  // Jotform Chatbot
-  useEffect(() => {
-    const script = document.createElement("script");
-
-    script.src =
-      "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
-    script.async = true;
-
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      posRef.current = { x: e.clientX, y: e.clientY };
-      if (!visible) setVisible(true);
-
-      // Check if inside CTA section — CTA section has id="cta-section"
-      const ctaEl = document.getElementById("cta-section");
-      if (ctaEl) {
-        const rect = ctaEl.getBoundingClientRect();
-        const inside =
-          e.clientX >= rect.left &&
-          e.clientX <= rect.right &&
-          e.clientY >= rect.top &&
-          e.clientY <= rect.bottom;
-        setIsInsideCTA(inside);
-      }
-    };
-
-    const onLeave = () => setVisible(false);
-
-    document.addEventListener("mousemove", onMove);
-    document.addEventListener("mouseleave", onLeave);
-
-    const animate = () => {
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate(${posRef.current.x}px, ${posRef.current.y}px)`;
-      }
-      rafRef.current = requestAnimationFrame(animate);
-    };
-    rafRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      document.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseleave", onLeave);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, [visible]);
-
-  if (isInsideCTA) return null;
-
-  return (
-    <>
-      <style>{`
-        * { cursor: none !important; }
-        #cta-section, #cta-section * { cursor: none !important; }
-        @keyframes scope-rotate {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes scope-pulse {
-          0%, 100% { opacity: 0.7; r: 28; }
-          50% { opacity: 1; r: 30; }
-        }
-        @keyframes crosshair-dash {
-          from { stroke-dashoffset: 0; }
-          to { stroke-dashoffset: -20; }
-        }
-      `}</style>
-
-      <div
-        ref={cursorRef}
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          pointerEvents: "none",
-          zIndex: 99999,
-          willChange: "transform",
-          opacity: visible ? 1 : 0,
-          transition: "opacity 0.2s ease",
-          /* Offset so the center of the SVG is at the mouse tip */
-          marginLeft: "-40px",
-          marginTop: "-40px",
-        }}
-      >
-        <svg
-          width="60"
-          height="60"
-          viewBox="0 0 80 80"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ display: "block" }}
-        >
-          {/* ── Outer rotating dashed ring ── */}
-          <circle
-            cx="40"
-            cy="40"
-            r="36"
-            fill="none"
-            stroke="rgba(255,255,255,0.35)"
-            strokeWidth="1"
-            strokeDasharray="4 6"
-            style={{
-              transformOrigin: "40px 40px",
-              animation: "scope-rotate 8s linear infinite",
-            }}
-          />
-
-          {/* ── Outer solid ring ── */}
-          <circle
-            cx="40"
-            cy="40"
-            r="32"
-            fill="none"
-            stroke="rgba(255,255,255,0.55)"
-            strokeWidth="1.2"
-          />
-
-          {/* ── Inner lens ring ── */}
-          <circle
-            cx="40"
-            cy="40"
-            r="22"
-            fill="rgba(0,0,0,0.08)"
-            stroke="rgba(255,50,50,0.85)"
-            strokeWidth="1.5"
-          />
-
-          {/* ── Inner dot ring ── */}
-          <circle
-            cx="40"
-            cy="40"
-            r="14"
-            fill="none"
-            stroke="rgba(255,255,255,0.25)"
-            strokeWidth="0.8"
-            strokeDasharray="2 4"
-            style={{
-              transformOrigin: "40px 40px",
-              animation: "scope-rotate 5s linear infinite reverse",
-            }}
-          />
-
-          {/* ── Red center dot ── */}
-          <circle
-            cx="40"
-            cy="40"
-            r="2.5"
-            fill="rgba(255,40,40,1)"
-            style={{ filter: "drop-shadow(0 0 4px rgba(255,40,40,0.9))" }}
-          />
-
-          {/* ── Crosshair lines — Top ── */}
-          <line
-            x1="40" y1="4"
-            x2="40" y2="24"
-            stroke="rgba(255,255,255,0.8)"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-            strokeDasharray="10 4"
-            style={{ animation: "crosshair-dash 1.2s linear infinite" }}
-          />
-          {/* ── Crosshair lines — Bottom ── */}
-          <line
-            x1="40" y1="56"
-            x2="40" y2="76"
-            stroke="rgba(255,255,255,0.8)"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-            strokeDasharray="10 4"
-            style={{ animation: "crosshair-dash 1.2s linear infinite" }}
-          />
-          {/* ── Crosshair lines — Left ── */}
-          <line
-            x1="4" y1="40"
-            x2="24" y2="40"
-            stroke="rgba(255,255,255,0.8)"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-            strokeDasharray="10 4"
-            style={{ animation: "crosshair-dash 1.2s linear infinite" }}
-          />
-          {/* ── Crosshair lines — Right ── */}
-          <line
-            x1="56" y1="40"
-            x2="76" y2="40"
-            stroke="rgba(255,255,255,0.8)"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-            strokeDasharray="10 4"
-            style={{ animation: "crosshair-dash 1.2s linear infinite" }}
-          />
-
-          {/* ── Small tick marks on main ring ── */}
-          {[0, 90, 180, 270].map((angle) => {
-            const rad = (angle * Math.PI) / 180;
-            const x1 = 40 + Math.cos(rad) * 29;
-            const y1 = 40 + Math.sin(rad) * 29;
-            const x2 = 40 + Math.cos(rad) * 35;
-            const y2 = 40 + Math.sin(rad) * 35;
-            return (
-              <line
-                key={angle}
-                x1={x1} y1={y1} x2={x2} y2={y2}
-                stroke="rgba(255,50,50,0.9)"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-            );
-          })}
-
-          {/* ── Diagonal tick marks ── */}
-          {[45, 135, 225, 315].map((angle) => {
-            const rad = (angle * Math.PI) / 180;
-            const x1 = 40 + Math.cos(rad) * 30;
-            const y1 = 40 + Math.sin(rad) * 30;
-            const x2 = 40 + Math.cos(rad) * 34;
-            const y2 = 40 + Math.sin(rad) * 34;
-            return (
-              <line
-                key={angle}
-                x1={x1} y1={y1} x2={x2} y2={y2}
-                stroke="rgba(255,255,255,0.4)"
-                strokeWidth="1"
-                strokeLinecap="round"
-              />
-            );
-          })}
-
-          {/* ── Lens glare ── */}
-          <ellipse
-            cx="33"
-            cy="33"
-            rx="5"
-            ry="3"
-            fill="none"
-            stroke="rgba(255,255,255,0.18)"
-            strokeWidth="1"
-            transform="rotate(-30, 33, 33)"
-          />
-        </svg>
-      </div>
-    </>
-  );
-};
 
 // ---- Animated Counter ----
 const AnimatedCounter = ({ target, suffix = "" }: { target: string; suffix?: string }) => {
@@ -447,69 +188,7 @@ const MagneticLink = ({ to, children, className }: { to: string; children: React
     </a>
   );
 };
-// ========================================================
-// PRELOADER
-// ========================================================
-const Preloader = ({ onComplete }: { onComplete: () => void }) => {
-  const [isVisible, setIsVisible] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLImageElement>(null);
-  const barFillRef = useRef<HTMLDivElement>(null);
-  const dotRef = useRef<HTMLDivElement>(null);
-  const trailRef = useRef<HTMLDivElement>(null);
-  const percentRef = useRef<HTMLParagraphElement>(null);
-  const progressObj = useRef({ val: 0 });
 
-  useEffect(() => {
-    const tl = gsap.timeline();
-    const ctx = gsap.context(() => {
-      tl.fromTo(logoRef.current,
-        { opacity: 0, scale: 0.8, y: 10 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "back.out(1.7)" }
-      );
-      tl.to(progressObj.current, {
-        val: 100,
-        duration: 1.4,
-        ease: "power1.inOut",
-        onUpdate: () => {
-          const v = Math.round(progressObj.current.val);
-          if (barFillRef.current) barFillRef.current.style.width = `${v}%`;
-          if (dotRef.current) dotRef.current.style.left = `${v}%`;
-          if (trailRef.current) {
-            trailRef.current.style.left = `${Math.max(0, v - 18)}%`;
-            trailRef.current.style.width = `${Math.min(v, 18)}%`;
-          }
-          if (percentRef.current) percentRef.current.textContent = `${v}%`;
-        },
-      }, "-=0.2");
-      tl.to(logoRef.current, { scale: 0.97, opacity: 0.7, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0.5);
-      tl.to(containerRef.current, {
-        yPercent: -105,
-        duration: 0.85,
-        ease: "power3.inOut",
-        delay: 0.15,
-        onComplete: () => { setIsVisible(false); onComplete?.(); }
-      });
-    });
-    return () => ctx.revert();
-  }, []);
-
-  if (!isVisible) return null;
-
-  return (
-    <div ref={containerRef} style={{ position: 'fixed', inset: 0, backgroundColor: '#ffffff', zIndex: 9999, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', willChange: 'transform' }}>
-      <div style={{ marginBottom: '48px', opacity: 0 }} ref={logoRef as any}>
-        <img ref={logoRef} src={imgSrc} alt="Sniper Logo" style={{ height: '56px', width: 'auto', objectFit: 'contain' }} />
-      </div>
-      <div style={{ width: '200px', height: '1px', backgroundColor: '#e5e7eb', borderRadius: '2px', overflow: 'visible', position: 'relative' }}>
-        <div ref={barFillRef} style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: '0%', backgroundColor: '#000', borderRadius: '2px', transition: 'none' }} />
-        <div ref={dotRef} style={{ position: 'absolute', top: '50%', left: '0%', transform: 'translate(-50%, -50%)', width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#000', boxShadow: '0 0 8px 2px rgba(0,0,0,0.5), 0 0 20px 6px rgba(0,0,0,0.15)', transition: 'none' }} />
-        <div ref={trailRef} style={{ position: 'absolute', top: '50%', left: '0%', transform: 'translateY(-50%)', width: '0%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(0,0,0,0.25), rgba(0,0,0,0.7))', transition: 'none' }} />
-      </div>
-      <p ref={percentRef} style={{ color: '#111', fontSize: '11px', fontFamily: 'monospace', marginTop: '16px', letterSpacing: '0.12em' }}>0%</p>
-    </div>
-  );
-};
 
 // ========================================================
 // BANNER SLIDER SECTION
@@ -838,126 +517,242 @@ const OrbitalRings = () => (
 );
 
 // ========================================================
-// CTA SECTION — uses its own custom cursor (unchanged from original)
-// Wrapped with id="cta-section" so SniperScopeCursor can detect it
+// CTA SECTION — from Contact.tsx with custom cursor
 // ========================================================
+
+// Detect touch once at module level — safe because this module only runs in browser
+const IS_TOUCH = typeof window !== "undefined" && window.matchMedia("(hover: none)").matches;
+
 const CTASection = () => {
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [displayPosition, setDisplayPosition] = useState({ x: 0, y: 0 });
-  const [cursorVisible, setCursorVisible] = useState(false);
-  const [isHoveringButton, setIsHoveringButton] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const ctaBtnRef = useRef<HTMLAnchorElement>(null);
-  const animationFrameRef = useRef<number | null>(null);
-  const velocity = useRef({ x: 0, y: 0 });
-  const lerp = (s: number, e: number, f: number) => s + (e - s) * f;
+  const rafRef = useRef<number | null>(null);
 
-  const animateCursor = useCallback(() => {
-    if (!cursorVisible) return;
-    const sf = isHoveringButton ? 0.2 : 0.1;
-    const newX = lerp(displayPosition.x, cursorPosition.x, sf);
-    const newY = lerp(displayPosition.y, cursorPosition.y, sf);
-    velocity.current.x = newX - displayPosition.x;
-    velocity.current.y = newY - displayPosition.y;
-    setDisplayPosition({ x: newX, y: newY });
-    animationFrameRef.current = requestAnimationFrame(animateCursor);
-  }, [cursorVisible, cursorPosition, displayPosition, isHoveringButton]);
+  // Direct DOM refs for the cursor layers (mutated in RAF, never via state)
+  const blobRef = useRef<HTMLDivElement>(null);
+  const trailRef = useRef<HTMLDivElement>(null);
 
+  // All cursor tracking in refs — zero re-renders, zero stale closures
+  const mouse  = useRef({ x: 0, y: 0 });   // raw mouse position
+  const smooth = useRef({ x: 0, y: 0 });   // lerped position written to DOM
+  const trail  = useRef({ x: 0, y: 0 });   // trail lags further behind
+  const inside  = useRef(false);            // mouse is inside the section
+  const hovered = useRef(false);            // mouse is over the CTA button
+
+  const ctaRef = useRef(null);
+  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
+
+  // ── Single RAF loop — started once, never recreated ──────────────────
   useEffect(() => {
+    if (IS_TOUCH) return;
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+    const tick = () => {
+      rafRef.current = requestAnimationFrame(tick);
+
+      if (!inside.current) return;
+
+      // Lerp the main blob toward the real mouse
+      const f = hovered.current ? 0.2 : 0.12;
+      smooth.current.x = lerp(smooth.current.x, mouse.current.x, f);
+      smooth.current.y = lerp(smooth.current.y, mouse.current.y, f);
+
+      // Trail lags behind smooth position
+      trail.current.x = lerp(trail.current.x, smooth.current.x, 0.07);
+      trail.current.y = lerp(trail.current.y, smooth.current.y, 0.07);
+
+      // Write directly to DOM — NO React state, NO re-render
+      if (blobRef.current) {
+        const sz = hovered.current ? 128 : 96;
+        blobRef.current.style.transform =
+          `translate(${smooth.current.x}px, ${smooth.current.y}px) translate(-50%, -50%) scale(${hovered.current ? 1.25 : 1})`;
+        blobRef.current.style.width  = `${sz}px`;
+        blobRef.current.style.height = `${sz}px`;
+        blobRef.current.textContent  = hovered.current ? "CLICK ME!" : "LET'S GO!";
+      }
+
+      if (trailRef.current) {
+        trailRef.current.style.transform =
+          `translate(${trail.current.x}px, ${trail.current.y}px) translate(-50%, -50%)`;
+      }
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []); // empty deps — intentional, loop reads from refs not state
+
+  // ── Section mouse events ──────────────────────────────────────────────
+  useEffect(() => {
+    if (IS_TOUCH) return;
     const section = sectionRef.current;
     if (!section) return;
-    const enter = () => {
-      setCursorVisible(true);
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-      animationFrameRef.current = requestAnimationFrame(animateCursor);
+
+    const onMove = (e: MouseEvent) => {
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
     };
-    const leave = () => {
-      setCursorVisible(false);
-      setIsHoveringButton(false);
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+    const onEnter = () => {
+      inside.current = true;
+      // Snap smooth/trail to current mouse so there's no "fly in" on first entry
+      smooth.current.x = mouse.current.x;
+      smooth.current.y = mouse.current.y;
+      trail.current.x  = mouse.current.x;
+      trail.current.y  = mouse.current.y;
+      if (blobRef.current)  blobRef.current.style.opacity  = "1";
+      if (trailRef.current) trailRef.current.style.opacity = "0.3";
     };
-    const move = (e: MouseEvent) => setCursorPosition({ x: e.clientX, y: e.clientY });
-    section.addEventListener("mouseenter", enter);
-    section.addEventListener("mouseleave", leave);
-    section.addEventListener("mousemove", move);
-    animationFrameRef.current = requestAnimationFrame(animateCursor);
+    const onLeave = () => {
+      inside.current  = false;
+      hovered.current = false;
+      if (blobRef.current)  blobRef.current.style.opacity  = "0";
+      if (trailRef.current) trailRef.current.style.opacity = "0";
+    };
+
+    section.addEventListener("mousemove",  onMove);
+    section.addEventListener("mouseenter", onEnter);
+    section.addEventListener("mouseleave", onLeave);
     return () => {
-      section.removeEventListener("mouseenter", enter);
-      section.removeEventListener("mouseleave", leave);
-      section.removeEventListener("mousemove", move);
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      section.removeEventListener("mousemove",  onMove);
+      section.removeEventListener("mouseenter", onEnter);
+      section.removeEventListener("mouseleave", onLeave);
     };
-  }, [animateCursor]);
+  }, []);
 
-  useEffect(() => { return () => { if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current); }; }, []);
-
+  // ── Magnetic CTA button ───────────────────────────────────────────────
   useEffect(() => {
+    if (IS_TOUCH) return;
     const btn = ctaBtnRef.current;
     if (!btn) return;
     const onMove = (e: MouseEvent) => {
-      const rect = btn.getBoundingClientRect();
-      const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.3;
-      const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.3;
+      const r  = btn.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width  / 2)) * 0.3;
+      const dy = (e.clientY - (r.top  + r.height / 2)) * 0.3;
       gsap.to(btn, { x: dx, y: dy, duration: 0.35, ease: "power2.out" });
     };
-    const onLeave = () => gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1,0.5)" });
-    btn.addEventListener("mousemove", onMove);
+    const onLeave = () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1,0.5)" });
+    };
+    btn.addEventListener("mousemove",  onMove);
     btn.addEventListener("mouseleave", onLeave);
-    return () => { btn.removeEventListener("mousemove", onMove); btn.removeEventListener("mouseleave", onLeave); };
+    return () => {
+      btn.removeEventListener("mousemove",  onMove);
+      btn.removeEventListener("mouseleave", onLeave);
+    };
   }, []);
+
+  // ── Cursor markup — rendered into document.body via Portal ───────────
+  // This escapes ALL ancestor stacking contexts and transforms so that
+  // `position: fixed` + `transform` work exactly as expected.
+  const cursorPortal = !IS_TOUCH && typeof document !== "undefined"
+    ? createPortal(
+        <>
+          {/* Main blob */}
+          <div
+            ref={blobRef}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: 96,
+              height: 96,
+              borderRadius: "50%",
+              background: "#ffffff",
+              color: "#000000",
+              fontWeight: 700,
+              fontSize: 11,
+              letterSpacing: "0.04em",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              pointerEvents: "none",
+              userSelect: "none",
+              zIndex: 99999,
+              opacity: 0,
+              // Only non-position props get CSS transition — position uses RAF
+              transition: "opacity 0.2s ease, width 0.2s ease, height 0.2s ease",
+              filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.35))",
+              willChange: "transform",
+            }}
+          />
+          {/* Trailing dot */}
+          <div
+            ref={trailRef}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: 56,
+              height: 56,
+              borderRadius: "50%",
+              background: "rgba(255,255,255,0.25)",
+              pointerEvents: "none",
+              zIndex: 99998,
+              opacity: 0,
+              transition: "opacity 0.3s ease",
+              willChange: "transform",
+            }}
+          />
+        </>,
+        document.body
+      )
+    : null;
 
   return (
     <>
-      {/* CTA's own custom cursor — only shown inside CTA */}
-      <div
-        className={`fixed pointer-events-none z-[99998] flex items-center justify-center rounded-full font-bold text-sm transition-all duration-150 ease-out ${cursorVisible ? "opacity-100" : "opacity-0"} ${isHoveringButton ? "w-24 h-24 md:w-32 md:h-32 bg-white text-black" : "w-20 h-20 md:w-24 md:h-24 bg-white text-black"}`}
-        style={{
-          left: `${displayPosition.x}px`,
-          top: `${displayPosition.y}px`,
-          transform: `translate(-50%, -50%) ${cursorVisible ? (isHoveringButton ? "scale(1.2) md:scale(1.3)" : "scale(1)") : "scale(0.5)"}`,
-          transition: cursorVisible ? 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.3s ease, height 0.3s ease' : 'all 0.3s ease',
-          filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25))'
-        }}
-      >
-        {isHoveringButton ? "CLICK ME!" : "LET'S GO!"}
-      </div>
-      <div
-        className={`fixed pointer-events-none z-[99997] rounded-full transition-all duration-300 ease-out ${cursorVisible ? "opacity-30" : "opacity-0"} ${isHoveringButton ? "w-16 h-16 md:w-20 md:h-20 bg-white/30" : "w-12 h-12 md:w-16 md:h-16 bg-white/20"}`}
-        style={{
-          left: `${displayPosition.x - velocity.current.x * 0.5}px`,
-          top: `${displayPosition.y - velocity.current.y * 0.5}px`,
-          transform: 'translate(-50%, -50%)',
-          transition: 'left 0.1s linear, top 0.1s linear'
-        }}
-      />
+      {cursorPortal}
 
-      {/* The actual CTA section — id used by SniperScopeCursor to detect bounds */}
-      <section
-        id="cta-section"
-        ref={sectionRef}
-        className="relative bg-black text-white py-16 px-4 sm:py-20 sm:px-6 rounded-3xl sm:rounded-[4rem] mx-4 sm:mx-6 my-8 sm:my-12 cursor-none overflow-hidden"
+      <motion.section
+        ref={(el) => {
+          sectionRef.current = el;
+          ctaRef.current = el;
+        }}
+        className="relative bg-black text-white py-16 sm:py-20 px-4 sm:px-6 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12 overflow-hidden cursor-none"
+        initial={{ opacity: 0, y: 60 }}
+        animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="hidden sm:block"><OrbitalRings /></div>
+        <OrbitalRings />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <div className="mb-8 sm:mb-12">
-            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold mb-4 sm:mb-6 leading-tight text-white">
-              Have<br className="hidden sm:block" />an idea?<br className="hidden sm:block" />We make it happen
-            </h2>
-          </div>
-          <a
-            ref={ctaBtnRef}
-            href="/contact"
-            className="inline-flex items-center px-8 sm:px-12 py-3 sm:py-4 border-2 border-white rounded-full text-white font-medium text-base sm:text-lg hover:bg-white hover:text-black transition-all duration-300 relative z-10 will-change-transform"
-            onMouseEnter={() => setIsHoveringButton(true)}
-            onMouseLeave={() => setIsHoveringButton(false)}
+          <motion.div
+            className="mb-8 sm:mb-12"
+            initial={{ opacity: 0, y: 40 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           >
-            TELL US <span className="absolute inset-[-10px] rounded-full"></span>
-          </a>
+            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold mb-4 sm:mb-6 leading-tight text-white">
+              Have<br />an idea?<br />We make it happen
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+          >
+            <a
+              ref={ctaBtnRef}
+              href="/contact"
+              className="inline-flex items-center px-8 sm:px-12 py-3 sm:py-4 border-2 border-white rounded-full text-white font-medium text-base sm:text-lg hover:bg-white hover:text-black transition-all duration-300 relative z-10 will-change-transform"
+              onMouseEnter={() => { hovered.current = true; }}
+              onMouseLeave={() => { hovered.current = false; }}
+            >
+              CONTACT US
+              <span className="absolute inset-[-12px] rounded-full" />
+            </a>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };
+
+
+
+
+
+
 
 // ========================================================
 // CLIENT TYPES SECTION
@@ -1090,10 +885,36 @@ const PartnersGrid = ({ partners, partnersInView }: { partners: any[]; partnersI
   }, [partnersInView]);
 
   return (
-    <div ref={gridRef} className="grid gap-x-0 gap-y-0" style={{ gridTemplateColumns: "repeat(8, 1fr)", width: "100vw", position: "relative", left: "50%", transform: "translateX(-50%)" }}>
+    <div
+      ref={gridRef}
+      className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-x-0 gap-y-0"
+      style={{
+        width: "100vw",
+        position: "relative",
+        left: "50%",
+        transform: "translateX(-50%)"
+      }}
+    >
       {partners.map((partner, index) => (
-        <div key={index} className="partner-item opacity-0 flex items-center justify-center border border-gray-100 hover:bg-gray-50 transition-all duration-300 group" style={{ padding: "clamp(16px, 2.5vw, 32px) clamp(12px, 2vw, 28px)", minHeight: "100px" }}>
-          <img src={partner.logo} alt={partner.name} className="object-contain transition-all duration-300 group-hover:scale-110" style={{ width: "100%", maxWidth: partner.maxWidth ?? "80px", height: "auto", maxHeight: partner.maxHeight ?? "36px" }} />
+        <div
+          key={index}
+          className="partner-item opacity-0 flex items-center justify-center border border-gray-100 hover:bg-gray-50 transition-all duration-300 group"
+          style={{
+            padding: "clamp(24px, 4vw, 32px) clamp(20px, 3.5vw, 28px)",
+            minHeight: "120px"
+          }}
+        >
+          <img
+            src={partner.logo}
+            alt={partner.name}
+            className="object-contain transition-all duration-300 group-hover:scale-110"
+            style={{
+              width: "100%",
+              maxWidth: partner.maxWidth ?? "100px",
+              height: "auto",
+              maxHeight: partner.maxHeight ?? "56px"
+            }}
+          />
         </div>
       ))}
     </div>
@@ -1135,8 +956,15 @@ const SolutionCard = ({ solution, index }: { solution: any; index: number }) => 
 // MAIN INDEX PAGE
 // ========================================================
 const Index = () => {
-  const [preloaderDone, setPreloaderDone] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  // Jotform Chatbot
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => { document.body.removeChild(script); };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 300);
@@ -1146,18 +974,21 @@ const Index = () => {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  const gsapHeroHeadingRef = useRef<HTMLHeadingElement>(null);
+  const gsapHeroHeadingMobileRef = useRef<HTMLHeadingElement>(null);
+  const gsapHeroHeadingDesktopRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    if (!preloaderDone) return;
-    const el = gsapHeroHeadingRef.current;
-    if (!el) return;
-    const words = el.querySelectorAll(".hero-word");
-    gsap.fromTo(words,
-      { yPercent: 110, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.07, delay: 0.2 }
-    );
-  }, [preloaderDone]);
+    const animateWords = (el: HTMLHeadingElement | null, delayOffset = 0) => {
+      if (!el) return;
+      const words = el.querySelectorAll(".hero-word");
+      gsap.fromTo(words,
+        { yPercent: 110, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.07, delay: 0.2 + delayOffset }
+      );
+    };
+    animateWords(gsapHeroHeadingMobileRef.current);
+    animateWords(gsapHeroHeadingDesktopRef.current);
+  }, []);
 
   const solutions = [
     { title: "AV Solutions", description: "Providing innovative audio-visual solutions tailored for business environments.", img: "https://i.postimg.cc/JhBh5MNr/AV-soln.jpg", link: "/solutions/av-solutions" },
@@ -1271,171 +1102,192 @@ const Index = () => {
   const marqueeItems = ["IT Infrastructure", "Cloud Services", "Device Deployment", "Cybersecurity", "Quick Support", "IT Consulting", "Managed Services", "AV Solutions"];
 
   return (
-
     <Layout>
       <>
-        {/* BASIC SEO */}
-        <title>IT Solutions Provider in Chennai | Managed IT Services India | Sniper Systems</title>
-        <meta name="description" content="Sniper Systems is a leading IT solutions provider in Chennai offering enterprise IT infrastructure, managed IT services, cloud solutions, cybersecurity, and digital workplace solutions across India." />
-        <meta name="keywords" content="IT solutions provider in Chennai, managed IT services India, IT infrastructure solutions Chennai, enterprise IT services India, cloud solutions provider Chennai" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://sniperindia.com/" />
-        <meta name="geo.region" content="IN-TN" />
-        <meta name="geo.placename" content="Chennai" />
-        <meta name="geo.position" content="13.0827;80.2707" />
-        <meta name="ICBM" content="13.0827, 80.2707" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="IT Solutions Provider in Chennai | Sniper Systems" />
-        <meta property="og:description" content="Enterprise IT infrastructure, managed services, cloud solutions, and digital transformation services for businesses across India." />
-        <meta property="og:image" content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg" />
-        <meta property="og:url" content="https://sniperindia.com/" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="IT Infrastructure & Managed IT Services | Sniper Systems" />
-        <meta name="twitter:description" content="Leading IT solutions provider delivering enterprise IT infrastructure, cloud solutions, and managed IT services in India." />
-        <meta name="twitter:image" content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg" />
-        <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"Organization","name":"Sniper Systems","url":"https://sniperindia.com","logo":"https://sniperindia.com/wp-content/uploads/2023/09/logo.png","sameAs":["https://www.linkedin.com/company/sniper-systems"]}`}</script>
-        <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"LocalBusiness","name":"Sniper Systems","image":"https://sniperindia.com/wp-content/uploads/2023/09/logo.png","url":"https://sniperindia.com","telephone":"+91-44-00000000","address":{"@type":"PostalAddress","addressLocality":"Chennai","addressRegion":"Tamil Nadu","addressCountry":"India"},"geo":{"@type":"GeoCoordinates","latitude":13.0827,"longitude":80.2707}}`}</script>
-        <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"Service","serviceType":"IT Infrastructure Solutions","provider":{"@type":"Organization","name":"Sniper Systems"},"areaServed":{"@type":"Country","name":"India"}}`}</script>
+        {/* ── SEO ── all meta/og/twitter/JSON-LD injected via react-helmet-async.
+            react-snap bakes these into static HTML at build time so
+            Googlebot sees them without executing JavaScript.          */}
+        <SEO
+          title="IT Solutions Provider in Chennai | Managed IT Services India | Sniper Systems"
+          description="Sniper Systems is a leading IT solutions provider in Chennai offering enterprise IT infrastructure, managed IT services, cloud solutions, cybersecurity, and digital workplace solutions across India."
+          keywords="IT solutions provider in Chennai, managed IT services India, IT infrastructure solutions Chennai, enterprise IT services India, cloud solutions provider Chennai"
+          canonical="https://sniperindia.com/"
+          ogTitle="IT Solutions Provider in Chennai | Sniper Systems"
+          ogDescription="Enterprise IT infrastructure, managed services, cloud solutions, and digital transformation services for businesses across India."
+          twitterTitle="IT Infrastructure & Managed IT Services | Sniper Systems"
+          twitterDescription="Leading IT solutions provider delivering enterprise IT infrastructure, cloud solutions, and managed IT services in India."
+          structuredData={[
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Sniper Systems",
+              url: "https://sniperindia.com",
+              logo: "https://sniperindia.com/wp-content/uploads/2023/09/logo.png",
+              sameAs: ["https://www.linkedin.com/company/sniper-systems"],
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Sniper Systems",
+              image: "https://sniperindia.com/wp-content/uploads/2023/09/logo.png",
+              url: "https://sniperindia.com",
+              telephone: "+91-44-00000000",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Chennai",
+                addressRegion: "Tamil Nadu",
+                addressCountry: "India",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 13.0827,
+                longitude: 80.2707,
+              },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              serviceType: "IT Infrastructure Solutions",
+              provider: { "@type": "Organization", name: "Sniper Systems" },
+              areaServed: { "@type": "Country", name: "India" },
+            },
+          ]}
+        />
 
 
 
 
 
-        {/* BOTPRESS BOTPRESS BOTPRESS BOTPRESS BOTPRESS*/}
-
-
+        {/* BOTPRESS */}
         <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
         <script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
-
-
-
-
-
-
-
-
       </>
 
-      {/* ── SNIPER SCOPE CURSOR — rendered at top level, hidden inside CTA ── */}
 
-
-      {!preloaderDone && <Preloader onComplete={() => setPreloaderDone(true)} />}
 
       {/* ============================================================
-          1. HERO SECTION
+          1. HERO SECTION — full-bleed 100vw × 100vh, two-column
       ============================================================ */}
-      <section ref={heroRef} style={{ position: 'relative', width: '100%', minHeight: '90vh', overflow: 'hidden', background: '#0a0a0a', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <section ref={heroRef} style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden', background: '#0a0a0a', display: 'flex', flexDirection: 'column' }}>
 
         {/* Grid background */}
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
 
-        {/* Radial glow */}
-        <div style={{ position: 'absolute', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none' }} />
-
-        {/* Strands Background */}
-        <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', filter: 'blur(90px)', transform: 'scale(1.15)' }}>
-          <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-            <Strands
-              colors={["#F97316", "#7C3AED", "#06B6D4"]}
-              count={3}
-              speed={0.5}
-              amplitude={1}
-              waviness={1}
-              thickness={0.7}
-              glow={2.6}
-              taper={3}
-              spread={1}
-              intensity={0.6}
-              saturation={2}
-              opacity={1}
-              scale={2.2}
-              glass={false}
-              refraction={1}
-              dispersion={1}
-              glassSize={1}
-              hueShift={0}
-            />
-          </div>
-        </div>
-
+        {/* Radial glow on globe side */}
+        <div style={{ position: 'absolute', right: 0, top: 0, width: '55%', height: '100%', background: 'radial-gradient(ellipse 70% 80% at 65% 50%, rgba(255,255,255,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         {/* Scroll indicator */}
-        <div style={{ position: 'absolute', bottom: '32px', left: '36px', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+        <div style={{ position: 'absolute', bottom: '32px', left: '36px', zIndex: 20, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
           <div style={{ width: '1px', height: '52px', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.5))' }} />
           <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', fontFamily: 'monospace', writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>SCROLL</span>
         </div>
 
-        {/* Center content */}
-        <div style={{ position: 'relative', zIndex: 10, maxWidth: '680px', width: '100%', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', padding: '0 24px' }}>
+        {/* ── MOBILE layout (< lg) ── */}
+        <div className="lg:hidden flex flex-col" style={{ minHeight: '100svh', padding: '72px 20px 0', overflow: 'hidden' }}>
 
 
-
-
-          {/* Heading */}
-          <h1
-            ref={gsapHeroHeadingRef}
-            aria-label="Empowering Enterprises with Cutting-Edge IT Solutions"
-            style={{ margin: 0, fontSize: 'clamp(4.4rem, 5vw, 4rem)', fontWeight: 600, lineHeight: 1.08, color: '#ffffff', letterSpacing: '-0.025em', overflow: 'hidden' }}
-          >
-            {[
-              { word: "Empowering", br: false },
-              { word: "Enterprises", br: true },
-              { word: "with", br: false },
-              { word: "Cutting-Edge", br: false },
-              { word: "IT", br: false },
-              { word: "Solutions", br: false },
-            ].map(({ word, br }, i) => (
-              <span key={i}>
-                <span className="hero-word" style={{ display: 'inline-block', opacity: 0, fontWeight: 600, color: i >= 2 ? 'rgba(255,255,255,0.4)' : '#ffffff', marginRight: '0.22em' }}>
-                  {word}
-                </span>
-                {br && <br />}
-              </span>
+          <h1 ref={gsapHeroHeadingMobileRef} aria-label="Empowering Enterprises with Cutting-Edge IT Solutions"
+            style={{ margin: '0 0 12px', fontSize: 'clamp(2.2rem, 9.5vw, 3.2rem)', fontWeight: 600, lineHeight: 1.08, color: '#ffffff', letterSpacing: '-0.025em', overflow: 'hidden' }}>
+            {[{ word: "Empowering", br: false }, { word: "Enterprises", br: true }, { word: "with", br: false }, { word: "Cutting-Edge", br: true }, { word: "IT", br: false }, { word: "Solutions", br: false }].map(({ word, br }, i) => (
+              <span key={i}><span className="hero-word" style={{ display: 'inline-block', opacity: 0, fontWeight: 600, color: i >= 2 ? 'rgba(255,255,255,0.4)' : '#ffffff', marginRight: i < 5 ? '0.3em' : '0' }}>{word}</span>{br && <br />}</span>
             ))}
           </h1>
 
-          {/* Divider */}
-          <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent)' }} />
-
-          {/* Subtitle */}
-          <motion.p initial={{ opacity: 0, y: 14 }} animate={heroInView && preloaderDone ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.0 }}
-            style={{ margin: 0, fontSize: '15px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: '520px' }}>
-            At <strong style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 600 }}>Sniper Systems and Solutions Pvt Ltd</strong>, we specialize in delivering comprehensive IT solutions — from advanced infrastructure management to strategic consulting.
+          <motion.p initial={{ opacity: 0, y: 14 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.0 }}
+            style={{ margin: '0 0 18px', fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.65 }}>
+            At <strong style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 600 }}>Sniper Systems</strong>, we deliver comprehensive IT solutions — from infrastructure management to strategic consulting.
           </motion.p>
 
-          {/* Buttons */}
-          <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView && preloaderDone ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.1 }}
-            style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <a href="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '11px 26px', background: '#ffffff', color: '#000000', borderRadius: '999px', fontSize: '12px', fontWeight: 700, letterSpacing: '0.04em', textDecoration: 'none', border: '2px solid transparent' }}
+          <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.1 }}>
+            <a href="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '10px 22px', background: '#ffffff', color: '#000000', borderRadius: '999px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.04em', textDecoration: 'none', border: '2px solid transparent' }}
               onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = 'transparent'; el.style.color = '#fff'; el.style.borderColor = 'rgba(255,255,255,0.55)'; }}
               onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = '#fff'; el.style.color = '#000'; el.style.borderColor = 'transparent'; }}>
-              What we do <ArrowRight style={{ width: '13px', height: '13px' }} />
+              What we do <ArrowRight style={{ width: '12px', height: '12px' }} />
             </a>
-            {/*  <a href="" style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', textDecoration: 'none', fontFamily: 'monospace' }}
-        onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.8)')}
-        onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.35)')}>
-        →
-      </a>*/}
           </motion.div>
 
-          {/* Stats */}
-          <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView && preloaderDone ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.2 }}
-            style={{ display: 'flex', alignItems: 'center', gap: '32px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.07)', width: '100%', justifyContent: 'center' }}>
+          <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.2 }}
+            style={{ display: 'flex', alignItems: 'center', gap: '20px', paddingTop: '18px', marginTop: '18px', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
             {[['15+', 'Years'], ['1800+', 'Clients'], ['99%', 'Uptime']].map(([val, lbl], i, arr) => (
               <Fragment key={lbl}>
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '20px', fontWeight: 600, color: '#fff', lineHeight: 1 }}>{val}</div>
-                  <div style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginTop: '4px' }}>{lbl}</div>
+                  <div style={{ fontSize: '16px', fontWeight: 600, color: '#fff', lineHeight: 1 }}>{val}</div>
+                  <div style={{ fontSize: '8px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginTop: '3px' }}>{lbl}</div>
                 </div>
-                {i < arr.length - 1 && <div style={{ width: '1px', height: '36px', background: 'rgba(255,255,255,0.08)' }} />}
+                {i < arr.length - 1 && <div style={{ width: '1px', height: '26px', background: 'rgba(255,255,255,0.08)' }} />}
               </Fragment>
             ))}
           </motion.div>
+
+          <motion.div initial={{ opacity: 0 }} animate={heroInView ? { opacity: 1 } : {}} transition={{ duration: 1, delay: 0.6 }} style={{ marginTop: '16px', flex: 1, minHeight: 0, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '100%', maxWidth: '360px', height: '100%', minHeight: 0 }}>
+              <OrbitingCirclesGlobe mobile={true} />
+            </div>
+          </motion.div>
         </div>
 
-        <style>{`
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-  `}</style>
+        {/* ── DESKTOP layout (>= lg) — full bleed, no maxWidth ── */}
+        <div className="hidden lg:flex" style={{ position: 'absolute', inset: 0, flexDirection: 'row' }}>
+
+          {/* LEFT — text content */}
+          <div style={{ width: '48%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 0 0 7vw', gap: '28px', position: 'relative', zIndex: 10 }}>
+
+
+
+            <h1 ref={gsapHeroHeadingDesktopRef} aria-label="Empowering Enterprises with Cutting-Edge IT Solutions"
+              style={{ margin: 0, fontSize: 'clamp(3rem, 4.2vw, 5rem)', fontWeight: 600, lineHeight: 1.06, color: '#ffffff', letterSpacing: '-0.03em', overflow: 'hidden' }}>
+              {[{ word: "Empowering", br: false }, { word: "Enterprises", br: true }, { word: "with", br: false }, { word: "Cutting-Edge", br: true }, { word: "IT", br: false }, { word: "Solutions", br: false }].map(({ word, br }, i) => (
+                <span key={i}><span className="hero-word" style={{ display: 'inline-block', opacity: 0, fontWeight: 600, color: i >= 2 ? 'rgba(255,255,255,0.38)' : '#ffffff', marginRight: i < 5 ? '0.3em' : '0' }}>{word}</span>{br && <br />}</span>
+              ))}
+            </h1>
+
+            <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, rgba(255,255,255,0.12), transparent)' }} />
+
+            <motion.p initial={{ opacity: 0, y: 14 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.0 }}
+              style={{ margin: 0, fontSize: '16px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.75, maxWidth: '480px' }}>
+              At <strong style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 600 }}>Sniper Systems and Solutions Pvt Ltd</strong>, we specialize in delivering comprehensive IT solutions — from advanced infrastructure management to strategic consulting.
+            </motion.p>
+
+            <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.1 }}
+              style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <a href="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '13px 30px', background: '#ffffff', color: '#000000', borderRadius: '999px', fontSize: '13px', fontWeight: 700, letterSpacing: '0.04em', textDecoration: 'none', border: '2px solid transparent', transition: 'all 0.25s' }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = 'transparent'; el.style.color = '#fff'; el.style.borderColor = 'rgba(255,255,255,0.55)'; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = '#fff'; el.style.color = '#000'; el.style.borderColor = 'transparent'; }}>
+                What we do <ArrowRight style={{ width: '14px', height: '14px' }} />
+              </a>
+              <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '13px 30px', background: 'transparent', color: 'rgba(255,255,255,0.55)', borderRadius: '999px', fontSize: '13px', fontWeight: 600, letterSpacing: '0.04em', textDecoration: 'none', border: '2px solid rgba(255,255,255,0.14)', transition: 'all 0.25s' }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = '#fff'; el.style.borderColor = 'rgba(255,255,255,0.45)'; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = 'rgba(255,255,255,0.55)'; el.style.borderColor = 'rgba(255,255,255,0.14)'; }}>
+                Get in touch
+              </a>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.2 }}
+              style={{ display: 'flex', alignItems: 'center', gap: '32px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+              {[['15+', 'Years'], ['1800+', 'Clients'], ['99%', 'Uptime']].map(([val, lbl], i, arr) => (
+                <Fragment key={lbl}>
+                  <div>
+                    <div style={{ fontSize: '22px', fontWeight: 600, color: '#fff', lineHeight: 1 }}>{val}</div>
+                    <div style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginTop: '5px' }}>{lbl}</div>
+                  </div>
+                  {i < arr.length - 1 && <div style={{ width: '1px', height: '36px', background: 'rgba(255,255,255,0.08)' }} />}
+                </Fragment>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* RIGHT — orbiting globe: 52% wide, full height */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={heroInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            style={{ width: '52%', height: '100%', position: 'relative', zIndex: 5 }}
+          >
+            <OrbitingCirclesGlobe mobile={false} />
+          </motion.div>
+        </div>
+
+        <style>{`@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}`}</style>
       </section>
 
       {/* 2. BANNER SLIDER */}

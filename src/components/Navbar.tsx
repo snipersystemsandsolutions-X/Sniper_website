@@ -1,5 +1,6 @@
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import myImage from "../assets/v2.svg";
 
 // ─── Unique SVG Icons ──────────────────────────────────────────────────────────
@@ -311,8 +312,8 @@ const CategoryLabel = ({ children }) => (
 const MenuItem = ({ href, iconKey, name, desc, onClick }) => {
   const [hovered, setHovered] = useState(false);
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -349,7 +350,7 @@ const MenuItem = ({ href, iconKey, name, desc, onClick }) => {
           margin: "2px 0 0",
         }}>{desc}</p>
       </div>
-    </a>
+    </Link>
   );
 };
 
@@ -360,10 +361,10 @@ const ColDivider = () => (
 
 // ─── Nav Link / Trigger ────────────────────────────────────────────────────────
 const NavLink = ({ href, children, onClick }) => (
-  <a href={href} onClick={onClick} style={{ fontFamily: "'DM Sans', sans-serif" }}
+  <Link to={href} onClick={onClick} style={{ fontFamily: "'DM Sans', sans-serif" }}
     className="px-4 py-2 text-[13.5px] font-medium tracking-wide text-gray-300 hover:text-white transition-colors duration-200">
     {children}
-  </a>
+  </Link>
 );
 
 const DropdownTrigger = ({ label, isOpen, onToggle }) => (
@@ -417,12 +418,12 @@ const MobileDropdown = ({ label, items, isOpen, onToggle }) => (
       <div className="bg-gray-950 border-t border-gray-800">
         <div className="py-2 px-4">
           {items.map((item) => (
-            <a key={item.href || item} href={item.href || "#"}
+            <Link key={item.href || item} to={item.href || "#"}
               style={{ fontFamily: "'DM Sans', sans-serif" }}
               className="block py-2.5 px-4 text-sm text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-all border-l-2 border-transparent hover:border-gray-500"
               onClick={() => window.dispatchEvent(new CustomEvent("closemobilemenu"))}>
               {item.name || item}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -510,13 +511,13 @@ export const Navbar = () => {
           <div className="flex items-center justify-between h-16 md:h-20">
 
             {/* Logo */}
-            <a href="/" className="flex items-center gap-3 group flex-shrink-0" onClick={close}>
+            <Link to="/" className="flex items-center gap-3 group flex-shrink-0" onClick={close}>
               <img
                 src="https://i.ibb.co/9BNf5rZ/sniper-logo-neww.png"
                 alt="Sniper India Logo"
                 className="h-8 md:h-12 object-contain group-hover:scale-105 transition-transform duration-300"
               />
-            </a>
+            </Link>
 
             {/* Desktop Links */}
             <div className="hidden lg:flex items-center gap-0.5">
@@ -525,16 +526,18 @@ export const Navbar = () => {
               <DropdownTrigger label="Solutions" isOpen={openDropdown === "solutions"} onToggle={() => toggle("solutions")} />
               <DropdownTrigger label="Partners" isOpen={openDropdown === "partners"} onToggle={() => toggle("partners")} />
               <DropdownTrigger label="Industries" isOpen={openDropdown === "industries"} onToggle={() => toggle("industries")} />
-              <NavLink href="https://blog.sniperindia.com/" onClick={close}>Blog</NavLink>
+              <a href="https://blog.sniperindia.com/" style={{ fontFamily: "'DM Sans', sans-serif" }}
+                className="px-4 py-2 text-[13.5px] font-medium tracking-wide text-gray-300 hover:text-white transition-colors duration-200"
+                target="_blank" rel="noopener noreferrer">Blog</a>
               <NavLink href="/contact" onClick={close}>Contact Us</NavLink>
             </div>
 
             {/* Tablet Contact */}
             <div className="hidden md:flex lg:hidden items-center">
-              <a href="/contact" style={{ fontFamily: "'DM Sans', sans-serif" }}
+              <Link to="/contact" style={{ fontFamily: "'DM Sans', sans-serif" }}
                 className="px-4 py-2 text-sm font-semibold text-white bg-gray-800 hover:bg-gray-700 rounded-lg transition-all border border-gray-700">
                 Contact
-              </a>
+              </Link>
             </div>
 
             {/* Hamburger */}
@@ -571,12 +574,12 @@ export const Navbar = () => {
               <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "12px", color: "#6b7280" }}>
                 Explore the right solution for your business.
               </span>
-              <a href="/solutions" onClick={close} style={{
+              <Link to="/solutions" onClick={close} style={{
                 fontFamily: "'DM Sans', sans-serif", fontSize: "12px", fontWeight: 600,
                 color: "#d1d5db", marginLeft: "4px", textDecoration: "none", borderBottom: "1px solid #4b5563",
               }}>
               Browse solutions →
-              </a>
+              </Link>
             </div>
           </MegaPanel>
         )}
@@ -609,12 +612,12 @@ export const Navbar = () => {
               <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "12px", color: "#6b7280" }}>
                 Explore all {partnerGroups.flatMap(g => g.items).length} technology partnerships
               </span>
-              <a href="/partners" onClick={close} style={{
+              <Link to="/partners" onClick={close} style={{
                 fontFamily: "'DM Sans', sans-serif", fontSize: "12px", fontWeight: 600,
                 color: "#d1d5db", marginLeft: "4px", textDecoration: "none", borderBottom: "1px solid #4b5563",
               }}>
                 View all partners →
-              </a>
+              </Link>
             </div>
           </MegaPanel>
         )}
@@ -644,12 +647,12 @@ export const Navbar = () => {
               <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "12px", color: "#6b7280" }}>
                 Serving 8+ industry verticals across India
               </span>
-              <a href="/industries" onClick={close} style={{
+              <Link to="/industries" onClick={close} style={{
                 fontFamily: "'DM Sans', sans-serif", fontSize: "12px", fontWeight: 600,
                 color: "#d1d5db", marginLeft: "4px", textDecoration: "none", borderBottom: "1px solid #4b5563",
               }}>
                 Explore all industries →
-              </a>
+              </Link>
             </div>
           </MegaPanel>
         )}
@@ -660,26 +663,27 @@ export const Navbar = () => {
             <div className="lg:hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-40 top-16" onClick={() => setMobileMenuOpen(false)} />
             <div className="lg:hidden fixed top-16 left-0 right-0 bg-black border-t border-gray-800 z-50 max-h-[calc(100vh-4rem)] overflow-y-auto">
               {[{ href: "/", label: "Home" }, { href: "/about", label: "About Us" }].map(({ href, label }) => (
-                <a key={href} href={href} onClick={() => setMobileMenuOpen(false)}
+                <Link key={href} to={href} onClick={() => setMobileMenuOpen(false)}
                   style={{ fontFamily: "'DM Sans', sans-serif" }}
                   className="block py-4 px-6 text-sm font-medium text-gray-200 hover:bg-gray-900 border-b border-gray-800 transition-colors">
                   {label}
-                </a>
+                </Link>
               ))}
               <MobileDropdown label="Solutions" items={allSolutionItems} isOpen={openDropdown === "mobile-solutions"} onToggle={() => toggle("mobile-solutions")} />
               <MobileDropdown label="Partners" items={allPartnerItems} isOpen={openDropdown === "mobile-partners"} onToggle={() => toggle("mobile-partners")} />
               <MobileDropdown label="Industries" items={allIndustryItems} isOpen={openDropdown === "mobile-industries"} onToggle={() => toggle("mobile-industries")} />
-              <a href="/blog" onClick={() => setMobileMenuOpen(false)}
+              <a href="https://blog.sniperindia.com/" onClick={() => setMobileMenuOpen(false)}
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
-                className="block py-4 px-6 text-sm font-medium text-gray-200 hover:bg-gray-900 border-b border-gray-800 transition-colors">
+                className="block py-4 px-6 text-sm font-medium text-gray-200 hover:bg-gray-900 border-b border-gray-800 transition-colors"
+                target="_blank" rel="noopener noreferrer">
                 Blog
               </a>
               <div className="p-5 border-t border-gray-800 bg-gray-950">
-                <a href="/contact" onClick={() => setMobileMenuOpen(false)}
+                <Link to="/contact" onClick={() => setMobileMenuOpen(false)}
                   style={{ fontFamily: "'DM Sans', sans-serif" }}
                   className="block w-full py-3.5 px-4 text-center text-sm font-semibold text-white bg-gray-800 hover:bg-gray-700 rounded-xl transition-all border border-gray-700 active:scale-95">
                   Contact Us
-                </a>
+                </Link>
                 <div className="mt-4 space-y-2 text-sm text-gray-500" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                   <div className="flex items-center gap-2"><span className="text-gray-600">📞</span><span>+91 8939301100</span></div>
                   <div className="flex items-center gap-2"><span className="text-gray-600">✉️</span><span>enquiry@sniperindia.com</span></div>
@@ -708,7 +712,7 @@ export const Navbar = () => {
 const PartnerChip = ({ name, href, onClick }) => {
   const [hovered, setHovered] = useState(false);
   return (
-    <a href={href} onClick={onClick}
+    <Link to={href} onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -732,7 +736,7 @@ const PartnerChip = ({ name, href, onClick }) => {
         transition: "background 0.15s",
       }} />
       {name}
-    </a>
+    </Link>
   );
 };
 

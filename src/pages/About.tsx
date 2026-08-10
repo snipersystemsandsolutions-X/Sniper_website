@@ -1,6 +1,7 @@
 import Lottie from "@/components/CustomerService";
 import { Layout } from "@/components/Layout";
 import Lottiee from "@/components/people";
+import PageSEO from "@/components/PageSEO";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, CheckCircle, Shield, Users } from "lucide-react";
@@ -169,7 +170,7 @@ const HeroStage = () => {
 
   return (
     // Tall wrapper creates the scroll "runway" — controls how long the object stays pinned/animating
-   <div ref={wrapRef} className="relative h-[120vh] sm:h-[130vh]">
+    <div ref={wrapRef} className="relative h-[120vh] sm:h-[130vh]">
       {/* Sticky stage — keeps the object visually centered/anchored on screen */}
       <div
         ref={stageRef}
@@ -491,20 +492,15 @@ const WhyChooseUsSection = () => {
       title: "Expert Engineering Team",
       description: "A world-class team of engineers with deep domain expertise ready to tackle your toughest challenges.",
     },
-
   ];
 
-
-     // Jotform Chatbot
+  // Jotform Chatbot
   useEffect(() => {
     const script = document.createElement("script");
-
     script.src =
       "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
     script.async = true;
-
     document.body.appendChild(script);
-
     return () => {
       document.body.removeChild(script);
     };
@@ -514,49 +510,50 @@ const WhyChooseUsSection = () => {
     const section = sectionRef.current;
     const cardsContainer = cardsContainerRef.current;
     const cardsWrapper = cardsWrapperRef.current;
-
     if (!section || !cardsContainer || !cardsWrapper) return;
 
-    // Calculate the total scroll distance
-    const getScrollDistance = () => {
-      const containerWidth = cardsWrapper.scrollWidth;
-      const viewportWidth = cardsContainer.offsetWidth;
-      return containerWidth - viewportWidth;
-    };
+    const ctx = gsap.context(() => {
+      const getScrollDistance = () =>
+        cardsWrapper.scrollWidth - cardsContainer.offsetWidth;
 
-    // Create ScrollTrigger
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: section,
-      start: "top top",
-      end: () => `+=${getScrollDistance()}`,
-      pin: true,
-      anticipatePin: 1,
-      scrub: 1,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        // Move cards from right to left based on scroll progress
-        const progress = self.progress;
-        const scrollDistance = getScrollDistance();
-        const xPosition = -scrollDistance * progress;
-        gsap.set(cardsWrapper, { x: xPosition });
-      },
-    });
+      gsap.to(cardsWrapper, {
+        x: () => -getScrollDistance(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: () => `+=${getScrollDistance()}`,
+          pin: true,
+          pinType: "transform",
+          anticipatePin: 1,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+    }, section);
 
-    // Refresh on resize
-    window.addEventListener('resize', () => {
-      scrollTrigger.refresh();
-    });
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    const t = setTimeout(refresh, 800);
 
     return () => {
-      scrollTrigger.kill();
-      window.removeEventListener('resize', () => {});
+      window.removeEventListener("load", refresh);
+      clearTimeout(t);
+      ctx.revert();
     };
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white overflow-hidden">
+    // min-h-[100dvh]: the pinned section is now ALWAYS exactly one
+    // viewport tall (100dvh handles mobile browser bars correctly,
+    // unlike 100vh). This removes the leftover empty space that was
+    // showing as a white gap while the section was pinned.
+    <section
+      ref={sectionRef}
+      className="bg-white overflow-hidden min-h-[100dvh] flex flex-col justify-center"
+    >
       {/* Heading row */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 pb-8 sm:pb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 pb-8 sm:pb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 w-full">
         <div>
           <FadeUp>
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 leading-tight">
@@ -581,17 +578,11 @@ const WhyChooseUsSection = () => {
       </div>
 
       {/* Cards container with horizontal scroll effect */}
-      <div
-        ref={cardsContainerRef}
-        className="overflow-hidden"
-      >
+      <div ref={cardsContainerRef} className="overflow-hidden">
         <div
           ref={cardsWrapperRef}
           className="flex gap-5 sm:gap-7 px-4 sm:px-12 pb-12 sm:pb-16"
-          style={{
-            width: "max-content",
-            willChange: "transform",
-          }}
+          style={{ width: "max-content", willChange: "transform" }}
         >
           {cards.map((card, i) => (
             <div
@@ -611,7 +602,6 @@ const WhyChooseUsSection = () => {
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>
-
               <div className="flex flex-col justify-center px-6 sm:px-8 py-6 flex-1">
                 <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-400 mb-3">
                   0{i + 1}
@@ -631,7 +621,6 @@ const WhyChooseUsSection = () => {
     </section>
   );
 };
-
 // ========================================================
 // MAIN ABOUT PAGE
 // ========================================================
@@ -692,52 +681,41 @@ const About = () => {
   ];
 
   const stats = [
-    { icon: Users,       number: "1800", suffix: "+", label: "Happy Customers" },
-    { icon: CheckCircle, number: "100",  suffix: "%", label: "Client Satisfaction" },
-    { icon: Shield,      number: null,   label: "World Class", staticText: "World Class" },
+    { icon: Users, number: "1800", suffix: "+", label: "Happy Customers" },
+    { icon: CheckCircle, number: "100", suffix: "%", label: "Client Satisfaction" },
+    { icon: Shield, number: null, label: "World Class", staticText: "World Class" },
   ];
 
   const process = [
     { number: "01", title: "Our Approach", description: "Making technology easy and worry-free for every business." },
-    { number: "02", title: "Our Values",   description: "Built on trust, client loyalty, and long-term partnerships." },
-    { number: "03", title: "Our Support",  description: "Fast, reliable engineering team available when you need us." },
+    { number: "02", title: "Our Values", description: "Built on trust, client loyalty, and long-term partnerships." },
+    { number: "03", title: "Our Support", description: "Fast, reliable engineering team available when you need us." },
     { number: "04", title: "Our Solution", description: "We unite top technologies for performance and scalability." },
   ];
 
   return (
     <Layout>
-      <>
-        <title>About Sniper Systems | IT Solutions & Managed Services Company in India</title>
-        <meta name="description" content="Learn about Sniper Systems, a leading IT solutions provider in India offering IT infrastructure, managed services, cloud solutions, and enterprise technology services for businesses." />
-        <meta name="keywords" content="about sniper systems, IT company in India, IT solutions provider Chennai, managed IT services company India" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://sniperindia.com/about-us/" />
-        <meta name="geo.region" content="IN-TN" />
-        <meta name="geo.placename" content="Chennai" />
-        <meta name="geo.position" content="13.0827;80.2707" />
-        <meta name="ICBM" content="13.0827, 80.2707" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="About Sniper Systems | IT Infrastructure & Managed Services" />
-        <meta property="og:description" content="Sniper Systems delivers enterprise IT infrastructure, managed IT services, cloud and digital transformation solutions across India." />
-        <meta property="og:image" content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg" />
-        <meta property="og:url" content="https://sniperindia.com/about-us/" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Sniper Systems | IT Solutions Company India" />
-        <meta name="twitter:description" content="Discover how Sniper Systems provides IT infrastructure, managed services, and enterprise solutions for modern businesses." />
-        <meta name="twitter:image" content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg" />
-        <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"Organization","name":"Sniper Systems","url":"https://sniperindia.com","logo":"https://sniperindia.com/wp-content/uploads/2023/09/logo.png","description":"Sniper Systems is a leading IT solutions provider delivering enterprise IT infrastructure, managed services, and cloud solutions across India.","sameAs":["https://www.linkedin.com/company/sniper-systems"]}`}</script>
-        <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"LocalBusiness","name":"Sniper Systems","image":"https://sniperindia.com/wp-content/uploads/2023/09/logo.png","url":"https://sniperindia.com","telephone":"+91-44-00000000","address":{"@type":"PostalAddress","addressLocality":"Chennai","addressRegion":"Tamil Nadu","addressCountry":"India"},"geo":{"@type":"GeoCoordinates","latitude":13.0827,"longitude":80.2707}}`}</script>
-        <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"AboutPage","name":"About Sniper Systems","url":"https://sniperindia.com/about-us/","description":"Learn more about Sniper Systems, an IT solutions provider offering enterprise technology services across India."}`}</script>
-
-
-
-
-
-
-
-
-
-      </>
+      <PageSEO
+        title="About Sniper Systems"
+        description="Learn about Sniper Systems, a leading IT solutions provider in India offering IT infrastructure, managed services, cloud solutions, and enterprise technology services for businesses."
+        canonical="/about"
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "url": "https://sniperindia.com",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png",
+            "sameAs": ["https://www.linkedin.com/company/sniper-systems"],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About Sniper Systems",
+            "url": "https://sniperindia.com/about",
+          },
+        ]}
+      />
 
       {showWhiteScreen && (
         <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />
@@ -745,32 +723,32 @@ const About = () => {
 
       {/* ── Hero ── */}
       {/* ── Hero ── */}
-<section className="relative bg-white pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
-  <div className="relative z-10 max-w-7xl mx-auto">
-   <div className="text-center mb-2 sm:mb-4">
-      <h1
-        ref={gsapHeroRef}
-        className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight"
-      >
-        {["Creating", "a", "better", "IT", "solutions"].map((word, i) => (
-          <span key={i} className="gsap-word inline-block opacity-0 mr-[0.2em] sm:mr-[0.25em] last:mr-0">
-            {word}
-            {word === "better" ? <br /> : null}
-          </span>
-        ))}
-      </h1>
-      <FadeUp delay={1.9}>
-        <p className="text-base sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-2 sm:px-0 mb-10">
-          Let us handle your IT, so you can focus on what matters. Our expertise will manage your
-          technology needs efficiently and securely.
-        </p>
-      </FadeUp>
-    </div>
-  </div>
-</section>
+      <section className="relative bg-white pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="text-center mb-2 sm:mb-4">
+            <h1
+              ref={gsapHeroRef}
+              className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight"
+            >
+              {["Creating", "a", "better", "IT", "solutions"].map((word, i) => (
+                <span key={i} className="gsap-word inline-block opacity-0 mr-[0.2em] sm:mr-[0.25em] last:mr-0">
+                  {word}
+                  {word === "better" ? <br /> : null}
+                </span>
+              ))}
+            </h1>
+            <FadeUp delay={1.9}>
+              <p className="text-base sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-2 sm:px-0 mb-10">
+                Let us handle your IT, so you can focus on what matters. Our expertise will manage your
+                technology needs efficiently and securely.
+              </p>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
 
-{/* ── Sticky scroll-driven hero stage ── */}
-<HeroStage />
+      {/* ── Sticky scroll-driven hero stage ── */}
+      <HeroStage />
 
       <MarqueeTicker />
 

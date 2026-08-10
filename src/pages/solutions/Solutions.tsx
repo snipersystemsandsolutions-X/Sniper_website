@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import PageSEO from "@/components/PageSEO";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -98,7 +99,7 @@ const ParallaxImage = ({ src, alt, className }: { src: string; alt: string; clas
   const imgRef = useRef<HTMLImageElement>(null);
 
 
-     // Jotform Chatbot
+  // Jotform Chatbot
   useEffect(() => {
     const script = document.createElement("script");
 
@@ -113,7 +114,7 @@ const ParallaxImage = ({ src, alt, className }: { src: string; alt: string; clas
     };
   }, []);
 
-  
+
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -168,10 +169,10 @@ const SolutionCard = ({ icon: Icon, title, description, to, index, trigger, acce
       transition={{ duration: 0.7, ease, delay: 0.1 + index * 0.07 }}
     >
       <a
-  href={to}
-  className="block py-8 sm:py-10"
-  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
->
+        href={to}
+        className="block py-8 sm:py-10"
+        onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+      >
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 sm:gap-8 items-center">
           {/* Number */}
           <div className="sm:col-span-1 hidden sm:block">
@@ -450,113 +451,25 @@ const Solutions = () => {
     { number: "100%", label: "Satisfaction" },
   ];
 
-  const badgeLabels = ["Cloud", "AV", "MDM", "Infrastructure", "Networking", "Managed IT", "Consulting","Server"];
+  const badgeLabels = ["Cloud", "AV", "MDM", "Infrastructure", "Networking", "Managed IT", "Consulting", "Server"];
 
-  const heroRef    = useRef(null);
-  const statsRef   = useRef(null);
-  const listRef    = useRef(null);
-  const featRef    = useRef(null);
+  const heroRef = useRef(null);
+  const statsRef = useRef(null);
+  const listRef = useRef(null);
+  const featRef = useRef(null);
 
-  const heroInView  = useInView(heroRef,  { once: true, margin: "-60px" });
+  const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
   const statsInView = useInView(statsRef, { once: true, margin: "-80px" });
-  const listInView  = useInView(listRef,  { once: true, margin: "-60px" });
-  const featInView  = useInView(featRef,  { once: true, margin: "-60px" });
+  const listInView = useInView(listRef, { once: true, margin: "-60px" });
+  const featInView = useInView(featRef, { once: true, margin: "-60px" });
 
   return (
     <Layout>
-
-
-       <>
-
-        {/* BASIC SEO */}
-
-        <title>IT Solutions for Businesses | Enterprise & Digital Solutions | Sniper Systems</title>
-
-        <meta
-          name="description"
-          content="Discover enterprise IT solutions by Sniper Systems including IT infrastructure, managed services, cloud solutions, cybersecurity, and digital transformation services for businesses in India."
-        />
-
-        <meta
-          name="keywords"
-          content="enterprise IT solutions India, business IT solutions, IT infrastructure solutions Chennai, digital transformation services India, managed IT services provider"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://sniperindia.com/solutions/"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="Enterprise IT Solutions | Sniper Systems"
-        />
-
-        <meta
-          property="og:description"
-          content="Comprehensive IT solutions including infrastructure, cloud, cybersecurity, and managed services for modern enterprises."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/solutions/"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="Business IT Solutions | Sniper Systems"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Explore scalable enterprise IT solutions including infrastructure, cloud computing, and cybersecurity services."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-</script>
-
-        {/* SERVICE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+      <PageSEO
+        title="IT Solutions for Businesses | Enterprise & Digital Solutions"
+        description="Discover enterprise IT solutions by Sniper Systems including IT infrastructure, managed services, cloud solutions, cybersecurity, and digital transformation services for businesses in India."
+        canonical="/solutions"
+        structuredData={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
@@ -570,14 +483,7 @@ const Solutions = () => {
               "name": "India"
             },
             "description": "Enterprise IT infrastructure, cloud solutions, cybersecurity, and managed IT services for businesses."
-          }
-          `}
-</script>
-
-        {/* BREADCRUMB SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+          },
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -592,16 +498,12 @@ const Solutions = () => {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Solutions",
-                "item": "https://sniperindia.com/solutions/"
+                "item": "https://sniperindia.com/solutions"
               }
             ]
           }
-          `}
-</script>
-
-      </>
-
-
+        ]}
+      />
 
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 

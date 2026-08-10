@@ -4,8 +4,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Helmet } from "react-helmet-async";
+import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import PageSEO from "@/components/PageSEO";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -427,110 +428,246 @@ const OrbitalRings = () => (
 // ========================================================
 // CTA SECTION
 // ========================================================
+
+/**
+ * Key fixes vs previous attempts:
+ *
+ * 1. `position: fixed` breaks inside any ancestor that has a CSS transform
+ *    applied (including Framer Motion's entrance animation). The blob divs
+ *    are therefore rendered via a React Portal into document.body so they
+ *    are NEVER a descendant of the animated section.
+ *
+ * 2. All cursor state is in refs — no React state, no stale closures.
+ *    The RAF loop runs once and reads live ref values every tick.
+ *
+ * 3. CSS `transition` is NOT applied to `left`/`top` on the blob — the RAF
+ *    loop handles smooth movement itself. CSS transition would fight the RAF
+ *    and cause jitter. Only `opacity` and `width/height` use CSS transitions.
+ *
+ * 4. `isTouchDevice` is detected synchronously before any effect runs,
+ *    not inside a useEffect (which fires after mount and creates a race).
+ */
+
+// Detect touch once at module level — safe because this module only runs in browser
+const IS_TOUCH = typeof window !== "undefined" && window.matchMedia("(hover: none)").matches;
+
 const CTASection = () => {
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [displayPosition, setDisplayPosition] = useState({ x: 0, y: 0 });
-  const [cursorVisible, setCursorVisible] = useState(false);
-  const [isHoveringButton, setIsHoveringButton] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const ctaBtnRef = useRef<HTMLAnchorElement>(null);
-  const animationFrameRef = useRef(null);
-  const velocity = useRef({ x: 0, y: 0 });
+  const rafRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    setIsTouchDevice(window.matchMedia("(hover: none)").matches);
-  }, []);
+  // Direct DOM refs for the cursor layers (mutated in RAF, never via state)
+  const blobRef = useRef<HTMLDivElement>(null);
+  const trailRef = useRef<HTMLDivElement>(null);
 
-  const lerp = (s: number, e: number, f: number) => s + (e - s) * f;
-
-  const animateCursor = useCallback(() => {
-    if (!cursorVisible) return;
-    const sf = isHoveringButton ? 0.2 : 0.1;
-    const newX = lerp(displayPosition.x, cursorPosition.x, sf);
-    const newY = lerp(displayPosition.y, cursorPosition.y, sf);
-    velocity.current.x = newX - displayPosition.x;
-    velocity.current.y = newY - displayPosition.y;
-    setDisplayPosition({ x: newX, y: newY });
-    animationFrameRef.current = requestAnimationFrame(animateCursor);
-  }, [cursorVisible, cursorPosition, displayPosition, isHoveringButton]);
-
-  useEffect(() => {
-    if (isTouchDevice) return;
-    const section = sectionRef.current;
-    if (!section) return;
-    const enter = () => { setCursorVisible(true); if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current); animationFrameRef.current = requestAnimationFrame(animateCursor); };
-    const leave = () => { setCursorVisible(false); setIsHoveringButton(false); if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current); };
-    const move = (e: MouseEvent) => setCursorPosition({ x: e.clientX, y: e.clientY });
-    section.addEventListener("mouseenter", enter);
-    section.addEventListener("mouseleave", leave);
-    section.addEventListener("mousemove", move);
-    animationFrameRef.current = requestAnimationFrame(animateCursor);
-    return () => { section.removeEventListener("mouseenter", enter); section.removeEventListener("mouseleave", leave); section.removeEventListener("mousemove", move); if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current); };
-  }, [animateCursor, isTouchDevice]);
-
-  useEffect(() => { return () => { if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current); }; }, []);
-
-  useEffect(() => {
-    if (isTouchDevice) return;
-    const btn = ctaBtnRef.current;
-    if (!btn) return;
-    const onMove = (e: MouseEvent) => {
-      const rect = btn.getBoundingClientRect();
-      const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.3;
-      const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.3;
-      gsap.to(btn, { x: dx, y: dy, duration: 0.35, ease: "power2.out" });
-    };
-    const onLeave = () => gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1,0.5)" });
-    btn.addEventListener("mousemove", onMove);
-    btn.addEventListener("mouseleave", onLeave);
-    return () => { btn.removeEventListener("mousemove", onMove); btn.removeEventListener("mouseleave", onLeave); };
-  }, [isTouchDevice]);
+  // All cursor tracking in refs — zero re-renders, zero stale closures
+  const mouse  = useRef({ x: 0, y: 0 });   // raw mouse position
+  const smooth = useRef({ x: 0, y: 0 });   // lerped position written to DOM
+  const trail  = useRef({ x: 0, y: 0 });   // trail lags further behind
+  const inside  = useRef(false);            // mouse is inside the section
+  const hovered = useRef(false);            // mouse is over the CTA button
 
   const ctaRef = useRef(null);
   const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
 
+  // ── Single RAF loop — started once, never recreated ──────────────────
+  useEffect(() => {
+    if (IS_TOUCH) return;
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+    const tick = () => {
+      rafRef.current = requestAnimationFrame(tick);
+
+      if (!inside.current) return;
+
+      // Lerp the main blob toward the real mouse
+      const f = hovered.current ? 0.2 : 0.12;
+      smooth.current.x = lerp(smooth.current.x, mouse.current.x, f);
+      smooth.current.y = lerp(smooth.current.y, mouse.current.y, f);
+
+      // Trail lags behind smooth position
+      trail.current.x = lerp(trail.current.x, smooth.current.x, 0.07);
+      trail.current.y = lerp(trail.current.y, smooth.current.y, 0.07);
+
+      // Write directly to DOM — NO React state, NO re-render
+      if (blobRef.current) {
+        const sz = hovered.current ? 128 : 96;
+        blobRef.current.style.transform =
+          `translate(${smooth.current.x}px, ${smooth.current.y}px) translate(-50%, -50%) scale(${hovered.current ? 1.25 : 1})`;
+        blobRef.current.style.width  = `${sz}px`;
+        blobRef.current.style.height = `${sz}px`;
+        blobRef.current.textContent  = hovered.current ? "CLICK ME!" : "LET'S GO!";
+      }
+
+      if (trailRef.current) {
+        trailRef.current.style.transform =
+          `translate(${trail.current.x}px, ${trail.current.y}px) translate(-50%, -50%)`;
+      }
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []); // empty deps — intentional, loop reads from refs not state
+
+  // ── Section mouse events ──────────────────────────────────────────────
+  useEffect(() => {
+    if (IS_TOUCH) return;
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const onMove = (e: MouseEvent) => {
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
+    };
+    const onEnter = () => {
+      inside.current = true;
+      // Snap smooth/trail to current mouse so there's no "fly in" on first entry
+      smooth.current.x = mouse.current.x;
+      smooth.current.y = mouse.current.y;
+      trail.current.x  = mouse.current.x;
+      trail.current.y  = mouse.current.y;
+      if (blobRef.current)  blobRef.current.style.opacity  = "1";
+      if (trailRef.current) trailRef.current.style.opacity = "0.3";
+    };
+    const onLeave = () => {
+      inside.current  = false;
+      hovered.current = false;
+      if (blobRef.current)  blobRef.current.style.opacity  = "0";
+      if (trailRef.current) trailRef.current.style.opacity = "0";
+    };
+
+    section.addEventListener("mousemove",  onMove);
+    section.addEventListener("mouseenter", onEnter);
+    section.addEventListener("mouseleave", onLeave);
+    return () => {
+      section.removeEventListener("mousemove",  onMove);
+      section.removeEventListener("mouseenter", onEnter);
+      section.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
+
+  // ── Magnetic CTA button ───────────────────────────────────────────────
+  useEffect(() => {
+    if (IS_TOUCH) return;
+    const btn = ctaBtnRef.current;
+    if (!btn) return;
+    const onMove = (e: MouseEvent) => {
+      const r  = btn.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width  / 2)) * 0.3;
+      const dy = (e.clientY - (r.top  + r.height / 2)) * 0.3;
+      gsap.to(btn, { x: dx, y: dy, duration: 0.35, ease: "power2.out" });
+    };
+    const onLeave = () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1,0.5)" });
+    };
+    btn.addEventListener("mousemove",  onMove);
+    btn.addEventListener("mouseleave", onLeave);
+    return () => {
+      btn.removeEventListener("mousemove",  onMove);
+      btn.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
+
+  // ── Cursor markup — rendered into document.body via Portal ───────────
+  // This escapes ALL ancestor stacking contexts and transforms so that
+  // `position: fixed` + `transform` work exactly as expected.
+  const cursorPortal = !IS_TOUCH && typeof document !== "undefined"
+    ? createPortal(
+        <>
+          {/* Main blob */}
+          <div
+            ref={blobRef}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: 96,
+              height: 96,
+              borderRadius: "50%",
+              background: "#ffffff",
+              color: "#000000",
+              fontWeight: 700,
+              fontSize: 11,
+              letterSpacing: "0.04em",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              pointerEvents: "none",
+              userSelect: "none",
+              zIndex: 99999,
+              opacity: 0,
+              // Only non-position props get CSS transition — position uses RAF
+              transition: "opacity 0.2s ease, width 0.2s ease, height 0.2s ease",
+              filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.35))",
+              willChange: "transform",
+            }}
+          />
+          {/* Trailing dot */}
+          <div
+            ref={trailRef}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: 56,
+              height: 56,
+              borderRadius: "50%",
+              background: "rgba(255,255,255,0.25)",
+              pointerEvents: "none",
+              zIndex: 99998,
+              opacity: 0,
+              transition: "opacity 0.3s ease",
+              willChange: "transform",
+            }}
+          />
+        </>,
+        document.body
+      )
+    : null;
+
   return (
     <>
-      {/* Custom cursor — hidden on touch */}
-      {!isTouchDevice && (
-        <>
-          <div
-            className={`fixed pointer-events-none z-50 flex items-center justify-center rounded-full font-bold text-sm transition-all duration-150 ease-out ${cursorVisible ? "opacity-100" : "opacity-0"} ${isHoveringButton ? "w-32 h-32 bg-white text-black" : "w-24 h-24 bg-white text-black"}`}
-            style={{ left: `${displayPosition.x}px`, top: `${displayPosition.y}px`, transform: `translate(-50%, -50%) ${cursorVisible ? (isHoveringButton ? "scale(1.3)" : "scale(1)") : "scale(0.5)"}`, transition: cursorVisible ? 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.3s ease, height 0.3s ease' : 'all 0.3s ease', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.25))' }}>
-            {isHoveringButton ? "CLICK ME!" : "LET'S GO!"}
-          </div>
-          <div
-            className={`fixed pointer-events-none z-40 rounded-full transition-all duration-300 ease-out ${cursorVisible ? "opacity-30" : "opacity-0"} ${isHoveringButton ? "w-20 h-20 bg-white/30" : "w-16 h-16 bg-white/20"}`}
-            style={{ left: `${displayPosition.x - velocity.current.x * 0.5}px`, top: `${displayPosition.y - velocity.current.y * 0.5}px`, transform: 'translate(-50%, -50%)', transition: 'left 0.1s linear, top 0.1s linear' }}
-          />
-        </>
-      )}
+      {cursorPortal}
 
       <motion.section
-        ref={(el) => { sectionRef.current = el; ctaRef.current = el; }}
-        className={`relative bg-black text-white py-16 sm:py-20 px-4 sm:px-6 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12 overflow-hidden ${!isTouchDevice ? "cursor-none" : ""}`}
+        ref={(el) => {
+          sectionRef.current = el;
+          ctaRef.current = el;
+        }}
+        className="relative bg-black text-white py-16 sm:py-20 px-4 sm:px-6 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12 overflow-hidden cursor-none"
         initial={{ opacity: 0, y: 60 }}
         animate={ctaInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
         <OrbitalRings />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.div className="mb-8 sm:mb-12" initial={{ opacity: 0, y: 40 }} animate={ctaInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}>
+          <motion.div
+            className="mb-8 sm:mb-12"
+            initial={{ opacity: 0, y: 40 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          >
             <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold mb-4 sm:mb-6 leading-tight text-white">
               Have<br />an idea?<br />We make it happen
             </h2>
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={ctaInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+          >
             <a
-              ref={ctaBtnRef as any}
+              ref={ctaBtnRef}
               href="/"
               className="inline-flex items-center px-8 sm:px-12 py-3 sm:py-4 border-2 border-white rounded-full text-white font-medium text-base sm:text-lg hover:bg-white hover:text-black transition-all duration-300 relative z-10 will-change-transform"
-              onMouseEnter={() => !isTouchDevice && setIsHoveringButton(true)}
-              onMouseLeave={() => !isTouchDevice && setIsHoveringButton(false)}
+              onMouseEnter={() => { hovered.current = true; }}
+              onMouseLeave={() => { hovered.current = false; }}
             >
               BACK TO HOME
-              <span className="absolute inset-[-10px] rounded-full"></span>
+              <span className="absolute inset-[-12px] rounded-full" />
             </a>
           </motion.div>
         </div>
@@ -680,100 +817,11 @@ const Contact = () => {
   return (
     <Layout>
 
-      <Helmet>
-
-        {/* BASIC SEO */}
-
-        <title>Contact Sniper Systems | IT Solutions Provider in Chennai</title>
-
-        <meta
-          name="description"
-          content="Get in touch with Sniper Systems, a leading IT solutions provider in Chennai. Contact us for IT infrastructure, managed IT services, cloud solutions, and enterprise technology services."
-        />
-
-        <meta
-          name="keywords"
-          content="contact sniper systems, IT company Chennai contact, IT solutions provider Chennai contact, managed IT services India contact"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://sniperindia.com/contact/"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-        <meta name="geo.placename" content="Chennai" />
-        <meta name="geo.position" content="13.0827;80.2707" />
-        <meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="Contact Sniper Systems | IT Solutions Chennai"
-        />
-
-        <meta
-          property="og:description"
-          content="Reach out to Sniper Systems for enterprise IT infrastructure, managed services, and cloud solutions in Chennai and across India."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/contact/"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="Contact Sniper Systems | IT Services Chennai"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Connect with Sniper Systems for IT infrastructure, managed IT services, and enterprise solutions."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png",
-            "sameAs": [
-              "https://www.linkedin.com/company/sniper-systems"
-            ]
-          }
-          `}
-        </script>
-
-        {/* LOCAL BUSINESS SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+      <PageSEO
+        title="Contact Sniper Systems | IT Solutions Provider in Chennai"
+        description="Get in touch with Sniper Systems, a leading IT solutions provider in Chennai. Contact us for IT infrastructure, managed IT services, cloud solutions, and enterprise technology services."
+        canonical="/contact"
+        structuredData={[
           {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
@@ -795,35 +843,16 @@ const Contact = () => {
               "longitude": 80.2707
             },
             "openingHours": "Mo-Fr 09:00-18:00"
-          }
-          `}
-        </script>
-
-
-
-
-
-
-
-        {/* CONTACT PAGE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+          },
           {
             "@context": "https://schema.org",
             "@type": "ContactPage",
             "name": "Contact Sniper Systems",
-            "url": "https://sniperindia.com/contact/",
+            "url": "https://sniperindia.com/contact",
             "description": "Contact Sniper Systems for IT solutions, managed services, and enterprise technology support."
           }
-          `}
-
-
-
-
-        </script>
-
-      </Helmet>
+        ]}
+      />
 
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 

@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sniperindia.com
+# Block crawling of internal SPA fallback and build artefacts
+Disallow: /404.html
+Disallow: /__vite_ping
+
+Sitemap: https://sniperindia.com/sitemap.xml

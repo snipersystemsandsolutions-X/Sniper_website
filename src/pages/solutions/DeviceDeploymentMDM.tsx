@@ -1,192 +1,11 @@
 import { Layout } from "@/components/Layout";
+import PageSEO from "@/components/PageSEO";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, CheckCircle, DollarSign, Lock, TrendingUp } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-
 import React from "react";
-
-
-
-
-      <>
-
-        {/* BASIC SEO */}
-
-        <title>Device Deployment & MDM Solutions in India | Enterprise Mobility | Sniper Systems</title>
-
-        <meta
-          name="description"
-          content="Sniper Systems delivers secure device deployment and mobile device management (MDM) solutions across India. Enable centralized control, seamless onboarding, and enterprise-grade security for business devices."
-        />
-
-        <meta
-          name="keywords"
-          content="device deployment services Chennai, mobile device management India, MDM solutions Chennai, enterprise mobility solutions, device management services"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://sniperindia.com/solutions/device-deployment-mdm"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="Device Deployment & MDM Solutions | Sniper Systems"
-        />
-
-        <meta
-          property="og:description"
-          content="Secure, manage, and deploy enterprise devices with scalable MDM and mobility solutions."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/solutions/device-deployment-mdm"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="Mobile Device Management & Deployment | Sniper Systems"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Manage and secure enterprise devices with advanced MDM and deployment solutions."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-</script>
-
-        {/* SERVICE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "Device Deployment & Mobile Device Management (MDM)",
-            "provider": {
-              "@type": "Organization",
-              "name": "Sniper Systems"
-            },
-            "areaServed": {
-              "@type": "Country",
-              "name": "India"
-            },
-            "description": "Enterprise device deployment and mobile device management solutions for secure, scalable, and centralized device control."
-          }
-          `}
-</script>
-
-        {/* FAQ SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is Mobile Device Management (MDM)?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Mobile Device Management (MDM) is a solution that enables organizations to manage, monitor, and secure mobile devices accessing corporate data."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Why is device deployment important for businesses?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Device deployment ensures efficient setup, configuration, and onboarding of devices, reducing downtime and improving productivity."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What are the benefits of MDM solutions?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "MDM solutions provide centralized control, security enforcement, remote management, and compliance for enterprise devices."
-                }
-              }
-            ]
-          }
-          `}
-</script>
-
-        {/* BREADCRUMB SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://sniperindia.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Solutions",
-                "item": "https://sniperindia.com/solutions/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Device Deployment & MDM",
-                "item": "https://sniperindia.com/solutions/device-deployment-mdm"
-              }
-            ]
-          }
-          `}
-</script>
-
-      </>
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -819,97 +638,11 @@ const DeviceDeploymentMDM = () => {
 
   return (
     <Layout>
-        <>
-
-        {/* BASIC SEO */}
-
-        <title>Device Deployment & MDM Solutions in India | Enterprise Mobility | Sniper Systems</title>
-
-        <meta
-          name="description"
-          content="Sniper Systems delivers secure device deployment and mobile device management (MDM) solutions across India. Enable centralized control, seamless onboarding, and enterprise-grade security for business devices."
-        />
-
-        <meta
-          name="keywords"
-          content="device deployment services Chennai, mobile device management India, MDM solutions Chennai, enterprise mobility solutions, device management services"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://sniperindia.com/solutions/device-deployment-mdm"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="Device Deployment & MDM Solutions | Sniper Systems"
-        />
-
-        <meta
-          property="og:description"
-          content="Secure, manage, and deploy enterprise devices with scalable MDM and mobility solutions."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/solutions/device-deployment-mdm"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="Mobile Device Management & Deployment | Sniper Systems"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Manage and secure enterprise devices with advanced MDM and deployment solutions."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-</script>
-
-        {/* SERVICE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+      <PageSEO
+        title="Device Deployment & MDM Solutions in India | Enterprise Mobility"
+        description="Sniper Systems delivers secure device deployment and mobile device management (MDM) solutions across India. Enable centralized control, seamless onboarding, and enterprise-grade security for business devices."
+        canonical="/solutions/device-deployment-mdm"
+        structuredData={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
@@ -923,14 +656,7 @@ const DeviceDeploymentMDM = () => {
               "name": "India"
             },
             "description": "Enterprise device deployment and mobile device management solutions for secure, scalable, and centralized device control."
-          }
-          `}
-</script>
-
-        {/* FAQ SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+          },
           {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -960,14 +686,7 @@ const DeviceDeploymentMDM = () => {
                 }
               }
             ]
-          }
-          `}
-</script>
-
-        {/* BREADCRUMB SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+          },
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -982,7 +701,7 @@ const DeviceDeploymentMDM = () => {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Solutions",
-                "item": "https://sniperindia.com/solutions/"
+                "item": "https://sniperindia.com/solutions"
               },
               {
                 "@type": "ListItem",
@@ -992,10 +711,8 @@ const DeviceDeploymentMDM = () => {
               }
             ]
           }
-          `}
-</script>
-
-      </>
+        ]}
+      />
 
       {showWhiteScreen && (
         <WhiteScreenTransition onComplete={handleWhiteScreenComplete} />

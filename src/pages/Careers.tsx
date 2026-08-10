@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { Helmet } from "react-helmet-async";
+import PageSEO from "@/components/PageSEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -512,43 +512,31 @@ const Careers = () => {
 
   return (
     <Layout>
-      <>
-        <title>Careers at Sniper Systems | Build Your IT Career in Chennai</title>
-        <meta
-          name="description"
-          content="Join Sniper Systems and Solutions in Chennai. Explore open roles in IT sales, account management, design, operations, and more. Grow your career with India's leading IT solutions provider."
-        />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://sniperindia.com/careers/" />
-        <meta name="geo.region" content="IN-TN" />
-        <meta name="geo.placename" content="Chennai" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Careers at Sniper Systems | IT Jobs Chennai" />
-        <meta property="og:description" content="Build your career at Sniper Systems — Chennai's leading enterprise IT solutions provider. Open roles in Sales, Design, Operations and more." />
-        <meta property="og:url" content="https://sniperindia.com/careers/" />
-        <script type="application/ld+json">{`
-          {
-            "@context": "https://schema.org",
-            "@type": "JobPosting",
-            "title": "Multiple Positions",
-            "hiringOrganization": {
-              "@type": "Organization",
-              "name": "Sniper Systems and Solutions Pvt. Ltd.",
-              "url": "https://sniperindia.com"
-            },
-            "jobLocation": {
-              "@type": "Place",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Chennai",
-                "addressRegion": "Tamil Nadu",
-                "addressCountry": "IN"
-              }
-            },
-            "employmentType": "FULL_TIME"
-          }
-        `}</script>
-      </>
+      <PageSEO
+        title="Careers at Sniper Systems | Build Your IT Career in Chennai"
+        description="Join Sniper Systems and Solutions in Chennai. Explore open roles in IT sales, account management, design, operations, and more. Grow your career with India's leading IT solutions provider."
+        canonical="/careers"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "JobPosting",
+          "title": "Multiple Positions",
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Sniper Systems and Solutions Pvt. Ltd.",
+            "url": "https://sniperindia.com"
+          },
+          "jobLocation": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Chennai",
+              "addressRegion": "Tamil Nadu",
+              "addressCountry": "IN"
+            }
+          },
+          "employmentType": "FULL_TIME"
+        }}
+      />
 
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 

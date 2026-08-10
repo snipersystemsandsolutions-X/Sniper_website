@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Cloud, Shield, TrendingUp, Zap } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import PageSEO from "@/components/PageSEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -609,146 +610,19 @@ const ITITESInfra = () => {
         <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />
       )}
 
-         <>
-
-        {/* BASIC SEO */}
-
-        <title>IT Infrastructure Solutions in Chennai | Enterprise IT Services | Sniper Systems</title>
-
-        <meta
-          name="description"
-          content="Sniper Systems provides enterprise IT infrastructure solutions in Chennai including networking, data center solutions, cloud integration, and secure IT environments for businesses across India."
-        />
-
-        <meta
-          name="keywords"
-          content="IT infrastructure solutions Chennai, enterprise IT infrastructure India, network infrastructure services, data center solutions India, IT infrastructure company Chennai"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://sniperindia.com/solutions/it-infrastructure"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="IT Infrastructure Solutions | Sniper Systems"
-        />
-
-        <meta
-          property="og:description"
-          content="Build secure, scalable, and high-performance IT infrastructure with Sniper Systems enterprise solutions."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/solutions/it-infrastructure"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="Enterprise IT Infrastructure Services | Sniper Systems"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Transform your business with secure IT infrastructure, networking, and cloud-ready enterprise solutions."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-</script>
-
-        {/* SERVICE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "IT Infrastructure Solutions",
-            "provider": {
-              "@type": "Organization",
-              "name": "Sniper Systems"
-            },
-            "areaServed": {
-              "@type": "Country",
-              "name": "India"
-            },
-            "description": "Enterprise IT infrastructure solutions including networking, cloud integration, and secure IT environments."
-          }
-          `}
-</script>
-
-        {/* BREADCRUMB SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://sniperindia.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Solutions",
-                "item": "https://sniperindia.com/solutions/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "IT Infrastructure",
-                "item": "https://sniperindia.com/solutions/it-infrastructure"
-              }
-            ]
-          }
-          `}
-</script>
-
-      </>
+      <PageSEO
+        title="IT/ITES Infrastructure Solutions"
+        description="Sniper Systems provides enterprise IT infrastructure solutions in Chennai including networking, data center solutions, cloud integration, and secure IT environments for businesses across India."
+        canonical="/industries/it-ites-infra"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "IT/ITES Infrastructure Solutions",
+          "provider": { "@type": "Organization", "name": "Sniper Systems" },
+          "areaServed": { "@type": "Country", "name": "India" },
+          "serviceType": "IT Infrastructure Solutions",
+        }}
+      />
 
       {/* ==================== HERO ==================== */}
       <section className="relative bg-white pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden">

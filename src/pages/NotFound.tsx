@@ -1,58 +1,102 @@
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, Home, Search, Wifi } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { Globe404 } from "@/components/ui/globe-404";
 
+// ── Animation variants ──────────────────────────────────────────────────────
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+};
+
+const globeVariants = {
+  hidden: { scale: 0.82, opacity: 0, y: 12 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: "easeOut" },
+  },
+  floating: {
+    y: [0, -8, 0],
+    transition: {
+      duration: 5,
+      ease: "easeInOut",
+      repeat: Infinity,
+    },
+  },
+};
+
+// ── Component ───────────────────────────────────────────────────────────────
 const NotFound = () => {
   const location = useLocation();
-  const [mounted, setMounted] = useState(false);
 
+  // Jotform chatbot
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   useEffect(() => {
-  const script = document.createElement("script");
-  script.src = "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
-  script.async = true;
-  document.body.appendChild(script);
-  return () => { document.body.removeChild(script); };
-}, []);
-
-
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    console.error(
+      "404 Error: User attempted to access non-existent route:",
+      location.pathname
+    );
     window.scrollTo(0, 0);
-    setMounted(true);
   }, [location.pathname]);
 
   const suggestions = [
-    { label: "Home",      href: "/",         icon: Home      },
-    { label: "Contact",   href: "/contact",  icon: ArrowRight },
-    { label: "Solutions", href: "/solutions", icon: Search    },
+    { label: "Home", href: "/", icon: Home },
+    { label: "Contact", href: "/contact", icon: ArrowRight },
+    { label: "Solutions", href: "/solutions", icon: Search },
   ];
 
   return (
     <div className="min-h-screen bg-white font-sans overflow-x-hidden">
-
       <Helmet>
         <title>Page Not Found | Sniper Systems</title>
-        <meta name="description" content="The page you're looking for doesn't exist. Return to Sniper Systems homepage or contact us for assistance with IT solutions and services." />
+        <meta
+          name="description"
+          content="The page you're looking for doesn't exist. Return to Sniper Systems homepage or contact us for assistance with IT solutions and services."
+        />
         <meta name="robots" content="noindex, follow" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Page Not Found | Sniper Systems" />
-        <meta property="og:description" content="The page you requested could not be found. Explore our IT solutions and services or get in touch with our team." />
+        <meta
+          property="og:description"
+          content="The page you requested could not be found. Explore our IT solutions and services or get in touch with our team."
+        />
         <meta property="og:url" content="https://sniperindia.com/404/" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Page Not Found | Sniper Systems" />
-        <meta name="twitter:description" content="The page you're looking for doesn't exist. Return to Sniper Systems homepage for IT solutions." />
+        <meta
+          name="twitter:description"
+          content="The page you're looking for doesn't exist. Return to Sniper Systems homepage for IT solutions."
+        />
       </Helmet>
 
-
-    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
-
-
-      {/* ── Hero 404 Section ──────────────────────────────────────────────── */}
+      {/* ── Hero: 4 <Globe> 4 ─────────────────────────────────────────────── */}
       <section className="relative bg-white pt-20 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden">
-        {/* Subtle background dot pattern */}
+        {/* Subtle dot grid background */}
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -61,69 +105,88 @@ const NotFound = () => {
           }}
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Giant 404 */}
-          <div className="text-center mb-6 sm:mb-8 md:mb-10">
-            <div
-              className="font-semibold text-gray-900 leading-none select-none"
-              style={{
-                fontSize: "clamp(7rem, 28vw, 300px)",
-                opacity: mounted ? 1 : 0,
-                transform: mounted ? "translateY(0)" : "translateY(40px)",
-                transition: "opacity 0.7s ease, transform 0.7s ease",
-                letterSpacing: "-0.04em",
-                fontFeatureSettings: '"tnum"',
-              }}
-            >
-              404
+        <AnimatePresence>
+          <motion.div
+            className="relative z-10 max-w-4xl mx-auto text-center"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            {/* 4 — Globe — 4 row */}
+            <div className="flex items-center justify-center gap-4 sm:gap-8 mb-8 sm:mb-10">
+              {/* Left "4" */}
+              <motion.span
+                className="font-semibold text-gray-900 select-none leading-none"
+                style={{
+                  fontSize: "clamp(5rem, 18vw, 180px)",
+                  letterSpacing: "-0.04em",
+                }}
+                variants={fadeUp}
+              >
+                4
+              </motion.span>
+
+              {/* Globe */}
+              <motion.div
+                className="relative flex-shrink-0"
+                style={{ width: "clamp(120px, 22vw, 220px)", height: "clamp(120px, 22vw, 220px)" }}
+                variants={globeVariants}
+                animate={["visible", "floating"]}
+              >
+                <Globe404 />
+              </motion.div>
+
+              {/* Right "4" */}
+              <motion.span
+                className="font-semibold text-gray-900 select-none leading-none"
+                style={{
+                  fontSize: "clamp(5rem, 18vw, 180px)",
+                  letterSpacing: "-0.04em",
+                }}
+                variants={fadeUp}
+              >
+                4
+              </motion.span>
             </div>
-          </div>
 
-          {/* Divider */}
-          <div className="w-full h-px bg-gray-300 mb-8 sm:mb-10 md:mb-12" />
+            {/* Divider */}
+            <motion.div
+              className="w-full h-px bg-gray-300 mb-8 sm:mb-10"
+              variants={fadeUp}
+            />
 
-          {/* Message */}
-          <div className="text-center px-2 sm:px-4">
-            <h1
+            {/* Heading */}
+            <motion.h1
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight"
-              style={{
-                opacity: mounted ? 1 : 0,
-                transform: mounted ? "translateY(0)" : "translateY(20px)",
-                transition: "opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s",
-              }}
+              variants={fadeUp}
             >
-              Page Not Found
-            </h1>
-            <p
+              Ups! Lost in space
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
               className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
-              style={{
-                opacity: mounted ? 1 : 0,
-                transform: mounted ? "translateY(0)" : "translateY(20px)",
-                transition: "opacity 0.7s ease 0.25s, transform 0.7s ease 0.25s",
-              }}
+              variants={fadeUp}
             >
-              The page you're looking for doesn't exist or may have been moved.
-              Let's get you back on track.
-            </p>
+              We couldn't find the page you're looking for. It might have been
+              moved or deleted.
+            </motion.p>
 
             {/* Attempted path badge */}
             {location.pathname && location.pathname !== "/" && (
-              <div
+              <motion.div
                 className="inline-flex items-center gap-2 mt-4 sm:mt-6 bg-gray-100 text-gray-500 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-mono max-w-full overflow-hidden"
-                style={{
-                  opacity: mounted ? 1 : 0,
-                  transition: "opacity 0.7s ease 0.35s",
-                }}
+                variants={fadeUp}
               >
                 <Wifi className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
                 <span className="truncate">{location.pathname}</span>
-              </div>
+              </motion.div>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </section>
 
-      {/* ── Quick Links / Navigation Block ───────────────────────────────── */}
+      {/* ── Quick Links ───────────────────────────────────────────────────── */}
       <section className="bg-black text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 rounded-[2rem] sm:rounded-[3rem] md:rounded-[4rem] mx-3 sm:mx-4 md:mx-6 my-6 sm:my-8 md:my-12">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
@@ -142,15 +205,14 @@ const NotFound = () => {
                 href={item.href}
                 className="group flex items-center gap-4 sm:gap-6 md:gap-8 pb-4 sm:pb-5 md:pb-6 border-b border-gray-700 last:border-0 hover:opacity-70 transition-opacity duration-300"
               >
-                {/* Icon */}
                 <div className="flex-shrink-0">
                   <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover:text-white transition-colors duration-200" />
                 </div>
-                {/* Label */}
                 <div className="flex-1 min-w-0">
-                  <span className="text-xl sm:text-2xl font-semibold text-white">{item.label}</span>
+                  <span className="text-xl sm:text-2xl font-semibold text-white">
+                    {item.label}
+                  </span>
                 </div>
-                {/* Arrow */}
                 <div className="flex-shrink-0">
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
                 </div>
@@ -160,11 +222,10 @@ const NotFound = () => {
         </div>
       </section>
 
-      {/* ── Visual Atmosphere Section ─────────────────────────────────────── */}
+      {/* ── Visual atmosphere section ─────────────────────────────────────── */}
       <section className="relative bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
-            {/* Left: text block */}
             <div className="space-y-4 sm:space-y-5 md:space-y-6">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 leading-tight">
                 Still can't find<br />what you need?
@@ -180,9 +241,7 @@ const NotFound = () => {
               </p>
             </div>
 
-            {/* Right: decorative visual tile */}
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-56 sm:h-72 lg:h-96 bg-gray-900 flex items-center justify-center">
-              {/* Animated dot grid */}
               <div
                 className="absolute inset-0 opacity-20"
                 style={{
@@ -190,7 +249,6 @@ const NotFound = () => {
                   backgroundSize: "28px 28px",
                 }}
               />
-              {/* Center icon */}
               <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-white/30 flex items-center justify-center">
                   <Search className="w-8 h-8 sm:w-10 sm:h-10 text-white/70" />
@@ -199,11 +257,11 @@ const NotFound = () => {
                   Connection Lost
                 </p>
               </div>
-              {/* Subtle radial glow */}
               <div
                 className="absolute inset-0"
                 style={{
-                  background: "radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%)",
+                  background:
+                    "radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%)",
                 }}
               />
             </div>
@@ -237,7 +295,6 @@ const NotFound = () => {
           </div>
         </div>
       </section>
-
     </div>
   );
 };

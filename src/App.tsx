@@ -2,19 +2,22 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import React, { Suspense } from "react";
-// Pages
+import React, { Suspense, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import Preloader from "@/components/Preloader";
+import GradualBlur from "@/components/ui/GradualBlur";
+import "@fontsource/figtree";
+
+// ── Lazy pages (code-split for faster initial load) ──────────────────────────
 const Index = React.lazy(() => import("./pages/Index"));
-
-
 const About = React.lazy(() => import("./pages/About"));
 const Blog = React.lazy(() => import("./pages/Blog"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Careers = React.lazy(() => import("./pages/Careers"));
 
-
+// ── Eager pages (small, no benefit from lazy-loading) ───────────────────────
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/privacy";
 import TermsAndConditions from "./pages/TermsAndConditions";
@@ -31,7 +34,6 @@ import ManagedITServices from "./pages/solutions/ManagedITServices";
 import PaymentServices from "./pages/solutions/PaymentServices";
 import ITInfrastructure from "./pages/solutions/ITInfrastructure";
 import NetworkingSolutions from "./pages/solutions/NetworkingSolutions";
-
 
 // Partners
 import Partners from "./pages/partners/Partners";
@@ -55,11 +57,6 @@ import Acer from "./pages/partners/Acer";
 import AWS from "./pages/partners/AWS";
 import Azure from "./pages/partners/Azure";
 
-
-//  <Route path="/about" element={<About />} />
-
-
-
 // Industries
 import Industries from "./pages/industries/Industries";
 import AEC from "./pages/industries/AEC";
@@ -71,36 +68,55 @@ import HealthcarePharma from "./pages/industries/HealthcarePharma";
 import ManufacturingAutomotive from "./pages/industries/ManufacturingAutomotive";
 import Education from "./pages/industries/Education";
 
-const queryClient = new QueryClient();
+// ── Page transition variants ─────────────────────────────────────────────────
+const pageVariants = {
+  initial: { opacity: 0, y: 10 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] },
+  },
+  exit: {
+    opacity: 0,
+    y: -6,
+    transition: { duration: 0.18, ease: "easeIn" },
+  },
+};
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Suspense>
-          <Routes>
+/**
+ * Wraps every route's content with a fade+slide transition.
+ * Must live inside <BrowserRouter> so it can call useLocation().
+ */
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={location.pathname}
+        className="page-transition"
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        <Suspense fallback={null}>
+          <Routes location={location}>
             <Route path="/" element={<Index />} />
 
-            {/* Main route */}
+            {/* Main pages */}
             <Route path="/about" element={<About />} />
-
-            {/* Redirect old URL */}
             <Route path="/about-us" element={<Navigate to="/about" replace />} />
-
-
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<TermsAndConditions />} />
 
-            {/* Solutions Routes */}
+            {/* Solutions */}
             <Route path="/solutions" element={<Solutions />} />
             <Route path="/solutions/av-solutions" element={<AVSolutions />} />
             <Route path="/solutions/device-deployment-mdm" element={<DeviceDeploymentMDM />} />
-
             <Route path="/solutions/it-asset-disposal" element={<ITAssetDisposal />} />
             <Route path="/solutions/hr-solutions" element={<HRSolutions />} />
             <Route path="/solutions/it-consulting" element={<ITConsulting />} />
@@ -110,7 +126,7 @@ const App = () => (
             <Route path="/solutions/networking-solutions" element={<NetworkingSolutions />} />
             <Route path="/solutions/clould-solutions" element={<CloudSolutions />} />
 
-            {/* Partners Routes */}
+            {/* Partners */}
             <Route path="/partners" element={<Partners />} />
             <Route path="/partners/apple/" element={<Apple />} />
             <Route path="/partners/nvidia" element={<Nvidia />} />
@@ -132,7 +148,7 @@ const App = () => (
             <Route path="/partners/aws" element={<AWS />} />
             <Route path="/partners/azure" element={<Azure />} />
 
-            {/* Industries Routes */}
+            {/* Industries */}
             <Route path="/industries" element={<Industries />} />
             <Route path="/industries/aec" element={<AEC />} />
             <Route path="/industries/media-and-entertainment" element={<MediaEntertainment />} />
@@ -143,17 +159,53 @@ const App = () => (
             <Route path="/industries/manufacturing-automotive" element={<ManufacturingAutomotive />} />
             <Route path="/industries/Education" element={<Education />} />
 
-
-
-
-
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+      </motion.div>
+         <GradualBlur
+              target="page"
+              position="bottom"
+              height="4rem"
+              strength={2}
+              divCount={5}
+              curve="bezier"
+              exponential
+              opacity={1}
+            /> 
+    </AnimatePresence>
+  );
+};
+
+// ── Root app ─────────────────────────────────────────────────────────────────
+const queryClient = new QueryClient();
+
+const App = () => {
+  const [preloaderDone, setPreloaderDone] = useState(false);
+
+  return (
+    <>
+      {/*
+       * Preloader lives here — outside QueryClientProvider, TooltipProvider,
+       * BrowserRouter, and AnimatePresence — so it is NEVER inside a CSS
+       * transform stacking context. position:fixed works correctly at this level.
+       */}
+      {!preloaderDone && (
+        <Preloader onComplete={() => setPreloaderDone(true)} />
+      )}
+
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AnimatedRoutes />
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </>
+  );
+};
 
 export default App;

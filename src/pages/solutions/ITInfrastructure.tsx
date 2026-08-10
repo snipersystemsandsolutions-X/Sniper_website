@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import PageSEO from "@/components/PageSEO";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Award, Cpu, Globe, Headphones, Shield } from "lucide-react";
@@ -458,97 +459,11 @@ const ITInfrastructure = () => {
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
 
-<>
-
-        {/* BASIC SEO */}
-
-        <title>IT Infrastructure Solutions in Chennai | Enterprise IT Services | Sniper Systems</title>
-
-        <meta
-          name="description"
-          content="Sniper Systems provides enterprise IT infrastructure solutions in Chennai including networking, data center solutions, cloud integration, and secure IT environments for businesses across India."
-        />
-
-        <meta
-          name="keywords"
-          content="IT infrastructure solutions Chennai, enterprise IT infrastructure India, network infrastructure services, data center solutions India, IT infrastructure company Chennai"
-        />
-
-        <meta name="robots" content="index, follow" />
-
-        <link
-          rel="canonical"
-          href="https://sniperindia.com/solutions/it-infrastructure"
-        />
-
-        {/* GEO TAGS */}
-
-        <meta name="geo.region" content="IN-TN" />
-<meta name="geo.placename" content="Chennai" />
-<meta name="geo.position" content="13.0827;80.2707" />
-<meta name="ICBM" content="13.0827, 80.2707" />
-
-        {/* OPEN GRAPH */}
-
-        <meta property="og:type" content="website" />
-
-        <meta
-          property="og:title"
-          content="IT Infrastructure Solutions | Sniper Systems"
-        />
-
-        <meta
-          property="og:description"
-          content="Build secure, scalable, and high-performance IT infrastructure with Sniper Systems enterprise solutions."
-        />
-
-        <meta
-          property="og:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        <meta
-          property="og:url"
-          content="https://sniperindia.com/solutions/it-infrastructure"
-        />
-
-        {/* TWITTER SEO */}
-
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          name="twitter:title"
-          content="Enterprise IT Infrastructure Services | Sniper Systems"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Transform your business with secure IT infrastructure, networking, and cloud-ready enterprise solutions."
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://sniperindia.com/wp-content/uploads/2023/09/sniper-systems-banner.jpg"
-        />
-
-        {/* ORGANIZATION SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sniper Systems",
-            "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
-          }
-          `}
-</script>
-
-        {/* SERVICE SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+      <PageSEO
+        title="IT Infrastructure Solutions in Chennai | Enterprise IT Services"
+        description="Sniper Systems provides enterprise IT infrastructure solutions in Chennai including networking, data center solutions, cloud integration, and secure IT environments for businesses across India."
+        canonical="/solutions/it-infrastructure"
+        structuredData={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
@@ -562,14 +477,7 @@ const ITInfrastructure = () => {
               "name": "India"
             },
             "description": "Enterprise IT infrastructure solutions including networking, cloud integration, and secure IT environments."
-          }
-          `}
-</script>
-
-        {/* BREADCRUMB SCHEMA */}
-
-        <script type="application/ld+json">
-          {`
+          },
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -584,7 +492,7 @@ const ITInfrastructure = () => {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Solutions",
-                "item": "https://sniperindia.com/solutions/"
+                "item": "https://sniperindia.com/solutions"
               },
               {
                 "@type": "ListItem",
@@ -594,10 +502,8 @@ const ITInfrastructure = () => {
               }
             ]
           }
-          `}
-</script>
-
-      </>
+        ]}
+      />
 
 
 

@@ -438,15 +438,15 @@ const Industries = () => {
 
   const badgeLabels = ["AEC", "Media", "AR/VR/XR", "Government", "IT & ITES", "Healthcare", "Manufacturing", "Education"];
 
-  const heroRef   = useRef(null);
-  const gridRef   = useRef(null);
-  const listRef   = useRef(null);
-  const featRef   = useRef(null);
+  const heroRef = useRef(null);
+  const gridRef = useRef(null);
+  const listRef = useRef(null);
+  const featRef = useRef(null);
 
-  const heroInView  = useInView(heroRef,  { once: true, margin: "-60px" });
-  const gridInView  = useInView(gridRef,  { once: true, margin: "-80px" });
-  const listInView  = useInView(listRef,  { once: true, margin: "-60px" });
-  const featInView  = useInView(featRef,  { once: true, margin: "-60px" });
+  const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
+  const gridInView = useInView(gridRef, { once: true, margin: "-80px" });
+  const listInView = useInView(listRef, { once: true, margin: "-60px" });
+  const featInView = useInView(featRef, { once: true, margin: "-60px" });
 
   return (
     <Layout>

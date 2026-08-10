@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import PageSEO from "@/components/PageSEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -625,6 +626,22 @@ const BlogA = () => {
 
   return (
     <Layout>
+      <PageSEO
+        title="IT Industry Insights & Technology Blog"
+        description="Explore expert insights, technology trends, and IT industry news from Sniper Systems — covering cloud, cybersecurity, managed services, and enterprise IT across India."
+        canonical="/blog"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "name": "Sniper Systems Blog",
+          "url": "https://sniperindia.com/blog",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Sniper Systems",
+            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png",
+          },
+        }}
+      />
       {showWhiteScreen && (
         <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />
       )}
