@@ -3,11 +3,11 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "framework": "vite",
-
   "env": {
-    "NODE_OPTIONS": "--max-old-space-size=6144"
+    "NODE_OPTIONS": "--max-old-space-size=6144",
+    "VERCEL_SKIP_CACHE": "1"
   },
-  
+  "cache": false,
   "routes": [
     {
       "src": "/partners/(.*)",
