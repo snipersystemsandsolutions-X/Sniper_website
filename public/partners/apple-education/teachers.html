@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Teachers | Apple Education Specialist</title>
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link
+      rel="icon"
+      href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp"
+      media="(prefers-color-scheme: light)"
+    />
+    <link rel="apple-touch-icon" href="https://sniperindia.com/wp-content/uploads/2025/06/Facicon.webp" />
+    <meta
+      content="Empower your teaching with Apple technology. Professional development, classroom tools, and creative resources designed specifically for educators."
+    />
+    <meta
+      name="keywords"
+      content="teacher resources, iPad for teachers, Mac classroom, teacher training, lesson planning, educational apps, classroom management, teaching tools"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#E31922',
+              'primary-dark': '#B31419'
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Include Header -->
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <!-- Enhanced Teacher Empowerment Hero Section -->
+    <section class="relative bg-gradient-to-br from-teal-900 via-green-800 to-emerald-900 text-white overflow-hidden">
+      <!-- Classroom Pattern Background -->
+      <div class="absolute inset-0 opacity-5">
+        <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="classroom" width="60" height="60" patternUnits="userSpaceOnUse">
+              <rect x="10" y="20" width="40" height="25" fill="none" stroke="currentColor" stroke-width="0.5" />
+              <line x1="15" y1="30" x2="25" y2="30" stroke="currentColor" stroke-width="0.3" />
+              <line x1="15" y1="35" x2="45" y2="35" stroke="currentColor" stroke-width="0.3" />
+              <circle cx="30" cy="10" r="3" fill="currentColor" opacity="0.3" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#classroom)" />
+        </svg>
+      </div>
+
+      <!-- Floating Teaching Elements -->
+      <div class="absolute inset-0">
+        <div class="absolute top-16 right-16 w-28 h-20 border-2 border-yellow-300/20 rounded-lg rotate-6">
+          <div
+            class="absolute inset-2 bg-yellow-300/10 rounded flex flex-col justify-center items-center animate-pulse"
+          >
+            <div class="w-16 h-2 bg-yellow-300/30 rounded mb-1"></div>
+            <div class="w-12 h-2 bg-yellow-300/20 rounded mb-1"></div>
+            <div class="w-14 h-2 bg-yellow-300/20 rounded"></div>
+          </div>
+        </div>
+        <div
+          class="absolute top-1/3 left-20 w-20 h-20 bg-blue-300/10 rounded-full animate-pulse"
+          style="animation-delay: -1s"
+        >
+          <div class="absolute inset-3 border-2 border-blue-300/30 rounded-full flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-300/40" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="absolute bottom-24 right-1/4 w-24 h-16 border-2 border-green-300/30 rounded-xl rotate-12 animate-bounce"
+          style="animation-delay: -2s"
+        >
+          <div class="absolute inset-2 bg-green-300/10 rounded-lg flex items-center justify-center">
+            <svg class="w-8 h-8 text-green-300/40" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zm10-4a1 1 0 100 2h3a1 1 0 100-2h-3zm0 4a1 1 0 100 2h3a1 1 0 100-2h-3z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Digital Lesson Plan Card -->
+      <div class="absolute top-20 left-8 hidden lg:block">
+        <div
+          class="w-56 h-40 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-4 animate-pulse"
+          style="animation-delay: -1.5s"
+        >
+          <div class="flex items-center mb-3">
+            <div class="w-8 h-8 bg-emerald-300/40 rounded-lg mr-3 flex items-center justify-center">
+              <svg class="w-4 h-4 text-emerald-300/60" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="w-24 h-4 bg-white/30 rounded"></div>
+          </div>
+          <div class="space-y-2 mb-3">
+            <div class="w-full h-3 bg-white/20 rounded"></div>
+            <div class="w-5/6 h-3 bg-white/15 rounded"></div>
+            <div class="w-4/6 h-3 bg-white/15 rounded"></div>
+          </div>
+          <div class="flex gap-2">
+            <div class="w-16 h-6 bg-blue-300/30 rounded-full"></div>
+            <div class="w-16 h-6 bg-green-300/30 rounded-full"></div>
+            <div class="w-12 h-6 bg-yellow-300/30 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute inset-0 bg-black opacity-30"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+        <div class="max-w-4xl">
+          <!-- Teacher Support Badge -->
+          <div
+            class="inline-flex items-center px-6 py-3 rounded-full bg-emerald-300/20 border border-emerald-300/30 text-emerald-200 text-sm font-semibold mb-8 backdrop-blur-sm"
+          >
+            <svg class="w-4 h-4 mr-2 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"
+              />
+            </svg>
+            Trusted by 25,000+ Educators
+          </div>
+
+          <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            Empower Your
+            <span class="relative inline-block">
+              <span class="bg-gradient-to-r from-emerald-300 to-green-300 bg-clip-text text-transparent">Teaching</span>
+              <div
+                class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-emerald-300/60 to-green-300/60 rounded-full"
+              ></div>
+            </span>
+          </h1>
+
+          <p class="text-xl text-gray-200 mb-10 leading-relaxed max-w-3xl">
+            Transform your classroom experience with
+            <span class="text-emerald-300 font-semibold">Apple technology</span>
+            designed for educators. From lesson planning to student engagement, discover tools that make teaching more
+            effective and enjoyable.
+          </p>
+
+          <!-- Teaching Tools -->
+          <div class="flex flex-wrap gap-6 mb-10">
+            <div class="flex items-center text-gray-200">
+              <div class="w-3 h-3 bg-blue-400 rounded-full mr-3 animate-pulse"></div>
+              <span>Lesson Planning</span>
+            </div>
+            <div class="flex items-center text-gray-200">
+              <div class="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse" style="animation-delay: 0.5s"></div>
+              <span>Student Engagement</span>
+            </div>
+            <div class="flex items-center text-gray-200">
+              <div class="w-3 h-3 bg-yellow-400 rounded-full mr-3 animate-pulse" style="animation-delay: 1s"></div>
+              <span>Assessment Tools</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="apple-training.html"
+              class="group relative bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/25 text-center overflow-hidden"
+            >
+              <span class="relative z-10 flex items-center justify-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"
+                  />
+                </svg>
+                Get Teacher Support
+              </span>
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
+              ></div>
+            </a>
+
+            <a
+              href="#resources"
+              class="group border-2 border-emerald-300/50 text-emerald-300 hover:bg-emerald-300 hover:text-teal-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 text-center backdrop-blur-sm"
+            >
+              <span class="flex items-center justify-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zm10-4a1 1 0 100 2h3a1 1 0 100-2h-3zm0 4a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                  />
+                </svg>
+                Explore Resources
+              </span>
+            </a>
+          </div>
+
+          <!-- Professional Growth -->
+          <div class="mt-8 text-sm text-gray-300">
+            <div class="flex items-center">
+              <span class="mr-4">Join the educator community:</span>
+              <div class="flex space-x-1">
+                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.3s"></div>
+                <div class="w-2 h-2 bg-teal-400 rounded-full animate-pulse" style="animation-delay: 0.6s"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teacher Benefits -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Why Teachers Choose Apple</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Discover how Apple technology can enhance your teaching effectiveness and create more engaging learning
+            experiences
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Intuitive Design -->
+          <div
+            class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300"
+          >
+            <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Intuitive & Easy</h3>
+            <p class="text-gray-600">
+              Apple devices are designed to be intuitive, so you can focus on teaching rather than troubleshooting
+              technology. Start using them effectively from day one.
+            </p>
+          </div>
+
+          <!-- Creative Tools -->
+          <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300"
+          >
+            <div class="w-16 h-16 bg-purple-600 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 110 2h-1l-.117 13.442a2 2 0 01-1.998 1.558H6.115a2 2 0 01-1.998-1.558L4 6H3a1 1 0 110-2h4z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Creative Expression</h3>
+            <p class="text-gray-600">
+              Built-in creative apps like GarageBand, iMovie, and Keynote help you create engaging content and enable
+              student creativity across all subjects.
+            </p>
+          </div>
+
+          <!-- Professional Development -->
+          <div
+            class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300"
+          >
+            <div class="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Professional Growth</h3>
+            <p class="text-gray-600">
+              Access free professional learning opportunities, from Apple Teacher certification to advanced workshops
+              that advance your career.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teaching Tools -->
+    <section id="resources" class="py-20 bg-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Essential Teaching Tools</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Discover the apps and features that make daily teaching tasks more efficient and effective
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <div>
+            <h3 class="text-3xl font-bold text-gray-900 mb-6">Classroom Management Made Simple</h3>
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-gray-900 mb-2">Classroom App</h4>
+                  <p class="text-gray-600">
+                    Guide student learning, share work, and manage student devices with ease. Keep everyone focused and
+                    on-task.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-gray-900 mb-2">Schoolwork App</h4>
+                  <p class="text-gray-600">
+                    Distribute assignments, track student progress, and provide personalized feedback all in one place.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-gray-900 mb-2">ClassKit Framework</h4>
+                  <p class="text-gray-600">
+                    Enable apps to share progress data with Schoolwork, giving you insights into student learning.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
+            <div class="text-center mb-6">
+              <h4 class="text-2xl font-bold text-gray-900 mb-2">Classroom Impact</h4>
+              <p class="text-gray-600">Teachers report significant improvements with Apple tools</p>
+            </div>
+            <div class="grid grid-cols-2 gap-6">
+              <div class="text-center">
+                <div class="text-3xl font-bold text-red-600 mb-1">78%</div>
+                <div class="text-sm text-gray-600">Improved Engagement</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-red-600 mb-1">65%</div>
+                <div class="text-sm text-gray-600">Time Savings</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-red-600 mb-1">82%</div>
+                <div class="text-sm text-gray-600">Better Collaboration</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-red-600 mb-1">91%</div>
+                <div class="text-sm text-gray-600">Would Recommend</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Creative Apps for Teachers -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Creative Apps for Every Subject</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Built-in apps that help you create engaging content and enable student creativity across all subjects
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Keynote -->
+          <div
+            class="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300"
+          >
+            <div class="w-16 h-16 bg-orange-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 110 2h-1v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6H3a1 1 0 110-2h4z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Keynote</h3>
+            <p class="text-sm text-gray-600">Create stunning presentations with animations and interactive elements</p>
+          </div>
+
+          <!-- Pages -->
+          <div
+            class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300"
+          >
+            <div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Pages</h3>
+            <p class="text-sm text-gray-600">Design beautiful documents, newsletters, and lesson materials</p>
+          </div>
+
+          <!-- Numbers -->
+          <div
+            class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300"
+          >
+            <div class="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Numbers</h3>
+            <p class="text-sm text-gray-600">Track grades, create charts, and manage classroom data</p>
+          </div>
+
+          <!-- GarageBand -->
+          <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300"
+          >
+            <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">GarageBand</h3>
+            <p class="text-sm text-gray-600">Create podcasts, record lessons, and explore music across subjects</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Learning for Teachers -->
+    <section class="py-20 bg-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Professional Learning Opportunities</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Advance your skills and career with comprehensive Apple Professional Learning programs
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Apple Teacher -->
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-blue-600"
+          >
+            <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Apple Teacher</h3>
+            <p class="text-gray-600 mb-6">
+              Free self-paced learning program that supports and celebrates educators using Apple products.
+            </p>
+            <ul class="text-sm text-gray-600 mb-6">
+              <li class="flex items-center mb-2">
+                <svg class="w-4 h-4 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Free certification program
+              </li>
+              <li class="flex items-center mb-2">
+                <svg class="w-4 h-4 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Self-paced online learning
+              </li>
+              <li class="flex items-center">
+                <svg class="w-4 h-4 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Recognition badges
+              </li>
+            </ul>
+            <a href="APLS.html" class="text-red-600 font-semibold hover:text-blue-700 transition-colors">
+              Start Learning →
+            </a>
+          </div>
+
+          <!-- Workshops -->
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-green-600"
+          >
+            <div class="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Live Workshops</h3>
+            <p class="text-gray-600 mb-6">
+              Interactive sessions covering specific topics and teaching strategies with Apple technology.
+            </p>
+            <ul class="text-sm text-gray-600 mb-6">
+              <li class="flex items-center mb-2">
+                <svg class="w-4 h-4 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Subject-specific sessions
+              </li>
+              <li class="flex items-center mb-2">
+                <svg class="w-4 h-4 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Hands-on practice
+              </li>
+              <li class="flex items-center">
+                <svg class="w-4 h-4 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Peer collaboration
+              </li>
+            </ul>
+            <a href="learning-studio.html" class="text-green-600 font-semibold hover:text-green-700 transition-colors">
+              Join Workshop →
+            </a>
+          </div>
+
+          <!-- One-on-One Support -->
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary"
+          >
+            <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Personal Coaching</h3>
+            <p class="text-gray-600 mb-6">
+              Get personalized support tailored to your specific classroom needs and teaching goals.
+            </p>
+            <ul class="text-sm text-gray-600 mb-6">
+              <li class="flex items-center mb-2">
+                <svg class="w-4 h-4 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Customized approach
+              </li>
+              <li class="flex items-center mb-2">
+                <svg class="w-4 h-4 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Flexible scheduling
+              </li>
+              <li class="flex items-center">
+                <svg class="w-4 h-4 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Ongoing support
+              </li>
+            </ul>
+            <a href="apple-training.html" class="text-primary font-semibold hover:text-primary-dark transition-colors">
+              Book Session →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teacher Success Stories -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Teacher Success Stories</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Hear how fellow educators are transforming their classrooms with Apple technology
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-gray-50 rounded-xl p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                <span class="text-white font-bold text-sm">LM</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900">Lisa Martinez</h3>
+                <p class="text-sm text-gray-600">5th Grade Science</p>
+              </div>
+            </div>
+            <blockquote class="text-gray-700 text-sm leading-relaxed">
+              "Using iPad with Apple Pencil for science journaling has completely transformed how my students document
+              their experiments. They're more engaged and creative than ever."
+            </blockquote>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
+                <span class="text-white font-bold text-sm">DJ</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900">David Johnson</h3>
+                <p class="text-sm text-gray-600">High School History</p>
+              </div>
+            </div>
+            <blockquote class="text-gray-700 text-sm leading-relaxed">
+              "Keynote presentations have revolutionized how I teach history. Students create interactive timelines and
+              immersive historical experiences that bring the past to life."
+            </blockquote>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4">
+                <span class="text-white font-bold text-sm">KT</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900">Karen Thompson</h3>
+                <p class="text-sm text-gray-600">2nd Grade Teacher</p>
+              </div>
+            </div>
+            <blockquote class="text-gray-700 text-sm leading-relaxed">
+              "The Classroom app has made managing my students' iPads so much easier. I can keep everyone focused while
+              still allowing them to explore and create."
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-primary-dark text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-4xl font-bold mb-6">Ready to Transform Your Teaching?</h2>
+          <p class="text-xl mb-8 opacity-90">
+            Join thousands of educators who have revolutionized their classrooms with Apple technology. Start your
+            journey today.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a
+              href="apple-training.html"
+              class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105"
+            >
+              Get Teaching Support
+            </a>
+            <a
+              href="APLS.html"
+              class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200"
+            >
+              Start Apple Teacher
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer"></div>
+
+    <script>
+      // Load header and footer
+
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer').innerHTML = data;
+        });
+    </script>
+  </body>
+</html>
