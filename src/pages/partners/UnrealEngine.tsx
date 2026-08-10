@@ -7,13 +7,13 @@ import {
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useCases, bentoItems, whyChooseUnrealEngine, solutions, keyFeatures, partnerItems, faqs } from "@/constant";
+import { bentoItems, solutions, faqs, partnerItems } from "@/constant";
 import ImpactSection from "@/components/ui/ImpactSection";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 import ShinyText from "@/components/ui/ShinyText";
 import UseCasesSection from "@/components/ui/UseCasesSection";
 import AnimatedGradientBackground from "@/components/ui/backgrounds/AnimatedGradientBackground";
-
+import spiralanim from "@/assets/spiralanim.mov";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -103,9 +103,7 @@ const SecondaryCTA = ({ href, children }: { href: string; children: React.ReactN
     href={href}
     className="group relative isolate inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/25 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-500 hover:border-white/40 hover:bg-white/[0.16] hover:shadow-[0_12px_40px_rgba(110,50,207,0.35),inset_0_1px_0_rgba(255,255,255,0.35)]"
   >
-    {/* Soft top-down glass sheen */}
     <span className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/25 via-white/5 to-transparent opacity-70" />
-    {/* Diagonal light sweep on hover */}
     <span className="pointer-events-none absolute -inset-y-full -left-1/2 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 transition-all duration-700 ease-out group-hover:left-[120%] group-hover:opacity-100" />
     <span className="relative flex items-center gap-2">{children}</span>
   </a>
@@ -131,11 +129,10 @@ const solutionsStickyContent = solutions.map((solution: any) => ({
     ? `${solution.description} ${solution.descriptionn}`
     : solution.description,
   tags: solution.tags,
-  moreCount: solution.moreCount,
   content: (
     <img
       src={solution.image}
-      alt={solution.title}
+      alt={`${solution.title} — Unreal Engine enterprise solution by Sniper Systems`}
       loading="lazy"
       decoding="async"
       className="h-full w-full object-cover"
@@ -160,79 +157,6 @@ const FadeUp = ({
     >
       {children}
     </motion.div>
-  );
-};
-
-// ========================================================
-// ✦ TRUST SECTION — new. Highest-leverage change in this pass.
-// Wire real logos or a real named case study in here before
-// shipping — the placeholders are deliberately obvious so they
-// can't accidentally go live as-is.
-// ========================================================
-type TrustLogo = { name: string; logoSrc?: string };
-
-const TrustSection = ({
-  logos = [],
-  caseStudy,
-}: {
-  logos?: TrustLogo[];
-  caseStudy?: { metric: string; client: string; description: string };
-}) => {
-  const hasRealLogos = logos.length > 0;
-  const hasRealCaseStudy = !!caseStudy;
-
-  return (
-    <section className="relative bg-[#0a0118] border-t border-white/[0.06] px-4 sm:px-6 py-16 sm:py-20">
-      <div className="max-w-6xl mx-auto">
-        <p className="text-center text-xs font-semibold tracking-[0.2em] uppercase text-white/40 mb-7">
-          Trusted across manufacturing, automotive, and industrial teams
-        </p>
-
-        {hasRealLogos ? (
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-80">
-            {logos.map((logo) => (
-              <img
-                key={logo.name}
-                src={logo.logoSrc}
-                alt={logo.name}
-                className="h-6 sm:h-7 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all"
-              />
-            ))}
-          </div>
-        ) : (
-          // TODO(roobesh): replace with real client logos (grayscale SVG/PNG,
-          // ~28px tall) as soon as you have permission to display them.
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {["Client One", "Client Two", "Client Three", "Client Four", "Client Five"].map((name) => (
-              <span
-                key={name}
-                className="text-sm font-medium text-white/25 border border-dashed border-white/15 rounded-md px-4 py-2"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        )}
-
-        {hasRealCaseStudy ? (
-          <div className="mt-10 mx-auto max-w-2xl text-center">
-            <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">{caseStudy.metric}</p>
-            <p className="mt-2 text-sm sm:text-base text-white/70">{caseStudy.description} — {caseStudy.client}</p>
-          </div>
-        ) : (
-          // TODO(roobesh): swap this for one real, named case study with a
-          // real number ("cut design review cycles by 40% for [Client]").
-          // A stat with no name attached reads as decorative, not proof —
-          // that was the single biggest gap in the review. Even one is
-          // worth more here than the whole "18+ Industries Served" line.
-          <div className="mt-10 mx-auto max-w-xl text-center border border-dashed border-white/15 rounded-2xl px-6 py-8">
-            <p className="text-sm text-white/40">
-              [ Slot for a named case study — e.g. "Cut design review cycles by 40% for &lt;Client&gt;" ]
-            </p>
-          </div>
-        )}
-      </div>
-    </section>
   );
 };
 
@@ -356,6 +280,8 @@ const WhyPartnerSniper = ({ items }: { items: any[] }) => {
   );
 };
 
+
+
 // ========================================================
 // ✦ FAQ ITEM (unchanged)
 // ========================================================
@@ -418,11 +344,22 @@ const YouTubeBackground = ({ videoId, start = 0 }: { videoId: string; start?: nu
 };
 
 // ========================================================
-// ✦ BUSINESS ADVANTAGES — Instagram-story panel
-// (kept — it's the strongest interaction pattern on the page,
-// just no longer duplicated by the old capabilities section)
+// ✦ BUSINESS ADVANTAGES — REDESIGNED as an engine-viewport HUD
+// (replaces the old Instagram-story carousel — same autoplay/
+// progress timing logic, new visual language tied to the subject:
+// grid mesh, corner reticle, "FEED 01/06" readout, optional live
+// stat pulled from item.metric if you add that field to bentoItems)
 // ========================================================
 const STORY_DURATION_MS = 4500;
+
+const ViewportCorners = () => (
+  <>
+    <span className="pointer-events-none absolute left-4 top-4 z-20 h-4 w-4 border-l border-t border-white/20" />
+    <span className="pointer-events-none absolute right-4 top-4 z-20 h-4 w-4 border-r border-t border-white/20" />
+    <span className="pointer-events-none absolute left-4 bottom-4 z-20 h-4 w-4 border-l border-b border-white/20" />
+    <span className="pointer-events-none absolute right-4 bottom-4 z-20 h-4 w-4 border-r border-b border-white/20" />
+  </>
+);
 
 const BusinessAdvantagesStory = ({ items }: { items: any[] }) => {
   const [active, setActive] = useState(0);
@@ -430,12 +367,6 @@ const BusinessAdvantagesStory = ({ items }: { items: any[] }) => {
   const [paused, setPaused] = useState(false);
   const reducedMotion = usePrefersReducedMotion();
 
-  // Refs mirror the latest state so the single persistent rAF loop below
-  // can read current values without needing to be torn down and rebuilt
-  // every time active/paused/reducedMotion change — that teardown/rebuild
-  // race (combined with rAF being frozen on a backgrounded tab) was what
-  // caused the panel to silently stop advancing until a tab switch forced
-  // a re-render.
   const rafRef = useRef<number>();
   const pausedRef = useRef(paused);
   const reducedMotionRef = useRef(reducedMotion);
@@ -447,18 +378,12 @@ const BusinessAdvantagesStory = ({ items }: { items: any[] }) => {
   useEffect(() => { reducedMotionRef.current = reducedMotion; }, [reducedMotion]);
   useEffect(() => { itemsLengthRef.current = items.length; }, [items.length]);
 
-  // Reset the clock whenever the active slide changes (click or auto-advance)
   useEffect(() => {
     elapsedRef.current = 0;
     lastTimeRef.current = null;
     setProgress(0);
   }, [active]);
 
-  // One persistent loop for the life of the component. Progress is tracked
-  // as an accumulated delta rather than `now - start`, and we drop the
-  // last-frame timestamp whenever the tab is hidden or the story is
-  // paused/reduced-motion — so resuming never counts the time that passed
-  // while nothing was actually playing.
   useEffect(() => {
     const tick = (now: number) => {
       rafRef.current = requestAnimationFrame(tick);
@@ -497,6 +422,7 @@ const BusinessAdvantagesStory = ({ items }: { items: any[] }) => {
 
   const goTo = (i: number) => setActive(i);
   const item = items[active];
+  const total = items.length;
 
   return (
     <div
@@ -504,75 +430,137 @@ const BusinessAdvantagesStory = ({ items }: { items: any[] }) => {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="lg:col-span-5 flex flex-col gap-2.5 sm:gap-3">
+      {/* ── Channel rail — every row is 1/N of the rail's full height, ── */}
+      {/* so it always matches the viewport height exactly, regardless   */}
+      {/* of how long each label runs.                                   */}
+      <div className="lg:col-span-4 flex flex-col h-full min-h-[420px] sm:min-h-[480px]">
         {items.map((it, i) => {
           const isActive = i === active;
           return (
             <button
               key={i}
               onClick={() => goTo(i)}
-              className={`group flex items-center gap-3.5 rounded-2xl px-4 py-3.5 sm:px-5 sm:py-4 text-left transition-all duration-300 ${
-                isActive ? "bg-white shadow-[0_8px_24px_rgba(0,0,0,0.25)]" : "bg-white/[0.04] hover:bg-white/[0.08]"
-              }`}
+              className="group relative flex flex-1 items-center gap-4 px-2 sm:px-3 text-left"
             >
-              <span className={`relative flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
-                isActive ? "bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white" : "bg-white/10 text-white/60 group-hover:text-white/85"
-              }`}>
-                <it.icon className="h-4 w-4" strokeWidth={2} />
+              <span
+                className={`text-xs tabular-nums tracking-widest transition-colors duration-300 ${
+                  isActive ? "text-violet-300" : "text-white/30 group-hover:text-white/50"
+                }`}
+              >
+                {String(i + 1).padStart(2, "0")}
               </span>
-              <span className={`text-sm sm:text-base font-medium leading-snug transition-colors duration-300 ${
-                isActive ? "text-[#14101f]" : "text-white/70 group-hover:text-white/90"
-              }`}>
+
+              <span
+                className={`flex-1 text-sm sm:text-base font-medium leading-snug line-clamp-2 transition-colors duration-300 ${
+                  isActive ? "text-white" : "text-white/50 group-hover:text-white/75"
+                }`}
+              >
                 {it.label}
+              </span>
+
+              <span
+                className={`relative flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
+                  isActive ? "bg-white/[0.06] text-violet-300" : "text-white/20 group-hover:text-white/40"
+                }`}
+              >
+                <it.icon className="h-4 w-4" strokeWidth={1.75} />
+              </span>
+
+              {/* scrub line — same timing data as before, restyled */}
+              <span className="absolute bottom-0 left-2 right-2 sm:left-3 sm:right-3 h-px bg-white/10 overflow-hidden">
+                <span
+                  className="block h-full bg-gradient-to-r from-violet-400 to-fuchsia-400"
+                  style={{
+                    width: i < active ? "100%" : i === active ? `${progress}%` : "0%",
+                    transition: i === active && progress > 0 ? "none" : "width 0.25s ease",
+                  }}
+                />
               </span>
             </button>
           );
         })}
       </div>
 
-      <div className="lg:col-span-7">
-        <div className="relative flex h-full min-h-[380px] sm:min-h-[440px] flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#1c1040] via-[#150b30] to-[#0a0118]">
-          <div className="relative z-10 flex gap-1.5 px-4 pt-4 sm:px-5 sm:pt-5">
-            {items.map((_, i) => (
-              <button key={i} onClick={() => goTo(i)} aria-label={`Go to advantage ${i + 1}`} className="h-1 flex-1 overflow-hidden rounded-full bg-white/15">
-                <div
-                  className="h-full rounded-full bg-white"
-                  style={{
-                    width: i < active ? "100%" : i === active ? `${progress}%` : "0%",
-                    transition: i === active && progress > 0 ? "none" : "width 0.25s ease",
-                  }}
-                />
-              </button>
-            ))}
+      {/* ── Viewport ─────────────────────────────────────────── */}
+      <div className="lg:col-span-8">
+        <div className="relative flex h-full min-h-[420px] sm:min-h-[480px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0d0620]">
+          {/* engine grid mesh — only shows where no image covers it */}
+          <div
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+              backgroundSize: "36px 36px",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-violet-500/10 via-transparent to-fuchsia-500/10" />
+          <ViewportCorners />
+
+          {/* HUD top bar — same font-figtree as the rest of the page, */}
+          {/* just set in caps/wide tracking to read as a HUD label   */}
+          <div className="relative z-20 flex items-center justify-between px-5 pt-5 sm:px-6 sm:pt-6">
+            <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-violet-300/80">
+              <span
+                className={`h-1.5 w-1.5 rounded-full bg-violet-400 ${
+                  paused || reducedMotion ? "" : "animate-pulse"
+                }`}
+              />
+              Feed {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+            </span>
+            {item?.metric && (
+              <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 tabular-nums">
+                {item.metric}
+              </span>
+            )}
           </div>
 
+          {/* visual stage — uses item.image if you add one to bentoItems, */}
+          {/* falls back to the icon tile so nothing breaks either way    */}
           <AnimatePresence mode="wait">
             <motion.div
               key={`visual-${active}`}
-              initial={{ opacity: 0, scale: 1.04 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
+              exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.4, ease }}
-              className="relative flex flex-1 items-center justify-center"
+              className="relative z-10 flex flex-1 items-center justify-center overflow-hidden"
             >
-              <div className="absolute h-56 w-56 rounded-full bg-violet-500/10 blur-3xl" />
-              <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center rounded-full bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 border border-violet-400/25">
-                <item.icon className="h-10 w-10 sm:h-12 sm:w-12 text-violet-300" strokeWidth={1.5} />
-              </div>
+              {item.image ? (
+                <>
+                  <img
+                    src={item.image}
+                    alt={item.label}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0620] via-[#0d0620]/25 to-transparent" />
+                </>
+              ) : (
+                <>
+                  <div className="absolute h-52 w-52 rounded-full bg-violet-500/10 blur-3xl" />
+                  <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center rounded-2xl border border-violet-400/20 bg-white/[0.03]">
+                    <item.icon className="h-10 w-10 sm:h-12 sm:w-12 text-violet-300" strokeWidth={1.25} />
+                  </div>
+                </>
+              )}
             </motion.div>
           </AnimatePresence>
 
+          {/* bottom readout */}
           <AnimatePresence mode="wait">
             <motion.div
               key={`text-${active}`}
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.35, ease }}
-              className="relative z-10 border-t border-white/10 bg-black/20 px-6 py-5 sm:px-8 sm:py-6 backdrop-blur-sm"
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3, ease }}
+              className="relative z-20 border-t border-white/10 bg-black/30 px-6 py-5 sm:px-8 sm:py-6 backdrop-blur-sm"
             >
-              <h4 className="text-lg sm:text-xl font-semibold text-white leading-snug mb-1.5">{item.label}</h4>
-              <p className="text-sm text-white/70 leading-relaxed max-w-md">{item.description}</p>
+              <h4 className="text-lg sm:text-xl font-semibold text-white leading-snug mb-1.5">
+                {item.label}
+              </h4>
+              <p className="text-sm text-white/65 leading-relaxed max-w-md">{item.description}</p>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -590,7 +578,7 @@ type AmbientBlob = {
 };
 
 const AMBIENT_BLOBS: AmbientBlob[] = [
-  { id: "partnership-a", top: "8%",  left: "12%", width: 680, height: 640, rotate: -15, blur: 100, opacity: 0.6, radius: "42% 58% 63% 37% / 41% 44% 56% 59%", gradientAngle: 90 },
+  { id: "partnership-a", top: "8%",  left: "12%", width: 680, height: 640, rotate: -15, blur: 100, opacity: 0.3, radius: "42% 58% 63% 37% / 41% 44% 56% 59%", gradientAngle: 90 },
   { id: "advantages",    top: "26%", left: "92%", width: 560, height: 720, rotate: -22, blur: 100, opacity: 0.6,  radius: "48% 52% 70% 30% / 38% 47% 53% 62%", gradientAngle: 0 },
   { id: "impact",        top: "48%", left: "4%",  width: 820, height: 560, rotate: 10,  blur: 110, opacity: 0.6,  radius: "55% 45% 40% 60% / 48% 38% 62% 52%", gradientAngle: 90 },
   { id: "solutions",     top: "65%", left: "88%", width: 620, height: 780, rotate: 16,  blur: 100, opacity: 0.6,  radius: "44% 56% 50% 50% / 55% 40% 60% 45%", gradientAngle: 45 },
@@ -653,8 +641,6 @@ const UnrealEngine = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Gate the WebGL hero — was previously running its render loop for
-  // the whole session regardless of scroll position.
   const { ref: heroWebglRef, visible: heroWebglVisible } = useIsVisible<HTMLDivElement>("0px");
 
   const heroHeadingRef = useRef<HTMLHeadingElement>(null);
@@ -692,60 +678,129 @@ const UnrealEngine = () => {
   const heroRef = useRef(null);
   const bentoRef = useRef(null);
   const partnerWhyRef = useRef(null);
+  const partnerBentoRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
+
+  // ------------------------------------------------------
+  // ✦ SEO — merged from the colleague's SEO doc into this page's
+  // existing Helmet. See notes below on the two things flagged
+  // for follow-up rather than pasted in blind.
+  // ------------------------------------------------------
+
+  // FAQ schema is generated FROM the real `faqs` array the page already
+  // renders below (StickyScroll/FAQItem section), instead of the
+  // hardcoded Q&A in the SEO doc. Hardcoding a second, different set of
+  // questions would create a mismatch between what's marked up as
+  // structured data and what's actually on the page — Google treats
+  // that as a spammy/misleading signal and can ignore or penalize the
+  // schema. This keeps the two in sync automatically.
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq: { question: string; answer: string }) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
 
   return (
     <Layout>
       <Helmet>
-        <title>Unreal Engine Partner in India | Enterprise Real-Time 3D Solutions | Sniper Systems</title>
-        <meta name="description" content="Sniper Systems & Solutions is an Authorized Unreal Engine Partner in India delivering enterprise visualization, digital twins, immersive training, virtual production, and XR solutions." />
-        <meta name="keywords" content="Unreal Engine partner India, real-time 3D India, digital twin solutions, virtual production India, enterprise XR, Sniper Systems" />
+        {/* ── Basic SEO ─────────────────────────────────────────── */}
+        <title>Authorized Unreal Engine Partner in India | Enterprise Real-Time 3D Solutions | Sniper Systems</title>
+        <meta
+          name="description"
+          content="Sniper Systems is an Authorized Unreal Engine Partner in India delivering enterprise real-time 3D visualization, digital twins, virtual production, industrial simulation, immersive XR, and custom Unreal Engine solutions for businesses."
+        />
+        <meta
+          name="keywords"
+          content="Authorized Unreal Engine Partner India, Unreal Engine partner India, real-time 3D India, Unreal Engine enterprise solutions, Unreal Engine services India, digital twin solutions India, virtual production India, enterprise XR, Unreal Engine consulting, interactive 3D development, Sniper Systems"
+        />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://sniperindia.com/partners/unreal-engine" />
+
+        {/* ── Geo tags ──────────────────────────────────────────── */}
         <meta name="geo.region" content="IN-TN" />
         <meta name="geo.placename" content="Chennai" />
         <meta name="geo.position" content="13.0827;80.2707" />
         <meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* ── Open Graph ────────────────────────────────────────── */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Unreal Engine Partner in India | Sniper Systems" />
-        <meta property="og:description" content="Enterprise real-time 3D solutions — digital twins, immersive training, virtual production, and XR — built on Unreal Engine." />
+        <meta property="og:title" content="Authorized Unreal Engine Partner in India | Sniper Systems" />
+        <meta
+          property="og:description"
+          content="Enterprise real-time 3D solutions — digital twins, immersive training, virtual production, and XR — built on Unreal Engine."
+        />
+        {/* TODO(roobesh): confirm this asset actually exists at this path
+            before shipping — an og:image that 404s means link previews on
+            LinkedIn/Slack/WhatsApp show no image at all. */}
+        <meta property="og:image" content="https://sniperindia.com/images/unreal-engine-banner.jpg" />
         <meta property="og:url" content="https://sniperindia.com/partners/unreal-engine" />
+
+        {/* ── Twitter ───────────────────────────────────────────── */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Unreal Engine Partner in India | Sniper Systems" />
-        <meta name="twitter:description" content="Authorized Unreal Engine Partner delivering enterprise visualization, digital twins, and immersive training in India." />
+        <meta name="twitter:title" content="Authorized Unreal Engine Partner in India | Sniper Systems" />
+        <meta
+          name="twitter:description"
+          content="Authorized Unreal Engine Partner delivering enterprise visualization, digital twins, and immersive training in India."
+        />
+        <meta name="twitter:image" content="https://sniperindia.com/images/unreal-engine-banner.jpg" />
+
+        {/* ── Organization schema ───────────────────────────────── */}
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "Sniper Systems",
+            "name": "Sniper Systems & Solutions Pvt. Ltd.",
             "url": "https://sniperindia.com",
-            "logo": "https://sniperindia.com/wp-content/uploads/2023/09/logo.png"
+            "logo": "https://sniperindia.com/assets/images/logo.png",
+            "description": "Sniper Systems is an IT infrastructure and enterprise technology solutions provider in India delivering cloud, AI, networking, cybersecurity, digital transformation and Unreal Engine enterprise solutions."
           }
         `}</script>
+
+        {/* ── Service schema ────────────────────────────────────── */}
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            "serviceType": "Enterprise Real-Time 3D Solutions",
-            "provider": { "@type": "Organization", "name": "Sniper Systems" },
+            "serviceType": "Unreal Engine Enterprise Solutions",
+            "provider": { "@type": "Organization", "name": "Sniper Systems & Solutions Pvt. Ltd." },
             "areaServed": { "@type": "Country", "name": "India" },
-            "description": "Real-time 3D solutions built on Unreal Engine including enterprise visualization, digital twins, immersive training, virtual production, and extended reality."
+            "description": "Enterprise Unreal Engine services including real-time 3D visualization, virtual production, digital twins, simulation, immersive experiences, XR applications, interactive product visualization, and custom Unreal Engine development."
           }
         `}</script>
-      </Helmet>
 
+        {/* ── Breadcrumb schema ─────────────────────────────────── */}
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sniperindia.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Partners", "item": "https://sniperindia.com/partners/" },
+              { "@type": "ListItem", "position": 3, "name": "Unreal Engine", "item": "https://sniperindia.com/partners/unreal-engine" }
+            ]
+          }
+        `}</script>
+
+        {/* ── FAQ schema — generated from the live `faqs` data above ── */}
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
+      <div className="font-figtree">    
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       <section>
         {/* ── Hero ─────────────────────────────────────────────────────── */}
         <section ref={heroWebglRef} className="relative bg-[#0a0118] min-h-[640px] sm:min-h-[720px] px-4 sm:px-6 overflow-hidden">
-
+             
           <div className="absolute inset-0">
             {heroWebglVisible && (
               // <LightPillar quality="medium" noiseIntensity={0.3} rotationSpeed={0.3} />
               <AnimatedGradientBackground />
             )}
-
+            
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto pt-24 sm:pt-20 pb-20 sm:pb-32 lg:pb-36" ref={heroRef}>
@@ -766,7 +821,7 @@ const UnrealEngine = () => {
               </h1>
 
               <motion.p
-                className="text-md mt-4 text-white/75 max-w-lg leading-relaxed tracking-tight"
+                className="text-md mt-4 text-white/75 max-w-xl leading-relaxed tracking-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={heroInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, ease, delay: 1.55 }}
@@ -797,7 +852,14 @@ const UnrealEngine = () => {
               <p className="text-sm font-medium text-white/75 mb-3">Featured Case</p>
               <a href="#solutions" className="flex items-stretch shadow-xl hover:shadow-2xl transition-all rounded-xl overflow-hidden">
                 <div className="flex relative w-24 flex-shrink-0 items-center justify-center bg-[#0a0118] overflow-hidden">
-                  <iframe src="https://giphy.com/embed/xTiTnM20tRr98JMnYc" className="absolute h-fit w-fit rotate-45" allowFullScreen title="3D Animation" />
+                   <video
+                        src={spiralanim}
+                        className="absolute w-32 h-32 rotate-45 object-cover"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      />
                 </div>
                 <div className="flex-1 flex items-center justify-between gap-3 bg-white py-4 px-5">
                   <div>
@@ -810,68 +872,71 @@ const UnrealEngine = () => {
           </div>
         </section>
 
-        {/* ── Trust section — new, sits right after the hero on purpose ── */}
-        <TrustSection />
-
         <section
-          className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6 min-h-[85vh] flex flex-col justify-center"
+          className="relative bg-black overflow-hidden py-20 sm:py-28 px-4 sm:px-6 min-h-[85vh] flex flex-col justify-center"
           style={{ contentVisibility: "auto", containIntrinsicSize: "1px 700px" }}
         >
-          <div className="absolute inset-0 -left-[50px] w-full h-[220px] rounded-full blur-[100px] opacity-80 bg-gradient-to-r from-[#6E32CF] via-[#381DB4] to-[#E0CFF7]" />
-          <div className="absolute inset-0 -left-[50px] top-[550px] w-full h-[260px] rounded-full blur-[100px] opacity-80 bg-gradient-to-r from-[#E0CFF7] via-[#6E32CF] to-[#381DB4]" />
+          <div className="absolute inset-0 -left-[50px] top-[200px] w-full h-[220px] rounded-full blur-[100px] opacity-80 bg-gradient-to-r from-[#6E32CF] via-[#381DB4] to-[#E0CFF7]" />
+          <div className="absolute inset-0 -left-[50px] top-[600px] w-full h-[220px] rounded-full blur-[100px] opacity-80 bg-gradient-to-r from-[#E0CFF7] via-[#6E32CF] to-[#381DB4]" />
 
-          <div className="relative z-10 max-w-6xl mx-auto w-full">
+          <div className="relative z-10 max-w-6xl mt-12 mx-auto w-full">
             <FadeUp className="mb-16 sm:mb-20">
               <div className="flex items-center gap-3 mb-6">
                 <span className="h-px w-8 bg-gradient-to-r from-violet-400 to-fuchsia-400" />
-                <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-violet-800">our value proposition</span>
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-violet-300/90">our value proposition</span>
               </div>
-              <h2 className="text-4xl font-semibold leading-tight text-violet-950 lg:text-5xl tracking-tighter max-w-3xl">
+              <h2 className="text-4xl font-semibold leading-tight text-white lg:text-5xl tracking-tighter max-w-3xl">
                 Transform enterprise innovation with Unreal Engine
               </h2>
             </FadeUp>
 
-            <div className="h-px bg-gradient-to-r from-violet-500/40 via-violet-500/10 to-transparent mb-16 sm:mb-20" />
+            <div className="h-px bg-gradient-to-r from-violet-500/40 via-white/15 to-transparent mb-16 sm:mb-20" />
 
             <div className="grid lg:grid-cols-12 gap-y-14 gap-x-8">
               <FadeUp className="lg:col-span-4 lg:col-start-1">
-                <p className="text-base sm:text-lg leading-relaxed tracking-tight text-violet-900/80 max-w-sm">
-                  Every organization is racing to visualize faster, decide sooner, and out-build the competition. Real-time 3D is how that race gets won.
+                {/* Restored from PDF intro — was trimmed to a shorter
+                    paraphrase that dropped "digital transformation" /
+                    decision-making / development-cycle language. */}
+                <p className="text-base sm:text-lg leading-relaxed tracking-tight text-white/75 max-w-sm">
+                  Every organization is looking for smarter ways to design products, visualize complex data, train teams, collaborate remotely, and accelerate innovation. As industries embrace digital transformation, real-time 3D has become essential for improving decision-making, reducing development cycles, and delivering immersive customer experiences.
                 </p>
               </FadeUp>
 
               <FadeUp delay={0.1} className="lg:col-span-7 lg:col-start-6">
                 <div className="relative pl-8 sm:pl-10 border-l border-violet-400/30">
-                  <span aria-hidden="true" className="absolute -left-2 -top-5 text-6xl sm:text-7xl font-serif text-violet-400/30 select-none">&ldquo;</span>
-                  <p className="text-2xl sm:text-3xl lg:text-3xl font-medium text-violet-950 leading-snug tracking-tighter">
-                    As an <span className="text-violet-600 font-semibold">Authorized Unreal Engine Partner</span>, we turn complex engineering and operational data into interactive, photorealistic environments — at enterprise scale.
+                  <span aria-hidden="true" className="absolute -left-2 -top-5 text-6xl sm:text-7xl font-serif text-violet-400/40 select-none">&ldquo;</span>
+                  <p className="text-2xl sm:text-3xl lg:text-3xl font-medium text-white leading-snug tracking-tighter">
+                    As an <span className="text-violet-300">Authorized Unreal Engine Partner</span>,   Sniper Systems & Solutions helps organizations
+harness the power of Unreal Engine to build interactive, photorealistic, and scalable
+applications for enterprise visualization, digital twins, simulation, immersive training, virtual
+production, and extended reality (XR)
                   </p>
                 </div>
               </FadeUp>
 
               <FadeUp delay={0.15} className="lg:col-span-5 lg:col-start-6 mt-2">
-                <p className="text-sm sm:text-base leading-relaxed text-violet-850 max-w-md">
-                  From solution architecture to managed support, we take digital twins, simulation, immersive training, virtual production and XR from whiteboard to deployment.
+                {/* Restored the full consulting → managed-support chain
+                    from the PDF (was missing "consulting" and
+                    "integration, optimization" in the trimmed version). */}
+                <p className="text-sm sm:text-base leading-relaxed text-white/65 max-w-md">
+                  From consulting and solution architecture to implementation, integration, optimization, and managed support, we help organizations unlock the full potential of digital twins, simulation, immersive training, virtual production, and XR built on Unreal Engine.
                 </p>
               </FadeUp>
             </div>
 
-            {/* Reason strip — this now also covers what the old standalone
-                "Why Organizations Choose Unreal Engine" section argued,
-                so that section is gone rather than repeating the point. */}
-            <FadeUp delay={0.2} className="mt-20 sm:mt-28 grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-10 pt-10 border-t border-violet-200">
+            <FadeUp delay={0.2} className="mt-20 sm:mt-28 grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-10 pt-10 border-t border-white/10">
               {[
                 { label: "Faster decisions", desc: "Explore live interactive environments instead of static renders.", icon: Zap },
                 { label: "Lower costs", desc: "Cut physical prototyping and reduce rework.", icon: PiggyBank },
                 { label: "Real-time collaboration", desc: "Teams review and iterate on the same live scene, together.", icon: Users },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
-                  <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-500/10 to-fuchsia-500/10 border border-violet-400/20">
-                    <item.icon className="relative w-5 h-5 text-violet-600" strokeWidth={1.75} />
+                  <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-500/15 to-fuchsia-500/15 border border-violet-400/25">
+                    <item.icon className="relative w-5 h-5 text-violet-300" strokeWidth={1.75} />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <span className="text-xs font-semibold tracking-[0.2em] uppercase text-violet-800">{item.label}</span>
-                    <p className="text-sm text-violet-900/70 leading-relaxed">{item.desc}</p>
+                    <span className="text-xs font-semibold tracking-[0.2em] uppercase text-violet-300/80">{item.label}</span>
+                    <p className="text-sm text-white/70 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -879,24 +944,24 @@ const UnrealEngine = () => {
           </div>
         </section>
 
-        <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6 min-h-[85vh] flex flex-col justify-center" style={{ contentVisibility: "auto", containIntrinsicSize: "1px 900px" }}>
+        <section className="relative bg-black overflow-hidden py-20 sm:py-28 px-4 sm:px-6 min-h-[85vh] flex flex-col justify-center" style={{ contentVisibility: "auto", containIntrinsicSize: "1px 900px" }}>
           <div className="absolute inset-0 -left-[50px] top-[300px] w-full h-[500px] rounded-full blur-[100px] opacity-45 bg-gradient-to-r from-[#E0CFF7] via-[#6E32CF] to-[#381DB4]" />
 
           <div className="relative mx-auto max-w-6xl w-full">
             <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease }} className="max-w-3xl">
               <div className="flex items-center gap-3 mb-6">
                 <span className="h-px w-8 bg-gradient-to-r from-violet-400 to-fuchsia-400" />
-                <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-violet-800">about unreal engine industry</span>
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-violet-300/90">about unreal engine industry</span>
               </div>
-              <h2 className="text-4xl font-semibold leading-tight text-violet-950 lg:text-5xl tracking-tighter">
+              <h2 className="text-4xl font-semibold leading-tight text-white lg:text-5xl tracking-tighter">
                 Why these Unreal Engine solutions are the ultimate combo
               </h2>
-              <p className="mt-6 max-w-xl text-base leading-7 text-violet-900/80">
+              <p className="mt-6 max-w-xl text-base leading-7 text-purple-100/85">
                 Explore popular industry use cases that unlock the potential of real-time 3D visualization, immersive simulations, digital twins, and interactive experiences.
               </p>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2, ease }} className="relative mt-16">
-              <div className="overflow-hidden rounded-[30px] border border-violet-200/50 shadow-2xl">
+              <div className="overflow-hidden rounded-[30px] border border-white/10 shadow-2xl">
                 <YouTubeBackground videoId="qC5KtatMcUw" start={88} />
               </div>
             </motion.div>
@@ -918,11 +983,18 @@ const UnrealEngine = () => {
               <h2 className="text-4xl font-semibold leading-tight text-white lg:text-5xl tracking-tighter">
                 What real-time 3D actually changes for your business
               </h2>
+              {/* Restored the "why this matters" framing from the PDF's
+                  "Why Real-Time 3D Matters for Modern Enterprises" intro,
+                  which the shortened version below had dropped. */}
               <p className="mt-5 text-sm sm:text-base text-white/70 leading-relaxed">
-                Instead of static presentations or pre-rendered images, teams explore interactive environments, collaborate in real time, and make informed decisions faster.
+                Organizations are generating more engineering data, operational insights, and digital assets than ever before, and traditional visualization methods often struggle to communicate that complexity — leading to longer design cycles and slower decisions. Instead of static presentations or pre-rendered images, teams explore interactive environments, collaborate in real time, and make informed decisions faster.
               </p>
             </FadeUp>
-            <BusinessAdvantagesStory items={bentoItems.slice(0, 6)} />
+            {/* Was bentoItems.slice(0, 6) — silently dropped 3 of the PDF's
+                9 Business Advantages ("Improve operational visibility",
+                "Enable immersive decision-making", "Drive digital
+                transformation initiatives"). Now shows the full list. */}
+            <BusinessAdvantagesStory items={bentoItems} />
           </div>
         </section>
 
@@ -951,9 +1023,7 @@ const UnrealEngine = () => {
           </div>
         </section>
 
-        {/* NOTE: the standalone "Why Organizations Choose Unreal Engine"
-            section that used to live here has been removed — see the
-            "WHAT CHANGED" note at the top of the file for why. */}
+
 
         <UseCasesSection />
 
@@ -1020,7 +1090,7 @@ const UnrealEngine = () => {
                   Partner with Sniper Systems to build enterprise-grade visualization, digital twins, XR experiences, and real-time 3D applications tailored to your business
                 </p>
                 <div className="mt-8 flex justify-center">
-                  <PrimaryCTA>Talk to Our Experts</PrimaryCTA>
+                  <PrimaryCTA href="/contact">Talk to Our Experts</PrimaryCTA>
                 </div>
               </div>
             </div>
@@ -1046,6 +1116,7 @@ const UnrealEngine = () => {
           </motion.button>
         )}
       </AnimatePresence>
+    </div>  
     </Layout>
   );
 };
