@@ -13,7 +13,7 @@ import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 import ShinyText from "@/components/ui/ShinyText";
 import UseCasesSection from "@/components/ui/UseCasesSection";
 import AnimatedGradientBackground from "@/components/ui/backgrounds/AnimatedGradientBackground";
-import spiralanim from "@/assets/spiralanim.mov";
+// import spiralanim from "@/assets/spiralanim.mov";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -788,19 +788,19 @@ const UnrealEngine = () => {
         {/* ── FAQ schema — generated from the live `faqs` data above ── */}
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
-      <div className="font-figtree">    
+      <div className="font-figtree">
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       <section>
         {/* ── Hero ─────────────────────────────────────────────────────── */}
         <section ref={heroWebglRef} className="relative bg-[#0a0118] min-h-[640px] sm:min-h-[720px] px-4 sm:px-6 overflow-hidden">
-             
+
           <div className="absolute inset-0">
             {heroWebglVisible && (
               // <LightPillar quality="medium" noiseIntensity={0.3} rotationSpeed={0.3} />
               <AnimatedGradientBackground />
             )}
-            
+
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto pt-24 sm:pt-20 pb-20 sm:pb-32 lg:pb-36" ref={heroRef}>
@@ -1116,7 +1116,7 @@ production, and extended reality (XR)
           </motion.button>
         )}
       </AnimatePresence>
-    </div>  
+    </div>
     </Layout>
   );
 };
