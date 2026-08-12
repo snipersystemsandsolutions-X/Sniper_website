@@ -13,7 +13,7 @@ import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 import ShinyText from "@/components/ui/ShinyText";
 import UseCasesSection from "@/components/ui/UseCasesSection";
 import AnimatedGradientBackground from "@/components/ui/backgrounds/AnimatedGradientBackground";
-// import spiralanim from "@/assets/spiralanim.mov";
+// spiralanim.mov — asset removed; add the file to src/assets/ to re-enable the hero video card
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -851,15 +851,7 @@ const UnrealEngine = () => {
             >
               <p className="text-sm font-medium text-white/75 mb-3">Featured Case</p>
               <a href="#solutions" className="flex items-stretch shadow-xl hover:shadow-2xl transition-all rounded-xl overflow-hidden">
-                <div className="flex relative w-24 flex-shrink-0 items-center justify-center bg-[#0a0118] overflow-hidden">
-                   <video
-                        src={spiralanim}
-                        className="absolute w-32 h-32 rotate-45 object-cover"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                      />
+                <div className="flex relative w-24 flex-shrink-0 items-center justify-center bg-gradient-to-br from-violet-700 via-fuchsia-700 to-violet-900 overflow-hidden">
                 </div>
                 <div className="flex-1 flex items-center justify-between gap-3 bg-white py-4 px-5">
                   <div>
