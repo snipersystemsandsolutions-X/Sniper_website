@@ -2,11 +2,68 @@ import Lottie from "@/components/CustomerService";
 import { Layout } from "@/components/Layout";
 import Lottiee from "@/components/people";
 import PageSEO from "@/components/PageSEO";
+import { ImageStreamHero } from "@/components/ui/image-stream-hero";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, CheckCircle, Shield, Users } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
+
+const CDN = "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev";
+
+const HERO_IMAGES = [
+  {
+    src: `${CDN}/gradients/hero_gradient/hero-gradients-01.png`,
+    alt: "Team Collaboration",
+  },
+  {
+    src: `${CDN}/gradients/crimson_aura/crimson-aura-02.png`,
+    alt: "Dedicated Customer Support",
+  },
+  {
+    src: `${CDN}/gradients/hero_gradient/hero-gradients-02.png`,
+    alt: "Soft multi-tone gradient wash",
+  },
+
+  {
+    src: `${CDN}/gradients/crimson_aura/crimson-aura-01.png`,
+    alt: "Crimson aura gradient",
+  },
+  {
+    src: `${CDN}/gradients/hue-flow/hue-flow-02.png`,
+    alt: "Smart IT Solutions",
+  },
+  {
+    src: `${CDN}/gradients/moon/moon-grade-02.png`,
+    alt: "Moon-toned gradient",
+  },
+  {
+    src: `${CDN}/gradients/hue-flow/hue-flow-01.png`,
+    alt: "Flowing hue gradient",
+  },
+  {
+    src: `${CDN}/gradients/moon/moon-grade-03.png`,
+    alt: "Robust Cybersecurity",
+  },
+
+  {
+    src: `${CDN}/gradients/hero_gradient/hero-gradients-03.png`,
+    alt: "Cloud-First Architecture",
+  },
+  {
+    src: `${CDN}/gradients/moon/moon-grade-03.png`,
+    alt: "Deep moon-toned gradient",
+  },
+  {
+    src: `${CDN}/gradients/hero_gradient/hero-gradients-02.png`,
+    alt: "Layered hero gradient",
+  },
+  {
+    src: `${CDN}/gradients/moon/moon-grade-01.png`,
+    alt: "Expert Engineering Team",
+  },
+
+];
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -137,88 +194,12 @@ const ParallaxImage = ({ src, alt, className }: { src: string; alt: string; clas
 };
 
 // ========================================================
-// ✦ GSAP: Sticky Hero Stage (anime.js-style scroll-driven object)
-// ========================================================
-const HeroStage = () => {
-  const wrapRef = useRef<HTMLDivElement>(null);   // tall scroll-distance container
-  const stageRef = useRef<HTMLDivElement>(null);  // sticky stage
-  const imgWrapRef = useRef<HTMLDivElement>(null); // animated object
 
-  useEffect(() => {
-    const wrap = wrapRef.current;
-    const imgWrap = imgWrapRef.current;
-    if (!wrap || !imgWrap) return;
-
-    const tween = gsap.fromTo(
-      imgWrap,
-      { scale: 0.78, borderRadius: "3rem", yPercent: 6 },
-      {
-        scale: 1,
-        borderRadius: "1.25rem",
-        yPercent: -6,
-        ease: "none",
-        scrollTrigger: {
-          trigger: wrap,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1.2,
-        },
-      }
-    );
-    return () => { tween.scrollTrigger?.kill(); tween.kill(); };
-  }, []);
-
-  return (
-    // Tall wrapper creates the scroll "runway" — controls how long the object stays pinned/animating
-    <div ref={wrapRef} className="relative h-[120vh] sm:h-[130vh]">
-      {/* Sticky stage — keeps the object visually centered/anchored on screen */}
-      <div
-        ref={stageRef}
-        className="sticky top-1 flex items-center justify-center px-2 sm:px-2"
-      >
-        <div
-          ref={imgWrapRef}
-          className="relative w-full max-w-6xl bg-gradient-to-br from-gray-100 to-gray-200 shadow-2xl overflow-hidden h-60 sm:h-96 md:h-[500px] lg:h-[600px]"
-          style={{ willChange: "transform, border-radius", transformOrigin: "center center" }}
-        >
-          <ParallaxImage
-            src="https://i.postimg.cc/Pq2w9g4x/About-Us-Page.webp"
-            alt="Team Collaboration"
-            className="w-full h-full"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // ========================================================
 // ✦ GSAP: Marquee Ticker
 // ========================================================
-const MarqueeTicker = () => {
-  const items = ["IT Solutions", "Cloud Services", "Digital Transformation", "Quick Support", "World-Class Engineering"];
-  const doubled = [...items, ...items];
-  return (
-    <div className="overflow-hidden bg-gray-950 py-4 sm:py-5 border-y border-gray-800">
-      <div className="flex gap-10 whitespace-nowrap animate-marquee">
-        {doubled.map((text, i) => (
-          <span
-            key={i}
-            className="flex items-center gap-10 text-xs sm:text-sm font-semibold tracking-[0.18em] uppercase text-gray-400"
-          >
-            {text}
-            <span className="w-1.5 h-1.5 rounded-full bg-gray-600 inline-block" />
-          </span>
-        ))}
-      </div>
-      <style>{`
-        @keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
-        .animate-marquee { animation: marquee 24s linear infinite; }
-      `}</style>
-    </div>
-  );
-};
+
 
 // ========================================================
 // ✦ GSAP: Process Steps with line-draw dividers
@@ -722,35 +703,37 @@ const About = () => {
       )}
 
       {/* ── Hero ── */}
-      {/* ── Hero ── */}
-      <section className="relative bg-white pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="text-center mb-2 sm:mb-4">
-            <h1
-              ref={gsapHeroRef}
-              className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight"
-            >
-              {["Creating", "a", "better", "IT", "solutions"].map((word, i) => (
-                <span key={i} className="gsap-word inline-block opacity-0 mr-[0.2em] sm:mr-[0.25em] last:mr-0">
-                  {word}
-                  {word === "better" ? <br /> : null}
-                </span>
-              ))}
-            </h1>
-            <FadeUp delay={1.9}>
-              <p className="text-base sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-2 sm:px-0 mb-10">
-                Let us handle your IT, so you can focus on what matters. Our expertise will manage your
-                technology needs efficiently and securely.
-              </p>
-            </FadeUp>
-          </div>
+      <ImageStreamHero
+        images={HERO_IMAGES}
+        className="relative bg-black pt-28 sm:pt-36 pb-20 sm:pb-28 px-4 sm:px-6 min-h-[80vh] flex items-center justify-center text-white"
+        axis={50}
+        speed={18}
+      >
+        {/* Dark subtle vignetting / gradient overlay to enhance readability and depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto text-center flex flex-col justify-start items-center pt-16 sm:pt-20 md:pt-24">
+          <h1
+            ref={gsapHeroRef}
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-80 leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
+          >
+            {["Creating", "a", "better", "IT", "solutions"].map((word, i) => (
+              <span key={i} className="gsap-word inline-block opacity-0 mr-[0.2em] sm:mr-[0.25em] last:mr-0">
+                {word}
+                {word === "better" ? <br /> : null}
+              </span>
+            ))}
+          </h1>
+          <FadeUp delay={1.9}>
+            <p className="text-base sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-medium">
+              Let us handle your IT, so you can focus on what matters. Our expertise will manage your
+              technology needs efficiently and securely.
+            </p>
+          </FadeUp>
         </div>
-      </section>
+      </ImageStreamHero>
 
-      {/* ── Sticky scroll-driven hero stage ── */}
-      <HeroStage />
 
-      <MarqueeTicker />
 
       {/* ── Transform ── */}
       <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
