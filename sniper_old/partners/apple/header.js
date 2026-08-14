@@ -168,19 +168,19 @@ function loadHeader() {
             header {
                 height: 70px;
             }
-            
+
             .navbar {
                 height: 70px;
             }
-            
+
             body {
                 padding-top: 70px;
             }
-            
+
             .navbar-brand img {
                 max-height: 35px;
             }
-            
+
             .offcanvas-header {
                 height: 70px;
             }
@@ -256,6 +256,7 @@ function loadHeader() {
                                     <li class="has-submenu">
                                         <a class="dropdown-item" href="#">iPhone</a>
                                         <ul class="dropdown-menu submenu">
+                                        <li><a class="dropdown-item" href="iphone 17e/index.html">iPhone 17e</a></li>
                                             <li><a class="dropdown-item" href="ipone17_pro.html">iPhone 17 Pro</a></li>
                                             <li><a class="dropdown-item" href="iphone17_air.html">iPhone 17 Air</a></li>
                                             <li><a class="dropdown-item" href="iphone17.html">iPhone 17</a></li>
@@ -266,9 +267,9 @@ function loadHeader() {
                                     <li class="has-submenu">
                                         <a class="dropdown-item" href="#">Mac</a>
                                         <ul class="dropdown-menu submenu">
-                                         <li><a class="dropdown-item" href="MacBook-Air-M4/mac-book-M4.html">MacBook Air M4</a></li>
-                                            <li><a class="dropdown-item" href="Macbook_pro_M5.html">MacBook Pro M5</a></li>
-                                            
+                                         <li><a class="dropdown-item" href="Macbook_Air_M5/index.html">MacBook Air M5</a></li>
+                                            <li><a class="dropdown-item" href="Macbook_Pro_M5/index.html">MacBook Pro M5</a></li>
+
                                             <li><a class="dropdown-item" href="iMac/index.html">iMac</a></li>
                                             <li><a class="dropdown-item" href="Mac-Mini/mac-mini.html">Mac mini</a></li>
                                             <li><a class="dropdown-item" href="Mac-Studio/max-studio.html">Mac Studio</a></li>
@@ -278,7 +279,7 @@ function loadHeader() {
                                         <a class="dropdown-item" href="#">iPad</a>
                                         <ul class="dropdown-menu submenu">
                                             <li><a class="dropdown-item" href="ipad_pro_m5.html">iPad Pro M5</a></li>
-                                            <li><a class="dropdown-item" href="iPad-air/ipad-air.html">iPad Air M3</a></li>
+                                            <li><a class="dropdown-item" href="ipad air m4/index.html">iPad Air M4</a></li>
                                             <li><a class="dropdown-item" href="ipad-A16/ipad-A16.html">iPad</a></li>
                                             <li><a class="dropdown-item" href="iPad-mini/ipad-mini.html">iPad mini</a></li>
                                         </ul>
@@ -341,7 +342,7 @@ function loadHeader() {
                         <li class="nav-item">
                             <a class="nav-link" href="index.html">Home</a>
                         </li>
-                        
+
                         <!-- Products Mobile Dropdown -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
@@ -353,6 +354,7 @@ function loadHeader() {
                                         iPhone
                                     </a>
                                     <ul class="dropdown-menu">
+                                     <li><a class="dropdown-item" href="iphone 17e/index.html">iPhone 17e</a></li>
                                         <li><a class="dropdown-item" href="ipone17_pro.html">iPhone 17 Pro</a></li>
                                             <li><a class="dropdown-item" href="iphone17_air.html">iPhone 17 Air</a></li>
                                             <li><a class="dropdown-item" href="iPhone-16e/index.html">iPhone 17</a></li>
@@ -365,9 +367,9 @@ function loadHeader() {
                                         Mac
                                     </a>
                                     <ul class="dropdown-menu">
-                                         <li><a class="dropdown-item" href="MacBook-Air-M4/mac-book-M4.html">MacBook Air M4</a></li>
-                                            <li><a class="dropdown-item" href="Macbook_pro_M5.html">MacBook Pro M5</a></li>
-                                            
+                                         <li><a class="dropdown-item" href="Macbook_Air_M5/index.html">MacBook Air M5</a></li>
+                                            <li><a class="dropdown-item" href="Macbook_Pro_M5/index.html">MacBook Pro M5</a></li>
+
                                             <li><a class="dropdown-item" href="iMac/index.html">iMac</a></li>
                                             <li><a class="dropdown-item" href="Mac-Mini/mac-mini.html">Mac mini</a></li>
                                             <li><a class="dropdown-item" href="Mac-Studio/max-studio.html">Mac Studio</a></li>
@@ -379,7 +381,7 @@ function loadHeader() {
                                     </a>
                                     <ul class="dropdown-menu">
                                          <li><a class="dropdown-item" href="ipad_pro_m5.html">iPad Pro M5</a></li>
-                                            <li><a class="dropdown-item" href="iPad-air/ipad-air.html">iPad Air M3</a></li>
+                                            <li><a class="dropdown-item" href="ipad air m4/index.html">iPad Air M4</a></li>
                                             <li><a class="dropdown-item" href="ipad-A16/ipad-A16.html">iPad</a></li>
                                             <li><a class="dropdown-item" href="iPad-mini/ipad-mini.html">iPad mini</a></li>
                                     </ul>

@@ -391,6 +391,11 @@
                   x-show="subOpen"
                   class="absolute left-full top-0 w-64 bg-white shadow-lg rounded-md py-2 ml-1"
                 >
+                 <a
+                    href="iphone 17e/index.html"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:text-red-600"
+                    >iPhone 17e</a
+                  >
                   <a
                     href="ipone17_pro.html"
                     class="block px-4 py-2 text-sm text-gray-700 hover:text-red-600"
@@ -450,13 +455,19 @@
                   x-show="subOpen"
                   class="absolute left-full top-0 w-64 bg-white shadow-lg rounded-md py-2 ml-1"
                 >
-                  <a
-                    href="MacBook-Air-M4/mac-book-M4.html"
+                <a
+                    href="Macbook_Neo/index.html"
                     class="block px-4 py-2 text-sm text-gray-700 hover:text-red-600"
-                    >MacBook Air M4</a
+                    >MacBook Neo</a
+                  >
+
+                  <a
+                    href="Macbook_Air_M5/index.html"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:text-red-600"
+                    >MacBook Air M5</a
                   >
                   <a
-                    href="Macbook_pro_M5.html"
+                    href="Macbook_Pro_M5/index.html"
                     class="block px-4 py-2 text-sm text-gray-700 hover:text-red-600"
                     >MacBook Pro M5</a
                   >
@@ -511,14 +522,14 @@
                   class="absolute left-full top-0 w-64 bg-white shadow-lg rounded-md py-2 ml-1"
                 >
                   <a
-                    href="ipad_pro_m5.html"
+                    href="iPad Pro M5"
                     class="block px-4 py-2 text-sm text-gray-700 hover:text-red-600"
                     >iPad Pro M5</a
                   >
                   <a
-                    href="iPad-air/ipad-air.html"
+                    href="ipad air m4/index.html"
                     class="block px-4 py-2 text-sm text-gray-700 hover:text-red-600"
-                    >iPad Air M3</a
+                    >iPad Air M4</a
                   >
                   <a
                     href="ipad-A16/ipad-A16.html"
@@ -917,7 +928,26 @@
             border-radius: 2px;
         }
 
-        /* Mobile optimizations */
+        /* ✅ KEY FIX: Slider layout */
+        #slider-wrapper {
+            overflow: hidden;
+            position: absolute;
+            inset: 0;
+        }
+
+        #slider-container {
+            display: flex;
+            width: 1100%; /* 11 slides */
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #slider-container > div {
+            width: calc(100% / 11); /* each slide = 1/11 */
+            flex-shrink: 0;
+            height: 100%;
+        }
+
         @media (max-width: 640px) {
             .hero-section-mobile {
                 min-height: 100vh;
@@ -925,264 +955,272 @@
         }
     </style>
 
+
+    <style>
+        #slider-wrapper {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #slider-container {
+            display: flex;
+            width: calc(9 * 100%);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        #slider-container > div {
+            width: calc(100% / 9);
+            flex-shrink: 0;
+        }
+    </style>
+
     <!-- Hero Section -->
     <section class="relative w-full overflow-hidden bg-white p-10">
         <div class="relative min-h-[600px] h-[700px] max-h-[800px] sm:min-h-[650px] md:min-h-[700px]">
-            <br>
-              <br>
-            <div class="absolute inset-0 flex slide-transition" id="slider-container">
+            <br><br>
 
-                <!-- Slide 1: SMB Solutions -->
+            <!-- ✅ Wrapper to clip overflow -->
+            <div id="slider-wrapper">
+                <div id="slider-container">
 
-                <div class="relative w-full h-full flex-shrink-0 flex items-center py-8 lg:py-0">
-                    <div class="gradient-overlay absolute inset-0"></div>
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-                            <!-- Left Content -->
+                    <!-- Slide 1: Image only -->
+                    <div class="relative flex items-center justify-center overflow-hidden">
+                        <a href="contact-us-preorder.html" rel="noopener noreferrer">
+                            <img src="iPhone_17e__en-IN.jpg" alt="SMB Banner"
+                                class="w-[100%] h-[220px] sm:h-[300px] lg:h-[420px] object-cover mx-auto" />
+                        </a>
+                    </div>
 
-                            <div class="space-y-4 sm:space-y-6 lg:space-y-8 animate-fade-in-up">
-                                <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
-                                    <span class="text-[#E31922] font-semibold text-xs sm:text-sm">SMB Solutions</span>
+                    <!-- Slide 2: Image only -->
+                    <div class="relative flex items-center justify-center overflow-hidden">
+                        <a href="contact-us-preorder.html" rel="noopener noreferrer">
+                            <img src="MacBook_Web_N.jpg" alt="SMB Banner"
+                                class="w-[100%] h-[220px] sm:h-[300px] lg:h-[420px] object-cover mx-auto" />
+                        </a>
+                    </div>
+
+                    <!-- Slide 3: Image only -->
+                    <div class="relative flex items-center justify-center overflow-hidden">
+                        <a href="contact-us-preorder.html" rel="noopener noreferrer">
+                            <img src="MacBook_Air_M5.jpg" alt="SMB Banner"
+                                class="w-[100%] h-[220px] sm:h-[300px] lg:h-[420px] object-cover mx-auto" />
+                        </a>
+                    </div>
+
+                    <!-- Slide 4: SMB Solutions -->
+                    <div class="relative flex items-center py-8 lg:py-0">
+                        <div class="gradient-overlay absolute inset-0"></div>
+                        <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                                <div class="space-y-4 sm:space-y-6 lg:space-y-8 animate-fade-in-up">
+                                    <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
+                                        <span class="text-[#E31922] font-semibold text-xs sm:text-sm">SMB Solutions</span>
+                                    </div>
+                                    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+                                        Step-up your business journey
+                                        <span class="text-[#E31922] block mt-2">for Small & Medium Businesses</span>
+                                    </h1>
+                                    <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
+                                        <strong class="text-gray-900">Unlock growth potential</strong>
+                                        with cost-effective tools and technologies built specifically to meet the dynamic needs of SMBs—simple to deploy, powerful in results.
+                                    </p>
+                                    <div class="flex gap-3 sm:gap-4 pt-2 sm:pt-4">
+                                        <a href="SMB.html" class="group px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
+                                            Learn More
+                                            <svg class="inline-block ml-2 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
-                                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                                    Step-up your business journey
-                                    <span class="text-[#E31922] block mt-2">for Small & Medium Businesses</span>
-                                </h1>
-                                <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
-                                    <strong class="text-gray-900">Unlock growth potential</strong>
-                                    with cost-effective tools and technologies built specifically to meet the dynamic needs of SMBs—simple to deploy, powerful in results.
-                                </p>
-                                <div class="flex gap-3 sm:gap-4 pt-2 sm:pt-4">
-                                    <a href="SMB.html" class="group px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
+                                <div class="flex flex-col items-center gap-3 sm:gap-4 lg:gap-6 mt-4 lg:mt-0">
+                                    <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden w-full shadow-2xl card-hover">
+                                        <img src="assets/images/Mac_250822_000410_RGB_00-0215-122_V4_TR_f_INEN.jpg" alt="Device Integration"
+                                            class="w-full h-[250px] sm:h-[300px] lg:h-[400px] object-cover" />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: Switcher Program -->
+                    <div class="relative flex items-center py-8 lg:py-0">
+                        <div class="gradient-overlay absolute inset-0"></div>
+                        <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                                <div class="space-y-4 sm:space-y-6 lg:space-y-8">
+                                    <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
+                                        <span class="text-[#E31922] font-semibold text-xs sm:text-sm">Switcher Program</span>
+                                    </div>
+                                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+                                        <span class="text-[#E31922]">Switch to Mac:</span>
+                                        <span class="block mt-2">Power Your Business</span>
+                                    </h2>
+                                    <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
+                                        <strong class="text-gray-900">Make the switch to performance</strong>
+                                        with Mac—designed for modern businesses seeking speed, security, and seamless collaboration.
+                                    </p>
+                                    <a href="switcher-program.html" class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
                                         Learn More
-                                        <svg class="inline-block ml-2 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                                         </svg>
                                     </a>
                                 </div>
-                            </div>
-
-                            <!-- Right Content -->
-                            <div class="flex flex-col items-center gap-3 sm:gap-4 lg:gap-6 mt-4 lg:mt-0">
-                                <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden w-full shadow-2xl card-hover">
-                                    <img
-                      src="assets/images/Mac_250822_000410_RGB_00-0215-122_V4_TR_f_INEN.jpg"
-                      alt="Device Integration"
-                      class="w-full h-[250px] sm:h-[300px] lg:h-[400px] object-cover"
-                    />
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                                </div>
-                              <div class="w-full flex justify-center">
-
-                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 2: Switcher Program -->
-                <div class="relative w-full h-full flex-shrink-0 flex items-center py-8 lg:py-0">
-                    <div class="gradient-overlay absolute inset-0"></div>
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-                            <div class="space-y-4 sm:space-y-6 lg:space-y-8">
-                                <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
-                                    <span class="text-[#E31922] font-semibold text-xs sm:text-sm">Switcher Program</span>
-                                </div>
-                                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                                    <span class="text-[#E31922]">Switch to Mac:</span>
-                                    <span class="block mt-2">Power Your Business</span>
-                                </h2>
-                                <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
-                                    <strong class="text-gray-900">Make the switch to performance</strong>
-                                    with Mac—designed for modern businesses seeking speed, security, and seamless collaboration.
-                                </p>
-                                <a  href="switcher-program.html" class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
-                                    Learn More
-                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl card-hover mt-4 lg:mt-0">
-                                <img src="assets/images/1111.jpg"" alt="Apple Ecosystem"
-                  class="w-full h-[50px] sm:h-[200px] lg:h-[250px] "
-                  />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3: iPad Solutions -->
-                <div class="relative w-full h-full flex-shrink-0 flex items-center py-8 lg:py-0">
-                    <div class="gradient-overlay absolute inset-0"></div>
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-                            <div class="space-y-4 sm:space-y-6 lg:space-y-8">
-                                <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
-                                    <span class="text-[#E31922] font-semibold text-xs sm:text-sm">iPad Solutions</span>
-                                </div>
-                                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                                    <span class="text-[#E31922]">iPad in business</span>
-                                    <span class="block mt-2">Your workplace, any place</span>
-                                </h2>
-                                <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
-                                    <strong class="text-gray-900">For every way your teams work.</strong>
-                                    Whether in office, field, or home—iPad delivers intuitive experiences that boost confidence and productivity.
-                                </p>
-                                <a  href="ipad-for-business.html" class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
-                                    Learn More
-                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div class="flex justify-center mt-4 lg:mt-0">
-                                <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl card-hover max-w-md w-full">
-                                     <img
-                      src="assets/images/iPad_Pro_13-in_Space_Black_Black_Magic_Keyboard_Apple_Pencil_Pro_Pure_Front_Screen__INEN.jpg"
-                      alt="iPad Business"
-                      class="w-full h-[180px] sm:h-[250px] lg:h-[350px] object-cover"
-                    />
+                                <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl card-hover mt-4 lg:mt-0">
+                                    <img src="assets/images/1111.jpg" alt="Apple Ecosystem"
+                                        class="w-full h-[50px] sm:h-[200px] lg:h-[250px]" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Slide 4: M5-Powered Macs -->
-                <div class="relative w-full h-full flex-shrink-0 flex items-center py-8 lg:py-0">
-                    <div class="gradient-overlay absolute inset-0"></div>
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-                            <div class="space-y-4 sm:space-y-6 lg:space-y-8">
-                                <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
-                                    <span class="text-[#E31922] font-semibold text-xs sm:text-sm">Exclusive Offer</span>
+                    <!-- Slide 6: iPad Solutions -->
+                    <div class="relative flex items-center py-8 lg:py-0">
+                        <div class="gradient-overlay absolute inset-0"></div>
+                        <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                                <div class="space-y-4 sm:space-y-6 lg:space-y-8">
+                                    <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
+                                        <span class="text-[#E31922] font-semibold text-xs sm:text-sm">iPad Solutions</span>
+                                    </div>
+                                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+                                        <span class="text-[#E31922]">iPad in business</span>
+                                        <span class="block mt-2">Your workplace, any place</span>
+                                    </h2>
+                                    <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
+                                        <strong class="text-gray-900">For every way your teams work.</strong>
+                                        Whether in office, field, or home—iPad delivers intuitive experiences that boost confidence and productivity.
+                                    </p>
+                                    <a href="ipad-for-business.html" class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
+                                        Learn More
+                                        <svg class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                        </svg>
+                                    </a>
                                 </div>
-                                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                                    <span class="text-[#E31922]">Upgrade to</span>
-                                    <span class="block mt-2">M5-Powered Macs</span>
-                                </h2>
-                                <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
-                                    <strong class="text-gray-900">Get astounding speed,</strong>
-                                    graphics and AI capability with up to 24 hours of battery life at a never-before-seen exchange offer!
-                                </p>
-                                <a href="refresh-program.html" class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
-                                    Learn More
-                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div class="flex flex-col items-center gap-3 sm:gap-4 lg:gap-6 mt-4 lg:mt-0">
-                                <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 p-4 sm:p-6 lg:p-8 shadow-2xl card-hover w-full">
-                                     <img
-                      src="assets/images/bb59983e-ca44-4526-b1d0-e92095b818b1-1.jpg"
-                      alt="M5 Macs"
-                      class="w-full h-[200px] sm:h-[250px] lg:h-[300px] object-contain"
-                    />
+                                <div class="flex justify-center mt-4 lg:mt-0">
+                                    <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl card-hover max-w-md w-full">
+                                        <img src="assets/images/iPad_Pro_13-in_Space_Black_Black_Magic_Keyboard_Apple_Pencil_Pro_Pure_Front_Screen__INEN.jpg"
+                                            alt="iPad Business"
+                                            class="w-full h-[180px] sm:h-[250px] lg:h-[350px] object-cover" />
+                                    </div>
                                 </div>
-                                <div
-                    class="bg-white from-[#E31922] to-red-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-lg"
-                  >
-                    <img
-                      src="assets/images/800.png"
-                      alt="Promotional Banner"
-                      class="w-[200px] sm:w-[230px] md:w-[260px] h-[28px] sm:h-[32px] md:h-[36px] object-contain"
-                    />
-                  </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Slide 5: Enterprise Solutions -->
-                <div class="relative w-full h-full flex-shrink-0 flex items-center py-8 lg:py-0">
-                    <div class="gradient-overlay absolute inset-0"></div>
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-                            <div class="space-y-4 sm:space-y-6 lg:space-y-8">
-                                <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
-                                    <span class="text-[#E31922] font-semibold text-xs sm:text-sm">Enterprise</span>
+                    <!-- Slide 7: M5-Powered Macs -->
+                    <div class="relative flex items-center py-8 lg:py-0">
+                        <div class="gradient-overlay absolute inset-0"></div>
+                        <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                                <div class="space-y-4 sm:space-y-6 lg:space-y-8">
+                                    <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
+                                        <span class="text-[#E31922] font-semibold text-xs sm:text-sm">Exclusive Offer</span>
+                                    </div>
+                                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+                                        <span class="text-[#E31922]">Upgrade to</span>
+                                        <span class="block mt-2">M5-Powered Macs</span>
+                                    </h2>
+                                    <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
+                                        <strong class="text-gray-900">Get astounding speed,</strong>
+                                        graphics and AI capability with up to 24 hours of battery life at a never-before-seen exchange offer!
+                                    </p>
+                                    <a href="refresh-program.html" class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
+                                        Learn More
+                                        <svg class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                        </svg>
+                                    </a>
                                 </div>
-                                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                                    Enterprise Solutions
-                                    <span class="text-[#E31922] block mt-2">for Large-Scale Business</span>
-                                </h2>
-                                <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
-                                    <strong class="text-gray-900">Experience enterprise-grade performance</strong>
-                                    with robust, secure, and scalable solutions that empower innovation without limits.
-                                </p>
-                                <a  href="enterprise.html" class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
-                                    Learn More
-                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div class="flex flex-col items-center gap-3 sm:gap-4 lg:gap-6 mt-4 lg:mt-0">
-                                <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 p-4 sm:p-6 lg:p-8 shadow-2xl card-hover w-full">
-                                    <img
-                      src="assets/images/bb59983e-ca44-4526-b1d0-e92095b818b1-1.jpg"
-                      alt="M5 Macs"
-                      class="w-full h-[200px] sm:h-[250px] lg:h-[300px] object-contain"
-                    />
+                                <div class="flex flex-col items-center gap-3 sm:gap-4 lg:gap-6 mt-4 lg:mt-0">
+                                    <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 p-4 sm:p-6 lg:p-8 shadow-2xl card-hover w-full">
+                                        <img src="assets/images/bb59983e-ca44-4526-b1d0-e92095b818b1-1.jpg" alt="M5 Macs"
+                                            class="w-full h-[200px] sm:h-[250px] lg:h-[300px] object-contain" />
+                                    </div>
+                                    <div class="bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-lg">
+                                        <img src="assets/images/800.png" alt="Promotional Banner"
+                                            class="w-[200px] sm:w-[230px] md:w-[260px] h-[28px] sm:h-[32px] md:h-[36px] object-contain" />
+                                    </div>
                                 </div>
-                               <div
-                    class="bg-white from-[#E31922] to-red-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-lg"
-                  >
-                    <img
-                      src="assets/images/800.png"
-                      alt="Promotional Banner"
-                      class="w-[200px] sm:w-[230px] md:w-[260px] h-[28px] sm:h-[32px] md:h-[36px] object-contain"
-                    />
-                  </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Slide 6: SMART EPP -->
-                <div class="relative w-full h-full flex-shrink-0 flex items-center py-8 lg:py-0">
-                    <div class="gradient-overlay absolute inset-0"></div>
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-                            <div class="space-y-4 sm:space-y-6 lg:space-y-8">
-                                <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
-                                    <span class="text-[#E31922] font-semibold text-xs sm:text-sm">Employee Benefits</span>
+                    <!-- Slide 8: Enterprise Solutions -->
+                    <div class="relative flex items-center py-8 lg:py-0">
+                        <div class="gradient-overlay absolute inset-0"></div>
+                        <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                                <div class="space-y-4 sm:space-y-6 lg:space-y-8">
+                                    <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
+                                        <span class="text-[#E31922] font-semibold text-xs sm:text-sm">Enterprise</span>
+                                    </div>
+                                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+                                        Enterprise Solutions
+                                        <span class="text-[#E31922] block mt-2">for Large-Scale Business</span>
+                                    </h2>
+                                    <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
+                                        <strong class="text-gray-900">Experience enterprise-grade performance</strong>
+                                        with robust, secure, and scalable solutions that empower innovation without limits.
+                                    </p>
+                                    <a href="enterprise.html" class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
+                                        Learn More
+                                        <svg class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                        </svg>
+                                    </a>
                                 </div>
-                                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                                    <span class="text-[#E31922]">SMART EPP:</span>
-                                    <span class="block mt-2">Exclusive Employee Program</span>
-                                </h2>
-                                <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
-                                    <strong class="text-gray-900">Empower your workforce</strong>
-                                    with special access to premium devices through our SMART EPP—crafted to deliver performance and value.
-                                </p>
-                                <a href="apple-smartEPP.html" class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
-                                    Learn More
-                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl card-hover mt-4 lg:mt-0">
-                               <img
-                    src="assets/images/Multi-Product_iPad_iPhone_17_Screen__INEN-0.jpg"
-                    alt="Employee Program"
-                    class="w-full h-[150px] sm:h-[200px] lg:h-[350px] object-cover"
-                  />
+                                <div class="flex flex-col items-center gap-3 sm:gap-4 lg:gap-6 mt-4 lg:mt-0">
+                                    <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 p-4 sm:p-6 lg:p-8 shadow-2xl card-hover w-full">
+                                        <img src="assets/images/bb59983e-ca44-4526-b1d0-e92095b818b1-1.jpg" alt="M5 Macs"
+                                            class="w-full h-[200px] sm:h-[250px] lg:h-[300px] object-contain" />
+                                    </div>
+                                    <div class="bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-lg">
+                                        <img src="assets/images/800.png" alt="Promotional Banner"
+                                            class="w-[200px] sm:w-[230px] md:w-[260px] h-[28px] sm:h-[32px] md:h-[36px] object-contain" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
+                    <!-- Slide 9: SMART EPP -->
+                    <div class="relative flex items-center py-8 lg:py-0">
+                        <div class="gradient-overlay absolute inset-0"></div>
+                        <div class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                                <div class="space-y-4 sm:space-y-6 lg:space-y-8">
+                                    <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-red-50 rounded-full">
+                                        <span class="text-[#E31922] font-semibold text-xs sm:text-sm">Employee Benefits</span>
+                                    </div>
+                                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+                                        <span class="text-[#E31922]">SMART EPP:</span>
+                                        <span class="block mt-2">Exclusive Employee Program</span>
+                                    </h2>
+                                    <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border">
+                                        <strong class="text-gray-900">Empower your workforce</strong>
+                                        with special access to premium devices through our SMART EPP—crafted to deliver performance and value.
+                                    </p>
+                                    <a href="apple-smartEPP.html" class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105">
+                                        Learn More
+                                        <svg class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl card-hover mt-4 lg:mt-0">
+                                    <img src="assets/images/Multi-Product_iPad_iPhone_17_Screen__INEN-0.jpg" alt="Employee Program"
+                                        class="w-full h-[150px] sm:h-[200px] lg:h-[350px] object-cover" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- end #slider-container -->
+            </div><!-- end #slider-wrapper -->
 
             <!-- Navigation Arrows -->
             <button class="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 bg-white/95 hover:bg-white rounded-full p-2 sm:p-3 lg:p-4 shadow-xl transition-all duration-300 z-20 group hover:scale-110" id="prev-slide">
@@ -1197,14 +1235,17 @@
                 </svg>
             </button>
 
-            <!-- Slider Dots -->
+            <!-- Slider Dots (9 dots for 9 slides) -->
             <div class="absolute bottom-4 sm:bottom-6 lg:bottom-12 left-0 right-0 flex justify-center gap-1.5 sm:gap-2 lg:gap-3 z-20" id="slider-dots">
-                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full bg-gray-400 hover:bg-[#E31922] transition-all duration-300" data-index="0"></button>
-                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full bg-gray-400 hover:bg-[#E31922] transition-all duration-300" data-index="1"></button>
-                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full bg-gray-400 hover:bg-[#E31922] transition-all duration-300" data-index="2"></button>
-                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full bg-gray-400 hover:bg-[#E31922] transition-all duration-300" data-index="3"></button>
-                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full bg-gray-400 hover:bg-[#E31922] transition-all duration-300" data-index="4"></button>
-                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full bg-gray-400 hover:bg-[#E31922] transition-all duration-300" data-index="5"></button>
+                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300" data-index="0"></button>
+                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300" data-index="1"></button>
+                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300" data-index="2"></button>
+                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300" data-index="3"></button>
+                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300" data-index="4"></button>
+                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300" data-index="5"></button>
+                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300" data-index="6"></button>
+                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300" data-index="7"></button>
+                <button class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300" data-index="8"></button>
             </div>
         </div>
     </section>
@@ -1217,23 +1258,42 @@
             const nextButton = document.getElementById("next-slide");
 
             let currentSlide = 0;
-            const totalSlides = 6;
+            const totalSlides = 9;
+
+            // Kill any accidental timers
+            const highestId = window.setTimeout(() => {}, 0);
+            for (let i = 0; i <= highestId; i++) {
+                window.clearTimeout(i);
+                window.clearInterval(i);
+            }
+
+            function updateSlider() {
+                const percentage = (100 / totalSlides) * currentSlide;
+                sliderContainer.style.transform = `translateX(-${percentage}%)`;
+
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.style.backgroundColor = "#E31922";
+                        dot.style.transform = "scale(1.3)";
+                    } else {
+                        dot.style.backgroundColor = "#9CA3AF";
+                        dot.style.transform = "scale(1)";
+                    }
+                });
+            }
 
             updateSlider();
 
-            // Previous button
             prevButton.addEventListener("click", () => {
                 currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
                 updateSlider();
             });
 
-            // Next button
             nextButton.addEventListener("click", () => {
                 currentSlide = (currentSlide + 1) % totalSlides;
                 updateSlider();
             });
 
-            // Dot navigation
             dots.forEach((dot, index) => {
                 dot.addEventListener("click", () => {
                     currentSlide = index;
@@ -1241,67 +1301,30 @@
                 });
             });
 
-            // Auto slide
-            let slideInterval = setInterval(autoSlide, 5000);
-
-            function autoSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateSlider();
-            }
-
-            // Pause on hover
-            sliderContainer.addEventListener("mouseenter", () => {
-                clearInterval(slideInterval);
-            });
-
-            sliderContainer.addEventListener("mouseleave", () => {
-                slideInterval = setInterval(autoSlide, 5000);
-            });
-
-            // Touch support for mobile
+            // Touch/swipe support (manual only)
             let touchStartX = 0;
-            let touchEndX = 0;
 
             sliderContainer.addEventListener("touchstart", (e) => {
                 touchStartX = e.changedTouches[0].screenX;
-                clearInterval(slideInterval);
-            });
+            }, { passive: true });
 
             sliderContainer.addEventListener("touchend", (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-                slideInterval = setInterval(autoSlide, 5000);
-            });
-
-            function handleSwipe() {
-                if (touchEndX < touchStartX - 50) {
-                    // Swipe left
-                    currentSlide = (currentSlide + 1) % totalSlides;
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) {
+                    currentSlide = diff > 0
+                        ? (currentSlide + 1) % totalSlides
+                        : (currentSlide - 1 + totalSlides) % totalSlides;
                     updateSlider();
                 }
-                if (touchEndX > touchStartX + 50) {
-                    // Swipe right
-                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                    updateSlider();
-                }
-            }
-
-            // Update slide transform + dots
-            function updateSlider() {
-                sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-                dots.forEach((dot, index) => {
-                    if (index === currentSlide) {
-                        dot.classList.add("bg-[#E31922]");
-                        dot.classList.remove("bg-gray-400");
-                    } else {
-                        dot.classList.remove("bg-[#E31922]");
-                        dot.classList.add("bg-gray-400");
-                    }
-                });
-            }
+            }, { passive: true });
         });
     </script>
+
+
+
+
+    <!-- Hero Section -->
+
       <!-- HER0 SECTION END -->
          <!-- HER0 SECTION END -->
   <!-- HER0 SECTION END -->
@@ -3314,6 +3337,13 @@ href="ipad-for-business.html"
               <!-- iPhone Section -->
 
               <ul class="menu mb-4">
+                 <li class="menu-item mb-1">
+                  <a
+                    href="iphone 17e/index.html"
+                    class="text-gray-300 hover:text-red-500 transition-all"
+                    >iPhone 17 e
+                  </a>
+                </li>
                 <li class="menu-item mb-1">
                   <a
                     href="ipone17_pro.html"
@@ -3351,30 +3381,37 @@ href="ipad-for-business.html"
                 </li>
                 <li class="menu-item mb-1">
                   <a
-                    href="MacBook-Air-M4/mac-book-M4.html"
+                    href="Macbook_Neo/index.html"
                     class="text-gray-300 hover:text-red-500 transition-all"
-                    >Macbook Air M4</a
+                    >Macbook Neo</a
                   >
                 </li>
                 <li class="menu-item mb-1">
                   <a
-                    href="Macbook_pro_M5.html"
+                    href="Macbook_Air_M5/index.html"
+                    class="text-gray-300 hover:text-red-500 transition-all"
+                    >Macbook Air M5</a
+                  >
+                </li>
+                <li class="menu-item mb-1">
+                  <a
+                    href="Macbook_Pro_M5/index.html"
                     class="text-gray-300 hover:text-red-500 transition-all"
                     >Macbook Pro M5</a
                   >
                 </li>
                 <li class="menu-item mb-1">
                   <a
-                    href="ipad_pro_m5.html"
+                    href="ipad air m4/index.html"
                     class="text-gray-300 hover:text-red-500 transition-all"
-                    >ipad Pro M5</a
+                    >iPad Air M4</a
                   >
                 </li>
                 <li class="menu-item mb-1">
                   <a
-                    href="iPad-air/ipad-air.html"
+                    href="iPad Pro M5"
                     class="text-gray-300 hover:text-red-500 transition-all"
-                    >ipad Air M4</a
+                    >iPad Pro M5</a
                   >
                 </li>
               </ul>

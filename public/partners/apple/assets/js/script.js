@@ -100,7 +100,7 @@ mobileMenu.innerHTML = `
     </div>
     <nav class="px-6 py-4 space-y-4">
       <a href="index.html" class="block text-gray-800 font-medium py-2 hover:text-gray-600">Home</a>
-      
+
       <!-- Products Dropdown -->
       <div class="relative">
         <button onclick="toggleDropdown('productsDropdown')" class="flex items-center justify-between w-full text-left text-gray-800 font-medium py-2">
@@ -119,17 +119,18 @@ mobileMenu.innerHTML = `
               </svg>
             </button>
             <div id="productsIphoneDropdown" class="pl-4 border-l-2 border-gray-100 space-y-2 hidden">
+            <a href="iphone 17e/index.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 17e</a>
               <a href="ipone17_pro.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 17 Pro</a>
               <a href="iphone17_air.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 17 Air</a>
               <a href="iphone17.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 17</a>
              <a href="iPhone-16/index.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 16</a>
              <a href="iPhone-16e/index.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 16e</a>
-        
 
-             
+
+
             </div>
           </div>
-          
+
           <!-- Mac Dropdown -->
           <div class="relative">
             <button onclick="toggleDropdown('productsMacDropdown')" class="flex items-center justify-between w-full text-left py-2 text-gray-600 hover:text-gray-900">
@@ -139,14 +140,15 @@ mobileMenu.innerHTML = `
               </svg>
             </button>
             <div id="productsMacDropdown" class="pl-4 border-l-2 border-gray-100 space-y-2 hidden">
-              <a href="MacBook-Air-M4/mac-book-M4.html" class="block py-2 text-gray-600 hover:text-gray-900">MacBook Air M4</a>
-              <a href="Macbook_pro_M5.html" class="block py-2 text-gray-600 hover:text-gray-900">MacBook Pro M5</a>
+            <a href="Macbook_Neo/index.html" class="block py-2 text-gray-600 hover:text-gray-900">MacBook Neo</a>
+              <a href="Macbook_Air_M5/index.html" class="block py-2 text-gray-600 hover:text-gray-900">MacBook Air M5</a>
+              <a href="Macbook_Pro_M5/index.html" class="block py-2 text-gray-600 hover:text-gray-900">MacBook Pro M5</a>
               <a href="iMac/index.html" class="block py-2 text-gray-600 hover:text-gray-900">iMac</a>
               <a href="Mac-Mini/mac-mini.html" class="block py-2 text-gray-600 hover:text-gray-900">Mac mini</a>
               <a href="Mac-Studio/max-studio.html" class="block py-2 text-gray-600 hover:text-gray-900">Mac Studio</a>
             </div>
           </div>
-          
+
           <!-- iPad Dropdown -->
           <div class="relative">
             <button onclick="toggleDropdown('productsIpadDropdown')" class="flex items-center justify-between w-full text-left py-2 text-gray-600 hover:text-gray-900">
@@ -158,21 +160,21 @@ mobileMenu.innerHTML = `
             <div id="productsIpadDropdown" class="pl-4 border-l-2 border-gray-100 space-y-2 hidden">
               <a href="ipad_pro_m5.html" class="block py-2 text-gray-600 hover:text-gray-900">iPad
                   Pro M5</a>
-              <a href="iPad-air/ipad-air.html" class="block py-2 text-gray-600 hover:text-gray-900">iPad
-                  Air M3</a>
+              <a href="ipad air m4/index.html" class="block py-2 text-gray-600 hover:text-gray-900">iPad
+                  Air M4</a>
               <a href="ipad-A16/ipad-A16.html" class="block py-2 text-gray-600 hover:text-gray-900">iPad</a>
               <a href="iPad-mini/ipad-mini.html" class="block py-2 text-gray-600 hover:text-gray-900">iPad mini</a>
             </div>
           </div>
-          
+
           <!-- Accessories Dropdown -->
-         
-          
+
+
           <a href="apple-care-plus.html" class="block py-2 text-gray-600 hover:text-gray-900">Apple Care +</a>
           <a href="apple-care-plus-enterprise.html" class="block py-2 text-gray-600 hover:text-gray-900">Apple Care for Enterprise</a>
         </div>
       </div>
-      
+
       <!-- Services Dropdown -->
       <div class="relative">
 
@@ -186,9 +188,9 @@ mobileMenu.innerHTML = `
         <div id="servicesDropdown" class="pl-4 border-l-2 border-gray-100 space-y-2 hidden">
           <!-- Value Added Services Dropdown -->
          <a href="deployment-page.html" class="block py-2 text-gray-600 hover:text-gray-900">Deployment Services</a>
-          
-          
-          
+
+
+
           <a href="lifecycle-management.html" class="block py-2 text-gray-600 hover:text-gray-900">Life Cycle Management</a>
           <a href="business-manager.html" class="block py-2 text-gray-600 hover:text-gray-900">Apple Business Manager</a>
 
@@ -203,9 +205,9 @@ mobileMenu.innerHTML = `
               </svg>
             </button>
             <div id="servicesFusionDropdown" class="pl-4 border-l-2 border-gray-100 space-y-2 hidden">
-             
+
               <a href="service%20&%20deployment-bundles.html" class="block py-2 text-gray-600 hover:text-gray-900">Service & Deployment bundles</a>
-            
+
               <a href="fusion-combos.html" class="block py-2 text-gray-600 hover:text-gray-900">Fusion Combo</a>
             </div>
           </div>
@@ -213,7 +215,7 @@ mobileMenu.innerHTML = `
 
         </div>
       </div>
-      
+
       <!-- Programs Dropdown -->
       <div class="relative">
         <button onclick="toggleDropdown('programsDropdown')" class="flex items-center justify-between w-full text-left text-gray-800 font-medium py-2">
@@ -229,7 +231,7 @@ mobileMenu.innerHTML = `
           <a href="refresh-program.html" class="block py-2 text-gray-600 hover:text-gray-900">Refresh Program</a>
         </div>
       </div>
-      
+
       <a href="apple-smartEPP.html" class="block text-gray-800 font-medium py-2 hover:text-gray-600">Smart EPP</a>
       <a href="https://sniperindia.com/contact/" class="block text-gray-800 font-medium py-2 hover:text-gray-600">Contact Us</a>
     </nav>

@@ -7,6 +7,7 @@ import { AnimatePresence, motion, useInView } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import PageSEO from "@/components/PageSEO";
+import { GrainGradient } from "@paper-design/shaders-react";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,35 +17,15 @@ gsap.registerPlugin(ScrollTrigger);
 // ========================================================
 
 // ---- Marquee Ticker ----
-const MarqueeTicker = ({ items }: { items: string[] }) => {
-  const trackRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const totalWidth = track.scrollWidth / 2;
-    const tween = gsap.to(track, { x: `-${totalWidth}px`, duration: 26, ease: "none", repeat: -1 });
-    return () => tween.kill();
-  }, []);
-  const doubled = [...items, ...items];
-  return (
-    <div className="overflow-hidden bg-gray-950 py-3 sm:py-4 border-y border-gray-800">
-      <div ref={trackRef} className="flex gap-6 sm:gap-10 whitespace-nowrap will-change-transform">
-        {doubled.map((text, i) => (
-          <span key={i} className="flex items-center gap-6 sm:gap-10 text-[10px] sm:text-[11px] font-semibold tracking-[0.22em] uppercase text-gray-500">
-            {text}
-            <span className="w-1.5 h-1.5 rounded-full bg-gray-700 inline-block" />
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-};
 
-// ---- Form field focus underline animation (GSAP) ----
-const AnimatedInput = ({ label, id, type = "text", value, onChange, required = false, placeholder, className = "" }: {
+
+// ---- Form field — light design with GSAP focus underline ----
+const AnimatedInput = React.memo(({ label, id, type = "text", value, onChange, required = false, placeholder, className = "", list, ...rest }: {
   label: string; id: string; type?: string; value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean; placeholder?: string; className?: string;
+  list?: string;
+  [key: string]: any;
 }) => {
   const underlineRef = useRef<HTMLDivElement>(null);
 
@@ -59,7 +40,7 @@ const AnimatedInput = ({ label, id, type = "text", value, onChange, required = f
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <label htmlFor={id} className="block text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider mb-2 sm:mb-3">
         {label}
       </label>
@@ -71,10 +52,12 @@ const AnimatedInput = ({ label, id, type = "text", value, onChange, required = f
           value={value}
           onChange={onChange}
           required={required}
+          list={list}
           placeholder={placeholder}
           onFocus={handleFocus}
           onBlur={handleBlur}
           className={`w-full px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base border-2 border-gray-300 rounded-full text-gray-900 focus:outline-none focus:border-gray-900 transition-colors duration-300 ${className}`}
+          {...rest}
         />
         <div className="absolute bottom-0 left-4 sm:left-6 right-4 sm:right-6 overflow-hidden rounded-full pointer-events-none">
           <div ref={underlineRef} className="h-full w-full bg-black" style={{ transform: "scaleX(0)" }} />
@@ -82,12 +65,12 @@ const AnimatedInput = ({ label, id, type = "text", value, onChange, required = f
       </div>
     </div>
   );
-};
+});
 
-const AnimatedTextarea = ({ label, id, value, onChange, required = false, rows = 6, placeholder }: {
+const AnimatedTextarea = React.memo(({ label, id, value, onChange, required = false, rows = 5, placeholder, className = "" }: {
   label: string; id: string; value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  required?: boolean; rows?: number; placeholder?: string;
+  required?: boolean; rows?: number; placeholder?: string; className?: string;
 }) => {
   const underlineRef = useRef<HTMLDivElement>(null);
 
@@ -102,7 +85,7 @@ const AnimatedTextarea = ({ label, id, value, onChange, required = false, rows =
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <label htmlFor={id} className="block text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider mb-2 sm:mb-3">
         {label}
       </label>
@@ -117,7 +100,7 @@ const AnimatedTextarea = ({ label, id, value, onChange, required = false, rows =
           placeholder={placeholder}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          className="w-full px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base border-2 border-gray-300 rounded-3xl text-gray-900 focus:outline-none focus:border-gray-900 transition-colors duration-300 resize-none"
+          className={`w-full px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base border-2 border-gray-300 rounded-3xl text-gray-900 focus:outline-none focus:border-gray-900 transition-colors duration-300 resize-none ${className}`}
         />
         <div className="absolute bottom-0 left-4 sm:left-6 right-4 sm:right-6 overflow-hidden rounded-full pointer-events-none">
           <div ref={underlineRef} className="h-full w-full bg-black" style={{ transform: "scaleX(0)" }} />
@@ -125,7 +108,7 @@ const AnimatedTextarea = ({ label, id, value, onChange, required = false, rows =
       </div>
     </div>
   );
-};
+});
 
 // ---- Contact Info cards with GSAP line-draw dividers ----
 const ContactInfoList = ({ contactInfo, infoInView }: { contactInfo: any[]; infoInView: boolean }) => {
@@ -154,18 +137,18 @@ const ContactInfoList = ({ contactInfo, infoInView }: { contactInfo: any[]; info
         >
           <div className="flex items-start gap-4 sm:gap-6">
             <div className="flex-shrink-0">
-              <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-900" />
+              <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div className="space-y-1 sm:space-y-2 min-w-0">
-              <p className="text-xs sm:text-sm font-semibold text-gray-900 uppercase tracking-wider">{info.label}</p>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed break-words">{info.content}</p>
+              <p className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wider">{info.label}</p>
+              <p className="text-base sm:text-lg text-white leading-relaxed break-words">{info.content}</p>
             </div>
           </div>
           {index < contactInfo.length - 1 && (
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-300 overflow-hidden">
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10 overflow-hidden">
               <div
                 ref={el => { linesRef.current[index] = el; }}
-                className="h-full bg-gradient-to-r from-gray-900/60 via-gray-900 to-gray-900/60"
+                className="h-full bg-gradient-to-r from-white/20 via-white/80 to-white/20"
                 style={{ transform: "scaleX(0)" }}
               />
             </div>
@@ -461,10 +444,10 @@ const CTASection = () => {
   const trailRef = useRef<HTMLDivElement>(null);
 
   // All cursor tracking in refs — zero re-renders, zero stale closures
-  const mouse  = useRef({ x: 0, y: 0 });   // raw mouse position
+  const mouse = useRef({ x: 0, y: 0 });   // raw mouse position
   const smooth = useRef({ x: 0, y: 0 });   // lerped position written to DOM
-  const trail  = useRef({ x: 0, y: 0 });   // trail lags further behind
-  const inside  = useRef(false);            // mouse is inside the section
+  const trail = useRef({ x: 0, y: 0 });   // trail lags further behind
+  const inside = useRef(false);            // mouse is inside the section
   const hovered = useRef(false);            // mouse is over the CTA button
 
   const ctaRef = useRef(null);
@@ -495,9 +478,9 @@ const CTASection = () => {
         const sz = hovered.current ? 128 : 96;
         blobRef.current.style.transform =
           `translate(${smooth.current.x}px, ${smooth.current.y}px) translate(-50%, -50%) scale(${hovered.current ? 1.25 : 1})`;
-        blobRef.current.style.width  = `${sz}px`;
+        blobRef.current.style.width = `${sz}px`;
         blobRef.current.style.height = `${sz}px`;
-        blobRef.current.textContent  = hovered.current ? "CLICK ME!" : "LET'S GO!";
+        blobRef.current.textContent = hovered.current ? "CLICK ME!" : "LET'S GO!";
       }
 
       if (trailRef.current) {
@@ -527,23 +510,23 @@ const CTASection = () => {
       // Snap smooth/trail to current mouse so there's no "fly in" on first entry
       smooth.current.x = mouse.current.x;
       smooth.current.y = mouse.current.y;
-      trail.current.x  = mouse.current.x;
-      trail.current.y  = mouse.current.y;
-      if (blobRef.current)  blobRef.current.style.opacity  = "1";
+      trail.current.x = mouse.current.x;
+      trail.current.y = mouse.current.y;
+      if (blobRef.current) blobRef.current.style.opacity = "1";
       if (trailRef.current) trailRef.current.style.opacity = "0.3";
     };
     const onLeave = () => {
-      inside.current  = false;
+      inside.current = false;
       hovered.current = false;
-      if (blobRef.current)  blobRef.current.style.opacity  = "0";
+      if (blobRef.current) blobRef.current.style.opacity = "0";
       if (trailRef.current) trailRef.current.style.opacity = "0";
     };
 
-    section.addEventListener("mousemove",  onMove);
+    section.addEventListener("mousemove", onMove);
     section.addEventListener("mouseenter", onEnter);
     section.addEventListener("mouseleave", onLeave);
     return () => {
-      section.removeEventListener("mousemove",  onMove);
+      section.removeEventListener("mousemove", onMove);
       section.removeEventListener("mouseenter", onEnter);
       section.removeEventListener("mouseleave", onLeave);
     };
@@ -555,18 +538,18 @@ const CTASection = () => {
     const btn = ctaBtnRef.current;
     if (!btn) return;
     const onMove = (e: MouseEvent) => {
-      const r  = btn.getBoundingClientRect();
-      const dx = (e.clientX - (r.left + r.width  / 2)) * 0.3;
-      const dy = (e.clientY - (r.top  + r.height / 2)) * 0.3;
+      const r = btn.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width / 2)) * 0.3;
+      const dy = (e.clientY - (r.top + r.height / 2)) * 0.3;
       gsap.to(btn, { x: dx, y: dy, duration: 0.35, ease: "power2.out" });
     };
     const onLeave = () => {
       gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1,0.5)" });
     };
-    btn.addEventListener("mousemove",  onMove);
+    btn.addEventListener("mousemove", onMove);
     btn.addEventListener("mouseleave", onLeave);
     return () => {
-      btn.removeEventListener("mousemove",  onMove);
+      btn.removeEventListener("mousemove", onMove);
       btn.removeEventListener("mouseleave", onLeave);
     };
   }, []);
@@ -576,56 +559,56 @@ const CTASection = () => {
   // `position: fixed` + `transform` work exactly as expected.
   const cursorPortal = !IS_TOUCH && typeof document !== "undefined"
     ? createPortal(
-        <>
-          {/* Main blob */}
-          <div
-            ref={blobRef}
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: 96,
-              height: 96,
-              borderRadius: "50%",
-              background: "#ffffff",
-              color: "#000000",
-              fontWeight: 700,
-              fontSize: 11,
-              letterSpacing: "0.04em",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              pointerEvents: "none",
-              userSelect: "none",
-              zIndex: 99999,
-              opacity: 0,
-              // Only non-position props get CSS transition — position uses RAF
-              transition: "opacity 0.2s ease, width 0.2s ease, height 0.2s ease",
-              filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.35))",
-              willChange: "transform",
-            }}
-          />
-          {/* Trailing dot */}
-          <div
-            ref={trailRef}
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: 56,
-              height: 56,
-              borderRadius: "50%",
-              background: "rgba(255,255,255,0.25)",
-              pointerEvents: "none",
-              zIndex: 99998,
-              opacity: 0,
-              transition: "opacity 0.3s ease",
-              willChange: "transform",
-            }}
-          />
-        </>,
-        document.body
-      )
+      <>
+        {/* Main blob */}
+        <div
+          ref={blobRef}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: 96,
+            height: 96,
+            borderRadius: "50%",
+            background: "#ffffff",
+            color: "#000000",
+            fontWeight: 700,
+            fontSize: 11,
+            letterSpacing: "0.04em",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            pointerEvents: "none",
+            userSelect: "none",
+            zIndex: 99999,
+            opacity: 0,
+            // Only non-position props get CSS transition — position uses RAF
+            transition: "opacity 0.2s ease, width 0.2s ease, height 0.2s ease",
+            filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.35))",
+            willChange: "transform",
+          }}
+        />
+        {/* Trailing dot */}
+        <div
+          ref={trailRef}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: 56,
+            height: 56,
+            borderRadius: "50%",
+            background: "rgba(255,255,255,0.25)",
+            pointerEvents: "none",
+            zIndex: 99998,
+            opacity: 0,
+            transition: "opacity 0.3s ease",
+            willChange: "transform",
+          }}
+        />
+      </>,
+      document.body
+    )
     : null;
 
   return (
@@ -684,6 +667,7 @@ const CTASection = () => {
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "ab9fd6a8-a8de-4f28-ba11-f6d95387e932";
 
 const Contact = () => {
+
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showWhiteScreen, setShowWhiteScreen] = useState(true);
   const [viewMode, setViewMode] = useState<"visual" | "addresses">("visual");
@@ -804,7 +788,7 @@ const Contact = () => {
     );
   }, []);
 
-  const marqueeItems = ["Get In Touch", "Contact Us", "Chennai HQ", "IT Solutions", "Quick Support", "Enterprise Ready", "Sniper Systems"];
+
 
   const indianStates = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat",
@@ -917,7 +901,7 @@ const Contact = () => {
       </section>
 
       {/* ✦ GSAP Marquee */}
-      <MarqueeTicker items={marqueeItems} />
+
 
       {/* ==================== FORM + INFO ==================== */}
       <section className="bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6">
@@ -1011,35 +995,63 @@ const Contact = () => {
               </form>
             </div>
 
-            {/* Contact Info */}
-            <div ref={infoRef}>
-              <SpringHeading trigger={infoInView} delay={80}>
-                Get in<br />touch
-              </SpringHeading>
+            {/* Contact Info — unchanged */}
+            <div
+              ref={infoRef}
+              className="relative flex flex-col justify-between overflow-hidden rounded-md bg-black border border-[#222] p-8 sm:p-12 text-white min-h-[720px]"
+            >
+              <GrainGradient
+                speed={1}
+                scale={1}
+                rotation={0}
+                offsetX={0}
+                offsetY={0}
+                softness={0.5}
+                intensity={0.5}
+                noise={0.25}
+                shape="corners"
+                frame={2854.5}
+                colors={["#FFFFFF", "#FC7819", "#FC7819", "#FFFFFF"]}
+                colorBack="#00000000"
+                className="absolute inset-0 bg-black opacity-30"
+              />
 
-              <ContactInfoList contactInfo={contactInfo} infoInView={infoInView} />
+              <div className="relative z-10 flex flex-col justify-between h-full w-full space-y-12">
+                <div>
+                  <motion.h2
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 sm:mb-12 leading-tight"
+                    initial={{ opacity: 0, y: 60 }}
+                    animate={infoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
+                  >
+                    Get in<br />touch
+                  </motion.h2>
 
-              <motion.div
-                className="mt-8 sm:mt-12 space-y-4 sm:space-y-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={infoInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, ease, delay: 0.55 }}
-              >
-                <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  Whether you need IT consulting, managed services, or technology infrastructure solutions,
-                  our team is ready to help you achieve your business goals.
-                </p>
-                <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                  Reach out today and discover how Sniper Systems can transform your IT operations.
-                </p>
-              </motion.div>
+                  <ContactInfoList contactInfo={contactInfo} infoInView={infoInView} />
+                </div>
+
+                <motion.div
+                  className="space-y-4 sm:space-y-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={infoInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.7, ease, delay: 0.55 }}
+                >
+                  <p className="text-base sm:text-lg text-white/70 leading-relaxed font-sans">
+                    Whether you need IT consulting, managed services, or technology infrastructure solutions,
+                    our team is ready to help you achieve your business goals.
+                  </p>
+                  <p className="text-base sm:text-lg text-white/70 leading-relaxed font-sans">
+                    Reach out today and discover how Sniper Systems can transform your IT operations.
+                  </p>
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ✦ GSAP Marquee */}
-      <MarqueeTicker items={["Chennai", "Bangalore", "Hyderabad", "Coimbatore", "Kochi", "Gurugram", "Vijayawada", "Pan India"]} />
+
 
       {/* ==================== UNIFIED LOCATIONS SECTION ==================== */}
       <section className="relative bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6">

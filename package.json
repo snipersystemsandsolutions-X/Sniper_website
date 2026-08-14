@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
- "scripts": {
+  "scripts": {
     "dev": "vite",
     "prebuild": "mkdir -p public && echo 'User-agent: *\nAllow: /\nSitemap: https://your-domain.com/sitemap.xml' > public/robots.txt",
     "build": "vite build",
@@ -14,6 +14,7 @@
   "dependencies": {
     "@dataconnect/generated": "file:src/dataconnect-generated",
     "@hookform/resolvers": "^3.10.0",
+    "@paper-design/shaders-react": "^0.0.80",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
@@ -66,6 +67,7 @@
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
     "react-hook-form": "^7.61.1",
+    "react-icons": "^5.7.0",
     "react-resizable-panels": "^2.1.9",
     "react-router-dom": "^6.30.1",
     "recharts": "^2.15.4",
