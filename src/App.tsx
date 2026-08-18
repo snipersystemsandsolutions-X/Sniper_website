@@ -7,6 +7,7 @@ import { Navigate } from "react-router-dom";
 import React, { Suspense, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Preloader from "@/components/Preloader";
+import { Analytics } from "@vercel/analytics/react";
 
 // ── Lazy pages (code-split for faster initial load) ──────────────────────────
 const Index = React.lazy(() => import("./pages/Index"));
@@ -190,6 +191,7 @@ const App = () => {
           <BrowserRouter>
             <AnimatedRoutes />
           </BrowserRouter>
+          <Analytics />
         </TooltipProvider>
       </QueryClientProvider>
     </>
