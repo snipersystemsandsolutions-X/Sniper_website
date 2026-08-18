@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, CheckCircle, ChevronDown, ChevronLeft, ChevronRight, Clock, Lightbulb, Shield, Zap } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 
@@ -293,7 +293,7 @@ const BannerSliderSection = () => {
           </motion.div>
           <motion.div className="space-y-4 sm:space-y-6" initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}>
             <p className="text-base sm:text-lg text-gray-800 leading-relaxed">From startups to global enterprises, organizations choose Sniper Systems because we deliver more than just IT services—we deliver peace of mind, innovation, and results that matter.</p>
-            <p className="text-base sm:text-lg text-gray-800 leading-relaxed">With <strong>15+ years of proven excellence</strong>, we've built our reputation on one simple promise: Your success is our success.</p>
+            <p className="text-base sm:text-lg text-gray-800 leading-relaxed">With <strong>17+ years of proven excellence</strong>, we've built our reputation on one simple promise: Your success is our success.</p>
           </motion.div>
         </div>
       </div>
@@ -388,7 +388,7 @@ const NewTopHeroSection = () => {
                 Empowering<br />Enterprises<br /><span style={{ color: "#a3a3a3" }}>with IT</span><br />Solutions
               </h1>
               <div className="flex gap-5 mb-6 border-t border-white/10 pt-5">
-                {[["12+", "Years"], ["500+", "Clients"], ["99%", "Uptime"]].map(([val, label]) => (
+                {[["17+", "Years"], ["2,600+", "Clients"], ["99%", "Uptime"]].map(([val, label]) => (
                   <div key={label}>
                     <div className="text-white font-bold text-lg leading-none">{val}</div>
                     <div className="text-gray-500 text-[10px] tracking-widest uppercase mt-0.5">{label}</div>
@@ -1007,7 +1007,7 @@ const Index = () => {
   ];
 
   const benefits = [
-    { icon: Clock, label: "EXPERIENCE YOU CAN TRUST", description: "With 15+ years of experience, our IT solutions are seamless, reliable, and tailored for businesses across any location or time zone." },
+    { icon: Clock, label: "EXPERIENCE YOU CAN TRUST", description: "With 17+ years of experience, our IT solutions are seamless, reliable, and tailored for businesses across any location or time zone." },
     { icon: Shield, label: "READY FOR ANY CHALLENGE", description: "\"Impossible\" isn't in our vocabulary. We deliver solutions exactly as designed—no shortcuts, no compromises, just results." },
     { icon: CheckCircle, label: "SOLUTIONS BUILT FOR YOU", description: "Every business is unique. Our IT strategies, managed services, and technology integrations are customized to fit your exact needs." },
     { icon: Lightbulb, label: "PARTNERSHIPS THAT MATTER", description: "As authorized resellers of Apple, Autodesk, Adobe, Unity, and more, we combine global technology with local expertise for maximum impact." },
@@ -1208,7 +1208,7 @@ const Index = () => {
 
           <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.2 }}
             style={{ display: 'flex', alignItems: 'center', gap: '20px', paddingTop: '18px', marginTop: '18px', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-            {[['15+', 'Years'], ['1800+', 'Clients'], ['99%', 'Uptime']].map(([val, lbl], i, arr) => (
+            {[['17+', 'Years'], ['2,600+', 'Clients'], ['99%', 'Uptime']].map(([val, lbl], i, arr) => (
               <Fragment key={lbl}>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ fontSize: '16px', fontWeight: 600, color: '#fff', lineHeight: 1 }}>{val}</div>
@@ -1264,7 +1264,7 @@ const Index = () => {
 
             <motion.div initial={{ opacity: 0, y: 14 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.2 }}
               style={{ display: 'flex', alignItems: 'center', gap: '32px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-              {[['15+', 'Years'], ['1800+', 'Clients'], ['99%', 'Uptime']].map(([val, lbl], i, arr) => (
+              {[['17+', 'Years'], ['2,600+', 'Clients'], ['99%', 'Uptime']].map(([val, lbl], i, arr) => (
                 <Fragment key={lbl}>
                   <div>
                     <div style={{ fontSize: '22px', fontWeight: 600, color: '#fff', lineHeight: 1 }}>{val}</div>
@@ -1376,9 +1376,9 @@ const Index = () => {
           <div className="flex justify-center lg:justify-end">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 w-full sm:w-auto">
               {[
-                { number: "1800", suffix: "+", label: "Happy Customers" },
+                { number: "2600", suffix: "+", label: "Happy Customers" },
 
-                { number: "15", suffix: "+", label: "Years of Experience" },
+                { number: "17", suffix: "+", label: "Years of Experience" },
               ].map((stat, i) => (
                 <motion.div key={i} className="text-center" initial={{ opacity: 0, y: 40 }} animate={statsInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.3 + i * 0.1 }}>
                   <div className="text-4xl sm:text-5xl lg:text-6xl text-gray-900 mb-2 font-semibold">

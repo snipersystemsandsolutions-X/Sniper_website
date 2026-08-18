@@ -297,10 +297,10 @@ export const Footer = () => {
                 </div>
               </div>
 
-              {/* Logo — new, sits below Follow Us as requested */}
+              {/* Logo — new, sits below Follow Us as requested
               <div className="mt-10">
                 <SniperLogo />
-              </div>
+              </div>*/}
             </div>
           </div>
 

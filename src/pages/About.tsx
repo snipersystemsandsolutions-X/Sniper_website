@@ -662,9 +662,9 @@ const About = () => {
   ];
 
   const stats = [
-    { icon: Users, number: "1800", suffix: "+", label: "Happy Customers" },
-    { icon: CheckCircle, number: "100", suffix: "%", label: "Client Satisfaction" },
-    { icon: Shield, number: null, label: "World Class", staticText: "World Class" },
+    { icon: Users, number: "2600", suffix: "+", label: "Happy Customers" },
+    { icon: CheckCircle, number: "99.9", suffix: "%", label: "Client Satisfaction" },
+    { icon: Shield, number:"7", suffix: "+", label: "Locations Across India"},
   ];
 
   const process = [
@@ -765,7 +765,7 @@ const About = () => {
           <div className="space-y-6 sm:space-y-8">
             <FadeUp delay={0.1}>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-gray-900 leading-tight">
-                20+ years of<br />experience
+                17+ years of<br />experience
               </h2>
             </FadeUp>
             <FadeUp delay={0.2} className="space-y-4 sm:space-y-6">
