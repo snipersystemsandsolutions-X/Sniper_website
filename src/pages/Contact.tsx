@@ -880,9 +880,9 @@ const Contact = () => {
                 animate={heroInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, ease, delay: 1.35 }}
               >
-                Get in touch with Sniper Systems and Solutions. We're here to help you transform
-                your IT infrastructure and drive your business forward with innovative technology
-                solutions.
+                
+                Get in touch with Sniper Systems and Solutions. We’re here to help you optimize your IT infrastructure and accelerate business growth with smart, innovative technology solutions.
+
               </motion.p>
             </div>
 
