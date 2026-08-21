@@ -3,8 +3,15 @@
   publish = "dist"
 
 
+ # Let static HTML partner pages (and their assets) be served directly
+ [[redirects]]
+  from = "/partners/*"
+  to = "/partners/:splat"
+  status = 200
+  force = false
+
+ # SPA fallback for everything else
  [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
- 

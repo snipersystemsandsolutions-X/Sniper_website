@@ -1,16 +1,11 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "buildCommand": "npm run build"
-      }
-    }
-  ],
   "rewrites": [
     {
-      "source": "/((?!partners/).*)",
+      "source": "/partners/:path*",
+      "destination": "/partners/:path*"
+    },
+    {
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
