@@ -10,8 +10,15 @@
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!partners/).*)",
       "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/partners/:partner",
+      "destination": "/partners/:partner/index.html",
+      "permanent": true
     }
   ]
 }
