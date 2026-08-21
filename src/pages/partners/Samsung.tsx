@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const Samsung = () => {
   useEffect(() => {
-    window.location.replace("/partners/Samsung/index.html");
+    window.location.replace("/partners/samsung/index.html");
   }, []);
 
   return null;

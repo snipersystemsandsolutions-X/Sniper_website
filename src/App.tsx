@@ -157,7 +157,8 @@ const AnimatedRoutes = () => {
             <Route path="/industries/it-ites-infra" element={<ITITESInfra />} />
             <Route path="/industries/healthcare-pharma" element={<HealthcarePharma />} />
             <Route path="/industries/manufacturing-automotive" element={<ManufacturingAutomotive />} />
-            <Route path="/industries/Education" element={<Education />} />
+            <Route path="/industries/education" element={<Education />} />
+            <Route path="/industries/Education" element={<Navigate to="/industries/education" replace />} />
 
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />

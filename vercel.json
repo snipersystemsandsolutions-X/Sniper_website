@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/partners/:path*",
-      "destination": "/partners/:path*"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
