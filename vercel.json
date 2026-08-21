@@ -8,14 +8,17 @@
       }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/partners/(.*)",
-      "continue": true
-    },
+      "source": "/((?!partners/).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/partners/:partner",
+      "destination": "/partners/:partner/index.html",
+      "permanent": true
     }
   ]
 }
