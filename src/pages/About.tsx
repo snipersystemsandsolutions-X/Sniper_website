@@ -810,7 +810,7 @@ const About = () => {
           <div className="mb-10 sm:mb-16">
             <FadeUp>
               <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                Trusted by 1800+<br />Happy Customers
+                Trusted by 2600+<br />Happy Customers
               </h2>
             </FadeUp>
             <div className="w-full h-px bg-gray-300" />

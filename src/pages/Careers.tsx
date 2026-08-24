@@ -6,9 +6,11 @@ import {
   Award,
   BookOpen,
   Briefcase,
+  Clock,
   Heart,
   Lightbulb,
   Mail,
+  MapPin,
   Phone,
   Rocket,
   Shield,
@@ -73,7 +75,7 @@ const MarqueeTicker = () => {
     };
   }, []);
 
-  
+
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -186,18 +188,20 @@ const WhyCard = ({ icon: Icon, title, description, index, trigger }: WhyCardProp
 );
 
 // ========================================================
-// JOB CARD
+// JOB CARD  (redesigned: adds Location + Experience fields)
 // ========================================================
 interface JobCardProps {
   title: string;
   department: string;
   type: string;
   location: string;
+  experience: string;
+  urgent?: boolean;
   index: number;
   trigger: boolean;
 }
 
-const JobCard = ({ title, department, type, location, index, trigger }: JobCardProps) => (
+const JobCard = ({ title, department, type, location, experience, urgent, index, trigger }: JobCardProps) => (
   <motion.div
     className="group relative border-b border-gray-200 last:border-0"
     initial={{ opacity: 0, y: 35 }}
@@ -208,7 +212,7 @@ const JobCard = ({ title, department, type, location, index, trigger }: JobCardP
       href="mailto:hr@sniperindia.com"
       className="block py-7 sm:py-9"
     >
-      <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 sm:items-center">
         {/* Index */}
         <div className="sm:col-span-1 hidden sm:block">
           <span className="text-xs font-semibold tracking-[0.2em] text-gray-400 uppercase">
@@ -217,19 +221,33 @@ const JobCard = ({ title, department, type, location, index, trigger }: JobCardP
         </div>
 
         {/* Title + dept */}
-        <div className="sm:col-span-5">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 leading-tight group-hover:text-gray-500 transition-colors duration-300 mb-1.5">
-            {title}
-          </h3>
+        <div className="sm:col-span-4">
+          <div className="flex items-center gap-2.5 mb-1.5 flex-wrap">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 leading-tight group-hover:text-gray-500 transition-colors duration-300">
+              {title}
+            </h3>
+            {urgent && (
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-[0.12em] uppercase bg-red-50 text-red-600 border border-red-200">
+                Urgent
+              </span>
+            )}
+          </div>
           <span className="text-xs font-bold tracking-[0.15em] uppercase text-gray-400">{department}</span>
         </div>
 
-        {/* Tags */}
-        <div className="sm:col-span-4 flex flex-wrap gap-2">
+        {/* Location + Experience + Type */}
+        <div className="sm:col-span-5 flex flex-wrap gap-2">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.1em] uppercase bg-gray-100 text-gray-600 border border-gray-200">
+            <MapPin className="w-3 h-3" />
+            {location}
+          </span>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.1em] uppercase bg-gray-100 text-gray-600 border border-gray-200">
+            <Clock className="w-3 h-3" />
+            {experience}
+          </span>
           <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.12em] uppercase bg-gray-100 text-gray-600 border border-gray-200">
             {type}
           </span>
-
         </div>
 
         {/* Arrow */}
@@ -442,13 +460,16 @@ const whyJoin = [
   },
 ];
 
+// Openings — sourced from the job openings notebook page (location + experience added)
 const openings = [
-  { title: "Sales Executive — IT Solutions", department: "Business Development", type: "Full-time",  },
-  { title: "Inside Sales Representative (ISR)", department: "Business Development", type: "Full-time",  },
-  { title: "Account Manager", department: "Client Success", type: "Full-time",  },
-  { title: "Graphic Designer", department: "Marketing & Creative", type: "Full-time",  },
-  { title: "Customer Support Executive", department: "Operations", type: "Full-time",  },
-  { title: "Accounts Executive", department: "Finance", type: "Full-time",  },
+  { title: "Account Manager", department: "Business Development", type: "Full-time", location: "Bangalore", experience: "1-2 yrs" },
+  { title: "Sales Executive", department: "Business Development", type: "Full-time", location: "Bangalore", experience: "2-5 yrs" },
+  { title: "Inside Sales Representative (ISR)", department: "Client Success", type: "Full-time", location: "Bangalore", experience: "Fresher - 2 yrs" },
+  { title: "Account Manager", department: "Business Development", type: "Full-time", location: "Hyderabad", experience: "1-2 yrs" },
+  { title: "Sales Executive", department: "Business Development", type: "Full-time", location: "Hyderabad", experience: "2-5 yrs", urgent: true },
+  { title: "Cybersecurity & Networking Sales", department: "Business Development", type: "Full-time", location: "Chennai", experience: "2-5 yrs" },
+  { title: "Sales Executive", department: "Business Development", type: "Full-time", location: "Chennai", experience: "2-5 yrs" },
+  { title: "Customer Support Executive", department: "Operations", type: "Full-time", location: "Chennai", experience: "1-2 yrs" },
 ];
 
 const cultureValues = [
@@ -488,9 +509,9 @@ const Careers = () => {
   }, []);
 
   const stats = [
-    { number: "20+", label: "Years in Business" },
-    { number: "6+",  label: "Open Roles" },
-    { number: "1900+", label: "Clients Served" },
+    { number: "17+", label: "Years in Business" },
+    { number: "8",  label: "Open Roles" },
+    { number: "2600+", label: "Clients Served" },
     { number: "100%", label: "Growth Mindset" },
   ];
 
@@ -698,7 +719,7 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* ── Current Openings ── */}
+      {/* ── Current Openings (redesigned: Location + Experience) ── */}
       <section className="bg-white py-16 sm:py-20 px-4 sm:px-6" id="openings">
         <div className="max-w-6xl mx-auto" ref={jobsRef}>
           <motion.div
@@ -714,7 +735,7 @@ const Careers = () => {
 
           <div>
             {openings.map((job, i) => (
-              <JobCard key={job.title} {...job} index={i} trigger={jobsInView} />
+              <JobCard key={`${job.title}-${job.location}-${i}`} {...job} index={i} trigger={jobsInView} />
             ))}
           </div>
 
