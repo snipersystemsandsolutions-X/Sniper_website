@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/partners/apple",
+      "destination": "/partners/apple/index.html",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
