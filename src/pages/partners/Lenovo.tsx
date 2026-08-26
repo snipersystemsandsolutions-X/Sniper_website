@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const Lenovo = () => {
   useEffect(() => {
-    window.location.replace("/partners/lenovo-authorized-platinum-partner-reseller/index.html");
+    window.location.replace("/partners/lenovo/index.html");
   }, []);
 
   return null;
