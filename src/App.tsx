@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AnimatePresence, motion } from "motion/react";
 import React, { Suspense, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { AppleStyleDock } from "./components/AppleStyleDock";
 
 // ── Lazy pages (code-split for faster initial load) ──────────────────────────
 const Index = React.lazy(() => import("./pages/Index"));
@@ -194,6 +195,7 @@ const App = () => {
           <Analytics />
            <SpeedInsights />
             <AnimatedRoutes />
+            <AppleStyleDock />
           </BrowserRouter>
         </TooltipProvider>
       </QueryClientProvider>
