@@ -6,9 +6,10 @@ import { Dock, DockIcon, DockItem, DockLabel } from './ui/dock';
 
 const navigationData = [
   { title: 'Home', icon: Home, href: '/' },
-  { title: 'About Us', icon: Info, href: '/about' },
+
   { title: 'Solutions', icon: Briefcase, href: '/solutions' },
   { title: 'Partners', icon: Handshake, href: '/partners' },
+  { title: 'About Us', icon: Info, href: '/industries' },
   { title: 'Contact', icon: Mail, href: '/contact' },
 ];
 
