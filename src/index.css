@@ -131,7 +131,9 @@ footer,
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Plus Jakarta Sans is the site-wide default — applies to Navbar, Footer,
+       and every page automatically, no per-page wrapper class needed. */
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     /* Prevent horizontal overflow causing layout shift */
     overflow-x: hidden;
   }
@@ -195,6 +197,14 @@ footer,
     /* Force GPU layer for smoother transitions */
     transform: translateZ(0);
   }
+}
+
+/* Tailwind v4 CSS-based theme token — generates the `font-jakarta` utility.
+   Family name corrected to match what Google Fonts actually serves
+   ("Plus Jakarta Sans", not "Jakarta Sans" — that family doesn't exist,
+   which is why the font silently fell back to the default before). */
+@theme {
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
 }
 
 @layer utilities {
