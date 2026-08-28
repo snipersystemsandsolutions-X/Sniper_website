@@ -948,7 +948,7 @@
 
       #slider-container {
         display: flex;
-        width: 1100%; /* 11 slides */
+       width: calc(10 * 100%); /* 10 slides */
         height: 100%;
         transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       }
@@ -966,23 +966,33 @@
       }
     </style>
 
-    <style>
-      #slider-wrapper {
-        width: 100%;
-        overflow: hidden;
-      }
 
-      #slider-container {
-        display: flex;
-        width: calc(9 * 100%);
-        transition: transform 0.5s ease-in-out;
-      }
+<style>
+  #slider-wrapper {
+    overflow: hidden;
+    position: absolute;
+    inset: 0;
+  }
 
-      #slider-container > div {
-        width: calc(100% / 9);
-        flex-shrink: 0;
-      }
-    </style>
+  #slider-container {
+    display: flex;
+    width: calc(10 * 100%); /* 10 slides */
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #slider-container > div {
+    width: calc(100% / 10); /* each slide = 1/10 */
+    flex-shrink: 0;
+    height: 100%;
+  }
+
+  @media (max-width: 640px) {
+    .hero-section-mobile {
+      min-height: 100vh;
+    }
+  }
+</style>
 
     <!-- Hero Section -->
     <section class="relative w-full overflow-hidden bg-white p-10">
@@ -1000,12 +1010,28 @@
             >
               <a href="contact-us.html" rel="noopener noreferrer">
                 <img
-                  src="iPhone_17e__en-IN.jpg"
+                  src="Mac_mini_Web.jpg"
                   alt="SMB Banner"
                   class="w-[100%] h-[220px] sm:h-[300px] lg:h-[420px] object-cover mx-auto"
                 />
               </a>
             </div>
+
+
+            <!-- Slide 1: Image only -->
+            <div
+              class="relative flex items-center justify-center overflow-hidden"
+            >
+              <a href="contact-us.html" rel="noopener noreferrer">
+                <img
+                  src="Mac_Studio_Web.jpg"
+                  alt="SMB Banner"
+                  class="w-[100%] h-[220px] sm:h-[300px] lg:h-[420px] object-cover mx-auto"
+                />
+              </a>
+            </div>
+
+
 
             <!-- Slide 2: Image only -->
             <div
@@ -1559,6 +1585,10 @@
             class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
             data-index="8"
           ></button>
+           <button
+            class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
+            data-index="9"
+          ></button>
         </div>
       </div>
     </section>
@@ -1571,7 +1601,7 @@
         const nextButton = document.getElementById("next-slide");
 
         let currentSlide = 0;
-        const totalSlides = 9;
+        const totalSlides = 10;
 
         // Kill any accidental timers
         const highestId = window.setTimeout(() => {}, 0);
