@@ -6,11 +6,17 @@ import {
   Award,
   BookOpen,
   Briefcase,
+  ChevronDown,
   Clock,
+  Filter,
+  GraduationCap,
+  Globe,
   Heart,
+  LayoutGrid,
   Lightbulb,
   Mail,
   MapPin,
+  MessageCircle,
   Phone,
   Rocket,
   Shield,
@@ -18,10 +24,11 @@ import {
   Target,
   TrendingUp,
   Users,
+  X,
   Zap,
 } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import PageSEO from "@/components/PageSEO";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -60,7 +67,7 @@ const SpringBadge = ({ children }: { children: React.ReactNode }) => (
 const MarqueeTicker = () => {
   const trackRef = useRef<HTMLDivElement>(null);
 
-     // Jotform Chatbot
+  // Jotform Chatbot
   useEffect(() => {
     const script = document.createElement("script");
 
@@ -74,7 +81,6 @@ const MarqueeTicker = () => {
       document.body.removeChild(script);
     };
   }, []);
-
 
   useEffect(() => {
     const track = trackRef.current;
@@ -142,7 +148,7 @@ const SpringStatCard = ({ number, label, index, trigger }: { number: string; lab
     transition={{ duration: 0.7, ease, delay: 0.2 + index * 0.1 }}
     whileHover={{ y: -6 }}
   >
-    <div className="text-4xl sm:text-5xl md:text-6xl font-semibold text-gray-900 mb-2">{number}</div>
+    <div className="text-4xl sm:text-5xl md:text-6xl font-semibold text-[#4d4d4d] mb-2">{number}</div>
     <p className="text-gray-500 text-sm sm:text-base uppercase tracking-wider font-medium">{label}</p>
   </motion.div>
 );
@@ -177,7 +183,7 @@ const WhyCard = ({ icon: Icon, title, description, index, trigger }: WhyCardProp
       >
         <Icon className="w-6 h-6 text-gray-800 group-hover:text-white transition-colors duration-300" />
       </motion.div>
-      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 group-hover:text-white mb-3 transition-colors duration-300">
+      <h3 className="text-lg sm:text-xl font-semibold text-[#4d4d4d] group-hover:text-white mb-3 transition-colors duration-300">
         {title}
       </h3>
       <p className="text-sm sm:text-base text-gray-600 group-hover:text-gray-300 leading-relaxed transition-colors duration-300">
@@ -188,82 +194,542 @@ const WhyCard = ({ icon: Icon, title, description, index, trigger }: WhyCardProp
 );
 
 // ========================================================
-// JOB CARD  (redesigned: adds Location + Experience fields)
+// JOB OPENINGS — DATA MODEL
 // ========================================================
-interface JobCardProps {
+// Everything the "Current Openings" section renders is derived from this
+// array. To add, remove, or update a role, only edit `openings` below —
+// filters, counts, and layout all recompute automatically.
+
+type RequirementType = "education" | "experience" | "communication" | "language";
+
+const REQUIREMENT_ICONS: Record<RequirementType, React.ElementType> = {
+  education: GraduationCap,
+  experience: Briefcase,
+  communication: MessageCircle,
+  language: Globe,
+};
+
+interface JobOpening {
+  id: string;
   title: string;
   department: string;
-  type: string;
-  location: string;
-  experience: string;
+  type: string; // e.g. "Full-time"
+  workMode: string; // e.g. "On-site"
+  location: string; // city
+  region: string; // state
+  experience: string; // display label, e.g. "1-2 years"
+  experienceMin: number; // for sorting/filtering by band
+  postedDaysAgo: number;
   urgent?: boolean;
-  index: number;
-  trigger: boolean;
+  about: string;
+  responsibilities: string[];
+  requirements: { type: RequirementType; text: string }[];
 }
 
-const JobCard = ({ title, department, type, location, experience, urgent, index, trigger }: JobCardProps) => (
-  <motion.div
-    className="group relative border-b border-gray-200 last:border-0"
-    initial={{ opacity: 0, y: 35 }}
-    animate={trigger ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 }}
-    transition={{ duration: 0.65, ease, delay: 0.08 + index * 0.07 }}
-  >
-    <a
-      href="mailto:hr@sniperindia.com"
-      className="block py-7 sm:py-9"
+const openings: JobOpening[] = [
+  {
+    id: "isr-blr",
+    title: "Inside Sales Representative",
+    department: "Client Success",
+    type: "Full-time",
+    workMode: "On-site",
+    location: "Bangalore",
+    region: "Karnataka",
+    experience: "0-2 years",
+    experienceMin: 0,
+    postedDaysAgo: 3,
+    about: "As an Inside Sales Representative, you'll generate and qualify leads for our enterprise sales team, making this a great entry point into B2B IT sales.",
+    responsibilities: [
+      "Make outbound calls and emails to prospective clients",
+      "Qualify inbound leads and schedule discovery calls",
+      "Maintain lead and contact data in the CRM",
+      "Work closely with field sales to hand off qualified opportunities",
+    ],
+    requirements: [
+      { type: "education", text: "Bachelor's degree in any discipline" },
+      { type: "experience", text: "0-2 years of experience; freshers welcome" },
+      { type: "communication", text: "Confident, clear phone and written communication" },
+      { type: "language", text: "Proficiency in English (written & spoken)" },
+    ],
+  },
+  {
+    id: "account-manager-blr",
+    title: "Account Manager",
+    department: "Business Development",
+    type: "Full-time",
+    workMode: "On-site",
+    location: "Bangalore",
+    region: "Karnataka",
+    experience: "1-2 years",
+    experienceMin: 1,
+    postedDaysAgo: 3,
+    about: "We're looking for a relationship-driven Account Manager to own a portfolio of enterprise clients and grow revenue within it. You'll be the main point of contact for renewals, upsells, and day-to-day account health.",
+    responsibilities: [
+      "Manage and grow a dedicated portfolio of enterprise accounts",
+      "Track renewals, upsell opportunities, and account health",
+      "Coordinate with pre-sales and delivery teams on client asks",
+      "Report on account performance and pipeline to leadership",
+    ],
+    requirements: [
+      { type: "education", text: "Bachelor's degree in any discipline" },
+      { type: "experience", text: "1-2 years of experience in account management or B2B sales" },
+      { type: "communication", text: "Excellent communication and relationship-building skills" },
+      { type: "language", text: "Proficiency in English (written & spoken)" },
+    ],
+  },
+  {
+    id: "sales-executive-blr",
+    title: "Sales Executive",
+    department: "Business Development",
+    type: "Full-time",
+    workMode: "On-site",
+    location: "Bangalore",
+    region: "Karnataka",
+    experience: "2-5 years",
+    experienceMin: 2,
+    postedDaysAgo: 3,
+    about: "We're hiring a Sales Executive to drive new business across enterprise IT infrastructure, cloud, and workplace solutions. You'll own the full sales cycle from prospecting through close.",
+    responsibilities: [
+      "Prospect and qualify new enterprise accounts",
+      "Run product and solution demos for prospective clients",
+      "Negotiate and close deals against a quarterly target",
+      "Maintain accurate pipeline records in the CRM",
+    ],
+    requirements: [
+      { type: "education", text: "Bachelor's degree in any discipline" },
+      { type: "experience", text: "2-5 years of experience in B2B or IT solutions sales" },
+      { type: "communication", text: "Strong negotiation and presentation skills" },
+      { type: "language", text: "Proficiency in English (written & spoken)" },
+    ],
+  },
+  
+  {
+    id: "account-manager-hyd",
+    title: "Account Manager",
+    department: "Business Development",
+    type: "Full-time",
+    workMode: "On-site",
+    location: "Hyderabad",
+    region: "Telangana",
+    experience: "1-2 years",
+    experienceMin: 1,
+    postedDaysAgo: 3,
+    about: "We're looking for a relationship-driven Account Manager to own a portfolio of enterprise clients in Hyderabad and grow revenue within it.",
+    responsibilities: [
+      "Manage and grow a dedicated portfolio of enterprise accounts",
+      "Track renewals, upsell opportunities, and account health",
+      "Coordinate with pre-sales and delivery teams on client asks",
+      "Report on account performance and pipeline to leadership",
+    ],
+    requirements: [
+      { type: "education", text: "Bachelor's degree in any discipline" },
+      { type: "experience", text: "1-2 years of experience in account management or B2B sales" },
+      { type: "communication", text: "Excellent communication and relationship-building skills" },
+      { type: "language", text: "Proficiency in English (written & spoken)" },
+    ],
+  },
+  {
+    id: "sales-executive-hyd",
+    title: "Sales Executive",
+    department: "Business Development",
+    type: "Full-time",
+    workMode: "On-site",
+    location: "Hyderabad",
+    region: "Telangana",
+    experience: "2-5 years",
+    experienceMin: 2,
+    postedDaysAgo: 3,
+    urgent: true,
+    about: "We're urgently hiring a Sales Executive to drive new business across enterprise IT infrastructure, cloud, and workplace solutions in Hyderabad.",
+    responsibilities: [
+      "Prospect and qualify new enterprise accounts",
+      "Run product and solution demos for prospective clients",
+      "Negotiate and close deals against a quarterly target",
+      "Maintain accurate pipeline records in the CRM",
+    ],
+    requirements: [
+      { type: "education", text: "Bachelor's degree in any discipline" },
+      { type: "experience", text: "2-5 years of experience in B2B or IT solutions sales" },
+      { type: "communication", text: "Strong negotiation and presentation skills" },
+      { type: "language", text: "Proficiency in English (written & spoken)" },
+    ],
+  },
+  {
+    id: "cybersecurity-networking-chn",
+    title: "Cybersecurity & Networking Sales",
+    department: "Business Development",
+    type: "Full-time",
+    workMode: "On-site",
+    location: "Chennai",
+    region: "Tamil Nadu",
+    experience: "2-5 years",
+    experienceMin: 2,
+    postedDaysAgo: 3,
+    about: "We're looking for a specialist to sell cybersecurity and networking solutions to enterprise clients, working closely with our OEM partners.",
+    responsibilities: [
+      "Sell cybersecurity and networking solutions to enterprise accounts",
+      "Partner with OEMs on joint pitches and technical positioning",
+      "Build and manage a pipeline of qualified opportunities",
+      "Stay current on the cybersecurity and networking landscape",
+    ],
+    requirements: [
+      { type: "education", text: "Bachelor's degree in any discipline" },
+      { type: "experience", text: "2-5 years of experience in IT security or networking sales" },
+      { type: "communication", text: "Excellent communication and problem-solving skills" },
+      { type: "language", text: "Proficiency in English (written & spoken)" },
+    ],
+  },
+  {
+    id: "sales-executive-chn",
+    title: "Sales Executive",
+    department: "Business Development",
+    type: "Full-time",
+    workMode: "On-site",
+    location: "Chennai",
+    region: "Tamil Nadu",
+    experience: "2-5 years",
+    experienceMin: 2,
+    postedDaysAgo: 3,
+    about: "We're hiring a Sales Executive to drive new business across enterprise IT infrastructure, cloud, and workplace solutions in Chennai.",
+    responsibilities: [
+      "Prospect and qualify new enterprise accounts",
+      "Run product and solution demos for prospective clients",
+      "Negotiate and close deals against a quarterly target",
+      "Maintain accurate pipeline records in the CRM",
+    ],
+    requirements: [
+      { type: "education", text: "Bachelor's degree in any discipline" },
+      { type: "experience", text: "2-5 years of experience in B2B or IT solutions sales" },
+      { type: "communication", text: "Strong negotiation and presentation skills" },
+      { type: "language", text: "Proficiency in English (written & spoken)" },
+    ],
+  },
+  {
+    id: "customer-support-chn",
+    title: "Customer Support Executive",
+    department: "Operations",
+    type: "Full-time",
+    workMode: "On-site",
+    location: "Chennai",
+    region: "Tamil Nadu",
+    experience: "2-5 years",
+    experienceMin: 2,
+    postedDaysAgo: 3,
+    about: "We are looking for a proactive and empathetic Customer Support executive to join our team. You will be the first point of contact for our customers, ensuring a smooth and satisfying experience across all touchpoints.",
+    responsibilities: [
+      "Respond to customer enquires in a timely and professional manner",
+      "Troubleshoot and resolve customer issues",
+      "Escalate complex issues to the appropriate team",
+      "Maintain accurate records of interactions and resolutions",
+    ],
+    requirements: [
+      { type: "education", text: "Bachelor's degree in any discipline" },
+      { type: "experience", text: "2-5 years of experience in customer support or related field" },
+      { type: "communication", text: "Excellent communication and problem-solving skills" },
+      { type: "language", text: "Proficiency in English (written & spoken)" },
+    ],
+  },
+];
+
+// ========================================================
+// FILTER DROPDOWN (native select, styled to match brief)
+// ========================================================
+interface FilterDropdownProps {
+  icon: React.ElementType;
+  label: string;
+  value: string;
+  options: string[];
+  onChange: (value: string) => void;
+}
+
+const FilterDropdown = ({ icon: Icon, label, value, options, onChange }: FilterDropdownProps) => (
+  <div className="relative flex-1 min-w-[180px]">
+    <Icon className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      aria-label={label}
+      className="w-full appearance-none rounded-xl border border-gray-200 bg-white pl-11 pr-10 py-3.5 text-base font-medium text-gray-700 hover:border-gray-400 focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900/10 transition-colors duration-200 cursor-pointer"
     >
-      <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 sm:items-center">
-        {/* Index */}
-        <div className="sm:col-span-1 hidden sm:block">
-          <span className="text-xs font-semibold tracking-[0.2em] text-gray-400 uppercase">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-        </div>
+      <option value="">{label}</option>
+      {options.map((opt) => (
+        <option key={opt} value={opt}>{opt}</option>
+      ))}
+    </select>
+    <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+  </div>
+);
 
-        {/* Title + dept */}
-        <div className="sm:col-span-4">
-          <div className="flex items-center gap-2.5 mb-1.5 flex-wrap">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 leading-tight group-hover:text-gray-500 transition-colors duration-300">
-              {title}
-            </h3>
-            {urgent && (
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-[0.12em] uppercase bg-red-50 text-red-600 border border-red-200">
-                Urgent
-              </span>
-            )}
-          </div>
-          <span className="text-xs font-bold tracking-[0.15em] uppercase text-gray-400">{department}</span>
-        </div>
+// ========================================================
+// REQUIREMENT ROW
+// ========================================================
+const RequirementRow = ({ type, text }: { type: RequirementType; text: string }) => {
+  const Icon = REQUIREMENT_ICONS[type];
+  return (
+    <div className="flex items-start gap-3">
+      <Icon className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+      <span className="text-sm text-gray-600 leading-relaxed">{text}</span>
+    </div>
+  );
+};
 
-        {/* Location + Experience + Type */}
-        <div className="sm:col-span-5 flex flex-wrap gap-2">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.1em] uppercase bg-gray-100 text-gray-600 border border-gray-200">
-            <MapPin className="w-3 h-3" />
-            {location}
-          </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.1em] uppercase bg-gray-100 text-gray-600 border border-gray-200">
-            <Clock className="w-3 h-3" />
-            {experience}
-          </span>
-          <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.12em] uppercase bg-gray-100 text-gray-600 border border-gray-200">
-            {type}
-          </span>
-        </div>
+// ========================================================
+// JOB CARD (expandable, accordion-style)
+// ========================================================
+interface JobCardProps {
+  job: JobOpening;
+  index: number;
+  trigger: boolean;
+  isOpen: boolean;
+  onToggle: () => void;
+}
 
-        {/* Arrow */}
-        <div className="sm:col-span-2 flex justify-end">
-          <motion.div
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-300 flex items-center justify-center group-hover:border-gray-900 group-hover:bg-gray-900 transition-all duration-300"
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 300, damping: 18 }}
-          >
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-white -rotate-45 transition-colors duration-300" />
-          </motion.div>
+const JobCard = ({ job, index, trigger, isOpen, onToggle }: JobCardProps) => (
+  <motion.div
+    className="border-b border-gray-200 last:border-0"
+    initial={{ opacity: 0, y: 24 }}
+    animate={trigger ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+    transition={{ duration: 0.5, ease, delay: 0.05 + index * 0.05 }}
+  >
+    <div className="py-8 sm:py-9 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
+      {/* Title + department + posted meta */}
+      <div className="flex-1 min-w-0">
+        <span className="text-xs font-bold tracking-[0.1em] uppercase text-gray-400">
+          {job.department}
+        </span>
+        <div className="flex items-center gap-2.5 mt-1.5 mb-2 flex-wrap">
+          <h3 className="text-3xl sm:text-4xl font-semibold text-[#4d4d4d] leading-tight">
+            {job.title}
+          </h3>
+          {job.urgent && (
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-medium tracking-[0.12em] uppercase bg-red-600 text-white">
+              Urgent
+            </span>
+          )}
         </div>
+        <div className="flex items-center gap-2 text-sm text-gray-400">
+  <Clock className="w-3.5 h-3.5 flex-shrink-0" />
+  <span>{job.type}</span>
+  <span className="text-gray-300">&bull;</span>
+  <span>Posted</span>
+  <span>{job.postedDaysAgo} days ago</span>
+</div>
       </div>
-    </a>
+
+      {/* Experience */}
+      <div className="sm:w-32 sm:flex-shrink-0">
+        <p className="text-base font-medium text-gray-800">{job.experience}</p>
+        <p className="text-sm text-gray-400 mt-0.5">Experience</p>
+      </div>
+
+      {/* Location */}
+      <div className="sm:w-44 sm:flex-shrink-0">
+        <p className="text-base font-medium text-gray-800">{job.location}, {job.region}</p>
+        <p className="text-sm text-gray-400 mt-0.5">{job.workMode}</p>
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center gap-3 sm:flex-shrink-0">
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-expanded={isOpen}
+          aria-label={isOpen ? "Collapse role details" : "Expand role details"}
+          className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-gray-900 hover:text-gray-900 transition-colors duration-200 flex-shrink-0"
+        >
+          <motion.span
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.25, ease }}
+            className="flex"
+          >
+            <ChevronDown className="w-4 h-4" />
+          </motion.span>
+        </button>
+        <a
+          href={`mailto:hr@sniperindia.com?subject=${encodeURIComponent(`Application: ${job.title} (${job.location})`)}`}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-red-600 text-white text-sm font-semibold hover:bg-red-700 transition-colors duration-300 whitespace-nowrap"
+        >
+          Apply now
+          <ArrowRight className="w-3.5 h-3.5 -rotate-45" />
+        </a>
+      </div>
+    </div>
+
+    {/* Expanded detail */}
+    <AnimatePresence initial={false}>
+      {isOpen && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.35, ease }}
+          className="overflow-hidden"
+        >
+          <div className="pb-9 sm:pb-11 pt-1 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
+            <div>
+              <h4 className="text-sm font-bold text-[#4d4d4d] mb-3">About the role</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">{job.about}</p>
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-[#4d4d4d] mb-3">Key Responsibilities</h4>
+              <ul className="space-y-2">
+                {job.responsibilities.map((r, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600 leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-300 mt-1.5 flex-shrink-0" />
+                    {r}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-[#4d4d4d] mb-3">Basic Requirements</h4>
+              <div className="space-y-3">
+                {job.requirements.map((req, i) => (
+                  <RequirementRow key={i} {...req} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   </motion.div>
 );
+
+// ========================================================
+// CURRENT OPENINGS SECTION (filters + accordion list)
+// ========================================================
+const CurrentOpeningsSection = ({ trigger, sectionRef }: { trigger: boolean; sectionRef: React.RefObject<HTMLDivElement> }) => {
+  const [locationFilter, setLocationFilter] = useState("");
+  const [departmentFilter, setDepartmentFilter] = useState("");
+  const [experienceFilter, setExperienceFilter] = useState("");
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  // Filter options are derived from the data itself, so adding a new
+  // location/department/experience band to `openings` updates the
+  // dropdowns automatically — no extra config needed.
+  const locations = useMemo(
+    () => Array.from(new Set(openings.map((j) => j.location))).sort(),
+    []
+  );
+  const departments = useMemo(
+    () => Array.from(new Set(openings.map((j) => j.department))).sort(),
+    []
+  );
+  const experienceBands = useMemo(
+    () => Array.from(new Set(openings.map((j) => j.experience))),
+    []
+  );
+
+  const filteredJobs = useMemo(
+    () =>
+      openings.filter(
+        (job) =>
+          (!locationFilter || job.location === locationFilter) &&
+          (!departmentFilter || job.department === departmentFilter) &&
+          (!experienceFilter || job.experience === experienceFilter)
+      ),
+      
+    [locationFilter, departmentFilter, experienceFilter]
+  );
+
+  const hasActiveFilters = Boolean(locationFilter || departmentFilter || experienceFilter);
+
+  const clearFilters = () => {
+    setLocationFilter("");
+    setDepartmentFilter("");
+    setExperienceFilter("");
+  };
+
+  return (
+    <section className="bg-white py-20 sm:py-28 px-6 lg:px-8" id="openings">
+      <div className="max-w-7xl mx-auto" ref={sectionRef}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={trigger ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease }}
+        >
+          <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-red-600 border-b-2 border-red-600 pb-1.5 mb-6">
+            Current Openings
+          </span>
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-semibold text-[#4d4d4d] mb-5 leading-[1.1]">
+            Start doing work<br />that <span className="text-red-600">matters</span>
+          </h2>
+          <p className="text-base sm:text-lg text-gray-500 max-w-2xl mb-10 sm:mb-12 leading-relaxed">
+            Enterprise IT Infrastructure, Cloud, Cybersecurity, AI &amp; Digital Workplace Solutions for Modern GCC
+          </p>
+        </motion.div>
+
+        {/* Filters */}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={trigger ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease, delay: 0.1 }}
+        >
+          <FilterDropdown icon={MapPin} label="All Locations" value={locationFilter} options={locations} onChange={setLocationFilter} />
+          <FilterDropdown icon={LayoutGrid} label="All Departments" value={departmentFilter} options={departments} onChange={setDepartmentFilter} />
+          <FilterDropdown icon={Mail} label="All Experience" value={experienceFilter} options={experienceBands} onChange={setExperienceFilter} />
+          <button
+            type="button"
+            onClick={clearFilters}
+            disabled={!hasActiveFilters}
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-200 px-5 py-3.5 text-base font-medium text-gray-600 hover:border-gray-400 hover:text-gray-900 disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 whitespace-nowrap flex-shrink-0"
+          >
+            {hasActiveFilters ? <X className="w-4 h-4" /> : <Filter className="w-4 h-4" />}
+            Clear Filter
+          </button>
+        </motion.div>
+
+        {/* Count */}
+        <motion.p
+          className="text-sm font-medium tracking-[0.15em] uppercase text-gray-400 mb-2"
+          initial={{ opacity: 0 }}
+          animate={trigger ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, ease, delay: 0.15 }}
+        >
+          <span className="text-red-600">{filteredJobs.length}</span> Open Position{filteredJobs.length === 1 ? "" : "s"}
+        </motion.p>
+
+        {/* Job list */}
+        {filteredJobs.length > 0 ? (
+          <div className="border-t border-gray-100 mt-4">
+            {filteredJobs.map((job, i) => (
+              <JobCard
+                key={job.id}
+                job={job}
+                index={i}
+                trigger={trigger}
+                isOpen={openId === job.id}
+                onToggle={() => setOpenId(openId === job.id ? null : job.id)}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="py-16 text-center border-t border-gray-100">
+            <p className="text-gray-500 mb-4">No open roles match those filters right now.</p>
+            <button
+              type="button"
+              onClick={clearFilters}
+              className="text-sm font-semibold text-[#4d4d4d] border-b-2 border-gray-900 pb-0.5"
+            >
+              Clear filters and see all roles
+            </button>
+          </div>
+        )}
+
+        <motion.p
+          className="text-sm text-gray-400 mt-8 text-center"
+          initial={{ opacity: 0 }}
+          animate={trigger ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, ease, delay: 0.6 }}
+        >
+          Don't see the right fit? Email us anyway — we're always looking for exceptional people.
+        </motion.p>
+      </div>
+    </section>
+  );
+};
 
 // ========================================================
 // VALUE PILL (culture section)
@@ -332,7 +798,7 @@ const ApplySection = () => {
   return (
     <motion.section
       ref={ref}
-      className="relative bg-black text-white py-16 sm:py-20 px-4 sm:px-6 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12 overflow-hidden"
+      className="relative bg-black text-white py-16 sm:py-20 px-6 lg:px-8 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12 overflow-hidden"
       initial={{ opacity: 0, y: 60 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.9, ease }}
@@ -343,7 +809,7 @@ const ApplySection = () => {
         <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-cyan-500/10 rounded-full blur-2xl" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
           {/* Left: headline */}
           <motion.div
@@ -460,18 +926,6 @@ const whyJoin = [
   },
 ];
 
-// Openings — sourced from the job openings notebook page (location + experience added)
-const openings = [
-  { title: "Account Manager", department: "Business Development", type: "Full-time", location: "Bangalore", experience: "1-2 yrs" },
-  { title: "Sales Executive", department: "Business Development", type: "Full-time", location: "Bangalore", experience: "2-5 yrs" },
-  { title: "Inside Sales Representative (ISR)", department: "Client Success", type: "Full-time", location: "Bangalore", experience: "Fresher - 2 yrs" },
-  { title: "Account Manager", department: "Business Development", type: "Full-time", location: "Hyderabad", experience: "1-2 yrs" },
-  { title: "Sales Executive", department: "Business Development", type: "Full-time", location: "Hyderabad", experience: "2-5 yrs", urgent: true },
-  { title: "Cybersecurity & Networking Sales", department: "Business Development", type: "Full-time", location: "Chennai", experience: "2-5 yrs" },
-  { title: "Sales Executive", department: "Business Development", type: "Full-time", location: "Chennai", experience: "2-5 yrs" },
-  { title: "Customer Support Executive", department: "Operations", type: "Full-time", location: "Chennai", experience: "1-2 yrs" },
-];
-
 const cultureValues = [
   { icon: Lightbulb, label: "Innovation" },
   { icon: Shield, label: "Integrity" },
@@ -510,7 +964,7 @@ const Careers = () => {
 
   const stats = [
     { number: "17+", label: "Years in Business" },
-    { number: "8",  label: "Open Roles" },
+    { number: String(openings.length), label: "Open Roles" },
     { number: "2600+", label: "Clients Served" },
     { number: "100%", label: "Growth Mindset" },
   ];
@@ -520,7 +974,7 @@ const Careers = () => {
   const heroRef    = useRef(null);
   const statsRef   = useRef(null);
   const whyRef     = useRef(null);
-  const jobsRef    = useRef(null);
+  const jobsRef    = useRef<HTMLDivElement>(null);
   const cultureRef = useRef(null);
   const featRef    = useRef(null);
 
@@ -562,13 +1016,13 @@ const Careers = () => {
       {showWhiteScreen && <WhiteScreenTransition onComplete={() => setShowWhiteScreen(false)} />}
 
       {/* ── Hero ── */}
-      <section className="relative bg-white pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
+      <section className="relative bg-white pt-24 sm:pt-32 pb-16 sm:pb-20 px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-white opacity-60" />
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16" ref={heroRef}>
             <h1
               ref={gsapHeroRef}
-              className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight font-sans"
+              className="text-4xl sm:text-6xl md:text-7xl font-semibold text-[#4d4d4d] mb-4 sm:mb-6 leading-tight font-sans"
             >
               {["Build Your", "Career", "With Us"].map((word, i) => (
                 <span
@@ -607,7 +1061,7 @@ const Careers = () => {
           </div>
 
           {/* Hero image */}
-          <div className="max-w-6xl mx-auto pt-8 sm:pt-12">
+          <div className="max-w-7xl mx-auto pt-8 sm:pt-12">
             <motion.div
               className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden h-60 sm:h-96 md:h-[500px] lg:h-[580px]"
               initial={{ opacity: 0, y: 40, scale: 0.98 }}
@@ -641,8 +1095,8 @@ const Careers = () => {
       <MarqueeTicker />
 
       {/* ── Stats Strip ── */}
-      <section className="bg-white py-10 sm:py-16 px-4 sm:px-6 border-b border-gray-100">
-        <div className="max-w-6xl mx-auto" ref={statsRef}>
+      <section className="bg-white py-10 sm:py-16 px-6 lg:px-8 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto" ref={statsRef}>
           <div className="grid grid-cols-2 sm:grid-cols-4">
             {stats.map((s, i) => (
               <SpringStatCard key={i} {...s} index={i} trigger={statsInView} />
@@ -652,11 +1106,11 @@ const Careers = () => {
       </section>
 
       {/* ── Intro Copy ── */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="bg-white py-16 sm:py-20 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-start">
             <motion.h2
-              className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 leading-tight"
+              className="text-4xl sm:text-6xl md:text-7xl font-semibold text-[#4d4d4d] leading-tight"
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -687,7 +1141,7 @@ const Careers = () => {
               >
                 <a
                   href="#openings"
-                  className="inline-flex items-center gap-3 text-gray-900 font-semibold text-base sm:text-lg border-b-2 border-gray-900 pb-0.5 hover:gap-5 transition-all duration-300"
+                  className="inline-flex items-center gap-3 text-[#4d4d4d] font-semibold text-base sm:text-lg border-b-2 border-gray-900 pb-0.5 hover:gap-5 transition-all duration-300"
                 >
                   View open roles <ArrowRight className="w-4 h-4" />
                 </a>
@@ -698,8 +1152,8 @@ const Careers = () => {
       </section>
 
       {/* ── Why Join ── */}
-      <section className="bg-gray-50/60 py-16 sm:py-20 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto" ref={whyRef}>
+      <section className="bg-gray-50/60 py-16 sm:py-20 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto" ref={whyRef}>
           <motion.div
             className="flex items-center gap-4 mb-10 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -719,47 +1173,19 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* ── Current Openings (redesigned: Location + Experience) ── */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6" id="openings">
-        <div className="max-w-6xl mx-auto" ref={jobsRef}>
-          <motion.div
-            className="flex items-center gap-4 mb-10 sm:mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={jobsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease }}
-          >
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">Current Openings</span>
-            <div className="flex-1 h-px bg-gray-200" />
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">{openings.length} Positions</span>
-          </motion.div>
-
-          <div>
-            {openings.map((job, i) => (
-              <JobCard key={`${job.title}-${job.location}-${i}`} {...job} index={i} trigger={jobsInView} />
-            ))}
-          </div>
-
-          <motion.p
-            className="text-sm text-gray-400 mt-8 text-center"
-            initial={{ opacity: 0 }}
-            animate={jobsInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, ease, delay: 0.6 }}
-          >
-            Don't see the right fit? Email us anyway — we're always looking for exceptional people.
-          </motion.p>
-        </div>
-      </section>
+      {/* ── Current Openings (filters + accordion, scalable off `openings` data) ── */}
+      <CurrentOpeningsSection trigger={jobsInView} sectionRef={jobsRef} />
 
       {/* ── Life at Sniper — dark card ── */}
       <motion.section
-        className="bg-black text-white py-16 sm:py-20 px-4 sm:px-6 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12"
+        className="bg-black text-white py-16 sm:py-20 px-6 lg:px-8 rounded-[2rem] sm:rounded-[4rem] mx-3 sm:mx-6 my-8 sm:my-12"
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.9, ease }}
         ref={featRef}
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
             <div>
               <motion.p
@@ -835,7 +1261,7 @@ const Careers = () => {
         {showScrollTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
+            className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center text-[#4d4d4d] hover:bg-gray-900 hover:text-white transition-all duration-300 z-50 shadow-lg"
             aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0.6, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
