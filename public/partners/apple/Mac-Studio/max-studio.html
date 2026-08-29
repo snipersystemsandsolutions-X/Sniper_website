@@ -25,261 +25,59 @@
   <!-- In <head> -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-    <title>Mac Studio — Pre Book</title>
+    <title>Mac Studio — Sniper Systems</title>
     <link rel="stylesheet" href="./header/animate.css" />
     <link rel="stylesheet" href="./header/apple-style.css" />
     <link rel="stylesheet" href="./header/main.css" />
     <link rel="stylesheet" href="./header/style.css" />
     <style>
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        background: #fff;
-      }
-      body {
-        overflow-x: hidden;
-      }
-      .psd-page {
-        position: relative;
-        width: 100%;
-        max-width: 2880px;
-        margin: 0 auto;
-        line-height: 0;
-      }
-      .psd-page > img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
 
-      /* PSD Buy buttons converted to "Pre Book".
-       Coordinates are based on the original 2880px-wide PSD. */
-      .prebook {
-        position: absolute;
-        width: 150px;
-        height: 72px;
-        border: 2px solid #1d1d1f;
-        border-radius: 36px;
-        background: #fff;
-        color: #1d1d1f;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 28px;
-        font-weight: 400;
-        line-height: 68px;
-        text-align: center;
-        text-decoration: none;
-        padding: 0;
-        cursor: pointer;
-        transform: translateZ(0);
-      }
-      .prebook:hover {
-        background: #f5f5f7;
-      }
 
-      /* Four Buy buttons found in the PSD */
-      .prebook.hero {
-        left: 47.0903%;
-        top: 9.0405%;
-      }
-      .prebook.compare-1 {
-        left: 30.2847%;
-        top: 74.4145%;
-      }
-      .prebook.compare-2 {
-        left: 47.0903%;
-        top: 74.4145%;
-      }
-      .prebook.compare-3 {
-        left: 63.8958%;
-        top: 74.4145%;
-      }
+  .hero {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+     margin: 0 auto;      /* ✅ add this line — centers the box itself */
+    overflow: hidden; /* hides everything below the crop */
+  }
 
-      @media (max-width: 600px) {
-        .prebook {
-          border-width: 3px;
-          font-size: 14px;
-          line-height: 34px;
-        }
-      }
-    </style>
+  .hero img {
+    width: 100%;
+    display: block;
+  }
 
-    <style>
-      * {
-        box-sizing: border-box;
-      }
+  /* Cover patch: hides the original "Buy" pill */
+  .cover {
+    position: absolute;
+    /* percentages calculated from the original 1211 x 800 crop */
+    left: 46.5%;
+    top: 88.5%;
+    width: 9%;
+    height: 6.5%;
+    background: #ffffff;
+  }
 
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        background: #fff;
-      }
+  /* New Pre-Order button, placed in the same spot */
+  .preorder-btn {
+    position: absolute;
+    left: 50%;
+    top: 9.3%;
+    transform: translate(-50%, -50%);
+    padding: 7px 20px;
+    border-radius: 999px;
+    border: 1px solid #1d1d1f;
+    background: #fff;
+    color: #1d1d1f;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
 
-      body {
-        overflow-x: hidden;
-      }
-
-      .psd-page {
-        position: relative;
-        width: 100%;
-        max-width: 2880px;
-        margin: 0 auto;
-        line-height: 0;
-      }
-
-      .psd-page > img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-
-      /* =========================
-     PRE BOOK BUTTON
-  ========================= */
-
-      .your-message {
-        position: absolute;
-        left: 35.0903%;
-        top: 53rem;
-        background-color: #ffffff;
-        width: 500px;
-        color: #1d1d1f;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 20px;
-        line-height: 28px;
-        text-align: center;
-      }
-
-      .prebook {
-        position: absolute;
-        width: 105px;
-        height: 42px;
-
-        border: 1px solid #1d1d1f;
-        border-radius: 22px;
-
-        background: #fff;
-        color: #1d1d1f;
-
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-
-        line-height: 40px;
-        text-align: center;
-        text-decoration: none;
-
-        padding: 0;
-        cursor: pointer;
-
-        transform: translateZ(0);
-      }
-
-      .prebook:hover {
-        background: #f5f5f7;
-      }
-
-      /* =========================
-     HERO PRE BOOK
-  ========================= */
-
-      .prebook.hero {
-        left: 47.0903%;
-        top: 9.0405%;
-      }
-
-      /* Availability text below Hero button */
-
-      .availability {
-        position: absolute;
-        left: 44.0903%;
-        top: calc(9.0405% + 52px);
-        width: 200px;
-        color: #1d1d1f;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 18px;
-        text-align: center;
-      }
-
-      /* =========================
-     OTHER PRE BOOK BUTTONS
-  ========================= */
-
-      .prebook.compare-1 {
-        left: 30.2847%;
-        top: 74.4145%;
-      }
-
-      .prebook.compare-2 {
-        left: 47.0903%;
-        top: 74.4145%;
-      }
-
-      .prebook.compare-3 {
-        left: 63.8958%;
-        top: 74.4145%;
-      }
-
-      /* =========================
-     REMOVE BLUE LINKS FROM PSD
-  ========================= */
-
-      .remove-blue-links {
-        position: absolute;
-        background: #fff;
-        z-index: 5;
-        pointer-events: none;
-      }
-
-      /* Shop Apple accessories */
-      .remove-accessories-link {
-        left: 270px;
-        top: 86.3%;
-        width: 241px;
-        height: 38px;
-        background-color: #f5f5f7;
-      }
-
-      /* Learn more about AppleCare */
-      .remove-applecare-link {
-        left: 290px;
-        top: 90.8%;
-        width: 300px;
-        height: 50px;
-        background-color: #f5f5f7;
-      }
-
-      /* =========================
-     MOBILE
-  ========================= */
-
-      @media (max-width: 600px) {
-        .prebook {
-          width: 72px;
-          height: 30px;
-
-          border-width: 1px;
-          border-radius: 16px;
-
-          font-size: 11px;
-          line-height: 28px;
-        }
-
-        .availability {
-          width: 100px;
-
-          font-size: 9px;
-          line-height: 13px;
-
-          top: calc(9.0405% + 38px);
-        }
-      }
+  .preorder-btn:hover {
+    background: #1d1d1f;
+    color: #fff;
+  }
     </style>
     <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -329,11 +127,302 @@
       >
     </main> -->
 
-    <main class="psd-page" aria-label="Mac Studio product page">
-      <img
-        src="https://teamcomputers.com/apple/Mac-Studio-M5-Max/assets/mac-studio-page.png"
-        alt="Mac Studio product page design"
-      />
+
+
+
+
+ <div class="hero">
+
+
+  <img
+  src="https://teamcomputers.com/apple/Mac-Studio-M5-Max/assets/mac-studio-page.png"
+  alt="Mac Studio hero section"
+  draggable="false"
+  oncontextmenu="return false;"
+  style="pointer-events: none; user-select: none;"
+/>
+    <div class="cover"></div>
+  <a href="https://sniperindia.com/contact" class="preorder-btn">Pre-Order</a>
+
+
+  </div>
+
+
+
+
+
+<footer class="bg-gradient-to-b from-gray-900 to-black text-light py-16 relative overflow-hidden">
+  <!-- Fixed Shape -->
+  <div class="absolute inset-0 opacity-5">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="diagonalHatch" width="10" height="10" patternTransform="rotate(45 0 0)"
+          patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="10" style="stroke:white; stroke-width:1" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#diagonalHatch)" />
+    </svg>
+  </div>
+  <!-- Fixed Shape Map Overlay -->
+  <div class="fixed-shape opacity-10 absolute inset-0">
+    <img src="https://sniperindia.com/wp-content/themes/tanda/img/map.svg" alt="Shape">
+  </div>
+
+  <div class="container max-w-6xl mx-auto px-4 relative z-10">
+    <div class="f-items default-padding">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="item">
+          <div class="f-item about">
+            <img src="img/logo.png" alt="Logo"
+              class="mb-4 max-w-[120px] sm:max-w-[150px] md:max-w-[180px] lg:max-w-[200px] w-full">
+            <p class="text-gray-300 mb-6">
+              Sniper Systems and Solutions Pvt. Ltd. is your dynamic IT Solutions Provider and Authorized Reseller for
+              top brands like Apple, Autodesk, Adobe, Trimble, Unity, and more
+            </p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="f-item link">
+            <h4 class="widget-title text-white text-xl font-bold mb-4">Quick Links</h4>
+            <ul class="menu">
+              <li class="menu-item mb-2">
+                <a href="apple-care-plus.html" class="text-gray-300 hover:text-red-500 transition-all">Apple Care
+                  +</a>
+              </li>
+              <li class="menu-item mb-2">
+                <a href="apple-care-plus-enterprise.html" class="text-gray-300 hover:text-red-500 transition-all">Apple
+                  Care for Enterprise</a>
+              </li>
+              <li class="menu-item mb-2">
+                <a href="start-up-program.html" class="text-gray-300 hover:text-red-500 transition-all">Mac for
+                  Startups</a>
+              </li>
+              <li class="menu-item mb-2">
+                <a href="switcher-program.html" class="text-gray-300 hover:text-red-500 transition-all">Switch to
+                  Mac</a>
+              </li>
+              <li class="menu-item mb-2">
+                <a href="developer-program.html" class="text-gray-300 hover:text-red-500 transition-all">Mac for
+                  Developers</a>
+              </li>
+              <li class="menu-item mb-2">
+                <a href="refresh-program.html" class="text-gray-300 hover:text-red-500 transition-all">Refresh
+                  Program</a>
+              </li>
+              <li class="menu-item mb-2">
+                <a href="https://sniperindia.com/privacy-policy/" class="text-gray-300 hover:text-red-500 transition-all">
+                  Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="item">
+          <div class="f-item link">
+            <h4 class="widget-title text-white text-xl font-bold mb-4">Products</h4>
+
+            <!-- iPhone Section -->
+
+          <ul class="menu mb-4">
+              <li class="menu-item mb-1">
+                <a href="iphone 17e/index.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 17e
+                  </a>
+              </li>
+              <li class="menu-item mb-1">
+                <a href="ipone17_pro.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 17 Pro
+                  </a>
+              </li>
+              <li class="menu-item mb-1">
+                <a href="iphone17_air.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 17 air</a>
+              </li>
+              <li class="menu-item mb-1">
+                <a href="iphone17.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 17</a>
+              </li >
+               <li class="menu-item mb-1">
+                <a href="iPhone-16/index.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 16</a>
+              </li>
+               <li class="menu-item mb-1">
+                <a href="iPhone-16e/index.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 16e</a>
+              </li>
+               <li class="menu-item mb-1">
+                <a href="Macbook_Air_M5/index.html" class="text-gray-300 hover:text-red-500 transition-all">Macbook Air M5</a>
+              </li>
+               <li class="menu-item mb-1">
+                <a href="Macbook_Pro_M5/index.html" class="text-gray-300 hover:text-red-500 transition-all">Macbook Pro M5</a>
+              </li>
+               <li class="menu-item mb-1">
+                <a href="ipad_pro_m5.html" class="text-gray-300 hover:text-red-500 transition-all">ipad Pro M5</a>
+              </li>
+              <li class="menu-item mb-1">
+                <a href="ipad air m4/index.html" class="text-gray-300 hover:text-red-500 transition-all">ipad Air M4</a>
+              </li>
+
+            </ul>
+
+            <!-- Mac Section -->
+
+
+
+            <!-- iPad Section -->
+
+
+          </div>
+        </div>
+
+
+        <div class="item">
+          <div class="f-item">
+            <h4 class="widget-title text-white text-xl font-bold mb-4">Contact Info</h4>
+            <div class="address">
+              <ul>
+                <li class="flex items-start mb-4">
+                  <div class="icon mr-3 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div class="info text-gray-300">
+                   Chennai | Bangalore | Hyderabad | Gurugram  | Coimbatore | Kochi | Vijayawada
+                  </div>
+                </li>
+                <li class="flex items-start mb-4">
+                  <div class="icon mr-3 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div class="info text-gray-300">
+                    <a href="mailto:enquiry@sniperindia.com"
+                      class="hover:text-red-500 transition-all">enquiry@sniperindia.com</a>
+                  </div>
+                </li>
+
+                <li class="flex items-start mb-4">
+                  <div class="icon mr-3 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
+                  <a href="tel:+918939301100" class="info text-gray-300 hover:text-red-500">
+                    +91 8939301100
+                  </a>
+                </li>
+
+
+
+
+
+
+              </ul>
+            </div>
+            <!-- Social Media Icons -->
+            <div class="social-icons mt-6 flex space-x-4">
+              <a href="https://www.facebook.com/snipersystemsandsolution"
+                class="h-10 w-10 rounded-full bg-gray-800 hover:bg-red-600 flex items-center justify-center transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-facebook"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@Snipersystemsandsolutions" target="_blank" rel="noopener"
+                class="h-10 w-10 rounded-full bg-gray-800 hover:bg-red-600 flex items-center justify-center transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-youtube"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M8.051 1.999h-.002C3.649 1.999.5 5.15.5 8.5s3.149 6.501 7.549 6.501c4.4 0 7.549-3.151 7.549-6.501s-3.149-6.501-7.547-6.501zM6.404 10.804V6.196l4.094 2.304-4.094 2.304z" />
+                </svg>
+              </a>
+
+
+              <a href="https://www.linkedin.com/company/sniper-systems-solutions-pvt-ltd/"
+                class="h-10 w-10 rounded-full bg-gray-800 hover:bg-red-600 flex items-center justify-center transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-linkedin"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/sniperindia/"
+                class="h-10 w-10 rounded-full bg-gray-800 hover:bg-red-600 flex items-center justify-center transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-instagram"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Start Footer Bottom -->
+  <div class="footer-bottom border-t border-gray-800 mt-8 pt-8">
+    <div class="container max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="text-gray-400">
+          <p>© Copyright 2025. Sniper Systems & Solutions Pvt Ltd</p>
+        </div>
+
+
+        <!-- HTML -->
+        <div class="md:text-right link relative z-10">
+          <ul class="flex md:justify-end flex-wrap">
+            <li class="mr-6">
+              <a href="https://sniperindia.com/apple/"
+                class="inline-block text-gray-400 hover:text-red-500 transition-all">Home</a>
+            </li>
+            <li class="mr-6">
+              <a href="https://sniperindia.com/about-us/"
+                class="inline-block text-gray-400 hover:text-red-500 transition-all">About</a>
+            </li>
+            <li>
+              <a href="https://sniperindia.com/contact/"
+                class="inline-block text-gray-400 hover:text-red-500 transition-all">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+
+        <style>
+          /* add to your CSS */
+          .link {
+            position: relative;
+            z-index: 50;
+          }
+
+          .link a {
+            pointer-events: auto;
+          }
+        </style>
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- End Footer Bottom -->
+</footer>
+
+
+
+
+
+
+
+
 
       <!-- Hero Pre Book -->
 
@@ -388,10 +477,7 @@
             flex-wrap: nowrap;
           "
         >
-          <!-- LEFT CONTENT -->
 
-
-          <!-- RIGHT FORM -->
 
 
           </div>
@@ -815,7 +901,7 @@
     </script>
     <!--END > SCRIPTS:BASE -->
 
-  
+
 
 
     <!--javascript-->
@@ -854,270 +940,7 @@
 
 
 
-<footer class="bg-gradient-to-b from-gray-900 to-black text-light py-16 relative overflow-hidden">
-  <!-- Fixed Shape -->
-  <div class="absolute inset-0 opacity-5">
-    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="diagonalHatch" width="10" height="10" patternTransform="rotate(45 0 0)"
-          patternUnits="userSpaceOnUse">
-          <line x1="0" y1="0" x2="0" y2="10" style="stroke:white; stroke-width:1" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#diagonalHatch)" />
-    </svg>
-  </div>
-  <!-- Fixed Shape Map Overlay -->
-  <div class="fixed-shape opacity-10 absolute inset-0">
-    <img src="https://sniperindia.com/wp-content/themes/tanda/img/map.svg" alt="Shape">
-  </div>
 
-  <div class="container max-w-6xl mx-auto px-4 relative z-10">
-    <div class="f-items default-padding">
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="item">
-          <div class="f-item about">
-            <img src="img/logo.png" alt="Logo"
-              class="mb-4 max-w-[120px] sm:max-w-[150px] md:max-w-[180px] lg:max-w-[200px] w-full">
-            <p class="text-gray-300 mb-6">
-              Sniper Systems and Solutions Pvt. Ltd. is your dynamic IT Solutions Provider and Authorized Reseller for
-              top brands like Apple, Autodesk, Adobe, Trimble, Unity, and more
-            </p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="f-item link">
-            <h4 class="widget-title text-white text-xl font-bold mb-4">Quick Links</h4>
-            <ul class="menu">
-              <li class="menu-item mb-2">
-                <a href="apple-care-plus.html" class="text-gray-300 hover:text-red-500 transition-all">Apple Care
-                  +</a>
-              </li>
-              <li class="menu-item mb-2">
-                <a href="apple-care-plus-enterprise.html" class="text-gray-300 hover:text-red-500 transition-all">Apple
-                  Care for Enterprise</a>
-              </li>
-              <li class="menu-item mb-2">
-                <a href="start-up-program.html" class="text-gray-300 hover:text-red-500 transition-all">Mac for
-                  Startups</a>
-              </li>
-              <li class="menu-item mb-2">
-                <a href="switcher-program.html" class="text-gray-300 hover:text-red-500 transition-all">Switch to
-                  Mac</a>
-              </li>
-              <li class="menu-item mb-2">
-                <a href="developer-program.html" class="text-gray-300 hover:text-red-500 transition-all">Mac for
-                  Developers</a>
-              </li>
-              <li class="menu-item mb-2">
-                <a href="refresh-program.html" class="text-gray-300 hover:text-red-500 transition-all">Refresh
-                  Program</a>
-              </li>
-              <li class="menu-item mb-2">
-                <a href="https://sniperindia.com/privacy-policy/" class="text-gray-300 hover:text-red-500 transition-all">
-                  Privacy Policy</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-
-        <div class="item">
-          <div class="f-item link">
-            <h4 class="widget-title text-white text-xl font-bold mb-4">Products</h4>
-
-            <!-- iPhone Section -->
-
-          <ul class="menu mb-4">
-              <li class="menu-item mb-1">
-                <a href="iphone 17e/index.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 17e
-                  </a>
-              </li>
-              <li class="menu-item mb-1">
-                <a href="ipone17_pro.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 17 Pro
-                  </a>
-              </li>
-              <li class="menu-item mb-1">
-                <a href="iphone17_air.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 17 air</a>
-              </li>
-              <li class="menu-item mb-1">
-                <a href="iphone17.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 17</a>
-              </li >
-               <li class="menu-item mb-1">
-                <a href="iPhone-16/index.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 16</a>
-              </li>
-               <li class="menu-item mb-1">
-                <a href="iPhone-16e/index.html" class="text-gray-300 hover:text-red-500 transition-all">iPhone 16e</a>
-              </li>
-               <li class="menu-item mb-1">
-                <a href="Macbook_Air_M5/index.html" class="text-gray-300 hover:text-red-500 transition-all">Macbook Air M5</a>
-              </li>
-               <li class="menu-item mb-1">
-                <a href="Macbook_Pro_M5/index.html" class="text-gray-300 hover:text-red-500 transition-all">Macbook Pro M5</a>
-              </li>
-               <li class="menu-item mb-1">
-                <a href="ipad_pro_m5.html" class="text-gray-300 hover:text-red-500 transition-all">ipad Pro M5</a>
-              </li>
-              <li class="menu-item mb-1">
-                <a href="ipad air m4/index.html" class="text-gray-300 hover:text-red-500 transition-all">ipad Air M4</a>
-              </li>
-
-            </ul>
-
-            <!-- Mac Section -->
-
-
-
-            <!-- iPad Section -->
-
-
-          </div>
-        </div>
-
-
-        <div class="item">
-          <div class="f-item">
-            <h4 class="widget-title text-white text-xl font-bold mb-4">Contact Info</h4>
-            <div class="address">
-              <ul>
-                <li class="flex items-start mb-4">
-                  <div class="icon mr-3 mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div class="info text-gray-300">
-                   Chennai | Bangalore | Hyderabad | Gurugram  | Coimbatore | Kochi | Vijayawada
-                  </div>
-                </li>
-                <li class="flex items-start mb-4">
-                  <div class="icon mr-3 mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div class="info text-gray-300">
-                    <a href="mailto:enquiry@sniperindia.com"
-                      class="hover:text-red-500 transition-all">enquiry@sniperindia.com</a>
-                  </div>
-                </li>
-
-                <li class="flex items-start mb-4">
-                  <div class="icon mr-3 mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <a href="tel:+918939301100" class="info text-gray-300 hover:text-red-500">
-                    +91 8939301100
-                  </a>
-                </li>
-
-
-
-
-
-
-              </ul>
-            </div>
-            <!-- Social Media Icons -->
-            <div class="social-icons mt-6 flex space-x-4">
-              <a href="https://www.facebook.com/snipersystemsandsolution"
-                class="h-10 w-10 rounded-full bg-gray-800 hover:bg-red-600 flex items-center justify-center transition-all duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-facebook"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-                </svg>
-              </a>
-              <a href="https://www.youtube.com/@Snipersystemsandsolutions" target="_blank" rel="noopener"
-                class="h-10 w-10 rounded-full bg-gray-800 hover:bg-red-600 flex items-center justify-center transition-all duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-youtube"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M8.051 1.999h-.002C3.649 1.999.5 5.15.5 8.5s3.149 6.501 7.549 6.501c4.4 0 7.549-3.151 7.549-6.501s-3.149-6.501-7.547-6.501zM6.404 10.804V6.196l4.094 2.304-4.094 2.304z" />
-                </svg>
-              </a>
-
-
-              <a href="https://www.linkedin.com/company/sniper-systems-solutions-pvt-ltd/"
-                class="h-10 w-10 rounded-full bg-gray-800 hover:bg-red-600 flex items-center justify-center transition-all duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-linkedin"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
-                </svg>
-              </a>
-              <a href="https://www.instagram.com/sniperindia/"
-                class="h-10 w-10 rounded-full bg-gray-800 hover:bg-red-600 flex items-center justify-center transition-all duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-instagram"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Start Footer Bottom -->
-  <div class="footer-bottom border-t border-gray-800 mt-8 pt-8">
-    <div class="container max-w-6xl mx-auto px-4">
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="text-gray-400">
-          <p>© Copyright 2025. Sniper Systems & Solutions Pvt Ltd</p>
-        </div>
-
-
-        <!-- HTML -->
-        <div class="md:text-right link relative z-10">
-          <ul class="flex md:justify-end flex-wrap">
-            <li class="mr-6">
-              <a href="https://sniperindia.com/apple/"
-                class="inline-block text-gray-400 hover:text-red-500 transition-all">Home</a>
-            </li>
-            <li class="mr-6">
-              <a href="https://sniperindia.com/about-us/"
-                class="inline-block text-gray-400 hover:text-red-500 transition-all">About</a>
-            </li>
-            <li>
-              <a href="https://sniperindia.com/contact/"
-                class="inline-block text-gray-400 hover:text-red-500 transition-all">Contact</a>
-            </li>
-          </ul>
-        </div>
-
-
-        <style>
-          /* add to your CSS */
-          .link {
-            position: relative;
-            z-index: 50;
-          }
-
-          .link a {
-            pointer-events: auto;
-          }
-        </style>
-
-
-
-      </div>
-    </div>
-  </div>
-  <!-- End Footer Bottom -->
-</footer>
 
 <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2025/11/05/04/20251105042851-RWSTTT6V.js" defer></script>
