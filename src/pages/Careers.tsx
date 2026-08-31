@@ -494,7 +494,7 @@ const JobCard = ({ job, index, trigger, isOpen, onToggle }: JobCardProps) => (
     <div className="py-8 sm:py-9 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
       {/* Title + department + posted meta */}
       <div className="flex-1 min-w-0">
-        <span className="text-xs font-bold tracking-[0.1em] uppercase text-gray-400">
+        <span className="text-xs font-medium tracking-[0.1em] uppercase text-gray-400">
           {job.department}
         </span>
         <div className="flex items-center gap-2.5 mt-1.5 mb-2 flex-wrap">
@@ -652,11 +652,11 @@ const CurrentOpeningsSection = ({ trigger, sectionRef }: { trigger: boolean; sec
           <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-red-600 border-b-2 border-red-600 pb-1.5 mb-6">
             Current Openings
           </span>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-semibold text-[#4d4d4d] mb-5 leading-[1.1]">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tighter text-[#4d4d4d] mb-5 leading-[1.1]">
             Start doing work<br />that <span className="text-red-600">matters</span>
           </h2>
           <p className="text-base sm:text-lg text-gray-500 max-w-2xl mb-10 sm:mb-12 leading-relaxed">
-            Enterprise IT Infrastructure, Cloud, Cybersecurity, AI &amp; Digital Workplace Solutions for Modern GCC
+            Join a team where your ideas, skills, and ambition can make a real impact. Explore opportunities to grow, contribute, and do work that matters.
           </p>
         </motion.div>
 
@@ -1022,7 +1022,7 @@ const Careers = () => {
           <div className="text-center mb-12 sm:mb-16" ref={heroRef}>
             <h1
               ref={gsapHeroRef}
-              className="text-4xl sm:text-6xl md:text-7xl font-semibold text-[#4d4d4d] mb-4 sm:mb-6 leading-tight font-sans"
+              className="text-4xl sm:text-6xl md:text-7xl font-semibold text-[#4d4d4d] mb-4 sm:mb-6 leading-tight tracking-tighter"
             >
               {["Build Your", "Career", "With Us"].map((word, i) => (
                 <span
