@@ -1,6 +1,7 @@
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { motion, LayoutGroup } from "framer-motion";
 import myImage from "../assets/v2.svg";
 
 // ─── Unique SVG Icons ──────────────────────────────────────────────────────────
@@ -285,7 +286,7 @@ const IconBadge = ({ iconKey }) => (
     alignItems: "center",
     justifyContent: "center",
     flexShrink: 0,
-    color: "#d1d5db",
+    color: "#dbd1d1",
     boxShadow: "0 1px 3px rgba(0,0,0,0.4)",
   }}>
     {SvgIcons[iconKey]}
@@ -299,7 +300,7 @@ const CategoryLabel = ({ children }) => (
     letterSpacing: "0.1em",
     fontSize: "9.5px",
     fontWeight: 700,
-    color: "#6b7280",
+    color: "#73737b5d",
     marginBottom: "10px",
     textTransform: "uppercase",
     paddingLeft: "4px",
@@ -359,19 +360,74 @@ const ColDivider = () => (
   <div style={{ width: "1px", background: "linear-gradient(to bottom, transparent, #2a2a2a 20%, #2a2a2a 80%, transparent)", flexShrink: 0, alignSelf: "stretch" }} />
 );
 
+// ─── Notch Wing Components ─────────────────────────────────────────────────────
+const NotchLeftWing = () => (
+  <svg
+    aria-hidden="true"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    shapeRendering="geometricPrecision"
+    className="pointer-events-none absolute right-full size-2.5 md:size-4 overflow-visible select-none text-zinc-950 transition-colors duration-200 top-0"
+  >
+    <path d="M 0 0 C 11.046 0 20 8.954 20 20 H 21 V -1 H 0 Z" fill="currentColor" />
+  </svg>
+);
+
+const NotchRightWing = () => (
+  <svg
+    aria-hidden="true"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    shapeRendering="geometricPrecision"
+    className="pointer-events-none absolute left-full size-2.5 md:size-4 overflow-visible select-none text-zinc-950 transition-colors duration-200 top-0"
+  >
+    <path d="M 20 0 C 8.954 0 0 8.954 0 20 H -1 V -1 H 20 Z" fill="currentColor" />
+  </svg>
+);
+
 // ─── Nav Link / Trigger ────────────────────────────────────────────────────────
-const NavLink = ({ href, children, onClick }) => (
-  <Link to={href} onClick={onClick} style={{ fontFamily: "'DM Sans', sans-serif" }}
-    className="px-4 py-2 text-[13.5px] font-medium tracking-wide text-gray-300 hover:text-white transition-colors duration-200">
-    {children}
+const NavLink = ({ href, children, onClick, isActive = false, ...props }) => (
+  <Link to={href} onClick={onClick} {...props} style={{ fontFamily: "'DM Sans', sans-serif" }}
+    className={`relative flex h-9 cursor-pointer items-center gap-2 rounded-full px-3.5 text-sm font-medium transition-colors outline-none select-none
+      focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-1
+      ${isActive 
+        ? 'font-semibold text-zinc-50' 
+        : 'text-zinc-400 hover:text-zinc-200'
+      }`}>
+    {isActive && (
+      <motion.span
+        layoutId="nav-active-pill"
+        className="absolute inset-0 rounded-full bg-zinc-800"
+        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+      />
+    )}
+    <span className="relative z-10 leading-none">{children}</span>
   </Link>
 );
 
 const DropdownTrigger = ({ label, isOpen, onToggle }) => (
   <button onClick={onToggle} style={{ fontFamily: "'DM Sans', sans-serif" }}
-    className={`flex items-center gap-1.5 px-4 py-2 text-[13.5px] font-medium tracking-wide transition-colors duration-200 ${isOpen ? "text-white" : "text-gray-300 hover:text-white"}`}>
-    <span>{label}</span>
-    <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+    className={`relative flex h-9 cursor-pointer items-center gap-1.5 rounded-full px-3.5 text-sm font-medium transition-colors outline-none select-none
+      focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-1
+      ${isOpen 
+        ? 'font-semibold text-zinc-50' 
+        : 'text-zinc-400 hover:text-zinc-200'
+      }`}>
+    {isOpen && (
+      <motion.span
+        layoutId="nav-active-pill"
+        className="absolute inset-0 rounded-full bg-zinc-800"
+        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+      />
+    )}
+    <span className="relative z-10 flex items-center gap-1.5">
+      <span className="leading-none">{label}</span>
+      <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+    </span>
   </button>
 );
 
@@ -506,7 +562,7 @@ export const Navbar = () => {
 
       {/* ── Main Nav ── */}
       <nav ref={navRef}
-        className={`sticky top-0 z-50 transition-all duration-300 border-b border-gray-900 ${scrolled ? "bg-black shadow-2xl" : "bg-black"}`}>
+        className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-black shadow-2xl" : "bg-black"}`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
 
@@ -519,17 +575,23 @@ export const Navbar = () => {
               />
             </Link>
 
-            {/* Desktop Links */}
-            <div className="hidden lg:flex items-center gap-0.5">
-              <NavLink href="/" onClick={close}>Home</NavLink>
-              <NavLink href="/about" onClick={close}>About Us</NavLink>
-              <DropdownTrigger label="Solutions" isOpen={openDropdown === "solutions"} onToggle={() => toggle("solutions")} />
-              <DropdownTrigger label="Partners" isOpen={openDropdown === "partners"} onToggle={() => toggle("partners")} />
-              <DropdownTrigger label="Industries" isOpen={openDropdown === "industries"} onToggle={() => toggle("industries")} />
-              <a href="https://blog.sniperindia.com/" style={{ fontFamily: "'DM Sans', sans-serif" }}
-                className="px-4 py-2 text-[13.5px] font-medium tracking-wide text-gray-300 hover:text-white transition-colors duration-200"
-                target="_blank" rel="noopener noreferrer">Blog</a>
-              <NavLink href="/contact" onClick={close}>Contact Us</NavLink>
+            {/* Desktop Notch Navigation */}
+            <div className="hidden lg:flex items-center">
+              <div className="relative flex items-center bg-zinc-950 px-4 h-11 rounded-b-[24px]">
+                <NotchLeftWing />
+                <LayoutGroup>
+                  <div className="flex items-center gap-1">
+                    <NavLink href="/" onClick={close}>Home</NavLink>
+                    <NavLink href="/about" onClick={close}>About Us</NavLink>
+                    <DropdownTrigger label="Solutions" isOpen={openDropdown === "solutions"} onToggle={() => toggle("solutions")} />
+                    <DropdownTrigger label="Partners" isOpen={openDropdown === "partners"} onToggle={() => toggle("partners")} />
+                    <DropdownTrigger label="Industries" isOpen={openDropdown === "industries"} onToggle={() => toggle("industries")} />
+                    <NavLink href="https://blog.sniperindia.com/" onClick={close} target="_blank" rel="noopener noreferrer">Blog</NavLink>
+                    <NavLink href="/contact" onClick={close}>Contact Us</NavLink>
+                  </div>
+                </LayoutGroup>
+                <NotchRightWing />
+              </div>
             </div>
 
             {/* Tablet Contact */}
