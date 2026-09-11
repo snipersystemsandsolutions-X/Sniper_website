@@ -258,7 +258,7 @@ function loadHeader() {
                                         <ul class="dropdown-menu submenu">
                                         <li><a class="dropdown-item" href="https://sniperindia.com/partners/apple/iphone%2017e/index.html">iPhone 17e</a></li>
                                             <li><a class="dropdown-item" href="ipone17_pro.html">iPhone 17 Pro</a></li>
-                                            <li><a class="dropdown-item" href="iphone17_air.html">iPhone 17 Air</a></li>
+                                            <li><a class="dropdown-item" href="iphone17_air.html">iphone Air</a></li>
                                             <li><a class="dropdown-item" href="https://sniperindia.com/partners/apple/iphone17.html">iPhone 17</a></li>
                                             <li><a class="dropdown-item" href="iPhone-16/index.html">iPhone 16</a></li>
                                             <li><a class="dropdown-item" href="iPhone-16e/index.html">iPhone 16e</a></li>
@@ -356,7 +356,7 @@ function loadHeader() {
                                     <ul class="dropdown-menu">
                                      <li><a class="dropdown-item" href="iphone 17e/index.html">iPhone 17e</a></li>
                                         <li><a class="dropdown-item" href="ipone17_pro.html">iPhone 17 Pro</a></li>
-                                            <li><a class="dropdown-item" href="iphone17_air.html">iPhone 17 Air</a></li>
+                                            <li><a class="dropdown-item" href="iphone17_air.html">iphone Air</a></li>
                                             <li><a class="dropdown-item" href="iPhone-16e/index.html">iPhone 17</a></li>
                                             <li><a class="dropdown-item" href="iPhone-16/index.html">iPhone 16</a></li>
                                             <li><a class="dropdown-item" href="iPhone-16e/index.html">iPhone 16e</a></li>

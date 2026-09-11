@@ -1,8 +1,8 @@
 // header-loader.js - Fixed version with working mobile submenus
 
 function loadHeader() {
-    // Header CSS Styles
-    const headerCSS = `
+  // Header CSS Styles
+  const headerCSS = `
         <style>
         /* General Body Style */
         body {
@@ -220,8 +220,8 @@ function loadHeader() {
         </style>
     `;
 
-    // Header HTML
-    const headerHTML = `
+  // Header HTML
+  const headerHTML = `
         <!-- HEADER START -->
         <header>
             <nav class="navbar navbar-expand-lg navbar-light w-100">
@@ -258,7 +258,7 @@ function loadHeader() {
                                         <ul class="dropdown-menu submenu">
                                         <li><a class="dropdown-item" href="iphone 17e/index.html">iPhone 17e</a></li>
                                             <li><a class="dropdown-item" href="ipone17_pro.html">iPhone 17 Pro</a></li>
-                                            <li><a class="dropdown-item" href="iphone17_air.html">iPhone 17 Air</a></li>
+                                            <li><a class="dropdown-item" href="iphone17_air.html">iphone Air</a></li>
                                             <li><a class="dropdown-item" href="iphone17.html">iPhone 17</a></li>
                                             <li><a class="dropdown-item" href="iPhone-16/index.html">iPhone 16</a></li>
                                             <li><a class="dropdown-item" href="iPhone-16e/index.html">iPhone 16e</a></li>
@@ -356,7 +356,7 @@ function loadHeader() {
                                     <ul class="dropdown-menu">
                                      <li><a class="dropdown-item" href="iphone 17e/index.html">iPhone 17e</a></li>
                                         <li><a class="dropdown-item" href="ipone17_pro.html">iPhone 17 Pro</a></li>
-                                            <li><a class="dropdown-item" href="iphone17_air.html">iPhone 17 Air</a></li>
+                                            <li><a class="dropdown-item" href="iphone17_air.html">iphone Air</a></li>
                                             <li><a class="dropdown-item" href="iPhone-16e/index.html">iPhone 17</a></li>
                                             <li><a class="dropdown-item" href="iPhone-16/index.html">iPhone 16</a></li>
                                             <li><a class="dropdown-item" href="iPhone-16e/index.html">iPhone 16e</a></li>
@@ -439,58 +439,63 @@ function loadHeader() {
         <!-- HEADER END -->
     `;
 
-    // Insert CSS into head
-    document.head.insertAdjacentHTML('beforeend', headerCSS);
+  // Insert CSS into head
+  document.head.insertAdjacentHTML("beforeend", headerCSS);
 
-    // Insert Header HTML at the beginning of body
-    document.body.insertAdjacentHTML('afterbegin', headerHTML);
+  // Insert Header HTML at the beginning of body
+  document.body.insertAdjacentHTML("afterbegin", headerHTML);
 
-    // CRITICAL: Initialize mobile menu functionality AFTER HTML is inserted
-    initializeMobileMenu();
+  // CRITICAL: Initialize mobile menu functionality AFTER HTML is inserted
+  initializeMobileMenu();
 }
 
 // Mobile menu functionality - FIXED VERSION
 function initializeMobileMenu() {
-    // Wait a bit to ensure HTML is fully rendered
-    setTimeout(function () {
-        document.querySelectorAll('.offcanvas-body .dropdown-toggle').forEach(function (dropdownToggle) {
-            dropdownToggle.addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
+  // Wait a bit to ensure HTML is fully rendered
+  setTimeout(function () {
+    document
+      .querySelectorAll(".offcanvas-body .dropdown-toggle")
+      .forEach(function (dropdownToggle) {
+        dropdownToggle.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
 
-                // The submenu to be toggled
-                const submenu = this.nextElementSibling;
+          // The submenu to be toggled
+          const submenu = this.nextElementSibling;
 
-                // The direct parent <li> of the clicked toggle
-                const parentLi = this.parentElement;
+          // The direct parent <li> of the clicked toggle
+          const parentLi = this.parentElement;
 
-                // The parent <ul> containing the parent <li>
-                const parentMenu = parentLi.parentElement;
+          // The parent <ul> containing the parent <li>
+          const parentMenu = parentLi.parentElement;
 
-                // Find all sibling <li> elements within the same parent <ul>
-                // and close their submenus if they are not the one being opened.
-                Array.from(parentMenu.children).forEach(function (li) {
-                    if (li !== parentLi && li.classList.contains('dropdown')) {
-                        const openSubmenu = li.querySelector('.dropdown-menu.show');
-                        if (openSubmenu) {
-                            openSubmenu.classList.remove('show');
-                            const toggle = li.querySelector('.dropdown-toggle');
-                            if (toggle) {
-                                toggle.setAttribute('aria-expanded', 'false');
-                            }
-                        }
-                    }
-                });
-
-                // Finally, toggle the current submenu
-                if (submenu && submenu.classList.contains('dropdown-menu')) {
-                    submenu.classList.toggle('show');
-                    this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
+          // Find all sibling <li> elements within the same parent <ul>
+          // and close their submenus if they are not the one being opened.
+          Array.from(parentMenu.children).forEach(function (li) {
+            if (li !== parentLi && li.classList.contains("dropdown")) {
+              const openSubmenu = li.querySelector(".dropdown-menu.show");
+              if (openSubmenu) {
+                openSubmenu.classList.remove("show");
+                const toggle = li.querySelector(".dropdown-toggle");
+                if (toggle) {
+                  toggle.setAttribute("aria-expanded", "false");
                 }
-            });
+              }
+            }
+          });
+
+          // Finally, toggle the current submenu
+          if (submenu && submenu.classList.contains("dropdown-menu")) {
+            submenu.classList.toggle("show");
+            this.setAttribute(
+              "aria-expanded",
+              this.getAttribute("aria-expanded") === "false" ? "true" : "false",
+            );
+          }
         });
-    }, 100); // Small delay to ensure DOM is ready
+      });
+  }, 100); // Small delay to ensure DOM is ready
 }
 
 // Load header when page loads
-document.addEventListener('DOMContentLoaded', loadHeader);
+document.addEventListener("DOMContentLoaded", loadHeader);
