@@ -256,6 +256,10 @@ function loadHeader() {
                                     <li class="has-submenu">
                                         <a class="dropdown-item" href="#">iPhone</a>
                                         <ul class="dropdown-menu submenu">
+
+                                         <li><a class="dropdown-item" href="iPhone_18_Pro/index.html">iPhone 18 Pro</a></li>
+
+
                                         <li><a class="dropdown-item" href="iphone 17e/index.html">iPhone 17e</a></li>
                                             <li><a class="dropdown-item" href="ipone17_pro.html">iPhone 17 Pro</a></li>
                                             <li><a class="dropdown-item" href="iphone17_air.html">iPhone 17 Air</a></li>
