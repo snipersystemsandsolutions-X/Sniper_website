@@ -300,7 +300,7 @@ const CategoryLabel = ({ children }) => (
     letterSpacing: "0.1em",
     fontSize: "9.5px",
     fontWeight: 700,
-    color: "#73737b5d",
+    color: "#fcfbfb",
     marginBottom: "10px",
     textTransform: "uppercase",
     paddingLeft: "4px",
@@ -394,8 +394,8 @@ const NavLink = ({ href, children, onClick, isActive = false, ...props }) => (
   <Link to={href} onClick={onClick} {...props} style={{ fontFamily: "'DM Sans', sans-serif" }}
     className={`relative flex h-9 cursor-pointer items-center gap-2 rounded-full px-3.5 text-sm font-medium transition-colors outline-none select-none
       focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-1
-      ${isActive 
-        ? 'font-semibold text-zinc-50' 
+      ${isActive
+        ? 'font-semibold text-zinc-50'
         : 'text-zinc-400 hover:text-zinc-200'
       }`}>
     {isActive && (
@@ -413,8 +413,8 @@ const DropdownTrigger = ({ label, isOpen, onToggle }) => (
   <button onClick={onToggle} style={{ fontFamily: "'DM Sans', sans-serif" }}
     className={`relative flex h-9 cursor-pointer items-center gap-1.5 rounded-full px-3.5 text-sm font-medium transition-colors outline-none select-none
       focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-1
-      ${isOpen 
-        ? 'font-semibold text-zinc-50' 
+      ${isOpen
+        ? 'font-semibold text-zinc-50'
         : 'text-zinc-400 hover:text-zinc-200'
       }`}>
     {isOpen && (

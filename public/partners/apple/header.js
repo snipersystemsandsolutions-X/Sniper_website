@@ -257,6 +257,9 @@ function loadHeader() {
                                         <a class="dropdown-item" href="#">iPhone</a>
                                         <ul class="dropdown-menu submenu">
 
+
+                                        <li><a class="dropdown-item" href="iPhone_Duo/index.html">iPhone Duo</a></li>
+
                                          <li><a class="dropdown-item" href="iPhone_18_Pro/index.html">iPhone 18 Pro</a></li>
 
 
@@ -358,6 +361,7 @@ function loadHeader() {
                                         iPhone
                                     </a>
                                     <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="iPhone_Duo/index.html">iPhone Duo</a></li>
                                      <li><a class="dropdown-item" href="iphone 17e/index.html">iPhone 17e</a></li>
                                         <li><a class="dropdown-item" href="ipone17_pro.html">iPhone 17 Pro</a></li>
                                             <li><a class="dropdown-item" href="iphone17_air.html">iphone Air</a></li>

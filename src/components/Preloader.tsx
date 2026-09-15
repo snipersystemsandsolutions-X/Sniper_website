@@ -8,7 +8,7 @@ interface PreloaderProps {
 
 const loaderCss = `
   .sniper-loader {
-    --duration: 3s;
+    --duration: 4s;
     --primary: rgba(0, 0, 0, 1);
     --primary-light: #333333;
     --primary-rgba: rgba(0, 0, 0, 0);
@@ -35,7 +35,7 @@ const loaderCss = `
     bottom: -11px;
     background: #ffffff;
     transform: translateZ(200px) rotate(var(--r));
-    animation: sniper-mask var(--duration) linear forwards infinite;
+    animation: sniper-mask var(--duration) linear forwards;
   }
 
   .sniper-loader:after {
@@ -59,7 +59,7 @@ const loaderCss = `
     background: var(--primary);
     background: linear-gradient(45deg, var(--primary) 0%, var(--primary) 50%, var(--primary-light) 50%, var(--primary-light) 100%);
     transform-style: preserve-3d;
-    animation: sniper-ground var(--duration) linear forwards infinite;
+    animation: sniper-ground var(--duration) linear forwards;
   }
 
   .sniper-loader .ground div:before,
@@ -76,7 +76,7 @@ const loaderCss = `
     background: linear-gradient(var(--primary), var(--primary-rgba));
     position: absolute;
     transform: rotateX(var(--rx)) rotateY(var(--ry)) translate(var(--x), var(--y)) translateZ(var(--z));
-    animation: sniper-ground-shine var(--duration) linear forwards infinite;
+    animation: sniper-ground-shine var(--duration) linear forwards;
   }
 
   .sniper-loader .ground div:after {
@@ -91,7 +91,7 @@ const loaderCss = `
     --x: 0;
     --y: 0;
     position: absolute;
-    animation: var(--duration) linear forwards infinite;
+    animation: var(--duration) linear forwards;
     transform: translate(var(--x), var(--y));
   }
 
@@ -101,7 +101,7 @@ const loaderCss = `
     height: 48px;
     position: relative;
     transform-style: preserve-3d;
-    animation: var(--duration) ease forwards infinite;
+    animation: var(--duration) ease forwards;
     transform: rotateY(-47deg) rotateX(-15deg) rotateZ(15deg) scale(0);
   }
 
