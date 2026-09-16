@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout";
 import SEO from "@/components/SEO";
 import OrbitingCirclesGlobe from "@/components/ui/orbiting-circles-02";
+import { FloatingPaths } from "@/components/ui/background-paths";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, CheckCircle, ChevronDown, ChevronLeft, ChevronRight, Clock, Lightbulb, Shield, Zap } from "lucide-react";
@@ -15,6 +16,8 @@ import { StarfieldBackground } from "@/components/StarfieldBackground";
 
 
 gsap.registerPlugin(ScrollTrigger);
+
+
 
 
 
@@ -437,7 +440,12 @@ const NewTopHeroSection = () => {
       {/* ─── DESKTOP LAYOUT (>= lg) ─────────────────────────────────────── */}
       <div ref={outerRef} className="hidden lg:block" style={{ height: "calc(100vh + 600px)" }}>
         <div style={{ position: "sticky", top: 1, height: "100vh", overflow: "hidden", display: "flex", alignItems: "center", backgroundColor: "#ffffff" }}>
-          <div style={{ width: "100%", maxWidth: "1380px", margin: "0 auto", padding: "0 28px" }}>
+          {/* Background paths at bottom left */}
+          <div className="absolute bottom-0 left-0 w-1/2 h-1/2 pointer-events-none opacity-40">
+            <FloatingPaths position={1} />
+            <FloatingPaths position={-1} />
+          </div>
+          <div style={{ width: "100%", maxWidth: "1380px", margin: "0 auto", padding: "0 28px", position: "relative", zIndex: 1 }}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <div className="order-2 lg:order-1 space-y-6">
                 <div className="mb-10 sm:mb-12 md:mb-16">
