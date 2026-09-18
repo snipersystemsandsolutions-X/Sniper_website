@@ -749,7 +749,7 @@ export const Navbar = () => {
                 <div className="mt-4 space-y-2 text-sm text-gray-500" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                   <div className="flex items-center gap-2"><span className="text-gray-600">📞</span><span>+91 8939301100</span></div>
                   <div className="flex items-center gap-2"><span className="text-gray-600">✉️</span><span>enquiry@sniperindia.com</span></div>
-                  <div className="pt-2 text-xs text-gray-600">ISO 9001:2015 Certified • Trusted IT Partner</div>
+                 
                 </div>
               </div>
             </div>
