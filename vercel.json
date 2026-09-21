@@ -1,8 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/partners/apple/index.html",
-      "destination": "/apple/",
+      "source": "/partners/apple",
+      "destination": "/partners/apple/index.html",
       "permanent": true
     }
   ],
