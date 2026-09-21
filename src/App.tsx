@@ -129,7 +129,11 @@ const AnimatedRoutes = () => {
 
             {/* Partners */}
             <Route path="/partners" element={<Partners />} />
-            <Route path="/partners/apple/" element={<Apple />} />
+           <Route path="/partners/apple/*" element={<Apple />} />
+            <Route
+              path="/apple/"
+              element={<Navigate to="/partners/apple/index.html" replace />}
+            />
             <Route path="/partners/nvidia" element={<Nvidia />} />
             <Route path="/partners/microsoft" element={<Microsoft />} />
             <Route path="/partners/lenovo" element={<Lenovo />} />
@@ -159,7 +163,7 @@ const AnimatedRoutes = () => {
             <Route path="/industries/healthcare-pharma" element={<HealthcarePharma />} />
             <Route path="/industries/manufacturing-automotive" element={<ManufacturingAutomotive />} />
             <Route path="/industries/education" element={<Education />} />
-           
+
 
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
