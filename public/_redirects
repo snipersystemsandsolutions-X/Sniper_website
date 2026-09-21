@@ -1,4 +1,3 @@
-
-/partners/apple    /partners/apple/index.html    301
-/partners/*        /partners/:splat               200
-/*                 /index.html                    200
+/partners/apple/index.html    /apple/    301
+/partners/*                   /partners/:splat    200
+/*                            /index.html    200
