@@ -13,7 +13,7 @@ import { AppleStyleDock } from "./components/AppleStyleDock";
 // ── Lazy pages (code-split for faster initial load) ──────────────────────────
 const Index = React.lazy(() => import("./pages/Index"));
 const About = React.lazy(() => import("./pages/About"));
-const Blog = React.lazy(() => import("./pages/Blog"));
+// const Blog = React.lazy(() => import("./pages/Blog"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Careers = React.lazy(() => import("./pages/Careers"));
 
@@ -108,7 +108,22 @@ const AnimatedRoutes = () => {
             {/* Main pages */}
             <Route path="/about" element={<About />} />
             <Route path="/about-us" element={<Navigate to="/about" replace />} />
-            <Route path="/blog" element={<Blog />} />
+
+
+
+            <Route
+              path="/blog"
+              element={
+                <Navigate
+                  to="https://blog.sniperindia.com/"
+                  replace
+                />
+              }
+            />
+
+
+
+
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/privacy" element={<Privacy />} />
@@ -129,7 +144,7 @@ const AnimatedRoutes = () => {
 
             {/* Partners */}
             <Route path="/partners" element={<Partners />} />
-           <Route path="/partners/apple/*" element={<Apple />} />
+            <Route path="/partners/apple/*" element={<Apple />} />
             <Route
               path="/apple/"
               element={<Navigate to="/partners/apple/index.html" replace />}
@@ -196,8 +211,8 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
-          <Analytics />
-           <SpeedInsights />
+            <Analytics />
+            <SpeedInsights />
             <AnimatedRoutes />
             <AppleStyleDock />
           </BrowserRouter>

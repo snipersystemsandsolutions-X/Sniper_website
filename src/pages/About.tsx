@@ -2,6 +2,7 @@ import Lottie from "@/components/CustomerService";
 import { Layout } from "@/components/Layout";
 import Lottiee from "@/components/people";
 import PageSEO from "@/components/PageSEO";
+import HoverStack from "@/components/ui/hover-stack";
 import { FloatingIconsHero, type FloatingIconsHeroProps } from "@/components/ui/floating-icons-hero-section";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -416,177 +417,90 @@ const CTASection = () => {
 };
 
 // ========================================================
-// ✦ WHY CHOOSE US — GSAP Pinned Horizontal Scroll
-//
-//   How it works:
-//   1. outerRef is the ScrollTrigger "trigger" element.
-//   2. GSAP pins outerRef at the top of the viewport.
-//   3. While it's pinned, scrolling translates the card
-//      stripRef to the LEFT (so cards appear to move RIGHT
-//      as you scroll down).
-//   4. The pin is released once the last card is fully visible.
-//   5. gsap.context() scopes all tweens for clean cleanup.
 // ========================================================
-// ========================================================
-// ✦ WHY CHOOSE US — GSAP Pinned Horizontal Scroll
+// ✦ WHY CHOOSE US — Hover Stack Cards
 // ========================================================
 const WhyChooseUsSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardsContainerRef = useRef<HTMLDivElement>(null);
-  const cardsWrapperRef = useRef<HTMLDivElement>(null);
-
-  const cards = [
+  const whyCards = [
     {
-      img: "https://i.postimg.cc/2SYW8sC0/sales.jpg",
-      title: "Dedicated Customer Support",
-      description: "Personalized assistance and a seamless experience for every client, available around the clock.",
+      id: 1,
+      quote: "Personalized assistance and a seamless experience for every client, available around the clock.",
+      tag: "Support",
+      bg: "#E4FF1A",
+      accent: "text-[#1A1A1A]",
     },
     {
-      img: "https://i.postimg.cc/NMDJp6pr/people-office.jpg",
-      title: "Smart IT Solutions",
-      description: "Innovative technology and streamlined processes that improve efficiency across your entire business.",
+      id: 2,
+      quote: "Innovative technology and streamlined processes that improve efficiency across your entire business.",
+      tag: "Smart IT",
+      bg: "#DD1155",
+      accent: "text-white",
     },
     {
-      img: "https://i.postimg.cc/h4s7N1N7/cybersecurity-professional-work.jpg",
-      title: "Robust Cybersecurity",
-      description: "Enterprise-grade protection that shields your data, infrastructure, and people from evolving threats.",
+      id: 3,
+      quote: "Enterprise-grade protection that shields your data, infrastructure, and people from evolving threats.",
+      tag: "Security",
+      bg: "#1A1A2E",
+      accent: "text-white",
     },
     {
-      img: "https://i.postimg.cc/260svtXD/concept.jpg",
-      title: "Cloud-First Architecture",
-      description: "Scalable, resilient cloud environments tailored to your workloads for speed and cost efficiency.",
+      id: 4,
+      quote: "Scalable, resilient cloud environments tailored to your workloads for speed and cost efficiency.",
+      tag: "Cloud",
+      bg: "#FF5714",
+      accent: "text-[#1A1A1A]",
     },
     {
-      img: "https://i.postimg.cc/YCs6ZzGz/diverse-business-experts-sharing-ideas-corporate-growth-planning.jpg",
-      title: "Expert Engineering Team",
-      description: "A world-class team of engineers with deep domain expertise ready to tackle your toughest challenges.",
+      id: 5,
+      quote: "A world-class team of engineers with deep domain expertise ready to tackle your toughest challenges.",
+      tag: "Expertise",
+      bg: "#3454D1",
+      accent: "text-white",
+    },
+    {
+      id: 6,
+      quote: "17+ years of proven excellence delivering IT solutions that drive real business outcomes.",
+      tag: "Experience",
+      bg: "#67D6A3",
+      accent: "text-[#1A1A1A]",
+    },
+    {
+      id: 7,
+      quote: "End-to-end managed services so you can focus on growth while we handle the technology.",
+      tag: "Managed IT",
+      bg: "#B98CFF",
+      accent: "text-[#1A1A1A]",
     },
   ];
 
-  // Jotform Chatbot
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const cardsContainer = cardsContainerRef.current;
-    const cardsWrapper = cardsWrapperRef.current;
-    if (!section || !cardsContainer || !cardsWrapper) return;
-
-    const ctx = gsap.context(() => {
-      const getScrollDistance = () =>
-        cardsWrapper.scrollWidth - cardsContainer.offsetWidth;
-
-      gsap.to(cardsWrapper, {
-        x: () => -getScrollDistance(),
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: () => `+=${getScrollDistance()}`,
-          pin: true,
-          pinType: "transform",
-          anticipatePin: 1,
-          scrub: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-    }, section);
-
-    const refresh = () => ScrollTrigger.refresh();
-    window.addEventListener("load", refresh);
-    const t = setTimeout(refresh, 800);
-
-    return () => {
-      window.removeEventListener("load", refresh);
-      clearTimeout(t);
-      ctx.revert();
-    };
-  }, []);
-
   return (
-    // min-h-[100dvh]: the pinned section is now ALWAYS exactly one
-    // viewport tall (100dvh handles mobile browser bars correctly,
-    // unlike 100vh). This removes the leftover empty space that was
-    // showing as a white gap while the section was pinned.
-    <section
-      ref={sectionRef}
-      className="bg-white overflow-hidden min-h-[100dvh] flex flex-col justify-center"
-    >
-      {/* Heading row */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 pb-8 sm:pb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 w-full">
-        <div>
-          <FadeUp>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 leading-tight">
-              Why Choose Us
-            </h2>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <p className="text-base sm:text-xl text-gray-700 mt-3 max-w-xl leading-relaxed">
-              We Provide Outsourced IT Services For Your Business
-            </p>
-          </FadeUp>
-        </div>
-        <motion.div
-          className="hidden sm:flex items-center gap-2 text-gray-400 text-sm font-medium tracking-wide select-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-        >
-          <span>scroll to explore</span>
-          <ArrowRight className="w-4 h-4" />
-        </motion.div>
+    <section className="bg-white py-16 sm:py-20 overflow-hidden">
+      {/* Heading */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
+        <FadeUp>
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 leading-tight">
+            Why Choose Us
+          </h2>
+        </FadeUp>
+        <FadeUp delay={0.1}>
+          <p className="text-base sm:text-xl text-gray-700 mt-3 max-w-xl leading-relaxed">
+            We Provide Outsourced IT Services For Your Business
+          </p>
+        </FadeUp>
       </div>
 
-      {/* Cards container with horizontal scroll effect */}
-      <div ref={cardsContainerRef} className="overflow-hidden">
-        <div
-          ref={cardsWrapperRef}
-          className="flex gap-5 sm:gap-7 px-4 sm:px-12 pb-12 sm:pb-16"
-          style={{ width: "max-content", willChange: "transform" }}
-        >
-          {cards.map((card, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 flex flex-col bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-              style={{
-                width: "clamp(280px, 32vw, 420px)",
-                height: "clamp(400px, 62vh, 580px)",
-              }}
-            >
-              <div className="flex-shrink-0 overflow-hidden" style={{ height: "48%" }}>
-                <img
-                  src={card.img}
-                  alt={card.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-              <div className="flex flex-col justify-center px-6 sm:px-8 py-6 flex-1">
-                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-400 mb-3">
-                  0{i + 1}
-                </span>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3 leading-snug">
-                  {card.title}
-                </h3>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                  {card.description}
-                </p>
-              </div>
-            </div>
-          ))}
-          <div className="flex-shrink-0 w-4 sm:w-8" aria-hidden />
-        </div>
-      </div>
+      {/* Hover Stack */}
+      <HoverStack
+        cards={whyCards}
+        cardWidth={300}
+        cardHeight={380}
+        overlap={110}
+        hoverLift={32}
+        pushDistance={260}
+        spread={24}
+        rotation={7}
+        duration={0.5}
+      />
     </section>
   );
 };
