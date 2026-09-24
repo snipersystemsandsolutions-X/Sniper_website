@@ -1,8 +1,9 @@
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion, LayoutGroup } from "framer-motion";
 import myImage from "../assets/v2.svg";
+import ShinyText from "@/components/ui/ShinyText";
 
 // ─── Unique SVG Icons ──────────────────────────────────────────────────────────
 const SvgIcons = {
@@ -487,12 +488,72 @@ const MobileDropdown = ({ label, items, isOpen, onToggle }) => (
   </div>
 );
 
+// ─── GCC Announcement Bar ───────────────────────────────────────────────────────
+// Sits directly under the main nav, home page only (see `isHomePage` check in
+// Navbar below). Styled to match this file's existing top contact bar (same
+// stone gradient background, DM Sans font). Both the inline "GCC page" link
+// and the "Learn More" CTA point at the same /gcc route.
+const GccAnnouncementBar = ({ onNavigate }: { onNavigate: () => void }) => (
+  <div className="bg-gradient-to-r from-white via-stone-50 to-white text-stone-800 border-b border-stone-200">
+    <div className="container mx-auto px-4 py-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+  <div className="flex flex-wrap items-center gap-1 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+    <ShinyText
+      text="Check our new"
+      speed={2}
+      delay={0}
+      color="#57534e"
+      shineColor="#DB2C31"
+      spread={80}
+      direction="left"
+      yoyo={false}
+      pauseOnHover={false}
+      disabled={false}
+    />
+    <Link
+      to="/gcc"
+      onClick={onNavigate}
+      className="font-semibold text-stone-900 underline underline-offset-2 decoration-stone-400 hover:text-stone-600 hover:decoration-stone-600 transition-colors"
+    >
+      GCC page
+    </Link>
+    <ShinyText
+      text="- showcase our services, solution focused for GCC"
+      speed={2}
+      delay={0}
+      color="#57534e"
+      shineColor="#DB2C31"
+      spread={80}
+      direction="left"
+      yoyo={false}
+      pauseOnHover={false}
+      disabled={false}
+    />
+  </div>
+
+  <Link
+    to="/gcc"
+    onClick={onNavigate}
+    style={{ fontFamily: "'DM Sans', sans-serif" }}
+    className="inline-flex items-center gap-1 self-start text-sm font-medium tracking-tight text-[#DB2C31] hover:text-stone-600 transition-colors sm:self-auto shrink-0"
+  >
+    Learn More
+    <ArrowUpRight className="h-4 w-4" />
+  </Link>
+</div>
+  </div>
+);
+
 // ─── Main Navbar ───────────────────────────────────────────────────────────────
 export const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navRef = useRef(null);
+  const location = useLocation();
+
+  // GCC announcement bar is a home-page-only element — it should not follow
+  // the user onto every other route, just sit under the nav on "/".
+  const isHomePage = location.pathname === "/";
 
   const toggle = (key) => setOpenDropdown(openDropdown === key ? null : key);
   const close = () => setOpenDropdown(null);
@@ -756,6 +817,9 @@ export const Navbar = () => {
           </>
         )}
       </nav>
+
+      {/* ── GCC Announcement Bar — home page only ── */}
+      {isHomePage && <GccAnnouncementBar onNavigate={close} />}
 
       {/* Backdrop */}
       {openDropdown && !openDropdown.startsWith("mobile-") && (

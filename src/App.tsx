@@ -10,6 +10,7 @@ import React, { Suspense, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AppleStyleDock } from "./components/AppleStyleDock";
 
+
 // ── Lazy pages (code-split for faster initial load) ──────────────────────────
 const Index = React.lazy(() => import("./pages/Index"));
 const About = React.lazy(() => import("./pages/About"));
@@ -56,6 +57,8 @@ import Samsung from "./pages/partners/Samsung";
 import Unity from "./pages/partners/Unity";
 import UnrealEngine from "./pages/partners/UnrealEngine";
 import Yubico from "./pages/partners/Yubico";
+
+import Gcc from "./pages/partners/Gcc";
 
 // Industries
 import AEC from "./pages/industries/AEC";
@@ -127,6 +130,7 @@ const AnimatedRoutes = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/gcc" element={<Gcc />} />
             <Route path="/terms" element={<TermsAndConditions />} />
 
             {/* Solutions */}
