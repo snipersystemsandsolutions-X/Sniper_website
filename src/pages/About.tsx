@@ -2,69 +2,58 @@ import Lottie from "@/components/CustomerService";
 import { Layout } from "@/components/Layout";
 import Lottiee from "@/components/people";
 import PageSEO from "@/components/PageSEO";
-import { ImageStreamHero } from "@/components/ui/image-stream-hero";
+import HoverStack from "@/components/ui/hover-stack";
+import { FloatingIconsHero, type FloatingIconsHeroProps } from "@/components/ui/floating-icons-hero-section";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, CheckCircle, Shield, Users } from "lucide-react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 
-const CDN = "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev";
-
-const HERO_IMAGES = [
-  {
-    src: `${CDN}/gradients/hero_gradient/hero-gradients-01.png`,
-    alt: "Team Collaboration",
-  },
-  {
-    src: `${CDN}/gradients/crimson_aura/crimson-aura-02.png`,
-    alt: "Dedicated Customer Support",
-  },
-  {
-    src: `${CDN}/gradients/hero_gradient/hero-gradients-02.png`,
-    alt: "Soft multi-tone gradient wash",
-  },
-
-  {
-    src: `${CDN}/gradients/crimson_aura/crimson-aura-01.png`,
-    alt: "Crimson aura gradient",
-  },
-  {
-    src: `${CDN}/gradients/hue-flow/hue-flow-02.png`,
-    alt: "Smart IT Solutions",
-  },
-  {
-    src: `${CDN}/gradients/moon/moon-grade-02.png`,
-    alt: "Moon-toned gradient",
-  },
-  {
-    src: `${CDN}/gradients/hue-flow/hue-flow-01.png`,
-    alt: "Flowing hue gradient",
-  },
-  {
-    src: `${CDN}/gradients/moon/moon-grade-03.png`,
-    alt: "Robust Cybersecurity",
-  },
-
-  {
-    src: `${CDN}/gradients/hero_gradient/hero-gradients-03.png`,
-    alt: "Cloud-First Architecture",
-  },
-  {
-    src: `${CDN}/gradients/moon/moon-grade-03.png`,
-    alt: "Deep moon-toned gradient",
-  },
-  {
-    src: `${CDN}/gradients/hero_gradient/hero-gradients-02.png`,
-    alt: "Layered hero gradient",
-  },
-  {
-    src: `${CDN}/gradients/moon/moon-grade-01.png`,
-    alt: "Expert Engineering Team",
-  },
-
+// Company logos from Index.tsx
+const logoCompanies = [
+  { name: "Apple", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg", w: 108, h: 38 },
+  { name: "Lenovo", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Lenovo_%282015%29.svg", w: 98, h: 38 },
+  { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", w: 108, h: 28 },
+  { name: "NVIDIA", logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg", w: 108, h: 28 },
+  { name: "Autodesk", logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/Autodesk_Logo_2021.svg", w: 108, h: 48 },
+  { name: "Unreal", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Unreal_Engine_Logo_%28new_typeface%29.svg", w: 118, h: 58 },
+  { name: "Cisco", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg", w: 108, h: 38 },
+  { name: "Unity", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/1280px-Unity_Technologies_logo.svg.png", w: 108, h: 38 },
+  { name: "Adobe", logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Adobe_Corporate_wordmark.svg", w: 108, h: 28 },
+  { name: "Dell", logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg", w: 108, h: 58 },
+  { name: "HP", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg", w: 108, h: 58 },
+  { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", w: 108, h: 48 },
+  { name: "Samsung", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Samsung_Black_icon.svg", w: 108, h: 28 },
+  { name: "Acer", logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/Acer_2011.svg", w: 108, h: 28 },
+  { name: "Asus", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg", w: 108, h: 25 },
+  { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", w: 108, h: 38 },
 ];
 
+// Create logo components
+const LogoIcon = ({ src, alt, width, height }: { src: string; alt: string; width: number; height: number }) => (
+  <img src={src} alt={alt} width={width} height={height} className="w-full h-full object-contain" />
+);
+
+// Define the icons with their unique positions for the About page
+const aboutIcons: FloatingIconsHeroProps['icons'] = [
+  { id: 1, icon: () => <LogoIcon src={logoCompanies[0].logo} alt={logoCompanies[0].name} width={logoCompanies[0].w} height={logoCompanies[0].h} />, className: 'top-[10%] left-[8%]' },
+  { id: 2, icon: () => <LogoIcon src={logoCompanies[1].logo} alt={logoCompanies[1].name} width={logoCompanies[1].w} height={logoCompanies[1].h} />, className: 'top-[15%] right-[10%]' },
+  { id: 3, icon: () => <LogoIcon src={logoCompanies[2].logo} alt={logoCompanies[2].name} width={logoCompanies[2].w} height={logoCompanies[2].h} />, className: 'top-[75%] left-[12%]' },
+  { id: 4, icon: () => <LogoIcon src={logoCompanies[3].logo} alt={logoCompanies[3].name} width={logoCompanies[3].w} height={logoCompanies[3].h} />, className: 'bottom-[12%] right-[8%]' },
+  { id: 5, icon: () => <LogoIcon src={logoCompanies[4].logo} alt={logoCompanies[4].name} width={logoCompanies[4].w} height={logoCompanies[4].h} />, className: 'top-[5%] left-[25%]' },
+  { id: 6, icon: () => <LogoIcon src={logoCompanies[5].logo} alt={logoCompanies[5].name} width={logoCompanies[5].w} height={logoCompanies[5].h} />, className: 'top-[8%] right-[28%]' },
+  { id: 7, icon: () => <LogoIcon src={logoCompanies[6].logo} alt={logoCompanies[6].name} width={logoCompanies[6].w} height={logoCompanies[6].h} />, className: 'bottom-[10%] left-[22%]' },
+  { id: 8, icon: () => <LogoIcon src={logoCompanies[7].logo} alt={logoCompanies[7].name} width={logoCompanies[7].w} height={logoCompanies[7].h} />, className: 'top-[35%] left-[8%]' },
+  { id: 9, icon: () => <LogoIcon src={logoCompanies[8].logo} alt={logoCompanies[8].name} width={logoCompanies[8].w} height={logoCompanies[8].h} />, className: 'top-[70%] right-[22%]' },
+  { id: 10, icon: () => <LogoIcon src={logoCompanies[9].logo} alt={logoCompanies[9].name} width={logoCompanies[9].w} height={logoCompanies[9].h} />, className: 'top-[85%] left-[65%]' },
+  { id: 11, icon: () => <LogoIcon src={logoCompanies[10].logo} alt={logoCompanies[10].name} width={logoCompanies[10].w} height={logoCompanies[10].h} />, className: 'top-[45%] right-[5%]' },
+  { id: 12, icon: () => <LogoIcon src={logoCompanies[11].logo} alt={logoCompanies[11].name} width={logoCompanies[11].w} height={logoCompanies[11].h} />, className: 'top-[50%] left-[5%]' },
+  { id: 13, icon: () => <LogoIcon src={logoCompanies[12].logo} alt={logoCompanies[12].name} width={logoCompanies[12].w} height={logoCompanies[12].h} />, className: 'top-[8%] left-[52%]' },
+  { id: 14, icon: () => <LogoIcon src={logoCompanies[13].logo} alt={logoCompanies[13].name} width={logoCompanies[13].w} height={logoCompanies[13].h} />, className: 'bottom-[8%] right-[42%]' },
+  { id: 15, icon: () => <LogoIcon src={logoCompanies[14].logo} alt={logoCompanies[14].name} width={logoCompanies[14].w} height={logoCompanies[14].h} />, className: 'top-[22%] right-[18%]' },
+  { id: 16, icon: () => <LogoIcon src={logoCompanies[15].logo} alt={logoCompanies[15].name} width={logoCompanies[15].w} height={logoCompanies[15].h} />, className: 'top-[58%] left-[28%]' },
+];
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -428,177 +417,90 @@ const CTASection = () => {
 };
 
 // ========================================================
-// ✦ WHY CHOOSE US — GSAP Pinned Horizontal Scroll
-//
-//   How it works:
-//   1. outerRef is the ScrollTrigger "trigger" element.
-//   2. GSAP pins outerRef at the top of the viewport.
-//   3. While it's pinned, scrolling translates the card
-//      stripRef to the LEFT (so cards appear to move RIGHT
-//      as you scroll down).
-//   4. The pin is released once the last card is fully visible.
-//   5. gsap.context() scopes all tweens for clean cleanup.
 // ========================================================
-// ========================================================
-// ✦ WHY CHOOSE US — GSAP Pinned Horizontal Scroll
+// ✦ WHY CHOOSE US — Hover Stack Cards
 // ========================================================
 const WhyChooseUsSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardsContainerRef = useRef<HTMLDivElement>(null);
-  const cardsWrapperRef = useRef<HTMLDivElement>(null);
-
-  const cards = [
+  const whyCards = [
     {
-      img: "https://i.postimg.cc/2SYW8sC0/sales.jpg",
-      title: "Dedicated Customer Support",
-      description: "Personalized assistance and a seamless experience for every client, available around the clock.",
+      id: 1,
+      quote: "Personalized assistance and a seamless experience for every client, available around the clock.",
+      tag: "Support",
+      bg: "#E4FF1A",
+      accent: "text-[#1A1A1A]",
     },
     {
-      img: "https://i.postimg.cc/NMDJp6pr/people-office.jpg",
-      title: "Smart IT Solutions",
-      description: "Innovative technology and streamlined processes that improve efficiency across your entire business.",
+      id: 2,
+      quote: "Innovative technology and streamlined processes that improve efficiency across your entire business.",
+      tag: "Smart IT",
+      bg: "#DD1155",
+      accent: "text-white",
     },
     {
-      img: "https://i.postimg.cc/h4s7N1N7/cybersecurity-professional-work.jpg",
-      title: "Robust Cybersecurity",
-      description: "Enterprise-grade protection that shields your data, infrastructure, and people from evolving threats.",
+      id: 3,
+      quote: "Enterprise-grade protection that shields your data, infrastructure, and people from evolving threats.",
+      tag: "Security",
+      bg: "#1A1A2E",
+      accent: "text-white",
     },
     {
-      img: "https://i.postimg.cc/260svtXD/concept.jpg",
-      title: "Cloud-First Architecture",
-      description: "Scalable, resilient cloud environments tailored to your workloads for speed and cost efficiency.",
+      id: 4,
+      quote: "Scalable, resilient cloud environments tailored to your workloads for speed and cost efficiency.",
+      tag: "Cloud",
+      bg: "#FF5714",
+      accent: "text-[#1A1A1A]",
     },
     {
-      img: "https://i.postimg.cc/YCs6ZzGz/diverse-business-experts-sharing-ideas-corporate-growth-planning.jpg",
-      title: "Expert Engineering Team",
-      description: "A world-class team of engineers with deep domain expertise ready to tackle your toughest challenges.",
+      id: 5,
+      quote: "A world-class team of engineers with deep domain expertise ready to tackle your toughest challenges.",
+      tag: "Expertise",
+      bg: "#3454D1",
+      accent: "text-white",
+    },
+    {
+      id: 6,
+      quote: "17+ years of proven excellence delivering IT solutions that drive real business outcomes.",
+      tag: "Experience",
+      bg: "#67D6A3",
+      accent: "text-[#1A1A1A]",
+    },
+    {
+      id: 7,
+      quote: "End-to-end managed services so you can focus on growth while we handle the technology.",
+      tag: "Managed IT",
+      bg: "#B98CFF",
+      accent: "text-[#1A1A1A]",
     },
   ];
 
-  // Jotform Chatbot
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "https://cdn.jotfor.ms/agent/embedjs/019f2165e4c6756899b7d476e73c18bd40b3/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const cardsContainer = cardsContainerRef.current;
-    const cardsWrapper = cardsWrapperRef.current;
-    if (!section || !cardsContainer || !cardsWrapper) return;
-
-    const ctx = gsap.context(() => {
-      const getScrollDistance = () =>
-        cardsWrapper.scrollWidth - cardsContainer.offsetWidth;
-
-      gsap.to(cardsWrapper, {
-        x: () => -getScrollDistance(),
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: () => `+=${getScrollDistance()}`,
-          pin: true,
-          pinType: "transform",
-          anticipatePin: 1,
-          scrub: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-    }, section);
-
-    const refresh = () => ScrollTrigger.refresh();
-    window.addEventListener("load", refresh);
-    const t = setTimeout(refresh, 800);
-
-    return () => {
-      window.removeEventListener("load", refresh);
-      clearTimeout(t);
-      ctx.revert();
-    };
-  }, []);
-
   return (
-    // min-h-[100dvh]: the pinned section is now ALWAYS exactly one
-    // viewport tall (100dvh handles mobile browser bars correctly,
-    // unlike 100vh). This removes the leftover empty space that was
-    // showing as a white gap while the section was pinned.
-    <section
-      ref={sectionRef}
-      className="bg-white overflow-hidden min-h-[100dvh] flex flex-col justify-center"
-    >
-      {/* Heading row */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 pb-8 sm:pb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 w-full">
-        <div>
-          <FadeUp>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 leading-tight">
-              Why Choose Us
-            </h2>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <p className="text-base sm:text-xl text-gray-700 mt-3 max-w-xl leading-relaxed">
-              We Provide Outsourced IT Services For Your Business
-            </p>
-          </FadeUp>
-        </div>
-        <motion.div
-          className="hidden sm:flex items-center gap-2 text-gray-400 text-sm font-medium tracking-wide select-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-        >
-          <span>scroll to explore</span>
-          <ArrowRight className="w-4 h-4" />
-        </motion.div>
+    <section className="bg-white py-16 sm:py-20 overflow-hidden">
+      {/* Heading */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
+        <FadeUp>
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold text-gray-900 leading-tight">
+            Why Choose Us
+          </h2>
+        </FadeUp>
+        <FadeUp delay={0.1}>
+          <p className="text-base sm:text-xl text-gray-700 mt-3 max-w-xl leading-relaxed">
+            We Provide Outsourced IT Services For Your Business
+          </p>
+        </FadeUp>
       </div>
 
-      {/* Cards container with horizontal scroll effect */}
-      <div ref={cardsContainerRef} className="overflow-hidden">
-        <div
-          ref={cardsWrapperRef}
-          className="flex gap-5 sm:gap-7 px-4 sm:px-12 pb-12 sm:pb-16"
-          style={{ width: "max-content", willChange: "transform" }}
-        >
-          {cards.map((card, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 flex flex-col bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-              style={{
-                width: "clamp(280px, 32vw, 420px)",
-                height: "clamp(400px, 62vh, 580px)",
-              }}
-            >
-              <div className="flex-shrink-0 overflow-hidden" style={{ height: "48%" }}>
-                <img
-                  src={card.img}
-                  alt={card.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-              <div className="flex flex-col justify-center px-6 sm:px-8 py-6 flex-1">
-                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-400 mb-3">
-                  0{i + 1}
-                </span>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3 leading-snug">
-                  {card.title}
-                </h3>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                  {card.description}
-                </p>
-              </div>
-            </div>
-          ))}
-          <div className="flex-shrink-0 w-4 sm:w-8" aria-hidden />
-        </div>
-      </div>
+      {/* Hover Stack */}
+      <HoverStack
+        cards={whyCards}
+        cardWidth={300}
+        cardHeight={380}
+        overlap={110}
+        hoverLift={32}
+        pushDistance={260}
+        spread={24}
+        rotation={7}
+        duration={0.5}
+      />
     </section>
   );
 };
@@ -703,35 +605,12 @@ const About = () => {
       )}
 
       {/* ── Hero ── */}
-      <ImageStreamHero
-        images={HERO_IMAGES}
-        className="relative bg-black pt-28 sm:pt-36 pb-20 sm:pb-28 px-4 sm:px-6 min-h-[80vh] flex items-center justify-center text-white"
-        axis={50}
-        speed={18}
-      >
-        {/* Dark subtle vignetting / gradient overlay to enhance readability and depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 pointer-events-none" />
-
-        <div className="relative z-10 max-w-7xl mx-auto text-center flex flex-col justify-start items-center pt-16 sm:pt-20 md:pt-24">
-          <h1
-            ref={gsapHeroRef}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-80 leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
-          >
-            {["Creating", "a", "better", "IT", "solutions"].map((word, i) => (
-              <span key={i} className="gsap-word inline-block opacity-0 mr-[0.2em] sm:mr-[0.25em] last:mr-0">
-                {word}
-                {word === "better" ? <br /> : null}
-              </span>
-            ))}
-          </h1>
-          <FadeUp delay={1.9}>
-            <p className="text-base sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-medium">
-              Let us handle your IT, so you can focus on what matters. Our expertise will manage your
-              technology needs efficiently and securely.
-            </p>
-          </FadeUp>
-        </div>
-      </ImageStreamHero>
+      <FloatingIconsHero
+        title="Creating a better IT solutions"
+        subtitle="Let us handle your IT, so you can focus on what matters. Our expertise will manage your technology needs efficiently and securely."
+       
+        icons={aboutIcons}
+      />
 
 
 

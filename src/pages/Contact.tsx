@@ -126,7 +126,7 @@ const ContactInfoList = ({ contactInfo, infoInView }: { contactInfo: any[]; info
   }, [infoInView]);
 
   return (
-    <div className="space-y-8 sm:space-y-12">
+    <div className="space-y-4 sm:space-y-6">
       {contactInfo.map((info, index) => (
         <motion.div
           key={index}
@@ -373,7 +373,7 @@ const SpringToast = ({ visible, onDone, message = "MESSAGE SENT — WE'LL BE IN 
 const SpringHeading = ({ children, trigger, delay = 0 }: { children: React.ReactNode; trigger: boolean; delay?: number }) => {
   return (
     <motion.h2
-      className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-8 sm:mb-12 leading-tight"
+      className="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight"
       initial={{ opacity: 0, y: 60 }}
       animate={trigger ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: delay / 1000 }}
@@ -851,20 +851,20 @@ const Contact = () => {
       )}
 
       {/* ==================== HERO ==================== */}
-      <section className="relative bg-white pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden">
+      <section className="relative bg-white pt-24 sm:pt-28 md:pt-32 pb-0 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-white opacity-60" />
         <div className="relative z-10 max-w-7xl mx-auto">
 
           {/* ── Hero: heading (left) + LottieAnimation (right) ── */}
           <div
-            className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12 mb-6 sm:mb-10"
+            className="flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6 mb-2 sm:mb-4"
             ref={heroRef}
           >
             {/* Left — heading + description */}
             <div className="flex-1 text-center lg:text-left w-full">
               <h1
                 ref={heroHeadingRef}
-                className="text-5xl sm:text-6xl md:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight font-sans"
+                className="text-4xl sm:text-5xl md:text-6xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight font-sans"
                 aria-label="Contact Us"
               >
                 {["Contact", "Us"].map((word, i) => (
@@ -888,7 +888,7 @@ const Contact = () => {
 
             {/* Right — Lottie Animation */}
             <motion.div
-              className="flex-1 flex items-center justify-center w-full max-w-[260px] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
+              className="flex-1 flex items-center justify-center w-full max-w-[140px] sm:max-w-[180px] md:max-w-[220px] lg:max-w-xs xl:max-w-sm"
               initial={{ opacity: 0, x: 40 }}
               animate={heroInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 1, ease, delay: 1.3 }}
@@ -900,11 +900,8 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* ✦ GSAP Marquee */}
-
-
       {/* ==================== FORM + INFO ==================== */}
-      <section className="bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+      <section className="bg-white pt-2 sm:pt-3 pb-6 sm:pb-8 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16">
 
@@ -998,7 +995,7 @@ const Contact = () => {
             {/* Contact Info — unchanged */}
             <div
               ref={infoRef}
-              className="relative flex flex-col justify-between overflow-hidden rounded-md bg-black border border-[#222] p-8 sm:p-12 text-white min-h-[720px]"
+              className="relative flex flex-col justify-between overflow-hidden rounded-md bg-black border border-[#222] p-6 sm:p-8 text-white min-h-[600px]"
             >
               <GrainGradient
                 speed={1}
@@ -1016,10 +1013,10 @@ const Contact = () => {
                 className="absolute inset-0 bg-black opacity-30"
               />
 
-              <div className="relative z-10 flex flex-col justify-between h-full w-full space-y-12">
+              <div className="relative z-10 flex flex-col justify-between h-full w-full space-y-6">
                 <div>
                   <motion.h2
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 sm:mb-12 leading-tight"
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-4 sm:mb-6 leading-tight"
                     initial={{ opacity: 0, y: 60 }}
                     animate={infoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
@@ -1050,15 +1047,13 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* ✦ GSAP Marquee */}
-
 
       {/* ==================== UNIFIED LOCATIONS SECTION ==================== */}
-      <section className="relative bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+      <section className="relative bg-white py-6 sm:py-8 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             ref={locRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-8 sm:mb-12 leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-4 sm:mb-6 leading-tight"
             initial={{ opacity: 0, y: 50 }}
             animate={locInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, ease }}
@@ -1068,7 +1063,7 @@ const Contact = () => {
 
           {/* Toggle Tabs */}
           <motion.div
-            className="flex gap-4 mb-8 sm:mb-12"
+            className="flex gap-4 mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={locInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease, delay: 0.1 }}

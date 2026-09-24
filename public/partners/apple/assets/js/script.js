@@ -1,6 +1,6 @@
 // Hero Slider
-const sliderContainer = document.getElementById('slider-container');
-const sliderDots = document.getElementById('slider-dots').children;
+const sliderContainer = document.getElementById("slider-container");
+const sliderDots = document.getElementById("slider-dots").children;
 let currentSlide = 0;
 const totalSlides = 6;
 
@@ -8,27 +8,27 @@ function updateSlider() {
   sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
   Array.from(sliderDots).forEach((dot, index) => {
     if (index === currentSlide) {
-      dot.classList.add('w-8', 'bg-red');
-      dot.classList.remove('bg-opacity-50');
+      dot.classList.add("w-8", "bg-red");
+      dot.classList.remove("bg-opacity-50");
     } else {
-      dot.classList.remove('w-8', 'bg-red');
-      dot.classList.add('bg-opacity-50');
+      dot.classList.remove("w-8", "bg-red");
+      dot.classList.add("bg-opacity-50");
     }
   });
 }
 
-document.getElementById('prev-slide').addEventListener('click', () => {
+document.getElementById("prev-slide").addEventListener("click", () => {
   currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
   updateSlider();
 });
 
-document.getElementById('next-slide').addEventListener('click', () => {
+document.getElementById("next-slide").addEventListener("click", () => {
   currentSlide = (currentSlide + 1) % totalSlides;
   updateSlider();
 });
 
 Array.from(sliderDots).forEach((dot, index) => {
-  dot.addEventListener('click', () => {
+  dot.addEventListener("click", () => {
     currentSlide = index;
     updateSlider();
   });
@@ -40,8 +40,8 @@ setInterval(() => {
 }, 7000);
 
 // Paths Slider
-const pathsSlider = document.getElementById('paths-slider');
-const pathDots = document.getElementById('path-dots').children;
+const pathsSlider = document.getElementById("paths-slider");
+const pathDots = document.getElementById("path-dots").children;
 let currentPath = 0;
 const totalPaths = 4;
 
@@ -49,27 +49,27 @@ function updatePaths() {
   pathsSlider.style.transform = `translateX(-${currentPath * 100}%)`;
   Array.from(pathDots).forEach((dot, index) => {
     if (index === currentPath) {
-      dot.classList.add('w-8', 'bg-gray-800');
-      dot.classList.remove('bg-gray-300');
+      dot.classList.add("w-8", "bg-gray-800");
+      dot.classList.remove("bg-gray-300");
     } else {
-      dot.classList.remove('w-8', 'bg-gray-800');
-      dot.classList.add('bg-gray-300');
+      dot.classList.remove("w-8", "bg-gray-800");
+      dot.classList.add("bg-gray-300");
     }
   });
 }
 
-document.getElementById('prev-path').addEventListener('click', () => {
+document.getElementById("prev-path").addEventListener("click", () => {
   currentPath = (currentPath - 1 + totalPaths) % totalPaths;
   updatePaths();
 });
 
-document.getElementById('next-path').addEventListener('click', () => {
+document.getElementById("next-path").addEventListener("click", () => {
   currentPath = (currentPath + 1) % totalPaths;
   updatePaths();
 });
 
 Array.from(pathDots).forEach((dot, index) => {
-  dot.addEventListener('click', () => {
+  dot.addEventListener("click", () => {
     currentPath = index;
     updatePaths();
   });
@@ -82,13 +82,14 @@ setInterval(() => {
 }, 7000);
 
 // Mobile Menu
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.createElement('div');
-mobileMenu.className = 'fixed inset-0 z-50 bg-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden';
+const mobileMenuButton = document.getElementById("mobile-menu-button");
+const mobileMenu = document.createElement("div");
+mobileMenu.className =
+  "fixed inset-0 z-50 bg-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden";
 document.body.appendChild(mobileMenu);
 
-mobileMenuButton.addEventListener('click', () => {
-  mobileMenu.classList.toggle('translate-x-full');
+mobileMenuButton.addEventListener("click", () => {
+  mobileMenu.classList.toggle("translate-x-full");
 });
 mobileMenu.innerHTML = `
     <div class="flex justify-end p-6">
@@ -121,7 +122,7 @@ mobileMenu.innerHTML = `
             <div id="productsIphoneDropdown" class="pl-4 border-l-2 border-gray-100 space-y-2 hidden">
             <a href="iphone 17e/index.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 17e</a>
               <a href="ipone17_pro.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 17 Pro</a>
-              <a href="iphone17_air.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 17 Air</a>
+              <a href="iphone17_air.html" class="block py-2 text-gray-600 hover:text-gray-900">iphone Air</a>
               <a href="iphone17.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 17</a>
              <a href="iPhone-16/index.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 16</a>
              <a href="iPhone-16e/index.html" class="block py-2 text-gray-600 hover:text-gray-900">iPhone 16e</a>
@@ -240,38 +241,36 @@ mobileMenu.innerHTML = `
 // Toggle Function (add below the innerHTML assignment or in a <script> tag)
 function toggleDropdown(id) {
   const el = document.getElementById(id);
-  el.classList.toggle('hidden');
+  el.classList.toggle("hidden");
 }
-
-
 
 // Image Carousel
 let index = 0;
-const images = document.querySelectorAll('.carousel-img');
-const indicators = document.querySelectorAll('.carousel-indicator');
+const images = document.querySelectorAll(".carousel-img");
+const indicators = document.querySelectorAll(".carousel-indicator");
 
 function updateCarousel() {
   // Update images
   images.forEach((img, i) => {
     if (i === index) {
-      img.classList.add('opacity-100', 'scale-100');
-      img.classList.remove('opacity-0', 'scale-105');
+      img.classList.add("opacity-100", "scale-100");
+      img.classList.remove("opacity-0", "scale-105");
     } else {
-      img.classList.add('opacity-0', 'scale-105');
-      img.classList.remove('opacity-100', 'scale-100');
+      img.classList.add("opacity-0", "scale-105");
+      img.classList.remove("opacity-100", "scale-100");
     }
   });
 
   // Update indicators
   indicators.forEach((indicator, i) => {
     if (i === index) {
-      indicator.classList.add('opacity-100');
-      indicator.classList.add('bg-red-500');
-      indicator.classList.remove('bg-white');
+      indicator.classList.add("opacity-100");
+      indicator.classList.add("bg-red-500");
+      indicator.classList.remove("bg-white");
     } else {
-      indicator.classList.remove('opacity-100');
-      indicator.classList.remove('bg-red-500');
-      indicator.classList.add('bg-white');
+      indicator.classList.remove("opacity-100");
+      indicator.classList.remove("bg-red-500");
+      indicator.classList.add("bg-white");
     }
   });
 
@@ -280,7 +279,7 @@ function updateCarousel() {
 
 // Add click events to indicators
 indicators.forEach((indicator, i) => {
-  indicator.addEventListener('click', () => {
+  indicator.addEventListener("click", () => {
     index = i;
     updateCarousel();
   });
@@ -290,13 +289,13 @@ indicators.forEach((indicator, i) => {
 setInterval(updateCarousel, 2400);
 
 // Stats Counter Animation
-document.addEventListener('DOMContentLoaded', function () {
-  const counters = document.querySelectorAll('.timer');
+document.addEventListener("DOMContentLoaded", function () {
+  const counters = document.querySelectorAll(".timer");
 
   const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
-  counters.forEach(counter => {
-    const target = +counter.getAttribute('data-to');
+  counters.forEach((counter) => {
+    const target = +counter.getAttribute("data-to");
     const duration = 2000;
     let startTime = null;
 
@@ -317,14 +316,17 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          requestAnimationFrame(animateCounter);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            requestAnimationFrame(animateCounter);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
 
     observer.observe(counter);
   });

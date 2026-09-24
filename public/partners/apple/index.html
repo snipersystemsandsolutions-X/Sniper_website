@@ -5,6 +5,11 @@
     <title>
       Apple Business partner in India | Apple Business Solutions – Sniper
     </title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Web App Manifest — helps Google treat the site as a proper web app -->
+    <link rel="manifest" href="/site.webmanifest" />
     <!-- Meta Description -->
     <meta
       name="description"
@@ -31,14 +36,14 @@
         "@type": "Store",
         "name": "[Your Store Name]",
         "image": "https://yourdomain.com/assets/images/storefront.jpg",
-        "description": "Apple Authorized Reseller for iPhone, MacBook, iPad, and accessories in [City]",
+        "description": "Apple Authorized Reseller for iPhone, MacBook, iPad, and accessories in india",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "123 Apple Street",
           "addressLocality": "[City]",
           "addressCountry": "IN"
         },
-        "url": "https://sniperindia.netlify.app/",
+        "url": "https://sniperindia.com/apple/",
         "telephone": "+91-XXXXXXXXXX"
       }
     </script>
@@ -391,6 +396,20 @@
                   x-show="subOpen"
                   class="absolute left-full top-0 w-64 bg-white shadow-lg rounded-md py-2 ml-1"
                 >
+
+                <a
+                    href="iPhone_Duo/index.html"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:text-red-600"
+                    >iPhone Duo</a
+                  >
+
+
+                  <a
+                    href="iPhone_18_Pro/index.html"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:text-red-600"
+                    >iPhone 18 Pro</a
+                  >
+
                   <a
                     href="iphone 17e/index.html"
                     class="block px-4 py-2 text-sm text-gray-700 hover:text-red-600"
@@ -404,7 +423,7 @@
                   <a
                     href="iphone17_air.html"
                     class="block px-4 py-2 text-sm text-gray-700 hover:text-red-600"
-                    >iPhone 17 Air</a
+                    >iphone Air</a
                   >
                   <a
                     href="iphone17.html"
@@ -884,6 +903,7 @@
     <!-- HER0 SECTION -->
 
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
       .slide-transition {
         transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -917,6 +937,7 @@
           opacity: 0;
           transform: translateY(30px);
         }
+
         to {
           opacity: 1;
           transform: translateY(0);
@@ -939,7 +960,10 @@
         border-radius: 2px;
       }
 
-      /* ✅ KEY FIX: Slider layout */
+      /* =========================
+     SLIDER
+  ========================= */
+
       #slider-wrapper {
         overflow: hidden;
         position: absolute;
@@ -948,7 +972,7 @@
 
       #slider-container {
         display: flex;
-        width: 1100%; /* 11 slides */
+        width: calc(100% * 11); /* 11 slides */
         height: 100%;
         transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       }
@@ -966,24 +990,6 @@
       }
     </style>
 
-    <style>
-      #slider-wrapper {
-        width: 100%;
-        overflow: hidden;
-      }
-
-      #slider-container {
-        display: flex;
-        width: calc(9 * 100%);
-        transition: transform 0.5s ease-in-out;
-      }
-
-      #slider-container > div {
-        width: calc(100% / 9);
-        flex-shrink: 0;
-      }
-    </style>
-
     <!-- Hero Section -->
     <section class="relative w-full overflow-hidden bg-white p-10">
       <div
@@ -991,27 +997,74 @@
       >
         <br /><br />
 
-        <!-- ✅ Wrapper to clip overflow -->
+        <!-- Slider Wrapper -->
         <div id="slider-wrapper">
           <div id="slider-container">
-            <!-- Slide 1: Image only -->
+            <!-- =====================================
+             Slide 1: NEW OPENING IMAGE
+        ====================================== -->
+
             <div
               class="relative flex items-center justify-center overflow-hidden"
             >
-              <a href="contact-us.html" rel="noopener noreferrer">
+              <a
+                href="https://sniperindia.com/contact"
+                rel="noopener noreferrer"
+              >
                 <img
-                  src="iPhone_17e__en-IN.jpg"
+                  src="Final.png"
+                  alt="Featured Banner"
+                  className="w-[85%] h-[160px] sm:h-[220px] lg:h-[300px] object-cover mx-auto mt-14 translate-x-4 rounded-lg"
+                />
+              </a>
+            </div>
+
+            <!-- =====================================
+             Slide 2: Mac Mini
+        ====================================== -->
+            <div
+              class="relative flex items-center justify-center overflow-hidden"
+            >
+              <a
+                href="https://sniperindia.com/contact"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="Mac_mini_Web.jpg"
                   alt="SMB Banner"
                   class="w-[100%] h-[220px] sm:h-[300px] lg:h-[420px] object-cover mx-auto"
                 />
               </a>
             </div>
 
-            <!-- Slide 2: Image only -->
+            <!-- =====================================
+             Slide 3: Mac Studio
+        ====================================== -->
             <div
               class="relative flex items-center justify-center overflow-hidden"
             >
-              <a href="contact-us.html" rel="noopener noreferrer">
+              <a
+                href="https://sniperindia.com/contact"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="Mac_Studio_Web.jpg"
+                  alt="SMB Banner"
+                  class="w-[100%] h-[220px] sm:h-[300px] lg:h-[420px] object-cover mx-auto"
+                />
+              </a>
+            </div>
+
+            <!-- =====================================
+             Slide 4: MacBook
+        ====================================== -->
+            <div
+              class="relative flex items-center justify-center overflow-hidden"
+            >
+              <a
+                href="https://sniperindia.com/contact"
+                rel="noopener noreferrer"
+              >
                 <img
                   src="MacBook_Web_N.jpg"
                   alt="SMB Banner"
@@ -1020,7 +1073,9 @@
               </a>
             </div>
 
-            <!-- Slide 3: Image only -->
+            <!-- =====================================
+             Slide 5: MacBook Air
+        ====================================== -->
             <div
               class="relative flex items-center justify-center overflow-hidden"
             >
@@ -1033,9 +1088,12 @@
               </a>
             </div>
 
-            <!-- Slide 4: SMB Solutions -->
+            <!-- =====================================
+             Slide 6: SMB Solutions
+        ====================================== -->
             <div class="relative flex items-center py-8 lg:py-0">
               <div class="gradient-overlay absolute inset-0"></div>
+
               <div
                 class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10"
               >
@@ -1050,33 +1108,38 @@
                     >
                       <span
                         class="text-[#E31922] font-semibold text-xs sm:text-sm"
-                        >SMB Solutions</span
                       >
+                        SMB Solutions
+                      </span>
                     </div>
+
                     <h1
                       class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight"
                     >
                       Step-up your business journey
-                      <span class="text-[#E31922] block mt-2"
-                        >for Small & Medium Businesses</span
-                      >
+                      <span class="text-[#E31922] block mt-2">
+                        for Small & Medium Businesses
+                      </span>
                     </h1>
+
                     <p
                       class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border"
                     >
-                      <strong class="text-gray-900"
-                        >Unlock growth potential</strong
-                      >
+                      <strong class="text-gray-900">
+                        Unlock growth potential
+                      </strong>
                       with cost-effective tools and technologies built
                       specifically to meet the dynamic needs of SMBs—simple to
                       deploy, powerful in results.
                     </p>
+
                     <div class="flex gap-3 sm:gap-4 pt-2 sm:pt-4">
                       <a
                         href="SMB.html"
                         class="group px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105"
                       >
                         Learn More
+
                         <svg
                           class="inline-block ml-2 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform"
                           fill="none"
@@ -1093,6 +1156,7 @@
                       </a>
                     </div>
                   </div>
+
                   <div
                     class="flex flex-col items-center gap-3 sm:gap-4 lg:gap-6 mt-4 lg:mt-0"
                   >
@@ -1104,6 +1168,7 @@
                         alt="Device Integration"
                         class="w-full h-[250px] sm:h-[300px] lg:h-[400px] object-cover"
                       />
+
                       <div
                         class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
                       ></div>
@@ -1113,9 +1178,12 @@
               </div>
             </div>
 
-            <!-- Slide 5: Switcher Program -->
+            <!-- =====================================
+             Slide 7: Switcher Program
+        ====================================== -->
             <div class="relative flex items-center py-8 lg:py-0">
               <div class="gradient-overlay absolute inset-0"></div>
+
               <div
                 class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10"
               >
@@ -1128,29 +1196,34 @@
                     >
                       <span
                         class="text-[#E31922] font-semibold text-xs sm:text-sm"
-                        >Switcher Program</span
                       >
+                        Switcher Program
+                      </span>
                     </div>
+
                     <h2
                       class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight"
                     >
                       <span class="text-[#E31922]">Switch to Mac:</span>
                       <span class="block mt-2">Power Your Business</span>
                     </h2>
+
                     <p
                       class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border"
                     >
-                      <strong class="text-gray-900"
-                        >Make the switch to performance</strong
-                      >
+                      <strong class="text-gray-900">
+                        Make the switch to performance
+                      </strong>
                       with Mac—designed for modern businesses seeking speed,
                       security, and seamless collaboration.
                     </p>
+
                     <a
                       href="switcher-program.html"
                       class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105"
                     >
                       Learn More
+
                       <svg
                         class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5"
                         fill="none"
@@ -1166,6 +1239,7 @@
                       </svg>
                     </a>
                   </div>
+
                   <div
                     class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl card-hover mt-4 lg:mt-0"
                   >
@@ -1179,9 +1253,12 @@
               </div>
             </div>
 
-            <!-- Slide 6: iPad Solutions -->
+            <!-- =====================================
+             Slide 8: iPad Solutions
+        ====================================== -->
             <div class="relative flex items-center py-8 lg:py-0">
               <div class="gradient-overlay absolute inset-0"></div>
+
               <div
                 class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10"
               >
@@ -1194,29 +1271,34 @@
                     >
                       <span
                         class="text-[#E31922] font-semibold text-xs sm:text-sm"
-                        >iPad Solutions</span
                       >
+                        iPad Solutions
+                      </span>
                     </div>
+
                     <h2
                       class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight"
                     >
                       <span class="text-[#E31922]">iPad in business</span>
                       <span class="block mt-2">Your workplace, any place</span>
                     </h2>
+
                     <p
                       class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border"
                     >
-                      <strong class="text-gray-900"
-                        >For every way your teams work.</strong
-                      >
+                      <strong class="text-gray-900">
+                        For every way your teams work.
+                      </strong>
                       Whether in office, field, or home—iPad delivers intuitive
                       experiences that boost confidence and productivity.
                     </p>
+
                     <a
                       href="ipad-for-business.html"
                       class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105"
                     >
                       Learn More
+
                       <svg
                         class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5"
                         fill="none"
@@ -1232,6 +1314,7 @@
                       </svg>
                     </a>
                   </div>
+
                   <div class="flex justify-center mt-4 lg:mt-0">
                     <div
                       class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl card-hover max-w-md w-full"
@@ -1247,9 +1330,12 @@
               </div>
             </div>
 
-            <!-- Slide 7: M5-Powered Macs -->
+            <!-- =====================================
+             Slide 9: M5-Powered Macs
+        ====================================== -->
             <div class="relative flex items-center py-8 lg:py-0">
               <div class="gradient-overlay absolute inset-0"></div>
+
               <div
                 class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10"
               >
@@ -1262,29 +1348,34 @@
                     >
                       <span
                         class="text-[#E31922] font-semibold text-xs sm:text-sm"
-                        >Exclusive Offer</span
                       >
+                        Exclusive Offer
+                      </span>
                     </div>
+
                     <h2
                       class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight"
                     >
                       <span class="text-[#E31922]">Upgrade to</span>
                       <span class="block mt-2">M5-Powered Macs</span>
                     </h2>
+
                     <p
                       class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border"
                     >
-                      <strong class="text-gray-900"
-                        >Get astounding speed,</strong
-                      >
+                      <strong class="text-gray-900">
+                        Get astounding speed,
+                      </strong>
                       graphics and AI capability with up to 24 hours of battery
                       life at a never-before-seen exchange offer!
                     </p>
+
                     <a
                       href="refresh-program.html"
                       class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105"
                     >
                       Learn More
+
                       <svg
                         class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5"
                         fill="none"
@@ -1300,6 +1391,7 @@
                       </svg>
                     </a>
                   </div>
+
                   <div
                     class="flex flex-col items-center gap-3 sm:gap-4 lg:gap-6 mt-4 lg:mt-0"
                   >
@@ -1312,6 +1404,7 @@
                         class="w-full h-[200px] sm:h-[250px] lg:h-[300px] object-contain"
                       />
                     </div>
+
                     <div
                       class="bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-lg"
                     >
@@ -1326,9 +1419,12 @@
               </div>
             </div>
 
-            <!-- Slide 8: Enterprise Solutions -->
+            <!-- =====================================
+             Slide 10: Enterprise Solutions
+        ====================================== -->
             <div class="relative flex items-center py-8 lg:py-0">
               <div class="gradient-overlay absolute inset-0"></div>
+
               <div
                 class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10"
               >
@@ -1341,31 +1437,36 @@
                     >
                       <span
                         class="text-[#E31922] font-semibold text-xs sm:text-sm"
-                        >Enterprise</span
                       >
+                        Enterprise
+                      </span>
                     </div>
+
                     <h2
                       class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight"
                     >
                       Enterprise Solutions
-                      <span class="text-[#E31922] block mt-2"
-                        >for Large-Scale Business</span
-                      >
+                      <span class="text-[#E31922] block mt-2">
+                        for Large-Scale Business
+                      </span>
                     </h2>
+
                     <p
                       class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border"
                     >
-                      <strong class="text-gray-900"
-                        >Experience enterprise-grade performance</strong
-                      >
+                      <strong class="text-gray-900">
+                        Experience enterprise-grade performance
+                      </strong>
                       with robust, secure, and scalable solutions that empower
                       innovation without limits.
                     </p>
+
                     <a
                       href="enterprise.html"
                       class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105"
                     >
                       Learn More
+
                       <svg
                         class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5"
                         fill="none"
@@ -1381,6 +1482,7 @@
                       </svg>
                     </a>
                   </div>
+
                   <div
                     class="flex flex-col items-center gap-3 sm:gap-4 lg:gap-6 mt-4 lg:mt-0"
                   >
@@ -1393,6 +1495,7 @@
                         class="w-full h-[200px] sm:h-[250px] lg:h-[300px] object-contain"
                       />
                     </div>
+
                     <div
                       class="bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-lg"
                     >
@@ -1407,9 +1510,12 @@
               </div>
             </div>
 
-            <!-- Slide 9: SMART EPP -->
+            <!-- =====================================
+             Slide 11: SMART EPP
+        ====================================== -->
             <div class="relative flex items-center py-8 lg:py-0">
               <div class="gradient-overlay absolute inset-0"></div>
+
               <div
                 class="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10"
               >
@@ -1422,29 +1528,36 @@
                     >
                       <span
                         class="text-[#E31922] font-semibold text-xs sm:text-sm"
-                        >Employee Benefits</span
                       >
+                        Employee Benefits
+                      </span>
                     </div>
+
                     <h2
                       class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight"
                     >
                       <span class="text-[#E31922]">SMART EPP:</span>
-                      <span class="block mt-2">Exclusive Employee Program</span>
+                      <span class="block mt-2">
+                        Exclusive Employee Program
+                      </span>
                     </h2>
+
                     <p
                       class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed accent-border"
                     >
-                      <strong class="text-gray-900"
-                        >Empower your workforce</strong
-                      >
+                      <strong class="text-gray-900">
+                        Empower your workforce
+                      </strong>
                       with special access to premium devices through our SMART
                       EPP—crafted to deliver performance and value.
                     </p>
+
                     <a
                       href="apple-smartEPP.html"
                       class="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#E31922] text-white text-xs sm:text-sm md:text-base font-semibold rounded-lg transition-all duration-300 hover:bg-[#C01419] hover:shadow-xl hover:scale-105"
                     >
                       Learn More
+
                       <svg
                         class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5"
                         fill="none"
@@ -1460,6 +1573,7 @@
                       </svg>
                     </a>
                   </div>
+
                   <div
                     class="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl card-hover mt-4 lg:mt-0"
                   >
@@ -1477,7 +1591,10 @@
         </div>
         <!-- end #slider-wrapper -->
 
-        <!-- Navigation Arrows -->
+        <!-- =========================
+         Navigation Arrows
+    ========================== -->
+
         <button
           class="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 bg-white/95 hover:bg-white rounded-full p-2 sm:p-3 lg:p-4 shadow-xl transition-all duration-300 z-20 group hover:scale-110"
           id="prev-slide"
@@ -1518,7 +1635,10 @@
           </svg>
         </button>
 
-        <!-- Slider Dots (9 dots for 9 slides) -->
+        <!-- =========================
+         Slider Dots - 11 Slides
+    ========================== -->
+
         <div
           class="absolute bottom-4 sm:bottom-6 lg:bottom-12 left-0 right-0 flex justify-center gap-1.5 sm:gap-2 lg:gap-3 z-20"
           id="slider-dots"
@@ -1527,37 +1647,56 @@
             class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
             data-index="0"
           ></button>
+
           <button
             class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
             data-index="1"
           ></button>
+
           <button
             class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
             data-index="2"
           ></button>
+
           <button
             class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
             data-index="3"
           ></button>
+
           <button
             class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
             data-index="4"
           ></button>
+
           <button
             class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
             data-index="5"
           ></button>
+
           <button
             class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
             data-index="6"
           ></button>
+
           <button
             class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
             data-index="7"
           ></button>
+
           <button
             class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
             data-index="8"
+          ></button>
+
+          <button
+            class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
+            data-index="9"
+          ></button>
+
+          <!-- NEW DOT -->
+          <button
+            class="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300"
+            data-index="10"
           ></button>
         </div>
       </div>
@@ -1571,14 +1710,19 @@
         const nextButton = document.getElementById("next-slide");
 
         let currentSlide = 0;
-        const totalSlides = 9;
+        const totalSlides = 11;
 
-        // Kill any accidental timers
+        // Kill any accidental timers already running
         const highestId = window.setTimeout(() => {}, 0);
         for (let i = 0; i <= highestId; i++) {
           window.clearTimeout(i);
           window.clearInterval(i);
         }
+
+        // ✅ Permanently block any future auto-advance intervals
+        window.setInterval = function () {
+          return 0; // no-op, prevents any autoplay timer from starting
+        };
 
         function updateSlider() {
           const percentage = (100 / totalSlides) * currentSlide;
@@ -3507,7 +3651,7 @@
           <div class="item">
             <div class="f-item about">
               <img
-                src="https://sniperindia.com/wp-content/uploads/2023/11/sniper-logo-neww.png"
+                src="sniper-logo-neww.png"
                 alt="Logo"
                 class="mb-4 max-w-[120px] sm:max-w-[150px] md:max-w-[180px] lg:max-w-[200px] w-full"
               />
@@ -3587,7 +3731,20 @@
               <!-- iPhone Section -->
 
               <ul class="menu mb-4">
+<li class="menu-item mb-1">
+
+                <a
+                    href="iPhone_Duo/index.html"
+                    class="text-gray-300 hover:text-red-500 transition-all"
+                    >iPhone Duo
+                  </a>
+
+</li>
                 <li class="menu-item mb-1">
+
+
+
+
                   <a
                     href="iphone 17e/index.html"
                     class="text-gray-300 hover:text-red-500 transition-all"
@@ -3605,7 +3762,7 @@
                   <a
                     href="iphone17_air.html"
                     class="text-gray-300 hover:text-red-500 transition-all"
-                    >iPhone 17 air</a
+                    >iphone Air</a
                   >
                 </li>
                 <li class="menu-item mb-1">
@@ -3703,8 +3860,7 @@
                       </svg>
                     </div>
                     <div class="info text-gray-300">
-                      No.131/2A, Moti Towers, 4th Floor, Rajiv Gandhi Salai(OMR)
-                      Opp. Apollo Hospital, Perungudi, Chennai – 600 096
+                     Chennai | Bangalore | Hyderabad | Coimbatore | Kochi | Gurugram | Vijayawada
                     </div>
                   </li>
                   <li class="flex items-start mb-4">

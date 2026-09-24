@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout";
 import SEO from "@/components/SEO";
 import OrbitingCirclesGlobe from "@/components/ui/orbiting-circles-02";
+import { FloatingPaths } from "@/components/ui/background-paths";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, CheckCircle, ChevronDown, ChevronLeft, ChevronRight, Clock, Lightbulb, Shield, Zap } from "lucide-react";
@@ -15,6 +16,8 @@ import { StarfieldBackground } from "@/components/StarfieldBackground";
 
 
 gsap.registerPlugin(ScrollTrigger);
+
+
 
 
 
@@ -437,7 +440,12 @@ const NewTopHeroSection = () => {
       {/* ─── DESKTOP LAYOUT (>= lg) ─────────────────────────────────────── */}
       <div ref={outerRef} className="hidden lg:block" style={{ height: "calc(100vh + 600px)" }}>
         <div style={{ position: "sticky", top: 1, height: "100vh", overflow: "hidden", display: "flex", alignItems: "center", backgroundColor: "#ffffff" }}>
-          <div style={{ width: "100%", maxWidth: "1380px", margin: "0 auto", padding: "0 28px" }}>
+          {/* Background paths at bottom left */}
+          <div className="absolute bottom-0 left-0 w-1/2 h-1/2 pointer-events-none opacity-40">
+            <FloatingPaths position={1} />
+            <FloatingPaths position={-1} />
+          </div>
+          <div style={{ width: "100%", maxWidth: "1380px", margin: "0 auto", padding: "0 28px", position: "relative", zIndex: 1 }}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <div className="order-2 lg:order-1 space-y-6">
                 <div className="mb-10 sm:mb-12 md:mb-16">
@@ -991,17 +999,17 @@ const Index = () => {
   }, []);
 
   const solutions = [
-    { title: "AV Solutions", description: "Providing innovative audio-visual solutions tailored for business environments.", img: "https://i.postimg.cc/JhBh5MNr/AV-soln.jpg", link: "/solutions/av-solutions" },
-    { title: "Cloud Solutions", description: "Delivering scalable and secure cloud services to enhance performance, flexibility, and business growth.", img: "https://i.postimg.cc/DZT7Qsfd/cloud.jpg", link: "/solutions/clould-solutions" },
-    { title: "IT Asset Disposal Plans", description: "Ensuring secure and environmentally responsible disposal of IT assets.", img: "https://i.postimg.cc/yNqKB9RB/it-asset-disposal.jpg", link: "/solutions/it-asset-disposal" },
-    { title: "IT Infrastructure Solutions", description: "Designing and implementing robust IT infrastructure to support business operations.", img: "https://i.postimg.cc/tJsvYv02/IT-infra.jpg", link: "/solutions/it-infrastructure" },
+    { title: "AV Solutions", description: "Providing innovative audio-visual solutions tailored for business environments.", img: "https://i.postimg.cc/kgWL7m9R/av.jpg", link: "/solutions/av-solutions" },
+    { title: "Cloud Solutions", description: "Delivering scalable and secure cloud services to enhance performance, flexibility, and business growth.", img: "https://i.postimg.cc/8k2SGwW4/cloud.jpg", link: "/solutions/clould-solutions" },
+    { title: "IT Asset Disposal Plans", description: "Ensuring secure and environmentally responsible disposal of IT assets.", img: "https://i.postimg.cc/4xwqY1K2/it-diposal.jpg", link: "/solutions/it-asset-disposal" },
+    { title: "IT Infrastructure Solutions", description: "Designing and implementing robust IT infrastructure to support business operations.", img: "https://i.postimg.cc/KvDsW55G/infra.jpg", link: "/solutions/it-infrastructure" },
 
-    { title: "IT Consulting Services", description: "Providing expert advice to align IT strategies with business objectives.", img: "https://i.postimg.cc/nrw8WQxw/it-consulting-services.webp", link: "/solutions/it-consulting" },
-    { title: "Managed IT Services", description: "Offering reliable comprehensive IT support and management services.", img: "https://i.postimg.cc/ZqPGSQZq/Managed-it-serv-ice.jpg", link: "/solutions/managed-it-services" },
-    { title: "Networking Solutions", description: "Providing networking solutions to ensure seamless connectivity and communication.", img: "https://i.postimg.cc/hjjp5ZtY/network.jpg", link: "/solutions/networking-solutions" },
-    { title: "Device Deployment & MDM", description: "Managing the deployment of devices and implementing Mobile Device Management strategies.", img: "https://i.postimg.cc/L6X2VmSL/mdm.webp", link: "/solutions/device-deployment-mdm" },
+    { title: "IT Consulting Services", description: "Providing expert advice to align IT strategies with business objectives.", img: "https://i.postimg.cc/zvSp9JT1/consult.jpg", link: "/solutions/it-consulting" },
+    { title: "Managed IT Services", description: "Offering reliable comprehensive IT support and management services.", img: "https://i.postimg.cc/qBXLBv6x/manages.jpg", link: "/solutions/managed-it-services" },
+    { title: "Networking Solutions", description: "Providing networking solutions to ensure seamless connectivity and communication.", img: "https://i.postimg.cc/gk2vYqWV/network.jpg", link: "/solutions/networking-solutions" },
+    { title: "Device Deployment & MDM", description: "Managing the deployment of devices and implementing Mobile Device Management strategies.", img: "https://i.postimg.cc/s2YBPvzz/mdm.jpg", link: "/solutions/device-deployment-mdm" },
 
-    { title: "HR Solutions", description: "Expert HR Management Solutions to Recruit Smarter, Hire Better, and Grow Faster.", img: "https://i.postimg.cc/rs9rSzpt/payment.webp", link: "/solutions/hr-solutions" },
+    { title: "HR Solutions", description: "Expert HR Management Solutions to Recruit Smarter, Hire Better, and Grow Faster.", img: "https://i.postimg.cc/X7x65Wm5/15983b38-84f3-496f-9a7e-4b261cc15c48.jpg", link: "/solutions/hr-solutions" },
 
 
   ];
@@ -1030,57 +1038,57 @@ const Index = () => {
     { name: "TCS", logo: "https://upload.wikimedia.org/wikipedia/en/b/b1/Tata_Consultancy_Services.svg", maxWidth: "85px", maxHeight: "42px" },
     { name: "Infosys", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg", maxWidth: "88px", maxHeight: "28px" },
     { name: "KPMG", logo: "https://upload.wikimedia.org/wikipedia/commons/d/db/KPMG_blue_logo.svg", maxWidth: "72px", maxHeight: "32px" },
-    { name: "ISRO", logo: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Indian_Space_Research_Organisation_Logo.svg", maxWidth: "59px", maxHeight: "64px" },
+    { name: "ISRO", logo: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Indian_Space_Research_Organisation_Logo.svg", maxWidth: "64px", maxHeight: "64px" },
     { name: "Verizon", logo: "https://upload.wikimedia.org/wikipedia/commons/8/83/Verizon_2024.svg", maxWidth: "88px", maxHeight: "24px" },
     { name: "Paytm", logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg", maxWidth: "76px", maxHeight: "30px" },
     { name: "Apollo Hospitals", logo: "https://upload.wikimedia.org/wikipedia/en/c/c5/Apollo_Hospitals_Logo.svg", maxWidth: "55px", maxHeight: "68px" },
-    { name: "Metropolis", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Metropolis_Healthcare_Logo_Green_Background.png", maxWidth: "90px", maxHeight: "40px" },
-    { name: "Athenahealth", logo: "https://upload.wikimedia.org/wikipedia/en/7/7b/Athenahealth.svg", maxWidth: "110px", maxHeight: "28px" },
+    { name: "Metropolis", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Metropolis_Healthcare_Logo_Green_Background.png", maxWidth: "110px", maxHeight: "60px" },
+    { name: "Athenahealth", logo: "https://upload.wikimedia.org/wikipedia/en/7/7b/Athenahealth.svg", maxWidth: "140px", maxHeight: "58px" },
     { name: "AstraZeneca", logo: "https://upload.wikimedia.org/wikipedia/en/4/4f/AstraZeneca.svg", maxWidth: "105px", maxHeight: "28px" },
-    { name: "Ashok Leyland", logo: "https://upload.wikimedia.org/wikipedia/en/d/df/Ashok_Leyland_logo.svg", maxWidth: "100px", maxHeight: "30px" },
+    { name: "Ashok Leyland", logo: "https://upload.wikimedia.org/wikipedia/en/d/df/Ashok_Leyland_logo.svg", maxWidth: "120px", maxHeight: "50px" },
     { name: "Razorpay", logo: "https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg", maxWidth: "95px", maxHeight: "28px" },
     { name: "Rane", logo: "https://upload.wikimedia.org/wikipedia/en/b/b8/Rane_Group_Logo.jpg", maxWidth: "58px", maxHeight: "40px" },
     { name: "KONE", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Kone_Logo_2023.svg", maxWidth: "70px", maxHeight: "30px" },
-    { name: "Accenture", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg", maxWidth: "95px", maxHeight: "26px" },
-    { name: "Daimler", logo: "https://upload.wikimedia.org/wikipedia/en/b/b0/Daimler_logo.svg", maxWidth: "74px", maxHeight: "40px" },
+    { name: "Accenture", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg", maxWidth: "115px", maxHeight: "46px" },
+    { name: "Daimler", logo: "https://upload.wikimedia.org/wikipedia/en/b/b0/Daimler_logo.svg", maxWidth: "74px", maxHeight: "50px" },
     { name: "Rockstar Games", logo: "https://upload.wikimedia.org/wikipedia/commons/5/53/Rockstar_Games_Logo.svg", maxWidth: "40px", maxHeight: "40px" },
     { name: "Karnataka High Court", logo: "https://upload.wikimedia.org/wikipedia/en/1/1f/Logo_of_Karnataka_High_Court.png", maxWidth: "62px", maxHeight: "52px" },
-    { name: "GE Vernova", logo: "https://upload.wikimedia.org/wikipedia/commons/6/65/GE_Vernova_logo.svg", maxWidth: "110px", maxHeight: "28px" },
+    { name: "GE Vernova", logo: "https://upload.wikimedia.org/wikipedia/commons/6/65/GE_Vernova_logo.svg", maxWidth: "130px", maxHeight: "48px" },
     { name: "C-DAC", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Logo_for_the_Centre_for_Development_of_Advanced_Computing.svg", maxWidth: "60px", maxHeight: "40px" },
-    { name: "Technicolor", logo: "https://upload.wikimedia.org/wikipedia/en/e/ec/Technicolor_Group.svg", maxWidth: "100px", maxHeight: "28px" },
+    { name: "Technicolor", logo: "https://upload.wikimedia.org/wikipedia/en/e/ec/Technicolor_Group.svg", maxWidth: "120px", maxHeight: "48px" },
     { name: "NDTV", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c5/NDTV_logo.svg", maxWidth: "80px", maxHeight: "28px" },
 
-    { name: "Grow", logo: "https://i.postimg.cc/rpF0wXSw/groww-logo.webp", maxWidth: "90px", maxHeight: "38px" },
+    { name: "Grow", logo: "https://i.postimg.cc/rpF0wXSw/groww-logo.webp", maxWidth: "100px", maxHeight: "48px" },
     { name: "amagi", logo: "https://i.postimg.cc/RhQ4tqmB/amagi-logo.webp", maxWidth: "90px", maxHeight: "38px" },
 
-    { name: "Disney+", logo: "https://upload.wikimedia.org/wikipedia/commons/6/64/Disney%2B_2024.svg", maxWidth: "95px", maxHeight: "38px" },
+    { name: "Disney+", logo: "https://upload.wikimedia.org/wikipedia/commons/6/64/Disney%2B_2024.svg", maxWidth: "95px", maxHeight: "65px" },
     { name: "SBI", logo: "https://upload.wikimedia.org/wikipedia/commons/3/33/State_Bank_of_India.svg", maxWidth: "65px", maxHeight: "60px" },
-    { name: "Indian Navy", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Indian_Navy_Insignia.svg", maxWidth: "65px", maxHeight: "55px" },
-    { name: "Brigade Group", logo: "https://upload.wikimedia.org/wikipedia/en/8/8e/Brigade_Group.svg", maxWidth: "100px", maxHeight: "48px" },
-    { name: "Asianet", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Asianet_2023_logo.png", maxWidth: "90px", maxHeight: "42px" },
-    { name: "ChuChu TV", logo: "https://upload.wikimedia.org/wikipedia/en/d/d8/ChuChu_TV-logo.JPG", maxWidth: "70px", maxHeight: "45px" },
+    { name: "Indian Navy", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Indian_Navy_Insignia.svg", maxWidth: "65px", maxHeight: "65px" },
+    { name: "Brigade Group", logo: "https://upload.wikimedia.org/wikipedia/en/8/8e/Brigade_Group.svg", maxWidth: "100px", maxHeight: "58px" },
+    { name: "Asianet", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Asianet_2023_logo.png", maxWidth: "90px", maxHeight: "52px" },
+    { name: "ChuChu TV", logo: "https://upload.wikimedia.org/wikipedia/en/d/d8/ChuChu_TV-logo.JPG", maxWidth: "70px", maxHeight: "55px" },
 
-    { name: "Chargebee", logo: "https://i.postimg.cc/rsg7c4cz/6ec7fd89-42a8-4a53-a0d4-252515d5a1c2.png", maxWidth: "140px", maxHeight: "78px" },
+    { name: "Chargebee", logo: "https://i.postimg.cc/rsg7c4cz/6ec7fd89-42a8-4a53-a0d4-252515d5a1c2.png", maxWidth: "160px", maxHeight: "98px" },
 
 
     { name: "Bluestone", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Bluestone_Group_logo_mid_resolution.jpg", maxWidth: "120px", maxHeight: "56px" },
-    { name: "Freshworks", logo: "https://brandlogos.net/wp-content/uploads/2024/04/freshworks-logo_brandlogos.net_c6t5u.png", maxWidth: "100px", maxHeight: "28px" },
-    { name: "Amagi", logo: "https://iabm-cdn.s3.us-east-2.amazonaws.com/wp-content/uploads/2023/05/18132311/amagi-media-labs-pvt-ltd.webp", maxWidth: "90px", maxHeight: "28px" },
-    { name: "Highspot", logo: "https://cdn-public.softwarereviews.com/production/logos/offerings/8290/large/Highspot_logo.png?1617162059", maxWidth: "90px", maxHeight: "38px" },
-    { name: "Embassy Group", logo: "https://upload.wikimedia.org/wikipedia/en/9/9e/Embassy_Group.svg", maxWidth: "100px", maxHeight: "38px" },
+    { name: "Freshworks", logo: "https://brandlogos.net/wp-content/uploads/2024/04/freshworks-logo_brandlogos.net_c6t5u.png", maxWidth: "120px", maxHeight: "48px" },
+    { name: "Ford", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original", maxWidth: "90px", maxHeight: "28px" },
+    { name: "Highspot", logo: "https://upload.wikimedia.org/wikipedia/en/6/69/IIT_Madras_Logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original", maxWidth: "100px", maxHeight: "58px" },
+    { name: "Embassy Group", logo: "https://upload.wikimedia.org/wikipedia/en/3/3b/Indian_Institute_of_Science_2019_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original", maxWidth: "120px", maxHeight: "58px" },
     { name: "Swiggy", logo: "https://upload.wikimedia.org/wikipedia/en/d/d4/Swiggy_Logo.svg", maxWidth: "100px", maxHeight: "38px" },
 
-    { name: "postman", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Postman_%28software%29.png", maxWidth: "90px", maxHeight: "38px" },
-    { name: "Cognizant", logo: "https://upload.wikimedia.org/wikipedia/commons/4/43/Cognizant_logo_2022.svg", maxWidth: "90px", maxHeight: "38px" },
+    { name: "postman", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Postman_%28software%29.png", maxWidth: "110px", maxHeight: "58px" },
+    { name: "Cognizant", logo: "https://upload.wikimedia.org/wikipedia/commons/4/43/Cognizant_logo_2022.svg", maxWidth: "110px", maxHeight: "58px" },
     { name: "amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/0/06/Amazon_2024.svg", maxWidth: "90px", maxHeight: "38px" },
     { name: "wipro", logo: "https://upload.wikimedia.org/wikipedia/commons/8/89/Wipro_new_logo.svg", maxWidth: "90px", maxHeight: "38px" },
-    { name: "Walmart", logo: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Walmart_logo_%282025%29.svg", maxWidth: "90px", maxHeight: "38px" },
+    { name: "Walmart", logo: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Walmart_logo_%282025%29.svg", maxWidth: "110px", maxHeight: "58px" },
 
-    { name: "Capgemini", logo: "https://upload.wikimedia.org/wikipedia/en/7/7c/Capgemini_New_logo.svg", maxWidth: "90px", maxHeight: "38px" },
+    { name: "Capgemini", logo: "https://upload.wikimedia.org/wikipedia/en/7/7c/Capgemini_New_logo.svg", maxWidth: "110px", maxHeight: "58px" },
 
-    { name: "Sharechat", logo: "https://upload.wikimedia.org/wikipedia/en/8/88/Sharechat_Logo_with_Wordmark.svg", maxWidth: "90px", maxHeight: "38px" },
+    { name: "Sharechat", logo: "https://upload.wikimedia.org/wikipedia/en/8/88/Sharechat_Logo_with_Wordmark.svg", maxWidth: "110px", maxHeight: "58px" },
 
-    { name: "Zerodha", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Zerodha_logo.svg", maxWidth: "90px", maxHeight: "38px" },
+    { name: "Zerodha", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Zerodha_logo.svg", maxWidth: "110px", maxHeight: "58px" },
   ];
 
   const heroRef = useRef(null);
