@@ -10,10 +10,11 @@ import React, { Suspense, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AppleStyleDock } from "./components/AppleStyleDock";
 
+
 // ── Lazy pages (code-split for faster initial load) ──────────────────────────
 const Index = React.lazy(() => import("./pages/Index"));
 const About = React.lazy(() => import("./pages/About"));
-const Blog = React.lazy(() => import("./pages/Blog"));
+// const Blog = React.lazy(() => import("./pages/Blog"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Careers = React.lazy(() => import("./pages/Careers"));
 
@@ -56,6 +57,8 @@ import Samsung from "./pages/partners/Samsung";
 import Unity from "./pages/partners/Unity";
 import UnrealEngine from "./pages/partners/UnrealEngine";
 import Yubico from "./pages/partners/Yubico";
+
+import Gcc from "./pages/partners/Gcc";
 
 // Industries
 import AEC from "./pages/industries/AEC";
@@ -108,10 +111,26 @@ const AnimatedRoutes = () => {
             {/* Main pages */}
             <Route path="/about" element={<About />} />
             <Route path="/about-us" element={<Navigate to="/about" replace />} />
-            <Route path="/blog" element={<Blog />} />
+
+
+
+            <Route
+              path="/blog"
+              element={
+                <Navigate
+                  to="https://blog.sniperindia.com/"
+                  replace
+                />
+              }
+            />
+
+
+
+
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/gcc" element={<Gcc />} />
             <Route path="/terms" element={<TermsAndConditions />} />
 
             {/* Solutions */}
@@ -129,7 +148,11 @@ const AnimatedRoutes = () => {
 
             {/* Partners */}
             <Route path="/partners" element={<Partners />} />
-            <Route path="/partners/apple/" element={<Apple />} />
+            <Route path="/partners/apple/*" element={<Apple />} />
+            <Route
+              path="/apple/"
+              element={<Navigate to="/partners/apple/index.html" replace />}
+            />
             <Route path="/partners/nvidia" element={<Nvidia />} />
             <Route path="/partners/microsoft" element={<Microsoft />} />
             <Route path="/partners/lenovo" element={<Lenovo />} />
@@ -159,7 +182,7 @@ const AnimatedRoutes = () => {
             <Route path="/industries/healthcare-pharma" element={<HealthcarePharma />} />
             <Route path="/industries/manufacturing-automotive" element={<ManufacturingAutomotive />} />
             <Route path="/industries/education" element={<Education />} />
-            <Route path="/industries/Education" element={<Navigate to="/industries/education" replace />} />
+
 
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
@@ -192,8 +215,8 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
-          <Analytics />
-           <SpeedInsights />
+            <Analytics />
+            <SpeedInsights />
             <AnimatedRoutes />
             <AppleStyleDock />
           </BrowserRouter>
