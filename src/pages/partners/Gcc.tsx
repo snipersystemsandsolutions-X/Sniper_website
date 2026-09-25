@@ -61,7 +61,7 @@ import jamf from "@/assets/jamf.svg";
 import poly from "@/assets/poly.svg";
 import yubico from "@/assets/yubico.png";
 import unity from "@/assets/unity.svg";
-import trimble from "@/assets/trimble.jpg";
+import trimble from "@/assets/Trimble.jpg";
 import yotta from   "@/assets/yotta.png";
 
 
