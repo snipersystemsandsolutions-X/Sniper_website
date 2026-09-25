@@ -74,6 +74,7 @@ export default defineConfig({
     // Auto-generates /sitemap.xml with per-route priorities on every build
     sitemap({
       hostname: SITE_URL,
+      outDir: "dist",
       dynamicRoutes: routesWithPriority.map((r) => r.url),
       exclude: ["/about-us"],
       changefreq: "weekly",
