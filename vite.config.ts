@@ -80,13 +80,7 @@ export default defineConfig({
       changefreq: "weekly",
       priority: 0.8,
       lastmod: new Date(),
-      robots: [
-        {
-          userAgent: "*",
-          allow: "/",
-          disallow: ["/404.html", "/__vite_ping"],
-        },
-      ],
+      
     }),
 
     // Brotli compression (.br) — served by most CDNs / nginx automatically.
