@@ -1,7 +1,6 @@
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
-import sitemap from "vite-plugin-sitemap";
 import compression from "vite-plugin-compression";
 
 const SITE_URL = "https://sniperindia.com";
@@ -72,16 +71,16 @@ export default defineConfig({
     react(),
 
     // Auto-generates /sitemap.xml with per-route priorities on every build
-    sitemap({
-      hostname: SITE_URL,
-      outDir: "dist",
-      dynamicRoutes: routesWithPriority.map((r) => r.url),
-      exclude: ["/about-us"],
-      changefreq: "weekly",
-      priority: 0.8,
-      lastmod: new Date(),
+    // sitemap({
+    //   hostname: SITE_URL,
+    //   outDir: "dist",
+    //   dynamicRoutes: routesWithPriority.map((r) => r.url),
+    //   exclude: ["/about-us"],
+    //   changefreq: "weekly",
+    //   priority: 0.8,
+    //   lastmod: new Date(),
       
-    }),
+    // }),
 
     // Brotli compression (.br) — served by most CDNs / nginx automatically.
     // Reduces JS/CSS transfer size by ~20-30% vs gzip, improving TTFB & FCP.
