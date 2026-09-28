@@ -906,7 +906,7 @@ const ProblemCell = ({
       {/* copy */}
       <div className="relative z-10 flex flex-1 flex-col px-5 pb-6 pt-7 sm:px-6">
         <h3
-          className="text-[28px] font-medium uppercase leading-[0.95] tracking-tighter sm:text-[32px] xl:text-[34px]"
+          className="text-[28px] font-semibold leading-[0.95] tracking-tighter sm:text-[32px] xl:text-[34px]"
           style={{ color: INK }}
         >
           {problem.title}
@@ -3542,31 +3542,108 @@ const FAQS: FAQEntry[] = [
     answer:
       "A rough seat count, your target city or cities, an approximate go-live window, and any security requirements from your global team. Even estimates are enough to scope the first conversation and shape a timeline for your setup.",
   },
+  {
+    question: "Does Sniper provide cloud solutions for GCCs?",
+    answer:
+      "Yes. Sniper covers cloud assessment and planning, migration and deployment, infrastructure management, monitoring, cost optimization, cloud security and ongoing cloud support.",
+  },
+  {
+    question: "Does Sniper provide device deployment and IT management for GCC employees?",
+    answer:
+      "Sniper provides device deployment and Mobile Device Management (MDM), along with enterprise mobility and managed IT services, to support your employees' technology environment.",
+  },
+  {
+    question: "Where does Sniper provide GCC IT support in India?",
+    answer:
+      "Sniper has a presence across India, including Chennai, Bangalore, Hyderabad, Coimbatore, Kochi, Gurugram and Vijayawada.",
+  },
+  {
+    question: "How can a GCC get started with Sniper's IT solutions?",
+    answer:
+      "Contact Sniper to discuss your infrastructure, cloud, networking, device deployment, managed IT or workplace technology requirements, and we'll help identify the right solutions for your environment.",
+  },
 ];
 
 // ============================================================================
-// ✦ STRUCTURED DATA (JSON-LD) — rendered inside <Helmet> in the GCC page.
+// ✦ STRUCTURED DATA (JSON-LD) + SEO META — rendered inside <Helmet> in the
+// GCC page.
 //
 // FAQ_JSON_LD is built by mapping the FAQS array above, so the schema can
 // never drift from the visible accordion (Google requires the marked-up
-// answers to match what's on the page). SERVICE_JSON_LD only states things
-// the page itself already says; add Organization/LocalBusiness details
-// (address, phone, logo) only once the business has confirmed them.
+// answers to match what's on the page). Organization/Service/Breadcrumb
+// blocks only state facts already published on sniperindia.com.
 // ============================================================================
 const PAGE_URL = "https://sniperindia.com/gcc";
+const SITE_URL = "https://sniperindia.com/";
+const ORG_ID = "https://sniperindia.com/#organization";
+const OG_IMAGE = "https://sniperindia.com/images/gcc-solutions.jpg";
+
+const SEO_TITLE =
+  "GCC IT Solutions in India | Global Capability Center IT Services | Sniper Systems";
+const SEO_DESCRIPTION =
+  "GCC IT solutions in India covering IT infrastructure, cloud, networking, device deployment, managed IT services, cybersecurity and workplace technology for Global Capability Centers.";
+const SEO_KEYWORDS = [
+  "GCC IT solutions India",
+  "Global Capability Center IT solutions",
+  "GCC infrastructure solutions India",
+  "GCC IT infrastructure",
+  "GCC technology solutions",
+  "GCC managed IT services",
+  "GCC cloud solutions India",
+  "GCC networking solutions",
+  "GCC cybersecurity solutions",
+  "GCC device deployment",
+  "GCC workplace technology",
+  "Global Capability Center technology services",
+  "IT solutions for GCCs",
+  "IT infrastructure for GCC",
+  "GCC IT support India",
+  "Global Capability Center IT services India",
+].join(", ");
+
+const ORGANIZATION_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": ORG_ID,
+  name: "Sniper Systems & Solutions Pvt Ltd",
+  url: SITE_URL,
+  description:
+    "Sniper Systems & Solutions Pvt Ltd is an IT solutions provider delivering enterprise IT infrastructure, cloud, networking, device deployment, managed IT services and workplace technology solutions across India.",
+  foundingDate: "2009",
+  telephone: "+91 89393 01100",
+  email: "enquiry@sniperindia.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress:
+      "No.131/2A, Moti Towers, 4th Floor, Rajiv Gandhi Salai, OMR, Perungudi",
+    addressLocality: "Chennai",
+    postalCode: "600096",
+    addressRegion: "Tamil Nadu",
+    addressCountry: "IN",
+  },
+  areaServed: { "@type": "Country", name: "India" },
+};
 
 const SERVICE_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "GCC IT Infrastructure and Managed Services",
-  serviceType: "IT infrastructure services for Global Capability Centers",
-  url: PAGE_URL,
-  provider: { "@type": "Organization", name: "Sniper Systems", url: "https://sniperindia.com" },
-  areaServed: { "@type": "Country", name: "India" },
+  "@id": `${PAGE_URL}#service`,
+  name: "GCC IT Solutions in India",
+  serviceType: "Global Capability Center IT Solutions",
   description:
-    "End-to-end IT infrastructure, networking, cybersecurity, device rollout, and managed support for Global Capability Centers in India.",
+    "IT infrastructure, cloud, networking, device deployment, managed IT services, workplace technology and related enterprise IT solutions for Global Capability Centers in India.",
+  provider: { "@id": ORG_ID },
+  areaServed: { "@type": "Country", name: "India" },
+  audience: {
+    "@type": "BusinessAudience",
+    audienceType:
+      "Global Capability Centers, enterprises and technology-driven organizations",
+  },
+  url: PAGE_URL,
 };
 
+// Built from the visible FAQS array so the markup can never drift from
+// what's actually on the page (Google requires them to match).
 const FAQ_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -3575,6 +3652,15 @@ const FAQ_JSON_LD = {
     name: question,
     acceptedAnswer: { "@type": "Answer", text: answer },
   })),
+};
+
+const BREADCRUMB_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "GCC IT Solutions", item: PAGE_URL },
+  ],
 };
 
 const FAQAccordionItem = ({
@@ -4218,14 +4304,48 @@ const GCC = () => {
   return (
     <Layout>
       <Helmet>
-        <title>GCC Setup & IT Infrastructure Services in India | Sniper</title>
+        {/* Basic SEO */}
+        <title>{SEO_TITLE}</title>
+        <meta name="description" content={SEO_DESCRIPTION} />
+        <meta name="keywords" content={SEO_KEYWORDS} />
         <meta
-          name="description"
-          content="Sniper delivers end-to-end IT infrastructure for Global Capability Centers in India, including networks, cybersecurity, device rollout, and managed support."
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
         />
         <link rel="canonical" href={PAGE_URL} />
+
+        {/* Geo / local relevance */}
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
+        <meta name="geo.position" content="13.0827;80.2707" />
+        <meta name="ICBM" content="13.0827, 80.2707" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="GCC IT Solutions in India | Global Capability Center IT Services" />
+        <meta
+          property="og:description"
+          content="Enterprise IT infrastructure, cloud, networking, device deployment, managed IT services and workplace technology solutions for Global Capability Centers in India."
+        />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:site_name" content="Sniper Systems & Solutions" />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:alt" content="GCC IT Solutions and Enterprise IT Infrastructure in India" />
+
+        {/* Twitter / X */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="GCC IT Solutions in India | Sniper Systems" />
+        <meta
+          name="twitter:description"
+          content="Enterprise IT infrastructure, cloud, networking, device deployment and managed IT services for Global Capability Centers in India."
+        />
+        <meta name="twitter:image" content={OG_IMAGE} />
+
+        {/* Structured data */}
+        <script type="application/ld+json">{JSON.stringify(ORGANIZATION_JSON_LD)}</script>
         <script type="application/ld+json">{JSON.stringify(SERVICE_JSON_LD)}</script>
         <script type="application/ld+json">{JSON.stringify(FAQ_JSON_LD)}</script>
+        <script type="application/ld+json">{JSON.stringify(BREADCRUMB_JSON_LD)}</script>
       </Helmet>
 
       {/*
