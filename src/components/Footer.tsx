@@ -13,6 +13,7 @@ import {
 
 import { FaXTwitter } from "react-icons/fa6";
 import sniper from "@/assets/sniper-logo-black.png";
+import { openCookieSettings } from "@/lib/consent";
 
 const quickLinks = [
   { name: "Home", href: "/" },
@@ -83,7 +84,8 @@ const locations = [
 const legalLinks = [
   { name: "Privacy Policy", href: "/privacy" },
   { name: "Terms of Service", href: "/terms" },
-  { name: "Cookie Policy", href: "/cookie-policy" },
+  // /cookie-policy has no route, so point at the Cookies section of the Privacy page
+  { name: "Cookie Policy", href: "/privacy#pp-3" },
 ];
 
 // Small badge used for "New" / "We're Hiring" style tags
@@ -323,6 +325,13 @@ export const Footer = () => {
                   {link.name}
                 </a>
               ))}
+              <button
+                type="button"
+                onClick={openCookieSettings}
+                className="hover:text-stone-900 transition-colors"
+              >
+                Cookie settings
+              </button>
             </div>
 
             <p className="text-sm text-stone-500 whitespace-nowrap">

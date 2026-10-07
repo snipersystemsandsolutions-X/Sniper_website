@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import PageSEO from "@/components/PageSEO";
+import { openCookieSettings } from "@/lib/consent";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -1004,6 +1005,7 @@ const TermsAndPrivacy = () => {
                       "Device type, screen resolution, and connection parameters.",
                       "Pages visited, content accessed, time spent on each section, and navigation paths within our website.",
                       "Date, time, and duration of each visit, along with referral source.",
+                      "Interaction data such as clicks, scrolling, and mouse movement, captured through heatmaps and session recordings (only if you accept analytics cookies).",
                     ]} />
                     <p className="mt-4 text-gray-500 text-sm">
                       Technical and usage data is primarily analyzed in aggregate form and does not typically identify
@@ -1043,22 +1045,30 @@ const TermsAndPrivacy = () => {
               <div id="pp-3" ref={ppS3Ref}>
                 <PolicySection icon={Cookie} number="12" title="Cookies and Tracking Technologies" trigger={ppS3InView} index={2}>
                   <p>
-                    Our website may utilize cookies — small data files stored on your browser or device — along with
-                    similar tracking technologies such as web beacons and session tokens, to deliver a seamless
-                    browsing experience and to understand how business visitors interact with our content. Cookies
-                    serve several functional and analytical purposes, including:
+                    Our website uses cookies — small data files stored on your browser or device — to remember your
+                    choices and, only if you consent, to understand how business visitors use our content. When you
+                    first visit, a banner asks you to Accept or Decline. Apart from the cookie that remembers your
+                    choice, nothing listed below is set or loaded until you accept.
                   </p>
                   <PolicyList items={[
-                    "Retaining your browsing preferences and session state across page visits for a more coherent experience.",
-                    "Analyzing traffic patterns, page engagement, and content performance to guide ongoing improvements to our platform.",
-                    "Supporting essential website functionality, form submission integrity, and secure session management.",
+                    "Consent cookie (sniper_consent): set by us and kept for up to 180 days to remember whether you accepted or declined. This is the only cookie set before you make a choice.",
+                    "Google Analytics and Google Tag Manager (_ga, _ga_*): measure visits, page views, and content performance in aggregate. Used only after you accept. Cookie lifetimes are set by Google and can be up to two years.",
+                    "Microsoft Clarity (_clck, _clsk): produces heatmaps and session recordings that show how visitors click, scroll, and move through our pages, so we can improve usability. Loaded only after you accept. Text typed into form fields is masked by default and is not captured. Clarity is operated by Microsoft, which processes this data on our behalf under its own privacy statement.",
+                    "Vercel Analytics and Speed Insights: measure page performance and traffic without using cookies.",
                   ]} />
                   <p className="mt-4">
-                    You retain full control over cookie usage at all times. Your browser settings may be configured
-                    to decline, restrict, or delete cookies. Please note that disabling certain categories of cookies
-                    may affect the functionality of specific features on our website, including form submissions and
-                    session continuity.
+                    You can change your choice at any time using the button below or the “Cookie settings” link in the
+                    website footer. Declining or withdrawing consent stops further analytics collection and clears the
+                    analytics cookies from your browser. You can also configure your browser to block or delete
+                    cookies; doing so may affect features such as form submissions and session continuity.
                   </p>
+                  <button
+                    type="button"
+                    onClick={openCookieSettings}
+                    className="mt-2 inline-flex items-center rounded-full border-2 border-gray-900 px-6 py-2.5 text-sm font-semibold text-gray-900 transition-colors duration-300 hover:bg-gray-900 hover:text-white"
+                  >
+                    Manage cookie settings
+                  </button>
                 </PolicySection>
                 <SectionDivider inView={ppS3InView} delay={0.3} />
               </div>

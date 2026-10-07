@@ -8,7 +8,7 @@ interface PreloaderProps {
 
 const loaderCss = `
   .sniper-loader {
-    --duration: 4s;
+    --duration:  2.5s;
     --primary: rgba(0, 0, 0, 1);
     --primary-light: #333333;
     --primary-rgba: rgba(0, 0, 0, 0);
@@ -266,7 +266,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
       yPercent: -105,
       duration: 0.9,
       ease: "power3.inOut",
-      delay: 3.2,
+      delay: 1.7,
       onComplete: () => {
         if (doneRef.current) return;
         doneRef.current = true;
