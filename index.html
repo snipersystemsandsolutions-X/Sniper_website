@@ -38,6 +38,18 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      // Cookie consent: block analytics cookies until the visitor accepts
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500
+      });
+      // Returning visitor who already accepted
+      if (/(?:^|; )sniper_consent=accepted/.test(document.cookie)) {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
       gtag('js', new Date());
       gtag('config', 'G-PD03PTB2R5');
     </script>
@@ -56,14 +68,10 @@
       })(window, document, "script", "dataLayer", "GTM-TXBRNWS");
     </script>
 
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ytd8qtew7e");
-</script>
+    <!--
+      Microsoft Clarity is intentionally NOT here any more.
+      It is loaded by src/lib/consent.ts, only after the visitor clicks Accept.
+    -->
   </head>
 
   <body>

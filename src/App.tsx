@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "motion/react";
 import React, { Suspense, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AppleStyleDock } from "./components/AppleStyleDock";
+import CookieConsent from "./components/CookieConsent";
 
 
 // ── Lazy pages (code-split for faster initial load) ──────────────────────────
@@ -197,7 +198,9 @@ const AnimatedRoutes = () => {
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [preloaderDone, setPreloaderDone] = useState(false);
+  const [preloaderDone, setPreloaderDone] = useState(
+  () => typeof window !== "undefined" && sessionStorage.getItem("preloaderSeen") === "1"
+);
 
   return (
     <>
@@ -207,7 +210,7 @@ const App = () => {
        * transform stacking context. position:fixed works correctly at this level.
        */}
       {!preloaderDone && (
-        <Preloader onComplete={() => setPreloaderDone(true)} />
+        <Preloader onComplete={() => { sessionStorage.setItem("preloaderSeen", "1"); setPreloaderDone(true); }} />
       )}
 
       <QueryClientProvider client={queryClient}>
@@ -219,6 +222,7 @@ const App = () => {
             <SpeedInsights />
             <AnimatedRoutes />
             <AppleStyleDock />
+            <CookieConsent />
           </BrowserRouter>
         </TooltipProvider>
       </QueryClientProvider>
