@@ -2,10 +2,9 @@
  * Cookie consent helpers.
  *
  * - Choice is stored in a first-party cookie (`sniper_consent`) for 180 days.
- * - Google (GA / GTM) is gated with Consent Mode: default is "denied" in
- *   index.html, and we flip analytics_storage on Accept.
- * - Microsoft Clarity is NOT in index.html any more. It is injected here,
- *   only after the visitor accepts.
+ * - Google Analytics / GTM are NOT gated: they run for every visitor.
+ * - Only Microsoft Clarity (session recording) needs consent. It is NOT in
+ *   index.html; it is injected here, only after the visitor accepts.
  */
 
 export type ConsentChoice = "accepted" | "declined";
@@ -21,7 +20,6 @@ type AnyFn = (...args: unknown[]) => void;
 
 declare global {
   interface Window {
-    gtag?: AnyFn;
     clarity?: AnyFn & { q?: unknown[] };
   }
 }
@@ -42,7 +40,7 @@ function saveConsent(choice: ConsentChoice) {
   document.cookie = `${COOKIE_NAME}=${choice}; Max-Age=${COOKIE_DAYS * 86400}; Path=/; SameSite=Lax${secure}`;
 }
 
-/** Expire first-party analytics cookies (GA + Clarity) when consent is declined/withdrawn. */
+/** Expire Clarity cookies when consent is declined/withdrawn. GA cookies are left alone. */
 function clearAnalyticsCookies() {
   const host = window.location.hostname;
   const rootDomain = "." + host.split(".").slice(-2).join(".");
@@ -50,7 +48,7 @@ function clearAnalyticsCookies() {
 
   document.cookie.split(";").forEach((raw) => {
     const name = raw.split("=")[0].trim();
-    if (!/^(_ga|_gid|_gat|_clck|_clsk)/.test(name)) return;
+    if (!/^(_clck|_clsk)/.test(name)) return;
     domains.forEach((d) => {
       document.cookie = `${name}=; Max-Age=0; Path=/${d ? `; Domain=${d}` : ""}`;
     });
@@ -84,11 +82,6 @@ function loadClarity() {
 export function applyConsent(choice: ConsentChoice, persist = true) {
   if (persist) saveConsent(choice);
   const granted = choice === "accepted";
-
-  // Google Consent Mode (only analytics; ad_* stay denied)
-  window.gtag?.("consent", "update", {
-    analytics_storage: granted ? "granted" : "denied",
-  });
 
   if (granted) {
     loadClarity();
