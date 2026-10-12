@@ -33,23 +33,12 @@
     <!-- Web App Manifest — helps Google treat the site as a proper web app -->
     <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Google Analytics (gtag.js) -->
+    <!-- Google Analytics (gtag.js): runs for every visitor, no consent gate.
+         Only Microsoft Clarity (session recording) waits for consent. -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PD03PTB2R5"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      // Cookie consent: block analytics cookies until the visitor accepts
-      gtag('consent', 'default', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        wait_for_update: 500
-      });
-      // Returning visitor who already accepted
-      if (/(?:^|; )sniper_consent=accepted/.test(document.cookie)) {
-        gtag('consent', 'update', { analytics_storage: 'granted' });
-      }
       gtag('js', new Date());
       gtag('config', 'G-PD03PTB2R5');
     </script>

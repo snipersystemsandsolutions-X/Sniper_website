@@ -19,7 +19,7 @@ export const CookieConsent = () => {
   useEffect(() => {
     const saved = getConsent();
     if (saved) {
-      applyConsent(saved, false); // replay stored choice (loads Clarity if accepted)
+      applyConsent(saved, false); // replay stored choice (loads Clarity only if accepted)
     } else {
       setOpen(true);
     }
@@ -55,9 +55,9 @@ export const CookieConsent = () => {
             Your privacy choices
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-            We use cookies for analytics and session recordings (Google Analytics and
-            Microsoft Clarity) to understand how visitors use our site. Nothing is
-            collected until you accept. See our{" "}
+            We'd like to use Microsoft Clarity to record anonymised browsing sessions
+            (clicks, scrolling) so we can improve our site. No recording happens
+            unless you accept. See our{" "}
             <Link to="/privacy" className="font-medium text-neutral-900 underline underline-offset-2">
               Privacy Policy
             </Link>
