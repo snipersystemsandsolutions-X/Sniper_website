@@ -11,7 +11,7 @@ export type ConsentChoice = "accepted" | "declined";
 
 const COOKIE_NAME = "sniper_consent";
 const COOKIE_DAYS = 180;
-const CLARITY_ID = "xpdi6m47bf";
+const CLARITY_ID = "ytd8qtew7e";
 
 /** Dispatch this event (or call openCookieSettings) to re-open the banner. */
 export const OPEN_SETTINGS_EVENT = "open-cookie-settings";
