@@ -1,3 +1,4 @@
+
 {
   "name": "vite_react_shadcn_ts",
   "private": true,
@@ -105,3 +106,4 @@
     "vite-plugin-compression": "^0.5.1"
   }
 }
+
