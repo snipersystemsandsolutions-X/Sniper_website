@@ -6,8 +6,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = resolve(__dirname, "..", "dist");
 const SITE_URL = "https://sniperindia.com";
 
+// No trailing slashes: these must match the canonical URLs set on each page.
+// Every route listed here is also prerendered by scripts/prerender.mjs.
+// TODO: add "/partners/fortinet" here once the Fortinet page is merged and live (otherwise the 404 screen gets saved as that page).
 const routes = [
-  "/", "/about", "/contact", "/solutions", "/partners", "/industries", "/blog", "/careers",
+  "/", "/about", "/contact", "/solutions", "/partners", "/industries", "/blog", "/careers", "/gcc",
   "/solutions/it-infrastructure", "/solutions/managed-it-services", "/solutions/networking-solutions",
   "/solutions/it-consulting", "/solutions/device-deployment-mdm", "/solutions/hr-solutions",
   "/solutions/payment-services", "/solutions/av-solutions", "/solutions/it-asset-disposal",
@@ -27,10 +30,10 @@ if (!existsSync(distDir)) {
 }
 
 const urls = routes
-  .map((route) => `  <url><loc>${SITE_URL}${route}</loc></url>`)
+  .map((route) => `  <url><loc>${SITE_URL}${route === "/" ? "/" : route}</loc></url>`)
   .join("\n");
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 
 writeFileSync(resolve(distDir, "sitemap.xml"), xml);
-console.log("sitemap.xml written to dist/");
+console.log(`sitemap.xml written to dist/ (${routes.length} URLs)`);

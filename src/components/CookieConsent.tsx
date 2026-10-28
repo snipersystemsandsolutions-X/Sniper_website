@@ -43,6 +43,7 @@ export const CookieConsent = () => {
     <AnimatePresence>
       {open && (
         <motion.div
+          data-prerender-skip
           role="dialog"
           aria-live="polite"
           aria-labelledby="cookie-consent-title"
