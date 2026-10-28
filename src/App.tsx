@@ -36,6 +36,8 @@ import ManagedITServices from "./pages/solutions/ManagedITServices";
 import NetworkingSolutions from "./pages/solutions/NetworkingSolutions";
 import PaymentServices from "./pages/solutions/PaymentServices";
 import Solutions from "./pages/solutions/Solutions";
+import GiftingSolution from "./pages/solutions/GiftingSolution";
+
 
 // Partners
 import Acer from "./pages/partners/Acer";
@@ -58,7 +60,7 @@ import Samsung from "./pages/partners/Samsung";
 import Unity from "./pages/partners/Unity";
 import UnrealEngine from "./pages/partners/UnrealEngine";
 import Yubico from "./pages/partners/Yubico";
-
+import Fortinet from "./pages/partners/Fortinet";
 import Gcc from "./pages/partners/Gcc";
 
 // Industries
@@ -145,6 +147,7 @@ const AnimatedRoutes = () => {
             <Route path="/solutions/payment-services" element={<PaymentServices />} />
             <Route path="/solutions/it-infrastructure" element={<ITInfrastructure />} />
             <Route path="/solutions/networking-solutions" element={<NetworkingSolutions />} />
+            <Route path="/solutions/gifting-solution" element={<GiftingSolution />} />
             <Route path="/solutions/clould-solutions" element={<CloudSolutions />} />
 
             {/* Partners */}
@@ -172,6 +175,7 @@ const AnimatedRoutes = () => {
             <Route path="/partners/acer" element={<Acer />} />
             <Route path="/partners/aws" element={<AWS />} />
             <Route path="/partners/azure" element={<Azure />} />
+            <Route path="/partners/fortinet" element={<Fortinet />} />
 
             {/* Industries */}
             <Route path="/industries" element={<Industries />} />
