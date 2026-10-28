@@ -387,9 +387,9 @@ const NewTopHeroSection = () => {
                 <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                 <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-300">Enterprise IT</span>
               </div>
-              <h1 className="text-white font-bold leading-[1.05] mb-5" style={{ fontSize: "clamp(2rem, 9vw, 2.8rem)" }}>
+              <h2 className="text-white font-bold leading-[1.05] mb-5" style={{ fontSize: "clamp(2rem, 9vw, 2.8rem)" }}>
                 Empowering<br />Enterprises<br /><span style={{ color: "#a3a3a3" }}>with IT</span><br />Solutions
-              </h1>
+              </h2>
               <div className="flex gap-5 mb-6 border-t border-white/10 pt-5">
                 {[["17+", "Years"], ["2,600+", "Clients"], ["99%", "Uptime"]].map(([val, label]) => (
                   <div key={label}>
@@ -982,11 +982,11 @@ const Index = () => {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  const gsapHeroHeadingMobileRef = useRef<HTMLHeadingElement>(null);
-  const gsapHeroHeadingDesktopRef = useRef<HTMLHeadingElement>(null);
+  const gsapHeroHeadingMobileRef = useRef<HTMLDivElement>(null);
+  const gsapHeroHeadingDesktopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const animateWords = (el: HTMLHeadingElement | null, delayOffset = 0) => {
+    const animateWords = (el: HTMLDivElement | null, delayOffset = 0) => {
       if (!el) return;
       const words = el.querySelectorAll(".hero-word");
       gsap.fromTo(words,
@@ -1178,6 +1178,9 @@ const Index = () => {
       ============================================================ */}
       <section ref={heroRef} style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden', background: '#0a0a0a', display: 'flex', flexDirection: 'column' }}>
 
+        {/* The ONE h1 for this page — visually hidden, mirrors the animated hero heading below */}
+        <h1 className="sr-only">Empowering Enterprises with Cutting-Edge IT Solutions</h1>
+
         {/* Grid background */}
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
 
@@ -1194,12 +1197,12 @@ const Index = () => {
         <div className="lg:hidden flex flex-col" style={{ minHeight: '100svh', padding: '72px 20px 0', overflow: 'hidden' }}>
 
 
-          <h1 ref={gsapHeroHeadingMobileRef} aria-label="Empowering Enterprises with Cutting-Edge IT Solutions"
+          <div ref={gsapHeroHeadingMobileRef} aria-hidden="true"
             style={{ margin: '0 0 12px', fontSize: 'clamp(2.2rem, 9.5vw, 3.2rem)', fontWeight: 600, lineHeight: 1.08, color: '#ffffff', letterSpacing: '-0.025em', overflow: 'hidden' }}>
             {[{ word: "Empowering", br: false }, { word: "Enterprises", br: true }, { word: "with", br: false }, { word: "Cutting-Edge", br: true }, { word: "IT", br: false }, { word: "Solutions", br: false }].map(({ word, br }, i) => (
               <span key={i}><span className="hero-word" style={{ display: 'inline-block', opacity: 0, fontWeight: 600, color: i >= 2 ? 'rgba(255,255,255,0.4)' : '#ffffff', marginRight: i < 5 ? '0.3em' : '0' }}>{word}</span>{br && <br />}</span>
             ))}
-          </h1>
+          </div>
 
           <motion.p initial={{ opacity: 0, y: 14 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 1.0 }}
             style={{ margin: '0 0 18px', fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.65 }}>
@@ -1242,12 +1245,12 @@ const Index = () => {
 
 
 
-            <h1 ref={gsapHeroHeadingDesktopRef} aria-label="Empowering Enterprises with Cutting-Edge IT Solutions"
+            <div ref={gsapHeroHeadingDesktopRef} aria-hidden="true"
               style={{ margin: 0, fontSize: 'clamp(3rem, 4.2vw, 5rem)', fontWeight: 600, lineHeight: 1.06, color: '#ffffff', letterSpacing: '-0.03em', overflow: 'hidden' }}>
               {[{ word: "Empowering", br: false }, { word: "Enterprises", br: true }, { word: "with", br: false }, { word: "Cutting-Edge", br: true }, { word: "IT", br: false }, { word: "Solutions", br: false }].map(({ word, br }, i) => (
                 <span key={i}><span className="hero-word" style={{ display: 'inline-block', opacity: 0, fontWeight: 600, color: i >= 2 ? 'rgba(255,255,255,0.38)' : '#ffffff', marginRight: i < 5 ? '0.3em' : '0' }}>{word}</span>{br && <br />}</span>
               ))}
-            </h1>
+            </div>
 
             <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, rgba(255,255,255,0.12), transparent)' }} />
 
