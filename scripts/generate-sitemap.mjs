@@ -15,7 +15,7 @@ const routes = [
   "/solutions/it-consulting", "/solutions/device-deployment-mdm", "/solutions/hr-solutions",
   "/solutions/payment-services", "/solutions/av-solutions", "/solutions/it-asset-disposal",
   "/solutions/clould-solutions",
-  "/partners/apple", "/partners/microsoft", "/partners/nvidia", "/partners/cisco", "/partners/dell",
+  "/partners/apple", "/partners/apple/Macbook_pro_M6/index.html","/partners/microsoft", "/partners/nvidia", "/partners/cisco", "/partners/dell",
   "/partners/hp", "/partners/aws", "/partners/azure", "/partners/lenovo", "/partners/autodesk",
   "/partners/adobe", "/partners/samsung", "/partners/logitech", "/partners/acer", "/partners/asus",
   "/partners/yubico", "/partners/jamf", "/partners/unity", "/partners/unreal-engine",
