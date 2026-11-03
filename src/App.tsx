@@ -58,6 +58,7 @@ import Samsung from "./pages/partners/Samsung";
 import Unity from "./pages/partners/Unity";
 import UnrealEngine from "./pages/partners/UnrealEngine";
 import Yubico from "./pages/partners/Yubico";
+import Fortinet from "./pages/partners/Fortinet";
 
 import Gcc from "./pages/partners/Gcc";
 
@@ -172,6 +173,7 @@ const AnimatedRoutes = () => {
             <Route path="/partners/acer" element={<Acer />} />
             <Route path="/partners/aws" element={<AWS />} />
             <Route path="/partners/azure" element={<Azure />} />
+            <Route path="/partners/fortinet" element={<Fortinet />} />
 
             {/* Industries */}
             <Route path="/industries" element={<Industries />} />

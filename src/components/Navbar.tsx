@@ -232,7 +232,7 @@ const partnerGroups = [
   },
   {
     label: "Networking & Security",
-    items: ["Cisco", "Yubico", "JAMF", "Logitech", "Nvidia"],
+    items: ["Cisco", "Yubico", "JAMF", "Logitech", "Nvidia", "Fortinet"],
   },
 ];
 
