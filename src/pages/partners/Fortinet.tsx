@@ -590,9 +590,7 @@ function SeoHead({ vendor }: { vendor: VendorConfig }) {
   );
 }
 
-/* =============================================================================
- * HELPERS
- * ========================================================================== */
+
 
 function cx(...parts: Array<string | false | null | undefined>): string {
   return parts.filter(Boolean).join(' ');
