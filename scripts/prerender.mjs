@@ -161,7 +161,13 @@ async function main() {
 
   const routes = await readRoutes();
   // Never overwrite a hand-made static page (e.g. public/partners/apple/index.html).
-  const todo = routes.filter((r) => r === '/' || !existsSync(path.join(DIST, r, 'index.html')));
+  const isStaticPage = (route) => {
+    const clean = route.replace(/\/+$/, '');
+    // route already points at a file, e.g. /partners/apple/Macbook_pro_M6/index.html
+    if (path.extname(clean)) return existsSync(path.join(DIST, clean));
+    return existsSync(path.join(DIST, clean, 'index.html'));
+  };
+  const todo = routes.filter((r) => r === '/' || !isStaticPage(r));
   const skipped = routes.filter((r) => !todo.includes(r));
 
   const server = await startServer();
@@ -182,11 +188,18 @@ async function main() {
   try {
     for (const route of todo) {
       const page = await browser.newPage();
+      const blocked = []; // external URLs we blocked (debug)
+      const jsErrors = []; // JavaScript errors thrown by the page (debug)
       try {
         await page.setViewport({ width: 1440, height: 900 });
         await page.setRequestInterception(true);
         // Only our own files load: no analytics, chat widgets or CDN scripts end up frozen into the HTML.
-        page.on('request', (req) => (req.url().startsWith(origin) ? req.continue() : req.abort()));
+        page.on('request', (req) => {
+          if (req.url().startsWith(origin)) return req.continue();
+          blocked.push(req.url());
+          req.abort();
+        });
+        page.on('pageerror', (e) => jsErrors.push(e.message));
 
         await page.goto(origin + route, { waitUntil: 'networkidle2', timeout: 45000 });
         await page.waitForFunction(() => (document.querySelector('#root')?.childElementCount || 0) > 0, { timeout: 20000 });
@@ -205,6 +218,8 @@ async function main() {
         done.push(route);
       } catch (err) {
         failed.push(`${route}: ${err.message}`);
+        if (jsErrors.length) failed.push(`   JS errors: ${jsErrors.slice(0, 3).join(' | ')}`);
+        if (blocked.length) failed.push(`   blocked external requests: ${[...new Set(blocked)].slice(0, 5).join(', ')}`);
       } finally {
         await page.close().catch(() => {});
       }
