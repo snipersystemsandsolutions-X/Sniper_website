@@ -516,9 +516,10 @@ export const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "unset";
-    return () => { document.body.style.overflow = "unset"; };
-  }, [mobileMenuOpen]);
+  if (!mobileMenuOpen) return;
+  document.body.style.overflow = "hidden";
+  return () => { document.body.style.overflow = ""; };
+}, [mobileMenuOpen]);
 
   const allSolutionItems = solutionGroups.flatMap(g => g.items);
   const allIndustryItems = industryGroups.flatMap(g => g.items);

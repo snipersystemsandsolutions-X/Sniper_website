@@ -249,43 +249,49 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
   const doneRef = useRef(false);
 
   useEffect(() => {
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.overflow = "hidden";
+  const html = document.documentElement;
+  const body = document.body;
+  const unlock = () => {
+    html.style.overflow = "";
+    body.style.overflow = "";
+  };
 
-    const tl = gsap.timeline({ paused: true });
+  html.style.overflow = "hidden";
+  body.style.overflow = "hidden";
 
-    // Logo fades + scales in
-    tl.fromTo(
-      logoRef.current,
-      { opacity: 0, scale: 0.82, y: 12 },
-      { opacity: 1, scale: 1, y: 0, duration: 0.75, ease: "back.out(1.7)" }
-    );
+  const tl = gsap.timeline({ paused: true });
 
-    // Hold for the full animation cycle (3s), then slide out
-    tl.to(containerRef.current, {
-      yPercent: -105,
-      duration: 0.9,
-      ease: "power3.inOut",
-      delay: 1.7,
-      onComplete: () => {
-        if (doneRef.current) return;
-        doneRef.current = true;
-        document.documentElement.style.overflow = "";
-        document.body.style.overflow = "";
-        onComplete();
-      },
-    });
+  // Logo fades + scales in  (your existing code, unchanged)
+  tl.fromTo(
+    logoRef.current,
+    { opacity: 0, scale: 0.82, y: 12 },
+    { opacity: 1, scale: 1, y: 0, duration: 0.75, ease: "back.out(1.7)" }
+  );
+
+  // Hold, then slide out  (your existing code, with unlock() in onComplete)
+  tl.to(containerRef.current, {
+    yPercent: -105,
+    duration: 0.9,
+    ease: "power3.inOut",
+    delay: 1.7,
+    onComplete: () => {
+      if (doneRef.current) return;
+      doneRef.current = true;
+      unlock();
+      onComplete();
+    },
+  });
 
     tl.play();
 
-    return () => {
-      if (!doneRef.current) {
-        tl.kill();
-        document.documentElement.style.overflow = "";
-        document.body.style.overflow = "";
-      }
-    };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+     const failsafe = window.setTimeout(unlock, 6000);
+
+  return () => {
+    window.clearTimeout(failsafe);
+    tl.kill();
+    unlock();
+  };
+}, []);// eslint-disable-line react-hooks/exhaustive-deps
 
   const boxes = [...Array(8).keys()];
 

@@ -1,6 +1,25 @@
+# Allowed: AI search and "user asked about my site" bots
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+Allow: /
+
+# Blocked: AI training and bulk crawlers
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: CCBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bytespider
+User-agent: Meta-ExternalAgent
 User-agent: ShapBot
 Disallow: /
 
+# Everyone else (Google, Bing, etc.)
 User-agent: *
 Allow: /
+
 Sitemap: https://sniperindia.com/sitemap.xml

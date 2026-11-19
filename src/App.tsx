@@ -59,6 +59,7 @@ import Unity from "./pages/partners/Unity";
 import UnrealEngine from "./pages/partners/UnrealEngine";
 import Yubico from "./pages/partners/Yubico";
 import Fortinet from "./pages/partners/Fortinet";
+import Bentley from "./pages/partners/Bentley";
 
 import Gcc from "./pages/partners/Gcc";
 
@@ -174,6 +175,7 @@ const AnimatedRoutes = () => {
             <Route path="/partners/aws" element={<AWS />} />
             <Route path="/partners/azure" element={<Azure />} />
             <Route path="/partners/fortinet" element={<Fortinet />} />
+            <Route path="/partners/bentley_systems" element={<Bentley />} />
 
             {/* Industries */}
             <Route path="/industries" element={<Industries />} />

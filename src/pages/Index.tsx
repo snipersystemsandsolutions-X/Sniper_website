@@ -8,7 +8,11 @@ import { ArrowRight, CheckCircle, ChevronDown, ChevronLeft, ChevronRight, Clock,
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
 
+import appleBusinessBlk from "@/assets/Apple_business_partner_blk.webp";
+import appleEduBlk from "@/assets/Apple_Premium_Edu_Partner_blk.webp";
+import bentleyLogo from "@/assets/Bentley/bentley_logo.webp";
 
 import Lottie from "@/components/boyworking";
 import Lottiee from "@/components/morphing";
@@ -309,39 +313,43 @@ const BannerSliderSection = () => {
 // ========================================================
 // NEW TOP HERO SECTION
 // ========================================================
+// `to` = the partner page each logo links to (routes from App.tsx).
+// Brands without their own page fall back to /partners.
 const logoCompanies = [
-  { name: "Apple", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg", w: 108, h: 38 },
-  { name: "Lenovo", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Lenovo_%282015%29.svg", w: 98, h: 38 },
-  { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", w: 108, h: 28 },
-  { name: "NVIDIA", logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg", w: 108, h: 28 },
-  { name: "Autodesk", logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/Autodesk_Logo_2021.svg", w: 108, h: 48 },
-  { name: "Unreal", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Unreal_Engine_Logo_%28new_typeface%29.svg", w: 118, h: 58 },
-  { name: "Cisco", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg", w: 108, h: 38 },
-  { name: "Unity", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/1280px-Unity_Technologies_logo.svg.png", w: 108, h: 38 },
-  { name: "Adobe", logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Adobe_Corporate_wordmark.svg", w: 108, h: 28 },
-  { name: "Dell", logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg", w: 108, h: 58 },
-  { name: "HP", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg", w: 108, h: 58 },
-  { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", w: 108, h: 48 },
-  { name: "Samsung", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Samsung_Black_icon.svg", w: 108, h: 28 },
-  { name: "Acer", logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/Acer_2011.svg", w: 108, h: 28 },
-  { name: "Asus", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg", w: 108, h: 25 },
-  { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", w: 108, h: 38 },
-  { name: "Supermicro", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Super_Micro_Computer_Logo.svg", w: 108, h: 40 },
-  { name: "Yubico", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Yubico_logo.svg", w: 108, h: 25 },
-  { name: "Poly", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Poly_Inc._Logo.svg", w: 108, h: 38 },
-  { name: "Epos", logo: "https://upload.wikimedia.org/wikipedia/en/5/58/Epos-logo.png", w: 108, h: 28 },
-  { name: "Eizo", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/EIZO_Logo.svg", w: 100, h: 68 },
-  { name: "View Sonic", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/ViewSonic_logo.svg", w: 108, h: 28 },
-  { name: "Belkin", logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/Belkin_logo_2024.svg", w: 108, h: 28 },
-  { name: "Honey well", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Honeywell_logo.svg", w: 108, h: 28 },
-  { name: "Logitech", logo: "https://upload.wikimedia.org/wikipedia/commons/1/17/Logitech_logo.svg", w: 108, h: 28 },
-  { name: "Jabra", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Jabra_Logo.png", w: 108, h: 28 },
-  { name: "Benq", logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/BenQ_wordmark.svg", w: 95, h: 28 },
-  { name: "SketchUp", logo: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Brand_Wordmark_for_SketchUp.png", w: 108, h: 28 },
-  { name: "Sap", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg", w: 108, h: 28 },
-  { name: "LG", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/LG_logo_%282014%29.svg", w: 108, h: 28 },
-  { name: "Keyshot", logo: "https://www.freelogovectors.net/wp-content/uploads/2018/11/keyshot-logo.png", w: 108, h: 28 },
-  { name: "Jumpcloud", logo: "https://upload.wikimedia.org/wikipedia/en/4/47/JumpCloud_Logo.svg", w: 108, h: 38 },
+  { name: "Apple Business Partner", logo: appleBusinessBlk, w: 118, h: 48, to: "/partners/apple" },
+  { name: "Apple Premium Education Partner", logo: appleEduBlk, w: 118, h: 58, to: "/partners/apple" },
+  { name: "Lenovo", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Lenovo_%282015%29.svg", w: 98, h: 38, to: "/partners/lenovo" },
+  { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", w: 108, h: 28, to: "/partners/microsoft" },
+  { name: "NVIDIA", logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg", w: 108, h: 28, to: "/partners/nvidia" },
+  { name: "Autodesk", logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/Autodesk_Logo_2021.svg", w: 108, h: 48, to: "/partners/autodesk" },
+  { name: "Bentley Systems", logo: bentleyLogo, w: 108, h: 48, to: "/partners/bentley_systems" },
+  { name: "Unreal", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Unreal_Engine_Logo_%28new_typeface%29.svg", w: 118, h: 58, to: "/partners/unreal-engine" },
+  { name: "Cisco", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg", w: 108, h: 38, to: "/partners/cisco" },
+  { name: "Unity", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/1280px-Unity_Technologies_logo.svg.png", w: 108, h: 38, to: "/partners/unity" },
+  { name: "Adobe", logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Adobe_Corporate_wordmark.svg", w: 108, h: 28, to: "/partners/adobe" },
+  { name: "Dell", logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg", w: 108, h: 58, to: "/partners/dell" },
+  { name: "HP", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg", w: 108, h: 58, to: "/partners/hp" },
+  { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", w: 108, h: 48, to: "/partners/aws" },
+  { name: "Samsung", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Samsung_Black_icon.svg", w: 108, h: 28, to: "/partners/samsung" },
+  { name: "Acer", logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/Acer_2011.svg", w: 108, h: 28, to: "/partners/acer" },
+  { name: "Asus", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg", w: 108, h: 25, to: "/partners/asus" },
+  { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", w: 108, h: 38, to: "/partners" },
+  { name: "Supermicro", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Super_Micro_Computer_Logo.svg", w: 108, h: 40, to: "/partners" },
+  { name: "Yubico", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Yubico_logo.svg", w: 108, h: 25, to: "/partners/yubico" },
+  { name: "Poly", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Poly_Inc._Logo.svg", w: 108, h: 38, to: "/partners" },
+  { name: "Epos", logo: "https://upload.wikimedia.org/wikipedia/en/5/58/Epos-logo.png", w: 108, h: 28, to: "/partners" },
+  { name: "Eizo", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/EIZO_Logo.svg", w: 100, h: 68, to: "/partners" },
+  { name: "View Sonic", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/ViewSonic_logo.svg", w: 108, h: 28, to: "/partners" },
+  { name: "Belkin", logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/Belkin_logo_2024.svg", w: 108, h: 28, to: "/partners" },
+  { name: "Honey well", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Honeywell_logo.svg", w: 108, h: 28, to: "/partners" },
+  { name: "Logitech", logo: "https://upload.wikimedia.org/wikipedia/commons/1/17/Logitech_logo.svg", w: 108, h: 28, to: "/partners/logitech" },
+  { name: "Jabra", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Jabra_Logo.png", w: 108, h: 28, to: "/partners" },
+  { name: "Benq", logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/BenQ_wordmark.svg", w: 95, h: 28, to: "/partners" },
+  { name: "SketchUp", logo: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Brand_Wordmark_for_SketchUp.png", w: 108, h: 28, to: "/partners" },
+  { name: "Sap", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg", w: 108, h: 28, to: "/partners" },
+  { name: "LG", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/LG_logo_%282014%29.svg", w: 108, h: 28, to: "/partners" },
+  { name: "Keyshot", logo: "https://www.freelogovectors.net/wp-content/uploads/2018/11/keyshot-logo.png", w: 108, h: 28, to: "/partners" },
+  { name: "Jumpcloud", logo: "https://upload.wikimedia.org/wikipedia/en/4/47/JumpCloud_Logo.svg", w: 108, h: 38, to: "/partners" },
 ];
 
 const NewTopHeroSection = () => {
@@ -417,8 +425,14 @@ const NewTopHeroSection = () => {
             <div className="h-px bg-gray-300 flex-1" />
           </div>
           <div className="grid grid-cols-4 gap-2.5">
-            {logoCompanies.slice(0, 29).map((company, i) => (
-              <div key={i} className="aspect-square rounded-2xl flex items-center justify-center p-3" style={{ background: "#ffffff", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", border: "1px solid rgba(0,0,0,0.05)", transform: `translateY(${i % 2 === 0 ? "0px" : "6px"})` }}>
+            {logoCompanies.map((company, i) => (
+              <Link
+                key={i}
+                to={company.to}
+                aria-label={company.name}
+                className="aspect-square rounded-2xl flex items-center justify-center p-3"
+                style={{ background: "#ffffff", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", border: "1px solid rgba(0,0,0,0.05)", transform: `translateY(${i % 2 === 0 ? "0px" : "6px"})` }}
+              >
                 <img
                   src={company.logo}
                   alt={company.name}
@@ -427,7 +441,7 @@ const NewTopHeroSection = () => {
                   className="w-full h-full object-contain"
                   style={{ maxWidth: `${company.w}px`, maxHeight: `${company.h}px` }}
                 />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -475,7 +489,12 @@ const NewTopHeroSection = () => {
                   <div ref={innerGridRef} style={{ height: "740px", overflowY: "hidden", overflowX: "hidden", background: "#000", padding: "20px" }}>
                     <div className="grid grid-cols-4 gap-3">
                       {logoCompanies.map((company, i) => (
-                        <div key={i} className="aspect-square bg-white rounded-xl flex items-center justify-center p-3 hover:bg-gray-100 hover:scale-105 transition-all duration-200 cursor-pointer group relative">
+                        <Link
+                          key={i}
+                          to={company.to}
+                          aria-label={company.name}
+                          className="aspect-square bg-white rounded-xl flex items-center justify-center p-3 hover:bg-gray-100 hover:scale-105 transition-all duration-200 cursor-pointer group relative"
+                        >
                           <img
                             src={company.logo}
                             alt={company.name}
@@ -487,7 +506,7 @@ const NewTopHeroSection = () => {
                           <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none z-10">
                             <div className="bg-black text-white text-xs px-2 py-0.5 rounded whitespace-nowrap">{company.name}</div>
                           </div>
-                        </div>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -1072,7 +1091,7 @@ const Index = () => {
 
 
     { name: "Bluestone", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Bluestone_Group_logo_mid_resolution.jpg", maxWidth: "120px", maxHeight: "56px" },
-    { name: "Freshworks", logo: "https://brandlogos.net/wp-content/uploads/2024/04/freshworks-logo_brandlogos.net_c6t5u.png", maxWidth: "120px", maxHeight: "48px" },
+    { name: "Freshworks", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Freshworks-vector-logo.svg", maxWidth: "100px", maxHeight: "80px" },
     { name: "Ford", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original", maxWidth: "90px", maxHeight: "28px" },
     { name: "Highspot", logo: "https://upload.wikimedia.org/wikipedia/en/6/69/IIT_Madras_Logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original", maxWidth: "100px", maxHeight: "58px" },
     { name: "Embassy Group", logo: "https://upload.wikimedia.org/wikipedia/en/3/3b/Indian_Institute_of_Science_2019_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original", maxWidth: "120px", maxHeight: "58px" },
