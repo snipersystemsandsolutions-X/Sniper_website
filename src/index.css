@@ -74,18 +74,18 @@
 
 /* ── Global smooth scroll + rendering optimisations ────────────────────── */
 html {
-  /* Native smooth scroll for anchor links & programmatic scrollTo */
-  scroll-behavior: smooth;
-  /* Prevent layout shift from scrollbar appearing/disappearing */
+   scroll-behavior: smooth;
   scrollbar-gutter: stable;
-  /* Sharper text on all surfaces */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  /* Prevent overscroll glow / rubber-band on scroll containers */
   overscroll-behavior-y: none;
-  /* Ensure scroll chaining works predictably */
   overscroll-behavior-inline: contain;
+
+  /* NEW: root can always scroll vertically, even if a script sets overflow:hidden inline */
+  overflow-y: auto !important;
+  /* NEW: moved here from body (see below) */
+  overflow-x: hidden;
 }
 
 /* Ensure smooth scrolling on mobile webkit browsers */
@@ -142,7 +142,7 @@ footer,
        and every page automatically, no per-page wrapper class needed. */
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     /* Prevent horizontal overflow causing layout shift */
-    overflow-x: hidden;
+    
   }
 
   h1, h2, h3, h4, h5, h6 {

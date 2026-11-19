@@ -4,6 +4,7 @@ import Lottiee from "@/components/people";
 import PageSEO from "@/components/PageSEO";
 import HoverStack from "@/components/ui/hover-stack";
 import { FloatingIconsHero, type FloatingIconsHeroProps } from "@/components/ui/floating-icons-hero-section";
+import appleBusinessBlk from "@/assets/Apple_business_partner_blk.webp";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, CheckCircle, Shield, Users } from "lucide-react";
@@ -12,7 +13,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 // Company logos from Index.tsx
 const logoCompanies = [
-  { name: "Apple", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg", w: 108, h: 38 },
+  { name: "Apple Business Partner", logo: appleBusinessBlk, w: 118, h: 48 },
   { name: "Lenovo", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Lenovo_%282015%29.svg", w: 98, h: 38 },
   { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", w: 108, h: 28 },
   { name: "NVIDIA", logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg", w: 108, h: 28 },
