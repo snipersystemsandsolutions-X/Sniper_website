@@ -162,7 +162,7 @@ const solutionGroups = [
     items: [
       { name: "IT Infrastructure", href: "/solutions/it-infrastructure", desc: "Build robust enterprise infrastructure", iconKey: "infra" },
       { name: "Networking Solutions", href: "/solutions/networking-solutions", desc: "Enterprise-grade network architecture", iconKey: "network" },
-      { name: "Cloud Solutions", href: "/solutions/clould-solutions", desc: "Scalable cloud infrastructure & services", iconKey: "cloud" },
+      { name: "Cloud Solutions", href: "/partners/cloud-solutions/index.html", desc: "Scalable cloud infrastructure & services", iconKey: "cloud" },
     ],
   },
   {
@@ -184,8 +184,8 @@ const solutionGroups = [
   {
     label: "Specialty",
     items: [
-      { name: "AV Solutions", href: "/solutions/av-solutions", desc: "Professional audio-visual systems", iconKey: "av" },
-      { name: "IT Asset Disposal", href: "/solutions/it-asset-disposal", desc: "Secure disposal & lifecycle mgmt", iconKey: "disposal" },
+      { name: "AV Solutions", href: "/partners/av-solutions/index.html", desc: "Professional audio-visual systems", iconKey: "av" },
+      { name: "IT Asset Disposal", href: "/partners/it-asset-disposal-plans/index.html", desc: "Secure disposal & lifecycle mgmt", iconKey: "disposal" },
     ],
   },
 ];
@@ -216,7 +216,7 @@ const industryGroups = [
     label: "Health & Education",
     items: [
       { name: "Healthcare & Pharma", href: "/industries/healthcare-pharma", desc: "Medical technology & compliance solutions", iconKey: "health" },
-      { name: "Education", href: "/industries/education", desc: "EdTech and digital learning solutions", iconKey: "edu" },
+      { name: "Education", href: "/partners/education/index.html", desc: "EdTech and digital learning solutions", iconKey: "edu" },
     ],
   },
 ];

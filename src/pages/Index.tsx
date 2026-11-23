@@ -210,13 +210,13 @@ const BannerSliderSection = () => {
       title: "POWERFUL TECHNOLOGY SOLUTIONS",
       description: "Enterprise infrastructure, managed services, and business solutions designed to support your organization's growth and digital transformation.",
       image: "https://i.postimg.cc/nhLN25ph/futuristic-business-scene-with-ultra-modern-ambiance.jpg",
-      link: "/Solutions"
+      link: "/solutions"
     },
     {
       title: "SERVING DIVERSE INDUSTRIES",
       description: "Technology solutions for industries like technology, media, healthcare, education, and manufacturing.",
       image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80",
-      link: "/Industries"
+      link: "/industries"
     },
     {
       title: "APPLE SOLUTIONS FOR BUSINESS & EDUCATION",
@@ -322,7 +322,7 @@ const logoCompanies = [
   { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", w: 108, h: 28, to: "/partners/microsoft" },
   { name: "NVIDIA", logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg", w: 108, h: 28, to: "/partners/nvidia" },
   { name: "Autodesk", logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/Autodesk_Logo_2021.svg", w: 108, h: 48, to: "/partners/autodesk" },
-  { name: "Bentley Systems", logo: bentleyLogo, w: 108, h: 48, to: "/partners/bentley_systems" },
+  { name: "Bentley Systems", logo: bentleyLogo, w: 108, h: 48, to: "/partners/bentley" },
   { name: "Unreal", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Unreal_Engine_Logo_%28new_typeface%29.svg", w: 118, h: 58, to: "/partners/unreal-engine" },
   { name: "Cisco", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg", w: 108, h: 38, to: "/partners/cisco" },
   { name: "Unity", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/1280px-Unity_Technologies_logo.svg.png", w: 108, h: 38, to: "/partners/unity" },
@@ -330,7 +330,7 @@ const logoCompanies = [
   { name: "Dell", logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg", w: 108, h: 58, to: "/partners/dell" },
   { name: "HP", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg", w: 108, h: 58, to: "/partners/hp" },
   { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", w: 108, h: 48, to: "/partners/aws" },
-  { name: "Samsung", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Samsung_Black_icon.svg", w: 108, h: 28, to: "/partners/samsung" },
+  { name: "Samsung", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Samsung_Black_icon.svg", w: 108, h: 28, to: "/partners" },
   { name: "Acer", logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/Acer_2011.svg", w: 108, h: 28, to: "/partners/acer" },
   { name: "Asus", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg", w: 108, h: 25, to: "/partners/asus" },
   { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", w: 108, h: 38, to: "/partners" },
@@ -839,7 +839,7 @@ const ClientTypesSection = ({ clientTypes }: { clientTypes: any[] }) => {
             <h2 className="text-7xl font-semibold mb-6 leading-tight">Clearly, We Stand<br />With Everyone</h2>
             <div className="w-full h-px bg-gray-700 my-8" />
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider leading-tight mb-8">CLEARLY, WE STAND<br />WITH EVERYONE</h3>
-            <a href="/Industries" className="inline-flex items-center px-8 py-3 border-2 border-gray-700 rounded-full bg-gray-900 text-white text-base font-medium hover:bg-white hover:text-gray-900 transition-colors duration-300">Industries We Serve</a>
+            <a href="/industries" className="inline-flex items-center px-8 py-3 border-2 border-gray-700 rounded-full bg-gray-900 text-white text-base font-medium hover:bg-white hover:text-gray-900 transition-colors duration-300">Industries We Serve</a>
           </div>
         </div>
         <div className="w-1/2 px-12 xl:px-20 py-20 space-y-6" ref={rightRef}>
@@ -1018,9 +1018,9 @@ const Index = () => {
   }, []);
 
   const solutions = [
-    { title: "AV Solutions", description: "Providing innovative audio-visual solutions tailored for business environments.", img: "https://i.postimg.cc/kgWL7m9R/av.jpg", link: "/solutions/av-solutions" },
-    { title: "Cloud Solutions", description: "Delivering scalable and secure cloud services to enhance performance, flexibility, and business growth.", img: "https://i.postimg.cc/8k2SGwW4/cloud.jpg", link: "/solutions/clould-solutions" },
-    { title: "IT Asset Disposal Plans", description: "Ensuring secure and environmentally responsible disposal of IT assets.", img: "https://i.postimg.cc/4xwqY1K2/it-diposal.jpg", link: "/solutions/it-asset-disposal" },
+    { title: "AV Solutions", description: "Providing innovative audio-visual solutions tailored for business environments.", img: "https://i.postimg.cc/kgWL7m9R/av.jpg", link: "/partners/av-solutions/index.html" },
+    { title: "Cloud Solutions", description: "Delivering scalable and secure cloud services to enhance performance, flexibility, and business growth.", img: "https://i.postimg.cc/8k2SGwW4/cloud.jpg", link: "/partners/cloud-solutions/index.html" },
+    { title: "IT Asset Disposal Plans", description: "Ensuring secure and environmentally responsible disposal of IT assets.", img: "https://i.postimg.cc/4xwqY1K2/it-diposal.jpg", link: "/partners/it-asset-disposal-plans/index.html" },
     { title: "IT Infrastructure Solutions", description: "Designing and implementing robust IT infrastructure to support business operations.", img: "https://i.postimg.cc/KvDsW55G/infra.jpg", link: "/solutions/it-infrastructure" },
 
     { title: "IT Consulting Services", description: "Providing expert advice to align IT strategies with business objectives.", img: "https://i.postimg.cc/zvSp9JT1/consult.jpg", link: "/solutions/it-consulting" },

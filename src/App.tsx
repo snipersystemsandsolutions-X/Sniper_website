@@ -175,7 +175,7 @@ const AnimatedRoutes = () => {
             <Route path="/partners/aws" element={<AWS />} />
             <Route path="/partners/azure" element={<Azure />} />
             <Route path="/partners/fortinet" element={<Fortinet />} />
-            <Route path="/partners/bentley_systems" element={<Bentley />} />
+            <Route path="/partners/bentley" element={<Bentley />} />
 
             {/* Industries */}
             <Route path="/industries" element={<Industries />} />

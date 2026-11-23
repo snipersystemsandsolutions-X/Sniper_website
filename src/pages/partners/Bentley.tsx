@@ -17,22 +17,24 @@ import sectorMining from '@/assets/Bentley/mining.webp';
 import sectorTransport from '@/assets/Bentley/transportation.webp';
 import sectorCities from '@/assets/Bentley/government.webp';
 /* TEMPORARY: all six solution photos use the carousel image. Swap each for its own 3:2 photo (~1600px wide) when ready. */
-import solutionIndustrial from '@/assets/Bentley/bentley_carousel_one.webp';
-import solutionGeospatial from '@/assets/Bentley/bentley_carousel_one.webp';
-import solutionArchitectural from '@/assets/Bentley/bentley_carousel_one.webp';
-import solutionUtility from '@/assets/Bentley/bentley_carousel_one.webp';
-import solutionCivil from '@/assets/Bentley/bentley_carousel_one.webp';
-import solutionTwin from '@/assets/Bentley/bentley_carousel_one.webp';
+import solutionIndustrial from '@/assets/Bentley/civil_solutions.webp';
+import solutionGeospatial from '@/assets/Bentley/Geospatial_solutions.webp';
+import solutionArchitectural from '@/assets/Bentley/architecture_solutions.webp';
+import solutionUtility from '@/assets/Bentley/utility_solutions.jpg';
+import solutionCivil from '@/assets/Bentley/industrial_solutions.jpg';
+import solutionTwin from '@/assets/Bentley/digital_solutions.webp';
 /* The runtime import and the type import MUST point at the same file (the filename's case must match exactly). */
 import {
   Arrow,
+  BODY,
+  Band,
   Breadcrumb,
   EnquirySection,
   FAQAccordion,
+  H2_CLASS,
   PRIVACY_PATH,
   PartnerHero,
   PartnerStyles,
-  ProcessSteps,
   RelatedSolutions,
   SITE_CONTAINER,
   SITE_URL,
@@ -53,14 +55,14 @@ import type {
 } from '../../components/PartnerKit';
 
 /**
- * Bentley Systems partner landing page.   Route: /partners/bentley/
+ * Bentley Systems partner landing page.   Route: /partners/bentley
  *
  * Built on partnerKit (shared SEO head, buttons, form, FAQ, trust, process, related). This file holds only what is
  * unique to Bentley: the content, the hero carousel and the sector cards.
  *
  * ─────────────────────────────────────────────────────────────────────────────
  * RESPONSIVE SYSTEM (what "dynamic to the viewport" means here)
- *  - Container: 16px side gutter on phones, up to 48px on desktops, content capped near 1600px (wider on 2200px+ screens).
+ *  - Container: 16px side gutter on phones, up to 48px on laptops, content capped at 1440px and centred, so margins grow with the screen.
  *  - Type, buttons, section gaps, carousel text and card sizes all use clamp(), so they scale smoothly with the screen
  *    instead of jumping at breakpoints.
  *  - Cards size to their content (min-height, not a fixed height), so larger text, browser zoom or long titles can never
@@ -123,6 +125,8 @@ interface TextPart {
   text: string;
   /** Dark, full-strength text. Parts without it are muted. */
   strong?: boolean;
+  /** Red highlight pill with white text (used for "Sniper Systems" in the partnership heading). */
+  pill?: boolean;
 }
 interface Sector {
   id: string;
@@ -141,7 +145,7 @@ const META: PageMeta = {
   shortTitle: 'Bentley Systems Software in India',
   description:
     'Explore Bentley software for infrastructure engineering, geospatial and asset work. Sniper Systems is an Official Bentley Channel Partner in India.',
-  path: '/partners/bentley/',
+  path: '/partners/bentley',
   keywords: [
     'Bentley Systems India',
     'Bentley software India',
@@ -172,14 +176,20 @@ const HERO = {
 };
 
 /** Partnership section copy. `heading` is a list of pieces: `strong: true` pieces are dark, the rest are muted grey. */
-const PARTNERSHIP = {
+const PARTNERSHIP: {
+  heading: TextPart[];
+  side: string;
+  cta: LinkItem;
+  imageAlt: string;
+} = {
   heading: [
-    { text: 'As an Official channel partner for ' },
-    { text: 'Bentley, Sniper systems & solutions ', strong: true },
-    { text: 'helps organisations explore Bentley’s engineering software portfolio for their project and business requirement' },
+    { text: 'As an official ' },
+    { text: 'Bentley partner, ', strong: true },
+    { text: 'Sniper Systems', pill: true },
+    { text: ' & Solutions connects businesses with industry-leading engineering software solutions.' },
   ],
   side: 'Connect with our team to discuss Bentley software options, licensing requirements and product availability for your organisation.',
-  cta: { label: 'Talk to our team', href: '#enquiry' } satisfies LinkItem,
+  cta: { label: 'Talk to our team', href: '#enquiry' },
   imageAlt: 'Bentley and Sniper Systems & Solutions partnership: a handshake between two business partners',
 };
 
@@ -299,7 +309,11 @@ const WHY: {
 };
 
 /** DRAFT steps: replace with the final workflow copy. */
-const PROCESS: { heading: string; steps: ProcessStep[] } = {
+const PROCESS: {
+  heading: string;
+  steps: ProcessStep[];
+  flow: { heading: string; text: string; leftTitle: string; left: string[]; rightTitle: string; right: string[] };
+} = {
   heading: 'How the engagement works',
   steps: [
     { title: 'Understand', text: 'Review your engineering workflows and project needs.' },
@@ -308,11 +322,20 @@ const PROCESS: { heading: string; steps: ProcessStep[] } = {
     { title: 'Onboard', text: 'Plan deployment and training, where offered.' },
     { title: 'Support', text: 'Plan ongoing support and renewals, where offered.' },
   ],
+  /* DRAFT flow-panel copy: replace with the final wording. */
+  flow: {
+    heading: 'From project brief to the right Bentley software',
+    text: 'Many inputs, one clear path. We narrow your engineering, project and licensing requirements into options you can act on.',
+    leftTitle: 'What you bring',
+    left: ['Project types', 'Team size', 'Existing tools'],
+    rightTitle: 'What you get',
+    right: ['Matched Bentley software', 'Licensing clarity', 'A plan for next steps'],
+  },
 };
 
 /** DRAFT FAQs: replace with the final copy. The FAQPage JSON-LD is built from this list automatically. */
 const FAQS: { heading: string; accents: string[]; items: Faq[] } = {
-  heading: 'Bentley software FAQs',
+  heading: 'Frequently asked questions',
   accents: ['Bentley'],
   items: [
     {
@@ -365,14 +388,18 @@ const ENQUIRY: EnquiryCopy = {
  * Every section on this page (the ones in this file AND the partnerKit ones: breadcrumb, hero, process, FAQ, related,
  * enquiry) sits in SITE_CONTAINER. PageWidth below sets that container's width ONCE, so left and right edges line up
  * everywhere. Change PAGE_MAX / PAGE_GUTTER here and the whole page follows.
- *  - PAGE_MAX    = widest the CONTENT may get (1600px, the same as the kit's old 1600px). Beyond that the page centres.
- *  - PAGE_GUTTER = side space, fluid: 16px on phones up to 64px on big screens. It is the same --gutter the swipe row uses.
+ *  - PAGE_MAX    = widest the CONTENT may get: 1440px. On a 1366-1536px laptop the
+ *                  content therefore stays at ~1190-1280px with clear margins, and on 1920px+ screens the margins
+ *                  grow (about 320px each side at 1920px) instead of the content stretching.
+ *  - PAGE_GUTTER = inner side space, fluid: 16px on phones up to 48px on laptops and larger. It is the same --gutter
+ *                  the swipe row uses.
  * No section uses 100vw, so the page never gets a sideways scrollbar and the vertical one is never covered.
- * (The site header lives in Layout.tsx and has its own container: give it the same max-width to line it up as well.)
+ * (The site header lives in Layout.tsx and has its own container: give it the same max-width (90rem + the same
+ * gutter) so its logo and menu line up with this content at every width.)
  * ========================================================================== */
 
-const PAGE_MAX = '100rem';
-const PAGE_GUTTER = 'clamp(1rem, 0.5rem + 2.6vw, 4rem)';
+const PAGE_MAX = '90rem';
+const PAGE_GUTTER = 'clamp(1rem, 0.25rem + 3.2vw, 3rem)';
 const WIDE = SITE_CONTAINER;
 
 /* Turns "!max-w-[120rem]" style Tailwind classes into a safe CSS class selector. */
@@ -382,6 +409,10 @@ const CONTAINER_SELECTOR = SITE_CONTAINER.split(/\s+/).filter(Boolean).map((c) =
    border-box, full width up to the cap, centred, with the gutter as side padding. */
 const PAGE_WIDTH_CSS =
   `.sv-root.sv-root,${CONTAINER_SELECTOR}{--gutter:${PAGE_GUTTER}}` +
+  /* Older Safari / Chrome ignore scrollbar-width, so the swipe row gets a thin, always-visible bar the WebKit way too. */
+  `.sv-swipe::-webkit-scrollbar{height:6px}` +
+  `.sv-swipe::-webkit-scrollbar-thumb{background:rgba(20,20,20,.35);border-radius:9999px}` +
+  `.sv-swipe::-webkit-scrollbar-track{background:transparent}` +
   `${CONTAINER_SELECTOR}{box-sizing:border-box !important;width:100% !important;margin-left:auto !important;margin-right:auto !important;` +
   `padding-left:var(--gutter) !important;padding-right:var(--gutter) !important;max-width:calc(${PAGE_MAX} + 2 * var(--gutter)) !important}`;
 
@@ -429,8 +460,13 @@ function HeroCarousel({ slides }: { slides: Slide[] }) {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
     setReduced(mq.matches);
     const onChange = (e: MediaQueryListEvent) => setReduced(e.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
+    // Safari 13 and older only have the deprecated addListener / removeListener.
+    if (mq.addEventListener) {
+      mq.addEventListener('change', onChange);
+      return () => mq.removeEventListener('change', onChange);
+    }
+    mq.addListener(onChange);
+    return () => mq.removeListener(onChange);
   }, []);
 
   const playing = !paused && !reduced && count > 1;
@@ -592,11 +628,21 @@ const PartnershipSection = memo(function PartnershipSection() {
             id="partnership-title"
             className={cx('max-w-[64rem] text-balance text-[clamp(1.5rem,1rem_+_1.5vw,2.75rem)] leading-[1.1] tracking-tighter', HEADING_WEIGHT)}
           >
-            {P.heading.map((part, i) => (
-              <span key={i} className={'strong' in part && part.strong ? 'text-[#141414]' : 'text-[#141414]/45'}>
-                {part.text}
-              </span>
-            ))}
+            {P.heading.map((part, i) =>
+              part.pill ? (
+                /* box-decoration-clone keeps the pill's rounded ends if the name ever wraps onto two lines. */
+                <span
+                  key={i}
+                  className="rounded-[0.3em] bg-[#DC3327] px-[0.2em] py-[0.04em] text-white [box-decoration-break:clone] [-webkit-box-decoration-break:clone]"
+                >
+                  {part.text}
+                </span>
+              ) : (
+                <span key={i} className={part.strong ? 'text-[#141414]' : 'text-[#141414]/45'}>
+                  {part.text}
+                </span>
+              ),
+            )}
           </h2>
 
           <div className="flex flex-col items-start justify-center gap-6 lg:border-l lg:border-[#141414]/15 lg:pl-[clamp(1.5rem,1rem_+_2vw,4rem)]">
@@ -765,7 +811,7 @@ const SectorSection = memo(function SectorSection({
             and a thin VISIBLE scrollbar (never hidden). sm and up: a 2, then 3 column grid. */}
         <ul
           className={cx(
-            '-mx-[var(--gutter)] mt-8 flex snap-x snap-mandatory scroll-pl-[var(--gutter)] gap-3 overflow-x-auto px-[var(--gutter)] py-1 pb-3 [scrollbar-color:rgba(20,20,20,0.35)_transparent] [scrollbar-width:thin]',
+            'sv-swipe -mx-[var(--gutter)] mt-8 flex snap-x snap-mandatory scroll-pl-[var(--gutter)] gap-3 overflow-x-auto px-[var(--gutter)] py-1 pb-3 [scrollbar-color:rgba(20,20,20,0.35)_transparent] [scrollbar-width:thin]',
             'sm:mx-0 sm:mt-10 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:py-0 sm:pb-0 md:mt-12 lg:grid-cols-3',
             GRID_GAP,
           )}
@@ -898,7 +944,7 @@ const WhySection = memo(function WhySection() {
             <p className="mt-4 max-w-[22rem] text-[clamp(0.8125rem,0.78rem_+_0.15vw,0.9375rem)] leading-snug text-white/70">{card.text}</p>
             <a
               href={card.cta.href}
-              className="sv-anim relative z-10 mt-6 inline-flex w-fit items-center rounded-full border border-[#FF5A4D] px-4 py-2 text-[0.75rem] font-medium uppercase tracking-wide text-[#FF5A4D] transition-colors duration-300 hover:bg-[#DD372B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="sv-anim relative z-10 mt-6 inline-flex w-fit items-center rounded-full border border-[#FF5A4D] px-4 py-2 text-[clamp(0.8125rem,0.78rem_+_0.15vw,0.875rem)] font-medium uppercase tracking-wide text-[#FF5A4D] transition-colors duration-300 hover:bg-[#DD372B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               {card.cta.label}
             </a>
@@ -913,6 +959,256 @@ const WhySection = memo(function WhySection() {
         </div>
       </div>
     </section>
+  );
+});
+
+/* =============================================================================
+ * ENGAGEMENT PROCESS (same design as the Fortinet page: numbered row + node-flow panel)
+ * Numbered row on desktop, vertical timeline on phones, any number of steps (--n sets the column count).
+ * The panel below is a canvas: dotted curves converge from both edges to the centre while small square nodes travel
+ * along them. Tap or click sends a ripple. The loop is cancelled while off-screen and a still frame is drawn when the
+ * visitor prefers reduced motion. Decorative only (aria-hidden).
+ * ========================================================================== */
+
+const FLOW_MIN_H = 'md:min-h-[clamp(26rem,22rem_+_12vw,38rem)]';
+
+function NodeFlow({ className }: { className?: string }) {
+  const ref = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = ref.current;
+    if (!canvas) return undefined;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return undefined;
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    type FlowPath = { isLeft: boolean; startY: number; t: number; speed: number; red: boolean };
+    type Ripple = { x: number; y: number; radius: number; life: number };
+    type Pt = { x: number; y: number };
+
+    let w = 0;
+    let h = 0;
+    let raf = 0;
+    let paths: FlowPath[] = [];
+    let ripples: Ripple[] = [];
+
+    const build = () => {
+      const n = w < 640 ? 34 : 64;
+      paths = Array.from({ length: n }, (_, i) => ({
+        isLeft: i % 2 === 0,
+        startY: (i / n) * h * 1.4 - h * 0.2,
+        t: Math.random(),
+        speed: 0.0015 + Math.random() * 0.002,
+        red: i % 9 === 0,
+      }));
+    };
+
+    const bezier = (t: number, p0: Pt, p1: Pt, p2: Pt, p3: Pt): Pt => {
+      const u = 1 - t;
+      return {
+        x: u ** 3 * p0.x + 3 * u ** 2 * t * p1.x + 3 * u * t ** 2 * p2.x + t ** 3 * p3.x,
+        y: u ** 3 * p0.y + 3 * u ** 2 * t * p1.y + 3 * u * t ** 2 * p2.y + t ** 3 * p3.y,
+      };
+    };
+
+    const draw = (advance: boolean) => {
+      ctx.clearRect(0, 0, w, h);
+      const cx0 = w / 2;
+      const cy0 = h / 2;
+
+      if (advance) {
+        ripples.forEach((r) => {
+          r.radius += 15;
+          r.life -= 0.015;
+        });
+        ripples = ripples.filter((r) => r.life > 0);
+      }
+
+      paths.forEach((path) => {
+        const p0 = { x: path.isLeft ? 0 : w, y: path.startY };
+        const p1 = { x: path.isLeft ? cx0 * 0.5 : w - cx0 * 0.5, y: path.startY };
+        const p2 = { x: path.isLeft ? cx0 * 0.8 : w - cx0 * 0.8, y: cy0 };
+        const p3 = { x: cx0, y: cy0 };
+
+        ctx.beginPath();
+        ctx.moveTo(p0.x, p0.y);
+        ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+        ctx.lineWidth = 1.2;
+        ctx.setLineDash([1, 4]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        if (advance) {
+          path.t += path.speed;
+          if (path.t > 1) {
+            path.t = 0;
+            // Clamped so the random walk can never drift far outside the canvas.
+            path.startY = Math.min(h * 1.2, Math.max(-h * 0.2, path.startY + (Math.random() - 0.5) * 10));
+          }
+        }
+
+        const pos = bezier(path.t, p0, p1, p2, p3);
+        ripples.forEach((r) => {
+          const dx = pos.x - r.x;
+          const dy = pos.y - r.y;
+          const dist = Math.hypot(dx, dy) || 1;
+          if (dist < r.radius + 120 && dist > r.radius - 120) {
+            const force = (1 - Math.abs(dist - r.radius) / 120) * r.life;
+            pos.x += (dx / dist) * force * 80;
+            pos.y += (dy / dist) * force * 80;
+          }
+        });
+
+        const size = path.red ? 4 : 3;
+        ctx.fillStyle = path.red ? '#DC3327' : 'rgba(255, 255, 255, 0.75)';
+        ctx.fillRect(pos.x - size / 2, pos.y - size / 2, size, size);
+      });
+    };
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = rect.width;
+      h = rect.height;
+      canvas.width = Math.max(1, Math.floor(w * dpr));
+      canvas.height = Math.max(1, Math.floor(h * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      build();
+      draw(false);
+    };
+
+    const loop = () => {
+      draw(true);
+      raf = requestAnimationFrame(loop);
+    };
+    const start = () => {
+      if (!raf && !reduce) raf = requestAnimationFrame(loop);
+    };
+    const stop = () => {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    };
+
+    const onPointer = (ev: PointerEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      ripples.push({ x: ev.clientX - rect.left, y: ev.clientY - rect.top, radius: 0, life: 1 });
+    };
+
+    resize();
+    // Guarded so a browser without these observers still draws the still frame instead of crashing the page.
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(resize) : null;
+    ro?.observe(canvas);
+    if (!ro) window.addEventListener('resize', resize);
+    const io =
+      typeof IntersectionObserver !== 'undefined'
+        ? new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) start();
+            else stop();
+          })
+        : null;
+    io?.observe(canvas);
+    if (!io) start();
+
+    if (!reduce) canvas.addEventListener('pointerdown', onPointer);
+
+    return () => {
+      stop();
+      ro?.disconnect();
+      window.removeEventListener('resize', resize);
+      io?.disconnect();
+      canvas.removeEventListener('pointerdown', onPointer);
+    };
+  }, []);
+
+  return <canvas ref={ref} aria-hidden="true" className={cx('block h-full w-full', className)} />;
+}
+
+const EngagementProcess = memo(function EngagementProcess({ heading, steps, flow }: typeof PROCESS) {
+  return (
+    <Band labelledBy="process-title">
+      <h2 id="process-title" className={H2_CLASS}>
+        {heading}
+      </h2>
+
+      <ol
+        style={{ '--n': steps.length } as CSSProperties}
+        className="mt-10 grid md:mt-12 md:grid-cols-[repeat(var(--n),minmax(0,1fr))]"
+      >
+        {steps.map((s, i) => {
+          const last = i === steps.length - 1;
+          return (
+            <li key={s.title} className="flex gap-4 md:block md:pr-6">
+              <div className="flex flex-col items-center md:w-full md:flex-row md:gap-3">
+                <span
+                  aria-hidden="true"
+                  className="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-[12px] bg-[#DC3327] text-[22px] font-medium text-white"
+                >
+                  {i + 1}
+                </span>
+                {!last && (
+                  <span aria-hidden="true" className="my-2 w-0 flex-1 border-l border-dashed border-[#141414]/40 md:hidden" />
+                )}
+                {!last && (
+                  <span className="hidden h-px flex-1 bg-[#141414]/70 md:block" aria-hidden="true">
+                    <svg viewBox="0 0 8 8" className="float-right -mt-[3.5px] h-[8px] w-[8px]" fill="none" stroke="#141414" strokeWidth="1">
+                      <path d="M1 1l3 3-3 3" transform="translate(1.5 0)" />
+                    </svg>
+                  </span>
+                )}
+              </div>
+              <div className={cx('pt-2 md:pt-0', last ? 'pb-0' : 'pb-8 md:pb-0')}>
+                <h3 className="text-2xl font-semibold tracking-tighter md:mt-5">{s.title}</h3>
+                <p className={cx(BODY, 'mt-2 max-w-[16rem]')}>{s.text}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+
+      <div className={cx('relative mt-12 overflow-hidden rounded-[24px] bg-black', FLOW_MIN_H)}>
+        <NodeFlow className="absolute inset-0" />
+        {/* Mobile only: darkens the top and bottom so the text stays readable over the moving nodes. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/85 via-black/20 to-black/85 md:hidden"
+        />
+        <div
+          className={cx(
+            'pointer-events-none relative z-10 flex h-full flex-col justify-between gap-14 px-5 py-8 sm:px-8 md:gap-10 md:p-10',
+            FLOW_MIN_H,
+          )}
+        >
+          <div className="max-w-[34rem]">
+            <h3 className={cx(H2_CLASS, 'text-white')}>{flow.heading}</h3>
+            <p className="mt-5 text-[15px] leading-relaxed text-white/75 md:text-base">{flow.text}</p>
+          </div>
+
+          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end md:gap-6">
+            {(
+              [
+                [flow.leftTitle, flow.left, ''],
+                [flow.rightTitle, flow.right, 'md:items-end'],
+              ] as const
+            ).map(([title, chips, align]) => (
+              <div key={title} className={cx('flex flex-col gap-3.5', align)}>
+                <p className="text-[14px] font-medium text-white/70">{title}</p>
+                <ul className={cx('flex flex-wrap gap-2.5', align && 'md:justify-end')}>
+                  {chips.map((c) => (
+                    <li
+                      key={c}
+                      className="rounded-full border border-white/25 bg-black/60 px-3.5 py-1.5 text-[14px] text-white backdrop-blur-sm"
+                    >
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Band>
   );
 });
 
@@ -951,7 +1247,7 @@ export default function Bentley() {
         <SectorSection heading={SECTORS.heading} items={SECTORS.items} onSelect={selectSector} />
         <SolutionsSection heading={SOLUTIONS.heading} items={SOLUTIONS.items} />
         <WhySection />
-        <ProcessSteps {...PROCESS} />
+        <EngagementProcess {...PROCESS} />
         <FAQAccordion {...FAQS} />
         <RelatedSolutions {...RELATED} />
         <EnquirySection

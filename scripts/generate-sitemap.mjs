@@ -8,20 +8,26 @@ const SITE_URL = "https://sniperindia.com";
 
 // No trailing slashes: these must match the canonical URLs set on each page.
 // Every route listed here is also prerendered by scripts/prerender.mjs.
-// TODO: add "/partners/fortinet" here once the Fortinet page is merged and live (otherwise the 404 screen gets saved as that page).
+// The "/index.html" entries are hand-made static pages under public/partners/ — they are
+// NOT prerendered; prerender.mjs skips URLs whose dist/<path>/index.html already exists.
+// Client-side redirect stubs (/blog, /solutions/av-solutions, /industries/education, ...) are
+// delisted on purpose: a sitemap must only list final, canonical, same-host URLs. They are
+// redirected server-side via vercel.json instead.
 const routes = [
-  "/", "/about", "/contact", "/solutions", "/partners", "/industries", "/blog", "/careers", "/gcc",
+  "/", "/about", "/contact", "/solutions", "/partners", "/industries", "/careers", "/gcc",
   "/solutions/it-infrastructure", "/solutions/managed-it-services", "/solutions/networking-solutions",
   "/solutions/it-consulting", "/solutions/device-deployment-mdm", "/solutions/hr-solutions",
-  "/solutions/payment-services", "/solutions/av-solutions", "/solutions/it-asset-disposal",
-  "/solutions/clould-solutions",
-  "/partners/apple", "/partners/apple/Macbook_pro_M6/index.html","/partners/microsoft", "/partners/nvidia", "/partners/cisco", "/partners/dell",
-  "/partners/hp", "/partners/aws", "/partners/azure", "/partners/lenovo", "/partners/autodesk",
-  "/partners/adobe", "/partners/samsung", "/partners/logitech", "/partners/acer", "/partners/asus",
-  "/partners/yubico", "/partners/jamf", "/partners/unity", "/partners/unreal-engine",
+  "/solutions/payment-services",
+  "/partners/apple", "/partners/apple/Macbook_pro_M6/index.html", "/partners/microsoft/index.html",
+  "/partners/nvidia", "/partners/cisco", "/partners/dell", "/partners/hp", "/partners/aws",
+  "/partners/azure", "/partners/lenovo/index.html", "/partners/autodesk/index.html",
+  "/partners/adobe/index.html", "/partners/logitech", "/partners/acer", "/partners/asus", "/partners/yubico",
+  "/partners/unity/index.html", "/partners/unreal-engine", "/partners/fortinet", "/partners/bentley",
+  "/partners/av-solutions/index.html", "/partners/cloud-solutions/index.html", "/partners/education/index.html",
+  "/partners/empower-your-apple-ecosystem-with-jamf/index.html", "/partners/it-asset-disposal-plans/index.html",
   "/industries/it-ites-infra", "/industries/healthcare-pharma", "/industries/manufacturing-automotive",
   "/industries/media-and-entertainment", "/industries/aec", "/industries/government",
-  "/industries/ar-vr-mr-xr", "/industries/Education",
+  "/industries/ar-vr-mr-xr",
   "/privacy", "/terms",
 ];
 

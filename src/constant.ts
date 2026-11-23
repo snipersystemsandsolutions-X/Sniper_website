@@ -45,7 +45,7 @@ export const solutionGroups = [
       },
       {
         name: "Cloud Solutions",
-        href: "/solutions/clould-solutions",
+        href: "/partners/cloud-solutions/index.html",
         desc: "Scalable cloud infrastructure & services",
         iconKey: "cloud",
       },
@@ -96,13 +96,13 @@ export const solutionGroups = [
     items: [
       {
         name: "AV Solutions",
-        href: "/solutions/av-solutions",
+        href: "/partners/av-solutions/index.html",
         desc: "Professional audio-visual systems",
         iconKey: "av",
       },
       {
         name: "IT Asset Disposal",
-        href: "/solutions/it-asset-disposal",
+        href: "/partners/it-asset-disposal-plans/index.html",
         desc: "Secure disposal & lifecycle mgmt",
         iconKey: "disposal",
       },
@@ -173,7 +173,7 @@ export const industryGroups = [
       },
       {
         name: "Education",
-        href: "/industries/education",
+        href: "/partners/education/index.html",
         desc: "EdTech and digital learning solutions",
         iconKey: "edu",
       },
@@ -609,7 +609,7 @@ export const banners = [
       "Enterprise infrastructure, managed services, and business solutions designed to support your organization's growth and digital transformation.",
     image:
       "https://i.postimg.cc/nhLN25ph/futuristic-business-scene-with-ultra-modern-ambiance.jpg",
-    link: "/Solutions",
+    link: "/solutions",
   },
   {
     title: "SERVING DIVERSE INDUSTRIES",
@@ -617,7 +617,7 @@ export const banners = [
       "Technology solutions for industries like technology, media, healthcare, education, and manufacturing.",
     image:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80",
-    link: "/Industries",
+    link: "/industries",
   },
   {
     title: "APPLE SOLUTIONS FOR BUSINESS & EDUCATION",

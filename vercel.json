@@ -1,10 +1,28 @@
 {
+  "trailingSlash": false,
   "redirects": [
-    {
-      "source": "/partners/apple",
-      "destination": "/partners/apple/index.html",
-      "permanent": true
-    }
+    { "source": "/partners/apple", "destination": "/partners/apple/index.html", "permanent": true },
+    { "source": "/partners/adobe", "destination": "/partners/adobe/index.html", "permanent": true },
+
+    { "source": "/partners/microsoft", "destination": "/partners/microsoft/index.html", "permanent": true },
+    { "source": "/partners/lenovo", "destination": "/partners/lenovo/index.html", "permanent": true },
+    { "source": "/partners/autodesk", "destination": "/partners/autodesk/index.html", "permanent": true },
+    { "source": "/partners/unity", "destination": "/partners/unity/index.html", "permanent": true },
+    { "source": "/partners/jamf", "destination": "/partners/empower-your-apple-ecosystem-with-jamf/index.html", "permanent": true },
+    { "source": "/solutions/av-solutions", "destination": "/partners/av-solutions/index.html", "permanent": true },
+    { "source": "/solutions/cloud-solutions", "destination": "/partners/cloud-solutions/index.html", "permanent": true },
+    { "source": "/solutions/clould-solutions", "destination": "/partners/cloud-solutions/index.html", "permanent": true },
+    { "source": "/solutions/it-asset-disposal", "destination": "/partners/it-asset-disposal-plans/index.html", "permanent": true },
+    { "source": "/industries/education", "destination": "/partners/education/index.html", "permanent": true },
+    { "source": "/industries/Education", "destination": "/partners/education/index.html", "permanent": true },
+
+    { "source": "/partners/bentley_systems", "destination": "/partners/bentley", "permanent": true },
+    { "source": "/partners/samsung", "destination": "/partners", "permanent": true },
+    { "source": "/partners/samsung/index.html", "destination": "/partners", "permanent": true },
+    { "source": "/blog", "destination": "https://blog.sniperindia.com/", "permanent": true },
+    { "source": "/apple", "destination": "/partners/apple/index.html", "permanent": true },
+    { "source": "/apple/", "destination": "/partners/apple/index.html", "permanent": true },
+    { "source": "/about-us", "destination": "/about", "permanent": true }
   ],
   "rewrites": [
     {

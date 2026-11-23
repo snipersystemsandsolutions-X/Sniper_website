@@ -1,6 +1,7 @@
 "use client";
 
 import { GlobeInteractive } from "@/components/ui/GlobalInteractive";
+import applelogo from "@/assets/Apple_business_partner_blk.webp";
 import React from "react";
 
 // ─── 5 orbit rings with real partner/tech logos ───────────────────────────────
@@ -12,7 +13,7 @@ const orbits = [
     radiusPx: { mobile: 62, desktop: 210 },
     duration: 16,
     icons: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",       alt: "Apple",     angle: 0,   bg: "#ffffff" },
+      { src: applelogo, alt: "Apple", angle: 0, bg: "#ffffff" },
       { src: "https://upload.wikimedia.org/wikipedia/commons/4/41/Autodesk_Logo_2021.svg",     alt: "Autodesk",  angle: 120, bg: "#ffffff" },
       { src: "https://upload.wikimedia.org/wikipedia/commons/9/90/Adobe_Corporate_wordmark.svg", alt: "Adobe",   angle: 240, bg: "#ffffff" },
     ],

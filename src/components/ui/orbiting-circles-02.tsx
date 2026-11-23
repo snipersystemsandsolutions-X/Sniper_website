@@ -53,9 +53,9 @@ const orbits: Orbit[] = [
     icons: [
       { src: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg", alt: "Dell", angle: 20, bg: "#ffffff", to: "/partners/dell", logoW: 56 },
       { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Hewlett_Packard_Enterprise_logo_2025.svg/1280px-Hewlett_Packard_Enterprise_logo_2025.svg.png", alt: "HP", angle: 92, bg: "#e4e9ec", to: "/partners/hp", logoW: 64 },
-      { src: bentleyLogo, alt: "Bentley Systems", angle: 164, bg: "#ffffff", to: "/partners/bentley_systems", logoW: 68 },
+      { src: bentleyLogo, alt: "Bentley Systems", angle: 164, bg: "#ffffff", to: "/partners/bentley", logoW: 68 },
       { src: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg", alt: "Cisco", angle: 236, bg: "#ffffff", to: "/partners/cisco", logoW: 56 },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Samsung_Black_icon.svg", alt: "Samsung", angle: 308, bg: "#ffffff", to: "/partners/samsung", logoW: 62 },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Samsung_Black_icon.svg", alt: "Samsung", angle: 308, bg: "#ffffff", to: "/partners", logoW: 62 },
     ],
   },
   {

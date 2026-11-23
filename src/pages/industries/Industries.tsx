@@ -429,7 +429,7 @@ const Industries = () => {
       icon: GraduationCap,
       title: "Education",
       description: "Digital learning ecosystems, campus networking, and EdTech infrastructure.",
-      to: "/industries/education",
+      to: "/partners/education/index.html",
       accent: "#ffffff",
       img: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80",
       tag: "K-12 · Higher Education · EdTech",
@@ -455,7 +455,7 @@ const Industries = () => {
         <meta name="description" content="Sniper Systems provides specialized IT infrastructure, managed services, and cloud solutions for multiple industries including AEC, Government, Healthcare, Manufacturing, Media, and more." />
         <meta name="keywords" content="IT solutions by industry, AEC IT solutions, government IT services, healthcare IT infrastructure, manufacturing IT solutions, media IT services" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://sniperindia.com/industries/" />
+        <link rel="canonical" href="https://sniperindia.com/industries" />
         <meta name="geo.region" content="IN-TN" />
         <meta name="geo.placename" content="Chennai" />
         <meta name="geo.position" content="13.0827;80.2707" />

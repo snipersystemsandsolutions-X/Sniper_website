@@ -63,6 +63,7 @@ import yubico from "@/assets/yubico.png";
 import unity from "@/assets/unity.svg";
 import trimble from "@/assets/Trimble.jpg";
 import yotta from   "@/assets/yotta.png";
+import apple from "@/assets/Apple_business_partner_blk.webp";
 
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -1050,7 +1051,7 @@ const PARTNERS: Partner[] = [
   { name: "Jamf", src: jamf, industry: "Digital Workplace", technology: "Device Management" },
   { name: "Logitech", src: "https://upload.wikimedia.org/wikipedia/commons/1/17/Logitech_logo.svg", industry: "Digital Workplace", technology: "Collaboration" },
   { name: "Poly", src: poly, industry: "Digital Workplace", technology: "Collaboration" },
-  { name: "Apple", src: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg", industry: "Digital Workplace", technology: "Devices" },
+  { name: "Apple", src: apple, industry: "Digital Workplace", technology: "Devices" },
   { name: "Autodesk", src: "https://upload.wikimedia.org/wikipedia/commons/4/41/Autodesk_Logo_2021.svg", industry: "Software", technology: "Design & Engineering" },
   { name: "Adobe", src: "https://upload.wikimedia.org/wikipedia/commons/9/90/Adobe_Corporate_wordmark.svg", industry: "Software", technology: "Creative & Productivity" },
   { name: "Unity", src: unity, industry: "Software", technology: "3D & Simulation" },
@@ -1278,10 +1279,9 @@ const SOLUTIONS: Solution[] = [
   {
     number: "02",
     title: "Cloud & AI Solutions",
-    // NOTE: "clould" matches the route as currently registered in the router
-    // (typo). If that route is renamed to /solutions/cloud-solutions, update
-    // this href with it.
-    href: "/solutions/clould-solutions",
+    // NOTE: points at the static cloud-solutions page; /solutions/clould-solutions (typo'd old
+    // route) and /solutions/cloud-solutions are 301-redirected here via vercel.json.
+    href: "/partners/cloud-solutions/index.html",
     description:
       "Accelerate innovation through cloud migration, hybrid cloud, AI infrastructure, cloud optimization, and managed cloud services.",
     swatch: "#8C8C8C",

@@ -19,19 +19,18 @@ const quickLinks = [
   { name: "Home", href: "/" },
   { name: "Blog", href: "https://blog.sniperindia.com/" },
   { name: "Contact Us", href: "/contact" },
-  { name: "Solutions", href: "/Solutions" },
-  { name: "Partners", href: "/Partners" },
+  { name: "Solutions", href: "/solutions" },
+  { name: "Partners", href: "/partners" },
   { name: "Industries", href: "/industries" },
   { name: "Careers", href: "/careers", badge: "We're Hiring" },
   { name: "Privacy Policy", href: "/privacy" },
 ];
 
 const solutionsLinks = [
-  { name: "AV Solutions", href: "/solutions/av-solutions" },
-  { name: "Cloud Solutions", href: "/solutions/clould-solutions" },
+  { name: "AV Solutions", href: "/partners/av-solutions/index.html" },
+  { name: "Cloud Solutions", href: "/partners/cloud-solutions/index.html" },
   { name: "Device Deployment & MDM", href: "/solutions/device-deployment-mdm" },
-  { name: "Gifting Solution", href: "/solutions/gifting-solution" },
-  { name: "IT Asset Disposal", href: "/solutions/it-asset-disposal" },
+  { name: "IT Asset Disposal", href: "/partners/it-asset-disposal-plans/index.html" },
   { name: "HR Solutions", href: "/solutions/hr-solutions" },
   { name: "IT Consulting Services", href: "/solutions/it-consulting" },
   { name: "Managed IT Services", href: "/solutions/managed-it-services" },
@@ -47,7 +46,7 @@ const partnersLinks = [
   { name: "Lenovo", href: "/partners/lenovo" },
   { name: "Autodesk", href: "/partners/autodesk" },
   { name: "Adobe", href: "/partners/adobe" },
-  { name: "Samsung", href: "/partners/samsung" },
+  { name: "Samsung", href: "/partners" },
   { name: "HP", href: "/partners/hp" },
   { name: "Unity", href: "/partners/unity" },
   { name: "JAMF", href: "/partners/jamf" },
@@ -68,7 +67,7 @@ const industriesLinks = [
   { name: "IT / ITES / Infrastructure", href: "/industries/it-ites-infra" },
   { name: "Healthcare & Pharma", href: "/industries/healthcare-pharma" },
   { name: "Manufacturing & Automotive", href: "/industries/manufacturing-automotive" },
-  { name: "Education", href: "/industries/Education" },
+  { name: "Education", href: "/partners/education/index.html" },
 ];
 
 const locations = [
